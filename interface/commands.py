@@ -34,6 +34,16 @@ class CommandParser:
         export_parser = subparsers.add_parser("export-log", help="Export event log to file")
         export_parser.add_argument("--file", type=str, help="File name for export")
 
+        # Submit message command
+        message_parser = subparsers.add_parser("message", help="Submit a player message")
+        message_parser.add_argument("--player", type=str, required=True, help="Player ID submitting the message")
+        message_parser.add_argument("--content", type=str, required=True, help="Message content")
+
+        # Submit vote command
+        vote_parser = subparsers.add_parser("vote", help="Submit a vote")
+        vote_parser.add_argument("--voter", type=str, required=True, help="Player ID casting the vote")
+        vote_parser.add_argument("--target", type=str, required=True, help="Player ID being voted for")
+
     def parse_args(self, args: Optional[List[str]] = None) -> Dict:
         """Parse command-line arguments"""
         parsed = self.parser.parse_args(args)

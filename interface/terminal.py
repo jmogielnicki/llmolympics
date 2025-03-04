@@ -88,10 +88,63 @@ class TerminalInterface:
             print(f"Event log exported to: {path}")
             return True
 
+        elif cmd == "message":
+            player_id = command["player"]
+            content = command["content"]
+            success = self.game_controller.process_player_message(player_id, content)
+            if success:
+                print(f"Message from {player_id} processed successfully")
+            else:
+                print(f"Failed to process message. Make sure it's {player_id}'s turn and the game is in discussion phase.")
+            return True
+
+        elif cmd == "vote":
+            voter_id = command["voter"]
+            target_id = command["target"]
+            success = self.game_controller.submit_vote(voter_id, target_id)
+            if success:
+                print(f"Vote from {voter_id} for {target_id} recorded")
+            else:
+                print(f"Failed to record vote. Make sure the game is in voting phase.")
+            return True
+
         return False
 
     def run_interactive(self) -> None:
         """Run the interface in interactive mode"""
+        # Enable readline support for arrow keys and command history
+        try:
+            import readline
+            # Set history file
+            import os
+            history_file = os.path.join(os.path.expanduser("~"), ".llm_diplomacy_history")
+            try:
+                readline.read_history_file(history_file)
+                # Default history length is -1 (infinite), which may grow unruly
+                readline.set_history_length(1000)
+            except FileNotFoundError:
+                pass
+
+            # Enable tab completion for commands
+            def completer(text, state):
+                commands = ["init", "start", "state", "next-phase", "next-round",
+                           "eliminate", "message", "vote", "export-log", "help", "exit", "quit"]
+                matches = [cmd for cmd in commands if cmd.startswith(text)]
+                if state < len(matches):
+                    return matches[state]
+                else:
+                    return None
+
+            readline.parse_and_bind("tab: complete")
+            readline.set_completer(completer)
+
+            # Save history on exit
+            import atexit
+            atexit.register(readline.write_history_file, history_file)
+        except ImportError:
+            print("Warning: readline module not available. Arrow keys and command history will not work.")
+            pass
+
         print("LLM Diplomacy Game - Interactive CLI")
         print("Type 'help' for available commands")
 
@@ -109,12 +162,16 @@ class TerminalInterface:
                 print("  next-phase           Force transition to next phase")
                 print("  next-round           Force transition to next round")
                 print("  eliminate --player=X Manually eliminate a player")
+                print("  message --player=X --content=\"Message content\" Submit a player message")
+                print("  vote --voter=X --target=Y Submit a vote")
                 print("  export-log [--file=name] Export event log to file")
                 print("  exit, quit           Exit the program")
                 continue
 
             try:
-                args = cmd.split()
+                # Use shlex to properly handle quoted arguments
+                import shlex
+                args = shlex.split(cmd)
                 parsed_cmd = self.command_parser.parse_args(args)
                 self.handle_command(parsed_cmd)
             except Exception as e:

@@ -1,0 +1,15 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs and local data
+logs/
+*.log
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
