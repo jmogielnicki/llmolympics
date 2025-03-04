@@ -1,0 +1,10 @@
+{
+	"player_count": 6,
+	"messages_per_round": 3,
+	"tie_breaker": "random",
+	"logging": {
+		"console_level": "INFO",
+		"file_level": "DEBUG",
+		"log_dir": "logs"
+	}
+}
