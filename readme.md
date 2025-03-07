@@ -1,4 +1,4 @@
-# LLM Diplomacy Game
+# LLM Diplomacy Arena
 
 A framework for running diplomacy-style games using large language models (LLMs) as players.
 

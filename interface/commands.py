@@ -17,6 +17,14 @@ class CommandParser:
         # Start game command
         subparsers.add_parser("start", help="Start the game")
 
+        # Initialize LLM mode command
+        init_llm_parser = subparsers.add_parser("init-llm", help="Initialize LLM mode")
+        init_llm_parser.add_argument("--config", type=str, default="config/llm_models.json",
+                                    help="Path to LLM models config file")
+
+        # Start LLM game command
+        subparsers.add_parser("start-llm", help="Start game with LLM players")
+
         # Show state command
         subparsers.add_parser("state", help="Show the current game state")
 

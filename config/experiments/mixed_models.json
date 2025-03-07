@@ -1,0 +1,26 @@
+{
+	"player1": {
+		"provider": "anthropic",
+		"model": "claude-3-haiku"
+	},
+	"player2": {
+		"provider": "openai",
+		"model": "gpt-4o"
+	},
+	"player3": {
+		"provider": "google",
+		"model": "gemini-pro"
+	},
+	"player4": {
+		"provider": "mistral",
+		"model": "mistral-medium"
+	},
+	"player5": {
+		"provider": "cohere",
+		"model": "command-r"
+	},
+	"player6": {
+		"provider": "ollama",
+		"model": "llama3"
+	}
+}

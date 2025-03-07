@@ -1,16 +1,26 @@
 import json
+import os
 from typing import Dict, Any, Optional, List
 
 from game.controller import GameController
 from events.bus import EventBus
 from events.logger import EventLogger
 from interface.commands import CommandParser
+from game.state import GamePhase
+
+# For LLM mode
+from player.manager import PlayerManager
+from game.llm_controller import LLMGameController
 
 class TerminalInterface:
     def __init__(self, game_controller: GameController, event_logger: EventLogger):
         self.game_controller = game_controller
         self.event_logger = event_logger
         self.command_parser = CommandParser()
+
+        # Initialize player manager (will be used if LLM mode is enabled)
+        self.player_manager = None
+        self.llm_controller = None
 
     def print_game_state(self) -> None:
         """Print the current game state to the terminal"""
@@ -39,11 +49,34 @@ class TerminalInterface:
         print("\nMessages:")
         # Only show the last 5 messages for brevity
         for msg in state['messages'][-5:]:
-            print(f"  [{msg['round']}][{msg['phase']}] {msg['player_id']}: {msg['content']}")
+            print(f"  [{msg['round']}][{msg['phase']}] {msg['player_id']}: {msg['content'][:100]}...")
 
         print("\nElimination History:")
         for record in state['elimination_history']:
             print(f"  Round {record['round']}: {record['eliminated']} eliminated")
+
+    def init_llm_mode(self, models_config="config/llm_models.json") -> bool:
+        """Initialize LLM mode with the specified models configuration."""
+        # Check if the config file exists
+        if not os.path.exists(models_config):
+            print(f"Error: LLM models config file not found: {models_config}")
+            return False
+
+        try:
+            # Initialize player manager
+            self.player_manager = PlayerManager(models_config)
+
+            # Initialize LLM controller
+            self.llm_controller = LLMGameController(
+                self.game_controller,
+                self.player_manager
+            )
+
+            print(f"LLM mode initialized with models from {models_config}")
+            return True
+        except Exception as e:
+            print(f"Error initializing LLM mode: {e}")
+            return False
 
     def handle_command(self, command: Dict[str, Any]) -> bool:
         """Handle a CLI command"""
@@ -58,6 +91,24 @@ class TerminalInterface:
             self.game_controller.start_game()
             print("Game started")
             return True
+
+        elif cmd == "init-llm":
+            models_config = command.get("config", "config/llm_models.json")
+            return self.init_llm_mode(models_config)
+
+        elif cmd == "start-llm":
+            if not self.llm_controller:
+                print("Error: LLM mode not initialized. Use 'init-llm' first.")
+                return False
+
+            # Make sure game is initialized
+            if self.game_controller.game_state.status.value == "setup":
+                print("Starting LLM game...")
+                self.llm_controller.start_game()
+                return True
+            else:
+                print("Error: Game already started or completed")
+                return False
 
         elif cmd == "state":
             self.print_game_state()
@@ -128,7 +179,8 @@ class TerminalInterface:
             # Enable tab completion for commands
             def completer(text, state):
                 commands = ["init", "start", "state", "next-phase", "next-round",
-                           "eliminate", "message", "vote", "export-log", "help", "exit", "quit"]
+                           "eliminate", "message", "vote", "export-log", "help", "exit", "quit",
+                           "init-llm", "start-llm"]
                 matches = [cmd for cmd in commands if cmd.startswith(text)]
                 if state < len(matches):
                     return matches[state]
@@ -158,6 +210,8 @@ class TerminalInterface:
                 print("Available commands:")
                 print("  init --players=N     Initialize a new game with N players")
                 print("  start                Start the game")
+                print("  init-llm [--config=path] Initialize LLM mode with optional config path")
+                print("  start-llm            Start game with LLM players")
                 print("  state                Show the current game state")
                 print("  next-phase           Force transition to next phase")
                 print("  next-round           Force transition to next round")
