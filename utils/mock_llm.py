@@ -4,11 +4,17 @@ import random
 import re
 import time
 
-from core.llm import LLMClient
-
 logger = logging.getLogger("MockLLM")
 
-class MockLLMClient(LLMClient):
+# Import the original LLMClient as a base class
+try:
+    from core.llm import LLMClient as BaseLLMClient
+except ImportError:
+    # Fallback for testing if the real LLMClient isn't available
+    BaseLLMClient = object
+    logger.warning("Could not import original LLMClient, using object as base class")
+
+class MockLLMClient(BaseLLMClient):
     """
     A mock implementation of the LLM client for testing purposes.
 
@@ -24,9 +30,33 @@ class MockLLMClient(LLMClient):
             response_delay (float): Simulated delay in seconds
             randomness (float): Level of randomness in responses (0-1)
         """
-        super().__init__()
+        # Only call super().__init__() if BaseLLMClient is not object
+        if BaseLLMClient is not object:
+            super().__init__()
+
         self.response_delay = response_delay
         self.randomness = randomness
+
+        # Initialize prompt manager if needed
+        if not hasattr(self, 'prompt_manager'):
+            # Try to import from core.llm
+            try:
+                from core.llm import PromptManager
+                self.prompt_manager = PromptManager()
+            except ImportError:
+                self.prompt_manager = None
+                logger.warning("Could not import PromptManager")
+
+        # Initialize parser registry if needed
+        if not hasattr(self, 'parser_registry'):
+            # Try to import from core.llm
+            try:
+                from core.llm import ResponseParserRegistry
+                self.parser_registry = ResponseParserRegistry()
+            except ImportError:
+                self.parser_registry = None
+                logger.warning("Could not import ResponseParserRegistry")
+
         self.response_patterns = {
             # Prisoner's Dilemma responses
             "prisoner's dilemma": [
