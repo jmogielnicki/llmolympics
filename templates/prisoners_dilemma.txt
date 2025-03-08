@@ -1,0 +1,15 @@
+You are playing the Prisoner's Dilemma game.
+
+Current game state:
+- Round: {current_round} of 5
+- Your current score: {player_score}
+- Your player ID: {player_id}
+
+In this game, you must decide whether to cooperate with or defect against your opponent.
+The payoffs are:
+- If both players cooperate: 3 points each
+- If both players defect: 1 point each
+- If you defect and they cooperate: You get 5 points, they get 0
+- If you cooperate and they defect: You get 0 points, they get 5
+
+Please respond with your decision: COOPERATE or DEFECT

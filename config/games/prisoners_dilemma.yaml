@@ -1,0 +1,73 @@
+# config/games/prisoners_dilemma.yaml
+game:
+  name: "Prisoner's Dilemma"
+  description: "A classic game of cooperation and betrayal"
+  type: "simultaneous_choice"
+
+players:
+  min: 2
+  max: 2
+  roles: "symmetric"
+
+setup:
+  initial_state:
+    resources: []
+    assignments: []
+
+phases:
+  - id: "decision"
+    type: "simultaneous_action"
+    actions:
+      - name: "choose"
+        options: ["cooperate", "defect"]
+    next_phase: "resolution"
+
+  - id: "resolution"
+    type: "automatic"
+    handler: "calculate_pd_outcome"
+    next_phase_condition: "rounds_remaining"
+    next_phase_success: "decision"  # If more rounds remain
+    next_phase_failure: "game_end"  # If all rounds complete
+
+rounds:
+  count: 5
+  progression: "fixed"
+
+state:
+  player_state:
+    - name: "score"
+      initial: 0
+      visible: true
+  shared_state:
+    - name: "current_round"
+      initial: 1
+      visible: true
+  hidden_state: []
+  history_state:
+    - name: "decision_history"
+      tracking: "decisions"
+
+win_condition:
+  type: "highest_score"
+  score_field: "score"
+  trigger: "rounds_complete"
+
+scoring:
+  rules:
+    - condition: "both_cooperate"
+      points: [3, 3]
+    - condition: "both_defect"
+      points: [1, 1]
+    - condition: "p1_defect_p2_cooperate"
+      points: [5, 0]
+    - condition: "p1_cooperate_p2_defect"
+      points: [0, 5]
+
+llm_integration:
+  model: "openai:gpt-4o"  # Format: "provider:model-name"
+  system_prompts:
+    decision: "You are a player in a Prisoner's Dilemma game. Think strategically about cooperation and self-interest."
+  prompts:
+    decision: "pd_decision"
+  parsers:
+    decision: "choice_parser"

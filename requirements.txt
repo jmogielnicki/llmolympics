@@ -1,2 +1,3 @@
 python-dotenv
-aisuite>=0.4.0
+pyyaml>=6.0
+aisuite>=0.1.0
