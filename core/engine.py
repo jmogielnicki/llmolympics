@@ -25,12 +25,13 @@ class GameEngine:
     coordinating interactions between components.
     """
 
-    def __init__(self, config_path):
+    def __init__(self, config_path, llm_client_class=None):
         """
         Initialize the game engine.
 
         Args:
             config_path (str): Path to the game configuration file
+            llm_client_class (class, optional): Class to use for LLM interaction
         """
         logger.info(f"Initializing game from config: {config_path}")
         self.config = ConfigLoader.load(config_path)

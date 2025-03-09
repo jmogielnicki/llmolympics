@@ -5,7 +5,8 @@ import logging
 import yaml
 
 from core.engine import GameEngine
-from core.production_llm_client import ProductionLLMClient
+from core.llm.production_llm_client import ProductionLLMClient
+import handlers.common  # Import handlers to ensure they are registered
 
 # Set up logging
 logging.basicConfig(
