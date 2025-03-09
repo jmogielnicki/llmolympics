@@ -107,13 +107,13 @@ class ChoiceParser:
                     if "defect" in opt:
                         return opt
 
-        # Default to first option if nothing matches
+        # Fail instead of using defaults
         if options:
-            logger.warning(f"No match found, defaulting to first option: {options[0]}")
-            return options[0]
-
-        logger.error("No valid options found and no fallback available")
-        return None
+            logger.error(f"No option matched in response. Valid options: {options}")
+            raise ValueError(f"Failed to parse a valid choice from response. Options were: {options}")
+        else:
+            logger.error("No valid options found to choose from")
+            raise ValueError("No valid options provided for choice parsing")
 
 
 @ResponseParserRegistry.register("default_parser")
@@ -185,16 +185,14 @@ class IntegerParser:
                     logger.info(f"Found valid integer in response: {value}")
                     return value
 
-            # If no value in range, take the first one and clamp it
+            # If no value in range, raise an exception
             value = int(matches[0])
-            clamped = max(min_val, min(value, max_val))
-            logger.warning(f"Integer {value} out of range, clamped to {clamped}")
-            return clamped
+            logger.error(f"Integer {value} out of range (min: {min_val}, max: {max_val})")
+            raise ValueError(f"Integer {value} out of range (min: {min_val}, max: {max_val})")
 
-        # Default to midpoint if no integer found
-        default = (min_val + max_val) // 2
-        logger.warning(f"No integer found in response, using default: {default}")
-        return default
+        # Raise an exception if no integer found
+        logger.error("No integer found in response")
+        raise ValueError(f"Failed to parse an integer from response (min: {min_val}, max: {max_val})")
 
 
 @ResponseParserRegistry.register("single_character_parser")
@@ -228,6 +226,6 @@ class SingleCharacterParser:
             logger.info(f"Found character in response: {chars[0]}")
             return chars[0].lower()
 
-        # Default to 'a' if no character found
-        logger.warning("No alphabetic character found in response, using 'a'")
-        return 'a'
+        # Fail if no character found
+        logger.error("No alphabetic character found in response")
+        raise ValueError("Failed to parse any alphabetic character from response")

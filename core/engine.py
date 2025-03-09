@@ -78,11 +78,11 @@ class GameEngine:
             elif phase_type == 'sequential_action':
                 phase_result = self._process_sequential_phase(phase_config)
             elif phase_type == 'single_player_action':
-                logger.warning("single_player_action phase type not yet implemented")
-                phase_result = True
+                logger.error("single_player_action phase type not yet implemented")
+                raise NotImplementedError(f"Phase type '{phase_type}' is not implemented")
             elif phase_type == 'sequential_communication':
-                logger.warning("sequential_communication phase type not yet implemented")
-                phase_result = True
+                logger.error("sequential_communication phase type not yet implemented")
+                raise NotImplementedError(f"Phase type '{phase_type}' is not implemented")
             else:
                 logger.error(f"Unknown phase type: {phase_type}")
                 raise ValueError(f"Unknown phase type: {phase_type}")

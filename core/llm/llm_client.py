@@ -15,8 +15,8 @@ else:
     try:
         from core.llm.production_llm_client import ProductionLLMClient as LLMClient
     except ImportError as e:
-        logger.warning(f"Failed to import real LLM client: {e}")
-        logger.warning("Falling back to mock implementation")
+        logger.error(f"Failed to import real LLM client: {e}")
+        raise ImportError(f"Unable to load production LLM client: {e}. If you want to use mock implementation, set PARLOURBENCH_USE_MOCK=1")
 
 # Export LLMClient only
 __all__ = ["LLMClient"]

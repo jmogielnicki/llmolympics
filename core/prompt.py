@@ -173,7 +173,6 @@ class PromptManager:
         try:
             return template.format(**safe_context)
         except KeyError as e:
-            logger.warning(f"Missing key in template formatting: {str(e)}")
-            # Try to repair by adding the missing key with a placeholder
-            safe_context[str(e).strip("'")] = "[PLACEHOLDER]"
-            return template.format(**safe_context)
+            missing_key = str(e).strip("'")
+            logger.error(f"Missing key '{missing_key}' in template formatting")
+            raise ValueError(f"Template formatting failed: Missing key '{missing_key}' in context")

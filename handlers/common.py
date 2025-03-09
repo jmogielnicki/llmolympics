@@ -41,15 +41,15 @@ class PlayerActionHandler(PhaseHandler):
             action = self.llm_client.get_action(game_state, player, phase_id)
 
             if action is None:
-                logger.error(f"Received None action for player {player_id}, using default")
-                ValueError("Received None action from LLM client")
+                logger.error(f"Received None action for player {player_id}")
+                raise ValueError("Received None action from LLM client")
 
             logger.info(f"Player {player_id} chose: {action}")
             return action
 
         except Exception as e:
             logger.error(f"Error getting action for player {player_id}: {str(e)}")
-            ValueError("Error getting action from LLM client")
+            raise ValueError(f"Error getting action from LLM client: {str(e)}")
 
     def process(self, game_state):
         """
@@ -150,9 +150,10 @@ class PDOutcomeHandler(PhaseHandler):
         Returns:
             int: Points earned
         """
-        # Default values if decisions are not valid
+        # Fail if decisions are not valid
         if not player_decision or not opponent_decision:
-            return 0
+            logger.error(f"Invalid decisions: player_decision={player_decision}, opponent_decision={opponent_decision}")
+            raise ValueError(f"Invalid decisions in PD outcome calculation: player={player_decision}, opponent={opponent_decision}")
 
         # Normalize decisions
         player_decision = player_decision.lower().strip()
