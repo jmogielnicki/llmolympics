@@ -9,10 +9,6 @@ players:
   max: 2
   roles: "symmetric"
 
-player_models:
-  player_1: "deepseek:deepseek-chat"
-  player_2: "google:gemini-pro"
-
 setup:
   initial_state:
     resources: []
@@ -68,7 +64,9 @@ scoring:
       points: [0, 5]
 
 llm_integration:
-  model: "openai:gpt-4o"  # Format: "provider:model-name"
+  player_models:
+    player_1: "deepseek:deepseek-chat"
+    player_2: "google:gemini-pro"
   system_prompts:
     decision: "You are a player in a Prisoner's Dilemma game. Think strategically about cooperation and self-interest."
   prompts:

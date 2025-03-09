@@ -41,25 +41,15 @@ class PlayerActionHandler(PhaseHandler):
             action = self.llm_client.get_action(game_state, player, phase_id)
 
             if action is None:
-                logger.warning(f"Received None action for player {player_id}, using default")
-                # Get default option if available
-                if 'actions' in phase_config and phase_config['actions'] and 'options' in phase_config['actions'][0]:
-                    action = phase_config['actions'][0]['options'][0]
-                else:
-                    action = "default_action"
+                logger.error(f"Received None action for player {player_id}, using default")
+                ValueError("Received None action from LLM client")
 
             logger.info(f"Player {player_id} chose: {action}")
             return action
 
         except Exception as e:
             logger.error(f"Error getting action for player {player_id}: {str(e)}")
-            # Use a default action in case of error
-            if 'actions' in phase_config and phase_config['actions'] and 'options' in phase_config['actions'][0]:
-                default_action = phase_config['actions'][0]['options'][0]
-                logger.info(f"Using default action for player {player_id}: {default_action}")
-                return default_action
-            else:
-                return "default_action"
+            ValueError("Error getting action from LLM client")
 
     def process(self, game_state):
         """

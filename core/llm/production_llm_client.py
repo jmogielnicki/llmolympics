@@ -22,9 +22,13 @@ class ProductionLLMClient():
             logger.error("Failed to import aisuite")
             raise ImportError("aisuite is required for ProductionLLMClient")
 
-    def get_completion(self, prompt, model="openai:gpt-4o", system_prompt=None, player_id=None):
+    def get_completion(self, prompt, model, system_prompt=None, player_id=None):
         """Get a completion from the model"""
         logger.info(f"Sending prompt to {model}")
+
+        # throw an error if the model is not provided
+        if not model:
+            raise ValueError("Model is required")
 
         messages = []
         if system_prompt:
@@ -36,9 +40,9 @@ class ProductionLLMClient():
             messages=messages,
             temperature=0.7
         )
-        
+
         response_content = response.choices[0].message.content
-        
+
         # Log the interaction if player_id is provided
         if player_id:
             metadata = {
@@ -82,7 +86,11 @@ class ProductionLLMClient():
 
         # Get model
         player_models = game_state.config.get('llm_integration', {}).get('player_models', {})
-        model = player_models.get(player['id'], game_state.config.get('llm_integration', {}).get('model', "openai:gpt-4o"))
+        model = player_models.get(player['id'])
+
+        if not model:
+            # throw an error if the model is not provided
+            raise ValueError(f"Model not found for player {player['id']}")
 
         # Get response
         response = self.get_completion(
