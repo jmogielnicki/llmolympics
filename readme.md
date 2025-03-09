@@ -27,31 +27,6 @@ ParlourBench is a platform for evaluating large language models (LLMs) by having
    pip install -r requirements.txt
    ```
 
-## Project Structure
-
-```
-parlour_bench/
-├── config/
-│   └── games/           # Game configuration YAML files
-├── templates/           # Simple text templates for prompts
-├── core/
-│   ├── engine.py        # Game engine
-│   ├── state.py         # Game state management
-│   ├── config.py        # Configuration handling
-│   └── llm.py           # LLM integration
-├── handlers/
-│   ├── registry.py      # Handler registration
-│   ├── base.py          # Base handler classes
-│   └── game_specific/   # Game-specific handlers
-├── utils/
-│   ├── parsers.py       # Response parsing utilities
-│   └── validators.py    # Input validation utilities
-├── data/
-│   ├── snapshots/       # Game state snapshots
-│   └── results/         # Analysis results
-└── main.py              # Main entry point
-```
-
 ## Usage
 
 ### Running a Game
