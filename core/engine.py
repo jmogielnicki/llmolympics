@@ -7,6 +7,7 @@ from core.config import ConfigLoader
 from core.state import GameState
 from handlers.base import PhaseController
 from handlers.registry import HandlerRegistry
+from utils.chat_logger import get_chat_logger
 
 # Set up logging
 logging.basicConfig(
@@ -35,6 +36,7 @@ class GameEngine:
         self.config = ConfigLoader.load(config_path)
         self.state = GameState(self.config)
         self.phase_controller = PhaseController()
+        self.chat_logger = get_chat_logger()
 
         # Extract key info for logging
         self.game_name = self.config['game']['name']
@@ -51,6 +53,9 @@ class GameEngine:
         phase for analysis.
         """
         logger.info(f"Starting game: {self.game_name}")
+        
+        # Log the start of the game
+        logger.info(f"Chat history will be logged to: {self.chat_logger.get_consolidated_log_path()}")
 
         # Save initial state snapshot
         self.state.save_snapshot(is_initial=True)

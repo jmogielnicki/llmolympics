@@ -2,6 +2,7 @@
 import logging
 from core.prompt import PromptManager
 from core.llm.parser import ResponseParserRegistry
+from utils.chat_logger import get_chat_logger
 
 logger = logging.getLogger("ProductionLLMClient")
 
@@ -15,12 +16,13 @@ class ProductionLLMClient():
             self.client = ai.Client()
             self.prompt_manager = PromptManager()
             self.parser_registry = ResponseParserRegistry()
+            self.chat_logger = get_chat_logger()
             logger.info("Initialized production LLM client with aisuite")
         except ImportError:
             logger.error("Failed to import aisuite")
             raise ImportError("aisuite is required for ProductionLLMClient")
 
-    def get_completion(self, prompt, model="openai:gpt-4o", system_prompt=None):
+    def get_completion(self, prompt, model="openai:gpt-4o", system_prompt=None, player_id=None):
         """Get a completion from the model"""
         logger.info(f"Sending prompt to {model}")
 
@@ -34,8 +36,23 @@ class ProductionLLMClient():
             messages=messages,
             temperature=0.7
         )
+        
+        response_content = response.choices[0].message.content
+        
+        # Log the interaction if player_id is provided
+        if player_id:
+            metadata = {
+                "model": model,
+                "temperature": 0.7
+            }
+            self.chat_logger.log_interaction(
+                player_id=player_id,
+                messages=messages,
+                response=response_content,
+                metadata=metadata
+            )
 
-        return response.choices[0].message.content
+        return response_content
 
     def get_action(self, game_state, player, phase_id=None):
         """Get an action from a player in the current game state"""
@@ -68,7 +85,12 @@ class ProductionLLMClient():
         model = player_models.get(player['id'], game_state.config.get('llm_integration', {}).get('model', "openai:gpt-4o"))
 
         # Get response
-        response = self.get_completion(prompt, model, system_prompt)
+        response = self.get_completion(
+            prompt, 
+            model, 
+            system_prompt, 
+            player_id=player.get('id', 'unknown')
+        )
 
         # Parse response
         parser_name = game_state.config.get('llm_integration', {}).get('parsers', {}).get(phase_id)

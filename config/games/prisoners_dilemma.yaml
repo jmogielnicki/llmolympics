@@ -9,6 +9,10 @@ players:
   max: 2
   roles: "symmetric"
 
+player_models:
+  player_1: "deepseek:deepseek-chat"
+  player_2: "google:gemini-pro"
+
 setup:
   initial_state:
     resources: []

@@ -3,6 +3,7 @@ import re
 import time
 from core.prompt import PromptManager
 from core.llm.parser import ResponseParserRegistry
+from utils.chat_logger import get_chat_logger
 
 logger = logging.getLogger("MockLLM")
 
@@ -25,6 +26,7 @@ class MockLLMClient():
         self.response_delay = response_delay
         self.prompt_manager = PromptManager()
         self.parser_registry = ResponseParserRegistry()
+        self.chat_logger = get_chat_logger()
 
         # Completely deterministic responses for Prisoner's Dilemma
         # Player 1: COOPERATE in rounds 1-3, DEFECT in rounds 4-5
@@ -71,7 +73,7 @@ class MockLLMClient():
 
         logger.info("Initialized deterministic MockLLMClient")
 
-    def get_completion(self, prompt, model="mock:default", system_prompt=None):
+    def get_completion(self, prompt, model="mock:default", system_prompt=None, player_id=None):
         """
         Get a deterministic mock completion.
 
@@ -79,6 +81,7 @@ class MockLLMClient():
             prompt (str): The user prompt
             model (str): Ignored in mock implementation
             system_prompt (str, optional): Ignored in mock implementation
+            player_id (str, optional): Player ID for logging
 
         Returns:
             str: A deterministic model response
@@ -90,25 +93,48 @@ class MockLLMClient():
         logger.info(f"Mock LLM response delay: {self.response_delay} seconds")
 
         # Extract player ID and round number from prompt
-        player_id = self._extract_player_id(prompt)
+        extracted_player_id = self._extract_player_id(prompt)
         round_num = self._extract_round_number(prompt)
+        
+        # Use provided player_id if available, otherwise use extracted one
+        effective_player_id = player_id or extracted_player_id
 
         # Determine game type
         game_type = self._determine_game_type(prompt)
-        logger.debug(f"Determined game type: {game_type}, player: {player_id}, round: {round_num}")
+        logger.debug(f"Determined game type: {game_type}, player: {effective_player_id}, round: {round_num}")
 
         # Get appropriate response based on game type, player, and round
-        if game_type == "prisoner's dilemma" and player_id and round_num:
-            response = self.pd_responses.get(player_id, {}).get(round_num, self.default_response)
-            logger.info(f"Response for {player_id}, round {round_num} is {response}")
+        if game_type == "prisoner's dilemma" and effective_player_id and round_num:
+            response = self.pd_responses.get(effective_player_id, {}).get(round_num, self.default_response)
+            logger.info(f"Response for {effective_player_id}, round {round_num} is {response}")
         elif game_type == "diplomacy":
             phase = "voting" if "voting" in prompt.lower() else "discussion"
-            response = self.diplomacy_responses.get(phase, {}).get(player_id, self.default_response)
+            response = self.diplomacy_responses.get(phase, {}).get(effective_player_id, self.default_response)
         else:
             logger.error(f"No deterministic response found for game type: {game_type}")
             response = self.default_response
+            
+        # Log the interaction
+        if effective_player_id:
+            messages = []
+            if system_prompt:
+                messages.append({"role": "system", "content": system_prompt})
+            messages.append({"role": "user", "content": prompt})
+            
+            metadata = {
+                "model": "mock:default",
+                "game_type": game_type,
+                "round": round_num
+            }
+            
+            self.chat_logger.log_interaction(
+                player_id=effective_player_id,
+                messages=messages,
+                response=response,
+                metadata=metadata
+            )
 
-        logger.info(f"Mock LLM returning deterministic response for {player_id}, round {round_num}")
+        logger.info(f"Mock LLM returning deterministic response for {effective_player_id}, round {round_num}")
         return response
 
     def get_action(self, game_state, player, phase_id=None):
@@ -142,7 +168,12 @@ class MockLLMClient():
         model = player_models.get(player['id'], game_state.config.get('llm_integration', {}).get('model', "openai:gpt-4o"))
 
         # Get response
-        response = self.get_completion(prompt, model, system_prompt)
+        response = self.get_completion(
+            prompt, 
+            model, 
+            system_prompt, 
+            player_id=player.get('id', 'unknown')
+        )
 
         # Parse response
         parser_name = game_state.config.get('llm_integration', {}).get('parsers', {}).get(phase_id)

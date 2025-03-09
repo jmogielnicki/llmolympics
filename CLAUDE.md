@@ -3,6 +3,9 @@
 ## Commands
 - Run game: `python main.py config/games/prisoners_dilemma.yaml`
 - Run integration test: `python tests/integration_test.py --config config/games/prisoners_dilemma.yaml [--verbose] [--clean]`
+- View logs: 
+  - Game logs: Stored in `data/logs/` directory in JSONL format with timestamp prefixes
+  - Test logs: Stored in `data/test/logs/` directory when running integration tests
 
 ## Code Style
 - PEP 8 conventions with 4-space indentation
@@ -18,3 +21,5 @@
 - Phase-based game flow with typed handlers for different phases
 - Configuration-driven game definition using YAML
 - Snapshot-based state management for game replay and analysis
+- Comprehensive chat logging for debugging and analysis
+- Singleton chat logger instance accessible throughout the application

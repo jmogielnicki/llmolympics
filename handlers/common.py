@@ -136,6 +136,7 @@ class PDOutcomeHandler(PhaseHandler):
                 'round': game_state.shared_state['current_round'],
                 'decisions': decisions,
             })
+            logger.info(f"Added to decision history: round {game_state.shared_state['current_round']}, decisions: {decisions}")
 
         # Check if this is the final round
         is_final_round = game_state.shared_state['current_round'] >= game_state.config['rounds']['count']

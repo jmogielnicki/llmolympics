@@ -11,6 +11,7 @@ ParlourBench is a platform for evaluating large language models (LLMs) by having
 - Modular architecture for easy extension to new games
 - File-based configuration system using YAML
 - Comprehensive state management and history tracking
+- Detailed chat logs for all LLM interactions
 - Integration with multiple LLM providers via `aisuite`
 - Clean separation of game logic from LLM interaction
 
@@ -36,6 +37,12 @@ To run a game, use the `main.py` script with a game configuration file:
 ```bash
 python main.py config/games/prisoners_dilemma.yaml
 ```
+
+All LLM interactions are automatically logged in JSONL format:
+- Regular runs: Logs stored in `data/logs/` directory
+- Integration tests: Logs stored in `data/test/logs/` directory
+
+Each run creates a timestamped log file that contains the complete chat history for all players.
 
 ### Creating a New Game
 

@@ -59,6 +59,42 @@ class PromptManager:
             logger.error(error_msg)
             raise ValueError(error_msg)
 
+    def _format_decision_history(self, history, player_id):
+        """
+        Format the decision history for inclusion in prompts.
+        
+        Args:
+            history (list): List of history entries
+            player_id (str): ID of the current player
+            
+        Returns:
+            str: Formatted history string
+        """
+        if not history:
+            return "No previous rounds"
+            
+        # Find all other players
+        other_players = set()
+        for entry in history:
+            for pid in entry.get('decisions', {}).keys():
+                if pid != player_id:
+                    other_players.add(pid)
+                    
+        other_player_id = next(iter(other_players)) if other_players else "opponent"
+        
+        # Format history entries
+        lines = []
+        for entry in history:
+            round_num = entry.get('round', 0)
+            decisions = entry.get('decisions', {})
+            
+            your_decision = decisions.get(player_id, "unknown").upper()
+            their_decision = decisions.get(other_player_id, "unknown").upper()
+            
+            lines.append(f"Round {round_num}: You chose {your_decision}, {other_player_id} chose {their_decision}")
+            
+        return "\n".join(lines)
+    
     def format_prompt(self, template_name, game_state, player=None, **extra_context):
         """
         Format a prompt with game state context.
@@ -81,6 +117,15 @@ class PromptManager:
             "current_phase": game_state.current_phase,
             "current_round": game_state.shared_state.get('current_round', 1),
         }
+
+        # Format decision history if present (for Prisoner's Dilemma)
+        if 'decision_history' in game_state.history_state and player:
+            decision_history = self._format_decision_history(game_state.history_state['decision_history'], player['id'])
+            context["decision_history"] = decision_history
+            logger.info(f"Added decision history for {player['id']}: {decision_history}")
+        else:
+            context["decision_history"] = "No previous rounds"
+            logger.info("No decision history available")
 
         # Add all shared state variables that are marked as visible
         for state_item in game_state.config['state'].get('shared_state', []):

@@ -25,6 +25,7 @@ logger = logging.getLogger("IntegrationTest")
 TEST_DATA_DIR = os.path.join(project_root, "data", "test")
 TEST_SNAPSHOTS_DIR = os.path.join(TEST_DATA_DIR, "snapshots")
 TEST_RESULTS_DIR = os.path.join(TEST_DATA_DIR, "results")
+TEST_LOGS_DIR = os.path.join(TEST_DATA_DIR, "logs")
 
 
 # Define deterministic expected test outcomes for different games
@@ -80,12 +81,15 @@ def setup_test_environment(clean=True):
     # Create test data directories
     os.makedirs(TEST_SNAPSHOTS_DIR, exist_ok=True)
     os.makedirs(TEST_RESULTS_DIR, exist_ok=True)
+    os.makedirs(TEST_LOGS_DIR, exist_ok=True)
 
     # Clean existing test data
     if clean:
         for file in glob.glob(os.path.join(TEST_SNAPSHOTS_DIR, "*.json")):
             os.remove(file)
         for file in glob.glob(os.path.join(TEST_RESULTS_DIR, "*.json")):
+            os.remove(file)
+        for file in glob.glob(os.path.join(TEST_LOGS_DIR, "*.jsonl")):
             os.remove(file)
         logger.info("Cleaned existing test data")
 

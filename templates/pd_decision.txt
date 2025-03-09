@@ -5,6 +5,9 @@ Current game state:
 - Your current score: {player_score}
 - Your player ID: {player_id}
 
+Previous rounds history:
+{decision_history}
+
 In this game, you must decide whether to cooperate with or defect against your opponent.
 The payoffs are:
 - If both players cooperate: 3 points each
