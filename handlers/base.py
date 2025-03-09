@@ -21,6 +21,23 @@ class PhaseHandler:
         # Default implementation always returns True
         return True
 
+    def process_player(self, game_state, player):
+        """
+        Process a single player's action in the current phase.
+
+        This method should be implemented by handlers that need to
+        process individual player actions.
+
+        Args:
+            game_state (GameState): The current game state
+            player (dict): The player to process
+
+        Returns:
+            any: The player's action or response
+        """
+        # Default implementation returns None
+        return None
+
     def _get_phase_config(self, game_state):
         """
         Get the configuration for the current phase.
@@ -94,5 +111,3 @@ class PhaseController:
                 return phase
 
         raise ValueError(f"Phase configuration not found: {phase_id}")
-
-

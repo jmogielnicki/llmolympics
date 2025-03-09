@@ -6,7 +6,9 @@ import argparse
 import json
 import yaml
 import shutil
+import glob
 from pathlib import Path
+from datetime import datetime
 
 # Add the project root directory to the Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -24,85 +26,51 @@ TEST_DATA_DIR = os.path.join(project_root, "data", "test")
 TEST_SNAPSHOTS_DIR = os.path.join(TEST_DATA_DIR, "snapshots")
 TEST_RESULTS_DIR = os.path.join(TEST_DATA_DIR, "results")
 
-# Import necessary components
-from core.engine import GameEngine
-from core.config import ConfigLoader
-from core.state import GameState
-from utils.mock_llm import MockLLMClient
-import core.llm
 
-# Import the handler registry and ensure handlers are loaded
-from handlers.registry import HandlerRegistry
-from handlers.base import PhaseHandler
+# Define deterministic expected test outcomes for different games
+# Based on the fixed responses in the MockLLMClient
+EXPECTED_OUTCOMES = {
+    "prisoner's dilemma": {
+        # For a 5-round game with deterministic responses
+        "exact_snapshots": 11,  # Initial + (decision + resolution) * 5
+        "rounds_played": 5,
+        "player_scores": {
+            "player_1": 8,  # 3+3+0+1+1 = 8
+            "player_2": 13   # 3+3+5+1+1 = 13
+        },
+        "expected_winner": "player_2",  # Player 2 has higher score
+        "phases": ["decision", "resolution"],
+        "expected_phase_counts": {
+            "decision": 5,   # One per round
+            "resolution": 5  # One per round
+        },
+        "expected_decisions": {
+            # Round 1: Both cooperate
+            1: {"player_1": "cooperate", "player_2": "cooperate"},
+            # Round 2: Both cooperate
+            2: {"player_1": "cooperate", "player_2": "cooperate"},
+            # Round 3: P1 cooperates, P2 defects
+            3: {"player_1": "cooperate", "player_2": "defect"},
+            # Round 4: Both defect
+            4: {"player_1": "defect", "player_2": "defect"},
+            # Round 5: Both defect
+            5: {"player_1": "defect", "player_2": "defect"}
+        }
+    },
+    "diplomacy": {
+        # For a 6-player game with elimination
+        "min_snapshots": 15,  # At least 3 per elimination round
+        "max_snapshots": 50,  # Upper bound
+        "min_players_eliminated": 5,  # All but winner should be eliminated
+        "phases": ["discussion", "voting", "elimination", "check_win_condition"],
+        "expected_eliminations": ["player_3", "player_1", "player_5", "player_4", "player_2"],
+        "expected_winner": "player_6"  # Last player standing
+    },
+    # Add other games as needed
+}
 
-# This is important - explicitly import the modules with handler definitions
-try:
-    # Try different possible module names
-    try:
-        import handlers.example
-        logger.info("Imported handlers from handlers.example")
-    except ImportError:
-        try:
-            import handlers.examples
-            logger.info("Imported handlers from handlers.examples")
-        except ImportError:
-            try:
-                import handlers.example_handlers
-                logger.info("Imported handlers from handlers.example_handlers")
-            except ImportError:
-                logger.warning("Could not import handler modules - will register fallback handlers")
 
-    # Check if the handler we need is registered
-    if 'simultaneous_action' not in HandlerRegistry._default_handlers:
-        logger.warning("No default handler for 'simultaneous_action' found - registering fallback handler")
-
-        # Define a fallback handler and register it directly
-        class FallbackSimultaneousActionHandler(PhaseHandler):
-            def process(self, game_state):
-                logger.info("FALLBACK HANDLER: Processing simultaneous action phase")
-
-                # Generate mock responses for all active players
-                import random
-                responses = {}
-
-                # Get the phase configuration
-                phase_config = None
-                for phase in game_state.config['phases']:
-                    if phase['id'] == game_state.current_phase:
-                        phase_config = phase
-                        break
-
-                # Get available options if any
-                options = []
-                if phase_config and 'actions' in phase_config and phase_config['actions']:
-                    action = phase_config['actions'][0]
-                    if 'options' in action:
-                        options = action['options']
-
-                # Generate a response for each player
-                for player in game_state.get_active_players():
-                    player_id = player['id']
-                    if options:
-                        response = random.choice(options)
-                    else:
-                        response = "default_action"
-
-                    responses[player_id] = response
-                    logger.info(f"FALLBACK HANDLER: Player {player_id} action: {response}")
-
-                # Store responses in state
-                game_state.set_action_responses(responses)
-
-                # Always return True
-                return True
-
-        # Register the fallback handler directly
-        HandlerRegistry._default_handlers['simultaneous_action'] = FallbackSimultaneousActionHandler
-        logger.info("Registered fallback handler for 'simultaneous_action'")
-except Exception as e:
-    logger.error(f"Error setting up handlers: {str(e)}")
-
-def setup_test_environment(clean=False):
+def setup_test_environment(clean=True):
     """
     Set up the test environment with test data directories.
 
@@ -113,137 +81,29 @@ def setup_test_environment(clean=False):
     os.makedirs(TEST_SNAPSHOTS_DIR, exist_ok=True)
     os.makedirs(TEST_RESULTS_DIR, exist_ok=True)
 
-    # Clean existing test data if requested
+    # Clean existing test data
     if clean:
-        for file in os.listdir(TEST_SNAPSHOTS_DIR):
-            os.remove(os.path.join(TEST_SNAPSHOTS_DIR, file))
-        for file in os.listdir(TEST_RESULTS_DIR):
-            os.remove(os.path.join(TEST_RESULTS_DIR, file))
+        for file in glob.glob(os.path.join(TEST_SNAPSHOTS_DIR, "*.json")):
+            os.remove(file)
+        for file in glob.glob(os.path.join(TEST_RESULTS_DIR, "*.json")):
+            os.remove(file)
         logger.info("Cleaned existing test data")
+
+    # Set environment variables for test
+    os.environ["PARLOURBENCH_SNAPSHOT_DIR"] = TEST_SNAPSHOTS_DIR
+    os.environ["PARLOURBENCH_RESULTS_DIR"] = TEST_RESULTS_DIR
+    os.environ["PARLOURBENCH_USE_MOCK"] = "1"
 
     logger.info(f"Test environment setup complete. Using test directories: {TEST_DATA_DIR}")
 
-def patch_gamestate_save_methods():
-    """
-    Patch the GameState class to save data to test directories instead of production.
+    # This is important - explicitly import the modules with handler definitions
+    try:
+        import handlers.common
+        logger.info("Imported handlers from handlers.common")
 
-    Returns:
-        tuple: Original methods (save_snapshot, save_results)
-    """
-    # Store original methods
-    original_save_snapshot = GameState.save_snapshot
-    original_save_results = GameState.save_results
+    except Exception as e:
+        logger.error(f"Error setting up handlers: {str(e)}")
 
-    # Create patched methods
-    def patched_save_snapshot(self):
-        """Patched method to save snapshots to test directory."""
-        # Create a JSON-serializable snapshot
-        import time
-        import copy
-        import json
-
-        snapshot = {
-            'timestamp': time.time(),
-            'players': copy.deepcopy(self.players),
-            'shared_state': copy.deepcopy(self.shared_state),
-            'hidden_state': copy.deepcopy(self.hidden_state),
-            'history_state': copy.deepcopy(self.history_state),
-            'current_phase': self.current_phase,
-            'game_over': self.game_over,
-            'config': {
-                'game_name': self.config['game']['name'],
-                'player_count': len(self.players)
-            }
-        }
-        self.history.append(snapshot)
-
-        # Generate a unique filename
-        snapshot_id = int(time.time() * 1000)
-        game_name = self.config['game']['name'].lower().replace(' ', '_')
-        filename = f"{game_name}_snapshot_{snapshot_id}.json"
-
-        # Write to test directory
-        os.makedirs(TEST_SNAPSHOTS_DIR, exist_ok=True)
-        with open(os.path.join(TEST_SNAPSHOTS_DIR, filename), 'w') as f:
-            json.dump(snapshot, f, indent=2)
-
-        logger.debug(f"Saved snapshot to test directory: {filename}")
-
-    def patched_save_results(self, results_dir=None):
-        """Patched method to save results to test directory."""
-        if not self.game_over:
-            raise ValueError("Cannot save results for a game that's not over")
-
-        import time
-        import json
-
-        # Create results object
-        results = {
-            'game': self.config['game']['name'],
-            'timestamp': time.time(),
-            'players': [
-                {
-                    'id': p['id'],
-                    'final_state': p['state'],
-                    'role': p.get('role')
-                }
-                for p in self.players
-            ],
-            'winner': self.get_winner()['id'] if self.get_winner() else None,
-            'rounds_played': self.shared_state.get('current_round', 0),
-            'history_summary': {
-                key: len(value) for key, value in self.history_state.items()
-            }
-        }
-
-        # Generate a unique filename
-        result_id = int(time.time() * 1000)
-        game_name = self.config['game']['name'].lower().replace(' ', '_')
-        filename = f"{game_name}_result_{result_id}.json"
-
-        # Write to test directory
-        os.makedirs(TEST_RESULTS_DIR, exist_ok=True)
-        with open(os.path.join(TEST_RESULTS_DIR, filename), 'w') as f:
-            json.dump(results, f, indent=2)
-
-        logger.debug(f"Saved results to test directory: {filename}")
-        return filename
-
-    # Apply the patches
-    GameState.save_snapshot = patched_save_snapshot
-    GameState.save_results = patched_save_results
-
-    logger.info("Patched GameState to use test directories")
-
-    # Return original methods for restoration
-    return (original_save_snapshot, original_save_results)
-
-def restore_gamestate_methods(original_methods):
-    """
-    Restore original GameState methods.
-
-    Args:
-        original_methods (tuple): Original methods (save_snapshot, save_results)
-    """
-    GameState.save_snapshot, GameState.save_results = original_methods
-    logger.info("Restored original GameState methods")
-
-def install_mock_llm():
-    """
-    Install the mock LLM by monkey patching the original implementation.
-
-    Returns:
-        object: The original LLMClient class
-    """
-    # Store the original implementation
-    original_llm_client = core.llm.LLMClient
-
-    # Replace with our mock implementation
-    core.llm.LLMClient = MockLLMClient
-    logger.info("Installed mock LLM client")
-
-    # Return the original so we can restore it later if needed
-    return original_llm_client
 
 def verify_files_exist(required_files):
     """
@@ -263,6 +123,149 @@ def verify_files_exist(required_files):
     logger.info("All required files verified")
     return True
 
+def verify_test_results(game_name, snapshots, results_file):
+    """
+    Verify that test results meet expected conditions.
+
+    Args:
+        game_name (str): Name of the game
+        snapshots (list): List of snapshot file paths
+        results_file (str): Path to the results file
+
+    Returns:
+        tuple: (bool, list) - Success flag and list of test results
+    """
+    # Normalize game name for lookup
+    game_key = None
+    for key in EXPECTED_OUTCOMES.keys():
+        if key.lower() in game_name.lower():
+            game_key = key
+            break
+
+    if not game_key:
+        logger.warning(f"No expected outcomes defined for game: {game_name}")
+        return False, [f"UNKNOWN: No expected outcomes for {game_name}"]
+
+    expected = EXPECTED_OUTCOMES[game_key]
+    test_results = []
+    all_passed = True
+
+    # Load the results file
+    with open(results_file, 'r') as f:
+        result_data = json.load(f)
+
+    # Test 1: Number of snapshots (exact or range)
+    snapshot_count = len(snapshots)
+    if "exact_snapshots" in expected:
+        if snapshot_count != expected["exact_snapshots"]:
+            test_results.append(f"FAIL: Incorrect snapshot count. Expected exactly {expected['exact_snapshots']}, got {snapshot_count}")
+            all_passed = False
+        else:
+            test_results.append(f"PASS: Snapshot count exactly {snapshot_count} as expected")
+    elif "min_snapshots" in expected and "max_snapshots" in expected:
+        if snapshot_count < expected["min_snapshots"]:
+            test_results.append(f"FAIL: Too few snapshots. Expected at least {expected['min_snapshots']}, got {snapshot_count}")
+            all_passed = False
+        elif snapshot_count > expected["max_snapshots"]:
+            test_results.append(f"FAIL: Too many snapshots. Expected at most {expected['max_snapshots']}, got {snapshot_count}")
+            all_passed = False
+        else:
+            test_results.append(f"PASS: Snapshot count ({snapshot_count}) within expected range")
+
+    # Test 2: Rounds played (for games with fixed rounds)
+    if "rounds_played" in expected:
+        actual_rounds = result_data.get("rounds_played", 0)
+        if actual_rounds != expected["rounds_played"]:
+            test_results.append(f"FAIL: Incorrect number of rounds. Expected {expected['rounds_played']}, got {actual_rounds}")
+            all_passed = False
+        else:
+            test_results.append(f"PASS: Completed the expected {actual_rounds} rounds")
+
+    # Test 3: Player scores (exact deterministic values)
+    if "player_scores" in expected:
+        player_map = {p['id']: p.get('final_state', {}).get('score', 0) for p in result_data.get('players', [])}
+
+        for player_id, expected_score in expected["player_scores"].items():
+            actual_score = player_map.get(player_id, None)
+            if actual_score is None:
+                test_results.append(f"FAIL: Player {player_id} not found in results")
+                all_passed = False
+            elif actual_score != expected_score:
+                test_results.append(f"FAIL: Player {player_id} score incorrect. Expected {expected_score}, got {actual_score}")
+                all_passed = False
+            else:
+                test_results.append(f"PASS: Player {player_id} has correct score of {actual_score}")
+
+    # Test 4: Winner determination
+    if "expected_winner" in expected:
+        winner_id = result_data.get("winner")
+        if winner_id != expected["expected_winner"]:
+            test_results.append(f"FAIL: Incorrect winner. Expected {expected['expected_winner']}, got {winner_id}")
+            all_passed = False
+        else:
+            test_results.append(f"PASS: Correct winner {winner_id}")
+
+    # Test 5: Phase progression (check snapshots for phase sequence)
+    if snapshots and "phases" in expected:
+        # Load all snapshots and analyze phase progression
+        phase_counts = {}
+        phase_sequence = []
+
+        # Sort snapshots by timestamp
+        sorted_snapshots = sorted(snapshots, key=os.path.getmtime)
+
+        for snapshot_file in sorted_snapshots:
+            with open(snapshot_file, 'r') as f:
+                snapshot = json.load(f)
+                phase = snapshot.get("current_phase")
+                if phase:
+                    phase_counts[phase] = phase_counts.get(phase, 0) + 1
+                    phase_sequence.append(phase)
+
+        # Check that all expected phases were encountered
+        missing_phases = [p for p in expected["phases"] if p not in phase_counts]
+        if missing_phases:
+            test_results.append(f"FAIL: Missing expected phases: {missing_phases}")
+            all_passed = False
+        else:
+            test_results.append(f"PASS: All expected phases encountered")
+
+        # Check phase counts if specified
+        if "expected_phase_counts" in expected:
+            for phase, expected_count in expected["expected_phase_counts"].items():
+                actual_count = phase_counts.get(phase, 0)
+                if actual_count != expected_count:
+                    test_results.append(f"FAIL: Phase '{phase}' count incorrect. Expected {expected_count}, got {actual_count}")
+                    all_passed = False
+                else:
+                    test_results.append(f"PASS: Phase '{phase}' occurred expected {actual_count} times")
+
+    # Test 6: Check for eliminated players (for elimination games)
+    if "min_players_eliminated" in expected:
+        active_count = 0
+        eliminated_count = 0
+
+        for player in result_data.get("players", []):
+            if player.get("final_state", {}).get("active", True):
+                active_count += 1
+            else:
+                eliminated_count += 1
+
+        if eliminated_count < expected["min_players_eliminated"]:
+            test_results.append(f"FAIL: Too few players eliminated. Expected at least {expected['min_players_eliminated']}, got {eliminated_count}")
+            all_passed = False
+        else:
+            test_results.append(f"PASS: {eliminated_count} players eliminated (expected at least {expected['min_players_eliminated']})")
+
+    # Test 7: Check elimination order (for games with elimination sequence)
+    if "expected_eliminations" in expected and snapshots:
+        # We'd need to extract the elimination order from history snapshots
+        # This is more complex and might require game-specific logic
+        # For now, just note that this check would be performed
+        test_results.append(f"INFO: Elimination order check not implemented yet")
+
+    return all_passed, test_results
+
 def run_test(config_path):
     """
     Run the integration test with a specific configuration.
@@ -274,19 +277,31 @@ def run_test(config_path):
         bool: True if the test passes, False otherwise
     """
     logger.info(f"Running integration test with config: {config_path}")
-
+    from core.engine import GameEngine
     try:
+        # Load the config to get the game name
+        with open(config_path, 'r') as f:
+            config = yaml.safe_load(f)
+
+        game_name = config.get('game', {}).get('name', 'Unknown Game')
+        logger.info(f"Testing game: {game_name}")
+
         # Initialize and run the game
         engine = GameEngine(config_path)
+        start_time = datetime.now()
         engine.run_game()
+        end_time = datetime.now()
+        elapsed = (end_time - start_time).total_seconds()
+
+        logger.info(f"Game execution completed in {elapsed:.2f} seconds")
 
         # Check if game completed
         if not engine.state.game_over:
             logger.error("Game did not complete properly")
             return False
 
-        # Check if snapshots were created
-        snapshots = list(Path(TEST_SNAPSHOTS_DIR).glob("*.json"))
+        # Get snapshots
+        snapshots = sorted(glob.glob(os.path.join(TEST_SNAPSHOTS_DIR, "*.json")))
 
         if not snapshots:
             logger.error("No snapshots were created")
@@ -294,15 +309,8 @@ def run_test(config_path):
 
         logger.info(f"Found {len(snapshots)} snapshots")
 
-        # Examine the last snapshot for results
-        latest_snapshot = max(snapshots, key=os.path.getmtime)
-        with open(latest_snapshot, 'r') as f:
-            final_state = json.load(f)
-
-        logger.info(f"Final game state: phase={final_state['current_phase']}, game_over={final_state['game_over']}")
-
-        # Check for results file
-        results = list(Path(TEST_RESULTS_DIR).glob("*.json"))
+        # Get results
+        results = sorted(glob.glob(os.path.join(TEST_RESULTS_DIR, "*.json")))
 
         if not results:
             logger.error("No results file was created")
@@ -310,17 +318,28 @@ def run_test(config_path):
 
         logger.info(f"Found {len(results)} results files")
 
-        # Examine the results
+        # Get the latest result
         latest_result = max(results, key=os.path.getmtime)
-        with open(latest_result, 'r') as f:
-            result_data = json.load(f)
 
-        logger.info(f"Game result: winner={result_data['winner']}")
-        logger.info(f"Player states: {[{'id': p['id'], 'score': p['final_state'].get('score', 'N/A')} for p in result_data['players']]}")
+        # Verify test outcomes
+        success, test_results = verify_test_results(game_name, snapshots, latest_result)
 
-        # Test passed successfully
-        logger.info("Integration test completed successfully")
-        return True
+        # Print test results
+        logger.info("\n=== Test Results ===")
+        for result in test_results:
+            if result.startswith("PASS:"):
+                logger.info(result)
+            elif result.startswith("FAIL:"):
+                logger.error(result)
+            else:
+                logger.warning(result)
+
+        if success:
+            logger.info("\nAll test conditions passed!")
+        else:
+            logger.error("\nSome test conditions failed.")
+
+        return success
 
     except Exception as e:
         logger.error(f"Error during test: {str(e)}")
@@ -362,10 +381,6 @@ def main():
     # Set up test environment
     setup_test_environment(clean=args.clean)
 
-    # Install mock LLM and patch GameState
-    original_llm_client = install_mock_llm()
-    original_game_state_methods = patch_gamestate_save_methods()
-
     try:
         # Run the test
         success = run_test(config_path)
@@ -377,9 +392,13 @@ def main():
             logger.error("Integration test FAILED ❌")
             return 1
     finally:
-        # Restore original implementations
-        core.llm.LLMClient = original_llm_client
-        restore_gamestate_methods(original_game_state_methods)
+        # Clean up environment variables
+        if "PARLOURBENCH_SNAPSHOT_DIR" in os.environ:
+            del os.environ["PARLOURBENCH_SNAPSHOT_DIR"]
+        if "PARLOURBENCH_RESULTS_DIR" in os.environ:
+            del os.environ["PARLOURBENCH_RESULTS_DIR"]
+        if "PARLOURBENCH_USE_MOCK" in os.environ:
+            del os.environ["PARLOURBENCH_USE_MOCK"]
 
 if __name__ == "__main__":
     sys.exit(main())

@@ -31,6 +31,9 @@ class GameState:
         self.game_over = False
         self.history = []
 
+        # Store phase result for conditional phase transitions
+        self.phase_result = None
+
     def _initialize_players(self):
         """
         Initialize player state based on configuration.
@@ -128,8 +131,11 @@ class GameState:
         }
         self.history.append(snapshot)
 
+        # Get directory from environment variable or use default
+        snapshots_dir = os.environ.get("PARLOURBENCH_SNAPSHOT_DIR", "data/snapshots")
+
         # Ensure directory exists
-        os.makedirs("data/snapshots", exist_ok=True)
+        os.makedirs(snapshots_dir, exist_ok=True)
 
         # Generate a unique filename
         snapshot_id = int(time.time() * 1000)
@@ -137,7 +143,7 @@ class GameState:
         filename = f"{game_name}_snapshot_{snapshot_id}.json"
 
         # Write to file
-        with open(f"data/snapshots/{filename}", 'w') as f:
+        with open(f"{snapshots_dir}/{filename}", 'w') as f:
             json.dump(snapshot, f, indent=2)
 
     def get_active_players(self):
@@ -254,7 +260,7 @@ class GameState:
 
         return None
 
-    def save_results(self, results_dir="data/results"):
+    def save_results(self):
         """
         Save the final game results to a file.
 
@@ -263,6 +269,8 @@ class GameState:
         """
         if not self.game_over:
             raise ValueError("Cannot save results for a game that's not over")
+
+        results_dir = os.environ.get("PARLOURBENCH_RESULTS_DIR", "data/results")
 
         # Ensure directory exists
         os.makedirs(results_dir, exist_ok=True)

@@ -5,6 +5,7 @@ import logging
 import yaml
 
 from core.engine import GameEngine
+from core.production_llm_client import ProductionLLMClient
 
 # Set up logging
 logging.basicConfig(
@@ -34,7 +35,7 @@ def main():
 
     # Initialize and run the game
     try:
-        engine = GameEngine(config_path)
+        engine = GameEngine(config_path, ProductionLLMClient)
         engine.run_game()
 
         # Print results
