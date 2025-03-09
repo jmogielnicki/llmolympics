@@ -107,7 +107,7 @@ class GameState:
 
         return history_state
 
-    def save_snapshot(self):
+    def save_snapshot(self, is_initial=False):
         """
         Save a snapshot of the current game state.
 
@@ -122,7 +122,7 @@ class GameState:
             'shared_state': copy.deepcopy(self.shared_state),
             'hidden_state': copy.deepcopy(self.hidden_state),
             'history_state': copy.deepcopy(self.history_state),
-            'current_phase': self.current_phase,
+            'current_phase': is_initial and 'initial' or self.current_phase,
             'game_over': self.game_over,
             'config': {
                 'game_name': self.config['game']['name'],

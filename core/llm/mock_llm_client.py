@@ -87,7 +87,6 @@ class MockLLMClient():
 
         # Simulate minimal processing delay
         time.sleep(self.response_delay)
-        print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         logger.info(f"Mock LLM response delay: {self.response_delay} seconds")
 
         # Extract player ID and round number from prompt

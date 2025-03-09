@@ -137,17 +137,16 @@ class PDOutcomeHandler(PhaseHandler):
                 'decisions': decisions,
             })
 
-        # Increment round counter
-        current_round = game_state.shared_state.get('current_round', 1)
-        next_round = current_round + 1
-        max_rounds = game_state.config['rounds'].get('count', 5)
-        logger.info(f"Completed round {current_round} of {max_rounds}")
+        # Check if this is the final round
+        is_final_round = game_state.shared_state['current_round'] >= game_state.config['rounds']['count']
 
-        # Store current round
-        game_state.shared_state['current_round'] = next_round
+        # Only increment if not the final round
+        if not is_final_round:
+            game_state.shared_state['current_round'] += 1
+            return True  # More rounds to go
+        else:
+            return False  # No more rounds, end game
 
-        # Return whether there are more rounds
-        return next_round <= max_rounds
 
     def _calculate_points(self, player_decision, opponent_decision):
         """

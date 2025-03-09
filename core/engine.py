@@ -53,7 +53,7 @@ class GameEngine:
         logger.info(f"Starting game: {self.game_name}")
 
         # Save initial state snapshot
-        self.state.save_snapshot()
+        self.state.save_snapshot(is_initial=True)
 
         # Main game loop
         while not self.state.is_game_over():
@@ -86,6 +86,10 @@ class GameEngine:
                 self.state, current_phase, phase_result
             )
 
+            # Save state snapshot after each phase
+            logger.info(f"Saving snapshot after phase: {current_phase}")
+            self.state.save_snapshot()
+
             logger.info(f"Transitioning from {current_phase} to {next_phase}")
 
             if next_phase == "game_end":
@@ -94,8 +98,6 @@ class GameEngine:
             else:
                 self.state.current_phase = next_phase
 
-            # Save state snapshot after each phase
-            self.state.save_snapshot()
 
         logger.info(f"Game completed: {self.game_name}")
 
