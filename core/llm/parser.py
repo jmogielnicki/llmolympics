@@ -1,5 +1,6 @@
 # core/llm/parser.py
 import logging
+import re
 
 logger = logging.getLogger("ResponseParser")
 
@@ -52,8 +53,6 @@ class ResponseParserRegistry:
         return cls._parsers[name]()
 
 
-# Let's also define a few basic parsers here
-
 @ResponseParserRegistry.register("choice_parser")
 class ChoiceParser:
     """
@@ -61,6 +60,7 @@ class ChoiceParser:
 
     Parses responses from the LLM for choice-based actions,
     such as "cooperate" or "defect" in Prisoner's Dilemma.
+    Prioritizes looking for choices in double brackets like [[COOPERATE]].
     """
 
     def parse(self, response, phase_config):
@@ -76,8 +76,6 @@ class ChoiceParser:
         """
         logger.debug(f"Parsing choice response: {response[:50]}...")
 
-        response = response.strip().lower()
-
         # Get valid options from phase config
         options = []
         if 'actions' in phase_config and phase_config['actions']:
@@ -87,25 +85,26 @@ class ChoiceParser:
 
         logger.debug(f"Valid options: {options}")
 
-        # Check if response contains any of the valid options
-        for option in options:
-            if option in response:
-                logger.info(f"Found option in response: {option}")
-                return option
+        # First, look for choices in double brackets [[CHOICE]]
+        bracket_matches = re.findall(r'\[\[(.*?)\]\]', response, re.IGNORECASE)
 
-        # If no match found, try to infer from context
-        if options and len(options) >= 2:
-            if "cooperate" in response or "collaboration" in response or "together" in response:
-                logger.info("Inferred cooperation from context")
-                for opt in options:
-                    if "cooperate" in opt:
-                        return opt
+        if bracket_matches:
+            # Get the first bracketed choice
+            bracketed_choice = bracket_matches[0].strip().lower()
+            logger.debug(f"Found bracketed choice: {bracketed_choice}")
 
-            if "defect" in response or "betray" in response or "self" in response:
-                logger.info("Inferred defection from context")
-                for opt in options:
-                    if "defect" in opt:
-                        return opt
+            # Check if the bracketed choice matches any valid option
+            for option in options:
+                if option in bracketed_choice:
+                    logger.info(f"Matched bracketed choice to option: {option}")
+                    return option
+
+            # If brackets found but no valid option matched, try exact match
+            if bracketed_choice in options:
+                logger.info(f"Exact match for bracketed choice: {bracketed_choice}")
+                return bracketed_choice
+
+            logger.warning(f"Bracketed choice '{bracketed_choice}' didn't match any valid option")
 
         # Fail instead of using defaults
         if options:
@@ -146,6 +145,7 @@ class IntegerParser:
 
     Extracts an integer value from the LLM's response.
     Useful for things like Ultimatum Game offers.
+    Also looks for responses in double brackets.
     """
 
     def parse(self, response, phase_config):
@@ -159,8 +159,6 @@ class IntegerParser:
         Returns:
             int: The parsed integer, or a default value if none found
         """
-        import re
-
         logger.debug(f"Parsing integer from response: {response[:50]}...")
 
         # Get constraints from phase config
@@ -174,7 +172,18 @@ class IntegerParser:
                 min_val = params.get('min', min_val)
                 max_val = params.get('max', max_val)
 
-        # Try to find an integer in the response
+        # First, check for integers in double brackets
+        bracket_matches = re.findall(r'\[\[(\d+)\]\]', response)
+        if bracket_matches:
+            value = int(bracket_matches[0])
+            if min_val <= value <= max_val:
+                logger.info(f"Found valid integer in brackets: {value}")
+                return value
+            else:
+                logger.error(f"Bracketed integer {value} out of range (min: {min_val}, max: {max_val})")
+                raise ValueError(f"Integer {value} out of range (min: {min_val}, max: {max_val})")
+
+        # If no bracketed integers, try to find any integer in the response
         matches = re.findall(r'\b(\d+)\b', response)
 
         if matches:
@@ -202,6 +211,7 @@ class SingleCharacterParser:
 
     Extracts a single character from the LLM's response.
     Useful for games like Ghost where players add single letters.
+    Also checks for characters in double brackets.
     """
 
     def parse(self, response, phase_config):
@@ -217,8 +227,13 @@ class SingleCharacterParser:
         """
         logger.debug(f"Parsing single character from response: {response[:50]}...")
 
-        # Extract all alphabetic characters
-        import re
+        # First, check for characters in double brackets
+        bracket_matches = re.findall(r'\[\[([a-zA-Z])\]\]', response)
+        if bracket_matches:
+            logger.info(f"Found character in brackets: {bracket_matches[0]}")
+            return bracket_matches[0].lower()
+
+        # If no bracketed character, extract all alphabetic characters
         chars = re.findall(r'[a-zA-Z]', response)
 
         if chars:

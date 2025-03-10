@@ -3,6 +3,10 @@ import sys
 import os
 import logging
 import yaml
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 from core.engine import GameEngine
 from core.llm.production_llm_client import ProductionLLMClient

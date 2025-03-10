@@ -1,3 +1,7 @@
 python-dotenv
 pyyaml>=6.0
 aisuite>=0.1.0
+aisuite[anthropic]
+aisuite[google]
+aisuite[groq]
+aisuite[openai]

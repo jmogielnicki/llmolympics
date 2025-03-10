@@ -35,10 +35,12 @@ class ProductionLLMClient():
             messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": prompt})
 
+        temperature = 0.9
+
         response = self.client.chat.completions.create(
             model=model,
             messages=messages,
-            temperature=0.7
+            temperature=temperature
         )
 
         response_content = response.choices[0].message.content
@@ -47,7 +49,7 @@ class ProductionLLMClient():
         if player_id:
             metadata = {
                 "model": model,
-                "temperature": 0.7
+                "temperature": temperature
             }
             self.chat_logger.log_interaction(
                 player_id=player_id,
