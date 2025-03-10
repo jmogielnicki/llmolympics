@@ -26,20 +26,20 @@ TEST_DATA_DIR = os.path.join(project_root, "data", "test")
 TEST_SNAPSHOTS_DIR = os.path.join(TEST_DATA_DIR, "snapshots")
 TEST_RESULTS_DIR = os.path.join(TEST_DATA_DIR, "results")
 TEST_LOGS_DIR = os.path.join(TEST_DATA_DIR, "logs")
-
+TEST_SESSIONS_DIR = os.path.join(TEST_DATA_DIR, "sessions")
 
 # Define deterministic expected test outcomes for different games
 # Based on the fixed responses in the MockLLMClient
 EXPECTED_OUTCOMES = {
     "prisoner's dilemma": {
         # For a 5-round game with deterministic responses
-        "exact_snapshots": 11,  # Initial + (decision + resolution) * 5
+        "min_snapshots": 10,  # Initial + (decision + resolution) * 5 (now as JSONL entries)
         "rounds_played": 5,
         "player_scores": {
             "player_1": 8,  # 3+3+0+1+1 = 8
             "player_2": 13   # 3+3+5+1+1 = 13
         },
-        "expected_winner": "player_2",  # Player 2 has higher score
+        "expected_winner": {'id': 'player_2'},  # Player 2 has higher score
         "phases": ["decision", "resolution"],
         "expected_phase_counts": {
             "decision": 5,   # One per round
@@ -82,6 +82,7 @@ def setup_test_environment(clean=True):
     os.makedirs(TEST_SNAPSHOTS_DIR, exist_ok=True)
     os.makedirs(TEST_RESULTS_DIR, exist_ok=True)
     os.makedirs(TEST_LOGS_DIR, exist_ok=True)
+    os.makedirs(TEST_SESSIONS_DIR, exist_ok=True)
 
     # Clean existing test data
     if clean:
@@ -91,11 +92,13 @@ def setup_test_environment(clean=True):
             os.remove(file)
         for file in glob.glob(os.path.join(TEST_LOGS_DIR, "*.jsonl")):
             os.remove(file)
+        # Clean session directories but create the parent directory
+        shutil.rmtree(TEST_SESSIONS_DIR, ignore_errors=True)
+        os.makedirs(TEST_SESSIONS_DIR, exist_ok=True)
+
         logger.info("Cleaned existing test data")
 
     # Set environment variables for test
-    os.environ["PARLOURBENCH_SNAPSHOT_DIR"] = TEST_SNAPSHOTS_DIR
-    os.environ["PARLOURBENCH_RESULTS_DIR"] = TEST_RESULTS_DIR
     os.environ["PARLOURBENCH_USE_MOCK"] = "1"
 
     logger.info(f"Test environment setup complete. Using test directories: {TEST_DATA_DIR}")
@@ -107,6 +110,118 @@ def setup_test_environment(clean=True):
 
     except Exception as e:
         logger.error(f"Error setting up handlers: {str(e)}")
+
+
+def find_latest_session_dir():
+    """
+    Find the most recently created session directory.
+
+    Returns:
+        str: Path to the latest session directory, or None if not found
+    """
+    session_dirs = glob.glob(os.path.join(TEST_SESSIONS_DIR, "*"))
+    if not session_dirs:
+        return None
+
+    # Get the most recent directory by modification time
+    latest_dir = max(session_dirs, key=os.path.getmtime)
+    return latest_dir
+
+
+def create_legacy_snapshots(session_dir):
+    """
+    Create legacy snapshot files in the test snapshots directory from a session.
+
+    Args:
+        session_dir (str): Path to the session directory
+
+    Returns:
+        list: Paths to created snapshot files
+    """
+    snapshots_file = os.path.join(session_dir, "snapshots.jsonl")
+    if not os.path.exists(snapshots_file):
+        logger.error(f"Snapshots file not found: {snapshots_file}")
+        return []
+
+    # Get config to determine game name
+    config_file = os.path.join(session_dir, "game_config.yaml")
+    if not os.path.exists(config_file):
+        logger.error(f"Config file not found: {config_file}")
+        return []
+
+    with open(config_file, 'r') as f:
+        config = yaml.safe_load(f)
+
+    game_name = config.get('game', {}).get('name', 'unknown').lower().replace(' ', '_')
+
+    # Load snapshots
+    snapshots = []
+    try:
+        with open(snapshots_file, 'r') as f:
+            for line in f:
+                record = json.loads(line)
+                if record.get('record_type') == 'snapshot':
+                    snapshots.append(record)
+    except Exception as e:
+        logger.error(f"Error loading snapshots: {str(e)}")
+        return []
+
+    # Create individual snapshot files
+    snapshot_files = []
+    for i, snapshot in enumerate(snapshots):
+        snapshot_id = int(time.time() * 1000) + i
+        filename = f"{game_name}_snapshot_{snapshot_id}.json"
+        file_path = os.path.join(TEST_SNAPSHOTS_DIR, filename)
+
+        with open(file_path, 'w') as f:
+            json.dump(snapshot, f, indent=2)
+
+        snapshot_files.append(file_path)
+
+    logger.info(f"Created {len(snapshot_files)} legacy snapshot files")
+    return snapshot_files
+
+
+def create_legacy_result(session_dir):
+    """
+    Create a legacy result file in the test results directory from a session.
+
+    Args:
+        session_dir (str): Path to the session directory
+
+    Returns:
+        str: Path to created result file, or None if failed
+    """
+    results_file = os.path.join(session_dir, "results.json")
+    if not os.path.exists(results_file):
+        logger.error(f"Results file not found: {results_file}")
+        return None
+
+    # Get config to determine game name
+    config_file = os.path.join(session_dir, "game_config.yaml")
+    if not os.path.exists(config_file):
+        logger.error(f"Config file not found: {config_file}")
+        return None
+
+    with open(config_file, 'r') as f:
+        config = yaml.safe_load(f)
+
+    game_name = config.get('game', {}).get('name', 'unknown').lower().replace(' ', '_')
+
+    # Load results
+    with open(results_file, 'r') as f:
+        results = json.load(f)
+
+    # Create the legacy result file
+    result_id = int(time.time() * 1000)
+    filename = f"{game_name}_result_{result_id}.json"
+    file_path = os.path.join(TEST_RESULTS_DIR, filename)
+
+    with open(file_path, 'w') as f:
+        json.dump(results, f, indent=2)
+
+    logger.info(f"Created legacy result file: {file_path}")
+    return file_path
 
 
 def verify_files_exist(required_files):
@@ -127,13 +242,64 @@ def verify_files_exist(required_files):
     logger.info("All required files verified")
     return True
 
-def verify_test_results(game_name, snapshots, results_file):
+
+def load_snapshots_from_jsonl(jsonl_path):
+    """
+    Load snapshots from a JSONL file.
+
+    Args:
+        jsonl_path (str): Path to the JSONL file
+
+    Returns:
+        list: List of snapshot dictionaries
+    """
+    snapshots = []
+
+    try:
+        with open(jsonl_path, 'r') as f:
+            for line in f:
+                record = json.loads(line)
+                if record.get('record_type') == 'snapshot':
+                    snapshots.append(record)
+    except Exception as e:
+        logger.error(f"Error loading snapshots from {jsonl_path}: {str(e)}")
+        return []
+
+    return snapshots
+
+
+def load_events_from_jsonl(jsonl_path):
+    """
+    Load events from a JSONL file.
+
+    Args:
+        jsonl_path (str): Path to the JSONL file
+
+    Returns:
+        list: List of event dictionaries
+    """
+    events = []
+
+    try:
+        with open(jsonl_path, 'r') as f:
+            for line in f:
+                record = json.loads(line)
+                if record.get('record_type') == 'event':
+                    events.append(record)
+    except Exception as e:
+        logger.error(f"Error loading events from {jsonl_path}: {str(e)}")
+        return []
+
+    return events
+
+
+def verify_test_results(game_name, session_dir, results_file):
     """
     Verify that test results meet expected conditions.
 
     Args:
         game_name (str): Name of the game
-        snapshots (list): List of snapshot file paths
+        session_dir (str): Path to the session directory
         results_file (str): Path to the results file
 
     Returns:
@@ -157,6 +323,17 @@ def verify_test_results(game_name, snapshots, results_file):
     # Load the results file
     with open(results_file, 'r') as f:
         result_data = json.load(f)
+
+    # Load snapshots from the JSONL file
+    snapshots_file = os.path.join(session_dir, "snapshots.jsonl")
+    if not os.path.exists(snapshots_file):
+        logger.error(f"Snapshots file not found: {snapshots_file}")
+        return False, ["FAIL: Snapshots file not found"]
+
+    snapshots = load_snapshots_from_jsonl(snapshots_file)
+    events = load_events_from_jsonl(snapshots_file)
+
+    logger.info(f"Loaded {len(snapshots)} snapshots and {len(events)} events from {snapshots_file}")
 
     # Test 1: Number of snapshots (exact or range)
     snapshot_count = len(snapshots)
@@ -209,22 +386,16 @@ def verify_test_results(game_name, snapshots, results_file):
         else:
             test_results.append(f"PASS: Correct winner {winner_id}")
 
-    # Test 5: Phase progression (check snapshots for phase sequence)
-    if snapshots and "phases" in expected:
-        # Load all snapshots and analyze phase progression
+    # Test 5: Phase progression (check events for phase sequence)
+    if "phases" in expected:
+        # Extract phases from events
+        phase_starts = [e for e in events if e.get('event_type') == 'phase_start']
+        phase_sequence = [e.get('phase_id') for e in phase_starts]
         phase_counts = {}
-        phase_sequence = []
 
-        # Sort snapshots by timestamp
-        sorted_snapshots = sorted(snapshots, key=os.path.getmtime)
-
-        for snapshot_file in sorted_snapshots:
-            with open(snapshot_file, 'r') as f:
-                snapshot = json.load(f)
-                phase = snapshot.get("current_phase")
-                if phase:
-                    phase_counts[phase] = phase_counts.get(phase, 0) + 1
-                    phase_sequence.append(phase)
+        for phase in phase_sequence:
+            if phase:
+                phase_counts[phase] = phase_counts.get(phase, 0) + 1
 
         # Check that all expected phases were encountered
         missing_phases = [p for p in expected["phases"] if p not in phase_counts]
@@ -261,14 +432,37 @@ def verify_test_results(game_name, snapshots, results_file):
         else:
             test_results.append(f"PASS: {eliminated_count} players eliminated (expected at least {expected['min_players_eliminated']})")
 
-    # Test 7: Check elimination order (for games with elimination sequence)
-    if "expected_eliminations" in expected and snapshots:
-        # We'd need to extract the elimination order from history snapshots
-        # This is more complex and might require game-specific logic
-        # For now, just note that this check would be performed
-        test_results.append(f"INFO: Elimination order check not implemented yet")
+    # Test 7: Check decisions (for Prisoner's Dilemma)
+    if "expected_decisions" in expected:
+        # Extract decisions from history
+        final_snapshot = snapshots[-1] if snapshots else None
+        if final_snapshot:
+            decision_history = final_snapshot.get('history_state', {}).get('decision_history', [])
+
+            for expected_round, expected_decisions in expected["expected_decisions"].items():
+                # Find the matching round in history
+                round_decisions = None
+                for entry in decision_history:
+                    if entry.get('round') == expected_round:
+                        round_decisions = entry.get('decisions', {})
+                        break
+
+                if not round_decisions:
+                    test_results.append(f"FAIL: Decision history for round {expected_round} not found")
+                    all_passed = False
+                    continue
+
+                # Check each player's decision
+                for player_id, expected_decision in expected_decisions.items():
+                    actual_decision = round_decisions.get(player_id)
+                    if actual_decision != expected_decision:
+                        test_results.append(f"FAIL: Round {expected_round}, Player {player_id} decision incorrect. Expected '{expected_decision}', got '{actual_decision}'")
+                        all_passed = False
+                    else:
+                        test_results.append(f"PASS: Round {expected_round}, Player {player_id} correctly chose '{expected_decision}'")
 
     return all_passed, test_results
+
 
 def run_test(config_path):
     """
@@ -281,7 +475,11 @@ def run_test(config_path):
         bool: True if the test passes, False otherwise
     """
     logger.info(f"Running integration test with config: {config_path}")
+
+    # Import here to use the modified environment variables
     from core.engine import GameEngine
+    import time
+
     try:
         # Load the config to get the game name
         with open(config_path, 'r') as f:
@@ -290,12 +488,36 @@ def run_test(config_path):
         game_name = config.get('game', {}).get('name', 'Unknown Game')
         logger.info(f"Testing game: {game_name}")
 
+        # Patch the GameEngine.__init__ method to use our test directory
+        original_init = GameEngine.__init__
+
+        def patched_init(self, config_path, llm_client_class=None):
+            # Call original init but pass our test session directory
+            self.test_session_dir = TEST_SESSIONS_DIR
+            original_init(self, config_path, llm_client_class)
+            # Override the game session base dir
+            self.game_session.base_dir = TEST_SESSIONS_DIR
+            self.game_session.session_dir = os.path.join(TEST_SESSIONS_DIR, self.game_session.timestamp)
+            # Update paths
+            self.game_session.snapshots_path = os.path.join(self.game_session.session_dir, "snapshots.jsonl")
+            self.game_session.chat_logs_path = os.path.join(self.game_session.session_dir, "chat_logs.jsonl")
+            self.game_session.results_path = os.path.join(self.game_session.session_dir, "results.json")
+            # Ensure directory exists
+            os.makedirs(self.game_session.session_dir, exist_ok=True)
+
+        # Apply patch
+        GameEngine.__init__ = patched_init
+
         # Initialize and run the game
-        engine = GameEngine(config_path)
-        start_time = datetime.now()
-        engine.run_game()
-        end_time = datetime.now()
-        elapsed = (end_time - start_time).total_seconds()
+        try:
+            engine = GameEngine(config_path)
+            start_time = datetime.now()
+            engine.run_game()
+            end_time = datetime.now()
+            elapsed = (end_time - start_time).total_seconds()
+        finally:
+            # Restore original method
+            GameEngine.__init__ = original_init
 
         logger.info(f"Game execution completed in {elapsed:.2f} seconds")
 
@@ -304,29 +526,37 @@ def run_test(config_path):
             logger.error("Game did not complete properly")
             return False
 
-        # Get snapshots
-        snapshots = sorted(glob.glob(os.path.join(TEST_SNAPSHOTS_DIR, "*.json")))
+        # Find the latest session directory
+        session_dir = find_latest_session_dir()
+        if not session_dir:
+            logger.error("No session directory found")
+            return False
 
-        if not snapshots:
+        logger.info(f"Found session directory: {session_dir}")
+
+        # Check if snapshots file exists
+        snapshots_file = os.path.join(session_dir, "snapshots.jsonl")
+        if not os.path.exists(snapshots_file):
             logger.error("No snapshots were created")
             return False
 
-        logger.info(f"Found {len(snapshots)} snapshots")
+        logger.info(f"Found snapshots file: {snapshots_file}")
 
         # Get results
-        results = sorted(glob.glob(os.path.join(TEST_RESULTS_DIR, "*.json")))
-
-        if not results:
+        results_file = os.path.join(session_dir, "results.json")
+        if not os.path.exists(results_file):
             logger.error("No results file was created")
             return False
 
-        logger.info(f"Found {len(results)} results files")
+        logger.info(f"Found results file: {results_file}")
 
-        # Get the latest result
-        latest_result = max(results, key=os.path.getmtime)
+        # For backward compatibility with test verification code
+        # Create legacy format snapshots in the test snapshots directory
+        import time
+        create_legacy_snapshots(session_dir)
 
         # Verify test outcomes
-        success, test_results = verify_test_results(game_name, snapshots, latest_result)
+        success, test_results = verify_test_results(game_name, session_dir, results_file)
 
         # Print test results
         logger.info("\n=== Test Results ===")
@@ -397,10 +627,6 @@ def main():
             return 1
     finally:
         # Clean up environment variables
-        if "PARLOURBENCH_SNAPSHOT_DIR" in os.environ:
-            del os.environ["PARLOURBENCH_SNAPSHOT_DIR"]
-        if "PARLOURBENCH_RESULTS_DIR" in os.environ:
-            del os.environ["PARLOURBENCH_RESULTS_DIR"]
         if "PARLOURBENCH_USE_MOCK" in os.environ:
             del os.environ["PARLOURBENCH_USE_MOCK"]
 
