@@ -26,26 +26,27 @@ class GameEngine:
     coordinating interactions between components.
     """
 
-    def __init__(self, config_path, llm_client_class=None):
+    def __init__(self, config_path, llm_client_class=None, base_output_dir="data/sessions"):
         """
         Initialize the game engine.
 
         Args:
             config_path (str): Path to the game configuration file
             llm_client_class (class, optional): Class to use for LLM interaction
+            base_dir (str, optional): Base directory for game session data
         """
         logger.info(f"Initializing game from config: {config_path}")
         self.config = ConfigLoader.load(config_path)
 
-        # Create a game session for unified logging
-        self.game_session = GameSession(self.config)
+        # Create a game session with the specified base directory
+        self.game_session = GameSession(self.config, base_dir=base_output_dir)
 
         # Initialize state with the game session
         self.state = GameState(self.config, self.game_session)
         self.phase_controller = PhaseController()
 
         # Get chat logger with the game session
-        self.chat_logger = get_chat_logger(game_session=self.game_session)
+        self.chat_logger = get_chat_logger(game_session=self.game_session, log_dir=base_output_dir)
 
         # Extract key info for logging
         self.game_name = self.config['game']['name']

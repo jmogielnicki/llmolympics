@@ -143,16 +143,6 @@ class GameState:
         if self.game_session:
             snapshot_id = self.game_session.save_snapshot(snapshot)
             return snapshot_id
-        else:
-            # Legacy approach - create individual snapshot files
-            snapshots_dir = os.environ.get("PARLOURBENCH_SNAPSHOT_DIR", "data/snapshots")
-            os.makedirs(snapshots_dir, exist_ok=True)
-            snapshot_id = int(time.time() * 1000)
-            game_name = self.config['game']['name'].lower().replace(' ', '_')
-            filename = f"{game_name}_snapshot_{snapshot_id}.json"
-            with open(f"{snapshots_dir}/{filename}", 'w') as f:
-                json.dump(snapshot, f, indent=2)
-            return snapshot_id
 
     def get_active_players(self):
         """
@@ -320,14 +310,3 @@ class GameState:
         if self.game_session:
             results_path = self.game_session.save_results(results)
             return results_path
-        else:
-            # Legacy approach - create individual results file
-            results_dir = os.environ.get("PARLOURBENCH_RESULTS_DIR", "data/results")
-            os.makedirs(results_dir, exist_ok=True)
-            result_id = int(time.time() * 1000)
-            game_name = self.config['game']['name'].lower().replace(' ', '_')
-            filename = f"{game_name}_result_{result_id}.json"
-            results_path = f"{results_dir}/{filename}"
-            with open(results_path, 'w') as f:
-                json.dump(results, f, indent=2)
-            return filename

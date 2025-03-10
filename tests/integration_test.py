@@ -23,9 +23,6 @@ logger = logging.getLogger("IntegrationTest")
 
 # Define test data directories
 TEST_DATA_DIR = os.path.join(project_root, "data", "test")
-TEST_SNAPSHOTS_DIR = os.path.join(TEST_DATA_DIR, "snapshots")
-TEST_RESULTS_DIR = os.path.join(TEST_DATA_DIR, "results")
-TEST_LOGS_DIR = os.path.join(TEST_DATA_DIR, "logs")
 TEST_SESSIONS_DIR = os.path.join(TEST_DATA_DIR, "sessions")
 
 # Define deterministic expected test outcomes for different games
@@ -79,19 +76,10 @@ def setup_test_environment(clean=True):
         clean (bool): Whether to clean existing test data
     """
     # Create test data directories
-    os.makedirs(TEST_SNAPSHOTS_DIR, exist_ok=True)
-    os.makedirs(TEST_RESULTS_DIR, exist_ok=True)
-    os.makedirs(TEST_LOGS_DIR, exist_ok=True)
     os.makedirs(TEST_SESSIONS_DIR, exist_ok=True)
 
     # Clean existing test data
     if clean:
-        for file in glob.glob(os.path.join(TEST_SNAPSHOTS_DIR, "*.json")):
-            os.remove(file)
-        for file in glob.glob(os.path.join(TEST_RESULTS_DIR, "*.json")):
-            os.remove(file)
-        for file in glob.glob(os.path.join(TEST_LOGS_DIR, "*.jsonl")):
-            os.remove(file)
         # Clean session directories but create the parent directory
         shutil.rmtree(TEST_SESSIONS_DIR, ignore_errors=True)
         os.makedirs(TEST_SESSIONS_DIR, exist_ok=True)
@@ -126,102 +114,6 @@ def find_latest_session_dir():
     # Get the most recent directory by modification time
     latest_dir = max(session_dirs, key=os.path.getmtime)
     return latest_dir
-
-
-def create_legacy_snapshots(session_dir):
-    """
-    Create legacy snapshot files in the test snapshots directory from a session.
-
-    Args:
-        session_dir (str): Path to the session directory
-
-    Returns:
-        list: Paths to created snapshot files
-    """
-    snapshots_file = os.path.join(session_dir, "snapshots.jsonl")
-    if not os.path.exists(snapshots_file):
-        logger.error(f"Snapshots file not found: {snapshots_file}")
-        return []
-
-    # Get config to determine game name
-    config_file = os.path.join(session_dir, "game_config.yaml")
-    if not os.path.exists(config_file):
-        logger.error(f"Config file not found: {config_file}")
-        return []
-
-    with open(config_file, 'r') as f:
-        config = yaml.safe_load(f)
-
-    game_name = config.get('game', {}).get('name', 'unknown').lower().replace(' ', '_')
-
-    # Load snapshots
-    snapshots = []
-    try:
-        with open(snapshots_file, 'r') as f:
-            for line in f:
-                record = json.loads(line)
-                if record.get('record_type') == 'snapshot':
-                    snapshots.append(record)
-    except Exception as e:
-        logger.error(f"Error loading snapshots: {str(e)}")
-        return []
-
-    # Create individual snapshot files
-    snapshot_files = []
-    for i, snapshot in enumerate(snapshots):
-        snapshot_id = int(time.time() * 1000) + i
-        filename = f"{game_name}_snapshot_{snapshot_id}.json"
-        file_path = os.path.join(TEST_SNAPSHOTS_DIR, filename)
-
-        with open(file_path, 'w') as f:
-            json.dump(snapshot, f, indent=2)
-
-        snapshot_files.append(file_path)
-
-    logger.info(f"Created {len(snapshot_files)} legacy snapshot files")
-    return snapshot_files
-
-
-def create_legacy_result(session_dir):
-    """
-    Create a legacy result file in the test results directory from a session.
-
-    Args:
-        session_dir (str): Path to the session directory
-
-    Returns:
-        str: Path to created result file, or None if failed
-    """
-    results_file = os.path.join(session_dir, "results.json")
-    if not os.path.exists(results_file):
-        logger.error(f"Results file not found: {results_file}")
-        return None
-
-    # Get config to determine game name
-    config_file = os.path.join(session_dir, "game_config.yaml")
-    if not os.path.exists(config_file):
-        logger.error(f"Config file not found: {config_file}")
-        return None
-
-    with open(config_file, 'r') as f:
-        config = yaml.safe_load(f)
-
-    game_name = config.get('game', {}).get('name', 'unknown').lower().replace(' ', '_')
-
-    # Load results
-    with open(results_file, 'r') as f:
-        results = json.load(f)
-
-    # Create the legacy result file
-    result_id = int(time.time() * 1000)
-    filename = f"{game_name}_result_{result_id}.json"
-    file_path = os.path.join(TEST_RESULTS_DIR, filename)
-
-    with open(file_path, 'w') as f:
-        json.dump(results, f, indent=2)
-
-    logger.info(f"Created legacy result file: {file_path}")
-    return file_path
 
 
 def verify_files_exist(required_files):
@@ -488,36 +380,12 @@ def run_test(config_path):
         game_name = config.get('game', {}).get('name', 'Unknown Game')
         logger.info(f"Testing game: {game_name}")
 
-        # Patch the GameEngine.__init__ method to use our test directory
-        original_init = GameEngine.__init__
-
-        def patched_init(self, config_path, llm_client_class=None):
-            # Call original init but pass our test session directory
-            self.test_session_dir = TEST_SESSIONS_DIR
-            original_init(self, config_path, llm_client_class)
-            # Override the game session base dir
-            self.game_session.base_dir = TEST_SESSIONS_DIR
-            self.game_session.session_dir = os.path.join(TEST_SESSIONS_DIR, self.game_session.timestamp)
-            # Update paths
-            self.game_session.snapshots_path = os.path.join(self.game_session.session_dir, "snapshots.jsonl")
-            self.game_session.chat_logs_path = os.path.join(self.game_session.session_dir, "chat_logs.jsonl")
-            self.game_session.results_path = os.path.join(self.game_session.session_dir, "results.json")
-            # Ensure directory exists
-            os.makedirs(self.game_session.session_dir, exist_ok=True)
-
-        # Apply patch
-        GameEngine.__init__ = patched_init
-
-        # Initialize and run the game
-        try:
-            engine = GameEngine(config_path)
-            start_time = datetime.now()
-            engine.run_game()
-            end_time = datetime.now()
-            elapsed = (end_time - start_time).total_seconds()
-        finally:
-            # Restore original method
-            GameEngine.__init__ = original_init
+        # Create engine with test directory
+        engine = GameEngine(config_path, base_output_dir=TEST_SESSIONS_DIR)
+        start_time = datetime.now()
+        engine.run_game()
+        end_time = datetime.now()
+        elapsed = (end_time - start_time).total_seconds()
 
         logger.info(f"Game execution completed in {elapsed:.2f} seconds")
 
@@ -550,10 +418,7 @@ def run_test(config_path):
 
         logger.info(f"Found results file: {results_file}")
 
-        # For backward compatibility with test verification code
-        # Create legacy format snapshots in the test snapshots directory
         import time
-        create_legacy_snapshots(session_dir)
 
         # Verify test outcomes
         success, test_results = verify_test_results(game_name, session_dir, results_file)
