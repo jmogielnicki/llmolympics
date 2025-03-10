@@ -241,7 +241,7 @@ class GameState:
         Get the winner of the game based on win condition.
 
         Returns:
-            dict or None: The winning player object, or None if no winner
+            dict or None: The winning player object, a special 'tie' object, or None if no winner
         """
         if not self.game_over:
             return None
@@ -261,10 +261,22 @@ class GameState:
             if not active_players:
                 return None
 
-            return max(
-                active_players,
-                key=lambda p: p['state'].get(score_field, 0)
-            )
+            # Find the maximum score
+            max_score = max((p['state'].get(score_field, 0) for p in active_players), default=0)
+
+            # Find all players with the maximum score
+            players_with_max_score = [p for p in active_players if p['state'].get(score_field, 0) == max_score]
+
+            # If only one player has the max score, they win
+            if len(players_with_max_score) == 1:
+                return players_with_max_score[0]
+            else:
+                # Return a tie object with the tied players
+                return {
+                    'id': 'tie',
+                    'state': {'score': max_score},
+                    'tied_players': [p['id'] for p in players_with_max_score]
+                }
 
         return None
 
@@ -278,6 +290,13 @@ class GameState:
         if not self.game_over:
             raise ValueError("Cannot save results for a game that's not over")
 
+        winner = self.get_winner()
+        winner_data = None if not winner else (
+            {'id': winner['id'], 'tied_players': winner.get('tied_players')}
+            if winner['id'] == 'tie' 
+            else {'id': winner['id']}
+        )
+
         # Create results object
         results = {
             'game': self.config['game']['name'],
@@ -290,7 +309,7 @@ class GameState:
                 }
                 for p in self.players
             ],
-            'winner': self.get_winner()['id'] if self.get_winner() else None,
+            'winner': winner_data,
             'rounds_played': self.shared_state.get('current_round', 0),
             'history_summary': {
                 key: len(value) for key, value in self.history_state.items()

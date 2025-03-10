@@ -50,7 +50,11 @@ def main():
         print("\nGame complete!")
         winner = engine.state.get_winner()
         if winner:
-            print(f"Winner: {winner['id']} with score {winner['state'].get('score', 'N/A')}")
+            if winner['id'] == 'tie':
+                tied_players = ", ".join(winner.get('tied_players', []))
+                print(f"Game ended in a tie between: {tied_players} with score {winner['state'].get('score', 'N/A')}")
+            else:
+                print(f"Winner: {winner['id']} with score {winner['state'].get('score', 'N/A')}")
         else:
             print("No winner determined")
 
