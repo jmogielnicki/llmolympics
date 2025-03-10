@@ -80,7 +80,7 @@ llm_integration:
       Think strategically about cooperation and self-interest.
       Your goal is to win the game by having a higher score than your opponent after the final round.
       Please respond as the player directly, not as an advisor.
-      Feel free to think about the problem a bit before making a decision, but keep it relatively short.
+      Feel free to think out loud about the problem a bit before making a decision, but keep it relatively short.
       Once you have a decision, put that decision inside double brackets, like this: [[COOPERATE]] or [[DEFECT]].
       If your response does not contain a decision formatted with double brackets, you will be disqualified and lose the game.
   prompts:
