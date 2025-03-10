@@ -34,18 +34,18 @@ class MockLLMClient():
         # Player 2: COOPERATE in rounds 1-2, DEFECT in rounds 3-5
         self.pd_responses = {
             "player_1": {
-                1: "I choose to COOPERATE.",
-                2: "I choose to COOPERATE.",
-                3: "I choose to COOPERATE.",
-                4: "I choose to DEFECT.",
-                5: "I choose to DEFECT."
+                1: "I choose to [[COOPERATE]].",
+                2: "I choose to [[COOPERATE]].",
+                3: "I choose to [[COOPERATE]].",
+                4: "I choose to [[DEFECT]].",
+                5: "I choose to [[DEFECT]]."
             },
             "player_2": {
-                1: "I choose to COOPERATE.",
-                2: "I choose to COOPERATE.",
-                3: "I choose to DEFECT.",
-                4: "I choose to DEFECT.",
-                5: "I choose to DEFECT."
+                1: "I choose to [[COOPERATE]].",
+                2: "I choose to [[COOPERATE]].",
+                3: "I choose to [[DEFECT]].",
+                4: "I choose to [[DEFECT]].",
+                5: "I choose to [[DEFECT]]."
             }
         }
 
