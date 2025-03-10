@@ -1,4 +1,4 @@
-# core/production_llm_client.py
+# core/llm/production_llm_client.py
 import logging
 from core.prompt import PromptManager
 from core.llm.parser import ResponseParserRegistry
@@ -22,7 +22,7 @@ class ProductionLLMClient():
             logger.error("Failed to import aisuite")
             raise ImportError("aisuite is required for ProductionLLMClient")
 
-    def get_completion(self, prompt, model, system_prompt=None, player_id=None):
+    def get_completion(self, prompt, model, system_prompt=None, player_id=None, phase_id=None, round_num=None):
         """Get a completion from the model"""
         logger.info(f"Sending prompt to {model}")
 
@@ -55,7 +55,9 @@ class ProductionLLMClient():
                 player_id=player_id,
                 messages=messages,
                 response=response_content,
-                metadata=metadata
+                metadata=metadata,
+                phase_id=phase_id,
+                round_num=round_num
             )
 
         return response_content
@@ -94,12 +96,17 @@ class ProductionLLMClient():
             # throw an error if the model is not provided
             raise ValueError(f"Model not found for player {player['id']}")
 
+        # Current round
+        round_num = game_state.shared_state.get('current_round', 0)
+
         # Get response
         response = self.get_completion(
-            prompt, 
-            model, 
-            system_prompt, 
-            player_id=player.get('id', 'unknown')
+            prompt,
+            model,
+            system_prompt,
+            player_id=player.get('id', 'unknown'),
+            phase_id=phase_id,
+            round_num=round_num
         )
 
         # Parse response

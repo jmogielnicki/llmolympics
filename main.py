@@ -2,7 +2,6 @@
 import sys
 import os
 import logging
-import yaml
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -34,13 +33,17 @@ def main():
         print(f"Config file not found: {config_path}")
         return
 
-    # Ensure directories exist
-    os.makedirs("data/snapshots", exist_ok=True)
-    os.makedirs("data/results", exist_ok=True)
+    # Ensure base session directory exists
+    os.makedirs("data/sessions", exist_ok=True)
 
     # Initialize and run the game
     try:
         engine = GameEngine(config_path, ProductionLLMClient)
+
+        # Print session information
+        print(f"\nGame session started: {engine.game_session.session_id}")
+        print(f"Session directory: {engine.game_session.session_dir}")
+
         engine.run_game()
 
         # Print results
@@ -50,6 +53,13 @@ def main():
             print(f"Winner: {winner['id']} with score {winner['state'].get('score', 'N/A')}")
         else:
             print("No winner determined")
+
+        # Print session statistics
+        print(f"\nSession statistics:")
+        print(f"- Snapshots: {engine.game_session.snapshot_count}")
+        print(f"- Events: {engine.game_session.event_count}")
+        print(f"- Chat messages: {engine.game_session.chat_message_count}")
+        print(f"- Session directory: {engine.game_session.session_dir}")
     except Exception as e:
         logger.error(f"Error running game: {str(e)}")
         raise

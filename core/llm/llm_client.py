@@ -1,10 +1,10 @@
+# core/llm/llm_client.py
 import os
 import logging
 
 logger = logging.getLogger("LLMClient")
 
 # Decide which implementation to use based on environment variable
-print(os.environ.get("PARLOURBENCH_USE_MOCK", "false"))
 use_mock = os.environ.get("PARLOURBENCH_USE_MOCK", "false").lower() in ["true", "1", "yes"]
 
 if use_mock:

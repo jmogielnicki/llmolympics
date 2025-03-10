@@ -8,6 +8,7 @@ from core.state import GameState
 from handlers.base import PhaseController
 from handlers.registry import HandlerRegistry
 from utils.chat_logger import get_chat_logger
+from utils.game_session import GameSession
 
 # Set up logging
 logging.basicConfig(
@@ -35,9 +36,16 @@ class GameEngine:
         """
         logger.info(f"Initializing game from config: {config_path}")
         self.config = ConfigLoader.load(config_path)
-        self.state = GameState(self.config)
+
+        # Create a game session for unified logging
+        self.game_session = GameSession(self.config)
+
+        # Initialize state with the game session
+        self.state = GameState(self.config, self.game_session)
         self.phase_controller = PhaseController()
-        self.chat_logger = get_chat_logger()
+
+        # Get chat logger with the game session
+        self.chat_logger = get_chat_logger(game_session=self.game_session)
 
         # Extract key info for logging
         self.game_name = self.config['game']['name']
@@ -54,12 +62,26 @@ class GameEngine:
         phase for analysis.
         """
         logger.info(f"Starting game: {self.game_name}")
-        
+
         # Log the start of the game
         logger.info(f"Chat history will be logged to: {self.chat_logger.get_consolidated_log_path()}")
+        logger.info(f"Snapshots will be logged to: {self.game_session.snapshots_path}")
 
         # Save initial state snapshot
         self.state.save_snapshot(is_initial=True)
+
+        # Log a game start event
+        self.game_session.save_event(
+            "game_start",
+            {
+                "game_name": self.game_name,
+                "player_count": self.player_count,
+                "config_summary": {
+                    "phases": [p['id'] for p in self.config['phases']],
+                    "rounds": self.config.get('rounds', {}).get('count', 'dynamic')
+                }
+            }
+        )
 
         # Main game loop
         while not self.state.is_game_over():
@@ -68,6 +90,18 @@ class GameEngine:
             phase_type = phase_config['type']
 
             logger.info(f"Processing phase: {current_phase} (type: {phase_type})")
+
+            # Log phase start event
+            self.game_session.save_event(
+                "phase_start",
+                {
+                    "phase_id": current_phase,
+                    "phase_type": phase_type,
+                    "round": self.state.shared_state.get('current_round', 0)
+                },
+                phase_id=current_phase,
+                round_num=self.state.shared_state.get('current_round', 0)
+            )
 
             # Process the phase based on its type
             phase_result = False
@@ -87,6 +121,19 @@ class GameEngine:
                 logger.error(f"Unknown phase type: {phase_type}")
                 raise ValueError(f"Unknown phase type: {phase_type}")
 
+            # Log phase end event
+            self.game_session.save_event(
+                "phase_end",
+                {
+                    "phase_id": current_phase,
+                    "phase_type": phase_type,
+                    "result": phase_result,
+                    "round": self.state.shared_state.get('current_round', 0)
+                },
+                phase_id=current_phase,
+                round_num=self.state.shared_state.get('current_round', 0)
+            )
+
             # Determine next phase
             next_phase = self.phase_controller.get_next_phase(
                 self.state, current_phase, phase_result
@@ -101,9 +148,17 @@ class GameEngine:
             if next_phase == "game_end":
                 logger.info("Game end condition met")
                 self.state.game_over = True
+
+                # Log game end event
+                self.game_session.save_event(
+                    "game_end",
+                    {
+                        "winner": self.state.get_winner()['id'] if self.state.get_winner() else None,
+                        "rounds_played": self.state.shared_state.get('current_round', 0)
+                    }
+                )
             else:
                 self.state.current_phase = next_phase
-
 
         logger.info(f"Game completed: {self.game_name}")
 
@@ -126,6 +181,18 @@ class GameEngine:
             raise ValueError(f"No handler specified for automatic phase: {phase_config['id']}")
 
         handler = HandlerRegistry.get_handler(handler_name)
+
+        # Log the handler being used
+        self.game_session.save_event(
+            "handler_execution",
+            {
+                "handler": handler_name,
+                "phase_id": phase_config['id']
+            },
+            phase_id=phase_config['id'],
+            round_num=self.state.shared_state.get('current_round', 0)
+        )
+
         return handler.process(self.state)
 
     def _process_simultaneous_phase(self, phase_config):
@@ -154,9 +221,32 @@ class GameEngine:
             player_id = player['id']
             logger.info(f"Getting action for player: {player_id}")
 
+            # Log player action start
+            action_id = self.game_session.save_event(
+                "player_action_start",
+                {
+                    "player_id": player_id,
+                    "phase_id": phase_config['id']
+                },
+                phase_id=phase_config['id'],
+                round_num=self.state.shared_state.get('current_round', 0)
+            )
+
             # Process this player's action
             action = handler.process_player(self.state, player)
             responses[player_id] = action
+
+            # Log player action completion
+            self.game_session.save_event(
+                "player_action_complete",
+                {
+                    "player_id": player_id,
+                    "action": action,
+                    "action_id": action_id
+                },
+                phase_id=phase_config['id'],
+                round_num=self.state.shared_state.get('current_round', 0)
+            )
 
         # Store all responses in the game state
         self.state.set_action_responses(responses)
@@ -191,17 +281,41 @@ class GameEngine:
         # Initialize phase-specific responses
         responses = {}
 
-        #TODO - figure out if we need logic for what sequence to use, rather than just using the order in the list
         # Process each player in sequence
         for i, player in enumerate(active_players):
             player_id = player['id']
             logger.info(f"Processing action for player {i+1}/{len(active_players)}: {player_id}")
+
+            # Log player action start
+            action_id = self.game_session.save_event(
+                "player_action_start",
+                {
+                    "player_id": player_id,
+                    "phase_id": phase_config['id'],
+                    "turn_index": i
+                },
+                phase_id=phase_config['id'],
+                round_num=self.state.shared_state.get('current_round', 0)
+            )
 
             # Process this player's action
             action = handler.process_player(self.state, player)
 
             # Store the response
             responses[player_id] = action
+
+            # Log player action completion
+            self.game_session.save_event(
+                "player_action_complete",
+                {
+                    "player_id": player_id,
+                    "action": action,
+                    "action_id": action_id,
+                    "turn_index": i
+                },
+                phase_id=phase_config['id'],
+                round_num=self.state.shared_state.get('current_round', 0)
+            )
 
             # Save the current player index in case we need to resume
             self.state.shared_state['current_player_index'] = i

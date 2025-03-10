@@ -13,14 +13,16 @@ class GameState:
     and history snapshots.
     """
 
-    def __init__(self, config):
+    def __init__(self, config, game_session=None):
         """
         Initialize a game state from a configuration.
 
         Args:
             config (dict): The game configuration
+            game_session: Optional GameSession for unified logging
         """
         self.config = config
+        self.game_session = game_session
         self.players = self._initialize_players()
         self.shared_state = self._initialize_shared_state()
         self.hidden_state = self._initialize_hidden_state()
@@ -114,6 +116,12 @@ class GameState:
         Creates a JSON-serializable snapshot of the current state
         and appends it to the history. Also writes the snapshot to
         a file for persistence.
+
+        Args:
+            is_initial (bool): Whether this is the initial state
+
+        Returns:
+            int: Snapshot ID
         """
         # Create a JSON-serializable snapshot
         snapshot = {
@@ -131,20 +139,20 @@ class GameState:
         }
         self.history.append(snapshot)
 
-        # Get directory from environment variable or use default
-        snapshots_dir = os.environ.get("PARLOURBENCH_SNAPSHOT_DIR", "data/snapshots")
-
-        # Ensure directory exists
-        os.makedirs(snapshots_dir, exist_ok=True)
-
-        # Generate a unique filename
-        snapshot_id = int(time.time() * 1000)
-        game_name = self.config['game']['name'].lower().replace(' ', '_')
-        filename = f"{game_name}_snapshot_{snapshot_id}.json"
-
-        # Write to file
-        with open(f"{snapshots_dir}/{filename}", 'w') as f:
-            json.dump(snapshot, f, indent=2)
+        # If we have a game session, use it
+        if self.game_session:
+            snapshot_id = self.game_session.save_snapshot(snapshot)
+            return snapshot_id
+        else:
+            # Legacy approach - create individual snapshot files
+            snapshots_dir = os.environ.get("PARLOURBENCH_SNAPSHOT_DIR", "data/snapshots")
+            os.makedirs(snapshots_dir, exist_ok=True)
+            snapshot_id = int(time.time() * 1000)
+            game_name = self.config['game']['name'].lower().replace(' ', '_')
+            filename = f"{game_name}_snapshot_{snapshot_id}.json"
+            with open(f"{snapshots_dir}/{filename}", 'w') as f:
+                json.dump(snapshot, f, indent=2)
+            return snapshot_id
 
     def get_active_players(self):
         """
@@ -264,16 +272,11 @@ class GameState:
         """
         Save the final game results to a file.
 
-        Args:
-            results_dir (str): Directory to save results to
+        Returns:
+            str: Path to the results file
         """
         if not self.game_over:
             raise ValueError("Cannot save results for a game that's not over")
-
-        results_dir = os.environ.get("PARLOURBENCH_RESULTS_DIR", "data/results")
-
-        # Ensure directory exists
-        os.makedirs(results_dir, exist_ok=True)
 
         # Create results object
         results = {
@@ -294,13 +297,18 @@ class GameState:
             }
         }
 
-        # Generate a unique filename
-        result_id = int(time.time() * 1000)
-        game_name = self.config['game']['name'].lower().replace(' ', '_')
-        filename = f"{game_name}_result_{result_id}.json"
-
-        # Write to file
-        with open(f"{results_dir}/{filename}", 'w') as f:
-            json.dump(results, f, indent=2)
-
-        return filename
+        # If we have a game session, use it
+        if self.game_session:
+            results_path = self.game_session.save_results(results)
+            return results_path
+        else:
+            # Legacy approach - create individual results file
+            results_dir = os.environ.get("PARLOURBENCH_RESULTS_DIR", "data/results")
+            os.makedirs(results_dir, exist_ok=True)
+            result_id = int(time.time() * 1000)
+            game_name = self.config['game']['name'].lower().replace(' ', '_')
+            filename = f"{game_name}_result_{result_id}.json"
+            results_path = f"{results_dir}/{filename}"
+            with open(results_path, 'w') as f:
+                json.dump(results, f, indent=2)
+            return filename

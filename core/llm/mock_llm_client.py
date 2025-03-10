@@ -1,3 +1,4 @@
+# core/llm/mock_llm_client.py
 import logging
 import re
 import time
@@ -73,7 +74,7 @@ class MockLLMClient():
 
         logger.info("Initialized deterministic MockLLMClient")
 
-    def get_completion(self, prompt, model="mock:default", system_prompt=None, player_id=None):
+    def get_completion(self, prompt, model="mock:default", system_prompt=None, player_id=None, phase_id=None, round_num=None):
         """
         Get a deterministic mock completion.
 
@@ -82,6 +83,8 @@ class MockLLMClient():
             model (str): Ignored in mock implementation
             system_prompt (str, optional): Ignored in mock implementation
             player_id (str, optional): Player ID for logging
+            phase_id (str, optional): Current phase ID
+            round_num (int, optional): Current round number
 
         Returns:
             str: A deterministic model response
@@ -92,49 +95,52 @@ class MockLLMClient():
         time.sleep(self.response_delay)
         logger.info(f"Mock LLM response delay: {self.response_delay} seconds")
 
-        # Extract player ID and round number from prompt
+        # Extract player ID and round number from prompt if not provided
         extracted_player_id = self._extract_player_id(prompt)
-        round_num = self._extract_round_number(prompt)
-        
-        # Use provided player_id if available, otherwise use extracted one
+        extracted_round_num = self._extract_round_number(prompt)
+
+        # Use provided values if available, otherwise use extracted ones
         effective_player_id = player_id or extracted_player_id
+        effective_round_num = round_num or extracted_round_num
 
         # Determine game type
         game_type = self._determine_game_type(prompt)
-        logger.debug(f"Determined game type: {game_type}, player: {effective_player_id}, round: {round_num}")
+        logger.debug(f"Determined game type: {game_type}, player: {effective_player_id}, round: {effective_round_num}")
 
         # Get appropriate response based on game type, player, and round
-        if game_type == "prisoner's dilemma" and effective_player_id and round_num:
-            response = self.pd_responses.get(effective_player_id, {}).get(round_num, self.default_response)
-            logger.info(f"Response for {effective_player_id}, round {round_num} is {response}")
+        if game_type == "prisoner's dilemma" and effective_player_id and effective_round_num:
+            response = self.pd_responses.get(effective_player_id, {}).get(effective_round_num, self.default_response)
+            logger.info(f"Response for {effective_player_id}, round {effective_round_num} is {response}")
         elif game_type == "diplomacy":
             phase = "voting" if "voting" in prompt.lower() else "discussion"
             response = self.diplomacy_responses.get(phase, {}).get(effective_player_id, self.default_response)
         else:
             logger.error(f"No deterministic response found for game type: {game_type}")
             response = self.default_response
-            
+
         # Log the interaction
         if effective_player_id:
             messages = []
             if system_prompt:
                 messages.append({"role": "system", "content": system_prompt})
             messages.append({"role": "user", "content": prompt})
-            
+
             metadata = {
                 "model": "mock:default",
                 "game_type": game_type,
-                "round": round_num
+                "round": effective_round_num
             }
-            
+
             self.chat_logger.log_interaction(
                 player_id=effective_player_id,
                 messages=messages,
                 response=response,
-                metadata=metadata
+                metadata=metadata,
+                phase_id=phase_id,
+                round_num=effective_round_num
             )
 
-        logger.info(f"Mock LLM returning deterministic response for {effective_player_id}, round {round_num}")
+        logger.info(f"Mock LLM returning deterministic response for {effective_player_id}, round {effective_round_num}")
         return response
 
     def get_action(self, game_state, player, phase_id=None):
@@ -167,12 +173,17 @@ class MockLLMClient():
         player_models = game_state.config.get('llm_integration', {}).get('player_models', {})
         model = player_models.get(player['id'], game_state.config.get('llm_integration', {}).get('model', "openai:gpt-4o"))
 
+        # Current round
+        round_num = game_state.shared_state.get('current_round', 0)
+
         # Get response
         response = self.get_completion(
-            prompt, 
-            model, 
-            system_prompt, 
-            player_id=player.get('id', 'unknown')
+            prompt,
+            model,
+            system_prompt,
+            player_id=player.get('id', 'unknown'),
+            phase_id=phase_id,
+            round_num=round_num
         )
 
         # Parse response
