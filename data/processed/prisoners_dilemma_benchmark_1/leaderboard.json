@@ -1,0 +1,49 @@
+{
+  "leaderboard": [
+    {
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "wins": 2,
+      "losses": 0,
+      "ties": 1,
+      "games": 3,
+      "winrate": 0.667,
+      "avg_score": 12.67,
+      "rank": 1
+    },
+    {
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "wins": 1,
+      "losses": 2,
+      "ties": 0,
+      "games": 3,
+      "winrate": 0.333,
+      "avg_score": 12.33,
+      "rank": 2
+    },
+    {
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek DeepSeek",
+      "wins": 1,
+      "losses": 1,
+      "ties": 1,
+      "games": 3,
+      "winrate": 0.333,
+      "avg_score": 11.67,
+      "rank": 3
+    },
+    {
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "wins": 1,
+      "losses": 2,
+      "ties": 0,
+      "games": 3,
+      "winrate": 0.333,
+      "avg_score": 11.67,
+      "rank": 4
+    }
+  ],
+  "game_count": 6
+}

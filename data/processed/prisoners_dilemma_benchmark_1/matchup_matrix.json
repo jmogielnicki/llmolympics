@@ -1,0 +1,148 @@
+{
+  "models": [
+    "anthropic:claude-3-5-sonnet-20240620",
+    "deepseek:deepseek-chat",
+    "openai:gpt-4o",
+    "xai:grok-2-1212"
+  ],
+  "model_names": [
+    "Anthropic Claude 3.5",
+    "DeepSeek DeepSeek",
+    "OpenAI GPT-4o",
+    "xAI Grok-2"
+  ],
+  "win_matrix": [
+    [
+      null,
+      0,
+      1,
+      0
+    ],
+    [
+      1,
+      null,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      null,
+      0
+    ],
+    [
+      1,
+      0,
+      1,
+      null
+    ]
+  ],
+  "winrate_matrix": [
+    [
+      null,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      1.0,
+      null,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      null,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      1.0,
+      null
+    ]
+  ],
+  "raw_matchups": {
+    "anthropic:claude-3-5-sonnet-20240620": {
+      "deepseek:deepseek-chat": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "openai:gpt-4o": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "xai:grok-2-1212": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      }
+    },
+    "deepseek:deepseek-chat": {
+      "anthropic:claude-3-5-sonnet-20240620": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "openai:gpt-4o": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "xai:grok-2-1212": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 1,
+        "games": 1
+      }
+    },
+    "openai:gpt-4o": {
+      "anthropic:claude-3-5-sonnet-20240620": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "deepseek:deepseek-chat": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "xai:grok-2-1212": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      }
+    },
+    "xai:grok-2-1212": {
+      "anthropic:claude-3-5-sonnet-20240620": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "deepseek:deepseek-chat": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 1,
+        "games": 1
+      },
+      "openai:gpt-4o": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      }
+    }
+  }
+}

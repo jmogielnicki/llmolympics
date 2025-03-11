@@ -1,6 +1,8 @@
 #project specific
-data/sessions/
-data/test/
+data/
+
+!data/benchmark/
+!data/processed/
 
 # Python
 __pycache__/

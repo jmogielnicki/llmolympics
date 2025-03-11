@@ -1,0 +1,153 @@
+{
+  "game_type": "prisoners_dilemma",
+  "models": [
+    {
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek DeepSeek",
+      "games": [
+        {
+          "session_id": "prisoner's_dilemma_20250311_144154",
+          "opponent": "openai:gpt-4o",
+          "score": 8,
+          "opponent_score": 13,
+          "result": "loss",
+          "decisions": null
+        },
+        {
+          "session_id": "prisoner's_dilemma_20250311_144358",
+          "opponent": "anthropic:claude-3-5-sonnet-20240620",
+          "score": 17,
+          "opponent_score": 12,
+          "result": "win",
+          "decisions": null
+        },
+        {
+          "session_id": "prisoner's_dilemma_20250311_153141",
+          "opponent": "xai:grok-2-1212",
+          "score": 10,
+          "opponent_score": 10,
+          "result": "tie",
+          "decisions": null
+        }
+      ],
+      "stats": {
+        "cooperation_rate": 0,
+        "defection_rate": 1,
+        "first_move_cooperation_rate": 0.0,
+        "retaliation_rate": 0,
+        "total_decisions": 0
+      }
+    },
+    {
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "games": [
+        {
+          "session_id": "prisoner's_dilemma_20250311_144154",
+          "opponent": "deepseek:deepseek-chat",
+          "score": 13,
+          "opponent_score": 8,
+          "result": "win",
+          "decisions": null
+        },
+        {
+          "session_id": "prisoner's_dilemma_20250311_144545",
+          "opponent": "anthropic:claude-3-5-sonnet-20240620",
+          "score": 12,
+          "opponent_score": 17,
+          "result": "loss",
+          "decisions": null
+        },
+        {
+          "session_id": "prisoner's_dilemma_20250311_153322",
+          "opponent": "xai:grok-2-1212",
+          "score": 10,
+          "opponent_score": 15,
+          "result": "loss",
+          "decisions": null
+        }
+      ],
+      "stats": {
+        "cooperation_rate": 0,
+        "defection_rate": 1,
+        "first_move_cooperation_rate": 0.0,
+        "retaliation_rate": 0,
+        "total_decisions": 0
+      }
+    },
+    {
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "games": [
+        {
+          "session_id": "prisoner's_dilemma_20250311_144358",
+          "opponent": "deepseek:deepseek-chat",
+          "score": 12,
+          "opponent_score": 17,
+          "result": "loss",
+          "decisions": null
+        },
+        {
+          "session_id": "prisoner's_dilemma_20250311_144545",
+          "opponent": "openai:gpt-4o",
+          "score": 17,
+          "opponent_score": 12,
+          "result": "win",
+          "decisions": null
+        },
+        {
+          "session_id": "prisoner's_dilemma_20250311_153358",
+          "opponent": "xai:grok-2-1212",
+          "score": 8,
+          "opponent_score": 13,
+          "result": "loss",
+          "decisions": null
+        }
+      ],
+      "stats": {
+        "cooperation_rate": 0,
+        "defection_rate": 1,
+        "first_move_cooperation_rate": 0.0,
+        "retaliation_rate": 0,
+        "total_decisions": 0
+      }
+    },
+    {
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "games": [
+        {
+          "session_id": "prisoner's_dilemma_20250311_153141",
+          "opponent": "deepseek:deepseek-chat",
+          "score": 10,
+          "opponent_score": 10,
+          "result": "tie",
+          "decisions": null
+        },
+        {
+          "session_id": "prisoner's_dilemma_20250311_153322",
+          "opponent": "openai:gpt-4o",
+          "score": 15,
+          "opponent_score": 10,
+          "result": "win",
+          "decisions": null
+        },
+        {
+          "session_id": "prisoner's_dilemma_20250311_153358",
+          "opponent": "anthropic:claude-3-5-sonnet-20240620",
+          "score": 13,
+          "opponent_score": 8,
+          "result": "win",
+          "decisions": null
+        }
+      ],
+      "stats": {
+        "cooperation_rate": 0,
+        "defection_rate": 1,
+        "first_move_cooperation_rate": 0.0,
+        "retaliation_rate": 0,
+        "total_decisions": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "round_progression": [
+    {
+      "round": 1,
+      "cooperation_rate": 1.0,
+      "defection_rate": 0.0,
+      "cooperation_count": 12,
+      "defection_count": 0,
+      "total_decisions": 12
+    },
+    {
+      "round": 2,
+      "cooperation_rate": 0.833,
+      "defection_rate": 0.167,
+      "cooperation_count": 10,
+      "defection_count": 2,
+      "total_decisions": 12
+    },
+    {
+      "round": 3,
+      "cooperation_rate": 0.667,
+      "defection_rate": 0.333,
+      "cooperation_count": 8,
+      "defection_count": 4,
+      "total_decisions": 12
+    },
+    {
+      "round": 4,
+      "cooperation_rate": 0.583,
+      "defection_rate": 0.417,
+      "cooperation_count": 7,
+      "defection_count": 5,
+      "total_decisions": 12
+    },
+    {
+      "round": 5,
+      "cooperation_rate": 0.167,
+      "defection_rate": 0.833,
+      "cooperation_count": 2,
+      "defection_count": 10,
+      "total_decisions": 12
+    }
+  ],
+  "max_rounds": 5
+}
