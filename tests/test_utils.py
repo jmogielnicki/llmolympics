@@ -16,7 +16,7 @@ class MockMessage:
     def __init__(self, content):
         self.content = content
 
-class MockChatCompletions:
+class MockCompletions:
     def __init__(self):
         # Completely deterministic responses for Prisoner's Dilemma
         # Player 1: COOPERATE in rounds 1-3, DEFECT in rounds 4-5
@@ -129,7 +129,10 @@ class MockChatCompletions:
 
         return "default"
 
+class MockChat:
+    def __init__(self):
+        self.completions = MockCompletions()
 
 class MockAIClient:
     def __init__(self):
-        self.chat = MockChatCompletions()
+        self.chat = MockChat()

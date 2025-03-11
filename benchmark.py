@@ -11,7 +11,6 @@ load_dotenv()
 
 from core.benchmark.config import BenchmarkConfig
 from core.benchmark.runner import BenchmarkRunner
-from core.llm.llm_client import LLMClient
 import handlers.common  # Import handlers to ensure they are registered
 
 # Set up logging
