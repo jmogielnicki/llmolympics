@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from core.engine import GameEngine
-from core.llm.llm_client import LLMClient
 import handlers.common  # Import handlers to ensure they are registered
 
 # Set up logging
@@ -38,7 +37,7 @@ def main():
 
     # Initialize and run the game
     try:
-        engine = GameEngine(config_path, LLMClient)
+        engine = GameEngine(config_path)
 
         # Print session information
         print(f"\nGame session started: {engine.game_session.session_id}")

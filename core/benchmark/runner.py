@@ -12,8 +12,6 @@ import itertools
 from core.benchmark.config import BenchmarkConfig
 from core.engine import GameEngine
 from core.config import ConfigLoader
-from utils.chat_logger import ChatLogger
-from core.llm.llm_client import LLMClient
 
 logger = logging.getLogger("BenchmarkRunner")
 
@@ -250,7 +248,7 @@ class BenchmarkRunner:
 
         try:
             # Initialize and run the game
-            engine = GameEngine(temp_config_path, LLMClient, self.output_dir)
+            engine = GameEngine(temp_config_path, base_output_dir=self.output_dir)
             engine.run_game()
 
             # Get the session ID and directory
