@@ -4,7 +4,6 @@ import re
 import time
 from core.prompt import PromptManager
 from core.llm.parser import ResponseParserRegistry
-from utils.chat_logger import get_chat_logger
 
 logger = logging.getLogger("MockLLM")
 
@@ -17,17 +16,21 @@ class MockLLMClient():
     with no randomness for reliable test results.
     """
 
-    def __init__(self, response_delay=0.1):
+    def __init__(self, chat_logger, response_delay=0.1):
         """
         Initialize the mock LLM client.
 
         Args:
+            chat_logger: ChatLogger instance for logging interactions
             response_delay (float): Simulated delay in seconds
         """
+        if chat_logger is None:
+            raise ValueError("ChatLogger is required for MockLLMClient")
+
         self.response_delay = response_delay
         self.prompt_manager = PromptManager()
         self.parser_registry = ResponseParserRegistry()
-        self.chat_logger = get_chat_logger()
+        self.chat_logger = chat_logger
 
         # Completely deterministic responses for Prisoner's Dilemma
         # Player 1: COOPERATE in rounds 1-3, DEFECT in rounds 4-5

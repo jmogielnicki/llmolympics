@@ -12,7 +12,8 @@ import itertools
 from core.benchmark.config import BenchmarkConfig
 from core.engine import GameEngine
 from core.config import ConfigLoader
-from core.llm.production_llm_client import ProductionLLMClient
+from utils.chat_logger import ChatLogger
+from core.llm.llm_client import LLMClient
 
 logger = logging.getLogger("BenchmarkRunner")
 
@@ -194,10 +195,10 @@ class BenchmarkRunner:
 
             try:
                 # Run the game and get results
-                session_id = self._run_game(model1, model2, game_num)
+                session_id, session_dir = self._run_game(model1, model2, game_num)
 
                 # Log the result
-                self._log_matchup_result(model1, model2, game_num, session_id)
+                self._log_matchup_result(model1, model2, game_num, session_id, session_dir)
 
                 # Update stats
                 self.games_run += 1
@@ -214,7 +215,7 @@ class BenchmarkRunner:
         logger.info(f"Benchmark complete. Ran {self.games_run} games in {elapsed_time:.2f} seconds")
         logger.info(f"Total completed matchups: {len(self.completed_matchups)}")
 
-    def _run_game(self, model1: str, model2: str, game_num: int) -> str:
+    def _run_game(self, model1: str, model2: str, game_num: int) -> Tuple[str, str]:
         """
         Run a single game with the specified models.
 
@@ -224,7 +225,7 @@ class BenchmarkRunner:
             game_num (int): Game number for this pair
 
         Returns:
-            str: Session ID of the completed game
+            tuple: (session_id, session_dir) of the completed game
         """
         # Create a modified game config with the specified models
         game_config = self.base_game_config.copy()
@@ -249,24 +250,24 @@ class BenchmarkRunner:
 
         try:
             # Initialize and run the game
-            engine = GameEngine(temp_config_path, ProductionLLMClient, self.output_dir)
-
+            engine = GameEngine(temp_config_path, LLMClient, self.output_dir)
             engine.run_game()
 
-            # Get the session ID
+            # Get the session ID and directory
             session_id = engine.game_session.session_id
+            session_dir = engine.game_session.session_dir
 
             # Clean up the temp config file
             os.remove(temp_config_path)
 
-            return session_id
+            return session_id, session_dir
         except Exception as e:
             # Clean up the temp config file on error
             if os.path.exists(temp_config_path):
                 os.remove(temp_config_path)
             raise
 
-    def _log_matchup_result(self, model1: str, model2: str, game_num: int, session_id: str) -> None:
+    def _log_matchup_result(self, model1: str, model2: str, game_num: int, session_id: str, session_dir: str) -> None:
         """
         Log the result of a matchup to the benchmark log.
 
@@ -275,9 +276,9 @@ class BenchmarkRunner:
             model2 (str): Second model identifier
             game_num (int): Game number for this pair
             session_id (str): Session ID of the completed game
+            session_dir (str): Directory of the session
         """
-        # Find the game results file
-        session_dir = os.path.join(self.output_dir, session_id)
+        # Find the game results file directly using the session directory
         results_path = os.path.join(session_dir, "results.json")
 
         if not os.path.exists(results_path):

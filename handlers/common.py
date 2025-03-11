@@ -16,8 +16,8 @@ class PlayerActionHandler(PhaseHandler):
     """
 
     def __init__(self):
-        """Initialize the handler with an LLM client."""
-        self.llm_client = LLMClient()
+        """Initialize the handler."""
+        self.llm_client = None
 
     def process_player(self, game_state, player):
         """
@@ -30,6 +30,13 @@ class PlayerActionHandler(PhaseHandler):
         Returns:
             any: The player's action
         """
+        # Initialize LLM client with chat logger from game_state if needed
+        if self.llm_client is None:
+            if not hasattr(game_state, 'chat_logger') or game_state.chat_logger is None:
+                raise ValueError("GameState must have a chat_logger attribute")
+
+            self.llm_client = LLMClient.get_instance(chat_logger=game_state.chat_logger)
+
         phase_id = game_state.current_phase
         phase_config = self._get_phase_config(game_state)
         player_id = player['id']
@@ -37,7 +44,6 @@ class PlayerActionHandler(PhaseHandler):
         logger.info(f"Getting action for player {player_id} in phase {phase_id}")
 
         try:
-            # Call the LLM client to get the player's action
             action = self.llm_client.get_action(game_state, player, phase_id)
 
             if action is None:

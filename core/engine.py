@@ -7,7 +7,7 @@ from core.config import ConfigLoader
 from core.state import GameState
 from handlers.base import PhaseController
 from handlers.registry import HandlerRegistry
-from utils.chat_logger import get_chat_logger
+from utils.chat_logger import ChatLogger
 from utils.game_session import GameSession
 
 # Set up logging
@@ -45,8 +45,12 @@ class GameEngine:
         self.state = GameState(self.config, self.game_session)
         self.phase_controller = PhaseController()
 
-        # Get chat logger with the game session
-        self.chat_logger = get_chat_logger(game_session=self.game_session, log_dir=base_output_dir)
+        # Create a chat logger with the game session and attach to state
+        self.chat_logger = ChatLogger(self.game_session)
+        self.state.chat_logger = self.chat_logger
+
+        # Store the LLM client class for handlers
+        self.state.llm_client_class = llm_client_class
 
         # Extract key info for logging
         self.game_name = self.config['game']['name']

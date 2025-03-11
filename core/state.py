@@ -33,6 +33,10 @@ class GameState:
         self.game_over = False
         self.history = []
 
+        # These will be set by GameEngine
+        self.chat_logger = None
+        self.llm_client_class = None
+
         # Store phase result for conditional phase transitions
         self.phase_result = None
 
@@ -283,7 +287,7 @@ class GameState:
         winner = self.get_winner()
         winner_data = None if not winner else (
             {'id': winner['id'], 'tied_players': winner.get('tied_players')}
-            if winner['id'] == 'tie' 
+            if winner['id'] == 'tie'
             else {'id': winner['id']}
         )
 

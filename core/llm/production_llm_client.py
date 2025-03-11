@@ -2,21 +2,24 @@
 import logging
 from core.prompt import PromptManager
 from core.llm.parser import ResponseParserRegistry
-from utils.chat_logger import get_chat_logger
 
 logger = logging.getLogger("ProductionLLMClient")
 
 class ProductionLLMClient():
     """Production implementation using aisuite"""
 
-    def __init__(self, base_output_directory=None):
+    def __init__(self, chat_logger, base_output_directory=None):
         """Initialize the client"""
         try:
             import aisuite as ai
             self.client = ai.Client()
             self.prompt_manager = PromptManager()
             self.parser_registry = ResponseParserRegistry()
-            self.chat_logger = get_chat_logger()
+
+            if chat_logger is None:
+                raise ValueError("ChatLogger is required for ProductionLLMClient")
+
+            self.chat_logger = chat_logger
             logger.info("Initialized production LLM client with aisuite")
         except ImportError:
             logger.error("Failed to import aisuite")
