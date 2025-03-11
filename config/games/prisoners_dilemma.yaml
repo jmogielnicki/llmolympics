@@ -66,7 +66,7 @@ scoring:
 llm_integration:
   player_models:
     player_1: "openai:gpt-4o"
-    player_2: "anthropic:claude-3-5-sonnet-20240620"
+    player_2: "deepseek:deepseek-chat"
   system_prompts:
     decision: |
       Your role is a player in a Prisoner's Dilemma game.

@@ -9,7 +9,7 @@ logger = logging.getLogger("ProductionLLMClient")
 class ProductionLLMClient():
     """Production implementation using aisuite"""
 
-    def __init__(self):
+    def __init__(self, base_output_directory=None):
         """Initialize the client"""
         try:
             import aisuite as ai

@@ -1,7 +1,8 @@
 python-dotenv
 pyyaml>=6.0
-aisuite>=0.1.0
+git+https://github.com/andrewyng/aisuite.git@4e429e07f187d9b8bf8783bb13cff9051202e7ea
 aisuite[anthropic]
 aisuite[google]
-aisuite[groq]
+aisuite[xai]
 aisuite[openai]
+aisuite[mistral]

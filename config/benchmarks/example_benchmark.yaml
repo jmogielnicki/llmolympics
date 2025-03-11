@@ -1,0 +1,27 @@
+# Benchmark configuration for ParlourBench
+# This file defines which models to test and how to run the benchmark
+
+# Core benchmark settings
+benchmark:
+  id: "prisoners_dilemma_benchmark_1"                 # Unique identifier for this benchmark
+  base_config: "config/games/prisoners_dilemma.yaml"  # Base game configuration
+  games_per_pair: 3                                   # Number of games per model pair
+  output_dir: "data/benchmark"                        # Directory for benchmark results
+
+# Models to benchmark
+# Format: "provider:model-name"
+models:
+  - deepseek:deepseek-chat
+  - deepseek:deepseek-reasoner
+  - openai:gpt-4o
+  - openai:o3-mini
+  - openai:gpt-4.5-preview
+  - openai:o1
+  - anthropic:claude-3-5-sonnet-20240620
+  - anthropic:claude-3-7-sonnet-20250219
+  - xai:grok-2-1212
+  - google:gemini-2.0-flash
+  - google:gemini-2.0-flash-exp
+  - google:gemini-2.0-flash-thinking-exp-01-21
+  - mistral:mistral-large-latest
+
