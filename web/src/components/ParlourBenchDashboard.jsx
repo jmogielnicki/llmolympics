@@ -11,7 +11,13 @@ import {
 	LineChart,
 	Line,
 } from "recharts";
-import { ChevronDown, ChevronUp, Minus } from "lucide-react";
+import {
+	ChevronDown,
+	ChevronUp,
+	Minus,
+	CheckCircle,
+	XCircle,
+} from "lucide-react";
 
 // Import JSON files directly - using the correct paths to reach data directory
 import leaderboardJson from "@data/processed/prisoners_dilemma_benchmark_1/leaderboard.json";
@@ -172,6 +178,8 @@ const ParlourBenchDashboard = () => {
 								title: `${player1.model_name} vs. ${player2.model_name}`,
 								player1: player1.model_name,
 								player2: player2.model_name,
+								player1_id: player1.model_id,
+								player2_id: player2.model_id,
 								finalScore: {
 									player1: score1,
 									player2: score2,
@@ -209,10 +217,9 @@ const ParlourBenchDashboard = () => {
 
 			// Find the file that matches this timestamp
 			const fileKey = Object.keys(gameDetailFiles).find((key) => {
-                console.log(key);
-                return key.includes(timestamp);
-            }
-			);
+				console.log(key);
+				return key.includes(timestamp);
+			});
 
 			if (!fileKey) {
 				console.error(
@@ -346,6 +353,16 @@ const ParlourBenchDashboard = () => {
 		);
 	};
 
+	// Helper to render decision icon
+	const renderDecisionIcon = (decision) => {
+		if (decision === "cooperate") {
+			return <CheckCircle className="text-green-500 w-4 h-4" />;
+		} else if (decision === "defect") {
+			return <XCircle className="text-red-500 w-4 h-4" />;
+		}
+		return null;
+	};
+
 	// Loading state
 	if (isLoading && selectedGame === "prisoners_dilemma") {
 		return (
@@ -398,7 +415,6 @@ const ParlourBenchDashboard = () => {
 	return (
 		<div className="container mx-auto p-4 max-w-6xl">
 			<header className="mb-4 text-center">
-
 				{/* Game Selector */}
 				<div className="flex justify-center mb-6">
 					<div className="inline-block relative">
@@ -939,51 +955,6 @@ const ParlourBenchDashboard = () => {
 									</div>
 								</div>
 							</div>
-
-							<div className="bg-white rounded-lg shadow-md overflow-hidden">
-								<div className="px-6 py-4 border-b border-gray-200">
-									<h2 className="text-xl font-semibold">
-										Strategy Evolution
-									</h2>
-									<p className="text-gray-600 text-sm">
-										As the game progresses, models switch
-										from cooperation to defection
-									</p>
-								</div>
-								<div className="p-6">
-									<div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-										<p className="mb-4">
-											Key observations from the data:
-										</p>
-										<ul className="list-disc pl-5 space-y-2">
-											<li>
-												All models start with
-												cooperation in round 1 (100%
-												cooperation rate)
-											</li>
-											<li>
-												By the final round, 83.3% of
-												decisions are defections
-											</li>
-											<li>
-												The tipping point occurs around
-												round 3-4
-											</li>
-											<li>
-												Models appear to use tit-for-tat
-												strategies initially, but switch
-												to self-preservation in later
-												rounds
-											</li>
-											<li>
-												Grok-2 was the most successful
-												at timing its defections
-												strategically
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
 						</div>
 					)}
 
@@ -1068,56 +1039,6 @@ const ParlourBenchDashboard = () => {
 									</div>
 								</div>
 							</div>
-
-							{/* Game Highlights */}
-							{matchups.length > 0 && (
-								<div className="grid grid-cols-1 gap-6">
-									{matchups
-										.slice(0, 2)
-										.map((matchup, index) => (
-											<div
-												key={matchup.id}
-												className="bg-white rounded-lg shadow-md overflow-hidden"
-											>
-												<div className="px-6 py-4 border-b border-gray-200">
-													<h2 className="text-xl font-semibold">
-														Game: {matchup.title}
-													</h2>
-													<p className="text-gray-600 text-sm">
-														{matchup.finalScore
-															.player1 >
-														matchup.finalScore
-															.player2
-															? `${matchup.player1} won with a score of ${matchup.finalScore.player1} vs ${matchup.finalScore.player2}`
-															: matchup.finalScore
-																	.player1 <
-															  matchup.finalScore
-																	.player2
-															? `${matchup.player2} won with a score of ${matchup.finalScore.player2} vs ${matchup.finalScore.player1}`
-															: `Game ended in a tie with a score of ${matchup.finalScore.player1}`}
-													</p>
-												</div>
-												<div className="p-6">
-													<div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-														{/* Display session ID for debugging/reference */}
-														<p className="text-sm text-gray-500 mb-4">
-															Session ID:{" "}
-															{matchup.session_id ||
-																"Not available"}
-														</p>
-
-														<p className="mb-2">
-															Full game data for
-															all rounds can be
-															accessed in the Game
-															Timeline tab.
-														</p>
-													</div>
-												</div>
-											</div>
-										))}
-								</div>
-							)}
 						</div>
 					)}
 
@@ -1235,185 +1156,194 @@ const ParlourBenchDashboard = () => {
 												) : gameDetail ? (
 													<div className="space-y-6">
 														{/* Group timeline items by round for cleaner display */}
-														{gameDetail.timeline
-															.filter(
-																(item) =>
-																	item.type ===
-																		"player_decision" ||
-																	item.type ===
-																		"round_resolution"
-															)
-															.reduce(
-																(
-																	rounds,
-																	item
-																) => {
-																	// Group timeline items by round
-																	const round =
-																		item.round;
+														{(() => {
+															// Extract player decision events from the timeline
+															const playerDecisionEvents =
+																gameDetail.timeline.filter(
+																	(item) =>
+																		item.type ===
+																		"player_decision"
+																);
+
+															// Group decisions by round
+															const roundsData =
+																{};
+															playerDecisionEvents.forEach(
+																(item) => {
 																	if (
-																		!rounds[
-																			round
+																		!roundsData[
+																			item
+																				.round
 																		]
-																	)
-																		rounds[
-																			round
+																	) {
+																		roundsData[
+																			item.round
 																		] = {
 																			decisions:
 																				{},
-																			resolution:
-																				null,
 																		};
+																	}
+																	roundsData[
+																		item.round
+																	].decisions[
+																		item.player_id
+																	] = item;
+																}
+															);
 
-																	if (
-																		item.type ===
-																		"player_decision"
-																	) {
-																		rounds[
-																			round
-																		].decisions[
-																			item.player_id
-																		] =
-																			item;
-																	} else if (
+															// Add resolution events to round data
+															gameDetail.timeline
+																.filter(
+																	(item) =>
 																		item.type ===
 																		"round_resolution"
-																	) {
-																		rounds[
-																			round
-																		].resolution =
-																			item;
+																)
+																.forEach(
+																	(item) => {
+																		if (
+																			roundsData[
+																				item
+																					.round
+																			]
+																		) {
+																			roundsData[
+																				item.round
+																			].resolution =
+																				item;
+																		}
 																	}
+																);
 
-																	return rounds;
-																},
-																[]
+															// Convert to sorted array
+															return Object.entries(
+																roundsData
 															)
-															.filter(Boolean)
-															.map(
-																(
-																	roundData,
-																	roundIndex
-																) => {
-																	const roundNumber =
-																		roundIndex +
-																		1;
-																	const player1Decision =
-																		roundData
-																			.decisions
-																			?.player_1;
-																	const player2Decision =
-																		roundData
-																			.decisions
-																			?.player_2;
-																	const resolution =
-																		roundData.resolution;
+																.sort(
+																	(
+																		[a],
+																		[b]
+																	) =>
+																		Number(
+																			a
+																		) -
+																		Number(
+																			b
+																		)
+																)
+																.map(
+																	([
+																		roundNumber,
+																		roundData,
+																	]) => {
+																		// Find all player decisions for this round
+																		const playerDecisions =
+																			Object.values(
+																				roundData.decisions ||
+																					{}
+																			);
+																		const resolution =
+																			roundData.resolution;
 
-																	return (
-																		<div
-																			key={
-																				roundNumber
-																			}
-																			className="border border-gray-200 rounded-lg overflow-hidden"
-																		>
-																			<div className="bg-gray-50 px-4 py-2 flex justify-between items-center">
-																				<h4 className="font-medium">
-																					Round{" "}
-																					{
-																						roundNumber
-																					}
-																				</h4>
-																				{resolution && (
-																					<div className="text-sm text-gray-600">
-																						Score:{" "}
+																		return (
+																			<div
+																				key={
+																					roundNumber
+																				}
+																				className="border border-gray-200 rounded-lg overflow-hidden"
+																			>
+																				<div className="bg-gray-50 px-4 py-2 flex justify-between items-center">
+																					<h4 className="font-medium">
+																						Round{" "}
 																						{
-																							matchup.player1
-																						}{" "}
-																						{
-																							resolution
-																								.scores
-																								.player_1
-																						}{" "}
-																						-{" "}
-																						{
-																							resolution
-																								.scores
-																								.player_2
-																						}{" "}
-																						{
-																							matchup.player2
+																							roundNumber
 																						}
-																					</div>
-																				)}
-																			</div>
-
-																			<div className="grid grid-cols-2 divide-x divide-gray-200">
-																				{player1Decision && (
-																					<div className="p-4">
-																						<div className="flex items-center gap-2 mb-2">
-																							<div
-																								className={`w-3 h-3 rounded-full ${
-																									player1Decision.decision ===
-																									"cooperate"
-																										? "bg-green-500"
-																										: "bg-red-500"
-																								}`}
-																							></div>
-																							<h5 className="font-medium">
-																								{
-																									matchup.player1
-																								}
-																							</h5>
-																							<span className="text-sm text-gray-500 ml-auto">
-																								{player1Decision.decision ===
-																								"cooperate"
-																									? "Cooperated"
-																									: "Defected"}
-																							</span>
+																					</h4>
+																					{resolution && (
+																						<div className="text-sm text-gray-600">
+																							Score:{" "}
+																							{Object.entries(
+																								resolution.scores ||
+																									{}
+																							)
+																								.map(
+																									([
+																										id,
+																										score,
+																									]) => {
+																										const player =
+																											gameDetail.game.players.find(
+																												(
+																													p
+																												) =>
+																													p.id ===
+																													id
+																											);
+																										return `${
+																											player?.model_name ||
+																											id
+																										}: ${score}`;
+																									}
+																								)
+																								.join(
+																									" - "
+																								)}
 																						</div>
-																						<p className="text-sm text-gray-600">
-																							{
-																								player1Decision.reasoning
-																							}
-																						</p>
-																					</div>
-																				)}
+																					)}
+																				</div>
 
-																				{player2Decision && (
-																					<div className="p-4">
-																						<div className="flex items-center gap-2 mb-2">
+																				<div className="grid grid-cols-2 divide-x divide-gray-200">
+																					{playerDecisions.map(
+																						(
+																							decisionEvent,
+																							idx
+																						) => (
 																							<div
-																								className={`w-3 h-3 rounded-full ${
-																									player2Decision.decision ===
-																									"cooperate"
-																										? "bg-green-500"
-																										: "bg-red-500"
-																								}`}
-																							></div>
-																							<h5 className="font-medium">
-																								{
-																									matchup.player2
+																								key={
+																									idx
 																								}
-																							</h5>
-																							<span className="text-sm text-gray-500 ml-auto">
-																								{player2Decision.decision ===
-																								"cooperate"
-																									? "Cooperated"
-																									: "Defected"}
-																							</span>
-																						</div>
-																						<p className="text-sm text-gray-600">
-																							{
-																								player2Decision.reasoning
-																							}
-																						</p>
-																					</div>
-																				)}
+																								className="p-4"
+																							>
+																								<div className="flex items-center gap-2 mb-2">
+																									<div
+																										className={`w-3 h-3 rounded-full ${
+																											decisionEvent
+																												.decision_context
+																												?.css_class ||
+																											(decisionEvent.decision ===
+																											"cooperate"
+																												? "bg-green-500"
+																												: "bg-red-500")
+																										}`}
+																									></div>
+																									<h5 className="font-medium">
+																										{
+																											decisionEvent.model_name
+																										}
+																									</h5>
+																									<span className="text-sm text-gray-500 ml-auto">
+																										{decisionEvent
+																											.decision_context
+																											?.display_text ||
+																											(decisionEvent.decision ===
+																											"cooperate"
+																												? "Cooperated"
+																												: "Defected")}
+																									</span>
+																								</div>
+																								<p className="text-sm text-gray-600">
+																									{
+																										decisionEvent.reasoning
+																									}
+																								</p>
+																							</div>
+																						)
+																					)}
+																				</div>
 																			</div>
-																		</div>
-																	);
-																}
-															)}
+																		);
+																	}
+																);
+														})()}
 													</div>
 												) : (
 													<div className="p-4 bg-gray-50 rounded-lg border border-gray-200">

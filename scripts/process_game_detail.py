@@ -5,7 +5,7 @@ import json
 import yaml
 from datetime import datetime
 from pathlib import Path
-
+from common_utils import extract_model_name
 
 def parse_timestamp(timestamp_str):
     """Convert ISO timestamp to readable format."""
@@ -57,26 +57,38 @@ def load_chat_logs(session_dir):
     return organized_logs
 
 
-def extract_model_reasoning(chat_log):
-    """Extract model reasoning from a chat log entry."""
-    response = chat_log.get('response', '')
-    if not response:
-        return ''
+def get_decision_context(decision):
+    """
+    Get contextual information for a decision.
 
-    # Clean up and extract the thinking part
-    # In Prisoner's Dilemma, the thinking is before the [[DECISION]]
-    parts = response.split('[[')
-    if len(parts) > 1:
-        reasoning = parts[0].strip()
+    Args:
+        decision (str): The decision (e.g., 'cooperate' or 'defect')
 
-        # Truncate if too long
-        max_len = 500
-        if len(reasoning) > max_len:
-            reasoning = reasoning[:max_len] + "..."
+    Returns:
+        dict: Contextual information for UI rendering
+    """
+    decision_contexts = {
+        "cooperate": {
+            "css_class": "bg-green-500",
+            "display_text": "Cooperated",
+            "icon": "check",
+            "color": "green"
+        },
+        "defect": {
+            "css_class": "bg-red-500",
+            "display_text": "Defected",
+            "icon": "x",
+            "color": "red"
+        },
+        # Add contexts for other game decision types as needed
+    }
 
-        return reasoning
-
-    return response[:200]  # Return a small preview if no clear reasoning/decision split
+    return decision_contexts.get(decision.lower(), {
+        "css_class": "bg-gray-500",
+        "display_text": decision,
+        "icon": "circle",
+        "color": "gray"
+    })
 
 
 def generate_game_timeline(session_dir):
@@ -100,11 +112,14 @@ def generate_game_timeline(session_dir):
     except:
         return {"error": f"Failed to parse game config in {session_dir}"}
 
-    # Get player models
+    # Get player models with both ID and friendly name
     player_models = {}
     llm_integration = config.get('llm_integration', {})
     for player_id, model in llm_integration.get('player_models', {}).items():
-        player_models[player_id] = model
+        player_models[player_id] = {
+            'model_id': model,
+            'model_name': extract_model_name(model)
+        }
 
     # Load final results
     results_path = os.path.join(session_dir, "results.json")
@@ -133,9 +148,9 @@ def generate_game_timeline(session_dir):
             for line in f:
                 try:
                     record = json.loads(line)
-                    if record.get('record_type') == 'snapshot':
+                    if record.get("record_type") == 'snapshot':
                         snapshots.append(record)
-                    elif record.get('record_type') == 'event':
+                    elif record.get("record_type") == 'event':
                         events.append(record)
                 except:
                     continue
@@ -159,6 +174,7 @@ def generate_game_timeline(session_dir):
     # Add phase events in chronological order
     # First, organize all events by phase and round
     phase_events = {}
+    running_scores = {}  # Track running scores across rounds
 
     for event in events:
         event_type = event.get('event_type')
@@ -194,7 +210,8 @@ def generate_game_timeline(session_dir):
                     "type": "round_start",
                     "timestamp": timestamp,
                     "round": round_num,
-                    "message": f"Round {round_num} started"
+                    "message": f"Round {round_num} started",
+                    "running_scores": running_scores.copy()  # Include current scores at round start
                 })
 
             # Get player actions
@@ -206,18 +223,23 @@ def generate_game_timeline(session_dir):
                     action = event.get('data', {}).get('action')
 
                     if player_id and action:
+                        model_id = player_models.get(player_id, {}).get('model_id', "unknown")
+                        model_name = player_models.get(player_id, {}).get('model_name', "Unknown Model")
+
                         player_actions[player_id] = {
                             "action": action,
                             "timestamp": parse_timestamp(event.get('timestamp', '')),
                             "player_id": player_id,
-                            "model": player_models.get(player_id, "unknown")
+                            "model_id": model_id,
+                            "model_name": model_name,
+                            "decision_context": get_decision_context(action)
                         }
 
                         # Add reasoning from chat logs if available
                         if player_id in chat_logs and 'decision' in chat_logs[player_id]:
                             if round_key in chat_logs[player_id]['decision']:
                                 chat_log = chat_logs[player_id]['decision'][round_key]
-                                reasoning = extract_model_reasoning(chat_log)
+                                reasoning = chat_log.get('response', '')
                                 player_actions[player_id]["reasoning"] = reasoning
 
             # Add player actions to timeline
@@ -227,8 +249,10 @@ def generate_game_timeline(session_dir):
                     "timestamp": action_data["timestamp"],
                     "round": round_num,
                     "player_id": player_id,
-                    "model": action_data["model"],
+                    "model_id": action_data["model_id"],
+                    "model_name": action_data["model_name"],
                     "decision": action_data["action"],
+                    "decision_context": action_data["decision_context"],
                     "reasoning": action_data.get("reasoning", "")
                 })
 
@@ -278,6 +302,8 @@ def generate_game_timeline(session_dir):
 
                         if player_id and score is not None:
                             player_scores[player_id] = score
+                            # Update running scores
+                            running_scores[player_id] = score
 
                     # Extract decisions from history
                     decisions = {}
@@ -288,13 +314,23 @@ def generate_game_timeline(session_dir):
                             decisions = history_entry.get('decisions', {})
                             break
 
+                    # Enhance the decisions with context
+                    decisions_with_context = {}
+                    for player_id, decision in decisions.items():
+                        decisions_with_context[player_id] = {
+                            "decision": decision,
+                            "context": get_decision_context(decision)
+                        }
+
                     # Add resolution event to timeline
                     timeline.append({
                         "type": "round_resolution",
                         "timestamp": parse_timestamp(phase_end.get('timestamp', '')),
                         "round": round_num,
                         "scores": player_scores,
+                        "running_scores": running_scores.copy(),  # Include updated scores
                         "decisions": decisions,
+                        "decisions_with_context": decisions_with_context,
                         "message": f"Round {round_num} resolved"
                     })
 
@@ -306,22 +342,57 @@ def generate_game_timeline(session_dir):
             "type": "game_end",
             "timestamp": timestamp,
             "message": "Game ended",
-            "data": game_end_event.get('data', {})
+            "data": game_end_event.get('data', {}),
+            "final_scores": running_scores.copy()
         })
 
     # Sort timeline by timestamp
     timeline.sort(key=lambda x: x.get('timestamp', ''))
+
+    # Create player information with both raw IDs and friendly names
+    players_info = []
+    for player_id, model_info in player_models.items():
+        player_score = 0
+        for p in results.get('players', []):
+            if p.get('id') == player_id:
+                player_score = p.get('final_state', {}).get('score', 0)
+                break
+
+        players_info.append({
+            "id": player_id,
+            "model_id": model_info.get('model_id'),
+            "model_name": model_info.get('model_name'),
+            "final_score": player_score
+        })
+
+    # Determine winning model name
+    winning_model_name = None
+    winner_id = results.get('winner', {}).get('id') if results.get('winner') else None
+    if winner_id:
+        for player in players_info:
+            if player.get('id') == winner_id:
+                winning_model_name = player.get('model_name')
+                break
 
     # Gather additional game metadata
     game_data = {
         "session_id": os.path.basename(session_dir),
         "game_name": config.get('game', {}).get('name', "Unknown Game"),
         "player_models": player_models,
+        "players": players_info,
         "rounds_played": results.get('rounds_played', 0),
         "winner": results.get('winner', {}).get('id'),
         "final_scores": {p.get('id'): p.get('final_state', {}).get('score')
                          for p in results.get('players', [])
                          if p.get('id') and p.get('final_state', {}).get('score') is not None}
+    }
+
+    # Add game summary for easy consumption by UI
+    game_data["summary"] = {
+        "outcome": "win" if winner_id else "tie",
+        "winning_player_id": winner_id,
+        "winning_model_name": winning_model_name,
+        "final_scores_display": ", ".join([f"{p['model_name']}: {p['final_score']}" for p in players_info])
     }
 
     return {
