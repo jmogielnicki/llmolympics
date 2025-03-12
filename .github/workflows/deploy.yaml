@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]  # Change to your main branch name if different
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: cd web && npm ci
+
+      - name: Build
+        run: cd web && npm run build
+
+      - name: Create .nojekyll file
+        run: |
+          touch .nojekyll
+          touch web/dist/.nojekyll
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: web/dist
+          branch: gh-pages
+          clean: true
+          clean-exclude: |
+            .nojekyll
