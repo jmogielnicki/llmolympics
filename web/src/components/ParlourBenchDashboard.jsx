@@ -14,11 +14,17 @@ import {
 import { ChevronDown, ChevronUp, Minus } from "lucide-react";
 
 // Import JSON files directly - using the correct paths to reach data directory
-import leaderboardJson from "../../../data/processed/prisoners_dilemma_benchmark_1/leaderboard.json";
-import matchupMatrixJson from "../../../data/processed/prisoners_dilemma_benchmark_1/matchup_matrix.json";
-import roundProgressionJson from "../../../data/processed/prisoners_dilemma_benchmark_1/round_progression.json";
-import modelProfilesJson from "../../../data/processed/prisoners_dilemma_benchmark_1/model_profiles.json";
-import metadataJson from "../../../data/processed/prisoners_dilemma_benchmark_1/metadata.json";
+import leaderboardJson from "@data/processed/prisoners_dilemma_benchmark_1/leaderboard.json";
+import matchupMatrixJson from "@data/processed/prisoners_dilemma_benchmark_1/matchup_matrix.json";
+import roundProgressionJson from "@data/processed/prisoners_dilemma_benchmark_1/round_progression.json";
+import modelProfilesJson from "@data/processed/prisoners_dilemma_benchmark_1/model_profiles.json";
+import metadataJson from "@data/processed/prisoners_dilemma_benchmark_1/metadata.json";
+
+// Dynamic imports for game detail files
+const gameDetailFiles = import.meta.glob(
+	"@data/processed/prisoners_dilemma_benchmark_1/detail/*.json",
+	{ eager: false }
+);
 
 const ParlourBenchDashboard = () => {
 	const [activeTab, setActiveTab] = useState("leaderboard");
@@ -38,6 +44,10 @@ const ParlourBenchDashboard = () => {
 	const [matchups, setMatchups] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
+
+	// State for game detail loading
+	const [gameDetail, setGameDetail] = useState(null);
+	const [isLoadingDetail, setIsLoadingDetail] = useState(false);
 
 	// Available games
 	const games = [
@@ -166,7 +176,6 @@ const ParlourBenchDashboard = () => {
 									player1: score1,
 									player2: score2,
 								},
-								// We don't have actual timeline data in the JSON, so we'll use the match result
 								result: game.result,
 								session_id: game.session_id,
 							});
@@ -180,6 +189,49 @@ const ParlourBenchDashboard = () => {
 		} catch (error) {
 			console.error("Error extracting game data:", error);
 			return [];
+		}
+	};
+
+	// Function to load game details based on session ID
+	const loadGameDetail = async (sessionId) => {
+		if (!sessionId) {
+			setGameDetail(null);
+			return;
+		}
+
+		setIsLoadingDetail(true);
+
+		try {
+			// Extract just the timestamp part from the session ID
+			// Pattern matches: prisoner's_dilemma_20250311_153141 -> 20250311_153141
+			const timestampMatch = sessionId.match(/(\d{8}_\d{6})/);
+			const timestamp = timestampMatch ? timestampMatch[1] : sessionId;
+
+			// Find the file that matches this timestamp
+			const fileKey = Object.keys(gameDetailFiles).find((key) => {
+                console.log(key);
+                return key.includes(timestamp);
+            }
+			);
+
+			if (!fileKey) {
+				console.error(
+					`Game detail file not found for session: ${sessionId} (timestamp: ${timestamp})`
+				);
+				setIsLoadingDetail(false);
+				return;
+			}
+
+			// Load the file dynamically
+			const module = await gameDetailFiles[fileKey]();
+			setGameDetail(module.default || module);
+		} catch (error) {
+			console.error(
+				`Failed to load game detail for ${sessionId}:`,
+				error
+			);
+		} finally {
+			setIsLoadingDetail(false);
 		}
 	};
 
@@ -256,22 +308,15 @@ const ParlourBenchDashboard = () => {
 		loadData();
 	}, [selectedGame]);
 
-	// Load game timeline data
-	const loadGameTimelineData = async (sessionId) => {
-		try {
-			// In a real implementation, this would make an API call to fetch the timeline data
-			// using the session ID. For now, we'll use a placeholder message.
-			console.log(`Would fetch timeline data for session: ${sessionId}`);
-			return {
-				message:
-					"Game timeline data would be loaded here based on the session ID",
-				// This is where the actual game progression would be returned
-			};
-		} catch (error) {
-			console.error("Error loading game timeline:", error);
-			return null;
+	// Load game detail when a matchup is selected
+	useEffect(() => {
+		const matchup = getSelectedMatchupData();
+		if (matchup && matchup.session_id) {
+			loadGameDetail(matchup.session_id);
+		} else {
+			setGameDetail(null);
 		}
-	};
+	}, [selectedMatchup]);
 
 	const renderWinMatrixCell = (value, rowIndex, colIndex) => {
 		if (rowIndex === colIndex) return "-";
@@ -353,13 +398,6 @@ const ParlourBenchDashboard = () => {
 	return (
 		<div className="container mx-auto p-4 max-w-6xl">
 			<header className="mb-4 text-center">
-				<h1 className="text-3xl font-bold mt-4 mb-2">
-					ParlourBench Dashboard
-				</h1>
-				<p className="text-lg text-gray-600 mb-6">
-					An open-source benchmark that pits LLMs against one another
-					in parlour games
-				</p>
 
 				{/* Game Selector */}
 				<div className="flex justify-center mb-6">
@@ -1177,26 +1215,215 @@ const ParlourBenchDashboard = () => {
 													</div>
 												</div>
 
-												<div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-													<p className="mb-4">
-														To access the full game
-														timeline with
-														round-by-round decisions
-														and reasoning, please
-														use the ParlourBench API
-														or view the detailed
-														game JSON files.
-													</p>
-													<p className="text-sm text-gray-600">
-														For detailed
-														implementation, you
-														would load the game
-														timeline using the
-														session ID:{" "}
-														{matchup.session_id ||
-															"Not available"}
-													</p>
-												</div>
+												{isLoadingDetail ? (
+													<div className="flex items-center justify-center p-12">
+														<div className="text-center">
+															<div
+																className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+																role="status"
+															>
+																<span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+																	Loading...
+																</span>
+															</div>
+															<p className="mt-2 text-gray-600">
+																Loading game
+																details...
+															</p>
+														</div>
+													</div>
+												) : gameDetail ? (
+													<div className="space-y-6">
+														{/* Group timeline items by round for cleaner display */}
+														{gameDetail.timeline
+															.filter(
+																(item) =>
+																	item.type ===
+																		"player_decision" ||
+																	item.type ===
+																		"round_resolution"
+															)
+															.reduce(
+																(
+																	rounds,
+																	item
+																) => {
+																	// Group timeline items by round
+																	const round =
+																		item.round;
+																	if (
+																		!rounds[
+																			round
+																		]
+																	)
+																		rounds[
+																			round
+																		] = {
+																			decisions:
+																				{},
+																			resolution:
+																				null,
+																		};
+
+																	if (
+																		item.type ===
+																		"player_decision"
+																	) {
+																		rounds[
+																			round
+																		].decisions[
+																			item.player_id
+																		] =
+																			item;
+																	} else if (
+																		item.type ===
+																		"round_resolution"
+																	) {
+																		rounds[
+																			round
+																		].resolution =
+																			item;
+																	}
+
+																	return rounds;
+																},
+																[]
+															)
+															.filter(Boolean)
+															.map(
+																(
+																	roundData,
+																	roundIndex
+																) => {
+																	const roundNumber =
+																		roundIndex +
+																		1;
+																	const player1Decision =
+																		roundData
+																			.decisions
+																			?.player_1;
+																	const player2Decision =
+																		roundData
+																			.decisions
+																			?.player_2;
+																	const resolution =
+																		roundData.resolution;
+
+																	return (
+																		<div
+																			key={
+																				roundNumber
+																			}
+																			className="border border-gray-200 rounded-lg overflow-hidden"
+																		>
+																			<div className="bg-gray-50 px-4 py-2 flex justify-between items-center">
+																				<h4 className="font-medium">
+																					Round{" "}
+																					{
+																						roundNumber
+																					}
+																				</h4>
+																				{resolution && (
+																					<div className="text-sm text-gray-600">
+																						Score:{" "}
+																						{
+																							matchup.player1
+																						}{" "}
+																						{
+																							resolution
+																								.scores
+																								.player_1
+																						}{" "}
+																						-{" "}
+																						{
+																							resolution
+																								.scores
+																								.player_2
+																						}{" "}
+																						{
+																							matchup.player2
+																						}
+																					</div>
+																				)}
+																			</div>
+
+																			<div className="grid grid-cols-2 divide-x divide-gray-200">
+																				{player1Decision && (
+																					<div className="p-4">
+																						<div className="flex items-center gap-2 mb-2">
+																							<div
+																								className={`w-3 h-3 rounded-full ${
+																									player1Decision.decision ===
+																									"cooperate"
+																										? "bg-green-500"
+																										: "bg-red-500"
+																								}`}
+																							></div>
+																							<h5 className="font-medium">
+																								{
+																									matchup.player1
+																								}
+																							</h5>
+																							<span className="text-sm text-gray-500 ml-auto">
+																								{player1Decision.decision ===
+																								"cooperate"
+																									? "Cooperated"
+																									: "Defected"}
+																							</span>
+																						</div>
+																						<p className="text-sm text-gray-600">
+																							{
+																								player1Decision.reasoning
+																							}
+																						</p>
+																					</div>
+																				)}
+
+																				{player2Decision && (
+																					<div className="p-4">
+																						<div className="flex items-center gap-2 mb-2">
+																							<div
+																								className={`w-3 h-3 rounded-full ${
+																									player2Decision.decision ===
+																									"cooperate"
+																										? "bg-green-500"
+																										: "bg-red-500"
+																								}`}
+																							></div>
+																							<h5 className="font-medium">
+																								{
+																									matchup.player2
+																								}
+																							</h5>
+																							<span className="text-sm text-gray-500 ml-auto">
+																								{player2Decision.decision ===
+																								"cooperate"
+																									? "Cooperated"
+																									: "Defected"}
+																							</span>
+																						</div>
+																						<p className="text-sm text-gray-600">
+																							{
+																								player2Decision.reasoning
+																							}
+																						</p>
+																					</div>
+																				)}
+																			</div>
+																		</div>
+																	);
+																}
+															)}
+													</div>
+												) : (
+													<div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+														<p className="mb-4">
+															No detailed timeline
+															data available for
+															this game.
+														</p>
+													</div>
+												)}
 											</div>
 										);
 									})()}
