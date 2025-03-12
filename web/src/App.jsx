@@ -8,30 +8,26 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <ParlourBenchDashboard />
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+		<>
+			<div>
+			</div>
+			<ParlourBenchDashboard />
+			{/* Common footer across all games */}
+			<footer className="mt-12 pt-6 border-t border-gray-200 text-center text-gray-600 text-sm">
+				<p>
+					ParlourBench is an open-source project. View the code on
+					<a
+						href="https://github.com/jmogielnicki/parlourbench/"
+						className="text-blue-600 hover:underline ml-1"
+					>
+						GitHub
+					</a>
+				</p>
+				<p className="mt-2">
+				</p>
+			</footer>
+		</>
+  );
 }
 
 export default App
