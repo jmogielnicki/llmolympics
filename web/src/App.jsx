@@ -1,17 +1,15 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import ParlourBenchDashboard from './components/ParlourBenchDashboard'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
 		<>
 			<div>
 			</div>
 			<ParlourBenchDashboard />
+
 			{/* Common footer across all games */}
 			<footer className="mt-12 pt-6 border-t border-gray-200 text-center text-gray-600 text-sm">
 				<p>
