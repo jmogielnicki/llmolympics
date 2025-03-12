@@ -15,3 +15,6 @@ models:
   - openai:gpt-4o
   - anthropic:claude-3-5-sonnet-20240620
   - xai:grok-2-1212
+  - mistral:mistral-large-latest
+  - anthropic:claude-3-7-sonnet-20250219
+  - openai:gpt-4.5-preview
