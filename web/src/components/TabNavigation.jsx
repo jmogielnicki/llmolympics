@@ -1,31 +1,45 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 /**
- * Reusable tab navigation component with responsive design
+ * Reusable tab navigation component with React Router integration
  * @param {Object} props
- * @param {string} props.activeTab - Current active tab ID
- * @param {Array} props.tabs - Array of tab objects with {id, label}
- * @param {Function} props.onTabChange - Function to call when tab is changed
+ * @param {Array} props.tabs - Array of tab objects with {id, label, path}
+ * @param {string} props.basePath - Base path for the tabs
  */
-const TabNavigation = ({ activeTab, tabs, onTabChange }) => {
+const TabNavigation = ({ tabs, basePath }) => {
+	const location = useLocation();
+	const currentPath = location.pathname;
+
 	return (
 		<div className="mb-8">
 			{/* Scrollable tab bar on small screens */}
 			<div className="overflow-x-auto pb-1">
 				<div className="flex border-b border-gray-200 min-w-max">
-					{tabs.map((tab) => (
-						<button
-							key={tab.id}
-							className={`px-2 sm:px-4 py-2 font-medium text-xs sm:text-sm whitespace-nowrap ${
-								activeTab === tab.id
-									? "border-b-2 border-blue-500 text-blue-600"
-									: "text-gray-500 hover:text-gray-700"
-							}`}
-							onClick={() => onTabChange(tab.id)}
-						>
-							{tab.label}
-						</button>
-					))}
+					{tabs.map((tab) => {
+						const isActive =
+							currentPath === `${basePath}/${tab.id}` ||
+							(tab.id === "leaderboard" &&
+								currentPath === basePath);
+
+						return (
+							<Link
+								key={tab.id}
+								to={
+									tab.id === "leaderboard"
+										? basePath
+										: `${basePath}/${tab.id}`
+								}
+								className={`px-2 sm:px-4 py-2 font-medium text-xs sm:text-sm whitespace-nowrap ${
+									isActive
+										? "border-b-2 border-blue-500 text-blue-600"
+										: "text-gray-500 hover:text-gray-700"
+								}`}
+							>
+								{tab.label}
+							</Link>
+						);
+					})}
 				</div>
 			</div>
 		</div>

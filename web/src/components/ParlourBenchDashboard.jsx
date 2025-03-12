@@ -6,6 +6,7 @@ import {
 	Navigate,
 	useNavigate,
 	Link,
+	Outlet,
 } from "react-router-dom";
 import { ChevronDown, Info, Github, Home } from "lucide-react";
 import PrisonersDilemmaDashboard from "./PrisonersDilemmaDashboard";
@@ -99,7 +100,7 @@ const ParlourBenchDashboard = () => {
 
 				<Routes>
 					<Route
-						path="/games/prisoners-dilemma"
+						path="/games/prisoners-dilemma/*"
 						element={<PrisonersDilemmaDashboard />}
 					/>
 					<Route
