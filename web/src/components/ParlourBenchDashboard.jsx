@@ -10,12 +10,10 @@ import {
 	ResponsiveContainer,
 	LineChart,
 	Line,
-	Cell,
 } from "recharts";
-import { ChevronDown, ChevronUp, Minus, ArrowRight } from "lucide-react";
+import { ChevronDown, ChevronUp, Minus } from "lucide-react";
 
 // Import JSON files directly - using the correct paths to reach data directory
-// Using direct imports for better code organization
 import leaderboardJson from "../../../data/processed/prisoners_dilemma_benchmark_1/leaderboard.json";
 import matchupMatrixJson from "../../../data/processed/prisoners_dilemma_benchmark_1/matchup_matrix.json";
 import roundProgressionJson from "../../../data/processed/prisoners_dilemma_benchmark_1/round_progression.json";
@@ -52,16 +50,13 @@ const ParlourBenchDashboard = () => {
 
 	// Transform leaderboard data
 	const transformLeaderboardData = (data) => {
-		// The leaderboard data is in a property called 'leaderboard'
 		return data.leaderboard.map((model) => ({
 			...model,
-			// Rank is already included in the data
 		}));
 	};
 
 	// Transform matchup matrix data
 	const transformMatchupMatrix = (data) => {
-		// Extract model names and win matrix
 		return {
 			models:
 				data.model_names ||
@@ -91,10 +86,6 @@ const ParlourBenchDashboard = () => {
 
 	// Transform cooperation data by model and round
 	const transformCooperationByModel = (roundProgression, modelProfiles) => {
-		// For now, we'll create a simple cooperative structure since the detailed round-by-model
-		// data isn't directly available in the JSON structure. We'll use the overall cooperation rate
-		// and create a basic model-specific estimate
-
 		// Create a mapping of model IDs to short display names
 		const modelNames = {};
 		modelProfiles.models.forEach((model) => {
@@ -111,7 +102,6 @@ const ParlourBenchDashboard = () => {
 			};
 
 			// Add estimated cooperation rate for each round based on overall data
-			// This is a simplified approach since the exact per-model per-round data isn't available
 			roundProgression.round_progression.forEach((round) => {
 				// Create a slight variation for each model to make the visualization more interesting
 				// This is just for demonstration - in a real implementation, this would use actual data
@@ -127,215 +117,69 @@ const ParlourBenchDashboard = () => {
 		});
 	};
 
-	// Load individual game files to create matchup data
-	const loadGameFiles = async () => {
+	// Extract real game data from model profiles
+	const extractGameData = () => {
 		try {
-			// For now, let's use the game sample data provided in 20250311_144154.json as a template
-			// In a production environment, this would fetch all game files
-
-			// Create a sample game from the detailed example
-			const sampleGame = {
-				id: "deepseek-gpt4o",
-				title: "DeepSeek DeepSeek vs. GPT-4o",
-				player1: "DeepSeek DeepSeek",
-				player2: "OpenAI GPT-4o",
-				finalScore: { player1: 8, player2: 13 },
-				timeline: [
-					{
-						round: 1,
-						player1: {
-							decision: "cooperate",
-							reasoning:
-								"Hmm, this is the first round, and I don't have any information about my opponent's behavior yet.",
-						},
-						player2: {
-							decision: "cooperate",
-							reasoning:
-								"It's the first round and there's no history to base my decision on. In a Prisoner's Dilemma, there is a temptation to defect for immediate gain.",
-						},
-						scores: { player1: 3, player2: 3 },
-					},
-					{
-						round: 2,
-						player1: {
-							decision: "cooperate",
-							reasoning:
-								"Hmm, let me think about this. In the first round, both of us cooperated, and we both got 3 points.",
-						},
-						player2: {
-							decision: "cooperate",
-							reasoning:
-								"We both cooperated in the first round, so we both have 3 points. This established a cooperative dynamic which is beneficial for both in the long run.",
-						},
-						scores: { player1: 6, player2: 6 },
-					},
-					{
-						round: 3,
-						player1: {
-							decision: "cooperate",
-							reasoning:
-								"Hmm, let me think about this. So far, both of us have cooperated in the first two rounds, and we've both benefited equally with 3 points each round.",
-						},
-						player2: {
-							decision: "defect",
-							reasoning:
-								"Considering the current situation, we have both cooperated in the past two rounds, which has kept our scores tied and relatively high.",
-						},
-						scores: { player1: 6, player2: 11 },
-					},
-					{
-						round: 4,
-						player1: {
-							decision: "defect",
-							reasoning:
-								"Hmm, let's think about this. In the first two rounds, we both cooperated, which was great for both of us. But in the third round, player_2 defected.",
-						},
-						player2: {
-							decision: "defect",
-							reasoning:
-								"Looking at the game history, player_1 has been cooperative in all rounds so far, which suggests they might value mutual cooperation.",
-						},
-						scores: { player1: 7, player2: 12 },
-					},
-					{
-						round: 5,
-						player1: {
-							decision: "defect",
-							reasoning:
-								"Hmm, let's think this through. In the first two rounds, we both cooperated, which was good for both of us. In round 3, player_2 defected while I cooperated.",
-						},
-						player2: {
-							decision: "defect",
-							reasoning:
-								"Given the situation, I need to consider the score and strategy. Right now, I'm in the lead with 12 points, and there's only one round left.",
-						},
-						scores: { player1: 8, player2: 13 },
-					},
-				],
-			};
-
-			// Generate some additional sample games based on the model profiles data
-			const additionalGames = [];
-
-			// Get model profiles and pairs we want to create samples for
+			// Get all unique games from model profiles
+			const uniqueGames = new Map();
 			const profiles = modelProfilesJson.models;
 
-			// Find pairs already included in model_profiles.json
-			const gamePairs = [];
+			// Process each game only once by using a consistent game ID
 			profiles.forEach((model) => {
 				model.games.forEach((game) => {
-					const opponentId = game.opponent;
-					const opponentModel = profiles.find(
-						(m) => m.model_id === opponentId
-					);
+					// Create a consistent game ID by sorting the model IDs
+					const gameModelIds = [model.model_id, game.opponent].sort();
+					const gameId = `${gameModelIds[0]}-${gameModelIds[1]}`;
 
-					if (opponentModel) {
-						gamePairs.push({
-							id: `${model.model_id.split(":")[1]}-${
-								opponentId.split(":")[1]
-							}`,
-							title: `${model.model_name} vs. ${opponentModel.model_name}`,
-							player1: model.model_name,
-							player2: opponentModel.model_name,
-							finalScore: {
-								player1: game.score,
-								player2: game.opponent_score,
-							},
-						});
-					}
-				});
-			});
+					// Only process each unique game once
+					if (!uniqueGames.has(gameId)) {
+						const opponentModel = profiles.find(
+							(m) => m.model_id === game.opponent
+						);
 
-			// For each pair, create a timeline similar to sample game but with variations
-			gamePairs.forEach((pair) => {
-				// Skip if already created
-				if (pair.id === sampleGame.id) return;
+						if (opponentModel) {
+							// Determine player order based on the session_id
+							const isFirstPlayer = game.session_id.includes(
+								model.model_id.split(":")[1].toLowerCase()
+							);
 
-				// Create timeline with variations
-				const timeline = [];
-				for (let round = 1; round <= 5; round++) {
-					const roundData = {
-						round,
-						player1: {
-							decision: round <= 3 ? "cooperate" : "defect",
-							reasoning:
-								sampleGame.timeline[round - 1].player1
-									.reasoning,
-						},
-						player2: {
-							decision: round <= 2 ? "cooperate" : "defect",
-							reasoning:
-								sampleGame.timeline[round - 1].player2
-									.reasoning,
-						},
-						scores: {},
-					};
+							// Add the game with the correct player order
+							const player1 = isFirstPlayer
+								? model
+								: opponentModel;
+							const player2 = isFirstPlayer
+								? opponentModel
+								: model;
+							const score1 = isFirstPlayer
+								? game.score
+								: game.opponent_score;
+							const score2 = isFirstPlayer
+								? game.opponent_score
+								: game.score;
 
-					// Calculate scores progressively
-					if (round === 1) {
-						roundData.scores = { player1: 3, player2: 3 };
-					} else {
-						const prevScores = timeline[round - 2].scores;
-						const p1Decision = roundData.player1.decision;
-						const p2Decision = roundData.player2.decision;
-
-						let p1Add = 0,
-							p2Add = 0;
-
-						if (
-							p1Decision === "cooperate" &&
-							p2Decision === "cooperate"
-						) {
-							p1Add = 3;
-							p2Add = 3;
-						} else if (
-							p1Decision === "cooperate" &&
-							p2Decision === "defect"
-						) {
-							p1Add = 0;
-							p2Add = 5;
-						} else if (
-							p1Decision === "defect" &&
-							p2Decision === "cooperate"
-						) {
-							p1Add = 5;
-							p2Add = 0;
-						} else {
-							p1Add = 1;
-							p2Add = 1;
+							uniqueGames.set(gameId, {
+								id: gameId,
+								title: `${player1.model_name} vs. ${player2.model_name}`,
+								player1: player1.model_name,
+								player2: player2.model_name,
+								finalScore: {
+									player1: score1,
+									player2: score2,
+								},
+								// We don't have actual timeline data in the JSON, so we'll use the match result
+								result: game.result,
+								session_id: game.session_id,
+							});
 						}
-
-						roundData.scores = {
-							player1: prevScores.player1 + p1Add,
-							player2: prevScores.player2 + p2Add,
-						};
 					}
-
-					timeline.push(roundData);
-				}
-
-				// Update final score to match the actual data
-				const lastRound = timeline[timeline.length - 1];
-				lastRound.scores = pair.finalScore;
-
-				// Add the completed game with timeline
-				additionalGames.push({
-					...pair,
-					timeline,
 				});
 			});
 
-			// Combine all games
-			const allGames = [sampleGame, ...additionalGames];
-			setMatchups(allGames);
-
-			// Set the first matchup as selected by default
-			if (allGames.length > 0) {
-				setSelectedMatchup(allGames[0].id);
-			}
+			// Convert the Map to an array
+			return Array.from(uniqueGames.values());
 		} catch (error) {
-			console.error("Error generating game timelines:", error);
-			setError("Failed to load game details. Please try again later.");
+			console.error("Error extracting game data:", error);
+			return [];
 		}
 	};
 
@@ -353,35 +197,22 @@ const ParlourBenchDashboard = () => {
 					const transformedLeaderboard =
 						transformLeaderboardData(leaderboardJson);
 					setLeaderboardData(transformedLeaderboard);
-					console.log(
-						"Leaderboard data loaded:",
-						transformedLeaderboard
-					);
 
 					// Transform and set matchup matrix data
 					const transformedMatchupMatrix =
 						transformMatchupMatrix(matchupMatrixJson);
 					setMatchupMatrix(transformedMatchupMatrix);
-					console.log(
-						"Matchup matrix data loaded:",
-						transformedMatchupMatrix
-					);
 
 					// Transform and set round progression data
 					const transformedRoundProgression =
 						transformRoundProgressionData(roundProgressionJson);
 					setRoundProgressionData(transformedRoundProgression);
-					console.log(
-						"Round progression data loaded:",
-						transformedRoundProgression
-					);
 
 					// Create game summary data for visualization
 					const summaryData = createGameSummaryData(
 						transformedLeaderboard
 					);
 					setGameSummaryData(summaryData);
-					console.log("Game summary data created:", summaryData);
 
 					// Transform cooperation data by model and round
 					const cooperationData = transformCooperationByModel(
@@ -389,10 +220,15 @@ const ParlourBenchDashboard = () => {
 						modelProfilesJson
 					);
 					setCooperationByModelAndRound(cooperationData);
-					console.log("Cooperation data created:", cooperationData);
 
-					// Load individual game files for matchup details
-					await loadGameFiles();
+					// Extract real game data from model profiles
+					const gameData = extractGameData();
+					setMatchups(gameData);
+
+					// Set the first matchup as selected by default
+					if (gameData.length > 0) {
+						setSelectedMatchup(gameData[0].id);
+					}
 
 					console.log(`Loaded all data for ${selectedGame}`);
 				} else {
@@ -419,6 +255,23 @@ const ParlourBenchDashboard = () => {
 
 		loadData();
 	}, [selectedGame]);
+
+	// Load game timeline data
+	const loadGameTimelineData = async (sessionId) => {
+		try {
+			// In a real implementation, this would make an API call to fetch the timeline data
+			// using the session ID. For now, we'll use a placeholder message.
+			console.log(`Would fetch timeline data for session: ${sessionId}`);
+			return {
+				message:
+					"Game timeline data would be loaded here based on the session ID",
+				// This is where the actual game progression would be returned
+			};
+		} catch (error) {
+			console.error("Error loading game timeline:", error);
+			return null;
+		}
+	};
 
 	const renderWinMatrixCell = (value, rowIndex, colIndex) => {
 		if (rowIndex === colIndex) return "-";
@@ -539,11 +392,15 @@ const ParlourBenchDashboard = () => {
 								Prisoner's Dilemma:
 							</span>{" "}
 							{leaderboardData.length > 0
-								? `${matchups.length} games played between ${
+								? `${
+										metadataJson?.game_count ||
+										matchups.length
+								  } games played between ${
 										leaderboardData.length
 								  } models • Last updated ${
-										metadataJson?.last_updated ||
-										"March 2025"
+										metadataJson?.processed_at?.split(
+											"T"
+										)[0] || "March 2025"
 								  }`
 								: "Loading game data..."}
 						</>
@@ -630,8 +487,9 @@ const ParlourBenchDashboard = () => {
 									<p className="text-gray-600 text-sm">
 										Performance rankings for Prisoner's
 										Dilemma (
-										{metadataJson?.last_updated ||
-											"March 2025"}
+										{metadataJson?.processed_at?.split(
+											"T"
+										)[0] || "March 2025"}
 										)
 									</p>
 								</div>
@@ -1173,482 +1031,53 @@ const ParlourBenchDashboard = () => {
 								</div>
 							</div>
 
-							{matchups.length >= 2 && (
-								<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-									<div className="bg-white rounded-lg shadow-md overflow-hidden">
-										<div className="px-6 py-4 border-b border-gray-200">
-											<h2 className="text-xl font-semibold">
-												Game Highlight:{" "}
-												{matchups[0].title}
-											</h2>
-											<p className="text-gray-600 text-sm">
-												{matchups[0].finalScore
-													.player1 >
-												matchups[0].finalScore.player2
-													? `${matchups[0].player1} defected at a crucial moment to secure the win`
-													: `${matchups[0].player2} defected at a crucial moment to secure the win`}
-											</p>
-										</div>
-										<div className="p-6">
-											<div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-												<p className="font-semibold mb-2">
-													Game progression:
-												</p>
-												<ul className="list-disc pl-5 space-y-1 text-sm">
-													{matchups[0].timeline.map(
-														(round, index) => (
-															<li key={index}>
-																Round{" "}
-																{round.round}:{" "}
-																{round.player1
-																	.decision ===
-																	"cooperate" &&
-																round.player2
-																	.decision ===
-																	"cooperate"
-																	? "Both models cooperated"
-																	: round
-																			.player1
-																			.decision ===
-																			"defect" &&
-																	  round
-																			.player2
-																			.decision ===
-																			"defect"
-																	? "Both models defected"
-																	: round
-																			.player1
-																			.decision ===
-																	  "cooperate"
-																	? `${matchups[0].player2} defected while ${matchups[0].player1} cooperated`
-																	: `${matchups[0].player1} defected while ${matchups[0].player2} cooperated`}
-															</li>
-														)
-													)}
-													<li>
-														Final score:{" "}
-														{matchups[0].player1} (
-														{
-															matchups[0]
-																.finalScore
-																.player1
-														}
-														) vs.
-														{matchups[0].player2} (
-														{
-															matchups[0]
-																.finalScore
-																.player2
-														}
-														)
-													</li>
-												</ul>
-												{matchups[0].timeline.some(
-													(round) =>
-														(round.player1
-															.decision ===
-															"defect" &&
-															round.player2
-																.decision ===
-																"cooperate") ||
-														(round.player1
-															.decision ===
-															"cooperate" &&
-															round.player2
-																.decision ===
-																"defect")
-												) && (
-													<p className="mt-4 italic text-sm">
-														{(() => {
-															const defectionRound =
-																matchups[0].timeline.findIndex(
-																	(round) =>
-																		(round
-																			.player1
-																			.decision ===
-																			"defect" &&
-																			round
-																				.player2
-																				.decision ===
-																				"cooperate") ||
-																		(round
-																			.player1
-																			.decision ===
-																			"cooperate" &&
-																			round
-																				.player2
-																				.decision ===
-																				"defect")
-																);
-															const defector =
-																matchups[0]
-																	.timeline[
-																	defectionRound
-																].player1
-																	.decision ===
-																"defect"
-																	? matchups[0]
-																			.player1
-																	: matchups[0]
-																			.player2;
-															const reasoning =
-																matchups[0]
-																	.timeline[
-																	defectionRound
-																].player1
-																	.decision ===
-																"defect"
-																	? matchups[0]
-																			.timeline[
-																			defectionRound
-																	  ].player1
-																			.reasoning
-																	: matchups[0]
-																			.timeline[
-																			defectionRound
-																	  ].player2
-																			.reasoning;
-															return reasoning.length >
-																100
-																? reasoning.substring(
-																		0,
-																		100
-																  ) + "..."
-																: reasoning;
-														})()}
-														<br />
-														<span className="text-gray-500">
-															-{" "}
-															{matchups[0].timeline.findIndex(
-																(round) =>
-																	(round
-																		.player1
-																		.decision ===
-																		"defect" &&
-																		round
-																			.player2
-																			.decision ===
-																			"cooperate") ||
-																	(round
-																		.player1
-																		.decision ===
-																		"cooperate" &&
-																		round
-																			.player2
-																			.decision ===
-																			"defect")
-															) > -1
-																? matchups[0]
-																		.timeline[
-																		matchups[0].timeline.findIndex(
-																			(
-																				round
-																			) =>
-																				(round
-																					.player1
-																					.decision ===
-																					"defect" &&
-																					round
-																						.player2
-																						.decision ===
-																						"cooperate") ||
-																				(round
-																					.player1
-																					.decision ===
-																					"cooperate" &&
-																					round
-																						.player2
-																						.decision ===
-																						"defect")
-																		)
-																  ].player1
-																		.decision ===
-																  "defect"
-																	? matchups[0]
-																			.player1
-																	: matchups[0]
-																			.player2
-																: ""}
-															's reasoning in
-															Round{" "}
-															{matchups[0].timeline.findIndex(
-																(round) =>
-																	(round
-																		.player1
-																		.decision ===
-																		"defect" &&
-																		round
-																			.player2
-																			.decision ===
-																			"cooperate") ||
-																	(round
-																		.player1
-																		.decision ===
-																		"cooperate" &&
-																		round
-																			.player2
-																			.decision ===
-																			"defect")
-															) + 1}
-														</span>
-													</p>
-												)}
-											</div>
-										</div>
-									</div>
-
-									{matchups.length >= 2 && (
-										<div className="bg-white rounded-lg shadow-md overflow-hidden">
-											<div className="px-6 py-4 border-b border-gray-200">
-												<h2 className="text-xl font-semibold">
-													Game Highlight:{" "}
-													{matchups[1].title}
-												</h2>
-												<p className="text-gray-600 text-sm">
-													{matchups[1].finalScore
-														.player1 >
-													matchups[1].finalScore
-														.player2
-														? `${matchups[1].player1} showed greater strategic patience`
-														: `${matchups[1].player2} showed greater strategic patience`}
-												</p>
-											</div>
-											<div className="p-6">
-												<div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-													<p className="font-semibold mb-2">
-														Game progression:
-													</p>
-													<ul className="list-disc pl-5 space-y-1 text-sm">
-														{matchups[1].timeline.map(
-															(round, index) => (
-																<li key={index}>
-																	Round{" "}
-																	{
-																		round.round
-																	}
-																	:{" "}
-																	{round
-																		.player1
-																		.decision ===
-																		"cooperate" &&
-																	round
-																		.player2
-																		.decision ===
-																		"cooperate"
-																		? "Both models cooperated"
-																		: round
-																				.player1
-																				.decision ===
-																				"defect" &&
-																		  round
-																				.player2
-																				.decision ===
-																				"defect"
-																		? "Both models defected"
-																		: round
-																				.player1
-																				.decision ===
-																		  "cooperate"
-																		? `${matchups[1].player2} defected while ${matchups[1].player1} cooperated`
-																		: `${matchups[1].player1} defected while ${matchups[1].player2} cooperated`}
-																</li>
-															)
-														)}
-														<li>
-															Final score:{" "}
-															{
-																matchups[1]
-																	.player1
-															}{" "}
-															(
-															{
-																matchups[1]
-																	.finalScore
-																	.player1
-															}
-															) vs.
-															{
-																matchups[1]
+							{/* Game Highlights */}
+							{matchups.length > 0 && (
+								<div className="grid grid-cols-1 gap-6">
+									{matchups
+										.slice(0, 2)
+										.map((matchup, index) => (
+											<div
+												key={matchup.id}
+												className="bg-white rounded-lg shadow-md overflow-hidden"
+											>
+												<div className="px-6 py-4 border-b border-gray-200">
+													<h2 className="text-xl font-semibold">
+														Game: {matchup.title}
+													</h2>
+													<p className="text-gray-600 text-sm">
+														{matchup.finalScore
+															.player1 >
+														matchup.finalScore
+															.player2
+															? `${matchup.player1} won with a score of ${matchup.finalScore.player1} vs ${matchup.finalScore.player2}`
+															: matchup.finalScore
+																	.player1 <
+															  matchup.finalScore
 																	.player2
-															}{" "}
-															(
-															{
-																matchups[1]
-																	.finalScore
-																	.player2
-															}
-															)
-														</li>
-													</ul>
-													{matchups[1].timeline.some(
-														(round) =>
-															(round.player1
-																.decision ===
-																"defect" &&
-																round.player2
-																	.decision ===
-																	"cooperate") ||
-															(round.player1
-																.decision ===
-																"cooperate" &&
-																round.player2
-																	.decision ===
-																	"defect")
-													) && (
-														<p className="mt-4 italic text-sm">
-															{(() => {
-																const lastDefectionRound =
-																	[
-																		...matchups[1]
-																			.timeline,
-																	]
-																		.reverse()
-																		.findIndex(
-																			(
-																				round
-																			) =>
-																				(round
-																					.player1
-																					.decision ===
-																					"defect" &&
-																					round
-																						.player2
-																						.decision ===
-																						"cooperate") ||
-																				(round
-																					.player1
-																					.decision ===
-																					"cooperate" &&
-																					round
-																						.player2
-																						.decision ===
-																						"defect")
-																		);
-																const actualRound =
-																	matchups[1]
-																		.timeline
-																		.length -
-																	1 -
-																	lastDefectionRound;
-																const defector =
-																	matchups[1]
-																		.timeline[
-																		actualRound
-																	].player1
-																		.decision ===
-																	"defect"
-																		? matchups[1]
-																				.player1
-																		: matchups[1]
-																				.player2;
-																const reasoning =
-																	matchups[1]
-																		.timeline[
-																		actualRound
-																	].player1
-																		.decision ===
-																	"defect"
-																		? matchups[1]
-																				.timeline[
-																				actualRound
-																		  ]
-																				.player1
-																				.reasoning
-																		: matchups[1]
-																				.timeline[
-																				actualRound
-																		  ]
-																				.player2
-																				.reasoning;
-																return reasoning.length >
-																	100
-																	? reasoning.substring(
-																			0,
-																			100
-																	  ) + "..."
-																	: reasoning;
-															})()}
-															<br />
-															<span className="text-gray-500">
-																-{" "}
-																{matchups[1].timeline.findIndex(
-																	(round) =>
-																		(round
-																			.player1
-																			.decision ===
-																			"defect" &&
-																			round
-																				.player2
-																				.decision ===
-																				"cooperate") ||
-																		(round
-																			.player1
-																			.decision ===
-																			"cooperate" &&
-																			round
-																				.player2
-																				.decision ===
-																				"defect")
-																) > -1
-																	? matchups[1]
-																			.timeline[
-																			matchups[1].timeline.findIndex(
-																				(
-																					round
-																				) =>
-																					(round
-																						.player1
-																						.decision ===
-																						"defect" &&
-																						round
-																							.player2
-																							.decision ===
-																							"cooperate") ||
-																					(round
-																						.player1
-																						.decision ===
-																						"cooperate" &&
-																						round
-																							.player2
-																							.decision ===
-																							"defect")
-																			)
-																	  ].player1
-																			.decision ===
-																	  "defect"
-																		? matchups[1]
-																				.player1
-																		: matchups[1]
-																				.player2
-																	: ""}
-																's reasoning in
-																Round{" "}
-																{matchups[1].timeline.findIndex(
-																	(round) =>
-																		(round
-																			.player1
-																			.decision ===
-																			"defect" &&
-																			round
-																				.player2
-																				.decision ===
-																				"cooperate") ||
-																		(round
-																			.player1
-																			.decision ===
-																			"cooperate" &&
-																			round
-																				.player2
-																				.decision ===
-																				"defect")
-																) + 1}
-															</span>
+															? `${matchup.player2} won with a score of ${matchup.finalScore.player2} vs ${matchup.finalScore.player1}`
+															: `Game ended in a tie with a score of ${matchup.finalScore.player1}`}
+													</p>
+												</div>
+												<div className="p-6">
+													<div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+														{/* Display session ID for debugging/reference */}
+														<p className="text-sm text-gray-500 mb-4">
+															Session ID:{" "}
+															{matchup.session_id ||
+																"Not available"}
 														</p>
-													)}
+
+														<p className="mb-2">
+															Full game data for
+															all rounds can be
+															accessed in the Game
+															Timeline tab.
+														</p>
+													</div>
 												</div>
 											</div>
-										</div>
-									)}
+										))}
 								</div>
 							)}
 						</div>
@@ -1712,6 +1141,11 @@ const ParlourBenchDashboard = () => {
 															{matchup.title}
 														</h3>
 														<p className="text-sm text-gray-500">
+															Session ID:{" "}
+															{matchup.session_id ||
+																"Not available"}
+														</p>
+														<p className="text-sm text-gray-500">
 															Final score:{" "}
 															{matchup.player1}{" "}
 															{
@@ -1743,114 +1177,25 @@ const ParlourBenchDashboard = () => {
 													</div>
 												</div>
 
-												<div className="space-y-6">
-													{matchup.timeline.map(
-														(round, index) => (
-															<div
-																key={index}
-																className="border border-gray-200 rounded-lg overflow-hidden"
-															>
-																<div className="bg-gray-50 px-4 py-2 flex justify-between items-center">
-																	<h4 className="font-medium">
-																		Round{" "}
-																		{
-																			round.round
-																		}
-																	</h4>
-																	<div className="text-sm text-gray-600">
-																		Score:{" "}
-																		{
-																			matchup.player1
-																		}{" "}
-																		{
-																			round
-																				.scores
-																				.player1
-																		}{" "}
-																		-{" "}
-																		{
-																			round
-																				.scores
-																				.player2
-																		}{" "}
-																		{
-																			matchup.player2
-																		}
-																	</div>
-																</div>
-																<div className="grid grid-cols-2 divide-x divide-gray-200">
-																	<div className="p-4">
-																		<div className="flex items-center gap-2 mb-2">
-																			<div
-																				className={`w-3 h-3 rounded-full ${
-																					round
-																						.player1
-																						.decision ===
-																					"cooperate"
-																						? "bg-green-500"
-																						: "bg-red-500"
-																				}`}
-																			></div>
-																			<h5 className="font-medium">
-																				{
-																					matchup.player1
-																				}
-																			</h5>
-																			<span className="text-sm text-gray-500 ml-auto">
-																				{round
-																					.player1
-																					.decision ===
-																				"cooperate"
-																					? "Cooperated"
-																					: "Defected"}
-																			</span>
-																		</div>
-																		<p className="text-sm text-gray-600">
-																			{
-																				round
-																					.player1
-																					.reasoning
-																			}
-																		</p>
-																	</div>
-																	<div className="p-4">
-																		<div className="flex items-center gap-2 mb-2">
-																			<div
-																				className={`w-3 h-3 rounded-full ${
-																					round
-																						.player2
-																						.decision ===
-																					"cooperate"
-																						? "bg-green-500"
-																						: "bg-red-500"
-																				}`}
-																			></div>
-																			<h5 className="font-medium">
-																				{
-																					matchup.player2
-																				}
-																			</h5>
-																			<span className="text-sm text-gray-500 ml-auto">
-																				{round
-																					.player2
-																					.decision ===
-																				"cooperate"
-																					? "Cooperated"
-																					: "Defected"}
-																			</span>
-																		</div>
-																		<p className="text-sm text-gray-600">
-																			{
-																				round
-																					.player2
-																					.reasoning
-																			}
-																		</p>
-																	</div>
-																</div>
-															</div>
-														)
-													)}
+												<div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+													<p className="mb-4">
+														To access the full game
+														timeline with
+														round-by-round decisions
+														and reasoning, please
+														use the ParlourBench API
+														or view the detailed
+														game JSON files.
+													</p>
+													<p className="text-sm text-gray-600">
+														For detailed
+														implementation, you
+														would load the game
+														timeline using the
+														session ID:{" "}
+														{matchup.session_id ||
+															"Not available"}
+													</p>
 												</div>
 											</div>
 										);
