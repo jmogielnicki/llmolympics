@@ -576,18 +576,22 @@ const PrisonersDilemmaDashboard = () => {
 										data={roundProgressionData}
 										margin={{
 											top: 20,
-											right: 30,
+											right: 20,
 											left: 20,
-											bottom: 5,
+											bottom: 10,
 										}}
 									>
 										<CartesianGrid strokeDasharray="3 3" />
-										<XAxis dataKey="round" />
+										<XAxis
+											dataKey="round"
+											tick={{ fontSize: 12 }}
+										/>
 										<YAxis
 											domain={[0, 1]}
 											tickFormatter={(value) =>
 												`${(value * 100).toFixed(0)}%`
 											}
+											tick={{ fontSize: 12 }}
 										/>
 										<Tooltip
 											formatter={(value) =>
@@ -628,45 +632,45 @@ const PrisonersDilemmaDashboard = () => {
 							</p>
 						</div>
 						<div className="p-6">
-							<div className="overflow-x-auto">
+							<div className="overflow-x-auto -mx-6 px-6">
 								<table className="min-w-full divide-y divide-gray-200">
 									<thead className="bg-gray-50">
 										<tr>
 											<th
 												scope="col"
-												className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+												className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
 											>
 												Model
 											</th>
 											<th
 												scope="col"
-												className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+												className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
 											>
-												Round 1
+												R1
 											</th>
 											<th
 												scope="col"
-												className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+												className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
 											>
-												Round 2
+												R2
 											</th>
 											<th
 												scope="col"
-												className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+												className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
 											>
-												Round 3
+												R3
 											</th>
 											<th
 												scope="col"
-												className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+												className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
 											>
-												Round 4
+												R4
 											</th>
 											<th
 												scope="col"
-												className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+												className="px-2 sm:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
 											>
-												Round 5
+												R5
 											</th>
 										</tr>
 									</thead>
@@ -677,11 +681,11 @@ const PrisonersDilemmaDashboard = () => {
 													key={index}
 													className="hover:bg-gray-50"
 												>
-													<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+													<td className="px-2 sm:px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
 														{model.model}
 													</td>
 													<td
-														className={`px-6 py-4 whitespace-nowrap text-sm text-center ${getCellColor(
+														className={`px-2 sm:px-6 py-4 text-sm text-center ${getCellColor(
 															model.round1
 														)}`}
 													>
@@ -691,7 +695,7 @@ const PrisonersDilemmaDashboard = () => {
 														%
 													</td>
 													<td
-														className={`px-6 py-4 whitespace-nowrap text-sm text-center ${getCellColor(
+														className={`px-2 sm:px-6 py-4 text-sm text-center ${getCellColor(
 															model.round2
 														)}`}
 													>
@@ -701,7 +705,7 @@ const PrisonersDilemmaDashboard = () => {
 														%
 													</td>
 													<td
-														className={`px-6 py-4 whitespace-nowrap text-sm text-center ${getCellColor(
+														className={`px-2 sm:px-6 py-4 text-sm text-center ${getCellColor(
 															model.round3
 														)}`}
 													>
@@ -711,7 +715,7 @@ const PrisonersDilemmaDashboard = () => {
 														%
 													</td>
 													<td
-														className={`px-6 py-4 whitespace-nowrap text-sm text-center ${getCellColor(
+														className={`px-2 sm:px-6 py-4 text-sm text-center ${getCellColor(
 															model.round4
 														)}`}
 													>
@@ -721,7 +725,7 @@ const PrisonersDilemmaDashboard = () => {
 														%
 													</td>
 													<td
-														className={`px-6 py-4 whitespace-nowrap text-sm text-center ${getCellColor(
+														className={`px-2 sm:px-6 py-4 text-sm text-center ${getCellColor(
 															model.round5
 														)}`}
 													>
@@ -755,13 +759,13 @@ const PrisonersDilemmaDashboard = () => {
 							</p>
 						</div>
 						<div className="p-6">
-							<div className="overflow-x-auto">
+							<div className="overflow-x-auto -mx-6 px-6">
 								<table className="min-w-full divide-y divide-gray-200">
 									<thead className="bg-gray-50">
 										<tr>
 											<th
 												scope="col"
-												className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-48"
+												className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
 											>
 												Model
 											</th>
@@ -770,7 +774,7 @@ const PrisonersDilemmaDashboard = () => {
 													<th
 														key={idx}
 														scope="col"
-														className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+														className="px-2 sm:px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
 													>
 														{model.split(" ").pop()}
 													</th>
@@ -785,14 +789,16 @@ const PrisonersDilemmaDashboard = () => {
 													key={rowIdx}
 													className="hover:bg-gray-50"
 												>
-													<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-														{rowModel}
+													<td className="px-2 sm:px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
+														{rowModel
+															.split(" ")
+															.pop()}
 													</td>
 													{matchupMatrix.models.map(
 														(colModel, colIdx) => (
 															<td
 																key={colIdx}
-																className="px-6 py-4 whitespace-nowrap text-center"
+																className="px-2 sm:px-4 py-4 text-center"
 															>
 																{renderWinMatrixCell(
 																	matchupMatrix

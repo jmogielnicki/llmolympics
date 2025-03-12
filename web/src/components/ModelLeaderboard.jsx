@@ -12,13 +12,15 @@ const ModelLeaderboard = ({ data, columns, title, subtitle }) => {
 	return (
 		<div className="bg-white rounded-lg shadow-md overflow-hidden">
 			<div className="px-6 py-4 border-b border-gray-200">
-				<h2 className="text-xl font-semibold">{title}</h2>
+				<h2 className="text-xl font-semibold text-center">{title}</h2>
 				{subtitle && (
-					<p className="text-gray-600 text-sm">{subtitle}</p>
+					<p className="text-gray-600 text-sm text-center">
+						{subtitle}
+					</p>
 				)}
 			</div>
 			<div className="p-6">
-				<div className="overflow-x-auto">
+				<div className="overflow-x-auto -mx-6 px-6">
 					<table className="min-w-full divide-y divide-gray-200">
 						<thead className="bg-gray-50">
 							<tr>
@@ -26,7 +28,7 @@ const ModelLeaderboard = ({ data, columns, title, subtitle }) => {
 									<th
 										key={column.key}
 										scope="col"
-										className={`px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider ${
+										className={`px-2 sm:px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap ${
 											column.align === "right"
 												? "text-right"
 												: "text-left"
@@ -46,7 +48,11 @@ const ModelLeaderboard = ({ data, columns, title, subtitle }) => {
 									{columns.map((column) => (
 										<td
 											key={column.key}
-											className={`px-6 py-4 whitespace-nowrap text-sm ${
+											className={`px-2 sm:px-6 py-4 text-sm ${
+												column.key === "model_name"
+													? "whitespace-nowrap"
+													: ""
+											} ${
 												column.key === "rank" ||
 												column.key === "model_name"
 													? "font-medium text-gray-900"
