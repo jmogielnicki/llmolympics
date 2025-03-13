@@ -59,13 +59,19 @@ export const GameDataProvider = ({ children }) => {
 			key: "winrate",
 			label: "Win Rate",
 			align: "right",
-			formatter: (value) => `${(value * 100).toFixed(1)}%`,
+			formatter: (value) => `${(value * 100).toFixed(0)}%`,
+		},
+		{
+			key: "first_to_defect_rate",
+			label: "First Defector",
+			align: "right",
+			formatter: (value) => `${(value * 100).toFixed(0)}%`,
 		},
 		{
 			key: "avg_score",
 			label: "Avg. Score",
 			align: "right",
-			formatter: (value) => value.toFixed(2),
+			formatter: (value) => value.toFixed(1),
 		},
 	];
 
