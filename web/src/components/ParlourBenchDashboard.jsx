@@ -7,40 +7,58 @@ import {
 	useNavigate,
 	Link,
 	Outlet,
+	useLocation,
 } from "react-router-dom";
 import { ChevronDown, Info, Github, Home } from "lucide-react";
 import PrisonersDilemmaDashboard from "./PrisonersDilemmaDashboard";
+import GameHeroSection from "./GameHeroSection";
 
 /**
  * Main ParlourBench Dashboard component
  * Houses the game selector and handles navigation between different game dashboards
  */
 const ParlourBenchDashboard = () => {
-	// Available games
+	// Available games with descriptions
 	const games = [
 		{
 			id: "prisoners_dilemma",
 			name: "Prisoner's Dilemma",
 			path: "/games/prisoners-dilemma",
+			description: "A classic game of cooperation and betrayal",
+			stats: {
+				gameCount: 21,
+				modelCount: 7,
+				lastUpdated: "2025-03-12",
+			},
 		},
-		{ id: "ghost", name: "Ghost", path: "/games/ghost", comingSoon: true },
+		{
+			id: "ghost",
+			name: "Ghost",
+			path: "/games/ghost",
+			comingSoon: true,
+			description: "A word game where players avoid completing words",
+		},
 		{
 			id: "diplomacy",
 			name: "Diplomacy",
 			path: "/games/diplomacy",
 			comingSoon: true,
+			description:
+				"A game of alliance building and strategic elimination",
 		},
 		{
 			id: "ultimatum_game",
 			name: "Ultimatum Game",
 			path: "/games/ultimatum-game",
 			comingSoon: true,
+			description: "A negotiation game testing fairness and strategy",
 		},
 		{
 			id: "rock_paper_scissors",
 			name: "Rock Paper Scissors",
 			path: "/games/rock-paper-scissors",
 			comingSoon: true,
+			description: "A multi-round tournament with strategic deception",
 		},
 	];
 
@@ -51,7 +69,7 @@ const ParlourBenchDashboard = () => {
 					{/* Responsive header - stacked on mobile, side by side on larger screens */}
 					<div className="flex flex-col md:flex-row md:items-center mb-2">
 						{/* Title - centered on all screens */}
-						<h1 className="text-3xl font-bold mt-4 text-center w-full order-1">
+						<h1 className="text-4xl font-semibold mt-4 text-center w-full order-1">
 							ParlourBench Dashboard
 						</h1>
 
@@ -96,6 +114,16 @@ const ParlourBenchDashboard = () => {
 							element={<GameSelector games={games} />}
 						/>
 					</Routes>
+					<div className="border-b border-gray-200 mt-6 mb-14"></div>
+
+					{/* Current Game Hero Section - Only shown on game pages, not on About page */}
+					<Routes>
+						<Route path="/about" element={null} />
+						<Route
+							path="*"
+							element={<CurrentGameHero games={games} />}
+						/>
+					</Routes>
 				</header>
 
 				<Routes>
@@ -135,10 +163,30 @@ const ParlourBenchDashboard = () => {
 };
 
 /**
+ * Component that displays the hero section for the current game
+ */
+const CurrentGameHero = ({ games }) => {
+	const location = useLocation();
+	const currentPath = location.pathname;
+	const currentGame =
+		games.find((game) => currentPath.includes(game.path)) || games[0];
+
+	return (
+		<GameHeroSection
+			gameId={currentGame.id}
+			title={currentGame.name}
+			description={currentGame.description}
+			stats={currentGame.comingSoon ? null : currentGame.stats}
+		/>
+	);
+};
+
+/**
  * Game selector component with navigation
  */
 const GameSelector = ({ games }) => {
 	const navigate = useNavigate();
+	const location = useLocation();
 
 	const handleGameChange = (e) => {
 		const selectedGame = games.find((game) => game.id === e.target.value);
@@ -147,10 +195,13 @@ const GameSelector = ({ games }) => {
 		}
 	};
 
-	// Find the current game based on the URL path
-	const currentPath = window.location.pathname;
+	// Find the current game based on the current route path
+	// location.pathname from useLocation() correctly handles the hash part in HashRouter
 	const currentGame =
-		games.find((game) => game.path === currentPath) || games[0];
+		games.find((game) => {
+			// Remove the hash prefix and check if the path matches
+			return location.pathname.includes(game.path.replace(/^\//, ""));
+		}) || games[0];
 
 	return (
 		<div className="flex justify-center mb-6">
@@ -175,9 +226,6 @@ const GameSelector = ({ games }) => {
 	);
 };
 
-/**
- * Placeholder for games that are coming soon
- */
 /**
  * Placeholder for games that are coming soon
  */

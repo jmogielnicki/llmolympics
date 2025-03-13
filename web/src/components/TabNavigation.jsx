@@ -15,7 +15,7 @@ const TabNavigation = ({ tabs, basePath }) => {
 		<div className="mb-8">
 			{/* Scrollable tab bar on small screens */}
 			<div className="overflow-x-auto pb-1">
-				<div className="flex border-b border-gray-200 min-w-max">
+				<div className="flex border-b border-gray-200 min-w-max justify-center">
 					{tabs.map((tab) => {
 						const isActive =
 							currentPath === `${basePath}/${tab.id}` ||

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 import {
 	BarChart,
 	Bar,
@@ -339,23 +340,6 @@ const PrisonersDilemmaDashboard = () => {
 		loadData();
 	}, []);
 
-	// Game Status Banner
-	const renderGameStatusBanner = () => (
-		<div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-2 rounded-lg text-sm mb-6">
-			<span className="font-semibold">Prisoner's Dilemma:</span>{" "}
-			{leaderboardData.length > 0
-				? `${
-						metadataJson?.game_count || matchups.length
-				  } games played between ${
-						leaderboardData.length
-				  } models • Last updated ${
-						metadataJson?.processed_at?.split("T")[0] ||
-						"March 2025"
-				  }`
-				: "Loading game data..."}
-		</div>
-	);
-
 	// Loading state
 	if (isLoading) {
 		return (
@@ -415,8 +399,6 @@ const PrisonersDilemmaDashboard = () => {
 
 	return (
 		<div>
-			{renderGameStatusBanner()}
-
 			{/* Use the Tab Navigation Component */}
 			<TabNavigation tabs={tabs} basePath="/games/prisoners-dilemma" />
 
@@ -465,6 +447,14 @@ const useGameData = () => {
 const LeaderboardTab = () => {
 	const { leaderboardData, leaderboardColumns, gameSummaryData } =
 		useGameData();
+	const { width } = useWindowDimensions();
+
+	const chartMargins = {
+		top: 20,
+		right: Math.max(5, Math.min(30, width / 40)), // Scale between 10-30px
+		left: Math.max(5, Math.min(50, width / 20)), // Scale between 15-50px
+		bottom: 5,
+	};
 
 	return (
 		<div className="space-y-6">
@@ -494,12 +484,7 @@ const LeaderboardTab = () => {
 								<BarChart
 									layout="vertical"
 									data={gameSummaryData}
-									margin={{
-										top: 20,
-										right: 30,
-										left: 50,
-										bottom: 5,
-									}}
+									margin={chartMargins}
 								>
 									<CartesianGrid strokeDasharray="3 3" />
 									<XAxis type="number" />
@@ -548,12 +533,7 @@ const LeaderboardTab = () => {
 								<BarChart
 									layout="vertical"
 									data={leaderboardData}
-									margin={{
-										top: 20,
-										right: 30,
-										left: 50,
-										bottom: 5,
-									}}
+									margin={chartMargins}
 								>
 									<CartesianGrid strokeDasharray="3 3" />
 									<XAxis type="number" domain={[0, 15]} />
@@ -588,6 +568,14 @@ const LeaderboardTab = () => {
 const GameStatsTab = () => {
 	const { roundProgressionData, cooperationByModelAndRound, getCellColor } =
 		useGameData();
+	const { width } = useWindowDimensions();
+
+	const chartMargins = {
+		top: 20,
+		right: Math.max(5, Math.min(30, width / 40)), // Scale between 5-30px
+		left: Math.max(5, Math.min(30, width / 40)), // Scale between 5-30px
+		bottom: 5,
+	};
 
 	return (
 		<div className="space-y-6">
@@ -605,12 +593,7 @@ const GameStatsTab = () => {
 						<ResponsiveContainer width="100%" height="100%">
 							<LineChart
 								data={roundProgressionData}
-								margin={{
-									top: 20,
-									right: 20,
-									left: 20,
-									bottom: 10,
-								}}
+								margin={chartMargins}
 							>
 								<CartesianGrid strokeDasharray="3 3" />
 								<XAxis
