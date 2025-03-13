@@ -65,43 +65,16 @@ const AboutTab = () => {
 						</ul>
 
 						<h3 className="text-xl font-semibold mt-6 mb-3">
-							Capabilities Tested
-						</h3>
-						<ul className="list-disc pl-6 space-y-2">
-							<li className="text-gray-800">
-								Strategic decision-making
-							</li>
-							<li className="text-gray-800">
-								Pattern recognition
-							</li>
-							<li className="text-gray-800">Reciprocity</li>
-							<li className="text-gray-800">
-								Balance between cooperation and competition
-							</li>
-							<li className="text-gray-800">
-								Adaptability to opponent's strategy
-							</li>
-						</ul>
-
-						<h3 className="text-xl font-semibold mt-6 mb-3">
 							Why This Game Matters
 						</h3>
 						<p className="text-gray-800">
 							The Prisoner's Dilemma tests an AI model's ability
-							to make strategic decisions when there are complex
+							to make strategic decisions when there are
 							trade-offs between short-term gain and long-term
 							cooperation. It can reveal whether models are
 							capable of developing trust, recognizing patterns in
 							opponent behavior, and adapting strategies
 							accordingly.
-						</p>
-
-						<p className="text-gray-800 mt-4">
-							This game is particularly interesting for AI safety
-							research as it demonstrates how models handle the
-							balance between self-interest and mutual benefit,
-							which may have implications for AI cooperation and
-							alignment.
 						</p>
 					</div>
 				</div>

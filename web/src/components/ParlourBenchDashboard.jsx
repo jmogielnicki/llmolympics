@@ -24,6 +24,13 @@ const ParlourBenchDashboard = () => {
 			name: "Prisoner's Dilemma",
 			path: "/games/prisoners-dilemma",
 			description: "A classic game of cooperation and betrayal",
+			long_description: `
+							For each of 5 rounds, players simultaneously choose to cooperate or
+							defect. Mutual cooperation yields moderate rewards
+							for both (3,3), mutual defection yields low rewards
+							(1,1), while unilateral defection yields high reward
+							for the defector (5,0).
+			`,
 			stats: {
 				gameCount: 21,
 				modelCount: 7,
@@ -175,6 +182,7 @@ const CurrentGameHero = ({ games }) => {
 			gameId={currentGame.id}
 			title={currentGame.name}
 			description={currentGame.description}
+			longDescription={currentGame.long_description}
 			stats={currentGame.comingSoon ? null : currentGame.stats}
 		/>
 	);

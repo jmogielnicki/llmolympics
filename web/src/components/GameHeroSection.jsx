@@ -13,12 +13,13 @@ import {
  * @param {string} props.gameId - ID of the current game
  * @param {string} props.title - Title of the current game
  * @param {string} props.description - Brief description of the game
+ * @param {string} props.longDescription - Longer description of the game
  * @param {Object} props.stats - Game statistics object
  * @param {number} props.stats.gameCount - Number of games played
  * @param {number} props.stats.modelCount - Number of models
  * @param {string} props.stats.lastUpdated - Last updated date
  */
-const GameHeroSection = ({ gameId, title, description, stats }) => {
+const GameHeroSection = ({ gameId, title, description, longDescription, stats }) => {
 	// Map of game IDs to icons
 	const gameIcons = {
 		prisoners_dilemma: <Lock className="w-6 h-6" />,
@@ -32,19 +33,27 @@ const GameHeroSection = ({ gameId, title, description, stats }) => {
 	const icon = gameIcons[gameId] || null;
 
 	return (
-		<div className="mb-6">
+		<div className="mb-6 max-w-4xl mx-auto">
 			<div className="flex flex-col items-center justify-center mb-10">
 				<div className="flex items-center mb-2">
 					{icon && <div className="mr-3 text-gray-700">{icon}</div>}
-					<h2 className="text-2xl font-semibold">
-						{title}
-					</h2>
+					<h2 className="text-2xl font-semibold">{title}</h2>
 				</div>
 
 				{description && (
-					<p className="text-gray-600 text-lg text-center mb-2">
-						{description}
-					</p>
+					<div className="mb-2">
+						<p className="text-gray-600 text-lg text-center mb-2">
+							{description}
+						</p>
+					</div>
+				)}
+
+				{longDescription && (
+					<div className="mb-2">
+						<p className="text-gray-600 text-sm text-center mb-2">
+							{longDescription}
+						</p>
+					</div>
 				)}
 
 				{stats && (
