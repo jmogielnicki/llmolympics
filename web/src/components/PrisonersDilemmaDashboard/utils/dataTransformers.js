@@ -3,8 +3,20 @@
  */
 
 
+export const shortenModelName = (modelName) => {
+    const words_to_remove = ['OpenAI', 'Anthropic', 'Mistral', 'xAI']
+    for (let word of words_to_remove) {
+        // remove the first word if it is one of the words to remove
+        if (modelName.startsWith(word)) {
+            const shortenedName = modelName.slice(word.length + 1);
+            return shortenedName
+        }
+    }
+    return modelName
+}
+
+
 const getModelName = (model) => {
-    console.log(model.model_name);
 	return model.model_name;
 };
 
@@ -17,6 +29,7 @@ const getModelName = (model) => {
 export const transformLeaderboardData = (data) => {
 	return data.leaderboard.map((model) => ({
 		...model,
+        model_name: shortenModelName(getModelName(model)),
 	}));
 };
 
@@ -26,7 +39,6 @@ export const transformLeaderboardData = (data) => {
  * @returns {Object} - Transformed matchup matrix object
  */
 export const transformMatchupMatrix = (data) => {
-    console.log(data);
 	return {
 		models:
 			data.model_names,
@@ -54,7 +66,7 @@ export const transformRoundProgressionData = (data) => {
  */
 export const createGameSummaryData = (leaderboard) => {
 	return leaderboard.map((model) => ({
-		name: getModelName(model),
+		name: shortenModelName(getModelName(model)),
 		wins: model.wins,
 		losses: model.losses,
 		ties: model.ties,
@@ -75,14 +87,14 @@ export const transformCooperationByModel = (
 	const modelNames = {};
 	modelProfiles.models.forEach((model) => {
 		modelNames[model.model_id] =
-			model.model_name || model.model_id.split(":")[1];
+			shortenModelName(model.model_name);
 	});
 
 	// Transform the cooperation data - based on overall data but customized per model
 	return modelProfiles.models.map((model) => {
 		// Basic data about the model
 		const modelData = {
-			model: model.model_name || model.model_id.split(":")[1],
+			model: shortenModelName(model.model_name),
 			modelId: model.model_id,
 		};
 
