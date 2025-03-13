@@ -9,6 +9,8 @@
       "games": 6,
       "winrate": 0.833,
       "avg_score": 12.5,
+      "first_to_defect_count": 6,
+      "first_to_defect_rate": 1.0,
       "rank": 1
     },
     {
@@ -20,6 +22,8 @@
       "games": 6,
       "winrate": 0.333,
       "avg_score": 12.5,
+      "first_to_defect_count": 3,
+      "first_to_defect_rate": 0.5,
       "rank": 2
     },
     {
@@ -31,6 +35,8 @@
       "games": 6,
       "winrate": 0.333,
       "avg_score": 12.33,
+      "first_to_defect_count": 2,
+      "first_to_defect_rate": 0.333,
       "rank": 3
     },
     {
@@ -42,6 +48,8 @@
       "games": 6,
       "winrate": 0.333,
       "avg_score": 11.67,
+      "first_to_defect_count": 4,
+      "first_to_defect_rate": 0.667,
       "rank": 4
     },
     {
@@ -53,6 +61,8 @@
       "games": 6,
       "winrate": 0.167,
       "avg_score": 12.67,
+      "first_to_defect_count": 3,
+      "first_to_defect_rate": 0.5,
       "rank": 5
     },
     {
@@ -64,6 +74,8 @@
       "games": 6,
       "winrate": 0.167,
       "avg_score": 11.33,
+      "first_to_defect_count": 2,
+      "first_to_defect_rate": 0.333,
       "rank": 6
     },
     {
@@ -75,6 +87,8 @@
       "games": 6,
       "winrate": 0.0,
       "avg_score": 9.83,
+      "first_to_defect_count": 0,
+      "first_to_defect_rate": 0.0,
       "rank": 7
     }
   ],

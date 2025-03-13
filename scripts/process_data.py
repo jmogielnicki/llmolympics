@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 from collections import defaultdict
 from pathlib import Path
-from common_utils import extract_model_name
+from common_utils import extract_model_name, get_session_directory
 
 
 def load_benchmark_log(benchmark_dir):
@@ -22,7 +22,7 @@ def load_benchmark_log(benchmark_dir):
     return logs
 
 
-def generate_leaderboard(benchmark_logs):
+def generate_leaderboard(benchmark_logs, benchmark_dir):
     """
     Generate leaderboard data from benchmark logs.
 
@@ -33,6 +33,12 @@ def generate_leaderboard(benchmark_logs):
 
     # First pass: collect statistics
     for game in benchmark_logs:
+        session_id = game.get('session_id', '')
+        session_dir = get_session_directory(benchmark_dir, session_id)
+        model1 = game['player1']['model']
+        model2 = game['player2']['model']
+
+        first_defector = analyze_first_to_defect(session_dir, [model1, model2])
         player1 = game['player1']
         player2 = game['player2']
 
@@ -46,7 +52,8 @@ def generate_leaderboard(benchmark_logs):
                 'losses': 0,
                 'ties': 0,
                 'total_score': 0,
-                'games': 0
+                'games': 0,
+                'first_to_defect': 0
             }
 
         models[model1]['games'] += 1
@@ -62,7 +69,8 @@ def generate_leaderboard(benchmark_logs):
                 'losses': 0,
                 'ties': 0,
                 'total_score': 0,
-                'games': 0
+                'games': 0,
+                'first_to_defect': 0
             }
 
         models[model2]['games'] += 1
@@ -79,11 +87,18 @@ def generate_leaderboard(benchmark_logs):
             models[model1]['losses'] += 1
             models[model2]['wins'] += 1
 
+        if first_defector == model1:
+            models[model1]['first_to_defect'] += 1
+        elif first_defector == model2:
+            models[model2]['first_to_defect'] += 1
+
     # Second pass: calculate derived statistics and format for output
     leaderboard = []
     for model_id, stats in models.items():
         winrate = stats['wins'] / stats['games'] if stats['games'] > 0 else 0
         avg_score = stats['total_score'] / stats['games'] if stats['games'] > 0 else 0
+        first_to_defect_count = stats['first_to_defect']
+        first_to_defect_rate = first_to_defect_count / stats['games'] if stats['games'] > 0 else 0
 
         leaderboard.append({
             'model_id': model_id,
@@ -93,7 +108,9 @@ def generate_leaderboard(benchmark_logs):
             'ties': stats['ties'],
             'games': stats['games'],
             'winrate': round(winrate, 3),
-            'avg_score': round(avg_score, 2)
+            'avg_score': round(avg_score, 2),
+            'first_to_defect_count': first_to_defect_count,
+            'first_to_defect_rate': round(first_to_defect_rate, 3)
         })
 
     # Sort leaderboard by win rate (primary) and average score (secondary)
@@ -201,61 +218,55 @@ def analyze_game_decisions(session_dir, model_id):
         dict: Decision statistics
     """
     # Map model ID to player ID
-    try:
-        with open(os.path.join(session_dir, "game_config.yaml"), 'r') as f:
-            config = yaml.safe_load(f)
+    with open(os.path.join(session_dir, "game_config.yaml"), 'r') as f:
+        config = yaml.safe_load(f)
 
-        player_id = None
-        player_models = config.get('llm_integration', {}).get('player_models', {})
-        for pid, mid in player_models.items():
-            if mid == model_id:
-                player_id = pid
-                break
+    player_id = None
+    player_models = config.get('llm_integration', {}).get('player_models', {})
+    for pid, mid in player_models.items():
+        if mid == model_id:
+            player_id = pid
+            break
 
-        if player_id is None:
-            return None
-    except:
+    if player_id is None:
         return None
 
     # Load snapshots to analyze decision pattern
-    try:
-        decisions = []
-        decision_history = []
+    decisions = []
+    decision_history = []
 
-        with open(os.path.join(session_dir, "snapshots.jsonl"), 'r') as f:
-            for line in f:
-                data = json.loads(line)
-                if data.get("record_type") == "snapshot":
-                    # Look for decision history
-                    history = data.get("history_state", {}).get("decision_history", [])
-                    if history:
-                        decision_history = history
+    with open(os.path.join(session_dir, "snapshots.jsonl"), 'r') as f:
+        for line in f:
+            data = json.loads(line)
+            if data.get("record_type") == "snapshot":
+                # Look for decision history
+                history = data.get("history_state", {}).get("decision_history", [])
+                if history:
+                    decision_history = history
 
-        # Extract decisions for this player
-        for round_data in decision_history:
-            round_num = round_data.get("round", 0)
-            decisions_dict = round_data.get("decisions", {})
-            my_decision = decisions_dict.get(player_id)
+    # Extract decisions for this player
+    for round_data in decision_history:
+        round_num = round_data.get("round", 0)
+        decisions_dict = round_data.get("decisions", {})
+        my_decision = decisions_dict.get(player_id)
 
-            # Find opponent decision
-            opponent_id = None
-            opponent_decision = None
-            for pid, decision in decisions_dict.items():
-                if pid != player_id:
-                    opponent_id = pid
-                    opponent_decision = decision
-                    break
+        # Find opponent decision
+        opponent_id = None
+        opponent_decision = None
+        for pid, decision in decisions_dict.items():
+            if pid != player_id:
+                opponent_id = pid
+                opponent_decision = decision
+                break
 
-            if my_decision:
-                decisions.append({
-                    "round": round_num,
-                    "decision": my_decision,
-                    "opponent_decision": opponent_decision
-                })
+        if my_decision:
+            decisions.append({
+                "round": round_num,
+                "decision": my_decision,
+                "opponent_decision": opponent_decision
+            })
 
-        return decisions
-    except:
-        return None
+    return decisions
 
 
 def generate_model_profiles(benchmark_logs, benchmark_dir):
@@ -295,7 +306,8 @@ def generate_model_profiles(benchmark_logs, benchmark_dir):
     # For each game, gather data about the models
     for game in benchmark_logs:
         session_id = game.get('session_id', '')
-        session_dir = os.path.join(benchmark_dir, session_id.split('_')[-1])
+        session_dir = get_session_directory(benchmark_dir, session_id)
+        first_defector = analyze_first_to_defect(session_dir, [model1, model2])
 
         # Add game info to player 1's model
         model1 = game['player1']['model']
@@ -306,7 +318,8 @@ def generate_model_profiles(benchmark_logs, benchmark_dir):
             'opponent_score': game['player2']['score'],
             'result': 'win' if game['winner'] == game['player1']['id'] else
                      'tie' if game['winner'] == 'tie' else 'loss',
-            'decisions': analyze_game_decisions(session_dir, model1)
+            'decisions': analyze_game_decisions(session_dir, model1),
+            'was_first_defector': first_defector == model1
         })
 
         # Add game info to player 2's model
@@ -318,7 +331,8 @@ def generate_model_profiles(benchmark_logs, benchmark_dir):
             'opponent_score': game['player1']['score'],
             'result': 'win' if game['winner'] == game['player2']['id'] else
                      'tie' if game['winner'] == 'tie' else 'loss',
-            'decisions': analyze_game_decisions(session_dir, model2)
+            'decisions': analyze_game_decisions(session_dir, model2),
+            'was_first_defector': first_defector == model2
         })
 
     # Calculate statistics for each model
@@ -333,6 +347,7 @@ def generate_model_profiles(benchmark_logs, benchmark_dir):
             retaliation_rate = 0
             potential_retaliation = 0
             total_decisions = 0
+            total_first_defections = 0
 
             for game in games:
                 decisions = game.get('decisions', [])
@@ -358,24 +373,71 @@ def generate_model_profiles(benchmark_logs, benchmark_dir):
                         potential_retaliation += 1
                         if decisions[i]['decision'] == 'defect':
                             retaliation_rate += 1
+                if game.get('was_first_defector'):
+                    total_first_defections += 1
 
             # Calculate rates
             cooperation_rate = cooperate_count / total_decisions if total_decisions > 0 else 0
             first_move_coop_rate = first_move_cooperate / len(games) if len(games) > 0 else 0
             retaliation = retaliation_rate / potential_retaliation if potential_retaliation > 0 else 0
+            first_to_defect_rate = total_first_defections / len(games) if len(games) > 0 else 0
 
             profile['stats'] = {
                 'cooperation_rate': round(cooperation_rate, 3),
                 'defection_rate': round(1 - cooperation_rate, 3),
                 'first_move_cooperation_rate': round(first_move_coop_rate, 3),
                 'retaliation_rate': round(retaliation, 3),
-                'total_decisions': total_decisions
+                'total_decisions': total_decisions,
+                'first_to_defect_rate': first_to_defect_rate
             }
 
     return {
         'game_type': game_type,
         'models': list(models.values())
     }
+
+def analyze_first_to_defect(session_dir, model_ids):
+    """
+    Determine which model was first to defect in a game session.
+
+    Args:
+        session_dir: Path to the session directory
+        model_ids: List of model IDs in the game
+
+    Returns:
+        str: Model ID of the first model to defect, or None if neither defected
+    """
+    # Load snapshots to analyze decision pattern
+    decision_history = []
+
+    with open(os.path.join(session_dir, "snapshots.jsonl"), 'r') as f:
+        for line in f:
+            data = json.loads(line)
+            if data.get("record_type") == "snapshot":
+                # Look for decision history
+                history = data.get("history_state", {}).get("decision_history", [])
+                if history:
+                    decision_history = history
+
+    # Sort decisions by round
+    decision_history.sort(key=lambda x: x.get('round', 0))
+
+    # Find first defection
+    for round_data in decision_history:
+        decisions = round_data.get("decisions", {})
+        for player_id, decision in decisions.items():
+            if decision == "defect":
+                # Find which model this player_id maps to
+                with open(os.path.join(session_dir, "game_config.yaml"), 'r') as f:
+                    config = yaml.safe_load(f)
+
+                player_models = config.get('llm_integration', {}).get('player_models', {})
+                model_id = player_models.get(player_id)
+
+                if model_id in model_ids:
+                    return model_id
+
+    return None  # No defection found
 
 
 def analyze_round_progression(benchmark_logs, benchmark_dir):
@@ -396,58 +458,47 @@ def analyze_round_progression(benchmark_logs, benchmark_dir):
     # Process all sessions
     for game in benchmark_logs:
         session_id = game.get('session_id', '')
+        session_dir = get_session_directory(benchmark_dir, session_id)
 
-        # Extract timestamp portion (format: prisoner's_dilemma_20250311_144154)
-        # We need the "20250311_144154" part as the directory name
-        timestamp_parts = session_id.split('_')
-        if len(timestamp_parts) >= 2:
-            # Get the timestamp part which should be the directory name
-            timestamp = '_'.join(timestamp_parts[-2:])
-            session_dir = os.path.join(benchmark_dir, timestamp)
+        print(f"Looking for snapshots in: {session_dir}")
 
-            print(f"Looking for snapshots in: {session_dir}")
+        # Load snapshots to get decision history
+        snapshot_path = os.path.join(session_dir, "snapshots.jsonl")
+        if not os.path.exists(snapshot_path):
+            print(f"Snapshots file not found: {snapshot_path}")
+            continue
 
-            try:
-                # Load snapshots to get decision history
-                snapshot_path = os.path.join(session_dir, "snapshots.jsonl")
-                if not os.path.exists(snapshot_path):
-                    print(f"Snapshots file not found: {snapshot_path}")
-                    continue
+        with open(snapshot_path, 'r') as f:
+            # Find the last snapshot with complete history
+            last_snapshot = None
+            for line in f:
+                data = json.loads(line)
+                if data.get("record_type") == "snapshot":
+                    # Look for decision history
+                    if data.get("history_state", {}).get("decision_history"):
+                        last_snapshot = data
 
-                with open(snapshot_path, 'r') as f:
-                    # Find the last snapshot with complete history
-                    last_snapshot = None
-                    for line in f:
-                        data = json.loads(line)
-                        if data.get("record_type") == "snapshot":
-                            # Look for decision history
-                            if data.get("history_state", {}).get("decision_history"):
-                                last_snapshot = data
+            # Process the last snapshot with complete history
+            if last_snapshot:
+                history = last_snapshot.get("history_state", {}).get("decision_history", [])
+                for round_data in history:
+                    round_num = round_data.get("round", 0)
+                    max_rounds = max(max_rounds, round_num)
 
-                    # Process the last snapshot with complete history
-                    if last_snapshot:
-                        history = last_snapshot.get("history_state", {}).get("decision_history", [])
-                        for round_data in history:
-                            round_num = round_data.get("round", 0)
-                            max_rounds = max(max_rounds, round_num)
+                    if round_num not in round_stats:
+                        round_stats[round_num] = {
+                            'cooperation_count': 0,
+                            'defection_count': 0,
+                            'total_decisions': 0
+                        }
 
-                            if round_num not in round_stats:
-                                round_stats[round_num] = {
-                                    'cooperation_count': 0,
-                                    'defection_count': 0,
-                                    'total_decisions': 0
-                                }
-
-                            decisions = round_data.get("decisions", {})
-                            for player_id, decision in decisions.items():
-                                if decision == 'cooperate':
-                                    round_stats[round_num]['cooperation_count'] += 1
-                                else:
-                                    round_stats[round_num]['defection_count'] += 1
-                                round_stats[round_num]['total_decisions'] += 1
-            except Exception as e:
-                print(f"Error processing {session_dir}: {str(e)}")
-                continue
+                    decisions = round_data.get("decisions", {})
+                    for player_id, decision in decisions.items():
+                        if decision == 'cooperate':
+                            round_stats[round_num]['cooperation_count'] += 1
+                        else:
+                            round_stats[round_num]['defection_count'] += 1
+                        round_stats[round_num]['total_decisions'] += 1
 
     # Calculate cooperation rates by round
     round_progression = []
@@ -490,7 +541,7 @@ def process_benchmark(benchmark_dir, output_dir="data/processed"):
 
     # Create high-level visualization datasets
     print("Generating leaderboard...")
-    leaderboard = generate_leaderboard(benchmark_logs)
+    leaderboard = generate_leaderboard(benchmark_logs, benchmark_dir)
 
     print("Generating matchup matrix...")
     matchup_matrix = generate_matchup_matrix(benchmark_logs)

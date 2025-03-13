@@ -58,3 +58,23 @@ def extract_model_name(full_model_name):
     friendly_model = model_name_map.get(model_id, model_id)
 
     return f"{provider_clean} {friendly_model}"
+
+def get_session_directory(benchmark_dir, session_id):
+    """
+    Extract the directory name from a session ID.
+    From 'prisoner's_dilemma_20250311_144154' extracts '20250311_144154'
+
+    Args:
+        session_id (str): Full session ID with game name and timestamp
+
+    Returns:
+        str: Directory name (timestamp portion only)
+    """
+    parts = session_id.split('_')
+    # Check if we have enough parts for a timestamp (needs at least 2 parts)
+    if len(parts) >= 2:
+        # Get the last two parts which make up the timestamp
+        timestamp = '_'.join(parts[-2:])
+        return '/'.join([benchmark_dir, timestamp])
+    # Fallback if format doesn't match expected
+    return '/'.join([benchmark_dir, session_id])

@@ -11,7 +11,34 @@
           "score": 8,
           "opponent_score": 13,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250311_144358",
@@ -19,7 +46,34 @@
           "score": 17,
           "opponent_score": 12,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            }
+          ],
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250311_153141",
@@ -27,7 +81,34 @@
           "score": 10,
           "opponent_score": 10,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 3,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_160519",
@@ -35,7 +116,34 @@
           "score": 11,
           "opponent_score": 11,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_160707",
@@ -43,7 +151,34 @@
           "score": 11,
           "opponent_score": 11,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250312_160921",
@@ -51,15 +186,43 @@
           "score": 13,
           "opponent_score": 8,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": true
         }
       ],
       "stats": {
-        "cooperation_rate": 0,
-        "defection_rate": 1,
-        "first_move_cooperation_rate": 0.0,
-        "retaliation_rate": 0,
-        "total_decisions": 0
+        "cooperation_rate": 0.567,
+        "defection_rate": 0.433,
+        "first_move_cooperation_rate": 1.0,
+        "retaliation_rate": 1.0,
+        "total_decisions": 30,
+        "first_to_defect_rate": 0.5
       }
     },
     {
@@ -72,7 +235,34 @@
           "score": 13,
           "opponent_score": 8,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250311_144545",
@@ -80,7 +270,34 @@
           "score": 12,
           "opponent_score": 17,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250311_153322",
@@ -88,7 +305,34 @@
           "score": 10,
           "opponent_score": 15,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161148",
@@ -96,7 +340,34 @@
           "score": 13,
           "opponent_score": 13,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161223",
@@ -104,7 +375,34 @@
           "score": 13,
           "opponent_score": 13,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161307",
@@ -112,15 +410,43 @@
           "score": 15,
           "opponent_score": 15,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            }
+          ],
+          "was_first_defector": false
         }
       ],
       "stats": {
-        "cooperation_rate": 0,
-        "defection_rate": 1,
-        "first_move_cooperation_rate": 0.0,
-        "retaliation_rate": 0,
-        "total_decisions": 0
+        "cooperation_rate": 0.8,
+        "defection_rate": 0.2,
+        "first_move_cooperation_rate": 1.0,
+        "retaliation_rate": 1.0,
+        "total_decisions": 30,
+        "first_to_defect_rate": 0.16666666666666666
       }
     },
     {
@@ -133,7 +459,34 @@
           "score": 12,
           "opponent_score": 17,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250311_144545",
@@ -141,7 +494,34 @@
           "score": 17,
           "opponent_score": 12,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            }
+          ],
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250311_153358",
@@ -149,7 +529,34 @@
           "score": 8,
           "opponent_score": 13,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 3,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161405",
@@ -157,7 +564,34 @@
           "score": 11,
           "opponent_score": 11,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161451",
@@ -165,7 +599,34 @@
           "score": 10,
           "opponent_score": 15,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161547",
@@ -173,15 +634,43 @@
           "score": 17,
           "opponent_score": 12,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            }
+          ],
+          "was_first_defector": true
         }
       ],
       "stats": {
-        "cooperation_rate": 0,
-        "defection_rate": 1,
-        "first_move_cooperation_rate": 0.0,
-        "retaliation_rate": 0,
-        "total_decisions": 0
+        "cooperation_rate": 0.767,
+        "defection_rate": 0.233,
+        "first_move_cooperation_rate": 1.0,
+        "retaliation_rate": 0.75,
+        "total_decisions": 30,
+        "first_to_defect_rate": 0.5
       }
     },
     {
@@ -194,7 +683,34 @@
           "score": 10,
           "opponent_score": 10,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250311_153322",
@@ -202,7 +718,34 @@
           "score": 15,
           "opponent_score": 10,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250311_153358",
@@ -210,7 +753,34 @@
           "score": 13,
           "opponent_score": 8,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161652",
@@ -218,7 +788,34 @@
           "score": 13,
           "opponent_score": 8,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161728",
@@ -226,7 +823,34 @@
           "score": 11,
           "opponent_score": 6,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161805",
@@ -234,15 +858,43 @@
           "score": 13,
           "opponent_score": 8,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": true
         }
       ],
       "stats": {
-        "cooperation_rate": 0,
-        "defection_rate": 1,
-        "first_move_cooperation_rate": 0.0,
-        "retaliation_rate": 0,
-        "total_decisions": 0
+        "cooperation_rate": 0.4,
+        "defection_rate": 0.6,
+        "first_move_cooperation_rate": 1.0,
+        "retaliation_rate": 0.714,
+        "total_decisions": 30,
+        "first_to_defect_rate": 0.6666666666666666
       }
     },
     {
@@ -255,7 +907,34 @@
           "score": 11,
           "opponent_score": 11,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161148",
@@ -263,7 +942,34 @@
           "score": 13,
           "opponent_score": 13,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161405",
@@ -271,7 +977,34 @@
           "score": 11,
           "opponent_score": 11,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161652",
@@ -279,7 +1012,34 @@
           "score": 8,
           "opponent_score": 13,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161903",
@@ -287,7 +1047,34 @@
           "score": 14,
           "opponent_score": 14,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161948",
@@ -295,15 +1082,43 @@
           "score": 11,
           "opponent_score": 6,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": true
         }
       ],
       "stats": {
-        "cooperation_rate": 0,
-        "defection_rate": 1,
-        "first_move_cooperation_rate": 0.0,
-        "retaliation_rate": 0,
-        "total_decisions": 0
+        "cooperation_rate": 0.6,
+        "defection_rate": 0.4,
+        "first_move_cooperation_rate": 1.0,
+        "retaliation_rate": 0.833,
+        "total_decisions": 30,
+        "first_to_defect_rate": 0.16666666666666666
       }
     },
     {
@@ -316,7 +1131,34 @@
           "score": 11,
           "opponent_score": 11,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161223",
@@ -324,7 +1166,34 @@
           "score": 13,
           "opponent_score": 13,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161451",
@@ -332,7 +1201,34 @@
           "score": 15,
           "opponent_score": 10,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161728",
@@ -340,7 +1236,34 @@
           "score": 6,
           "opponent_score": 11,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 3,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161903",
@@ -348,7 +1271,34 @@
           "score": 14,
           "opponent_score": 14,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_162058",
@@ -356,15 +1306,43 @@
           "score": 15,
           "opponent_score": 10,
           "result": "win",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         }
       ],
       "stats": {
-        "cooperation_rate": 0,
-        "defection_rate": 1,
-        "first_move_cooperation_rate": 0.0,
-        "retaliation_rate": 0,
-        "total_decisions": 0
+        "cooperation_rate": 0.633,
+        "defection_rate": 0.367,
+        "first_move_cooperation_rate": 1.0,
+        "retaliation_rate": 1.0,
+        "total_decisions": 30,
+        "first_to_defect_rate": 0.0
       }
     },
     {
@@ -377,7 +1355,34 @@
           "score": 8,
           "opponent_score": 13,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161307",
@@ -385,7 +1390,34 @@
           "score": 15,
           "opponent_score": 15,
           "result": "tie",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161547",
@@ -393,7 +1425,34 @@
           "score": 12,
           "opponent_score": 17,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 5,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161805",
@@ -401,7 +1460,34 @@
           "score": 8,
           "opponent_score": 13,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161948",
@@ -409,7 +1495,34 @@
           "score": 6,
           "opponent_score": 11,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 3,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 4,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_162058",
@@ -417,15 +1530,43 @@
           "score": 10,
           "opponent_score": 15,
           "result": "loss",
-          "decisions": null
+          "decisions": [
+            {
+              "round": 1,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 2,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 3,
+              "decision": "cooperate",
+              "opponent_decision": "cooperate"
+            },
+            {
+              "round": 4,
+              "decision": "cooperate",
+              "opponent_decision": "defect"
+            },
+            {
+              "round": 5,
+              "decision": "defect",
+              "opponent_decision": "defect"
+            }
+          ],
+          "was_first_defector": true
         }
       ],
       "stats": {
-        "cooperation_rate": 0,
-        "defection_rate": 1,
-        "first_move_cooperation_rate": 0.0,
-        "retaliation_rate": 0,
-        "total_decisions": 0
+        "cooperation_rate": 0.733,
+        "defection_rate": 0.267,
+        "first_move_cooperation_rate": 1.0,
+        "retaliation_rate": 1.0,
+        "total_decisions": 30,
+        "first_to_defect_rate": 0.16666666666666666
       }
     }
   ]
