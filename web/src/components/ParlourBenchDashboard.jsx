@@ -101,7 +101,7 @@ const ParlourBenchDashboard = () => {
 						</nav>
 					</div>
 
-					<p className="text-lg text-gray-600 mb-6 text-center">
+					<p className="text-lg text-gray-600 mb-8 text-center">
 						An open-source benchmark that pits LLMs against one
 						another in parlour games
 					</p>
@@ -204,7 +204,7 @@ const GameSelector = ({ games }) => {
 		}) || games[0];
 
 	return (
-		<div className="flex justify-center mb-6">
+		<div className="flex justify-center mb-14">
 			<div className="inline-block relative">
 				<select
 					className="block appearance-none w-64 bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
