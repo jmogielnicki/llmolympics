@@ -7,10 +7,10 @@ import {
 	Link,
 	Outlet,
 	useLocation,
+	useParams,
 } from "react-router-dom";
-import { ChevronDown, Info, Github, Home } from "lucide-react";
+import { ChevronDown, Info, Github, Home, Lock, Users } from "lucide-react";
 import PrisonersDilemmaDashboard from "./PrisonersDilemmaDashboard/components/PrisonersDilemmaDashboard";
-import GameHeroSection from "./GameHeroSection";
 
 /**
  * Main ParlourBench Dashboard component
@@ -25,12 +25,13 @@ const ParlourBenchDashboard = () => {
 			path: "/games/prisoners-dilemma",
 			description: "A classic game of cooperation and betrayal",
 			long_description: `
-							For each of 5 rounds, players simultaneously choose to cooperate or
-							defect. Mutual cooperation yields moderate rewards
-							for both (3,3), mutual defection yields low rewards
-							(1,1), while unilateral defection yields high reward
-							for the defector (5,0).
-			`,
+              For each of 5 rounds, players simultaneously choose to cooperate or
+              defect. Mutual cooperation yields moderate rewards
+              for both (3,3), mutual defection yields low rewards
+              (1,1), while unilateral defection yields high reward
+              for the defector (5,0).
+      `,
+			icon: "🔒", // Lock icon as emoji alternative
 			stats: {
 				gameCount: 21,
 				modelCount: 7,
@@ -42,6 +43,7 @@ const ParlourBenchDashboard = () => {
 			name: "Ghost",
 			path: "/games/ghost",
 			comingSoon: true,
+			icon: "👻", // Ghost emoji
 			description: "A word game where players avoid completing words",
 		},
 		{
@@ -49,6 +51,7 @@ const ParlourBenchDashboard = () => {
 			name: "Diplomacy",
 			path: "/games/diplomacy",
 			comingSoon: true,
+			icon: "🤝", // Handshake emoji
 			description:
 				"A game of alliance building and strategic elimination",
 		},
@@ -57,6 +60,7 @@ const ParlourBenchDashboard = () => {
 			name: "Ultimatum Game",
 			path: "/games/ultimatum-game",
 			comingSoon: true,
+			icon: "💰", // Money bag emoji
 			description: "A negotiation game testing fairness and strategy",
 		},
 		{
@@ -64,54 +68,52 @@ const ParlourBenchDashboard = () => {
 			name: "Rock Paper Scissors",
 			path: "/games/rock-paper-scissors",
 			comingSoon: true,
+			icon: "✂️", // Scissors emoji
 			description: "A multi-round tournament with strategic deception",
 		},
 	];
 
 	return (
 		<Router>
-			<div className="container mx-auto p-4 max-w-6xl">
-				<header className="mb-4">
-					{/* Responsive header - stacked on mobile, side by side on larger screens */}
-					<div className="flex flex-col md:flex-row md:items-center mb-2">
-						{/* Title - centered on all screens */}
-						<h1 className="text-4xl font-semibold mt-4 text-center w-full order-1">
-							ParlourBench Dashboard
-						</h1>
-
-						{/* Navigation - centered on mobile, right-aligned on larger screens */}
-						<nav className="flex space-x-4 w-full md:w-auto mt-4 md:mt-0 justify-center md:justify-end order-2 md:absolute md:right-8 md:top-6">
+			<div className="min-h-screen bg-gray-50">
+				{/* Header */}
+				<header className="bg-white shadow-sm border-b">
+					<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20 py-3">
+						<div className="flex-1 text-left">
+							<h1 className="text-2xl font-bold text-gray-900">
+								ParlourBench
+							</h1>
+							<p className="text-sm text-gray-600">
+								Evaluating LLMs through competitive gameplay
+							</p>
+						</div>
+						<nav className="flex space-x-6">
 							<Link
 								to="/"
-								className="flex items-center text-gray-600 hover:text-blue-600"
+								className="text-gray-600 hover:text-gray-900"
 							>
-								<Home size={18} className="mr-1" />
-								<span>Home</span>
+								Home
 							</Link>
 							<Link
 								to="/about"
-								className="flex items-center text-gray-600 hover:text-blue-600"
+								className="text-gray-600 hover:text-gray-900"
 							>
-								<Info size={18} className="mr-1" />
-								<span>About</span>
+								About
 							</Link>
 							<a
 								href="https://github.com/jmogielnicki/parlourbench/"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="flex items-center text-gray-600 hover:text-blue-600"
+								className="text-gray-600 hover:text-gray-900"
 							>
-								<Github size={18} className="mr-1" />
-								<span>GitHub</span>
+								GitHub
 							</a>
 						</nav>
 					</div>
+				</header>
 
-					<p className="text-lg text-gray-600 mb-8 text-center">
-						An open-source benchmark that pits LLMs against one
-						another in parlour games
-					</p>
-
+				{/* Main Content */}
+				<main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 					{/* Game Selector - Only shown on game pages, not on About page */}
 					<Routes>
 						<Route path="/about" element={null} />
@@ -120,71 +122,56 @@ const ParlourBenchDashboard = () => {
 							element={<GameSelector games={games} />}
 						/>
 					</Routes>
-					<div className="border-b border-gray-200 mt-6 mb-14"></div>
 
-					{/* Current Game Hero Section - Only shown on game pages, not on About page */}
+					{/* Current Game Info - Only shown on game pages, not on About page */}
 					<Routes>
 						<Route path="/about" element={null} />
 						<Route
 							path="*"
-							element={<CurrentGameHero games={games} />}
+							element={<GameInfoCard games={games} />}
 						/>
 					</Routes>
-				</header>
+					{/* Main Content Routes */}
+					<Routes>
+						<Route
+							path="/games/prisoners-dilemma/*"
+							element={<PrisonersDilemmaDashboard />}
+						/>
+						<Route
+							path="/games/:gameId"
+							element={<ComingSoonGame games={games} />}
+						/>
+						<Route path="/about" element={<AboutParlourBench />} />
+						<Route
+							path="/"
+							element={
+								<Navigate
+									replace
+									to="/games/prisoners-dilemma/leaderboard"
+								/>
+							}
+						/>
+					</Routes>
+				</main>
 
-				<Routes>
-					<Route
-						path="/games/prisoners-dilemma/*"
-						element={<PrisonersDilemmaDashboard />}
-					/>
-					<Route
-						path="/games/:gameId"
-						element={<ComingSoonGame games={games} />}
-					/>
-					<Route path="/about" element={<AboutParlourBench />} />
-					<Route
-						path="/"
-						element={
-							<Navigate replace to="/games/prisoners-dilemma" />
-						}
-					/>
-				</Routes>
+				{/* Common footer across all games */}
+				<footer className="bg-white border-t border-gray-200 py-6 mt-12">
+					<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600 text-sm">
+						<p>
+							ParlourBench is an open-source project. View the
+							code on
+							<a
+								href="https://github.com/jmogielnicki/parlourbench/"
+								className="text-blue-600 hover:underline ml-1"
+							>
+								GitHub
+							</a>
+						</p>
+						<p className="mt-2">© 2025 John Mogielnicki</p>
+					</div>
+				</footer>
 			</div>
-
-			{/* Common footer across all games */}
-			<footer className="mt-12 pt-6 border-t border-gray-200 text-center text-gray-600 text-sm">
-				<p>
-					ParlourBench is an open-source project. View the code on
-					<a
-						href="https://github.com/jmogielnicki/parlourbench/"
-						className="text-blue-600 hover:underline ml-1"
-					>
-						GitHub
-					</a>
-				</p>
-				<p className="mt-2">© 2025 John Mogielnicki</p>
-			</footer>
 		</Router>
-	);
-};
-
-/**
- * Component that displays the hero section for the current game
- */
-const CurrentGameHero = ({ games }) => {
-	const location = useLocation();
-	const currentPath = location.pathname;
-	const currentGame =
-		games.find((game) => currentPath.includes(game.path)) || games[0];
-
-	return (
-		<GameHeroSection
-			gameId={currentGame.id}
-			title={currentGame.name}
-			description={currentGame.description}
-			longDescription={currentGame.long_description}
-			stats={currentGame.comingSoon ? null : currentGame.stats}
-		/>
 	);
 };
 
@@ -195,6 +182,12 @@ const GameSelector = ({ games }) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 
+	// Find the current game based on the current route path
+	const currentGame =
+		games.find((game) => {
+			return location.pathname.includes(game.path.replace(/^\//, ""));
+		}) || games[0];
+
 	const handleGameChange = (e) => {
 		const selectedGame = games.find((game) => game.id === e.target.value);
 		if (selectedGame) {
@@ -202,19 +195,12 @@ const GameSelector = ({ games }) => {
 		}
 	};
 
-	// Find the current game based on the current route path
-	// location.pathname from useLocation() correctly handles the hash part in HashRouter
-	const currentGame =
-		games.find((game) => {
-			// Remove the hash prefix and check if the path matches
-			return location.pathname.includes(game.path.replace(/^\//, ""));
-		}) || games[0];
-
 	return (
-		<div className="flex justify-center mb-14">
-			<div className="inline-block relative">
+		<div className="mb-8 mt-6 flex justify-left items-center">
+			<span className="mr-2 text-gray-700">Select Game:</span>
+			<div className="relative inline-block">
 				<select
-					className="block appearance-none w-64 bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+					className="appearance-none bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
 					value={currentGame.id}
 					onChange={handleGameChange}
 				>
@@ -234,11 +220,61 @@ const GameSelector = ({ games }) => {
 };
 
 /**
+ * Game Info Card component
+ */
+const GameInfoCard = ({ games }) => {
+	const location = useLocation();
+	const currentGame =
+		games.find((game) => {
+			return location.pathname.includes(game.path.replace(/^\//, ""));
+		}) || games[0];
+
+	return (
+		<div className="bg-indigo-50 rounded-lg shadow-sm overflow-hidden mb-6">
+			<div className="flex items-left p-4">
+				<div className="flex-shrink-0 mr-4 bg-indigo-100 rounded-full p-1 text-left w-16 h-16 flex items-center justify-center">
+					<span className="text-3xl">{currentGame.icon}</span>
+				</div>
+				<div>
+					<h2 className="text-2xl font-bold text-gray-900 text-left">
+						{currentGame.name}
+					</h2>
+					<p className="text-gray-600">{currentGame.description}</p>
+				</div>
+			</div>
+
+			{currentGame.long_description && (
+				<div className="p-4 border-t border-indigo-100">
+					<p className="text-gray-700 text-sm text-left">
+						{currentGame.long_description}
+					</p>
+				</div>
+			)}
+
+			{currentGame.stats && (
+				<div className="bg-indigo-100 px-6 py-3 flex justify-center items-center text-sm text-gray-500">
+					<div className="flex items-center">
+						<Users size={14} className="mr-1" />
+						<span>
+							{currentGame.stats.gameCount} games played between{" "}
+							{currentGame.stats.modelCount} models • Last updated{" "}
+							{currentGame.stats.lastUpdated}
+						</span>
+					</div>
+				</div>
+			)}
+		</div>
+	);
+};
+
+/**
  * Placeholder for games that are coming soon
  */
 const ComingSoonGame = ({ games }) => {
-	const currentPath = window.location.pathname;
-	const currentGame = games.find((game) => game.path === currentPath) || {
+	const location = useLocation();
+	const currentGame = games.find((game) =>
+		location.pathname.includes(game.path)
+	) || {
 		name: "Game",
 	};
 
