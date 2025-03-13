@@ -66,9 +66,9 @@ const DashboardContent = () => {
 	// Tab configuration
 	const tabs = [
 		{ id: "leaderboard", label: "Leaderboard" },
-		{ id: "game-stats", label: "Game Statistics" },
+		{ id: "game-stats", label: "Stats" },
 		{ id: "matchups", label: "Matchups" },
-		{ id: "timeline", label: "Game Timeline" },
+		{ id: "timeline", label: "Timeline" },
 		{ id: "about", label: "About" },
 	];
 
