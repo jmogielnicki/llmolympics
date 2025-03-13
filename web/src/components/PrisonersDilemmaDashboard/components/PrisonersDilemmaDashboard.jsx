@@ -5,7 +5,7 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { GameDataProvider, useGameData } from "../context/GameDataContext";
 
 // Import tab components
-import LeaderboardTab from "../tabs/LeaderboardTab";
+import LeaderboardTab from "../tabs/LeaderBoardTab";
 import GameStatsTab from "../tabs/GameStatsTab";
 import MatchupsTab from "../tabs/MatchupsTab";
 import TimelineTab from "../tabs/TimelineTab";
