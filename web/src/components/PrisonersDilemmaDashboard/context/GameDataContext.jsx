@@ -88,10 +88,16 @@ export const GameDataProvider = ({ children }) => {
 
 	// Helper function to get color based on cooperation rate
 	const getCellColor = (rate) => {
-		if (rate >= 0.8) return "bg-blue-100";
-		if (rate >= 0.6) return "bg-blue-50";
-		if (rate <= 0.2) return "bg-red-100";
-		if (rate <= 0.4) return "bg-red-50";
+		if (rate >= 0.9) return "bg-blue-500";
+		if (rate >= 0.8) return "bg-blue-400";
+		if (rate >= 0.7) return "bg-blue-300";
+		if (rate >= 0.6) return "bg-blue-200";
+		if (rate >= 0.5) return "bg-blue-100";
+		if (rate <= 0.1) return "bg-red-500";
+		if (rate <= 0.2) return "bg-red-400";
+		if (rate <= 0.3) return "bg-red-300";
+		if (rate <= 0.4) return "bg-red-200";
+		if (rate <= 0.5) return "bg-red-100";
 		return "";
 	};
 

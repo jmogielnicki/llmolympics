@@ -165,11 +165,15 @@ const TimelineTab = () => {
 							value={selectedLeftModel}
 							onChange={handleLeftModelChange}
 						>
-							{modelOptions.map((model) => (
-								<option key={model.id} value={model.id}>
-									{shortenModelName(model.name)}
-								</option>
-							))}
+							{modelOptions
+								.filter(
+									(model) => model.id !== selectedRightModel
+								)
+								.map((model) => (
+									<option key={model.id} value={model.id}>
+										{shortenModelName(model.name)}
+									</option>
+								))}
 						</select>
 					</div>
 
@@ -183,11 +187,15 @@ const TimelineTab = () => {
 							value={selectedRightModel}
 							onChange={handleRightModelChange}
 						>
-							{modelOptions.map((model) => (
-								<option key={model.id} value={model.id}>
-									{shortenModelName(model.name)}
-								</option>
-							))}
+							{modelOptions
+								.filter(
+									(model) => model.id !== selectedLeftModel
+								)
+								.map((model) => (
+									<option key={model.id} value={model.id}>
+										{shortenModelName(model.name)}
+									</option>
+								))}
 						</select>
 					</div>
 				</div>
