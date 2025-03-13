@@ -30,10 +30,10 @@ const TabNavigation = ({ tabs, basePath }) => {
 										? basePath
 										: `${basePath}/${tab.id}`
 								}
-								className={`px-2 sm:px-4 py-2 font-medium text-xs sm:text-sm whitespace-nowrap ${
+								className={`px-2 sm:px-4 py-2 text-xs sm:text-sm whitespace-nowrap ${
 									isActive
-										? "border-b-2 border-blue-500 text-blue-600"
-										: "text-gray-500 hover:text-gray-700"
+										? "border-b-2 border-sky-500 text-sky-500 font-bold"
+										: "text-gray-500 hover:text-gray-700 font-medium "
 								}`}
 							>
 								{tab.label}

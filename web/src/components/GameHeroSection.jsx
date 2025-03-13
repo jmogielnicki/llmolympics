@@ -21,11 +21,11 @@ import {
 const GameHeroSection = ({ gameId, title, description, stats }) => {
 	// Map of game IDs to icons
 	const gameIcons = {
-		prisoners_dilemma: <Lock className="w-8 h-8" />,
-		ghost: <BookOpen className="w-8 h-8" />,
-		diplomacy: <Users className="w-8 h-8" />,
-		ultimatum_game: <DollarSign className="w-8 h-8" />,
-		rock_paper_scissors: <Hand className="w-8 h-8" />,
+		prisoners_dilemma: <Lock className="w-6 h-6" />,
+		ghost: <BookOpen className="w-6 h-6" />,
+		diplomacy: <Users className="w-6 h-6" />,
+		ultimatum_game: <DollarSign className="w-6 h-6" />,
+		rock_paper_scissors: <Hand className="w-6 h-6" />,
 	};
 
 	// Get the icon based on gameId or use a default

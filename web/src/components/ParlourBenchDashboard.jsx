@@ -10,7 +10,7 @@ import {
 	useLocation,
 } from "react-router-dom";
 import { ChevronDown, Info, Github, Home } from "lucide-react";
-import PrisonersDilemmaDashboard from "./PrisonersDilemmaDashboard";
+import PrisonersDilemmaDashboard from "./PrisonersDilemmaDashboard/components/PrisonersDilemmaDashboard";
 import GameHeroSection from "./GameHeroSection";
 
 /**
