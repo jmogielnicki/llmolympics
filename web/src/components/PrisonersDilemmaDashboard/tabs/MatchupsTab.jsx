@@ -36,7 +36,7 @@ const MatchupsTab = () => {
 											scope="col"
 											className="px-2 sm:px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
 										>
-											{model.split(" ").pop()}
+											{model}
 										</th>
 									))}
 								</tr>
@@ -49,7 +49,7 @@ const MatchupsTab = () => {
 											className="hover:bg-gray-50"
 										>
 											<td className="px-2 sm:px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
-												{rowModel.split(" ").pop()}
+												{rowModel}
 											</td>
 											{matchupMatrix.models.map(
 												(colModel, colIdx) => (

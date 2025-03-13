@@ -2,6 +2,13 @@
  * Utility functions for transforming data for the Prisoner's Dilemma dashboard
  */
 
+
+const getModelName = (model) => {
+    console.log(model.model_name);
+	return model.model_name;
+};
+
+
 /**
  * Transform leaderboard data for display
  * @param {Object} data - Raw leaderboard data
@@ -19,9 +26,10 @@ export const transformLeaderboardData = (data) => {
  * @returns {Object} - Transformed matchup matrix object
  */
 export const transformMatchupMatrix = (data) => {
+    console.log(data);
 	return {
 		models:
-			data.model_names || data.models.map((model) => model.split(":")[1]),
+			data.model_names,
 		winMatrix: data.win_matrix,
 	};
 };
@@ -46,7 +54,7 @@ export const transformRoundProgressionData = (data) => {
  */
 export const createGameSummaryData = (leaderboard) => {
 	return leaderboard.map((model) => ({
-		name: model.model_name.split(" ").pop() || model.model_name,
+		name: getModelName(model),
 		wins: model.wins,
 		losses: model.losses,
 		ties: model.ties,
