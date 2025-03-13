@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // Import context provider
 import { GameDataProvider, useGameData } from "../context/GameDataContext";
@@ -52,7 +52,6 @@ const ErrorState = ({ message }) => (
  */
 const DashboardContent = () => {
 	const { isLoading, error } = useGameData();
-	const location = useLocation();
 
 	// If still loading, show loading state
 	if (isLoading) {
@@ -72,9 +71,6 @@ const DashboardContent = () => {
 		{ id: "timeline", label: "Game Timeline" },
 		{ id: "about", label: "About" },
 	];
-
-	// Get path from location
-	const path = location.pathname;
 
 	return (
 		<div>

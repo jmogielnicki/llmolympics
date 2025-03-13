@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
 	HashRouter as Router,
 	Routes,
