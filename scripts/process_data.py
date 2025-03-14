@@ -190,8 +190,10 @@ def generate_matchup_matrix(benchmark_logs):
                 winrate_row.append(None)
             else:
                 data = matchups[model1][model2]
-                win_row.append(data['wins'])
-                winrate = data['wins'] / data['games'] if data['games'] > 0 else 0
+                # Count wins and half of ties
+                effective_wins = data['wins'] + (0.5 * data['ties'])
+                win_row.append(effective_wins)
+                winrate = effective_wins / data['games'] if data['games'] > 0 else 0
                 winrate_row.append(round(winrate, 2))
 
         win_matrix.append(win_row)

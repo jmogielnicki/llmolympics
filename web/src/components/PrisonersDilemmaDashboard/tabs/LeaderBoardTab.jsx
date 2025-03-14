@@ -121,9 +121,6 @@ const LeaderboardTab = () => {
 										type="category"
 										width={40}
 										tick={{ fontSize: 12 }}
-										tickFormatter={(value) =>
-											value.split(" ").pop()
-										}
 									/>
 									<Tooltip
 										formatter={(value) => value.toFixed(2)}

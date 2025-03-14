@@ -6,6 +6,7 @@ import { useGameData } from "../context/GameDataContext";
  */
 const MatchupsTab = () => {
 	const { matchupMatrix, renderWinMatrixCell } = useGameData();
+	console.log(matchupMatrix)
 
 	return (
 		<div className="space-y-6">

@@ -15,12 +15,6 @@ export const shortenModelName = (modelName) => {
     return modelName
 }
 
-
-const getModelName = (model) => {
-	return model.model_name;
-};
-
-
 /**
  * Transform leaderboard data for display
  * @param {Object} data - Raw leaderboard data
@@ -29,7 +23,7 @@ const getModelName = (model) => {
 export const transformLeaderboardData = (data) => {
 	return data.leaderboard.map((model) => ({
 		...model,
-        model_name: shortenModelName(getModelName(model)),
+        model_name: shortenModelName(model.model_name),
 	}));
 };
 
@@ -41,7 +35,7 @@ export const transformLeaderboardData = (data) => {
 export const transformMatchupMatrix = (data) => {
 	return {
 		models:
-			data.model_names,
+			data.model_names.map((name) => shortenModelName(name)),
 		winMatrix: data.win_matrix,
 	};
 };
@@ -66,7 +60,7 @@ export const transformRoundProgressionData = (data) => {
  */
 export const createGameSummaryData = (leaderboard) => {
 	return leaderboard.map((model) => ({
-		name: shortenModelName(getModelName(model)),
+		name: model.model_name,
 		wins: model.wins,
 		losses: model.losses,
 		ties: model.ties,
