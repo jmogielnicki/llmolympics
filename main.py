@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-from core.engine import GameEngine
-import handlers.common  # Import handlers to ensure they are registered
+from core.game.engine import GameEngine
+import core.game.handlers.common  # Import handlers to ensure they are registered
 
 # Set up logging
 logging.basicConfig(

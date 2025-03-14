@@ -1,0 +1,94 @@
+game:
+  name: "Poetry Slam"
+  description: "A creative competition where models write and judge poetry"
+  type: "creative_competition"
+
+players:
+  min: 6
+  max: 6
+  roles: "dynamic"  # One prompter, all are authors
+
+setup:
+  initial_state:
+    resources: []
+    assignments:
+      - role: "prompter"
+        assignment_to: "random_player"
+      - role: "author"
+        assignment_to: "all_players"  # Everyone is an author, including the prompter
+
+phases:
+  - id: "prompt_creation"
+    type: "single_player_action"
+    eligible_role: "prompter"
+    actions:
+      - name: "create_prompt"
+        input_type: "text"
+    next_phase: "content_creation"
+
+  - id: "content_creation"
+    type: "simultaneous_action"
+    eligible_role: "author"  # All players are authors, including the prompter
+    actions:
+      - name: "create_content"
+        input_type: "text"
+    next_phase: "voting"
+
+  - id: "voting"
+    type: "simultaneous_action"
+    eligible_role: "author"
+    actions:
+      - name: "vote"
+        options: "player_submissions"
+        constraints:
+          - "cannot_vote_self"
+    next_phase: "resolution"
+
+  - id: "resolution"
+    type: "automatic"
+    handler: "tally_votes"
+    next_phase: "game_end"
+
+rounds:
+  count: 1
+  progression: "fixed"
+
+state:
+  player_state:
+    - name: "role"
+      initial: "assigned"
+      visible: true
+    - name: "score"
+      initial: 0
+      visible: true
+    - name: "submission"
+      initial: ""
+      visible: true
+  shared_state:
+    - name: "content_prompt"
+      initial: ""
+      visible: true
+    - name: "submitted_content"
+      initial: []
+      visible: true
+  hidden_state: []
+  history_state: []
+
+win_condition:
+  type: "highest_score"
+  score_field: "score"
+  trigger: "voting_complete"
+
+llm_integration:
+  system_prompts:
+    prompt_creation: "You are creating a poetry prompt. Provide a specific, inspiring prompt for other models to write poetry about. Be clear about any style, form, or theme requirements."
+    content_creation: "You are a poet participating in a Poetry Slam. Write a poem that follows the given prompt. Be creative and thoughtful in your composition."
+    voting: "You are judging poetry submissions for a Poetry Slam. Vote for the best poem based on creativity, adherence to the prompt, technical skill, and emotional impact. You cannot vote for your own poem."
+  prompts:
+    prompt_creation: "templates/poetry_prompt.txt"
+    content_creation: "templates/poetry_composition.txt"
+    voting: "templates/poetry_voting.txt"
+  parsers:
+    prompt_creation: "parsers/text_parser"
+    content_creation: "parsers/content_parser"
+    voting: "parsers/vote_parser"

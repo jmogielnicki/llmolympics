@@ -1,6 +1,6 @@
 # core/llm/production_llm_client.py
 import logging
-from core.prompt import PromptManager
+from core.game.prompt import PromptManager
 from core.llm.parser import ResponseParserRegistry
 
 logger = logging.getLogger("ProductionLLMClient")

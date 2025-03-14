@@ -3,12 +3,12 @@ import os
 import time
 import logging
 
-from core.config import ConfigLoader
-from core.state import GameState
-from handlers.base import PhaseController
-from handlers.registry import HandlerRegistry
-from utils.chat_logger import ChatLogger
-from utils.game_session import GameSession
+from core.game.config import ConfigLoader
+from core.game.state import GameState
+from core.game.handlers.base import PhaseController
+from core.game.handlers.registry import HandlerRegistry
+from core.game.chat_logger import ChatLogger
+from core.game.game_session import GameSession
 
 # Set up logging
 logging.basicConfig(

@@ -1,7 +1,7 @@
 # handlers/common.py
 import logging
-from handlers.base import PhaseHandler
-from handlers.registry import HandlerRegistry
+from core.game.handlers.base import PhaseHandler
+from core.game.handlers.registry import HandlerRegistry
 from core.llm.client_factory import create_llm_client
 
 logger = logging.getLogger("ProductionHandlers")

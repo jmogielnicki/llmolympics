@@ -11,7 +11,7 @@ load_dotenv()
 
 from core.benchmark.config import BenchmarkConfig
 from core.benchmark.runner import BenchmarkRunner
-import handlers.common  # Import handlers to ensure they are registered
+import core.game.handlers.common  # Import handlers to ensure they are registered
 
 # Set up logging
 logging.basicConfig(

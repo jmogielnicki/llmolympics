@@ -10,8 +10,8 @@ import itertools
 
 # Import from core modules
 from core.benchmark.config import BenchmarkConfig
-from core.engine import GameEngine
-from core.config import ConfigLoader
+from core.game.engine import GameEngine
+from core.game.config import ConfigLoader
 
 logger = logging.getLogger("BenchmarkRunner")
 

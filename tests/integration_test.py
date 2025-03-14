@@ -93,7 +93,7 @@ def setup_test_environment(clean=True):
 
     # This is important - explicitly import the modules with handler definitions
     try:
-        import handlers.common
+        import core.game.handlers.common
         logger.info("Imported handlers from handlers.common")
 
     except Exception as e:
@@ -369,7 +369,7 @@ def run_test(config_path):
     logger.info(f"Running integration test with config: {config_path}")
 
     # Import here to use the modified environment variables
-    from core.engine import GameEngine
+    from core.game.engine import GameEngine
     import time
 
     try:
