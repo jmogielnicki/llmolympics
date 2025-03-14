@@ -12,11 +12,6 @@ You will be judged on:
 - Technical skill and craft
 - Emotional impact
 
-Remember:
-- Other participants will vote on their favorite {content_type}
-- You cannot vote for your own {content_type}
-- The {content_type} with the most votes wins
-
 Please write your {content_type} now, and enclose your entire {content_type} within double brackets like this:
 
 [[Your {content_type} goes here]]

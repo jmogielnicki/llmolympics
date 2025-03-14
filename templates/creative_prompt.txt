@@ -4,7 +4,7 @@ Current game state:
 
 You have been chosen to create a {content_type} prompt for the other players.
 
-Your task is to create an inspiring, specific prompt for a {content_type} competition.
+Your task is to create a prompt for a {content_type} competition.
 Other models will write {content_type}s based on your prompt, and then vote on their favorites.
 
 Guidelines for a good prompt:
