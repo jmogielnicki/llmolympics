@@ -113,8 +113,7 @@ class GameEngine:
             elif phase_type == 'sequential_action':
                 phase_result = self._process_sequential_phase(phase_config)
             elif phase_type == 'single_player_action':
-                logger.error("single_player_action phase type not yet implemented")
-                raise NotImplementedError(f"Phase type '{phase_type}' is not implemented")
+                phase_result = self._process_single_player_action(phase_config)
             elif phase_type == 'sequential_communication':
                 logger.error("sequential_communication phase type not yet implemented")
                 raise NotImplementedError(f"Phase type '{phase_type}' is not implemented")
@@ -334,6 +333,88 @@ class GameEngine:
         # Indicate successful completion of the entire sequential phase
         return True
 
+    def _process_single_player_action(self, phase_config):
+        """
+        Process a phase where only a single player with a specific role can act.
+
+        Args:
+            phase_config (dict): The phase configuration
+
+        Returns:
+            bool: True if successful
+        """
+        # Find player with the eligible role
+        eligible_role = phase_config.get('eligible_role')
+        eligible_player = None
+
+        if not eligible_role:
+            logger.error(f"No eligible_role specified for single_player_action phase: {phase_config['id']}")
+            raise ValueError(f"No eligible_role specified for single_player_action phase: {phase_config['id']}")
+
+        logger.info(f"Looking for a player with role '{eligible_role}'")
+
+        # Debug all player roles
+        for player in self.state.players:
+            logger.info(f"Player {player['id']} has roles: {player.get('roles', [])}")
+
+        for player in self.state.get_active_players():
+            # Check the roles list first
+            if 'roles' in player and eligible_role in player['roles']:
+                eligible_player = player
+                logger.info(f"Found eligible player {player['id']} with role {eligible_role} in roles list")
+                break
+
+            # Backward compatibility check for single role
+            if player.get('role') == eligible_role:
+                eligible_player = player
+                logger.info(f"Found eligible player {player['id']} with primary role {eligible_role}")
+                break
+
+        if not eligible_player:
+            logger.error(f"No active player with role '{eligible_role}' found")
+            raise ValueError(f"No active player with role '{eligible_role}' found")
+
+        player_id = eligible_player['id']
+
+        # Get the handler for this action
+        handler_name = phase_config.get('handler')
+        if handler_name:
+            handler = HandlerRegistry.get_handler(handler_name)
+        else:
+            handler = HandlerRegistry.get_handler('player_action_handler')
+
+        # Log player action start
+        action_id = self.game_session.save_event(
+            "player_action_start",
+            {
+                "player_id": player_id,
+                "phase_id": phase_config['id'],
+                "role": eligible_role
+            },
+            phase_id=phase_config['id'],
+            round_num=self.state.shared_state.get('current_round', 0)
+        )
+
+        # Process this player's action
+        action = handler.process_player(self.state, eligible_player)
+
+        # Store the response in a dictionary indexed by player ID
+        responses = {player_id: action}
+        self.state.set_action_responses(responses)
+
+        # Log player action completion
+        self.game_session.save_event(
+            "player_action_complete",
+            {
+                "player_id": player_id,
+                "action": action,
+                "action_id": action_id
+            },
+            phase_id=phase_config['id'],
+            round_num=self.state.shared_state.get('current_round', 0)
+        )
+
+        return True
 
     def _get_phase_config(self, phase_id):
         """

@@ -1,0 +1,25 @@
+Current game state:
+- Game: {game_name}
+- Your role: Judge
+
+PROMPT: {content_prompt}
+
+You have created your own {content_type} for this competition.
+Now you need to vote for the best {content_type} created by OTHER participants.
+
+SUBMISSIONS TO JUDGE:
+{submissions}
+
+YOUR TASK:
+Vote for the ONE {content_type} you think is best based on:
+- Creativity and originality
+- Adherence to the prompt
+- Technical skill and craft
+- Emotional impact
+
+RULES:
+- You CANNOT vote for your own {content_type}
+- You must select exactly ONE submission to vote for
+- Respond with ONLY the player ID of your choice in this format: [[player_id]]
+
+Your vote (provide only the player ID):

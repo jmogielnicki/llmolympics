@@ -244,3 +244,123 @@ class SingleCharacterParser:
         # Fail if no character found
         logger.error("No alphabetic character found in response")
         raise ValueError("Failed to parse any alphabetic character from response")
+
+@ResponseParserRegistry.register("text_parser")
+class TextParser:
+    """
+    Parser for free-form text content.
+
+    Simply returns the text response as-is, with minimal cleaning.
+    Used for creative prompts.
+    """
+
+    def parse(self, response, phase_config):
+        """
+        Parse a text response from the LLM.
+
+        Args:
+            response (str): The LLM's response
+            phase_config (dict): The phase configuration
+
+        Returns:
+            str: The parsed text
+        """
+        logger.debug(f"Parsing text response: {response[:50]}...")
+
+        # Simple cleaning - just trim whitespace
+        return response.strip()
+
+
+@ResponseParserRegistry.register("content_parser")
+class ContentParser:
+    """
+    Parser for creative content responses.
+
+    Extracts creative content from double brackets [[like this]].
+    Falls back to basic cleaning if no bracketed content is found.
+    """
+
+    def parse(self, response, phase_config):
+        """
+        Parse a creative content response from the LLM.
+
+        Args:
+            response (str): The LLM's response
+            phase_config (dict): The phase configuration
+
+        Returns:
+            str: The parsed creative content
+        """
+        logger.debug(f"Parsing creative content: {response[:50]}...")
+
+        # First, look for content in double brackets [[content]]
+        # Use a pattern that can span multiple lines with re.DOTALL
+        bracket_matches = re.findall(r'\[\[(.*?)\]\]', response, re.IGNORECASE | re.DOTALL)
+
+        if bracket_matches:
+            # Get the complete content inside brackets
+            return bracket_matches[0].strip()
+
+        # Fallback: If no bracketed content found, use basic cleaning
+        logger.warning("No bracketed content found, falling back to basic cleaning")
+
+        # Remove common wrapper text LLMs might add
+        content = response.strip()
+
+        # Remove "Here's my poem:" or similar prefixes
+        content = re.sub(r'^(here\'?s?\s+(my|a)\s+\w+[\s\:]+)', '', content, flags=re.IGNORECASE)
+
+        # Remove explanations or commentary after the content
+        content = re.sub(r'(\n\n.*explanation.*$|\n\n.*hope you.*$|\n\n.*enjoy.*$)', '', content, flags=re.IGNORECASE)
+
+        # Return the cleaned content
+        return content.strip()
+
+
+@ResponseParserRegistry.register("vote_parser")
+class VoteParser:
+    """
+    Parser for vote responses that target player IDs.
+
+    Extracts a player ID from the response, prioritizing
+    IDs in double brackets [[player_id]].
+    """
+
+    def parse(self, response, phase_config):
+        """
+        Parse a vote response from the LLM.
+
+        Args:
+            response (str): The LLM's response
+            phase_config (dict): The phase configuration
+
+        Returns:
+            str: The parsed player ID
+        """
+        logger.debug(f"Parsing vote response: {response[:50]}...")
+
+        # First, look for player IDs in double brackets [[player_id]]
+        bracket_matches = re.findall(r'\[\[(.*?)\]\]', response, re.IGNORECASE)
+
+        if bracket_matches:
+            # Get the first bracketed choice
+            bracketed_choice = bracket_matches[0].strip().lower()
+            logger.debug(f"Found bracketed player ID: {bracketed_choice}")
+
+            # Return the bracketed choice as is
+            return bracketed_choice
+
+        # If no bracketed choice, look for player ID patterns
+        player_id_matches = re.findall(r'\b(player_\d+)\b', response, re.IGNORECASE)
+
+        if player_id_matches:
+            # Get the first player ID match
+            player_id = player_id_matches[0].strip().lower()
+            logger.debug(f"Found player ID in text: {player_id}")
+
+            # Return the player ID
+            return player_id
+
+        # If no player ID found, return the raw response
+        logger.warning(f"No player ID found in response, returning raw response")
+        return response.strip()

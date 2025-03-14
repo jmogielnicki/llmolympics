@@ -71,7 +71,7 @@ class ProductionLLMClient():
 
         return response_content
 
-    def get_action(self, game_state, player, phase_id=None):
+    def get_action(self, game_state, player, phase_id=None, extra_context=None):
         """Get an action from a player in the current game state"""
         if phase_id is None:
             phase_id = game_state.current_phase
@@ -91,8 +91,11 @@ class ProductionLLMClient():
         if not prompt_template:
             prompt_template = f"default_{phase_config['type']}"
 
-        # Format prompt
-        prompt = self.prompt_manager.format_prompt(prompt_template, game_state, player)
+        # Format prompt with extra context if provided
+        if extra_context:
+            prompt = self.prompt_manager.format_prompt(prompt_template, game_state, player, **extra_context)
+        else:
+            prompt = self.prompt_manager.format_prompt(prompt_template, game_state, player)
 
         # Get system prompt
         system_prompt = game_state.config.get('llm_integration', {}).get('system_prompts', {}).get(phase_id)

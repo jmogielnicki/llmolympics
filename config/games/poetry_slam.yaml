@@ -2,24 +2,26 @@ game:
   name: "Poetry Slam"
   description: "A creative competition where models write and judge poetry"
   type: "creative_competition"
+  content_type: "poem"
 
 players:
-  min: 6
-  max: 6
+  min: 4
+  max: 4
   roles: "dynamic"  # One prompter, all are authors
 
 setup:
   initial_state:
     resources: []
-    assignments:
-      - role: "prompter"
-        assignment_to: "random_player"
-      - role: "author"
-        assignment_to: "all_players"  # Everyone is an author, including the prompter
+  assignments:
+    - role: "prompter"
+      assignment_to: "random_player"
+    - role: "author"
+      assignment_to: "all_players"  # Everyone is an author, including the prompter
 
 phases:
   - id: "prompt_creation"
     type: "single_player_action"
+    handler: "prompt_creation"
     eligible_role: "prompter"
     actions:
       - name: "create_prompt"
@@ -28,6 +30,7 @@ phases:
 
   - id: "content_creation"
     type: "simultaneous_action"
+    handler: "content_creation"
     eligible_role: "author"  # All players are authors, including the prompter
     actions:
       - name: "create_content"
@@ -36,6 +39,7 @@ phases:
 
   - id: "voting"
     type: "simultaneous_action"
+    handler: "voting"
     eligible_role: "author"
     actions:
       - name: "vote"
@@ -80,15 +84,20 @@ win_condition:
   trigger: "voting_complete"
 
 llm_integration:
+  player_models:
+    player_1: "deepseek:deepseek-reasoner"
+    player_2: "deepseek:deepseek-reasoner"
+    player_3: "deepseek:deepseek-reasoner"
+    player_4: "deepseek:deepseek-reasoner"
   system_prompts:
     prompt_creation: "You are creating a poetry prompt. Provide a specific, inspiring prompt for other models to write poetry about. Be clear about any style, form, or theme requirements."
     content_creation: "You are a poet participating in a Poetry Slam. Write a poem that follows the given prompt. Be creative and thoughtful in your composition."
     voting: "You are judging poetry submissions for a Poetry Slam. Vote for the best poem based on creativity, adherence to the prompt, technical skill, and emotional impact. You cannot vote for your own poem."
   prompts:
-    prompt_creation: "templates/poetry_prompt.txt"
-    content_creation: "templates/poetry_composition.txt"
-    voting: "templates/poetry_voting.txt"
+    prompt_creation: "creative_prompt"
+    content_creation: "creative_composition"
+    voting: "creative_voting"
   parsers:
-    prompt_creation: "parsers/text_parser"
-    content_creation: "parsers/content_parser"
-    voting: "parsers/vote_parser"
+    prompt_creation: "text_parser"
+    content_creation: "content_parser"
+    voting: "vote_parser"

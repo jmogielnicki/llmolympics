@@ -54,20 +54,61 @@ class GameState:
         for i in range(player_count):
             player = {
                 'id': f"player_{i+1}",
-                'state': {}
+                'state': {},
+                'roles': []  # Support multiple roles per player
             }
 
             # Apply initial state values from config
             for state_item in self.config['state'].get('player_state', []):
                 player['state'][state_item['name']] = state_item.get('initial', None)
 
-            # Handle role assignments if present
-            if 'setup' in self.config and 'assignments' in self.config['setup']:
-                for assignment in self.config['setup'].get('assignments', []):
-                    if assignment.get('assignment_to') == f"player_{i+1}":
-                        player['role'] = assignment.get('role')
-
             players.append(player)
+
+        # Handle role assignments if present
+        if 'setup' in self.config and 'assignments' in self.config['setup']:
+            assignments = self.config['setup']['assignments']
+
+            # Process all assignments
+            for assignment in assignments:
+                role = assignment.get('role')
+                target = assignment.get('assignment_to')
+
+                if target == 'random_player':
+                    import random
+                    selected_player = random.choice(players)
+                    if role not in selected_player['roles']:
+                        selected_player['roles'].append(role)
+                    selected_player['state']['role'] = role  # Legacy support
+                    # logger.info(f"Assigned role '{role}' to random player {selected_player['id']}")
+
+                elif target == 'all_players':
+                    for player in players:
+                        if role not in player['roles']:
+                            player['roles'].append(role)
+                        # Only set state.role if not already set to preserve primary role
+                        if not player['state'].get('role'):
+                            player['state']['role'] = role
+                    # logger.info(f"Assigned role '{role}' to all players")
+
+                else:
+                    # Direct assignment to specific player
+                    for player in players:
+                        if player['id'] == target:
+                            if role not in player['roles']:
+                                player['roles'].append(role)
+                            player['state']['role'] = role  # Legacy support
+                            # logger.info(f"Assigned role '{role}' to player {player['id']}")
+                            break
+
+            # For backward compatibility, set the 'role' field to the primary role
+            for player in players:
+                if player['roles']:
+                    # Use the first (presumably most important) role as the primary
+                    player['role'] = player['roles'][0]
+                else:
+                    player['role'] = None
+
+                # logger.info(f"Player {player['id']} has roles: {player['roles']}, primary: {player['role']}")
 
         return players
 

@@ -9,6 +9,7 @@ load_dotenv()
 
 from core.game.engine import GameEngine
 import core.game.handlers.common  # Import handlers to ensure they are registered
+import core.game.handlers.creative_competition
 
 # Set up logging
 logging.basicConfig(

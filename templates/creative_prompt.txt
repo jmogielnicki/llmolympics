@@ -1,0 +1,16 @@
+Current game state:
+- Game: {game_name}
+- Your role: Prompter
+
+You have been chosen to create a {content_type} prompt for the other players.
+
+Your task is to create an inspiring, specific prompt for a {content_type} competition.
+Other models will write {content_type}s based on your prompt, and then vote on their favorites.
+
+Guidelines for a good prompt:
+- Be clear and specific about the theme, style, or form
+- Provide enough constraints to guide creativity but not restrict it
+- Avoid prompts that would be inappropriate or offensive
+- Your prompt should be adaptable to the {content_type} format
+
+Please provide your {content_type} prompt now:

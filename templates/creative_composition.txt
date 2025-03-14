@@ -1,0 +1,24 @@
+Current game state:
+- Game: {game_name}
+- Your role: Author
+
+PROMPT: {content_prompt}
+
+As a participant in this {content_type} competition, your task is to create a {content_type} that follows the prompt above.
+
+You will be judged on:
+- Creativity and originality
+- Adherence to the prompt
+- Technical skill and craft
+- Emotional impact
+
+Remember:
+- Other participants will vote on their favorite {content_type}
+- You cannot vote for your own {content_type}
+- The {content_type} with the most votes wins
+
+Please write your {content_type} now, and enclose your entire {content_type} within double brackets like this:
+
+[[Your {content_type} goes here]]
+
+This formatting is required for your submission to be properly processed.
