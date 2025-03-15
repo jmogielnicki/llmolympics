@@ -6,7 +6,7 @@ benchmark:
   id: "poetry_slam_benchmark_1"                # Unique identifier for this benchmark
   base_config: "config/games/poetry_slam.yaml" # Base game configuration
   type: "multi_player"                         # Multi-player or pairwise tournament
-  sessions: 1                                  # Number of tournament sessions to run
+  sessions: 5                                  # Number of tournament sessions to run
   output_dir: "data/benchmark"                 # Directory for benchmark results
   players_per_game: 6                          # Number of players per game
 
@@ -17,9 +17,15 @@ benchmark:
 # Models to benchmark
 models:
   - deepseek:deepseek-chat
+  - deepseek:deepseek-reasoner
   - openai:gpt-4o
+  - openai:o1
+  - openai:o3-mini
   - anthropic:claude-3-5-sonnet-20240620
   - xai:grok-2-1212
   - mistral:mistral-large-latest
   - anthropic:claude-3-7-sonnet-20250219
+  - anthropic:claude-3-7-sonnet-20250219
   - openai:gpt-4.5-preview
+  - google:gemini-2.0-flash
+  - google:gemini-2.0-flash-thinking-exp-01-21
