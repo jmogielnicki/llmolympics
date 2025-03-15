@@ -1,0 +1,393 @@
+{
+  "game": {
+    "session_id": "20250315_153049",
+    "game_name": "Poetry Slam",
+    "player_models": {
+      "player_1": {
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking"
+      },
+      "player_2": {
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat"
+      },
+      "player_3": {
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o"
+      },
+      "player_4": {
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5"
+      },
+      "player_5": {
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2"
+      },
+      "player_6": {
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_2",
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat",
+        "final_score": 1,
+        "role": "author"
+      },
+      {
+        "id": "player_3",
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o",
+        "final_score": 4,
+        "role": "author"
+      },
+      {
+        "id": "player_4",
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_5",
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2",
+        "final_score": 1,
+        "role": "author"
+      },
+      {
+        "id": "player_6",
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large",
+        "final_score": 0,
+        "role": "author"
+      }
+    ],
+    "rounds_played": 0,
+    "winner": "player_3",
+    "final_scores": {
+      "player_1": 0,
+      "player_2": 1,
+      "player_3": 4,
+      "player_4": 0,
+      "player_5": 1,
+      "player_6": 0
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_3",
+      "winning_model_name": "OpenAI GPT-4o",
+      "final_scores_display": "Google Gemini 2.0 Thinking: 0, DeepSeek Chat: 1, OpenAI GPT-4o: 4, Anthropic Claude 3.5: 0, xAI Grok-2: 1, Mistral Mistral Large: 0"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-15 15:30:49",
+      "message": "Game started",
+      "data": {
+        "game_name": "Poetry Slam",
+        "player_count": 6,
+        "config_summary": {
+          "phases": [
+            "prompt_creation",
+            "content_creation",
+            "voting",
+            "resolution"
+          ],
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-15 15:30:49",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase started"
+    },
+    {
+      "type": "prompt_creation",
+      "timestamp": "2025-03-15 15:30:54",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "prompt": "**Prompt Title: The Secret Symphony**\n\n**Theme:** Compose a poem inspired by the theme of \"hidden music\"\u2014the melodies and rhythms found in unexpected places or experiences. This could be the silent harmony in a bustling city, the rhythm of nature, or the symphony within a moment of silence.\n\n**Style/Form:** Free verse\n\n**Constraints:**\n- Begin your poem with a line or phrase that describes an ordinary setting or object.\n- Incorporate at least three vivid sensory images\u2014sight, sound, and touch.\n- Include a metaphor that compares an abstract concept (like time, love, or memory) to a musical element (such as a beat, melody, or crescendo).\n\n**Objective:** Encourage exploration of the unseen and unheard, challenging poets to find and express the beauty of latent harmony in their everyday lives.",
+      "message": "Prompt created by OpenAI GPT-4o"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-15 15:30:54",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-15 15:30:54",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase started"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:31:11",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "poem": "[[The cracked pavement breathes beneath my feet,\na grey stage worn smooth by countless soles.\nAt first glance, just stone, split by stubborn weeds.\n\nBut listen closer, press your ear near the ground,\nforget the roaring traffic, the city\u2019s brassy song.\nThere, beneath the rumble, a fainter pulse.\n\nFeel the subtle tremor, a vibration through the soles,\na low hum rising from the earth\u2019s deep drum.\nIt\u2019s the city\u2019s heartbeat, not loud, but steady,\na muffled rhythm in concrete veins.\n\nLook at the sunlight catching dust motes dancing,\nilluminating tiny pirouettes in the air,\neach speck a silent note in a visual score.\n\nThe wind whispers through the gaps between buildings,\nnot a gust, but a sigh, a breath drawn deep,\na flute solo played on skyscraper lips.\n\nAnd in the pause between sirens\u2019 wail,\nin the hush after a slammed car door\u2019s echo,\nthere\u2019s a silence pregnant with unwritten chords.\n\nMemory, a slow, melancholic melody,\ndrifts through these cracks, these hidden spaces,\na cello\u2019s mournful tune played on the strings of time.\n\nThis city, not just noise and steel and glass,\nbut a vast orchestra tuning in the in-between,\na symphony of secrets played for those who listen.]]",
+      "message": "Poem submitted by Google Gemini 2.0 Thinking"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:31:38",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "poem": "[[  \nThe subway platform hums, a hive of steel and light,  \nits tiles slick with the breath of a thousand strangers.  \nA child\u2019s laughter ricochets off the walls,  \na staccato note in the underground\u2019s symphony.  \n\nAbove, the trains groan like cellos tuning,  \ntheir wheels scraping the rails in a gritty vibrato.  \nA man taps his foot, his shoe scuffing the floor,  \na metronome marking time in the chaos.  \n\nThe air smells of rain and rust,  \nand the faintest hint of someone\u2019s perfume\u2014  \na wisp of melody caught in the draft.  \nI close my eyes and feel the pulse of the city,  \nits heartbeat syncopated, uneven, alive.  \n\nTime is a fugue here,  \nits threads weaving past and present,  \neach moment a note suspended,  \nwaiting for resolution.  \nThe train arrives, its doors sliding open  \nlike the breath before a song begins.  \n\nAnd in the silence between stops,  \nwhen the world holds its breath,  \nI hear it\u2014  \nthe secret symphony,  \nthe music of the unseen,  \nthe rhythm of everything  \nwe never thought to listen for.  \n]]",
+      "message": "Poem submitted by DeepSeek Chat"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:31:43",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "poem": "[[In a crowded caf\u00e9, the hum of voices drowns\u2014  \nSteam from espresso machines turns air into a whisper,  \nAnd I find the sonata of sunlight leaking through a window,  \nIts warmth fingering my cheek like a gentle allegro.  \n\nThe barista's rhythm, cups clinking like cymbals,  \nThe hiss of frothing milk adrift as a distant flute,  \nAnd every spoken word, a note in unseen orchestras,  \nPerforming a secret symphony in the dance of the day.  \n\nOutside, the city's crescendo rises with the sun,  \nCars rush by in a chorus of rolling thunder,  \nWhile the crisp morning air plucks at sleeves like harp strings,  \nAs time, that maestro, conducts this cacophony.  \n\nTime\u2014an old clock beating its measured heart,  \nIts ticking like a metronome in the alley of hours,  \nEach moment a delicate stanza,  \nEach second a slender note, played in perfect composure.  \n\nLove too, a hidden refrain in a stranger's glance,  \nA percussive heart, syncopated by a shared smile,  \nMemory, a lingering echo in the silent intervals,  \nA violin's vibrant whisper in the cathedral of the mind.  \n\nAnd in the pauses, the silent symphonies unfurl,  \nWhere even silence has its own melody, waiting;  \nFor within this ordinary, lies the music of life\u2014  \nAn invisible orchestra, composing the world's hidden song.]]",
+      "message": "Poem submitted by OpenAI GPT-4o"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:31:47",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "poem": "Here is my poem for the Poetry Slam, following the given prompt:\n\n[[The city street hums with indifference\n\nBeneath the shuffle of hurried feet\nA secret symphony emerges\nPavement cracks percussion\nCrosswalk signals keeping time\n\nI close my eyes and feel the pulse\nOf hidden music all around\nFingertips brushing rough brick walls\nConducting an urban orchestra\n\nTime flows like a lilting melody\nWeaving through alleyways and avenues\nMemory's crescendo builds and swells\nIn the spaces between heartbeats\n\nWhen I listen closely\nI hear the whispered harmonies\nOf a thousand untold stories\nComposing the song of now]]",
+      "message": "Poem submitted by Anthropic Claude 3.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:31:51",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "poem": "[[In the quiet corner of a crowded caf\u00e9,\n\nThe steam from my coffee curls in silent dance,\nA soft murmur of voices forms an accidental melody,\nAnd the warmth of the cup seeps into my palms like a gentle embrace.\n\nHere, amidst the clatter of spoons and the rustle of pages,\nI find the secret symphony of the everyday,\nA hidden orchestra playing in the margins of life.\n\nThe rhythm of footsteps on the pavement outside\nBecomes the steady beat of time,\nEach step a note in the endless composition of existence.\n\nIn the hush between sips, I hear the melody of memories,\nRising and falling like the swell of a distant violin,\nA crescendo of moments past, echoing softly in the stillness.\n\nAnd so, I sit and listen,\nDiscovering the beauty of the unseen and unheard,\nThe latent harmony that weaves through our lives,\nA symphony waiting to be found in every ordinary moment.]]",
+      "message": "Poem submitted by xAI Grok-2"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:31:57",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "poem": "[[\nA abandoned playground, rusty swings swaying in the breeze.\nSilence hums here, a vacant symphony,\nwhere laughter's echoes are notes on the wind's stave.\n\nThe city's hum is a distant drum,\nits rhythm pulsing through the cracks in the asphalt,\na heartbeat, steady, a bass line throbbing beneath the quiet.\n\nSunlight dances on the faded slide,\na warm touch, a glissando across metal,\neach glint a spark, a flicker, a silent crescendo.\n\nTime is a metronome, ticking, steady,\nits beat a reminder of moments passing,\neach swing, each slide, a melody fading, a memory's refrain.\n\nIn the stillness, the wind picks up, whistles through the chains,\na soft coda, a lullaby, a symphony hidden,\na secret song sung by the silence, the rust, the forgotten.\n\nlisten.\n]]",
+      "message": "Poem submitted by Mistral Mistral Large"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-15 15:31:57",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-15 15:31:57",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase started"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:32:07",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "voted_for": "player_3",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "Google Gemini 2.0 Thinking voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:32:16",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "voted_for": "player_3",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "DeepSeek Chat voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:32:17",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "voted_for": "player_5",
+      "voted_for_model": "xAI Grok-2",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_5",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_5]]",
+      "message": "OpenAI GPT-4o voted for xAI Grok-2"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:32:18",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "voted_for": "player_3",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "Anthropic Claude 3.5 voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:32:18",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "voted_for": "player_3",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "xAI Grok-2 voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:32:19",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "voted_for": "player_2",
+      "voted_for_model": "DeepSeek Chat",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_2",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_2]]",
+      "message": "Mistral Mistral Large voted for DeepSeek Chat"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-15 15:32:19",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-15 15:32:19",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase started"
+    },
+    {
+      "type": "voting_resolution",
+      "timestamp": "2025-03-15 15:32:19",
+      "round": 0,
+      "scores": {
+        "player_1": 0,
+        "player_2": 1,
+        "player_3": 4,
+        "player_4": 0,
+        "player_5": 1,
+        "player_6": 0
+      },
+      "running_scores": {
+        "player_1": 0,
+        "player_2": 1,
+        "player_3": 4,
+        "player_4": 0,
+        "player_5": 1,
+        "player_6": 0
+      },
+      "vote_counts": {
+        "player_3": 4,
+        "player_5": 1,
+        "player_2": 1
+      },
+      "winners": [
+        "player_3"
+      ],
+      "message": "Votes tallied and points awarded"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-15 15:32:19",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase ended"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-15 15:32:19",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_3",
+        "rounds_played": 0
+      },
+      "final_scores": {
+        "player_1": 0,
+        "player_2": 1,
+        "player_3": 4,
+        "player_4": 0,
+        "player_5": 1,
+        "player_6": 0
+      }
+    }
+  ]
+}

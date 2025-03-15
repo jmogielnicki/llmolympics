@@ -7,6 +7,7 @@ from datetime import datetime
 from pathlib import Path
 from common_utils import extract_model_name
 
+
 def parse_timestamp(timestamp_str):
     """Convert ISO timestamp to readable format."""
     try:
@@ -57,38 +58,590 @@ def load_chat_logs(session_dir):
     return organized_logs
 
 
-def get_decision_context(decision):
-    """
-    Get contextual information for a decision.
+class GameDetailGenerator:
+    """Base class for game detail timeline generation."""
 
-    Args:
-        decision (str): The decision (e.g., 'cooperate' or 'defect')
+    def can_process(self, config):
+        """Determine if this generator can process this game type."""
+        return False
 
-    Returns:
-        dict: Contextual information for UI rendering
-    """
-    decision_contexts = {
-        "cooperate": {
-            "css_class": "bg-green-500",
-            "display_text": "Cooperated",
-            "icon": "check",
-            "color": "green"
-        },
-        "defect": {
-            "css_class": "bg-red-500",
-            "display_text": "Defected",
-            "icon": "x",
-            "color": "red"
-        },
-        # Add contexts for other game decision types as needed
-    }
+    def generate_timeline(self, session_dir, config, results, chat_logs, snapshots, events, player_models):
+        """Generate timeline for the game."""
+        raise NotImplementedError
 
-    return decision_contexts.get(decision.lower(), {
-        "css_class": "bg-gray-500",
-        "display_text": decision,
-        "icon": "circle",
-        "color": "gray"
-    })
+
+class PrisonersDilemmaDetailGenerator(GameDetailGenerator):
+    """Detail generator for Prisoner's Dilemma game."""
+
+    def can_process(self, config):
+        """Determine if this generator can process this game type."""
+        game_name = config.get('game', {}).get('name', '')
+        return 'prisoner' in game_name.lower()
+
+    def get_decision_context(self, decision):
+        """Get UI context for a decision."""
+        decision_contexts = {
+            "cooperate": {
+                "css_class": "bg-green-500",
+                "display_text": "Cooperated",
+                "icon": "check",
+                "color": "green"
+            },
+            "defect": {
+                "css_class": "bg-red-500",
+                "display_text": "Defected",
+                "icon": "x",
+                "color": "red"
+            }
+        }
+
+        return decision_contexts.get(decision.lower() if isinstance(decision, str) else decision, {
+            "css_class": "bg-gray-500",
+            "display_text": str(decision),
+            "icon": "circle",
+            "color": "gray"
+        })
+
+    def generate_timeline(self, session_dir, config, results, chat_logs, snapshots, events, player_models):
+        """Generate timeline for Prisoner's Dilemma."""
+        timeline = []
+        running_scores = {}
+
+        # Add game start event
+        game_start_event = next((e for e in events if e.get('event_type') == 'game_start'), None)
+        if game_start_event:
+            timestamp = parse_timestamp(game_start_event.get('timestamp', ''))
+            timeline.append({
+                "type": "game_start",
+                "timestamp": timestamp,
+                "message": "Game started",
+                "data": game_start_event.get('data', {})
+            })
+
+        # Organize events by phase and round
+        phase_events = {}
+        for event in events:
+            event_type = event.get('event_type')
+            phase_id = event.get('phase_id')
+            round_num = event.get('round_num')
+            timestamp = event.get('timestamp')
+
+            if not event_type or not timestamp:
+                continue
+
+            if phase_id not in phase_events:
+                phase_events[phase_id] = {}
+
+            round_key = str(round_num) if round_num is not None else "unknown"
+            if round_key not in phase_events[phase_id]:
+                phase_events[phase_id][round_key] = []
+
+            phase_events[phase_id][round_key].append(event)
+
+        # Process decision phases
+        if 'decision' in phase_events:
+            for round_key, round_events in sorted(phase_events['decision'].items(), key=lambda x: x[0]):
+                try:
+                    round_num = int(round_key)
+                except:
+                    round_num = 0
+
+                # Get phase start event
+                phase_start = next((e for e in round_events if e.get('event_type') == 'phase_start'), None)
+                if phase_start:
+                    timestamp = parse_timestamp(phase_start.get('timestamp', ''))
+                    timeline.append({
+                        "type": "round_start",
+                        "timestamp": timestamp,
+                        "round": round_num,
+                        "message": f"Round {round_num} started",
+                        "running_scores": running_scores.copy()  # Include current scores at round start
+                    })
+
+                # Get player actions
+                player_actions = {}
+                for event in round_events:
+                    if event.get('event_type') == 'player_action_complete':
+                        player_id = event.get('data', {}).get('player_id')
+                        action = event.get('data', {}).get('action')
+
+                        if player_id and action:
+                            model_id = player_models.get(player_id, {}).get('model_id', "unknown")
+                            model_name = player_models.get(player_id, {}).get('model_name', "Unknown Model")
+
+                            player_actions[player_id] = {
+                                "action": action,
+                                "timestamp": parse_timestamp(event.get('timestamp', '')),
+                                "player_id": player_id,
+                                "model_id": model_id,
+                                "model_name": model_name,
+                                "decision_context": self.get_decision_context(action)
+                            }
+
+                            # Add reasoning from chat logs if available
+                            if player_id in chat_logs and 'decision' in chat_logs[player_id]:
+                                if round_key in chat_logs[player_id]['decision']:
+                                    chat_log = chat_logs[player_id]['decision'][round_key]
+                                    reasoning = chat_log.get('response', '')
+                                    player_actions[player_id]["reasoning"] = reasoning
+
+                # Add player actions to timeline
+                for player_id, action_data in player_actions.items():
+                    timeline.append({
+                        "type": "player_decision",
+                        "timestamp": action_data["timestamp"],
+                        "round": round_num,
+                        "player_id": player_id,
+                        "model_id": action_data["model_id"],
+                        "model_name": action_data["model_name"],
+                        "decision": action_data["action"],
+                        "decision_context": action_data["decision_context"],
+                        "reasoning": action_data.get("reasoning", "")
+                    })
+
+                # Get phase end event (resolution will come next)
+                phase_end = next((e for e in round_events if e.get('event_type') == 'phase_end'), None)
+                if phase_end:
+                    timestamp = parse_timestamp(phase_end.get('timestamp', ''))
+                    timeline.append({
+                        "type": "round_decisions_complete",
+                        "timestamp": timestamp,
+                        "round": round_num,
+                        "message": f"Round {round_num} decisions completed"
+                    })
+
+        # Process resolution phases (scoring)
+        if 'resolution' in phase_events:
+            for round_key, round_events in sorted(phase_events['resolution'].items(), key=lambda x: x[0]):
+                try:
+                    round_num = int(round_key)
+                except:
+                    round_num = 0
+
+                # Find the snapshot after this round's resolution to get scores
+                phase_end = next((e for e in round_events if e.get('event_type') == 'phase_end'), None)
+                if phase_end:
+                    timestamp = phase_end.get('timestamp')
+
+                    # Find the first snapshot after this timestamp
+                    snapshot_after = None
+                    # Convert timestamp to float for comparison if it's a string
+                    timestamp_float = float(datetime.fromisoformat(timestamp.replace('Z', '+00:00')).timestamp()) if isinstance(timestamp, str) else timestamp
+
+                    for snapshot in snapshots:
+                        snapshot_time = snapshot.get('timestamp', 0)
+                        if isinstance(snapshot_time, (int, float)) and snapshot_time > timestamp_float:
+                            snapshot_after = snapshot
+                            break
+
+                    if snapshot_after:
+                        # Extract player scores
+                        players = snapshot_after.get('players', [])
+                        player_scores = {}
+
+                        for player in players:
+                            player_id = player.get('id')
+                            score = player.get('state', {}).get('score')
+
+                            if player_id and score is not None:
+                                player_scores[player_id] = score
+                                # Update running scores
+                                running_scores[player_id] = score
+
+                        # Extract decisions from history
+                        decisions = {}
+                        decision_history = snapshot_after.get('history_state', {}).get('decision_history', [])
+
+                        for history_entry in decision_history:
+                            if history_entry.get('round') == round_num:
+                                decisions = history_entry.get('decisions', {})
+                                break
+
+                        # Enhance the decisions with context
+                        decisions_with_context = {}
+                        for player_id, decision in decisions.items():
+                            decisions_with_context[player_id] = {
+                                "decision": decision,
+                                "context": self.get_decision_context(decision)
+                            }
+
+                        # Add resolution event to timeline
+                        timeline.append({
+                            "type": "round_resolution",
+                            "timestamp": parse_timestamp(phase_end.get('timestamp', '')),
+                            "round": round_num,
+                            "scores": player_scores,
+                            "running_scores": running_scores.copy(),  # Include updated scores
+                            "decisions": decisions,
+                            "decisions_with_context": decisions_with_context,
+                            "message": f"Round {round_num} resolved"
+                        })
+
+        # Add game end event
+        game_end_event = next((e for e in events if e.get('event_type') == 'game_end'), None)
+        if game_end_event:
+            timestamp = parse_timestamp(game_end_event.get('timestamp', ''))
+            timeline.append({
+                "type": "game_end",
+                "timestamp": timestamp,
+                "message": "Game ended",
+                "data": game_end_event.get('data', {}),
+                "final_scores": running_scores.copy()
+            })
+
+        return timeline
+
+
+class PoetryDetailGenerator(GameDetailGenerator):
+    """Detail generator for Poetry Slam game."""
+
+    def can_process(self, config):
+        """Determine if this generator can process this game type."""
+        game_name = config.get('game', {}).get('name', '')
+        return 'poetry' in game_name.lower() or 'slam' in game_name.lower()
+
+    def get_decision_context(self, decision):
+        """Get UI context for a Poetry Slam decision (voting)."""
+        return {
+            "css_class": "bg-blue-500",
+            "display_text": f"Voted for {decision}",
+            "icon": "thumb-up",
+            "color": "blue"
+        }
+
+    def generate_timeline(self, session_dir, config, results, chat_logs, snapshots, events, player_models):
+        """Generate timeline for Poetry Slam."""
+        timeline = []
+        running_scores = {}
+
+        # Add game start event
+        game_start_event = next((e for e in events if e.get('event_type') == 'game_start'), None)
+        if game_start_event:
+            timestamp = parse_timestamp(game_start_event.get('timestamp', ''))
+            timeline.append({
+                "type": "game_start",
+                "timestamp": timestamp,
+                "message": "Game started",
+                "data": game_start_event.get('data', {})
+            })
+
+        # Organize events by phase and round
+        phase_events = {}
+        for event in events:
+            event_type = event.get('event_type')
+            phase_id = event.get('phase_id')
+            round_num = event.get('round_num')
+            timestamp = event.get('timestamp')
+
+            if not event_type or not timestamp:
+                continue
+
+            if phase_id not in phase_events:
+                phase_events[phase_id] = {}
+
+            round_key = str(round_num) if round_num is not None else "unknown"
+            if round_key not in phase_events[phase_id]:
+                phase_events[phase_id][round_key] = []
+
+            phase_events[phase_id][round_key].append(event)
+
+        # 1. Process prompt creation phase
+        if 'prompt_creation' in phase_events:
+            for round_key, round_events in sorted(phase_events['prompt_creation'].items(), key=lambda x: x[0]):
+                try:
+                    round_num = int(round_key) if round_key != "unknown" else 0
+                except:
+                    round_num = 0
+
+                # Get phase start event
+                phase_start = next((e for e in round_events if e.get('event_type') == 'phase_start'), None)
+                if phase_start:
+                    timestamp = parse_timestamp(phase_start.get('timestamp', ''))
+                    timeline.append({
+                        "type": "phase_start",
+                        "timestamp": timestamp,
+                        "round": round_num,
+                        "phase": "prompt_creation",
+                        "message": "Prompt creation phase started",
+                    })
+
+                # Get player action (prompter)
+                for event in round_events:
+                    if event.get('event_type') == 'player_action_complete':
+                        player_id = event.get('data', {}).get('player_id')
+                        action = event.get('data', {}).get('action')
+
+                        if player_id and action:
+                            model_id = player_models.get(player_id, {}).get('model_id', "unknown")
+                            model_name = player_models.get(player_id, {}).get('model_name', "Unknown Model")
+
+                            # Get the prompt text from chat logs if available
+                            prompt_text = action
+                            if player_id in chat_logs and 'prompt_creation' in chat_logs[player_id]:
+                                if round_key in chat_logs[player_id]['prompt_creation']:
+                                    chat_log = chat_logs[player_id]['prompt_creation'][round_key]
+                                    prompt_text = chat_log.get('response', action)
+
+                            timeline.append({
+                                "type": "prompt_creation",
+                                "timestamp": parse_timestamp(event.get('timestamp', '')),
+                                "round": round_num,
+                                "player_id": player_id,
+                                "model_id": model_id,
+                                "model_name": model_name,
+                                "prompt": prompt_text,
+                                "message": f"Prompt created by {model_name}"
+                            })
+
+                # Get phase end event
+                phase_end = next((e for e in round_events if e.get('event_type') == 'phase_end'), None)
+                if phase_end:
+                    timestamp = parse_timestamp(phase_end.get('timestamp', ''))
+                    timeline.append({
+                        "type": "phase_end",
+                        "timestamp": timestamp,
+                        "round": round_num,
+                        "phase": "prompt_creation",
+                        "message": "Prompt creation phase ended"
+                    })
+
+        # 2. Process content creation phase (poem writing)
+        if 'content_creation' in phase_events:
+            for round_key, round_events in sorted(phase_events['content_creation'].items(), key=lambda x: x[0]):
+                try:
+                    round_num = int(round_key) if round_key != "unknown" else 0
+                except:
+                    round_num = 0
+
+                # Get phase start event
+                phase_start = next((e for e in round_events if e.get('event_type') == 'phase_start'), None)
+                if phase_start:
+                    timestamp = parse_timestamp(phase_start.get('timestamp', ''))
+                    timeline.append({
+                        "type": "phase_start",
+                        "timestamp": timestamp,
+                        "round": round_num,
+                        "phase": "content_creation",
+                        "message": "Poem writing phase started",
+                    })
+
+                # Get player actions (poem submissions)
+                for event in round_events:
+                    if event.get('event_type') == 'player_action_complete':
+                        player_id = event.get('data', {}).get('player_id')
+                        action = event.get('data', {}).get('action')
+
+                        if player_id and action:
+                            model_id = player_models.get(player_id, {}).get('model_id', "unknown")
+                            model_name = player_models.get(player_id, {}).get('model_name', "Unknown Model")
+
+                            # Get the full poem from chat logs if available
+                            poem_text = action
+                            if player_id in chat_logs and 'content_creation' in chat_logs[player_id]:
+                                if round_key in chat_logs[player_id]['content_creation']:
+                                    chat_log = chat_logs[player_id]['content_creation'][round_key]
+                                    poem_text = chat_log.get('response', action)
+
+                            timeline.append({
+                                "type": "poem_submission",
+                                "timestamp": parse_timestamp(event.get('timestamp', '')),
+                                "round": round_num,
+                                "player_id": player_id,
+                                "model_id": model_id,
+                                "model_name": model_name,
+                                "poem": poem_text,
+                                "message": f"Poem submitted by {model_name}"
+                            })
+
+                # Get phase end event
+                phase_end = next((e for e in round_events if e.get('event_type') == 'phase_end'), None)
+                if phase_end:
+                    timestamp = parse_timestamp(phase_end.get('timestamp', ''))
+                    timeline.append({
+                        "type": "phase_end",
+                        "timestamp": timestamp,
+                        "round": round_num,
+                        "phase": "content_creation",
+                        "message": "Poem writing phase ended"
+                    })
+
+        # 3. Process voting phase
+        if 'voting' in phase_events:
+            for round_key, round_events in sorted(phase_events['voting'].items(), key=lambda x: x[0]):
+                try:
+                    round_num = int(round_key) if round_key != "unknown" else 0
+                except:
+                    round_num = 0
+
+                # Get phase start event
+                phase_start = next((e for e in round_events if e.get('event_type') == 'phase_start'), None)
+                if phase_start:
+                    timestamp = parse_timestamp(phase_start.get('timestamp', ''))
+                    timeline.append({
+                        "type": "phase_start",
+                        "timestamp": timestamp,
+                        "round": round_num,
+                        "phase": "voting",
+                        "message": "Voting phase started",
+                    })
+
+                # Get player actions (votes)
+                for event in round_events:
+                    if event.get('event_type') == 'player_action_complete':
+                        player_id = event.get('data', {}).get('player_id')
+                        action = event.get('data', {}).get('action')
+
+                        if player_id and action:
+                            model_id = player_models.get(player_id, {}).get('model_id', "unknown")
+                            model_name = player_models.get(player_id, {}).get('model_name', "Unknown Model")
+
+                            # Find which model was voted for
+                            voted_for_player = action
+                            voted_for_model = player_models.get(voted_for_player, {}).get('model_name', "Unknown Model")
+
+                            # Get reasoning from chat logs if available
+                            reasoning = ""
+                            if player_id in chat_logs and 'voting' in chat_logs[player_id]:
+                                if round_key in chat_logs[player_id]['voting']:
+                                    chat_log = chat_logs[player_id]['voting'][round_key]
+                                    reasoning = chat_log.get('response', "")
+
+                            timeline.append({
+                                "type": "player_vote",
+                                "timestamp": parse_timestamp(event.get('timestamp', '')),
+                                "round": round_num,
+                                "player_id": player_id,
+                                "model_id": model_id,
+                                "model_name": model_name,
+                                "voted_for": voted_for_player,
+                                "voted_for_model": voted_for_model,
+                                "decision_context": self.get_decision_context(voted_for_player),
+                                "reasoning": reasoning,
+                                "message": f"{model_name} voted for {voted_for_model}"
+                            })
+
+                # Get phase end event
+                phase_end = next((e for e in round_events if e.get('event_type') == 'phase_end'), None)
+                if phase_end:
+                    timestamp = parse_timestamp(phase_end.get('timestamp', ''))
+                    timeline.append({
+                        "type": "phase_end",
+                        "timestamp": timestamp,
+                        "round": round_num,
+                        "phase": "voting",
+                        "message": "Voting phase ended"
+                    })
+
+        # 4. Process resolution phase
+        if 'resolution' in phase_events:
+            for round_key, round_events in sorted(phase_events['resolution'].items(), key=lambda x: x[0]):
+                try:
+                    round_num = int(round_key) if round_key != "unknown" else 0
+                except:
+                    round_num = 0
+
+                # Get phase start event
+                phase_start = next((e for e in round_events if e.get('event_type') == 'phase_start'), None)
+                if phase_start:
+                    timestamp = parse_timestamp(phase_start.get('timestamp', ''))
+                    timeline.append({
+                        "type": "phase_start",
+                        "timestamp": timestamp,
+                        "round": round_num,
+                        "phase": "resolution",
+                        "message": "Resolution phase started",
+                    })
+
+                # Find the snapshot after this phase's resolution to get vote tallies and scores
+                phase_end = next((e for e in round_events if e.get('event_type') == 'phase_end'), None)
+                if phase_end:
+                    timestamp = phase_end.get('timestamp')
+
+                    # Find the first snapshot after this timestamp
+                    snapshot_after = None
+                    timestamp_float = float(datetime.fromisoformat(timestamp.replace('Z', '+00:00')).timestamp()) if isinstance(timestamp, str) else timestamp
+
+                    for snapshot in snapshots:
+                        snapshot_time = snapshot.get('timestamp', 0)
+                        if isinstance(snapshot_time, (int, float)) and snapshot_time > timestamp_float:
+                            snapshot_after = snapshot
+                            break
+
+                    if snapshot_after:
+                        # Extract player scores
+                        players = snapshot_after.get('players', [])
+                        player_scores = {}
+
+                        for player in players:
+                            player_id = player.get('id')
+                            score = player.get('state', {}).get('score')
+
+                            if player_id and score is not None:
+                                player_scores[player_id] = score
+                                # Update running scores
+                                running_scores[player_id] = score
+
+                        # Extract voting results
+                        vote_counts = {}
+                        winners = snapshot_after.get('shared_state', {}).get('winners', [])
+
+                        # Get vote_counts from snapshot
+                        for player_id, votes in snapshot_after.get('shared_state', {}).get('vote_counts', {}).items():
+                            vote_counts[player_id] = votes
+
+                        # Add resolution event to timeline
+                        timeline.append({
+                            "type": "voting_resolution",
+                            "timestamp": parse_timestamp(phase_end.get('timestamp', '')),
+                            "round": round_num,
+                            "scores": player_scores,
+                            "running_scores": running_scores.copy(),
+                            "vote_counts": vote_counts,
+                            "winners": winners,
+                            "message": "Votes tallied and points awarded"
+                        })
+
+                # Get phase end event
+                if phase_end:
+                    timestamp = parse_timestamp(phase_end.get('timestamp', ''))
+                    timeline.append({
+                        "type": "phase_end",
+                        "timestamp": timestamp,
+                        "round": round_num,
+                        "phase": "resolution",
+                        "message": "Resolution phase ended"
+                    })
+
+        # Add game end event
+        game_end_event = next((e for e in events if e.get('event_type') == 'game_end'), None)
+        if game_end_event:
+            timestamp = parse_timestamp(game_end_event.get('timestamp', ''))
+            timeline.append({
+                "type": "game_end",
+                "timestamp": timestamp,
+                "message": "Game ended",
+                "data": game_end_event.get('data', {}),
+                "final_scores": running_scores.copy()
+            })
+
+        return timeline
+
+
+class GameDetailGeneratorFactory:
+    """Factory for creating game detail generators."""
+
+    def __init__(self):
+        self.generators = [
+            PrisonersDilemmaDetailGenerator(),
+            PoetryDetailGenerator()
+        ]
+
+    def get_generator(self, config):
+        """Get the appropriate generator for the game type."""
+        for generator in self.generators:
+            if generator.can_process(config):
+                return generator
+        return None
 
 
 def generate_game_timeline(session_dir):
@@ -157,194 +710,15 @@ def generate_game_timeline(session_dir):
     except:
         return {"error": f"Failed to parse snapshots in {session_dir}"}
 
-    # Build a timeline of events
-    timeline = []
+    # Get appropriate generator
+    factory = GameDetailGeneratorFactory()
+    generator = factory.get_generator(config)
 
-    # Add game start event
-    game_start_event = next((e for e in events if e.get('event_type') == 'game_start'), None)
-    if game_start_event:
-        timestamp = parse_timestamp(game_start_event.get('timestamp', ''))
-        timeline.append({
-            "type": "game_start",
-            "timestamp": timestamp,
-            "message": "Game started",
-            "data": game_start_event.get('data', {})
-        })
+    if not generator:
+        return {"error": f"No generator found for game type: {config.get('game', {}).get('name')}"}
 
-    # Add phase events in chronological order
-    # First, organize all events by phase and round
-    phase_events = {}
-    running_scores = {}  # Track running scores across rounds
-
-    for event in events:
-        event_type = event.get('event_type')
-        phase_id = event.get('phase_id')
-        round_num = event.get('round_num')
-        timestamp = event.get('timestamp')
-
-        if not event_type or not timestamp:
-            continue
-
-        if phase_id not in phase_events:
-            phase_events[phase_id] = {}
-
-        round_key = str(round_num) if round_num is not None else "unknown"
-        if round_key not in phase_events[phase_id]:
-            phase_events[phase_id][round_key] = []
-
-        phase_events[phase_id][round_key].append(event)
-
-    # Process decision phases
-    if 'decision' in phase_events:
-        for round_key, round_events in sorted(phase_events['decision'].items(), key=lambda x: x[0]):
-            try:
-                round_num = int(round_key)
-            except:
-                round_num = 0
-
-            # Get phase start event
-            phase_start = next((e for e in round_events if e.get('event_type') == 'phase_start'), None)
-            if phase_start:
-                timestamp = parse_timestamp(phase_start.get('timestamp', ''))
-                timeline.append({
-                    "type": "round_start",
-                    "timestamp": timestamp,
-                    "round": round_num,
-                    "message": f"Round {round_num} started",
-                    "running_scores": running_scores.copy()  # Include current scores at round start
-                })
-
-            # Get player actions
-            player_actions = {}
-
-            for event in round_events:
-                if event.get('event_type') == 'player_action_complete':
-                    player_id = event.get('data', {}).get('player_id')
-                    action = event.get('data', {}).get('action')
-
-                    if player_id and action:
-                        model_id = player_models.get(player_id, {}).get('model_id', "unknown")
-                        model_name = player_models.get(player_id, {}).get('model_name', "Unknown Model")
-
-                        player_actions[player_id] = {
-                            "action": action,
-                            "timestamp": parse_timestamp(event.get('timestamp', '')),
-                            "player_id": player_id,
-                            "model_id": model_id,
-                            "model_name": model_name,
-                            "decision_context": get_decision_context(action)
-                        }
-
-                        # Add reasoning from chat logs if available
-                        if player_id in chat_logs and 'decision' in chat_logs[player_id]:
-                            if round_key in chat_logs[player_id]['decision']:
-                                chat_log = chat_logs[player_id]['decision'][round_key]
-                                reasoning = chat_log.get('response', '')
-                                player_actions[player_id]["reasoning"] = reasoning
-
-            # Add player actions to timeline
-            for player_id, action_data in player_actions.items():
-                timeline.append({
-                    "type": "player_decision",
-                    "timestamp": action_data["timestamp"],
-                    "round": round_num,
-                    "player_id": player_id,
-                    "model_id": action_data["model_id"],
-                    "model_name": action_data["model_name"],
-                    "decision": action_data["action"],
-                    "decision_context": action_data["decision_context"],
-                    "reasoning": action_data.get("reasoning", "")
-                })
-
-            # Get phase end event (resolution will come next)
-            phase_end = next((e for e in round_events if e.get('event_type') == 'phase_end'), None)
-            if phase_end:
-                timestamp = parse_timestamp(phase_end.get('timestamp', ''))
-                timeline.append({
-                    "type": "round_decisions_complete",
-                    "timestamp": timestamp,
-                    "round": round_num,
-                    "message": f"Round {round_num} decisions completed"
-                })
-
-    # Process resolution phases (scoring)
-    if 'resolution' in phase_events:
-        for round_key, round_events in sorted(phase_events['resolution'].items(), key=lambda x: x[0]):
-            try:
-                round_num = int(round_key)
-            except:
-                round_num = 0
-
-            # Find the snapshot after this round's resolution to get scores
-            phase_end = next((e for e in round_events if e.get('event_type') == 'phase_end'), None)
-            if phase_end:
-                timestamp = phase_end.get('timestamp')
-
-                # Find the first snapshot after this timestamp
-                snapshot_after = None
-                # Convert timestamp to float for comparison if it's a string
-                timestamp_float = float(datetime.fromisoformat(timestamp.replace('Z', '+00:00')).timestamp()) if isinstance(timestamp, str) else timestamp
-
-                for snapshot in snapshots:
-                    snapshot_time = snapshot.get('timestamp', 0)
-                    if isinstance(snapshot_time, (int, float)) and snapshot_time > timestamp_float:
-                        snapshot_after = snapshot
-                        break
-
-                if snapshot_after:
-                    # Extract player scores
-                    players = snapshot_after.get('players', [])
-                    player_scores = {}
-
-                    for player in players:
-                        player_id = player.get('id')
-                        score = player.get('state', {}).get('score')
-
-                        if player_id and score is not None:
-                            player_scores[player_id] = score
-                            # Update running scores
-                            running_scores[player_id] = score
-
-                    # Extract decisions from history
-                    decisions = {}
-                    decision_history = snapshot_after.get('history_state', {}).get('decision_history', [])
-
-                    for history_entry in decision_history:
-                        if history_entry.get('round') == round_num:
-                            decisions = history_entry.get('decisions', {})
-                            break
-
-                    # Enhance the decisions with context
-                    decisions_with_context = {}
-                    for player_id, decision in decisions.items():
-                        decisions_with_context[player_id] = {
-                            "decision": decision,
-                            "context": get_decision_context(decision)
-                        }
-
-                    # Add resolution event to timeline
-                    timeline.append({
-                        "type": "round_resolution",
-                        "timestamp": parse_timestamp(phase_end.get('timestamp', '')),
-                        "round": round_num,
-                        "scores": player_scores,
-                        "running_scores": running_scores.copy(),  # Include updated scores
-                        "decisions": decisions,
-                        "decisions_with_context": decisions_with_context,
-                        "message": f"Round {round_num} resolved"
-                    })
-
-    # Add game end event
-    game_end_event = next((e for e in events if e.get('event_type') == 'game_end'), None)
-    if game_end_event:
-        timestamp = parse_timestamp(game_end_event.get('timestamp', ''))
-        timeline.append({
-            "type": "game_end",
-            "timestamp": timestamp,
-            "message": "Game ended",
-            "data": game_end_event.get('data', {}),
-            "final_scores": running_scores.copy()
-        })
+    # Generate timeline
+    timeline = generator.generate_timeline(session_dir, config, results, chat_logs, snapshots, events, player_models)
 
     # Sort timeline by timestamp
     timeline.sort(key=lambda x: x.get('timestamp', ''))
@@ -353,16 +727,20 @@ def generate_game_timeline(session_dir):
     players_info = []
     for player_id, model_info in player_models.items():
         player_score = 0
+        player_role = None
+
         for p in results.get('players', []):
             if p.get('id') == player_id:
                 player_score = p.get('final_state', {}).get('score', 0)
+                player_role = p.get('role')
                 break
 
         players_info.append({
             "id": player_id,
             "model_id": model_info.get('model_id'),
             "model_name": model_info.get('model_name'),
-            "final_score": player_score
+            "final_score": player_score,
+            "role": player_role
         })
 
     # Determine winning model name
@@ -421,7 +799,7 @@ def process_game_detail(benchmark_dir, session_id, output_dir="data/processed"):
         session_id = os.path.basename(session_dir)
     else:
         # Check if this is a timestamp-only ID or a full session ID
-        if '_' in session_id and not session_id.startswith('prisoner') and not session_id.startswith('ghost'):
+        if '_' in session_id and not any(game in session_id.lower() for game in ['prisoner', 'ghost', 'poetry', 'slam']):
             # This is likely just the timestamp portion (e.g., 20250311_144154)
             session_dir = os.path.join(benchmark_dir, session_id)
         else:

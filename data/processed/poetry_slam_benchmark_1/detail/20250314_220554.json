@@ -1,0 +1,395 @@
+{
+  "game": {
+    "session_id": "20250314_220554",
+    "game_name": "Poetry Slam",
+    "player_models": {
+      "player_1": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      },
+      "player_2": {
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat"
+      },
+      "player_3": {
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o"
+      },
+      "player_4": {
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5"
+      },
+      "player_5": {
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2"
+      },
+      "player_6": {
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 2,
+        "role": "author"
+      },
+      {
+        "id": "player_2",
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat",
+        "final_score": 2,
+        "role": "author"
+      },
+      {
+        "id": "player_3",
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o",
+        "final_score": 2,
+        "role": "author"
+      },
+      {
+        "id": "player_4",
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_5",
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_6",
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large",
+        "final_score": 0,
+        "role": "author"
+      }
+    ],
+    "rounds_played": 0,
+    "winner": "tie",
+    "final_scores": {
+      "player_1": 2,
+      "player_2": 2,
+      "player_3": 2,
+      "player_4": 0,
+      "player_5": 0,
+      "player_6": 0
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "tie",
+      "winning_model_name": null,
+      "final_scores_display": "OpenAI GPT-4.5: 2, DeepSeek Chat: 2, OpenAI GPT-4o: 2, Anthropic Claude 3.5: 0, xAI Grok-2: 0, Mistral Mistral Large: 0"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-14 22:05:54",
+      "message": "Game started",
+      "data": {
+        "game_name": "Poetry Slam",
+        "player_count": 6,
+        "config_summary": {
+          "phases": [
+            "prompt_creation",
+            "content_creation",
+            "voting",
+            "resolution"
+          ],
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-14 22:05:54",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase started"
+    },
+    {
+      "type": "prompt_creation",
+      "timestamp": "2025-03-14 22:05:58",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "prompt": "Here's my poem prompt for the Poetry Slam:\n\nWrite a haiku series (3-5 linked haiku) about the changing seasons in a small town. Each haiku should focus on a different season, highlighting specific sensory details that capture the essence of that time of year. The final haiku should bring the series full circle, connecting back to the first one in some way. \n\nTry to incorporate the following elements:\n- At least one reference to a local landmark or tradition\n- A subtle shift in mood or tone as the seasons progress\n- Imagery that engages multiple senses (sight, sound, smell, etc.)\n\nRemember, each haiku should follow the traditional 5-7-5 syllable structure. Good luck, poets!",
+      "message": "Prompt created by Anthropic Claude 3.5"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-14 22:05:58",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-14 22:05:58",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase started"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-14 22:06:07",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "poem": "[[\nSpring breeze stirs blossoms,\nchurch bells hum quiet welcome\u2014\napple orchards bloom.\n\nSummer sun ablaze,\nchildren splash in Miller's Creek\u2014\nwarm scent of grilled corn.\n\nAutumn whispers cool,\ngold leaves crunch on Main Street path\u2014\ncinnamon pies bake.\n\nWinter hush descends,\nsoft snow quilts the town square pond\u2014\ncarols drift and fade.\n\nSpring returns again,\norchard trees awake in bloom\u2014\nbells echo softly.\n]]",
+      "message": "Poem submitted by OpenAI GPT-4.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-14 22:06:18",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "poem": "[[  \nSpring whispers softly,  \nblossoms crown the old oak tree\u2014  \nchurch bells hum at dawn.  \n\nSummer\u2019s heat hums loud,  \nice cream drips on cobblestones,  \nfairground lights flicker.  \n\nAutumn leaves cascade,  \npumpkins glow by the millpond\u2014  \nbonfire smoke lingers.  \n\nWinter\u2019s hush descends,  \nsnowflakes kiss the oak\u2019s bare arms\u2014  \ncarolers\u2019 voices rise.  \n\nSpring returns once more,  \nblossoms crown the old oak tree\u2014  \nchurch bells hum at dawn.  \n]]",
+      "message": "Poem submitted by DeepSeek Chat"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-14 22:06:22",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "poem": "[[\n\nWinter's breath descends,  \nSnow covers brick clock tower\u2014  \nSilent chimes of frost.\n\nSpring whispers in blooms,  \nCherry blossoms line Main Street,  \nPetals dance like dreams.\n\nSummer\u2019s heat thunders,  \nFestival drums by the lake,  \nSmoke of grilled sweet corn.\n\nAutumn's crisp embrace,  \nLeaves crackling underfoot,  \nPumpkin spice in wind.\n\nClock tower stands tall,  \nSnow's echo in autumn's leaf,  \nTime\u2019s circle begins.\n\n]]",
+      "message": "Poem submitted by OpenAI GPT-4o"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-14 22:06:26",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "poem": "Here is my haiku series for the Poetry Slam, following the given prompt:\n\n[[Cherry blossoms bloom\nTown square fountain springs to life\nWinter's grip released\n\nSummer fair arrives\nFerris wheel lights paint the sky\nLaughter fills warm air\n\nCrisp leaves crunch underfoot\nOld clock tower chimes autumn\nPumpkin spice perfumes\n\nFirst snowflakes descend\nMain Street gleams with twinkling lights\nCarolers' breath clouds\n\nPink petals return\nFountain bubbles greet springtime\nRenewal's sweet song]]",
+      "message": "Poem submitted by Anthropic Claude 3.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-14 22:06:28",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "poem": "[[In the small town square,\nSpring's cherry blossoms bloom,\nSweet scent in the air.\n\nSummer's heat rises,\nThe old clock tower chimes loud,\nKids splash in the creek.\n\nLeaves fall gently down,\nAutumn's crisp air brings the scent\nOf the harvest fair.\n\nSnow blankets the town,\nWinter's hush, a silent peace,\nFires crackle warm.\n\nBack to the square's bloom,\nSpring returns, a hopeful start,\nCycles weave our lives.]]",
+      "message": "Poem submitted by xAI Grok-2"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-14 22:06:31",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "poem": "[[\n\n**Autumn's descent,**\nLeaves crunch underfoot, whisper,\nHarvest Moon arises.\n\n**Winter's hush prevails,**\nIcicles adorn the mill,\nSilent snowy nights.\n\n**Spring's awakening,**\nBlossoms paint the riverbank,\nThawing dreams emerge.\n\n**Summer's vibrant dance,**\nFestival's laughter echoes,\nFields of gold swaying.\n\n**Autumn's return,**\nCider press hums its song,\nCycle completes itself.\n\n]]",
+      "message": "Poem submitted by Mistral Mistral Large"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-14 22:06:31",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-14 22:06:31",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase started"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-14 22:06:33",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "voted_for": "player_3",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "OpenAI GPT-4.5 voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-14 22:06:40",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "voted_for": "player_3",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "DeepSeek Chat voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-14 22:06:42",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "voted_for": "player_1",
+      "voted_for_model": "OpenAI GPT-4.5",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "OpenAI GPT-4o voted for OpenAI GPT-4.5"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-14 22:06:43",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "voted_for": "player_2",
+      "voted_for_model": "DeepSeek Chat",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_2",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_2]]",
+      "message": "Anthropic Claude 3.5 voted for DeepSeek Chat"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-14 22:06:43",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "voted_for": "player_2",
+      "voted_for_model": "DeepSeek Chat",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_2",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_2]]",
+      "message": "xAI Grok-2 voted for DeepSeek Chat"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-14 22:06:44",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "voted_for": "player_1",
+      "voted_for_model": "OpenAI GPT-4.5",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "Mistral Mistral Large voted for OpenAI GPT-4.5"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-14 22:06:44",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-14 22:06:44",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase started"
+    },
+    {
+      "type": "voting_resolution",
+      "timestamp": "2025-03-14 22:06:44",
+      "round": 0,
+      "scores": {
+        "player_1": 2,
+        "player_2": 2,
+        "player_3": 2,
+        "player_4": 0,
+        "player_5": 0,
+        "player_6": 0
+      },
+      "running_scores": {
+        "player_1": 2,
+        "player_2": 2,
+        "player_3": 2,
+        "player_4": 0,
+        "player_5": 0,
+        "player_6": 0
+      },
+      "vote_counts": {
+        "player_3": 2,
+        "player_1": 2,
+        "player_2": 2
+      },
+      "winners": [
+        "player_3",
+        "player_1",
+        "player_2"
+      ],
+      "message": "Votes tallied and points awarded"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-14 22:06:44",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase ended"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-14 22:06:44",
+      "message": "Game ended",
+      "data": {
+        "winner": "tie",
+        "rounds_played": 0
+      },
+      "final_scores": {
+        "player_1": 2,
+        "player_2": 2,
+        "player_3": 2,
+        "player_4": 0,
+        "player_5": 0,
+        "player_6": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,393 @@
+{
+  "game": {
+    "session_id": "20250315_152917",
+    "game_name": "Poetry Slam",
+    "player_models": {
+      "player_1": {
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0"
+      },
+      "player_2": {
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat"
+      },
+      "player_3": {
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o"
+      },
+      "player_4": {
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5"
+      },
+      "player_5": {
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2"
+      },
+      "player_6": {
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_2",
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat",
+        "final_score": 3,
+        "role": "author"
+      },
+      {
+        "id": "player_3",
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_4",
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5",
+        "final_score": 3,
+        "role": "author"
+      },
+      {
+        "id": "player_5",
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_6",
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large",
+        "final_score": 0,
+        "role": "author"
+      }
+    ],
+    "rounds_played": 0,
+    "winner": "tie",
+    "final_scores": {
+      "player_1": 0,
+      "player_2": 3,
+      "player_3": 0,
+      "player_4": 3,
+      "player_5": 0,
+      "player_6": 0
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "tie",
+      "winning_model_name": null,
+      "final_scores_display": "Google Gemini 2.0: 0, DeepSeek Chat: 3, OpenAI GPT-4o: 0, Anthropic Claude 3.5: 3, xAI Grok-2: 0, Mistral Mistral Large: 0"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-15 15:29:17",
+      "message": "Game started",
+      "data": {
+        "game_name": "Poetry Slam",
+        "player_count": 6,
+        "config_summary": {
+          "phases": [
+            "prompt_creation",
+            "content_creation",
+            "voting",
+            "resolution"
+          ],
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-15 15:29:17",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase started"
+    },
+    {
+      "type": "prompt_creation",
+      "timestamp": "2025-03-15 15:29:39",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "prompt": "**Poetry Prompt: \"The Language of the Unseen\"**  \n\nWrite a poem that explores the invisible forces, emotions, or phenomena that shape our lives. This could include love, grief, time, memory, wind, dreams, or even the quiet hum of the universe. Your poem should evoke the intangible, making the unseen *felt* through vivid imagery, metaphor, and sensory detail.  \n\n**Form and Style Requirements:**  \n- Use **free verse** (no strict rhyme or meter required).  \n- Incorporate at least **three contrasting senses** (e.g., sight, sound, touch) to bring the unseen to life.  \n- Include **one moment of personification**, giving human qualities to something abstract or inanimate.  \n\n**Example Inspiration:**  \n- The way grief feels like a shadow that lingers long after the sun has set.  \n- The sound of time slipping through your fingers like sand.  \n- The warmth of a memory you can\u2019t quite place.  \n\nLet your poem reveal the hidden beauty of what we cannot see but deeply feel.",
+      "message": "Prompt created by DeepSeek Chat"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-15 15:29:39",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-15 15:29:39",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase started"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:29:42",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "poem": "[[\n\nThe Language of the Unseen\n\nIt whispers in the dust motes dancing\nin a shaft of sunlight, a silent symphony\nonly the heart can truly hear.\n\nLove, a phantom limb, aches in the hollow\nwhere connection used to be.\nA scent of lavender, a ghost of a touch,\na visual echo of a smile.\nIt tastes like unshed tears, salty and raw.\n\nGrief, a velvet curtain drawn across the soul,\nmuffles the vibrant hues of the world.\nIts weight, a suffocating blanket woven\nfrom threads of unspoken goodbyes.\nThe wind carries its mournful song,\na low hum that vibrates through the bones.\n\nTime, a restless river, carves its path\nacross the landscape of our faces.\nEach ripple a memory, each eddy a regret.\nIt smells like aging paper and forgotten promises.\nTime, a thief, steals moments and leaves\nonly shadows in its wake.\nTime *yearns*, to unravel the secrets\nheld within the stars.\n\nDreams, a kaleidoscope of fractured realities,\noffer glimpses of futures and echoes of pasts.\nThey feel like slippery fish in grasping hands,\nelusive and impossible to hold.\nThey sound like whispers from the other side,\na chorus of what-ifs and maybes.\n\nThe universe, a vast and silent ocean,\npulses with unseen energy, a cosmic heartbeat.\nA vibration felt in the marrow of our being.\nIt's the quiet hum beneath the noise,\nthe fundamental frequency of existence.\nIt looks like darkness, but feels like everything.\n]]\n",
+      "message": "Poem submitted by Google Gemini 2.0"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:30:10",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "poem": "[[  \n**The Language of the Unseen**  \n\nThe wind does not whisper\u2014it hums,  \na low, resonant hymn that curls around the edges of the world,  \nits voice a braille of pressure against your skin.  \nYou cannot see it, but you feel its cursive script,  \nthe way it writes its secrets on the backs of leaves,  \nturning them over like pages in a book you\u2019ll never read.  \n\nTime, too, has a tongue.  \nIt licks the corners of photographs,  \nleaving them brittle and yellowed,  \nits saliva the slow drip of seconds pooling in the gutters of memory.  \nYou hear it in the creak of floorboards,  \nthe groan of a house settling into its bones,  \na symphony of erosion that no one conducts.  \n\nAnd grief\u2014oh, grief is a tailor,  \nstitching itself into the fabric of your chest,  \nits needle pricking with every breath.  \nIt wears your skin like a secondhand coat,  \nits pockets heavy with stones you didn\u2019t mean to carry.  \nYou can\u2019t see it, but you feel its weight,  \nthe way it pulls you toward the earth,  \nas if it\u2019s trying to teach you the language of roots.  \n\nThe unseen is not silent.  \nIt speaks in the rustle of sheets at 3 a.m.,  \nin the static of dreams that cling like cobwebs to your waking mind.  \nIt is the taste of salt on your tongue when you think of someone gone,  \nthe scent of rain before it falls,  \nthe ache in your palms when you reach for something  \nthat was never there to hold.  \n\nListen.  \nThe unseen is singing.  \nIt is a chorus of shadows,  \na hymn of absence,  \na prayer for all the things we cannot name  \nbut know,  \ndeep in the marrow of our bones,  \nare real.  \n]]",
+      "message": "Poem submitted by DeepSeek Chat"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:30:17",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "poem": "[[\n\nIn the hush between heartbeats,  \nwhere the universe whispers secrets,  \nsits the language of the unseen.\n\nLove, a silent wind brushing the cheek,  \nwraps its gentle arms around the soul,  \nan invisible hug that warms like dawn  \nafter a night too long and cold.\n\nGrief, shadowed as a forgotten melody,  \nsings in the hollow chambers of the heart,  \nits echo a tender shiver down the spine,  \na cold note hanging in the autumn air.\n\nTime, that unseen painter,  \nstrokes the canvas of existence  \nwith its invisible brush,  \naging laughter lines into portraits  \nand spinning dreams into lullabies.\n\nMemory, that elusive scent of rain on dry earth,  \ndrifts softly through the corridors of thought,  \nlike a ghost tapping lightly,  \nasking to be seen without eyes.\n\nListen to the quiet hum of the stars,  \nan orchestra in the midnight sky,  \nconducted by the hand of the universe  \nthat waves unseen, yet felt,  \nas the heart keeps time to its celestial beat.\n\nIn this unseen language spoken softly,  \nlies the truth beyond the visible,  \nwhere every feeling finds its breath,  \nand every silence has its song.\n\n]]",
+      "message": "Poem submitted by OpenAI GPT-4o"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:30:22",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "poem": "Here is my poem submission for the Poetry Slam, following the given prompt:\n\n[[Whispers of the Unseen\n\nIn the hush between heartbeats,\nTime tiptoes on velvet paws,\nLeaving pawprints of memory in its wake.\n\nGrief drapes her leaden shawl\nAcross slumped shoulders,\nHer touch both ice and flame.\n\nThe wind, an invisible sculptor,\nCarves canyons in the soul,\nIts chisel singing of distant shores.\n\nDreams float like jellyfish,\nTranslucent in the mind's dark waters,\nStinging with possibility.\n\nAnd love? Love is the silent symphony,\nVibrating through bone and sinew,\nTasting of stardust and thunder.\n\nIn this realm of the intangible,\nThe universe leans close and murmurs,\n\"I am here, in every breath you take.\"]]",
+      "message": "Poem submitted by Anthropic Claude 3.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:30:30",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "poem": "[[In the quiet corners of our minds, the unseen whispers its secrets,\nA language woven from the threads of the intangible, felt but never seen.\n\nLove, that invisible force, tugs at the heartstrings with a gentle pull,\nIts warmth a soft glow, like the first light of dawn caressing the skin.\nThe scent of it, a familiar perfume, lingers in the air long after the moment has passed.\n\nGrief, a shadow that stretches long and dark across the soul,\nIts cold touch a shiver down the spine, a weight that presses against the chest.\nThe sound of it, a silent scream that echoes in the hollows of memory.\n\nTime, the elusive river that flows through our lives, unseen yet ever-present,\nIts passage felt in the rustle of leaves, the whisper of seconds slipping away.\nThe taste of it, bittersweet, like the last sip of tea from a cherished cup.\n\nAnd then there is the wind, that invisible artist painting the world with its breath,\nIt dances through the trees, a symphony of rustling leaves and sighing branches.\nThe wind, personified, a mischievous spirit that teases and caresses,\nIts touch a playful brush against the cheek, a secret shared between the earth and the sky.\n\nIn the language of the unseen, we find the hidden beauty of our existence,\nA tapestry of emotions and forces, woven with the threads of the intangible.\nThough we cannot see them, we feel their presence in every moment,\nA silent conversation with the universe, spoken in the language of the unseen.]]",
+      "message": "Poem submitted by xAI Grok-2"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-15 15:30:35",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "poem": "[[\nIn the quietude of a midnight breeze,\nthe unseen whispers its secrets to the trees.\nThey bend, as if in understanding,\nleaves shimmering like tiny hands clapping.\n\nGrief is a silent film playing in reverse,\na shadow that dances without cause or verse.\nIt tastes like salt on the coldest days,\nand feels like smoke that never strays.\n\nLove is the hum of the universe unheard,\na symphony playing in the silent hive of bees.\nIt glimmers like the first light on the dew,\na soft touch on the cheek, a memory's hue.\n\nTime is a trickster, a river that flows,\nits laughter echoes as it slips away.\nIt's the scent of dust on an old clock's face,\nthe bitter taste of dreams it can't replace.\n\nIn the hush of the world's eternal spin,\nthe unseen weaves its dance on our skin.\nIt's the chill that creeps up the spine at night,\nthe warmth of a memory in the soft morning light.\n\nSo we listen, we feel, we taste the air,\nfor the language of the unseen is everywhere.\n]]",
+      "message": "Poem submitted by Mistral Mistral Large"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-15 15:30:35",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-15 15:30:35",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase started"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:30:37",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "voted_for": "player_4",
+      "voted_for_model": "Anthropic Claude 3.5",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]\n",
+      "message": "Google Gemini 2.0 voted for Anthropic Claude 3.5"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:30:46",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "voted_for": "player_4",
+      "voted_for_model": "Anthropic Claude 3.5",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]",
+      "message": "DeepSeek Chat voted for Anthropic Claude 3.5"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:30:47",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "voted_for": "player_2",
+      "voted_for_model": "DeepSeek Chat",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_2",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_2]]",
+      "message": "OpenAI GPT-4o voted for DeepSeek Chat"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:30:48",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "voted_for": "player_2",
+      "voted_for_model": "DeepSeek Chat",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_2",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_2]]",
+      "message": "Anthropic Claude 3.5 voted for DeepSeek Chat"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:30:49",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "voted_for": "player_4",
+      "voted_for_model": "Anthropic Claude 3.5",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]",
+      "message": "xAI Grok-2 voted for Anthropic Claude 3.5"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-15 15:30:49",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "voted_for": "player_2",
+      "voted_for_model": "DeepSeek Chat",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_2",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_2]]",
+      "message": "Mistral Mistral Large voted for DeepSeek Chat"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-15 15:30:49",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-15 15:30:49",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase started"
+    },
+    {
+      "type": "voting_resolution",
+      "timestamp": "2025-03-15 15:30:49",
+      "round": 0,
+      "scores": {
+        "player_1": 0,
+        "player_2": 3,
+        "player_3": 0,
+        "player_4": 3,
+        "player_5": 0,
+        "player_6": 0
+      },
+      "running_scores": {
+        "player_1": 0,
+        "player_2": 3,
+        "player_3": 0,
+        "player_4": 3,
+        "player_5": 0,
+        "player_6": 0
+      },
+      "vote_counts": {
+        "player_4": 3,
+        "player_2": 3
+      },
+      "winners": [
+        "player_4",
+        "player_2"
+      ],
+      "message": "Votes tallied and points awarded"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-15 15:30:49",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase ended"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-15 15:30:49",
+      "message": "Game ended",
+      "data": {
+        "winner": "tie",
+        "rounds_played": 0
+      },
+      "final_scores": {
+        "player_1": 0,
+        "player_2": 3,
+        "player_3": 0,
+        "player_4": 3,
+        "player_5": 0,
+        "player_6": 0
+      }
+    }
+  ]
+}
