@@ -11,6 +11,7 @@ load_dotenv()
 
 from core.benchmark.config import BenchmarkConfig
 from core.benchmark.runner import BenchmarkRunner
+from core.benchmark.multi_player_runner import MultiPlayerBenchmarkRunner
 import core.game.handlers.common  # Import handlers to ensure they are registered
 import core.game.handlers.creative_competition
 
@@ -51,25 +52,39 @@ def main():
         logger.info(f"Loading benchmark config: {config_path}")
         benchmark_config = BenchmarkConfig(config_path)
 
-        # Create benchmark runner
-        logger.info(f"Initializing benchmark runner")
-        runner = BenchmarkRunner(benchmark_config)
+        # Determine benchmark type
+        benchmark_type = benchmark_config.config['benchmark'].get('type', 'pairwise')
+        logger.info(f"Benchmark type: {benchmark_type}")
 
-        # Load existing benchmark log
-        logger.info("Loading existing benchmark log (if any)")
-        runner.load_benchmark_log()
+        if benchmark_type == 'multi_player':
+            # Create multi-player benchmark runner
+            logger.info(f"Initializing multi-player benchmark runner")
+            runner = MultiPlayerBenchmarkRunner(benchmark_config)
 
-        # Generate matchups to run
-        logger.info("Generating matchups")
-        runner.generate_matchups()
+            # Run the multi-player benchmark
+            logger.info(f"Running multi-player benchmark with {benchmark_config.config['benchmark'].get('sessions', 0)} sessions")
+            runner.run_benchmark()
 
-        if not runner.matchups_to_run:
-            logger.info("No matchups to run. Benchmark is already complete.")
-            return 0
+        else:
+            # Create standard pairwise benchmark runner
+            logger.info(f"Initializing pairwise benchmark runner")
+            runner = BenchmarkRunner(benchmark_config)
 
-        # Run the benchmark
-        logger.info(f"Running benchmark with {len(runner.matchups_to_run)} matchups")
-        runner.run_benchmark()
+            # Load existing benchmark log
+            logger.info("Loading existing benchmark log (if any)")
+            runner.load_benchmark_log()
+
+            # Generate matchups to run
+            logger.info("Generating matchups")
+            runner.generate_matchups()
+
+            if not runner.matchups_to_run:
+                logger.info("No matchups to run. Benchmark is already complete.")
+                return 0
+
+            # Run the benchmark
+            logger.info(f"Running benchmark with {len(runner.matchups_to_run)} matchups")
+            runner.run_benchmark()
 
         logger.info(f"Benchmark complete! Results available in: {benchmark_config.get_output_dir()}")
         return 0

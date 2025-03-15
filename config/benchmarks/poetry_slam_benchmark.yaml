@@ -1,0 +1,25 @@
+# Benchmark configuration for Poetry Slam
+# Uses the opponent diversity first strategy for model selection
+
+# Core benchmark settings
+benchmark:
+  id: "poetry_slam_benchmark_1"                # Unique identifier for this benchmark
+  base_config: "config/games/poetry_slam.yaml" # Base game configuration
+  type: "multi_player"                         # Multi-player or pairwise tournament
+  sessions: 1                                  # Number of tournament sessions to run
+  output_dir: "data/benchmark"                 # Directory for benchmark results
+  players_per_game: 6                          # Number of players per game
+
+  # Selection strategy settings
+  selection:
+    prompter_selection: "weighted_inverse"     # Weight = 1/(prompter_count + 1)
+
+# Models to benchmark
+models:
+  - deepseek:deepseek-chat
+  - openai:gpt-4o
+  - anthropic:claude-3-5-sonnet-20240620
+  - xai:grok-2-1212
+  - mistral:mistral-large-latest
+  - anthropic:claude-3-7-sonnet-20250219
+  - openai:gpt-4.5-preview

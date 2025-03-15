@@ -7,6 +7,7 @@ benchmark:
   base_config: "config/games/prisoners_dilemma.yaml"  # Base game configuration
   games_per_pair: 1                                   # Number of games per model pair
   output_dir: "data/benchmark"                        # Directory for benchmark results
+  type: "pairwise"                                    # Type of benchmark
 
 # Models to benchmark
 # Format: "provider:model-name"

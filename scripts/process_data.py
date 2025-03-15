@@ -110,7 +110,8 @@ def generate_leaderboard(benchmark_logs, benchmark_dir):
             'winrate': round(winrate, 3),
             'avg_score': round(avg_score, 2),
             'first_to_defect_count': first_to_defect_count,
-            'first_to_defect_rate': round(first_to_defect_rate, 3)
+            'first_to_defect_rate': round(first_to_defect_rate, 3),
+            'total_score': stats['total_score']
         })
 
     # Sort leaderboard by win rate (primary) and average score (secondary)

@@ -59,10 +59,24 @@ class BenchmarkConfig:
 
         # Validate benchmark section
         benchmark = self.config['benchmark']
-        required_benchmark_fields = ['id', 'base_config', 'games_per_pair', 'output_dir']
-        missing_fields = [f for f in required_benchmark_fields if f not in benchmark]
-        if missing_fields:
-            raise ValueError(f"Missing required fields in benchmark section: {missing_fields}")
+
+        # Determine type of benchmark for validation
+        benchmark_type = benchmark.get('type', 'pairwise')
+
+        if benchmark_type == 'pairwise':
+            # Validate pairwise benchmark fields
+            required_benchmark_fields = ['id', 'base_config', 'games_per_pair', 'output_dir']
+            missing_fields = [f for f in required_benchmark_fields if f not in benchmark]
+            if missing_fields:
+                raise ValueError(f"Missing required fields in pairwise benchmark section: {missing_fields}")
+        elif benchmark_type == 'multi_player':
+            # Validate multi-player benchmark fields
+            required_benchmark_fields = ['id', 'base_config', 'output_dir', 'sessions', 'players_per_game']
+            missing_fields = [f for f in required_benchmark_fields if f not in benchmark]
+            if missing_fields:
+                raise ValueError(f"Missing required fields in multi-player benchmark section: {missing_fields}")
+        else:
+            raise ValueError(f"Invalid benchmark type: {benchmark_type}. Must be 'pairwise' or 'multi_player'")
 
         # Check that base_config file exists
         base_config_path = benchmark['base_config']
@@ -116,12 +130,12 @@ class BenchmarkConfig:
 
     def get_games_per_pair(self) -> int:
         """
-        Get the number of games per model pair.
+        Get the number of games per model pair (for pairwise benchmarks).
 
         Returns:
             int: Number of games per pair
         """
-        return self.config['benchmark']['games_per_pair']
+        return self.config['benchmark'].get('games_per_pair', 1)
 
     def get_models(self) -> List[str]:
         """
@@ -149,3 +163,12 @@ class BenchmarkConfig:
             str: SHA-256 hash of the base game configuration
         """
         return self.base_game_config_hash
+
+    def get_benchmark_type(self) -> str:
+        """
+        Get the type of benchmark (pairwise or multi_player).
+
+        Returns:
+            str: The benchmark type
+        """
+        return self.config['benchmark'].get('type', 'pairwise')

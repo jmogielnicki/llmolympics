@@ -1,0 +1,77 @@
+{
+  "opponent_matrix": {
+    "deepseek:deepseek-chat": [
+      "xai:grok-2-1212",
+      "openai:gpt-4.5-preview",
+      "openai:gpt-4o",
+      "anthropic:claude-3-5-sonnet-20240620",
+      "mistral:mistral-large-latest",
+      "anthropic:claude-3-7-sonnet-20250219"
+    ],
+    "openai:gpt-4o": [
+      "xai:grok-2-1212",
+      "openai:gpt-4.5-preview",
+      "anthropic:claude-3-5-sonnet-20240620",
+      "mistral:mistral-large-latest",
+      "anthropic:claude-3-7-sonnet-20250219",
+      "deepseek:deepseek-chat"
+    ],
+    "anthropic:claude-3-5-sonnet-20240620": [
+      "xai:grok-2-1212",
+      "openai:gpt-4.5-preview",
+      "openai:gpt-4o",
+      "mistral:mistral-large-latest",
+      "anthropic:claude-3-7-sonnet-20250219",
+      "deepseek:deepseek-chat"
+    ],
+    "xai:grok-2-1212": [
+      "openai:gpt-4.5-preview",
+      "openai:gpt-4o",
+      "anthropic:claude-3-5-sonnet-20240620",
+      "mistral:mistral-large-latest",
+      "anthropic:claude-3-7-sonnet-20250219",
+      "deepseek:deepseek-chat"
+    ],
+    "mistral:mistral-large-latest": [
+      "xai:grok-2-1212",
+      "openai:gpt-4.5-preview",
+      "openai:gpt-4o",
+      "anthropic:claude-3-5-sonnet-20240620",
+      "anthropic:claude-3-7-sonnet-20250219",
+      "deepseek:deepseek-chat"
+    ],
+    "anthropic:claude-3-7-sonnet-20250219": [
+      "xai:grok-2-1212",
+      "openai:gpt-4o",
+      "anthropic:claude-3-5-sonnet-20240620",
+      "mistral:mistral-large-latest",
+      "deepseek:deepseek-chat"
+    ],
+    "openai:gpt-4.5-preview": [
+      "xai:grok-2-1212",
+      "anthropic:claude-3-5-sonnet-20240620",
+      "openai:gpt-4o",
+      "mistral:mistral-large-latest",
+      "deepseek:deepseek-chat"
+    ]
+  },
+  "game_counts": {
+    "deepseek:deepseek-chat": 2,
+    "openai:gpt-4o": 2,
+    "anthropic:claude-3-5-sonnet-20240620": 2,
+    "xai:grok-2-1212": 2,
+    "mistral:mistral-large-latest": 2,
+    "anthropic:claude-3-7-sonnet-20250219": 1,
+    "openai:gpt-4.5-preview": 1
+  },
+  "prompter_counts": {
+    "deepseek:deepseek-chat": 1,
+    "openai:gpt-4o": 0,
+    "anthropic:claude-3-5-sonnet-20240620": 1,
+    "xai:grok-2-1212": 0,
+    "mistral:mistral-large-latest": 0,
+    "anthropic:claude-3-7-sonnet-20250219": 0,
+    "openai:gpt-4.5-preview": 0
+  },
+  "sessions_run": 0
+}
