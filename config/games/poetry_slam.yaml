@@ -85,10 +85,12 @@ win_condition:
 
 llm_integration:
   player_models:
-    player_1: "deepseek:deepseek-reasoner"
-    player_2: "deepseek:deepseek-reasoner"
-    player_3: "deepseek:deepseek-reasoner"
-    player_4: "deepseek:deepseek-reasoner"
+    player_1: "google:gemini-2.0-flash"
+    player_2: "google:gemini-2.0-flash"
+    player_3: "google:gemini-2.0-flash"
+    player_4: "google:gemini-2.0-flash"
+    player_5: "google:gemini-2.0-flash"
+    player_6: "google:gemini-2.0-flash"
   system_prompts:
     prompt_creation: "You are creating a poetry prompt. Provide a specific, inspiring prompt for other models to write poetry about. Be clear about any style, form, or theme requirements."
     content_creation: "You are a poet participating in a Poetry Slam. Write a poem that follows the given prompt. Be creative and thoughtful in your composition."

@@ -1,0 +1,75 @@
+{
+  "game": "Poetry Slam",
+  "timestamp": "2025-03-15T15:26:11.355530",
+  "players": [
+    {
+      "id": "player_1",
+      "final_state": {
+        "role": "assigned",
+        "score": 2,
+        "submission": "**Whispers in the Wallpaper**  \n\nThe walls exhale in splinters,  \npeeling their tongues of paint\u2014  \na chorus of blistered hymns.  \nFloorboards hum with the weight  \nof footsteps that dissolved  \nlike sugar in forgotten tea.  \n\nHere, the dust is an archivist.  \nIt catalogues the snapdragons  \nof laughter pressed between  \nfaded wallpaper blooms\u2014  \ntheir paisley veins still pulse  \nwith the thrum of a radio\u2019s last breath.  \n\nA staircase yawns into nowhere,  \neach step a fossil of ascent.  \nIn the parlor, a teacup\u2019s ghost  \nsips at the rim of morning light,  \nwhile the rusted swing outside  \nscribbles arcs in the wind\u2019s margin\u2014  \n*someone once pushed here*.  \n\nIvy stitches the silence,  \nneedling through cracked plaster  \nto mend what the years unpicked.  \nA mirror, blind in one eye,  \nholds the afterimage of a face  \nwrapped in a shawl of shadows.  \n\nBeneath the sink, a mouse\u2019s nest  \nweaves itself from wedding lace  \nand the frayed edges of ledgers\u2014  \n*rent unpaid, love letters, grocery lists*\u2014  \nthe mundane made sacred  \nby the slow sacrament of rot.  \n\nNight arrives as a caretaker,  \ndraping cobwebs over doorknobs.  \nThe moon pours through a shattered pane,  \nits milk pooling into a kaleidoscope  \nof glass teeth\u2014each shard a prism  \nfor voices that refuse to scatter.  \n\nThis house is a throat.  \nIt hums."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_2",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "The dust motes dance a waltz\nin shafts of fractured sunlight,\na spotlight on oblivion.\n\nFloorboards sigh a lonely tune,\na creaking complaint echoing\nthrough rooms stripped bare of joy,\nbare of argument, bare of life.\n\nWallpaper peels like sunburnt skin,\nrevealing ghosts of floral patterns,\nghosts of hands that smoothed it down,\nghosts of laughter now choked by weeds\nclimbing the cracked foundation stones.\n\nA robin nests in the broken eaves,\nher song a fragile counterpoint\nto the silence that screams.\nIt's a song of resilience, a song of now,\noblivious to the history soaked\ninto the damp, unforgiving walls.\n\nI run my hand along the windowsill,\nfeel the grit, the years,\nthe weight of unspoken words.\nA child\u2019s initials, scratched deep,\na desperate plea for permanence\nin a world that forgets so easily.\n\nThe air hangs heavy, thick with yesterday,\na cloying perfume of decay\nand the faint, almost imperceptible\nscent of lilac blooming,\na memory clinging to the rafters,\nrefusing to let go.\n\nThis is not just an empty house.\nIt's a vessel filled with echoes,\na symphony of silence,\na testament to what was,\nand a chilling reminder\nthat even stone and brick crumble,\nand even love\u2026fades."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_3",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "Dust, a shroud of stillness, thickens the air,\nsunbeams fractured, stained by broken glass.\nFloorboards moan like weary bones, each step a phantom\u2019s fall.\nWind, a hollow flute, whistles through shattered frames, a song of emptiness.\nSilence here is not absence, but a presence,\na heavy cloak woven from unheard whispers,\nthe rustle of moth-eaten velvet curtains,\nthe sigh of settling spirits in the eaves.\nPaint peels, a flaking skin revealing stories,\nsun-faded yellows of laughter, rain-streaked greys of grief.\nOn a wall, a child\u2019s blue crayon boat, adrift on a yellow sea, a tiny voyage stalled in time.\nThe piano, keys like yellowed teeth, smiles a soundless tune, a melody imprisoned in the silence.\nEchoes cling to the air, not ghosts, but impressions,\njoy\u2019s bright tremor, sorrow\u2019s lingering chill,\netched onto the dust, imprinted on the light.\nThis place remembers, breathes, even as it crumbles,\na quiet symphony of what was, and what remains,\na resonance in the stillness, a whisper in the ruins."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_4",
+      "final_state": {
+        "role": "prompter",
+        "score": 1,
+        "submission": "In the quiet ribs of fractured walls,\nivy veins pulse softly, winding through cracks\nlike whispered secrets searching\nfor someone to remember.\nThe wind tiptoes delicately,\ntracing the splinters of doors,\nfluttering torn curtains,\nghostly breaths moving,\nbreathing life into emptiness.\n\nStained glass fragments lie scattered,\ntheir colors dulled, yet still vivid in the morning sun\u2014\nshards of sapphire, emerald, and amber,\nholding whispers of hymns once sung,\nof children laughing, running barefoot,\nof lovers whispering promises beneath a moon\nthat no longer pauses here.\n\nIn the dust, footprints gather shadows;\npatterns that vanish at a glance,\nmemories that linger longer than the walkers did.\nA wooden chair stubbornly refuses collapse,\nholding the curve of a body long vanished,\nlistening still for a heart\u2019s distant echo.\n\nA faded photograph rests hidden behind peeling wallpaper\u2014\nsmiling strangers with eyes that still ask to be seen,\nstories unfinished, suspended in time,\nwaiting patiently for someone\nto turn back the page of abandonment.\n\nIn the glow of twilight, silence deepens.\nSounds return in subtle echoes\u2014\na sigh in the rusted hinges,\nthe shiver of grass through cracked flooring,\na whisper of lives lived,\nand lost,\nyet never fully taken by time.\n\nThis abandoned place,\nempty yet overflowing,\nwith all the quiet beauty,\nall the sorrow,\nof whispered echoes,\nand silent cries\nfor remembrance."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_5",
+      "final_state": {
+        "role": "assigned",
+        "score": 1,
+        "submission": "ECHOES FROM AN ABANDONED PLACE\n\nDust particles dance in slanted light,\nthe only movement here in decades.\nEach mote carries microscopic fragments\nof those who breathed this air before.\n\nThe floorboards remember every footfall\u2014\nthe heavy drag of the father's boots,\nthe pitter-patter of children's feet,\nthe soft shuffle of a mother's slippers.\n\nWallpaper peels like ancient scrolls,\nrevealing layers of forgotten tastes:\nharvest gold beneath avocado green\nbeneath floral patterns faded to whispers.\n\nIn the kitchen, phantom aromas\u2014\nSunday roasts and birthday cakes,\narguments over breakfast,\nreconciliations over evening tea.\n\nA piano in the corner, keys yellowed as old teeth,\nstill holds the ghosts of lullabies\nin its warped wooden body,\nwaiting for fingers that will never return.\n\nThe staircase creaks with invisible weight,\ntelling stories to itself in the language of settling wood.\nEach step a verse in the poem of abandonment,\neach crack a line in the elegy of emptiness.\n\nUpstairs, a child's room preserves\nthe imprint of dreams in the ceiling stains,\nwhere young eyes once traced imaginary maps\nto worlds more permanent than this one.\n\nOutside, nature reclaims its territory\u2014\nvines embrace brick like long-lost lovers,\nroots crack foundation with patient persistence,\ngrass grows through what was once a welcome mat.\n\nYet something lingers beyond decay,\nsomething that refuses the pull of time\u2014\nnot quite memory, not quite hope,\nbut the stubborn echo of human presence\n\nthat whispers: we were here,\nwe loved here,\nwe dreamed here,\nand in some way,\nwe remain."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_6",
+      "final_state": {
+        "role": "assigned",
+        "score": 2,
+        "submission": "ECHOES FROM AN ABANDONED PLACE\n\nDust motes dance in slanted light,\nthe only movement in this forgotten cathedral of industry.\nMachinery frozen mid-breath,\ntheir metal lungs collapsed decades ago.\n\nI step across the threshold where thousands once punched timecards,\nmy footfalls percussion against concrete\u2014\nthe first music these walls have heard\nsince the final shift whistle screamed surrender.\n\nIn the corner office, a calendar still declares April 1987,\na coffee mug rings stain the desk like \ngeological evidence of the last conversation,\nthe final signature, the closing prayer.\n\nSparrows have claimed the rafters now,\ntheir descendants never knowing this place\nonce thundered with human voices,\nwith ambition, with paychecks, with purpose.\n\nThe windows, what remains of them,\nfilter sunlight through industrial cataracts,\nprojecting liquid gold across broken tiles\nwhere workers once stood, dreaming of elsewhere.\n\nI press my palm against a wall\nand feel it exhale its stories\u2014\nof first jobs and final goodbyes,\nof labor pains and union fights,\nof Christmas bonuses and layoff notices.\n\nThis place remembers everything:\nthe taste of lunch pail sandwiches,\nthe rhythm of assembly lines,\nthe weight of unfulfilled promises.\n\nIn the silent employee lounge,\nghosts still smoke cigarettes and complain about management,\ntheir laughter a frequency\njust beyond human hearing.\n\nNothing is truly abandoned.\nPlaces hold their histories like bones hold marrow\u2014\nessential, hidden, alive with memory.\n\nI stand in the center of the floor\nand whisper, \"I hear you,\"\nand for a moment, the building sighs back,\ngrateful for the recognition\nof all it witnessed,\nall it held,\nall it lost."
+      },
+      "role": "author"
+    }
+  ],
+  "winner": {
+    "id": "tie",
+    "tied_players": [
+      "player_1",
+      "player_6"
+    ]
+  },
+  "rounds_played": 0,
+  "history_summary": {},
+  "session_id": "poetry_slam_20250315_152327",
+  "stats": {
+    "snapshot_count": 5,
+    "event_count": 38,
+    "chat_message_count": 13
+  }
+}
