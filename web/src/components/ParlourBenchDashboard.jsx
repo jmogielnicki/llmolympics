@@ -14,6 +14,11 @@ import PrisonersDilemmaDashboard from "./PrisonersDilemmaDashboard/components/Pr
 import PoetrySlamDashboard from "./PoetrySlamDashboard/components/PoetrySlamDashboard"; // Add import
 import AboutParlourBench from "./AboutParlourBench";
 
+// Import metadata for games
+import prisonersDilemmaMetadata from "@data/processed/prisoners_dilemma_benchmark_1/metadata.json";
+import poetrySlamMetadata from "@data/processed/poetry_slam_benchmark_1/metadata.json";
+
+
 /**
  * Main ParlourBench Dashboard component
  * Houses the game selector and handles navigation between different game dashboards
@@ -36,11 +41,7 @@ const ParlourBenchDashboard = () => {
               for the defector (5,0).
       `,
 			icon: "🔒", // Lock icon as emoji alternative
-			stats: {
-				gameCount: 21,
-				modelCount: 7,
-				lastUpdated: "2025-03-12",
-			},
+			stats: prisonersDilemmaMetadata,
 		},
 		{
 			id: "poetry_slam",
@@ -53,11 +54,7 @@ const ParlourBenchDashboard = () => {
               and aesthetic judgment capabilities.
       `,
 			icon: "📝", // Pencil emoji
-			stats: {
-				gameCount: 6,
-				modelCount: 10,
-				lastUpdated: "2025-03-15",
-			},
+			stats: poetrySlamMetadata,
 		},
 		{
 			id: "ghost",
@@ -340,16 +337,16 @@ const GameInfoCard = ({ games }) => {
 						<Users size={12} className="mb-1 sm:mb-0 sm:mr-1" />
 						<span>
 							<span className="hidden sm:inline">
-								{currentGame.stats.gameCount} games played
-								between {currentGame.stats.modelCount} models
+								{currentGame.stats.game_count} games played
+								between {currentGame.stats.models} models
 							</span>
 							<span className="sm:hidden">
-								{currentGame.stats.gameCount} games •{" "}
-								{currentGame.stats.modelCount} models
+								{currentGame.stats.game_count} games •{" "}
+								{currentGame.stats.models} models
 							</span>
 							<span className="sm:inline">
 								{" "}
-								• Last updated {currentGame.stats.lastUpdated}
+								• Last updated {currentGame.stats.processed_at}
 							</span>
 						</span>
 					</div>
