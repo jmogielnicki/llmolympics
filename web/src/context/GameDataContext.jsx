@@ -19,7 +19,6 @@ export const GameDataProvider = ({ gameType, children }) => {
 
 	// Get game definition which contains configuration and transformers
 	const gameDefinition = getGameDefinition(gameType);
-	console.log('gameDefinition', gameDefinition)
 
 	// Load all data when the component mounts
 	useEffect(() => {
@@ -45,20 +44,16 @@ export const GameDataProvider = ({ gameType, children }) => {
 						),
 						import(`@data/processed/${benchmark}/metadata.json`),
 					]);
-				console.log('about to get game specific data')
-				console.log("gameDefinition.dataTypes", gameDefinition.dataTypes);
+
 				// Load optional game-specific data files
 				const gameSpecificData = {};
 				await Promise.all(
 					(gameDefinition.config.dataTypes || []).map(async (dataType) => {
-						console.log(
-							"path",
-							`@data/processed/${benchmark}/${dataType}.json`);
+
 						try {
 							const data = await import(
 								`@data/processed/${benchmark}/${dataType}.json`
 							);
-							console.log('processed data', data)
 							gameSpecificData[dataType] = data.default || data;
 						} catch (e) {
 							console.log(
@@ -67,7 +62,6 @@ export const GameDataProvider = ({ gameType, children }) => {
 						}
 					})
 				);
-				console.log(gameSpecificData);
 
 				// Transform the data using the game definition
 				const transformedData = gameDefinition.transformData({
@@ -77,7 +71,7 @@ export const GameDataProvider = ({ gameType, children }) => {
 					metadata: metadataData.default || metadataData,
 					gameSpecific: gameSpecificData,
 				});
-				console.log(transformedData);
+
 				setData(transformedData);
 			} catch (error) {
 				console.error(`Error loading ${gameType} data:`, error);

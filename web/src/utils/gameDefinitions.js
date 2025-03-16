@@ -80,10 +80,9 @@ const prisonersDilemmaDefinition = {
 				winMatrix: gameSpecific.matchup_matrix.win_matrix,
 			};
 		}
-        console.log("gameSpecific.round_progression", gameSpecific.round_progression);
+
 		// Transform round progression
 		if (gameSpecific.round_progression) {
-            console.log('transforming round progression');
 			gameSpecificData.roundProgressionData =
 				gameSpecific.round_progression.round_progression.map(
 					(round) => ({
