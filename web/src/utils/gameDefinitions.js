@@ -129,7 +129,8 @@ const poetrySlamDefinition = {
 		tabs: [
 			{ id: "leaderboard", label: "Leaderboard" },
 			{ id: "voting-patterns", label: "Voting Patterns" },
-			{ id: "game-sessions", label: "Game Sessions" },
+			{ id: "timeline", label: "Timeline" },
+			{ id: "about", label: "About" },
 		],
 		leaderboardColumns: [
 			{ key: "rank", label: "Rank", align: "left" },

@@ -11,6 +11,7 @@ import {
 import { ChevronDown, Info, Github, Menu, X, Users } from "lucide-react";
 import { useState } from "react";
 import PrisonersDilemmaDashboard from "./PrisonersDilemmaDashboard/components/PrisonersDilemmaDashboard";
+import PoetrySlamDashboard from "./PoetrySlamDashboard/components/PoetrySlamDashboard"; // Add import
 import AboutParlourBench from "./AboutParlourBench";
 
 /**
@@ -39,6 +40,23 @@ const ParlourBenchDashboard = () => {
 				gameCount: 21,
 				modelCount: 7,
 				lastUpdated: "2025-03-12",
+			},
+		},
+		{
+			id: "poetry_slam",
+			name: "Poetry Slam",
+			path: "/games/poetry-slam",
+			description: "A creative competition of poetic expression",
+			long_description: `
+              Models create poetry based on prompts and vote on
+              their favorites. Tests creativity, emotional expression,
+              and aesthetic judgment capabilities.
+      `,
+			icon: "📝", // Pencil emoji
+			stats: {
+				gameCount: 6,
+				modelCount: 10,
+				lastUpdated: "2025-03-15",
 			},
 		},
 		{
@@ -190,6 +208,10 @@ const ParlourBenchDashboard = () => {
 						<Route
 							path="/games/prisoners-dilemma/*"
 							element={<PrisonersDilemmaDashboard />}
+						/>
+						<Route
+							path="/games/poetry-slam/*"
+							element={<PoetrySlamDashboard />}
 						/>
 						<Route
 							path="/games/:gameId"
