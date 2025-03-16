@@ -21,10 +21,10 @@ import ModelLeaderboard from "../../ModelLeaderboard";
  * Leaderboard Tab content
  */
 const LeaderboardTab = () => {
-	const { leaderboardData, leaderboardColumns, gameSummaryData, metadata } =
+	const { leaderboardData, gameConfig, gameSummaryData, metadata } =
 		useGameData();
 	const { width } = useWindowDimensions();
-
+	const leaderboardColumns = gameConfig.leaderboardColumns;
 	// Responsive chart margins based on screen width
 	const chartMargins = {
 		top: 20,

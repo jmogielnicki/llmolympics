@@ -18,7 +18,7 @@ import { useGameData } from "@/context/GameDataContext";
  * Game Statistics Tab content
  */
 const GameStatsTab = () => {
-	const { roundProgressionData, cooperationByModelAndRound, getCellColor } =
+	const { roundProgressionData, cooperationByModelAndRound } =
 		useGameData();
 	const { width } = useWindowDimensions();
 
@@ -28,6 +28,21 @@ const GameStatsTab = () => {
 		right: Math.max(5, Math.min(30, width / 40)), // Scale between 5-30px
 		left: Math.max(5, Math.min(30, width / 40)), // Scale between 5-30px
 		bottom: 5,
+	};
+
+	// Helper function to get color based on cooperation rate
+	const getCellColor = (rate) => {
+		if (rate >= 0.9) return "bg-blue-500";
+		if (rate >= 0.8) return "bg-blue-400";
+		if (rate >= 0.7) return "bg-blue-300";
+		if (rate >= 0.6) return "bg-blue-200";
+		if (rate >= 0.5) return "bg-blue-100";
+		if (rate <= 0.1) return "bg-red-500";
+		if (rate <= 0.2) return "bg-red-400";
+		if (rate <= 0.3) return "bg-red-300";
+		if (rate <= 0.4) return "bg-red-200";
+		if (rate <= 0.5) return "bg-red-100";
+		return "";
 	};
 
 	return (

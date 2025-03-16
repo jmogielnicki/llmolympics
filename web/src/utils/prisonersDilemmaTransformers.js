@@ -1,20 +1,4 @@
-/**
- * Utility functions for transforming data for the Prisoner's Dilemma dashboard
- */
-
-
-export const shortenModelName = (modelName) => {
-    const words_to_remove = ['OpenAI', 'Anthropic', 'Mistral', 'xAI']
-    for (let word of words_to_remove) {
-        // remove the first word if it is one of the words to remove
-        if (modelName.startsWith(word)) {
-            const shortenedName = modelName.slice(word.length + 1);
-            return shortenedName
-        }
-    }
-    return modelName
-}
-
+import { shortenModelName } from "./commonTransformers";
 /**
  * Transform leaderboard data for display
  * @param {Object} data - Raw leaderboard data

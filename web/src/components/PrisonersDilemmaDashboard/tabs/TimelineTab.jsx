@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useGameData } from "../../../context/GameDataContext";
 import { TimelineHeader } from "../components/TimelineHeader";
 import { TimelineRound } from "../components/TimelineRound";
-import { shortenModelName } from "@/utils/dataTransformers";
+import { shortenModelName } from "@/utils/commonUtils";
 
 const TimelineTab = () => {
-	const { matchups, loadGameDetail } = useGameData();
+	const { gameSessions, loadGameDetail } = useGameData();
 
 	const [selectedLeftModel, setSelectedLeftModel] = useState("");
 	const [selectedRightModel, setSelectedRightModel] = useState("");
@@ -13,18 +13,18 @@ const TimelineTab = () => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 
-	// Initialize selected models when matchups are loaded
+	// Initialize selected models when gameSessions are loaded
 	useEffect(() => {
-		if (matchups && Array.isArray(matchups) && matchups.length > 0) {
+		if (gameSessions && Array.isArray(gameSessions) && gameSessions.length > 0) {
 			// Use the first matchup's model IDs
-			const firstMatchup = matchups[0];
+			const firstMatchup = gameSessions[0];
 			setSelectedLeftModel(firstMatchup.player1_id);
 			setSelectedRightModel(firstMatchup.player2_id);
 		}
-	}, [matchups]);
+	}, [gameSessions]);
 
 	// Find the current matchup based on selected models
-	const currentMatchup = matchups?.find(
+	const currentMatchup = gameSessions?.find(
 		(matchup) =>
 			(matchup?.player1_id === selectedLeftModel &&
 				matchup?.player2_id === selectedRightModel) ||
@@ -98,12 +98,12 @@ const TimelineTab = () => {
 		setSelectedRightModel(e.target.value);
 	};
 
-	// Get the list of unique models from matchups
+	// Get the list of unique models from gameSessions
 	const getUniqueModels = () => {
-		if (!matchups || !Array.isArray(matchups)) return [];
+		if (!gameSessions || !Array.isArray(gameSessions)) return [];
 
 		const models = new Set();
-		matchups.forEach((matchup) => {
+		gameSessions.forEach((matchup) => {
 			if (matchup?.player1_id) models.add(matchup.player1_id);
 			if (matchup?.player2_id) models.add(matchup.player2_id);
 		});
@@ -112,7 +112,7 @@ const TimelineTab = () => {
 	};
 
 	const modelOptions = getUniqueModels().map((modelId) => {
-		const matchup = matchups?.find(
+		const matchup = gameSessions?.find(
 			(m) => m?.player1_id === modelId || m?.player2_id === modelId
 		);
 
@@ -154,7 +154,7 @@ const TimelineTab = () => {
 					Game Timeline View
 				</h2>
 				<p className="text-center text-gray-600 mb-6">
-					Detailed progression of individual matchups with decisions
+					Detailed progression of individual gameSessions with decisions
 					and reasoning
 				</p>
 

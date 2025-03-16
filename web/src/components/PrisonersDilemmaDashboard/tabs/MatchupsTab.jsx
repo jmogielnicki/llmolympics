@@ -1,13 +1,24 @@
 import React from "react";
 import { useGameData } from "../../../context/GameDataContext";
+import { ChevronUp, ChevronDown, Minus } from "lucide-react";
+
 
 /**
  * Matchups Tab content showing head-to-head competition results
  */
 const MatchupsTab = () => {
-	const { matchupMatrix, renderWinMatrixCell } = useGameData();
-	console.log(matchupMatrix)
+	const { matchupMatrix } = useGameData();
 
+	const renderWinMatrixCell = (value, rowIndex, colIndex) => {
+		if (rowIndex === colIndex) return "-";
+		if (value === null) return "-";
+
+		if (value === 1)
+			return <ChevronUp className="text-green-500 mx-auto" />;
+		if (value === 0)
+			return <ChevronDown className="text-red-500 mx-auto" />;
+		return <Minus className="text-gray-500 mx-auto" />;
+	};
 	return (
 		<div className="space-y-6">
 			<div className="bg-white rounded-lg shadow-md overflow-hidden">

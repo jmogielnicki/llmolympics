@@ -113,7 +113,7 @@ const DashboardContent = () => {
  */
 const PrisonersDilemmaDashboard = () => {
 	return (
-		<GameDataProvider>
+		<GameDataProvider gameType="prisoners_dilemma">
 			<DashboardContent />
 		</GameDataProvider>
 	);
