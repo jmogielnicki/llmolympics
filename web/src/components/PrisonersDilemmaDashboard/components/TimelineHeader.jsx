@@ -1,5 +1,5 @@
 import React from "react";
-import { shortenModelName } from "../utils/dataTransformers";
+import { shortenModelName } from "@/utils/dataTransformers";
 
 export const TimelineHeader = ({ gameDetail, leftModel, rightModel }) => {
 	if (!gameDetail || !gameDetail.game) return null;

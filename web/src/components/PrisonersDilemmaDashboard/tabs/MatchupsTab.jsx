@@ -1,5 +1,5 @@
 import React from "react";
-import { useGameData } from "../context/GameDataContext";
+import { useGameData } from "../../../context/GameDataContext";
 
 /**
  * Matchups Tab content showing head-to-head competition results

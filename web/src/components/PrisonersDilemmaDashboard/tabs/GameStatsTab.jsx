@@ -11,8 +11,8 @@ import {
 } from "recharts";
 
 // Import custom hooks
-import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import { useGameData } from "../context/GameDataContext";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
+import { useGameData } from "@/context/GameDataContext";
 
 /**
  * Game Statistics Tab content

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useGameData } from "../context/GameDataContext";
+import { useGameData } from "../../../context/GameDataContext";
 import { TimelineHeader } from "../components/TimelineHeader";
 import { TimelineRound } from "../components/TimelineRound";
-import { shortenModelName } from "../utils/dataTransformers";
+import { shortenModelName } from "@/utils/dataTransformers";
 
 const TimelineTab = () => {
 	const { matchups, loadGameDetail } = useGameData();

@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 // Import context provider
-import { GameDataProvider, useGameData } from "../context/GameDataContext";
+import { GameDataProvider, useGameData } from "../../../context/GameDataContext";
 
 // Import tab components
 import LeaderboardTab from "../tabs/LeaderBoardTab";

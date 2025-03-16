@@ -9,7 +9,7 @@ import {
 	createGameSummaryData,
 	transformCooperationByModel,
 	extractGameData,
-} from "../utils/dataTransformers";
+} from "@/utils/dataTransformers";
 
 // Import JSON files directly - using the correct paths to reach data directory
 import leaderboardJson from "@data/processed/prisoners_dilemma_benchmark_1/leaderboard.json";

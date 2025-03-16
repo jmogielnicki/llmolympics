@@ -12,7 +12,7 @@ import {
 
 // Import custom hooks
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import { useGameData } from "../context/GameDataContext";
+import { useGameData } from "../../../context/GameDataContext";
 
 // Import shared components
 import ModelLeaderboard from "../../ModelLeaderboard";
