@@ -290,9 +290,7 @@ function extractPoetrySlamSessions(modelProfiles) {
 
 				sessions.push({
 					id: game.session_id,
-					title: `Poetry Slam - ${new Date(
-						game.session_id.substring(12, 20)
-					).toLocaleDateString()}`,
+					title: `Poetry Slam`,
 					participants,
 					winner:
 						game.result === "win"

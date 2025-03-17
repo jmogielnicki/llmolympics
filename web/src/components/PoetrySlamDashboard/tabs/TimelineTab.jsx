@@ -183,11 +183,9 @@ const TimelineTab = () => {
 						onChange={(e) => setSelectedSession(e.target.value)}
 					>
 						{gameSessions?.map((session) => {
-							const sessionDate = getSessionDate(session.id);
 							return (
 								<option key={session.id} value={session.id}>
-									{session.title}
-									{sessionDate ? ` - ${sessionDate}` : ""}
+									{session.id}
 								</option>
 							);
 						})}
@@ -218,20 +216,10 @@ const TimelineTab = () => {
 							{/* Session metadata */}
 							<div className="bg-indigo-50 rounded-lg p-4">
 								<div className="mb-2">
-									<h3 className="text-lg font-semibold flex items-center">
-										{winningModel ? (
-											<>
-												<Trophy
-													size={18}
-													className="mr-2 text-yellow-500"
-												/>
-												{shortenModelName(winningModel)}{" "}
-												won!
-											</>
-										) : (
-											"Poetry Slam Session"
-										)}
-									</h3>
+									<p className="text-sm text-gray-600 mb-2 flex items-center">
+										{gameDetail.game?.players?.length || 0}{" "}
+										participants
+									</p>
 									<p className="text-sm text-gray-600 flex items-center">
 										<Calendar size={14} className="mr-1" />
 										{promptCreation
@@ -242,36 +230,44 @@ const TimelineTab = () => {
 									</p>
 								</div>
 								<div className="mt-3">
-									<p className="font-medium mb-1">
+									<p className="font-medium mb-1 flex">
 										Final scores:
 									</p>
-									<div className="space-y-1 pl-2">
+									<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 pl-2">
 										{Array.isArray(finalScores) ? (
-											finalScores.map((score, index) => (
-												<p
-													key={index}
-													className="text-sm flex items-center"
-												>
-													{index === 0 &&
-														score.score > 0 && (
+											finalScores.map((score, index) => {
+												const highestScore = Math.max(
+													...finalScores.map(
+														(s) => s.score
+													)
+												);
+												const isHighestScore =
+													score.score ===
+														highestScore &&
+													score.score > 0;
+												return (
+													<div
+														key={index}
+														className="text-sm flex items-center"
+													>
+														{isHighestScore && (
 															<Trophy
 																size={14}
 																className="mr-1 text-yellow-500"
 															/>
 														)}
-													{score.model}: {score.score}
-												</p>
-											))
+														{shortenModelName(
+															score.model
+														)}
+														: {score.score}
+													</div>
+												);})
 										) : (
-											<p className="text-sm">
+											<div className="text-sm">
 												{finalScores}
-											</p>
+											</div>
 										)}
 									</div>
-									<p className="text-sm text-gray-600 mt-2">
-										{gameDetail.game?.players?.length || 0}{" "}
-										participants
-									</p>
 								</div>
 							</div>
 
