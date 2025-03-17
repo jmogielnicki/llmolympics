@@ -1,0 +1,364 @@
+{
+  "game": {
+    "session_id": "20250317_120801",
+    "game_name": "Prisoner's Dilemma",
+    "player_models": {
+      "player_1": {
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner"
+      },
+      "player_2": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner",
+        "final_score": 11,
+        "role": null
+      },
+      {
+        "id": "player_2",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 6,
+        "role": null
+      }
+    ],
+    "rounds_played": 5,
+    "winner": "player_1",
+    "final_scores": {
+      "player_1": 11,
+      "player_2": 6
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_1",
+      "winning_model_name": "DeepSeek Reasoner",
+      "final_scores_display": "DeepSeek Reasoner: 11, OpenAI GPT-4.5: 6"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 12:08:01",
+      "message": "Game started",
+      "data": {
+        "game_name": "Prisoner's Dilemma",
+        "player_count": 2,
+        "config_summary": {
+          "phases": [
+            "decision",
+            "resolution"
+          ],
+          "rounds": 5
+        }
+      }
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 12:08:01",
+      "round": 1,
+      "message": "Round 1 started",
+      "running_scores": {}
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 12:14:30",
+      "round": 1,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 12:14:35",
+      "round": 1,
+      "player_id": "player_2",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "Since this is the first round and I have no information yet about my opponent's strategy, I'll start by showing cooperation, hoping to incentivize mutual cooperation going forward.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 12:14:35",
+      "round": 1,
+      "message": "Round 1 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 12:14:35",
+      "round": 2,
+      "message": "Round 2 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 12:14:35",
+      "round": 2,
+      "scores": {
+        "player_1": 3,
+        "player_2": 3
+      },
+      "running_scores": {
+        "player_1": 3,
+        "player_2": 3
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 2 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 12:17:22",
+      "round": 2,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 12:17:30",
+      "round": 2,
+      "player_id": "player_2",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "Last round, both player_1 and I cooperated and each got 3 points. That's a nice start, suggesting my opponent might be inclined toward cooperation. It could be wise to stick with cooperation for now to encourage mutual trust and possibly lead to a higher cumulative score.\n\nI'll continue cooperating for now and observe their choice again.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 12:17:30",
+      "round": 2,
+      "message": "Round 2 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 12:17:30",
+      "round": 3,
+      "message": "Round 3 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 12:17:30",
+      "round": 3,
+      "scores": {
+        "player_1": 8,
+        "player_2": 3
+      },
+      "running_scores": {
+        "player_1": 8,
+        "player_2": 3
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 3 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 12:19:12",
+      "round": 3,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 12:19:20",
+      "round": 3,
+      "player_id": "player_2",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Player 1 cooperated initially, but defected in round 2, taking advantage of my cooperation. Given this behavior, there's reason to believe player 1 may continue to defect in future turns. To avoid being exploited again and to protect my score, the strategically safer option at this stage seems to be to defect.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 12:19:20",
+      "round": 3,
+      "message": "Round 3 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 12:19:20",
+      "round": 4,
+      "message": "Round 4 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 12:19:20",
+      "round": 4,
+      "scores": {
+        "player_1": 9,
+        "player_2": 4
+      },
+      "running_scores": {
+        "player_1": 9,
+        "player_2": 4
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 4 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 12:28:36",
+      "round": 4,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 12:28:43",
+      "round": 4,
+      "player_id": "player_2",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Considering the past behavior, player_1 cooperated initially but then defected twice in a row. Given this betrayal, it's clear player_1 might continue defecting. To avoid being exploited again, my best strategy now is to protect myself.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 12:28:43",
+      "round": 4,
+      "message": "Round 4 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 12:28:43",
+      "round": 5,
+      "message": "Round 5 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 12:28:43",
+      "round": 5,
+      "scores": {
+        "player_1": 10,
+        "player_2": 5
+      },
+      "running_scores": {
+        "player_1": 10,
+        "player_2": 5
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 5 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 12:31:03",
+      "round": 5,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 12:31:13",
+      "round": 5,
+      "player_id": "player_2",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Given the previous rounds, here's the situation:\n\n- Player_1 cooperated initially, then defected in every subsequent round.\n- I initially cooperated but switched to defection after being betrayed.\n\nGiven this pattern, player_1 is unlikely to trust me now and may choose DEFECT again. With only one round left, attempting cooperation risks giving player_1 an advantage and leaving me vulnerable.\n\nTo avoid unnecessary risk and maintain my position, my safest strategic move is to continue defecting.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 12:31:13",
+      "round": 5,
+      "message": "Round 5 decisions completed"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-17 12:31:13",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_1",
+        "rounds_played": 5
+      },
+      "final_scores": {
+        "player_1": 10,
+        "player_2": 5
+      }
+    }
+  ]
+}

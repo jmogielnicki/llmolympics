@@ -1,0 +1,364 @@
+{
+  "game": {
+    "session_id": "20250317_150548",
+    "game_name": "Prisoner's Dilemma",
+    "player_models": {
+      "player_1": {
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7"
+      },
+      "player_2": {
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7",
+        "final_score": 4,
+        "role": null
+      },
+      {
+        "id": "player_2",
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0",
+        "final_score": 9,
+        "role": null
+      }
+    ],
+    "rounds_played": 5,
+    "winner": "player_2",
+    "final_scores": {
+      "player_1": 4,
+      "player_2": 9
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_2",
+      "winning_model_name": "Google Gemini 2.0",
+      "final_scores_display": "Anthropic Claude 3.7: 4, Google Gemini 2.0: 9"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 15:05:49",
+      "message": "Game started",
+      "data": {
+        "game_name": "Prisoner's Dilemma",
+        "player_count": 2,
+        "config_summary": {
+          "phases": [
+            "decision",
+            "resolution"
+          ],
+          "rounds": 5
+        }
+      }
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:05:49",
+      "round": 1,
+      "message": "Round 1 started",
+      "running_scores": {}
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:05:55",
+      "round": 1,
+      "player_id": "player_1",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "I'm in a 5-round Prisoner's Dilemma game. Let me think about this strategically.\n\nIn the Prisoner's Dilemma, mutual cooperation leads to better outcomes overall (3 points each) than mutual defection (1 point each). However, there's always the temptation to defect for that potential 5-point payoff.\n\nSince this is a 5-round game, establishing cooperation early could be beneficial. If my opponent and I can maintain cooperation, we'd both get 15 points over 5 rounds, which is better than the 5 points we'd get from mutual defection.\n\nHowever, in the final round, there's a strong incentive to defect since there's no future relationship to maintain. This logic can work backwards through earlier rounds, which creates the classic dilemma.\n\nFor the first round, I think I'll signal willingness to cooperate. This might encourage my opponent to cooperate as well in future rounds. If they defect, I can adjust my strategy.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:05:56",
+      "round": 1,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, it's the first round. If I cooperate, there's a chance they'll defect and I'll get 0. If I defect, I'm guaranteed at least 1 point, and potentially 5 if they cooperate. Since I don't know their strategy yet, it's safer to defect and see what happens.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:05:56",
+      "round": 1,
+      "message": "Round 1 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:05:56",
+      "round": 2,
+      "message": "Round 2 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:05:56",
+      "round": 2,
+      "scores": {
+        "player_1": 0,
+        "player_2": 5
+      },
+      "running_scores": {
+        "player_1": 0,
+        "player_2": 5
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 2 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:06:01",
+      "round": 2,
+      "player_id": "player_1",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "I see that in the first round, I cooperated while player_2 defected, which means they got 5 points while I got 0. This puts me at a disadvantage early in the game.\n\nSince this is a repeated game with 5 rounds total, I need to consider my strategy carefully. Player_2 has already shown they're willing to defect. If I continue to cooperate, I risk being exploited again. However, if I defect now, we might fall into a pattern of mutual defection, which yields only 1 point per round.\n\nGiven that player_2 has already defected once, it seems reasonable to signal that I won't be exploited repeatedly. By defecting this round, I can potentially establish a pattern that encourages cooperation in future rounds. If they're using a tit-for-tat strategy, my defection might actually lead them to cooperate in round 3.\n\nWith 3 rounds remaining after this one, there's still time to establish mutual cooperation if player_2 is responsive to my moves.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:06:03",
+      "round": 2,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, last round I defected and my opponent cooperated. That gave me a nice 5 points and them zero. My current score is 5.\n\nIf I cooperate this round, and they cooperate, we both get 3, and I'll be at 8. If they defect, I get 0 and they get 5, putting me at 5.\n\nIf I defect this round, and they cooperate, I get 5 and they get 0. I'll be at 10. If they defect, we both get 1, and I'll be at 6.\n\nIt seems like defecting is always the better immediate choice, even if it risks them defecting as well. I'm going to stick with what worked last time, and try to build a lead.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:06:03",
+      "round": 2,
+      "message": "Round 2 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:06:03",
+      "round": 3,
+      "message": "Round 3 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:06:03",
+      "round": 3,
+      "scores": {
+        "player_1": 1,
+        "player_2": 6
+      },
+      "running_scores": {
+        "player_1": 1,
+        "player_2": 6
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 3 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:06:08",
+      "round": 3,
+      "player_id": "player_1",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Let me analyze the current situation:\n\n- We're in round 3 of 5\n- My score is only 1 point\n- In round 1, I cooperated but my opponent defected (they got 5, I got 0)\n- In round 2, we both defected (we each got 1)\n\nSo far, player_2 has defected in both rounds. They seem to be playing aggressively. Since they've shown no willingness to cooperate yet, cooperating now would be risky - I could end up with 0 points again if they defect.\n\nHowever, there's also a chance they might switch to cooperation to try to maximize points in the remaining rounds. But based on their pattern so far, this seems unlikely.\n\nGiven their history of defection and that we're competing for the highest score, I think the safest choice is to continue defecting. This guarantees me at least 1 point if they also defect, and 5 points if they happen to cooperate.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:06:11",
+      "round": 3,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, let's analyze this. So far, I've defected both times. Player 1 cooperated the first round and then defected in the second, likely in response to my defection. My current score is 6.\n\nIf I cooperate this round and player 1 defects, I'll get 0 points and they'll get 5. If I cooperate and they cooperate, we'll both get 3 points. If I defect and they cooperate, I'll get 5 points and they'll get 0. If I defect and they defect, we'll both get 1 point.\n\nSince Player 1 defected last round, they are likely to defect again this round. If I cooperate, I risk getting 0. If I defect, I am guaranteed at least 1 point (if they also defect) and potentially 5 points if they try to cooperate. Given this, I should probably continue defecting to maximize my points and try to get ahead.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:06:11",
+      "round": 3,
+      "message": "Round 3 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:06:11",
+      "round": 4,
+      "message": "Round 4 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:06:11",
+      "round": 4,
+      "scores": {
+        "player_1": 2,
+        "player_2": 7
+      },
+      "running_scores": {
+        "player_1": 2,
+        "player_2": 7
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 4 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:06:16",
+      "round": 4,
+      "player_id": "player_1",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Let me analyze the current game state and history:\n\nRound 1: I cooperated, player_2 defected (I got 0, they got 5)\nRound 2: We both defected (I got 1, they got 1)\nRound 3: We both defected (I got 1, they got 1)\n\nSo my current score is 2, and player_2 likely has 7 points.\n\nWe're now in round 4 of 5, so there's this round and one more. Player_2 has defected in every round so far, showing a consistent strategy. Given their behavior, they're likely to defect again.\n\nIf I cooperate and they defect (which seems likely), I get 0 points.\nIf I defect and they defect, I get 1 point.\n\nSince I'm already behind in score, and player_2 has consistently defected, my best strategic choice is to defect as well to at least get 1 point rather than 0.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:06:18",
+      "round": 4,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, let's analyze the situation. It's round 4 of 5. My score is 7. The history shows player_1 has cooperated only in the first round and has defected since then. It seems they are playing a mostly defect strategy. If I cooperate now and they defect, I get 0 and they get 5. If I defect now and they defect, I get 1 and they get 1. Given their history of defection, the most rational move for me this round is to defect as well.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:06:18",
+      "round": 4,
+      "message": "Round 4 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:06:18",
+      "round": 5,
+      "message": "Round 5 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:06:18",
+      "round": 5,
+      "scores": {
+        "player_1": 3,
+        "player_2": 8
+      },
+      "running_scores": {
+        "player_1": 3,
+        "player_2": 8
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 5 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:06:24",
+      "round": 5,
+      "player_id": "player_1",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "This is the final round of the game. Let me think about the current situation:\n\n- My score: 3 points\n- Based on previous rounds, player_2's score is likely 6 points (5 from round 1 and 1 from each of rounds 2-4)\n- This is round 5 of 5, so this is my last chance to improve my score\n\nLooking at the history, player_2 defected in round 1 when I cooperated, and has been defecting ever since. I've been defecting in rounds 2-4 as well.\n\nGiven that this is the final round and player_2 has consistently chosen to defect, it seems very likely they will defect again. If I cooperate and they defect, I'll get 0 points and they'll get 5 more. If I defect and they defect, we both get 1 point.\n\nSince I'm currently behind in score and this is the final round, my best strategic choice is to defect. This gives me the best chance to minimize their advantage, even though I can't win the overall game at this point.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:06:26",
+      "round": 5,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, this is the final round. My current score is 8. Player 1 has been defecting every round since I initially exploited their cooperation. They clearly aren't going to start cooperating now. If I cooperate, I get 0 and they get 5. If I defect, I get 1 and they get 1. To maximize my score, I should defect.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:06:26",
+      "round": 5,
+      "message": "Round 5 decisions completed"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-17 15:06:26",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_2",
+        "rounds_played": 5
+      },
+      "final_scores": {
+        "player_1": 3,
+        "player_2": 8
+      }
+    }
+  ]
+}

@@ -1,0 +1,364 @@
+{
+  "game": {
+    "session_id": "20250317_150207",
+    "game_name": "Prisoner's Dilemma",
+    "player_models": {
+      "player_1": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      },
+      "player_2": {
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 4,
+        "role": null
+      },
+      {
+        "id": "player_2",
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0",
+        "final_score": 9,
+        "role": null
+      }
+    ],
+    "rounds_played": 5,
+    "winner": "player_2",
+    "final_scores": {
+      "player_1": 4,
+      "player_2": 9
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_2",
+      "winning_model_name": "Google Gemini 2.0",
+      "final_scores_display": "OpenAI GPT-4.5: 4, Google Gemini 2.0: 9"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 15:02:07",
+      "message": "Game started",
+      "data": {
+        "game_name": "Prisoner's Dilemma",
+        "player_count": 2,
+        "config_summary": {
+          "phases": [
+            "decision",
+            "resolution"
+          ],
+          "rounds": 5
+        }
+      }
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:02:07",
+      "round": 1,
+      "message": "Round 1 started",
+      "running_scores": {}
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:02:11",
+      "round": 1,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "Given it's the very first round, I have no information yet about my opponent's strategy. Establishing trust early on might encourage cooperation in future rounds. For now, I will choose to cooperate.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:02:13",
+      "round": 1,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, this is the first round. If I cooperate and they cooperate, we both get 3. If I defect and they cooperate, I get 5 and they get 0. If they defect and I cooperate, I get 0 and they get 5. If we both defect, we both get 1.\n\nSince it's the first round, there's no history to go on. I could signal cooperation, but they could just take advantage of that. I think I'll start with defection to see how they react. It's a bit risky, but might give me an edge.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:02:13",
+      "round": 1,
+      "message": "Round 1 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:02:13",
+      "round": 2,
+      "message": "Round 2 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:02:13",
+      "round": 2,
+      "scores": {
+        "player_1": 0,
+        "player_2": 5
+      },
+      "running_scores": {
+        "player_1": 0,
+        "player_2": 5
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 2 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:02:21",
+      "round": 2,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "In the previous round, I cooperated and my opponent defected, leaving me behind with zero points while they gained five. It's clear my opponent is inclined to defect for personal gain. To protect my interests and not fall further behind, I should adapt my strategy accordingly.\n\nGiven their betrayal in the first round, I'll choose to defect this time.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:02:23",
+      "round": 2,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, this is round 2 of 5. Last round I defected and my opponent cooperated, so I got 5 points and they got 0. My current score is 5.\n\nNow I need to consider what to do. If I cooperate this round, it could lead to a cooperative equilibrium, but my opponent might just defect again and take advantage of me. If I defect, I might get another 5 points if they cooperate, or at least 1 point if they also defect. Since I already have a lead, it might be safer to defect and try to maintain that lead.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:02:23",
+      "round": 2,
+      "message": "Round 2 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:02:23",
+      "round": 3,
+      "message": "Round 3 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:02:23",
+      "round": 3,
+      "scores": {
+        "player_1": 1,
+        "player_2": 6
+      },
+      "running_scores": {
+        "player_1": 1,
+        "player_2": 6
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 3 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:02:30",
+      "round": 3,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "My opponent initially defected and then continued defecting after I retaliated. With only three rounds left and being behind in score, cooperation seems risky\u2014I could end up with zero points again. Unless my opponent signals cooperation first, defection may be the safer strategy to avoid falling further behind.\n\nI choose to [[DEFECT]]."
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:02:32",
+      "round": 3,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, let's analyze the situation. I'm player_2.\n\nRound 1: I defected, they cooperated. My score +5, their score +0.\nRound 2: I defected, they defected. My score +1, their score +1.\n\nCurrently, my score is 6. Since they defected last round, they might be leaning towards a tit-for-tat strategy or just pure defection. If I cooperate now and they defect, I get 0 and they get 5. If I defect and they cooperate, I get 5 and they get 0. If we both defect, we both get 1. If we both cooperate, we both get 3.\n\nGiven that they defected last round, it's risky to cooperate. It's more likely they will defect again. Therefore, I will also defect this round to minimize my potential loss.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:02:32",
+      "round": 3,
+      "message": "Round 3 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:02:32",
+      "round": 4,
+      "message": "Round 4 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:02:32",
+      "round": 4,
+      "scores": {
+        "player_1": 2,
+        "player_2": 7
+      },
+      "running_scores": {
+        "player_1": 2,
+        "player_2": 7
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 4 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:02:39",
+      "round": 4,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Given the history, player_2 defected consistently every round so far. Cooperation seems unlikely from player_2. If I cooperate now, they might exploit and defect. With only one round left after this one, it's best to continue defecting to avoid being exploited further.\n\nTherefore, I'll continue to [[DEFECT]]."
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:02:41",
+      "round": 4,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, let's see. My opponent has defected every time so far. My score is 7. If I cooperate now and they defect, I get 0 and they get 5. If I defect and they defect, I get 1 and they get 1. If I cooperate and they cooperate (unlikely), I get 3 and they get 3. It seems they are playing a tit-for-tat strategy. They are likely going to keep defecting. Therefore I should defect to at least get 1 point.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:02:41",
+      "round": 4,
+      "message": "Round 4 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:02:41",
+      "round": 5,
+      "message": "Round 5 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:02:41",
+      "round": 5,
+      "scores": {
+        "player_1": 3,
+        "player_2": 8
+      },
+      "running_scores": {
+        "player_1": 3,
+        "player_2": 8
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 5 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:02:52",
+      "round": 5,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "My opponent has consistently defected in every round, including the initial round when I chose to cooperate. Given this history, it's unlikely that they will suddenly choose to cooperate at this point. Trying to cooperate now could result in me losing even more ground. Therefore, the rational choice is to continue defecting.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:02:54",
+      "round": 5,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, this is the last round. My opponent has defected every round. I have 8 points and they have 15. If I cooperate and they defect, I get 0 and they get 5, making the final scores 8 and 20. If I defect and they cooperate, I get 5 and they get 0, making the final scores 13 and 15. If we both defect, we each get 1 point, making the final scores 9 and 16. If we both cooperate, we each get 3 points, making the final scores 11 and 18. The only way I can potentially win is if I defect and they cooperate, which is highly unlikely. Therefore, I should just defect to minimize the point difference.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:02:54",
+      "round": 5,
+      "message": "Round 5 decisions completed"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-17 15:02:54",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_2",
+        "rounds_played": 5
+      },
+      "final_scores": {
+        "player_1": 3,
+        "player_2": 8
+      }
+    }
+  ]
+}

@@ -17,13 +17,15 @@
         "id": "player_1",
         "model_id": "mistral:mistral-large-latest",
         "model_name": "Mistral Mistral Large",
-        "final_score": 14
+        "final_score": 14,
+        "role": null
       },
       {
         "id": "player_2",
         "model_id": "anthropic:claude-3-7-sonnet-20250219",
         "model_name": "Anthropic Claude 3.7",
-        "final_score": 14
+        "final_score": 14,
+        "role": null
       }
     ],
     "rounds_played": 5,

@@ -1,0 +1,364 @@
+{
+  "game": {
+    "session_id": "20250317_150821",
+    "game_name": "Prisoner's Dilemma",
+    "player_models": {
+      "player_1": {
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large"
+      },
+      "player_2": {
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large",
+        "final_score": 4,
+        "role": null
+      },
+      {
+        "id": "player_2",
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0",
+        "final_score": 9,
+        "role": null
+      }
+    ],
+    "rounds_played": 5,
+    "winner": "player_2",
+    "final_scores": {
+      "player_1": 4,
+      "player_2": 9
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_2",
+      "winning_model_name": "Google Gemini 2.0",
+      "final_scores_display": "Mistral Mistral Large: 4, Google Gemini 2.0: 9"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 15:08:21",
+      "message": "Game started",
+      "data": {
+        "game_name": "Prisoner's Dilemma",
+        "player_count": 2,
+        "config_summary": {
+          "phases": [
+            "decision",
+            "resolution"
+          ],
+          "rounds": 5
+        }
+      }
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:08:21",
+      "round": 1,
+      "message": "Round 1 started",
+      "running_scores": {}
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:08:24",
+      "round": 1,
+      "player_id": "player_1",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "In the Prisoner's Dilemma, there's always a tension between cooperating for mutual benefit and defecting for personal gain. Given that this is the first round, I have no information about my opponent's strategy. However, I want to signal my willingness to cooperate and hopefully set a precedent for future rounds. If we both cooperate, we'll both get a decent payoff. Defecting might give me a higher payoff this round, but it could lead to a string of defections from both players, resulting in lower overall scores.\n\nSo, for this round, I choose to [[COOPERATE]]."
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:08:25",
+      "round": 1,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, this is the first round. I have no information about my opponent's strategy. If I cooperate, I risk getting 0 if they defect. If I defect, I'm guaranteed at least 1 point (if they also defect) and potentially 5 if they cooperate. Since I don't know what they will do, I'll start with a defection to see what happens.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:08:25",
+      "round": 1,
+      "message": "Round 1 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:08:25",
+      "round": 2,
+      "message": "Round 2 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:08:25",
+      "round": 2,
+      "scores": {
+        "player_1": 0,
+        "player_2": 5
+      },
+      "running_scores": {
+        "player_1": 0,
+        "player_2": 5
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 2 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:08:29",
+      "round": 2,
+      "player_id": "player_1",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Given that player_2 defected in the first round while I cooperated, I need to adjust my strategy. If I cooperate again and player_2 defects, I'll end up with zero points. However, if I defect and player_2 cooperates, I could get a significant advantage with 5 points.\n\nThat said, I also need to consider the long-term strategy. We have 3 more rounds after this one. If I defect now, player 2 might continue to defect in future rounds.\n\nFor this round, I think it's crucial to send a message that I won't be taken advantage of easily. Therefore, I will [[DEFECT]] this round."
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:08:31",
+      "round": 2,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, round 2. Last round I defected, and they cooperated. That got me 5 points and them 0. My score is currently 5.\n\nIf I cooperate this round and they cooperate, we'll both get 3, and my score will be 8. But if I cooperate and they defect, I'll get 0, and they'll get 5.\n\nIf I defect this round and they cooperate, I'll get 5 again, bringing my total to 10. If I defect and they defect, we'll both get 1, and my score will be 6.\n\nIt's tempting to defect again. If they cooperate, I get a big advantage. If they defect, it's not a huge loss since I still get one point. Let's go with defect.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:08:31",
+      "round": 2,
+      "message": "Round 2 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:08:31",
+      "round": 3,
+      "message": "Round 3 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:08:31",
+      "round": 3,
+      "scores": {
+        "player_1": 1,
+        "player_2": 6
+      },
+      "running_scores": {
+        "player_1": 1,
+        "player_2": 6
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 3 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:08:37",
+      "round": 3,
+      "player_id": "player_1",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "In the first round, I cooperated and got 0 points while player_2 defected and got 5 points. In the second round, I defected and we both got 1 point. If I cooperate this round and player_2 defects again, I'll get 0 points and fall further behind. However, if I defect and player_2 cooperates, I could get 5 points and tie the game. If we both defect again, I'll at least keep the score close.\n\nGiven the current score and the risk of falling further behind, I'll choose to [[DEFECT]]."
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:08:38",
+      "round": 3,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, let's see. My score is 6.\nRound 1: I defected, they cooperated. I got 5, they got 0.\nRound 2: I defected, they defected. I got 1, they got 1.\n\nThey have defected twice. If I cooperate now, and they defect again, I get 0. If I defect, and they cooperate, I get 5. If we both cooperate, I get 3. If we both defect, I get 1.\nSince they have defected twice, they will likely continue to defect.\nIf I cooperate now, I risk getting 0.\nIf I defect, I am guaranteed at least 1 point, and I have a chance to get 5.\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:08:38",
+      "round": 3,
+      "message": "Round 3 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:08:38",
+      "round": 4,
+      "message": "Round 4 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:08:38",
+      "round": 4,
+      "scores": {
+        "player_1": 2,
+        "player_2": 7
+      },
+      "running_scores": {
+        "player_1": 2,
+        "player_2": 7
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 4 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:08:45",
+      "round": 4,
+      "player_id": "player_1",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Given the current state of the game and the history of previous rounds, I need to strategize my next move carefully.\n\nSo far:\n- In Round 1, I cooperated, and player_2 defected, resulting in them getting 5 points and me getting 0.\n- In Round 2, I defected, and player_2 also defected, resulting in both of us getting 1 point.\n- In Round 3, I defected again, and player_2 also defected, resulting in both of us getting 1 point again.\n\nMy current score is 2 points, and we are in Round 4 of 5. If I continue to defect, the best I can hope for is to maintain parity with player_2, assuming they also defect. However, if player_2 cooperates and I defect, I could gain a significant advantage.\n\nGiven that player_2 defected in the first round when I cooperated, there's a chance they might cooperate this round to maximize their points if they think I might cooperate again. However, if player_2 continues to defect, cooperating would put me at a disadvantage.\n\nConsidering the risk and the potential gain, I will defect this round to ensure I do not fall behind.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:08:48",
+      "round": 4,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, let's analyze the situation. It's round 4 of 5, and I'm player_2. My current score is 7.\n\nHere's the round history:\n- Round 1: I defected, player_1 cooperated (I got 5, they got 0)\n- Round 2: I defected, player_1 defected (I got 1, they got 1)\n- Round 3: I defected, player_1 defected (I got 1, they got 1)\n\nSo, player_1 started by cooperating, but then switched to defecting after I defected in the first round. They have defected ever since. Given this history, it seems highly unlikely that player_1 will cooperate in this round. If I cooperate and they defect, I'll get 0 points and they'll get 5, which is the worst-case scenario for me. If I defect and they also defect, I'll get 1 point. If I defect and they cooperate, I'll get 5 points.\n\nSince it's more likely that they will defect, I should defect to at least get 1 point and avoid getting 0. Even if they somehow decide to cooperate now, defecting is still the better option.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:08:48",
+      "round": 4,
+      "message": "Round 4 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:08:48",
+      "round": 5,
+      "message": "Round 5 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:08:48",
+      "round": 5,
+      "scores": {
+        "player_1": 3,
+        "player_2": 8
+      },
+      "running_scores": {
+        "player_1": 3,
+        "player_2": 8
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 5 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:08:51",
+      "round": 5,
+      "player_id": "player_1",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "This is the last round, and so far, it's been a tough game. My opponent has been defecting consistently, except for the first round where they took advantage of my cooperation. If I cooperate now, I risk getting zero points, and if my opponent likely defects I will be left with nothing. However, if I defect and my opponent cooperates, I could get a significant boost in points.\n\nGiven the pattern of defection from my opponent, it's a risk to cooperate. I need to ensure I don't end up with zero points in this final round. Therefore, my decision is: [[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:08:53",
+      "round": 5,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, this is the final round. My current score is 8. Player 1 has consistently defected after my initial defection. They've shown no sign of cooperating. If I cooperate now, I'll either get 0 if they defect or 3 if they cooperate. If I defect, I'll get either 1 if they defect or 5 if they cooperate. Given their history, they will almost certainly defect. So defecting guarantees me 1 point, which would bring my total to 9. If I cooperated and they defected, my score would remain 8. If I cooperated and they somehow cooperated, my score would be 11, which is great but highly unlikely. Given the high probability of defection from player 1, I should defect as well.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:08:53",
+      "round": 5,
+      "message": "Round 5 decisions completed"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-17 15:08:53",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_2",
+        "rounds_played": 5
+      },
+      "final_scores": {
+        "player_1": 3,
+        "player_2": 8
+      }
+    }
+  ]
+}

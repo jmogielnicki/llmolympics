@@ -1,0 +1,364 @@
+{
+  "game": {
+    "session_id": "20250317_134051",
+    "game_name": "Prisoner's Dilemma",
+    "player_models": {
+      "player_1": {
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner"
+      },
+      "player_2": {
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner",
+        "final_score": 8,
+        "role": null
+      },
+      {
+        "id": "player_2",
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7",
+        "final_score": 8,
+        "role": null
+      }
+    ],
+    "rounds_played": 5,
+    "winner": "tie",
+    "final_scores": {
+      "player_1": 8,
+      "player_2": 8
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "tie",
+      "winning_model_name": null,
+      "final_scores_display": "DeepSeek Reasoner: 8, Anthropic Claude 3.7: 8"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 13:40:51",
+      "message": "Game started",
+      "data": {
+        "game_name": "Prisoner's Dilemma",
+        "player_count": 2,
+        "config_summary": {
+          "phases": [
+            "decision",
+            "resolution"
+          ],
+          "rounds": 5
+        }
+      }
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 13:40:51",
+      "round": 1,
+      "message": "Round 1 started",
+      "running_scores": {}
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 13:41:54",
+      "round": 1,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 13:41:59",
+      "round": 1,
+      "player_id": "player_2",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "I'm in a 5-round Prisoner's Dilemma game. This is an interesting strategic situation where I need to balance potential cooperation with protecting my own interests.\n\nIn the first round, establishing cooperation could be beneficial for both players in the long run. If we both cooperate throughout the game, we'd each get 15 points total, which is better than the 5 points we'd each get if we both defect every time.\n\nHowever, there's always the risk that the other player might defect, which would leave me with nothing if I cooperate. Since this is a competitive game where the goal is to have a higher score than my opponent, I need to consider my strategy carefully.\n\nFor this first round, I think it makes sense to signal willingness to cooperate. This could establish a pattern of mutual cooperation that benefits both of us. If the other player defects, I can adjust my strategy in subsequent rounds.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 13:41:59",
+      "round": 1,
+      "message": "Round 1 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 13:41:59",
+      "round": 2,
+      "message": "Round 2 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 13:41:59",
+      "round": 2,
+      "scores": {
+        "player_1": 5,
+        "player_2": 0
+      },
+      "running_scores": {
+        "player_1": 5,
+        "player_2": 0
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 2 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 13:43:30",
+      "round": 2,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 13:43:35",
+      "round": 2,
+      "player_id": "player_2",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "I see that in the first round, I cooperated while player_1 defected. This resulted in me getting 0 points while they likely got 5 points. \n\nLooking at the current situation, I'm behind in score and need to consider my strategy carefully. Since my opponent defected in the first round, they've shown they're willing to act in self-interest. While cooperation would be ideal if both players committed to it, I need to protect myself from being exploited again.\n\nGiven that this is a 5-round game and we're only in round 2, I should consider what message my move sends. If I continue to cooperate after being defected against, I might signal that I can be taken advantage of repeatedly.\n\nIn this case, I think the rational move is to defect to avoid being exploited again and to potentially signal to my opponent that I won't continue cooperating unconditionally.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 13:43:35",
+      "round": 2,
+      "message": "Round 2 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 13:43:35",
+      "round": 3,
+      "message": "Round 3 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 13:43:35",
+      "round": 3,
+      "scores": {
+        "player_1": 6,
+        "player_2": 1
+      },
+      "running_scores": {
+        "player_1": 6,
+        "player_2": 1
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 3 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 13:47:13",
+      "round": 3,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 13:47:18",
+      "round": 3,
+      "player_id": "player_2",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "This is an interesting situation. We're in round 3 of 5, and so far I've only scored 1 point. In the first round, I cooperated but my opponent defected, which means they got 5 points while I got 0. Then in round 2, we both defected, so we each got 1 point.\n\nMy opponent has shown they're willing to defect. If I cooperate now and they defect again, I'll get 0 points while they get 5 more. If I defect and they defect, we both get 1 point each. If I defect and they cooperate, I get 5 points while they get 0.\n\nGiven that my opponent has defected in both previous rounds, it seems likely they'll defect again. Also, we're only in round 3 of 5, so there's still time to potentially establish cooperation in later rounds if needed.\n\nFor this round, the safest choice is to defect to avoid being exploited again.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 13:47:18",
+      "round": 3,
+      "message": "Round 3 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 13:47:18",
+      "round": 4,
+      "message": "Round 4 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 13:47:18",
+      "round": 4,
+      "scores": {
+        "player_1": 6,
+        "player_2": 6
+      },
+      "running_scores": {
+        "player_1": 6,
+        "player_2": 6
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 4 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 13:51:46",
+      "round": 4,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 13:51:52",
+      "round": 4,
+      "player_id": "player_2",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Let me analyze the game situation:\n\nI'm currently at 6 points (0 + 1 + 5), while player_1 likely has 6 points as well (5 + 1 + 0).\n\nThis is round 4 of 5, so this decision and one more will determine the final outcome. Looking at our history:\n- Round 1: I cooperated, they defected (they betrayed first)\n- Round 2: We both defected\n- Round 3: I defected, they cooperated\n\nThere seems to be no clear pattern from player_1. They started with defection, then continued defecting, but then surprisingly cooperated in round 3.\n\nIf I cooperate now and they cooperate, we both get 3 points. If I cooperate and they defect, I get nothing and they get 5.\nIf I defect now and they cooperate, I get 5 points and they get 0. If I defect and they defect, we both get 1 point.\n\nGiven that we're tied and there's only one more round after this, maximizing my points is crucial. The safest play that guarantees some points is to defect.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 13:51:52",
+      "round": 4,
+      "message": "Round 4 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 13:51:52",
+      "round": 5,
+      "message": "Round 5 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 13:51:52",
+      "round": 5,
+      "scores": {
+        "player_1": 7,
+        "player_2": 7
+      },
+      "running_scores": {
+        "player_1": 7,
+        "player_2": 7
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 5 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 13:55:00",
+      "round": 5,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 13:55:06",
+      "round": 5,
+      "player_id": "player_2",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Let me analyze the current game state:\n\n- Round 5 of 5 (final round)\n- My score: 7\n- Player_1's score: 7 (they got 5 in round 1, 1 in round 2, 0 in round 3, and 1 in round 4)\n\nLooking at our history:\n- Round 1: I cooperated, they defected (they got 5, I got 0)\n- Round 2: We both defected (1 point each)\n- Round 3: I defected, they cooperated (I got 5, they got 0)\n- Round 4: We both defected (1 point each)\n\nThis is the final round, and we're currently tied at 7 points each. Since this is the last round, there's no future relationship to maintain. If I cooperate and they cooperate, we each get 3 points and tie the game. If I cooperate and they defect, I get 0 and lose. If I defect and they cooperate, I get 5 and win. If we both defect, we get 1 point each and tie.\n\nLooking at their pattern, player_1 has defected 3 out of 4 rounds, so they're likely to defect again. Given that this is the final round and I want to win, defecting seems to be the safest choice - either I win or we tie.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 13:55:06",
+      "round": 5,
+      "message": "Round 5 decisions completed"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-17 13:55:06",
+      "message": "Game ended",
+      "data": {
+        "winner": "tie",
+        "rounds_played": 5
+      },
+      "final_scores": {
+        "player_1": 7,
+        "player_2": 7
+      }
+    }
+  ]
+}

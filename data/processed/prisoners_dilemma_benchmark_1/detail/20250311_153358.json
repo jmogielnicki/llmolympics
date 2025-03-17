@@ -17,13 +17,15 @@
         "id": "player_1",
         "model_id": "anthropic:claude-3-5-sonnet-20240620",
         "model_name": "Anthropic Claude 3.5",
-        "final_score": 8
+        "final_score": 8,
+        "role": null
       },
       {
         "id": "player_2",
         "model_id": "xai:grok-2-1212",
         "model_name": "xAI Grok-2",
-        "final_score": 13
+        "final_score": 13,
+        "role": null
       }
     ],
     "rounds_played": 5,

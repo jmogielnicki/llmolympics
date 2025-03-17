@@ -1,0 +1,364 @@
+{
+  "game": {
+    "session_id": "20250317_150001",
+    "game_name": "Prisoner's Dilemma",
+    "player_models": {
+      "player_1": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      },
+      "player_2": {
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 6,
+        "role": null
+      },
+      {
+        "id": "player_2",
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2",
+        "final_score": 11,
+        "role": null
+      }
+    ],
+    "rounds_played": 5,
+    "winner": "player_2",
+    "final_scores": {
+      "player_1": 6,
+      "player_2": 11
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_2",
+      "winning_model_name": "xAI Grok-2",
+      "final_scores_display": "OpenAI GPT-4.5: 6, xAI Grok-2: 11"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 15:00:01",
+      "message": "Game started",
+      "data": {
+        "game_name": "Prisoner's Dilemma",
+        "player_count": 2,
+        "config_summary": {
+          "phases": [
+            "decision",
+            "resolution"
+          ],
+          "rounds": 5
+        }
+      }
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:00:01",
+      "round": 1,
+      "message": "Round 1 started",
+      "running_scores": {}
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:00:08",
+      "round": 1,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "Since this is the first round, I have no previous information about the opponent's strategy. Establishing trust early can potentially lead to mutually beneficial cooperation in later rounds. Let's start by cooperating and see if the opponent reciprocates.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:00:11",
+      "round": 1,
+      "player_id": "player_2",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "In the first round, I have no information about my opponent's strategy. If I cooperate, I might encourage a cooperative response, but if I defect, I could gain a higher immediate payoff. However, since this is a repeated game, starting with cooperation might foster a more beneficial long-term relationship.\n\nLet's see how it goes.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:00:11",
+      "round": 1,
+      "message": "Round 1 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:00:11",
+      "round": 2,
+      "message": "Round 2 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:00:11",
+      "round": 2,
+      "scores": {
+        "player_1": 3,
+        "player_2": 3
+      },
+      "running_scores": {
+        "player_1": 3,
+        "player_2": 3
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 2 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:00:17",
+      "round": 2,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "In round 1, both player_2 and I chose to cooperate, yielding a good cooperative outcome. At round 2, it's still early, and mutual cooperation seems promising to maximize our scores collectively. Let's maintain trust to encourage continued reciprocal cooperation from the opponent.\n\nI'll continue cooperating this round.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:00:21",
+      "round": 2,
+      "player_id": "player_2",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Given that we both cooperated in the first round and both received 3 points, it seems like player_1 might be inclined to continue cooperating. However, I need to consider if I can gain an advantage by defecting this round. If I defect and player_1 cooperates, I could get 5 points this round, significantly increasing my lead. But if player_1 also defects, we'll both get only 1 point, which might not be worth the risk if we could have both gotten 3 points by cooperating.\n\nOn the other hand, if I cooperate and player_1 defects, I'll get nothing this round, which would put me at a disadvantage. \n\nConsidering the potential outcomes and wanting to maximize my score, I think the best strategic move right now is to defect and see how player_1 reacts.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:00:21",
+      "round": 2,
+      "message": "Round 2 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:00:21",
+      "round": 3,
+      "message": "Round 3 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:00:21",
+      "round": 3,
+      "scores": {
+        "player_1": 3,
+        "player_2": 8
+      },
+      "running_scores": {
+        "player_1": 3,
+        "player_2": 8
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 3 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:00:26",
+      "round": 3,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Given that player_2 cooperated initially but defected in the second round, there's a chance they might continue defecting. To protect myself from further losses and potentially even the scores, I should likely choose to defect.\n\nI will [[DEFECT]]."
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:00:29",
+      "round": 3,
+      "player_id": "player_2",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Given the current situation, player_1 has shown a tendency to cooperate even after I defected in the last round. This could mean they are following a more forgiving strategy or are trying to encourage cooperation. However, I need to maximize my score to ensure a win. \n\nConsidering we are in the middle of the game, and I have already taken advantage of their cooperation once, it might be beneficial to cooperate this round to possibly encourage them to continue cooperating in the next rounds, which would lead to a higher total score for me. But, the temptation to defect and gain more points immediately is strong.\n\nAfter weighing the options, I decide to:\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:00:29",
+      "round": 3,
+      "message": "Round 3 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:00:29",
+      "round": 4,
+      "message": "Round 4 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:00:29",
+      "round": 4,
+      "scores": {
+        "player_1": 4,
+        "player_2": 9
+      },
+      "running_scores": {
+        "player_1": 4,
+        "player_2": 9
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 4 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:00:39",
+      "round": 4,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "My opponent has started by cooperating and then switched to defecting. After I responded by defecting, they continued to defect as well. At the moment, I have 4 points total. Given their recent behavior, player_2 seems to be playing defensively and may defect again. If I cooperate and they defect, I risk getting 0 points again, widening their lead. To maximize my outcome and minimize risk, I should defect here.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:00:43",
+      "round": 4,
+      "player_id": "player_2",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Given the history, player_1 cooperated initially but then defected after I defected. We're now in a situation where both of us defected last round, which resulted in the lowest mutual payoff. \n\nIf I cooperate this round, there's a chance player_1 might see it as an opportunity to defect again and gain a higher payoff, leaving me with nothing. However, if I defect and player_1 cooperates, I'll get the highest payoff. If we both defect again, it's the same low payoff as last round.\n\nConsidering the game is almost over and I'm ahead by 3 points, it might be safer to defect to maintain or increase my lead, as player_1 might be more likely to cooperate in hopes of catching up.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:00:43",
+      "round": 4,
+      "message": "Round 4 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:00:43",
+      "round": 5,
+      "message": "Round 5 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:00:43",
+      "round": 5,
+      "scores": {
+        "player_1": 5,
+        "player_2": 10
+      },
+      "running_scores": {
+        "player_1": 5,
+        "player_2": 10
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 5 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:00:51",
+      "round": 5,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "It's the final round, and considering the past turns, player_2 cooperated once and then defected consistently afterward. This shows player_2's current strategy is leaning towards defection. Since player_2 is likely to defect again, my optimal move to avoid exploitation and minimize losing points will also be to defect.\n\nTherefore, my choice is [[DEFECT]]."
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:00:53",
+      "round": 5,
+      "player_id": "player_2",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Given the history of our interactions, player_1 has shown a tendency to retaliate after being defected against, as seen in rounds 3 and 4. Since this is the final round, and my score is currently higher, the safest strategy to ensure I maintain my lead would be to defect again. This maximizes my potential gain while minimizing the risk of player_1 gaining more points than me.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:00:53",
+      "round": 5,
+      "message": "Round 5 decisions completed"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-17 15:00:53",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_2",
+        "rounds_played": 5
+      },
+      "final_scores": {
+        "player_1": 5,
+        "player_2": 10
+      }
+    }
+  ]
+}

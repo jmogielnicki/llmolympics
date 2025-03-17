@@ -1,0 +1,364 @@
+{
+  "game": {
+    "session_id": "20250317_145714",
+    "game_name": "Prisoner's Dilemma",
+    "player_models": {
+      "player_1": {
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o"
+      },
+      "player_2": {
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o",
+        "final_score": 4,
+        "role": null
+      },
+      {
+        "id": "player_2",
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0",
+        "final_score": 9,
+        "role": null
+      }
+    ],
+    "rounds_played": 5,
+    "winner": "player_2",
+    "final_scores": {
+      "player_1": 4,
+      "player_2": 9
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_2",
+      "winning_model_name": "Google Gemini 2.0",
+      "final_scores_display": "OpenAI GPT-4o: 4, Google Gemini 2.0: 9"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 14:57:14",
+      "message": "Game started",
+      "data": {
+        "game_name": "Prisoner's Dilemma",
+        "player_count": 2,
+        "config_summary": {
+          "phases": [
+            "decision",
+            "resolution"
+          ],
+          "rounds": 5
+        }
+      }
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:57:14",
+      "round": 1,
+      "message": "Round 1 started",
+      "running_scores": {}
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:57:17",
+      "round": 1,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "Alright, it's the first round, and I don't have any prior history with the opponent. In many cases, starting with cooperation can signal goodwill and potentially lead to cooperative behavior from the opponent in subsequent rounds. However, it's also a risk because the opponent might choose to defect, leaving me with 0 points. Given there's no previous history, I'll opt for a strategy that often sets a positive tone. \n\n[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:57:19",
+      "round": 1,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, it's the first round. If I cooperate and they cooperate, we both get 3. If I defect and they cooperate, I get 5 and they get 0. If I cooperate and they defect, I get 0 and they get 5. If we both defect, we both get 1. Since I have no information about my opponent, I'm going to start with defecting. If they are playing tit-for-tat, then I will get 5 points this round and they will get 0. Then they will defect next round and I will defect as well. If they cooperate, I will get 5 points, but if they defect, I will only get one point.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:57:19",
+      "round": 1,
+      "message": "Round 1 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:57:19",
+      "round": 2,
+      "message": "Round 2 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:57:19",
+      "round": 2,
+      "scores": {
+        "player_1": 0,
+        "player_2": 5
+      },
+      "running_scores": {
+        "player_1": 0,
+        "player_2": 5
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 2 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:57:24",
+      "round": 2,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "In the first round, I chose to cooperate, but player_2 chose to defect, resulting in me getting 0 points and player_2 getting 5 points. This indicates that player_2 might be inclined towards self-interest and defecting to maximize their score. Given the competition element and the need to have a higher score after the final round, I need to carefully consider my strategy. If I continue to cooperate and player_2 continues to defect, I will keep falling behind. \n\nTo attempt to level the playing field, I should respond in kind this round. Hopefully, this might also signal to player_2 that mutual cooperation would be more beneficial for both of us in subsequent rounds. But for now, I'll prioritize my immediate score.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:57:26",
+      "round": 2,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, last round I defected and got 5 points while they got 0. My current score is 5. If I cooperate this round, and they also cooperate, we both get 3, and I'll be at 8. If I cooperate and they defect, I get 0, and I'll still be at 5. If I defect again, and they cooperate, I get 5 more, putting me at 10. If I defect and they defect, I get 1, putting me at 6. It seems like defecting is still the better option in the short term, especially since I don't know if they'll try to get revenge.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:57:26",
+      "round": 2,
+      "message": "Round 2 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:57:26",
+      "round": 3,
+      "message": "Round 3 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:57:26",
+      "round": 3,
+      "scores": {
+        "player_1": 1,
+        "player_2": 6
+      },
+      "running_scores": {
+        "player_1": 1,
+        "player_2": 6
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 3 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:57:31",
+      "round": 3,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Given the history, player_2 defected in the first round while I cooperated, which gave me a disadvantage. In the next round, both of us defected, leading to equal scores. Currently, my score is 1, and the goal is to end with a higher score than my opponent.\n\nSince player_2 has shown a tendency to defect and considering there's no evidence of them choosing to cooperate, it might be risky to trust them going forward. Continuing to defect might secure me more points and prevent them from gaining an advantage by me cooperating while they defect.\n\nTherefore, strategically, it seems safest to match their defect strategy to prevent falling behind in score again.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:57:33",
+      "round": 3,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, let's see. I'm player_2. My score is 6. It's round 3 of 5.\n\nRound 1: I defected, they cooperated. I got 5, they got 0.\nRound 2: I defected, they defected. I got 1, they got 1.\n\nSo, they started by cooperating, then defected when I defected. It seems like they might be playing tit-for-tat, or at least are easily swayed to defect if I do. If I cooperate now, there's a chance they'll defect and I'll get 0. If I defect, I'm guaranteed at least 1 (if they defect) and maybe 5 (if they cooperate). With only 3 rounds left, I need to try and maximize my points. I'm going to continue to defect.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:57:33",
+      "round": 3,
+      "message": "Round 3 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:57:33",
+      "round": 4,
+      "message": "Round 4 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:57:33",
+      "round": 4,
+      "scores": {
+        "player_1": 2,
+        "player_2": 7
+      },
+      "running_scores": {
+        "player_1": 2,
+        "player_2": 7
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 4 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:57:38",
+      "round": 4,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Looking at the history, player_2 has defected every round. Initially, I tried to cooperate, but was met with a defection. Since then, I've chosen to defect, and player_2 has continued to defect as well. \n\nGiven the current score and the pattern so far, I need to maximize my points to have a chance at winning by the end of round 5. The safest strategy against a consistently defecting opponent seems to be to continue defecting.\n\nTherefore, my decision for this round is: [[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:57:41",
+      "round": 4,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, so far I've been defecting and my opponent has either cooperated initially and then defected twice. They seem to have learned to defect as well. My score is 7. If I cooperate now and they defect, I get 0 and they get 5. If I defect and they cooperate, I get 5 and they get 0. If we both defect, we both get 1. If we both cooperate, we both get 3. Given they've defected the last two rounds, it's likely they'll defect again. To maximize my points, I should probably defect again. But, if I want a chance at cooperation on the last round, maybe I should try cooperating this round to see if they reciprocate. It's a risky move. But, if they think I'm going to defect again, maybe I can surprise them. No, sticking with defecting is likely the better strategy to end up with the most overall points.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:57:41",
+      "round": 4,
+      "message": "Round 4 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:57:41",
+      "round": 5,
+      "message": "Round 5 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:57:41",
+      "round": 5,
+      "scores": {
+        "player_1": 3,
+        "player_2": 8
+      },
+      "running_scores": {
+        "player_1": 3,
+        "player_2": 8
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 5 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:57:45",
+      "round": 5,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Given the current game state and history, my opponent seems committed to a strategy of defection. In all past rounds, they have chosen to defect, even when I initially cooperated. Since it's the last round and I'm currently behind, my best strategic choice to maximize my score is to defect as well. \n\nThis will potentially give me a score boost if they decide to cooperate unexpectedly, and if they continue defecting, at least I won\u2019t fall further behind in points. Therefore, my decision is: [[DEFECT]]."
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:57:47",
+      "round": 5,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, this is the last round. My current score is 8. My opponent has consistently defected, so they likely have a score of 5 (0+1+1+1 + whatever they get this round). If I cooperate, I'll get 0 if they defect, putting me at 8 and them at 10 (5+5), which means I lose. If I cooperate and they cooperate, I get 3, putting me at 11 and them at 8 (5+3), which means I win. If I defect, I'll get 1 if they defect, putting me at 9 and them at 6, which means I win. If I defect and they cooperate, I get 5, putting me at 13 and them at 5, which means I win. Therefore, I should defect.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:57:47",
+      "round": 5,
+      "message": "Round 5 decisions completed"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-17 14:57:47",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_2",
+        "rounds_played": 5
+      },
+      "final_scores": {
+        "player_1": 3,
+        "player_2": 8
+      }
+    }
+  ]
+}

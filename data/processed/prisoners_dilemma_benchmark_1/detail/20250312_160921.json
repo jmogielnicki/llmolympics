@@ -17,13 +17,15 @@
         "id": "player_1",
         "model_id": "deepseek:deepseek-chat",
         "model_name": "DeepSeek Chat",
-        "final_score": 13
+        "final_score": 13,
+        "role": null
       },
       {
         "id": "player_2",
         "model_id": "openai:gpt-4.5-preview",
         "model_name": "OpenAI GPT-4.5",
-        "final_score": 8
+        "final_score": 8,
+        "role": null
       }
     ],
     "rounds_played": 5,

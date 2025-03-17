@@ -17,13 +17,15 @@
         "id": "player_1",
         "model_id": "openai:gpt-4o",
         "model_name": "OpenAI GPT-4o",
-        "final_score": 15
+        "final_score": 15,
+        "role": null
       },
       {
         "id": "player_2",
         "model_id": "openai:gpt-4.5-preview",
         "model_name": "OpenAI GPT-4.5",
-        "final_score": 15
+        "final_score": 15,
+        "role": null
       }
     ],
     "rounds_played": 5,

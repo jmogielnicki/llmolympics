@@ -1,0 +1,364 @@
+{
+  "game": {
+    "session_id": "20250317_150254",
+    "game_name": "Prisoner's Dilemma",
+    "player_models": {
+      "player_1": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      },
+      "player_2": {
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 8,
+        "role": null
+      },
+      {
+        "id": "player_2",
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking",
+        "final_score": 13,
+        "role": null
+      }
+    ],
+    "rounds_played": 5,
+    "winner": "player_2",
+    "final_scores": {
+      "player_1": 8,
+      "player_2": 13
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_2",
+      "winning_model_name": "Google Gemini 2.0 Thinking",
+      "final_scores_display": "OpenAI GPT-4.5: 8, Google Gemini 2.0 Thinking: 13"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 15:02:54",
+      "message": "Game started",
+      "data": {
+        "game_name": "Prisoner's Dilemma",
+        "player_count": 2,
+        "config_summary": {
+          "phases": [
+            "decision",
+            "resolution"
+          ],
+          "rounds": 5
+        }
+      }
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:02:54",
+      "round": 1,
+      "message": "Round 1 started",
+      "running_scores": {}
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:03:03",
+      "round": 1,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "It's the first round, and I have no previous history on my opponent's strategy. A cooperative decision at this stage could build trust for future rounds, but defecting would yield a higher immediate payoff if my opponent cooperates. Given the situation, it's rational to start positively to encourage mutual cooperation later.\n\nI'll choose to cooperate this round to see how my opponent responds.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:03:08",
+      "round": 1,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "Okay, this is round 1.  No history to go on.  Gotta think about the best move to start.  If I go for the quick win and defect, I risk making them angry and then they'll just defect back at me in later rounds.  If we both defect, we both get low scores.  But if I cooperate, and they cooperate, we both get decent points right away. Maybe starting with cooperation is the way to go to see what they do.  Let's try to build some trust early, even if it's risky.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:03:08",
+      "round": 1,
+      "message": "Round 1 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:03:08",
+      "round": 2,
+      "message": "Round 2 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:03:08",
+      "round": 2,
+      "scores": {
+        "player_1": 3,
+        "player_2": 3
+      },
+      "running_scores": {
+        "player_1": 3,
+        "player_2": 3
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 2 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:03:15",
+      "round": 2,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "In the previous round, we both cooperated, leading to a mutually beneficial outcome. It's still early in the game, and we seem to have established initial trust. I believe continuing cooperation might encourage mutual cooperation in future rounds, maximizing long-term benefits. I'll maintain cooperation for now.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:03:22",
+      "round": 2,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "[[COOPERATE]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:03:22",
+      "round": 2,
+      "message": "Round 2 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:03:22",
+      "round": 3,
+      "message": "Round 3 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:03:22",
+      "round": 3,
+      "scores": {
+        "player_1": 6,
+        "player_2": 6
+      },
+      "running_scores": {
+        "player_1": 6,
+        "player_2": 6
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 3 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:03:27",
+      "round": 3,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "Both of us have cooperated so far, earning each a decent score. Player_2 appears trustworthy and cooperative. Maintaining cooperation could benefit us both in the long run and help us accumulate points through mutual trust.\n\nI'll continue cooperating to encourage sustained mutual cooperation.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:03:33",
+      "round": 3,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:03:33",
+      "round": 3,
+      "message": "Round 3 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:03:33",
+      "round": 4,
+      "message": "Round 4 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:03:33",
+      "round": 4,
+      "scores": {
+        "player_1": 6,
+        "player_2": 11
+      },
+      "running_scores": {
+        "player_1": 6,
+        "player_2": 11
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 4 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:03:38",
+      "round": 4,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Opponent initially cooperated but defected in the last round. This suggests they might be trying to exploit my cooperative behavior. Given we're nearing the end of the game (Round 4 of 5), I should retaliate to signal I won\u2019t tolerate further defections and also to balance the scores.\n\nDecision: [[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:03:45",
+      "round": 4,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:03:45",
+      "round": 4,
+      "message": "Round 4 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 15:03:45",
+      "round": 5,
+      "message": "Round 5 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 15:03:45",
+      "round": 5,
+      "scores": {
+        "player_1": 7,
+        "player_2": 12
+      },
+      "running_scores": {
+        "player_1": 7,
+        "player_2": 12
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 5 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:03:50",
+      "round": 5,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Player_2 cooperated initially but then betrayed in round 3 and defected again in round 4. My trust was broken, and they haven't shown willingness to re-establish cooperation. Given that we're in the final round and I need to ensure I don't lose points unfairly:\n\n[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:03:56",
+      "round": 5,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Alright, let's see here. It's the last round. My score is 12, and based on the history, player_1 started cooperating but then defected last round when I did.  Hmm, if we both cooperate, we both get 3 more, and I'd still win. If we both defect, we both get 1 more, and I'd still win.  But if I defect and they cooperate, I get 5 and they get 0, which is even better for me.  If I cooperate and they defect, I get 0 and they get 5, which would bring them closer, but even then, they'd only reach 12 and I'd have 12.  To be sure I win, I need to maximize my points in this final round, or at least ensure I don't lose.  Defecting guarantees at least 1 point and potentially 5 points if they cooperate, while cooperating could get me 0 if they defect. In this final round, maximizing my own gain makes the most sense.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:03:56",
+      "round": 5,
+      "message": "Round 5 decisions completed"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-17 15:03:56",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_2",
+        "rounds_played": 5
+      },
+      "final_scores": {
+        "player_1": 7,
+        "player_2": 12
+      }
+    }
+  ]
+}

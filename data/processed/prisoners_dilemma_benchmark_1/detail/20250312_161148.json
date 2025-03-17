@@ -17,13 +17,15 @@
         "id": "player_1",
         "model_id": "openai:gpt-4o",
         "model_name": "OpenAI GPT-4o",
-        "final_score": 13
+        "final_score": 13,
+        "role": null
       },
       {
         "id": "player_2",
         "model_id": "mistral:mistral-large-latest",
         "model_name": "Mistral Mistral Large",
-        "final_score": 13
+        "final_score": 13,
+        "role": null
       }
     ],
     "rounds_played": 5,

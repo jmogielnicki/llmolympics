@@ -2,43 +2,43 @@
   "round_progression": [
     {
       "round": 1,
-      "cooperation_rate": 1.0,
-      "defection_rate": 0.0,
-      "cooperation_count": 42,
-      "defection_count": 0,
-      "total_decisions": 42
+      "cooperation_rate": 0.766,
+      "defection_rate": 0.234,
+      "cooperation_count": 72,
+      "defection_count": 22,
+      "total_decisions": 94
     },
     {
       "round": 2,
-      "cooperation_rate": 0.857,
-      "defection_rate": 0.143,
-      "cooperation_count": 36,
-      "defection_count": 6,
-      "total_decisions": 42
+      "cooperation_rate": 0.574,
+      "defection_rate": 0.426,
+      "cooperation_count": 54,
+      "defection_count": 40,
+      "total_decisions": 94
     },
     {
       "round": 3,
-      "cooperation_rate": 0.762,
-      "defection_rate": 0.238,
-      "cooperation_count": 32,
-      "defection_count": 10,
-      "total_decisions": 42
+      "cooperation_rate": 0.457,
+      "defection_rate": 0.543,
+      "cooperation_count": 43,
+      "defection_count": 51,
+      "total_decisions": 94
     },
     {
       "round": 4,
-      "cooperation_rate": 0.452,
-      "defection_rate": 0.548,
-      "cooperation_count": 19,
-      "defection_count": 23,
-      "total_decisions": 42
+      "cooperation_rate": 0.255,
+      "defection_rate": 0.745,
+      "cooperation_count": 24,
+      "defection_count": 70,
+      "total_decisions": 94
     },
     {
       "round": 5,
-      "cooperation_rate": 0.143,
-      "defection_rate": 0.857,
+      "cooperation_rate": 0.064,
+      "defection_rate": 0.936,
       "cooperation_count": 6,
-      "defection_count": 36,
-      "total_decisions": 42
+      "defection_count": 88,
+      "total_decisions": 94
     }
   ],
   "max_rounds": 5

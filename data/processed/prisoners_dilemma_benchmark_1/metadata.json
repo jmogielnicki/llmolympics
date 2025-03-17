@@ -1,6 +1,6 @@
 {
   "benchmark_id": "prisoners_dilemma_benchmark_1",
-  "game_count": 21,
-  "models": 7,
-  "processed_at": "2025-03-17T11:17:24.778366"
+  "game_count": 47,
+  "models": 10,
+  "processed_at": "2025-03-17T16:11:57.204921"
 }

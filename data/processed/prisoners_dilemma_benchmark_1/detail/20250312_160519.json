@@ -17,13 +17,15 @@
         "id": "player_1",
         "model_id": "deepseek:deepseek-chat",
         "model_name": "DeepSeek Chat",
-        "final_score": 11
+        "final_score": 11,
+        "role": null
       },
       {
         "id": "player_2",
         "model_id": "mistral:mistral-large-latest",
         "model_name": "Mistral Mistral Large",
-        "final_score": 11
+        "final_score": 11,
+        "role": null
       }
     ],
     "rounds_played": 5,

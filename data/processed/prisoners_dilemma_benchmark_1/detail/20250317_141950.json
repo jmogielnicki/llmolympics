@@ -1,0 +1,364 @@
+{
+  "game": {
+    "session_id": "20250317_141950",
+    "game_name": "Prisoner's Dilemma",
+    "player_models": {
+      "player_1": {
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner"
+      },
+      "player_2": {
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner",
+        "final_score": 5,
+        "role": null
+      },
+      {
+        "id": "player_2",
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0",
+        "final_score": 5,
+        "role": null
+      }
+    ],
+    "rounds_played": 5,
+    "winner": "tie",
+    "final_scores": {
+      "player_1": 5,
+      "player_2": 5
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "tie",
+      "winning_model_name": null,
+      "final_scores_display": "DeepSeek Reasoner: 5, Google Gemini 2.0: 5"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 14:19:50",
+      "message": "Game started",
+      "data": {
+        "game_name": "Prisoner's Dilemma",
+        "player_count": 2,
+        "config_summary": {
+          "phases": [
+            "decision",
+            "resolution"
+          ],
+          "rounds": 5
+        }
+      }
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:19:50",
+      "round": 1,
+      "message": "Round 1 started",
+      "running_scores": {}
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:21:15",
+      "round": 1,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:21:18",
+      "round": 1,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, this is the first round. I have no information about my opponent. If I cooperate, I risk getting 0 if they defect. If I defect, I'm guaranteed at least 1 point, and could get 5 if they cooperate. Since I don't know anything about them, I'm going to play it safe and defect.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:21:18",
+      "round": 1,
+      "message": "Round 1 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:21:18",
+      "round": 2,
+      "message": "Round 2 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:21:18",
+      "round": 2,
+      "scores": {
+        "player_1": 1,
+        "player_2": 1
+      },
+      "running_scores": {
+        "player_1": 1,
+        "player_2": 1
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 2 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:29:14",
+      "round": 2,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:29:16",
+      "round": 2,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, round 2 of 5. Last round we both defected, resulting in a measly 1 point for me. Hmmm. If I cooperate now, and they defect again, I get nothing and they get 5. That's terrible. If I defect and they cooperate, I get 5! But if we both defect again, we both get 1, which is better than me getting 0 if I cooperate and they defect. It's still early in the game. I think I'll defect again.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:29:16",
+      "round": 2,
+      "message": "Round 2 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:29:16",
+      "round": 3,
+      "message": "Round 3 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:29:16",
+      "round": 3,
+      "scores": {
+        "player_1": 2,
+        "player_2": 2
+      },
+      "running_scores": {
+        "player_1": 2,
+        "player_2": 2
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 3 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:31:56",
+      "round": 3,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:31:57",
+      "round": 3,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, so far we've both defected twice. That means we're both stuck at 2 points right now. If I cooperate and they defect, I get 0 and they get 5. If I defect and they cooperate, I get 5 and they get 0. If we both cooperate, we both get 3, which would put me in the lead. But if I cooperate and they *still* defect, I'm screwed. Given that they've defected twice already, it seems likely they'll defect again. I need to try to get ahead somehow... Defecting is the only way to *maybe* do that.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:31:57",
+      "round": 3,
+      "message": "Round 3 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:31:57",
+      "round": 4,
+      "message": "Round 4 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:31:57",
+      "round": 4,
+      "scores": {
+        "player_1": 3,
+        "player_2": 3
+      },
+      "running_scores": {
+        "player_1": 3,
+        "player_2": 3
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 4 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:34:15",
+      "round": 4,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:34:17",
+      "round": 4,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, this is tough. My opponent has defected every single time. If I cooperate now and they defect, I get zero and they get five, making it very hard to win. If I defect and they finally decide to cooperate, I get 5 and close the gap. If we both defect, at least I get one. I'm so far behind, I don't think cooperation will work.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:34:17",
+      "round": 4,
+      "message": "Round 4 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:34:17",
+      "round": 5,
+      "message": "Round 5 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:34:17",
+      "round": 5,
+      "scores": {
+        "player_1": 4,
+        "player_2": 4
+      },
+      "running_scores": {
+        "player_1": 4,
+        "player_2": 4
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 5 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:35:58",
+      "round": 5,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "[[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:36:00",
+      "round": 5,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Okay, this is it - the final round. Looking at the history, player_1 has defected every single time. It's unlikely they'll change their strategy now. If I cooperate, I'll get 0 and they'll get 5. If I defect, we'll both get 1. Since my goal is to have a higher score, and my current score is 4, defecting guarantees I add 1 to my score. If I cooperated, I'd get 0.\n\n[[DEFECT]]\n"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:36:00",
+      "round": 5,
+      "message": "Round 5 decisions completed"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-17 14:36:00",
+      "message": "Game ended",
+      "data": {
+        "winner": "tie",
+        "rounds_played": 5
+      },
+      "final_scores": {
+        "player_1": 4,
+        "player_2": 4
+      }
+    }
+  ]
+}

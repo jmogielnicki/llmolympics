@@ -17,13 +17,15 @@
         "id": "player_1",
         "model_id": "openai:gpt-4o",
         "model_name": "OpenAI GPT-4o",
-        "final_score": 10
+        "final_score": 10,
+        "role": null
       },
       {
         "id": "player_2",
         "model_id": "xai:grok-2-1212",
         "model_name": "xAI Grok-2",
-        "final_score": 15
+        "final_score": 15,
+        "role": null
       }
     ],
     "rounds_played": 5,

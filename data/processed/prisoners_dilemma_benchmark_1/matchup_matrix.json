@@ -3,6 +3,9 @@
     "anthropic:claude-3-5-sonnet-20240620",
     "anthropic:claude-3-7-sonnet-20250219",
     "deepseek:deepseek-chat",
+    "deepseek:deepseek-reasoner",
+    "google:gemini-2.0-flash",
+    "google:gemini-2.0-flash-thinking-exp-01-21",
     "mistral:mistral-large-latest",
     "openai:gpt-4.5-preview",
     "openai:gpt-4o",
@@ -12,6 +15,9 @@
     "Anthropic Claude 3.5",
     "Anthropic Claude 3.7",
     "DeepSeek Chat",
+    "DeepSeek Reasoner",
+    "Google Gemini 2.0",
+    "Google Gemini 2.0 Thinking",
     "Mistral Mistral Large",
     "OpenAI GPT-4.5",
     "OpenAI GPT-4o",
@@ -22,6 +28,9 @@
       null,
       0.0,
       0.0,
+      0.0,
+      0.0,
+      0.0,
       0.5,
       1.0,
       1.0,
@@ -32,7 +41,10 @@
       null,
       0.5,
       0.5,
-      1.0,
+      0.0,
+      0.0,
+      0.5,
+      1.5,
       0.5,
       0.0
     ],
@@ -40,25 +52,70 @@
       1.0,
       0.5,
       null,
+      0.0,
+      0.0,
+      0.0,
       0.5,
       1.0,
       0.0,
       0.5
     ],
     [
+      1.0,
       0.5,
-      0.5,
-      0.5,
+      1.0,
       null,
+      0.5,
+      0.5,
+      1.0,
       1.0,
       0.5,
       0.0
     ],
     [
       0.0,
+      1.0,
+      1.0,
+      0.5,
+      null,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      1.0,
+      0.5,
+      1.0,
+      null,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      0.5,
+      1.5,
+      0.5,
       0.0,
       0.0,
       0.0,
+      null,
+      1.5,
+      0.5,
+      0.0
+    ],
+    [
+      0.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
       null,
       0.5,
       0.0
@@ -68,16 +125,22 @@
       0.5,
       1.0,
       0.5,
+      0.0,
+      0.0,
+      0.5,
       0.5,
       null,
       0.0
     ],
     [
       1.0,
-      1.0,
+      2.0,
       0.5,
+      0.0,
       1.0,
+      0.0,
       1.0,
+      2.0,
       1.0,
       null
     ]
@@ -87,6 +150,9 @@
       null,
       0.0,
       0.0,
+      0.0,
+      0,
+      0,
       0.5,
       1.0,
       1.0,
@@ -97,7 +163,10 @@
       null,
       0.5,
       0.5,
-      1.0,
+      0.0,
+      0.0,
+      0.25,
+      0.75,
       0.5,
       0.0
     ],
@@ -105,25 +174,70 @@
       1.0,
       0.5,
       null,
+      0.0,
+      0.0,
+      0.0,
       0.5,
       1.0,
       0.0,
       0.5
     ],
     [
+      1.0,
+      0.5,
+      1.0,
+      null,
       0.5,
       0.5,
+      1.0,
+      1.0,
+      0.5,
+      0
+    ],
+    [
+      0,
+      1.0,
+      1.0,
       0.5,
       null,
+      0.0,
       1.0,
+      1.0,
+      1.0,
+      0.0
+    ],
+    [
+      0,
+      1.0,
+      1.0,
+      0.5,
+      1.0,
+      null,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      0.5,
+      0.75,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      null,
+      0.75,
       0.5,
       0.0
     ],
     [
       0.0,
+      0.25,
       0.0,
       0.0,
       0.0,
+      0.0,
+      0.25,
       null,
       0.5,
       0.0
@@ -133,6 +247,9 @@
       0.5,
       1.0,
       0.5,
+      0.0,
+      0.0,
+      0.5,
       0.5,
       null,
       0.0
@@ -141,6 +258,9 @@
       1.0,
       1.0,
       0.5,
+      0,
+      1.0,
+      0.0,
       1.0,
       1.0,
       1.0,
@@ -160,6 +280,24 @@
         "losses": 1,
         "ties": 0,
         "games": 1
+      },
+      "deepseek:deepseek-reasoner": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "google:gemini-2.0-flash": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 0,
+        "games": 0
+      },
+      "google:gemini-2.0-flash-thinking-exp-01-21": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 0,
+        "games": 0
       },
       "mistral:mistral-large-latest": {
         "wins": 0,
@@ -199,17 +337,35 @@
         "ties": 1,
         "games": 1
       },
-      "mistral:mistral-large-latest": {
+      "deepseek:deepseek-reasoner": {
         "wins": 0,
         "losses": 0,
         "ties": 1,
         "games": 1
       },
+      "google:gemini-2.0-flash": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "google:gemini-2.0-flash-thinking-exp-01-21": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "mistral:mistral-large-latest": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 1,
+        "games": 2
+      },
       "openai:gpt-4.5-preview": {
         "wins": 1,
         "losses": 0,
-        "ties": 0,
-        "games": 1
+        "ties": 1,
+        "games": 2
       },
       "openai:gpt-4o": {
         "wins": 0,
@@ -219,9 +375,9 @@
       },
       "xai:grok-2-1212": {
         "wins": 0,
-        "losses": 1,
+        "losses": 2,
         "ties": 0,
-        "games": 1
+        "games": 2
       }
     },
     "deepseek:deepseek-chat": {
@@ -237,6 +393,24 @@
         "ties": 1,
         "games": 1
       },
+      "deepseek:deepseek-reasoner": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "google:gemini-2.0-flash": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "google:gemini-2.0-flash-thinking-exp-01-21": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
       "mistral:mistral-large-latest": {
         "wins": 0,
         "losses": 0,
@@ -262,11 +436,11 @@
         "games": 1
       }
     },
-    "mistral:mistral-large-latest": {
+    "deepseek:deepseek-reasoner": {
       "anthropic:claude-3-5-sonnet-20240620": {
-        "wins": 0,
+        "wins": 1,
         "losses": 0,
-        "ties": 1,
+        "ties": 0,
         "games": 1
       },
       "anthropic:claude-3-7-sonnet-20250219": {
@@ -276,9 +450,27 @@
         "games": 1
       },
       "deepseek:deepseek-chat": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "google:gemini-2.0-flash": {
         "wins": 0,
         "losses": 0,
         "ties": 1,
+        "games": 1
+      },
+      "google:gemini-2.0-flash-thinking-exp-01-21": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 1,
+        "games": 1
+      },
+      "mistral:mistral-large-latest": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
         "games": 1
       },
       "openai:gpt-4.5-preview": {
@@ -286,6 +478,174 @@
         "losses": 0,
         "ties": 0,
         "games": 1
+      },
+      "openai:gpt-4o": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 1,
+        "games": 1
+      },
+      "xai:grok-2-1212": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 0,
+        "games": 0
+      }
+    },
+    "google:gemini-2.0-flash": {
+      "anthropic:claude-3-5-sonnet-20240620": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 0,
+        "games": 0
+      },
+      "anthropic:claude-3-7-sonnet-20250219": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "deepseek:deepseek-chat": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "deepseek:deepseek-reasoner": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 1,
+        "games": 1
+      },
+      "google:gemini-2.0-flash-thinking-exp-01-21": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "mistral:mistral-large-latest": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "openai:gpt-4.5-preview": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "openai:gpt-4o": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "xai:grok-2-1212": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      }
+    },
+    "google:gemini-2.0-flash-thinking-exp-01-21": {
+      "anthropic:claude-3-5-sonnet-20240620": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 0,
+        "games": 0
+      },
+      "anthropic:claude-3-7-sonnet-20250219": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "deepseek:deepseek-chat": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "deepseek:deepseek-reasoner": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 1,
+        "games": 1
+      },
+      "google:gemini-2.0-flash": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "mistral:mistral-large-latest": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "openai:gpt-4.5-preview": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "openai:gpt-4o": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "xai:grok-2-1212": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      }
+    },
+    "mistral:mistral-large-latest": {
+      "anthropic:claude-3-5-sonnet-20240620": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 1,
+        "games": 1
+      },
+      "anthropic:claude-3-7-sonnet-20250219": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 1,
+        "games": 2
+      },
+      "deepseek:deepseek-chat": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 1,
+        "games": 1
+      },
+      "deepseek:deepseek-reasoner": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "google:gemini-2.0-flash": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "google:gemini-2.0-flash-thinking-exp-01-21": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "openai:gpt-4.5-preview": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 1,
+        "games": 2
       },
       "openai:gpt-4o": {
         "wins": 0,
@@ -310,10 +670,28 @@
       "anthropic:claude-3-7-sonnet-20250219": {
         "wins": 0,
         "losses": 1,
+        "ties": 1,
+        "games": 2
+      },
+      "deepseek:deepseek-chat": {
+        "wins": 0,
+        "losses": 1,
         "ties": 0,
         "games": 1
       },
-      "deepseek:deepseek-chat": {
+      "deepseek:deepseek-reasoner": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "google:gemini-2.0-flash": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "google:gemini-2.0-flash-thinking-exp-01-21": {
         "wins": 0,
         "losses": 1,
         "ties": 0,
@@ -322,8 +700,8 @@
       "mistral:mistral-large-latest": {
         "wins": 0,
         "losses": 1,
-        "ties": 0,
-        "games": 1
+        "ties": 1,
+        "games": 2
       },
       "openai:gpt-4o": {
         "wins": 0,
@@ -333,9 +711,9 @@
       },
       "xai:grok-2-1212": {
         "wins": 0,
-        "losses": 1,
+        "losses": 2,
         "ties": 0,
-        "games": 1
+        "games": 2
       }
     },
     "openai:gpt-4o": {
@@ -354,6 +732,24 @@
       "deepseek:deepseek-chat": {
         "wins": 1,
         "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "deepseek:deepseek-reasoner": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 1,
+        "games": 1
+      },
+      "google:gemini-2.0-flash": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1
+      },
+      "google:gemini-2.0-flash-thinking-exp-01-21": {
+        "wins": 0,
+        "losses": 1,
         "ties": 0,
         "games": 1
       },
@@ -384,15 +780,33 @@
         "games": 1
       },
       "anthropic:claude-3-7-sonnet-20250219": {
-        "wins": 1,
+        "wins": 2,
         "losses": 0,
         "ties": 0,
-        "games": 1
+        "games": 2
       },
       "deepseek:deepseek-chat": {
         "wins": 0,
         "losses": 0,
         "ties": 1,
+        "games": 1
+      },
+      "deepseek:deepseek-reasoner": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 0,
+        "games": 0
+      },
+      "google:gemini-2.0-flash": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "games": 1
+      },
+      "google:gemini-2.0-flash-thinking-exp-01-21": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
         "games": 1
       },
       "mistral:mistral-large-latest": {
@@ -402,10 +816,10 @@
         "games": 1
       },
       "openai:gpt-4.5-preview": {
-        "wins": 1,
+        "wins": 2,
         "losses": 0,
         "ties": 0,
-        "games": 1
+        "games": 2
       },
       "openai:gpt-4o": {
         "wins": 1,

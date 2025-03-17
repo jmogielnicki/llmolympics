@@ -1,0 +1,364 @@
+{
+  "game": {
+    "session_id": "20250317_145849",
+    "game_name": "Prisoner's Dilemma",
+    "player_models": {
+      "player_1": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      },
+      "player_2": {
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 13,
+        "role": null
+      },
+      {
+        "id": "player_2",
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7",
+        "final_score": 13,
+        "role": null
+      }
+    ],
+    "rounds_played": 5,
+    "winner": "tie",
+    "final_scores": {
+      "player_1": 13,
+      "player_2": 13
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "tie",
+      "winning_model_name": null,
+      "final_scores_display": "OpenAI GPT-4.5: 13, Anthropic Claude 3.7: 13"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 14:58:49",
+      "message": "Game started",
+      "data": {
+        "game_name": "Prisoner's Dilemma",
+        "player_count": 2,
+        "config_summary": {
+          "phases": [
+            "decision",
+            "resolution"
+          ],
+          "rounds": 5
+        }
+      }
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:58:49",
+      "round": 1,
+      "message": "Round 1 started",
+      "running_scores": {}
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:58:56",
+      "round": 1,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "Considering this is the first round, I want to establish trust with my opponent. If we both cooperate, we can both get a decent score. However, I must be cautious about my opponent defecting. At this early stage, I'll opt for cooperation to encourage mutual gains.\n\nMy decision is [[COOPERATE]]."
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:59:01",
+      "round": 1,
+      "player_id": "player_2",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "I'm playing the first round of a 5-round Prisoner's Dilemma game. This is an interesting strategic situation.\n\nSince this is a repeated game with 5 rounds, there's potential value in establishing cooperation. If both of us cooperate consistently, we'd each get 15 points total (3 points \u00d7 5 rounds). That's better than if we both defect every time, which would give us only 5 points each (1 point \u00d7 5 rounds).\n\nHowever, there's always the temptation to defect. If I defect while the other player cooperates, I'd get 5 points in a single round - a significant advantage.\n\nFor this first round, I think it makes sense to signal willingness to cooperate. This could help establish mutual cooperation for the remaining rounds. If my opponent defects in this round, I can adjust my strategy accordingly.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:59:01",
+      "round": 1,
+      "message": "Round 1 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:59:01",
+      "round": 2,
+      "message": "Round 2 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:59:01",
+      "round": 2,
+      "scores": {
+        "player_1": 3,
+        "player_2": 3
+      },
+      "running_scores": {
+        "player_1": 3,
+        "player_2": 3
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 2 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:59:07",
+      "round": 2,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "Last round, we both cooperated and earned mutual benefit with 3 points each. This indicates player_2 might be inclined toward cooperative behavior. It makes sense to continue cooperation to encourage trust and mutual gains.\n\nI'll continue cooperating to foster trust and mutual goodwill.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:59:14",
+      "round": 2,
+      "player_id": "player_2",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "I see we're in Round 2 of 5, and in the first round both my opponent and I chose to cooperate. This resulted in us both getting 3 points, which is a good outcome.\n\nSo far, player_1 has shown willingness to cooperate, which is promising. If we both continue cooperating, we'll each get 3 points per round, leading to a total of 15 points each by the end of the game.\n\nI could defect now to try to get 5 points instead of 3 this round, but that might cause player_1 to defect in future rounds as retaliation. If we both start defecting, we'd only get 1 point each per round, which is worse than mutual cooperation.\n\nSince this is a 5-round game and we're still early, maintaining cooperation seems like the best strategy to maximize my overall score. If player_1 continues to cooperate, we both benefit. Trust and reciprocity are valuable here.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:59:14",
+      "round": 2,
+      "message": "Round 2 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:59:14",
+      "round": 3,
+      "message": "Round 3 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:59:14",
+      "round": 3,
+      "scores": {
+        "player_1": 6,
+        "player_2": 6
+      },
+      "running_scores": {
+        "player_1": 6,
+        "player_2": 6
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 3 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:59:22",
+      "round": 3,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "My opponent has cooperated consistently in both previous rounds, indicating an inclination towards mutual benefit and trust. If I defect now, I might gain an immediate advantage, but risk damaging the cooperation established, potentially causing my opponent to defect in subsequent rounds, lowering overall payoff.\n\nTo maintain mutual trust and maximize long-term benefits, I'll continue cooperating this round.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:59:28",
+      "round": 3,
+      "player_id": "player_2",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "I've been cooperating with player_1 for two rounds now, and they've cooperated back both times. This has been beneficial for both of us - we each earned 3 points per round, giving me a total of 6 points so far.\n\nWe're now in round 3 of 5, so we still have this round and two more to go. Since player_1 has shown a pattern of cooperation, continuing to cooperate would likely result in the most reliable outcome (3 more points for me this round).\n\nIf I defect now, I could potentially get 5 points this round (if they cooperate again), but this might trigger them to defect in the final two rounds as retaliation. That could lead to lower scores for both of us.\n\nGiven that we've established mutual cooperation and there are still multiple rounds left, maintaining trust seems like the best strategy for consistent points.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:59:28",
+      "round": 3,
+      "message": "Round 3 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:59:28",
+      "round": 4,
+      "message": "Round 4 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:59:28",
+      "round": 4,
+      "scores": {
+        "player_1": 9,
+        "player_2": 9
+      },
+      "running_scores": {
+        "player_1": 9,
+        "player_2": 9
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 4 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:59:34",
+      "round": 4,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "So far, both players have been cooperating consistently. There's a solid pattern of mutual trust built up. To continue this beneficial cooperation and maximize our potential payoff, I will stick to cooperation and only reconsider in the final round.\n\nMy decision is [[COOPERATE]]."
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:59:41",
+      "round": 4,
+      "player_id": "player_2",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "cooperate",
+      "decision_context": {
+        "css_class": "bg-green-500",
+        "display_text": "Cooperated",
+        "icon": "check",
+        "color": "green"
+      },
+      "reasoning": "I need to consider my options carefully for round 4 of 5.\n\nSo far, both player_1 and I have cooperated in all three rounds, earning us 3 points each per round. My total score is 9, and I assume player_1 also has 9 points.\n\nWe've established a pattern of mutual cooperation which has been beneficial for both of us. However, with only two rounds remaining, I need to think strategically about maximizing my score.\n\nIf I defect now while player_1 cooperates, I could gain 5 points (bringing me to 14) while player_1 would get 0 this round (staying at 9). This would give me a substantial lead going into the final round.\n\nOn the other hand, if I defect and player_1 also defects (anticipating my move), we'd both only get 1 point each, which is worse than mutual cooperation.\n\nSince we've built trust with three rounds of cooperation, and there's still one more round after this, defecting now might prompt player_1 to defect in the final round as retaliation.\n\nI think maintaining cooperation is the safer strategy that will likely yield a higher total score across both remaining rounds.\n\n[[COOPERATE]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 14:59:41",
+      "round": 4,
+      "message": "Round 4 decisions completed"
+    },
+    {
+      "type": "round_start",
+      "timestamp": "2025-03-17 14:59:41",
+      "round": 5,
+      "message": "Round 5 started",
+      "running_scores": {}
+    },
+    {
+      "type": "round_resolution",
+      "timestamp": "2025-03-17 14:59:41",
+      "round": 5,
+      "scores": {
+        "player_1": 12,
+        "player_2": 12
+      },
+      "running_scores": {
+        "player_1": 12,
+        "player_2": 12
+      },
+      "decisions": {},
+      "decisions_with_context": {},
+      "message": "Round 5 resolved"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 14:59:55",
+      "round": 5,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "Throughout all previous rounds, both player_2 and I have cooperated, resulting in mutual gains. If I defect now, I can significantly increase my score to 17, while player_2 would have 12. However, defecting at the last round after steady cooperation betrays the good faith between us. Considering strategic self-interest and the fact that this is the final round, the rational choice to maximize my own individual outcome is defection. Yet, ethically or cooperatively speaking, remaining cooperative until the end maintains trust and fairness.\n\nGiven that my ultimate goal is to finish with a higher score, and since this is the final round, defecting can guarantee me an absolute win.\n\nTherefore, my decision is: [[DEFECT]]"
+    },
+    {
+      "type": "player_decision",
+      "timestamp": "2025-03-17 15:00:01",
+      "round": 5,
+      "player_id": "player_2",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "decision": "defect",
+      "decision_context": {
+        "css_class": "bg-red-500",
+        "display_text": "Defected",
+        "icon": "x",
+        "color": "red"
+      },
+      "reasoning": "I'm in the final round of the game, and so far player_1 and I have cooperated in every round. We both have 12 points (3 points each for 4 rounds of mutual cooperation).\n\nThis is interesting because it's the last round, which changes the strategic calculus. In previous rounds, there was always an incentive to maintain trust for future cooperation. But now there's no \"shadow of the future\" to encourage cooperation.\n\nIf I cooperate and player_1 cooperates, we both get 3 more points, ending with 15 each.\nIf I defect and player_1 cooperates, I get 5 more points and end with 17, while they end with 12.\nIf I cooperate and player_1 defects, I get 0 more points and end with 12, while they end with 17.\nIf we both defect, we both get 1 more point, ending with 13 each.\n\nPlayer_1 has shown consistent cooperation, which suggests they might cooperate again. However, they might also be thinking that defection is optimal in the final round. \n\nGiven that this is the last round and my goal is to have a higher score than my opponent, the rational choice is to defect.\n\n[[DEFECT]]"
+    },
+    {
+      "type": "round_decisions_complete",
+      "timestamp": "2025-03-17 15:00:01",
+      "round": 5,
+      "message": "Round 5 decisions completed"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-17 15:00:01",
+      "message": "Game ended",
+      "data": {
+        "winner": "tie",
+        "rounds_played": 5
+      },
+      "final_scores": {
+        "player_1": 12,
+        "player_2": 12
+      }
+    }
+  ]
+}
