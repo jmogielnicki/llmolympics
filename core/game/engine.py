@@ -26,7 +26,7 @@ class GameEngine:
     coordinating interactions between components.
     """
 
-    def __init__(self, config_path, base_output_dir="data/sessions"):
+    def __init__(self, config_path, base_output_dir="data/sessions", benchmark_config=None):
         """
         Initialize the game engine.
 
@@ -36,10 +36,14 @@ class GameEngine:
         """
         logger.info(f"Initializing game from config: {config_path}")
         self.config = ConfigLoader.load(config_path)
+        self.benchmark_config = benchmark_config
 
-        # Create a game session with the specified base directory
-        self.game_session = GameSession(self.config, base_dir=base_output_dir)
-
+        # Create a game session with the specified base directory and benchmark config
+        self.game_session = GameSession(
+            self.config, 
+            base_dir=base_output_dir,
+            benchmark_config=benchmark_config
+        )
         # Initialize state with the game session
         self.state = GameState(self.config, self.game_session)
         self.phase_controller = PhaseController()

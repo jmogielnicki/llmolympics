@@ -248,7 +248,11 @@ class BenchmarkRunner:
 
         try:
             # Initialize and run the game
-            engine = GameEngine(temp_config_path, base_output_dir=self.output_dir)
+            engine = GameEngine(
+                temp_config_path, 
+                base_output_dir=self.output_dir,
+                benchmark_config=self.benchmark_config  # Pass the benchmark config
+            )
             engine.run_game()
 
             # Get the session ID and directory

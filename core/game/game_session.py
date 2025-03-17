@@ -17,13 +17,14 @@ class GameSession:
     for saving different types of game data.
     """
 
-    def __init__(self, config, base_dir="data/sessions"):
+    def __init__(self, config, base_dir="data/sessions", benchmark_config=None):
         """
         Initialize a new game session.
 
         Args:
             config (dict): The game configuration
             base_dir (str): The base directory for all session data
+            benchmark_config (BenchmarkConfig, optional): Benchmark configuration object
         """
         # Generate unique session ID
         self.timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -42,7 +43,32 @@ class GameSession:
         with open(config_path, 'w') as f:
             yaml.dump(config, f)
 
+        # Save benchmark configuration if provided
+        if benchmark_config:
+            # Get the benchmark configuration as a dictionary
+            if hasattr(benchmark_config, 'config'):
+                benchmark_dict = benchmark_config.config
+            else:
+                benchmark_dict = benchmark_config  # In case it's already a dict
+
+            # Save to file
+            benchmark_path = os.path.join(self.session_dir, "benchmark_config.yaml")
+            with open(benchmark_path, 'w') as f:
+                yaml.dump(benchmark_dict, f)
+
+            # Also save benchmark ID to a metadata file for easier reference
+            benchmark_id = benchmark_dict.get('benchmark', {}).get('id', 'unknown')
+            metadata = {
+                'benchmark_id': benchmark_id,
+                'timestamp': self.timestamp,
+                'game': config['game']['name']
+            }
+            metadata_path = os.path.join(self.session_dir, "session_metadata.json")
+            with open(metadata_path, 'w') as f:
+                json.dump(metadata, f, indent=2)
+
         logger.info(f"Created game session: {self.session_id} in {self.session_dir}")
+
 
         # Initialize paths for different log types
         self.snapshots_path = os.path.join(self.session_dir, "snapshots.jsonl")
