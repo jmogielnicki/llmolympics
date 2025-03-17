@@ -78,7 +78,7 @@ const VotingPatternsTab = () => {
 		if (count === 0) return "bg-gray-100";
 
 		const intensity = Math.min(Math.floor((count / max) * 5) + 1, 5);
-		return `bg-indigo-${intensity}00`;
+		return `bg-blue-${intensity}00`;
 	};
 
 	// Find maximum vote count for color scaling
