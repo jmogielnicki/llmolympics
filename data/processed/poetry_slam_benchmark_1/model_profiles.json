@@ -3,6 +3,7 @@
   "models": [
     {
       "model_id": "deepseek:deepseek-chat",
+      "player_id": "player_1",
       "model_name": "DeepSeek Chat",
       "games": [
         {
@@ -117,6 +118,7 @@
     },
     {
       "model_id": "openai:gpt-4o",
+      "player_id": "player_2",
       "model_name": "OpenAI GPT-4o",
       "games": [
         {
@@ -230,6 +232,7 @@
     },
     {
       "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "player_id": "player_3",
       "model_name": "Anthropic Claude 3.5",
       "games": [
         {
@@ -339,6 +342,7 @@
     },
     {
       "model_id": "xai:grok-2-1212",
+      "player_id": "player_4",
       "model_name": "xAI Grok-2",
       "games": [
         {
@@ -444,6 +448,7 @@
     },
     {
       "model_id": "mistral:mistral-large-latest",
+      "player_id": "player_5",
       "model_name": "Mistral Mistral Large",
       "games": [
         {
@@ -550,6 +555,7 @@
     },
     {
       "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "player_id": "player_6",
       "model_name": "Anthropic Claude 3.7",
       "games": [
         {
@@ -625,6 +631,7 @@
     },
     {
       "model_id": "openai:gpt-4.5-preview",
+      "player_id": "player_1",
       "model_name": "OpenAI GPT-4.5",
       "games": [
         {
@@ -679,6 +686,7 @@
     },
     {
       "model_id": "deepseek:deepseek-reasoner",
+      "player_id": "player_1",
       "model_name": "DeepSeek Reasoner",
       "games": [
         {
@@ -736,6 +744,7 @@
     },
     {
       "model_id": "google:gemini-2.0-flash",
+      "player_id": "player_2",
       "model_name": "Google Gemini 2.0",
       "games": [
         {
@@ -785,6 +794,7 @@
     },
     {
       "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "player_id": "player_3",
       "model_name": "Google Gemini 2.0 Thinking",
       "games": [
         {

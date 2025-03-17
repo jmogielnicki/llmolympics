@@ -721,6 +721,7 @@ class PoetryProcessor(GameProcessor):
                 if model not in models:
                     models[model] = {
                         'model_id': model,
+                        'player_id': player['id'],
                         'model_name': extract_model_name(model),
                         'games': [],
                         'stats': {}

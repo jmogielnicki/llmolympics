@@ -326,10 +326,13 @@ function createVotingPatterns(modelProfiles) {
 			?.games.forEach((game) => {
 				if (
 					game.voting &&
-					game.voting.voted_for &&
-					game.other_players.includes(game.voting.voted_for)
+					game.voting.voted_for
 				) {
-					votingMatrix[model.id][game.voting.voted_for]++;
+                    const voted_for_model = modelProfiles.models.find(
+						(m) => m.player_id === game.voting.voted_for
+					);
+                    console.log(voted_for_model);
+					votingMatrix[model.id][voted_for_model.model_id]++;
 				}
 			});
 	});
