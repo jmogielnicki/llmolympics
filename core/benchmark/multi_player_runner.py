@@ -149,8 +149,16 @@ class MultiPlayerBenchmarkRunner:
                 # Calculate percentage of unique opponents faced
                 diversity_scores[model] = len(self.opponent_matrix[model]) / (len(self.models) - 1)
 
-        # Select the anchor model (with lowest diversity score)
-        anchor_model = min(diversity_scores, key=diversity_scores.get)
+        # Calculate a combined score that considers both diversity and game count
+        combined_scores = {}
+        for model in self.models:
+            diversity_factor = diversity_scores[model]
+            game_count_factor = self.game_counts.get(model, 0) / max(1, max(self.game_counts.values()))
+            combined_scores[model] = diversity_factor + game_count_factor
+
+        # Select the anchor model with the lowest combined score
+        anchor_model = min(combined_scores.keys(), key=lambda k: combined_scores[k])
+
         logger.info(f"Selected anchor model: {anchor_model} with diversity score {diversity_scores[anchor_model]:.2f}")
 
         # Start with the anchor model
