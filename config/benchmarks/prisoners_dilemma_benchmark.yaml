@@ -20,5 +20,5 @@ models:
   - anthropic:claude-3-7-sonnet-20250219
   - xai:grok-2-1212
   - mistral:mistral-large-latest
-  - anthropic:claude-3-7-sonnet-20250219
   - google:gemini-2.0-flash
+  - google:gemini-2.0-flash-thinking-exp-01-21
