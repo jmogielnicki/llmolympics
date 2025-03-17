@@ -66,6 +66,13 @@ const VotingPatternsTab = () => {
 		return result;
 	}, [votingPatterns]);
 
+	// Sort models by votes received (most to least)
+	const sortedModels = useMemo(() => {
+		return [...modelsWithVotes].sort(
+			(a, b) => b.votesReceived - a.votesReceived
+		);
+	}, [modelsWithVotes]);
+
 	// Get color intensity based on vote count
 	const getColorIntensity = (count, max) => {
 		if (count === 0) return "bg-gray-100";
@@ -102,87 +109,92 @@ const VotingPatternsTab = () => {
 						<table className="min-w-full divide-y divide-gray-200">
 							<thead className="bg-gray-50">
 								<tr>
-									<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+									<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
 										Voter \ Candidate
 									</th>
-									{votingPatterns.models.map((model) => (
+									{/* Use sortedModels for column headers */}
+									{sortedModels.map((model) => (
 										<th
 											key={model.id}
-											className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
+											className="px-2 py-2 text-center text-xs font-medium text-gray-500 tracking-wider w-16"
+											style={{
+												minWidth: "4rem",
+												maxWidth: "6rem",
+											}}
 										>
-											{model.name}
+											<div className="line-clamp-2 h-12 flex items-center justify-center">
+												{model.name}
+											</div>
 										</th>
 									))}
-									<th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
-										Total Votes Given
+									<th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+										<div className="line-clamp-2">
+											Total Votes Given
+										</div>
 									</th>
 								</tr>
 							</thead>
 							<tbody className="bg-white divide-y divide-gray-200">
-								{modelsWithVotes.map((voter) => (
+								{/* Use sortedModels for rows as well */}
+								{sortedModels.map((voter) => (
 									<tr
 										key={voter.id}
 										className="hover:bg-gray-50"
 									>
-										<td className="px-4 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
-											{voter.name}
+										<td className="px-2 py-4 text-sm font-medium text-gray-900 w-24">
+											<div className="truncate">
+												{voter.name}
+											</div>
 										</td>
-										{votingPatterns.models.map(
-											(candidate) => (
-												<td
-													key={candidate.id}
-													className={`px-4 py-4 text-center ${
-														voter.id ===
+										{/* Use same sortedModels for columns in each row */}
+										{sortedModels.map((candidate) => (
+											<td
+												key={candidate.id}
+												className={`px-2 py-4 text-center w-16 ${
+													voter.id === candidate.id
+														? "bg-gray-200 text-gray-400"
+														: getColorIntensity(
+																voter
+																	.votesGiven[
+																	candidate.id
+																] || 0,
+																maxVoteCount
+														  )
+												} ${
+													(voter.votesGiven[
 														candidate.id
-															? "bg-gray-200 text-gray-400"
-															: getColorIntensity(
-																	voter
-																		.votesGiven[
-																		candidate
-																			.id
-																	] || 0,
-																	maxVoteCount
-															  )
-													} ${
-														(voter.votesGiven[
+													] || 0) > 0
+														? "text-indigo-900 font-medium"
+														: "text-gray-500"
+												}`}
+											>
+												{voter.id === candidate.id
+													? "—"
+													: voter.votesGiven[
 															candidate.id
-														] || 0) > 0
-															? "text-indigo-900 font-medium"
-															: "text-gray-500"
-													}`}
-												>
-													{voter.id === candidate.id
-														? "—"
-														: voter.votesGiven[
-																candidate.id
-														  ] || 0}
-												</td>
-											)
-										)}
+													  ] || 0}
+											</td>
+										))}
 										<td className="px-4 py-4 text-center font-medium text-gray-900">
 											{voter.totalVotesGiven}
 										</td>
 									</tr>
 								))}
 								<tr className="bg-gray-50">
-									<td className="px-4 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
-										Total Votes Received
+									<td className="px-2 py-4 text-sm font-medium text-gray-900">
+										<div className="line-clamp-2">
+											Total Votes Received
+										</div>
 									</td>
-									{votingPatterns.models.map((model) => {
-										const voter = modelsWithVotes.find(
-											(v) => v.id === model.id
-										);
-										return (
-											<td
-												key={model.id}
-												className="px-4 py-4 text-center font-medium text-gray-900"
-											>
-												{voter
-													? voter.votesReceived
-													: 0}
-											</td>
-										);
-									})}
+									{/* Use sortedModels for total votes row as well */}
+									{sortedModels.map((model) => (
+										<td
+											key={model.id}
+											className="px-2 py-4 text-center font-medium text-gray-900 w-16"
+										>
+											{model.votesReceived}
+										</td>
+									))}
 									<td className="px-4 py-4"></td>
 								</tr>
 							</tbody>
@@ -208,34 +220,30 @@ const VotingPatternsTab = () => {
 							Most Votes Received
 						</h3>
 						<ul className="space-y-2">
-							{modelsWithVotes
-								.sort(
-									(a, b) => b.votesReceived - a.votesReceived
-								)
-								.map((model) => (
-									<li
-										key={model.id}
-										className="flex justify-between items-center"
-									>
-										<span className="text-gray-800">
-											{model.name}
+							{sortedModels.map((model) => (
+								<li
+									key={model.id}
+									className="flex justify-between items-center"
+								>
+									<span className="text-gray-800">
+										{model.name}
+									</span>
+									<div className="flex items-center">
+										<div
+											className="bg-indigo-500 h-4 rounded"
+											style={{
+												width: `${Math.min(
+													100,
+													model.votesReceived * 20
+												)}px`,
+											}}
+										></div>
+										<span className="ml-2 text-gray-700">
+											{model.votesReceived}
 										</span>
-										<div className="flex items-center">
-											<div
-												className="bg-indigo-500 h-4 rounded"
-												style={{
-													width: `${Math.min(
-														100,
-														model.votesReceived * 20
-													)}px`,
-												}}
-											></div>
-											<span className="ml-2 text-gray-700">
-												{model.votesReceived}
-											</span>
-										</div>
-									</li>
-								))}
+									</div>
+								</li>
+							))}
 						</ul>
 					</div>
 
@@ -245,7 +253,7 @@ const VotingPatternsTab = () => {
 							Most Active Voters
 						</h3>
 						<ul className="space-y-2">
-							{modelsWithVotes
+							{[...modelsWithVotes]
 								.sort(
 									(a, b) =>
 										b.totalVotesGiven - a.totalVotesGiven
