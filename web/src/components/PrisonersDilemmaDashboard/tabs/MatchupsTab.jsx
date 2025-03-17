@@ -38,7 +38,7 @@ const MatchupsTab = () => {
 								<tr>
 									<th
 										scope="col"
-										className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
+										className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-tight whitespace-wrap"
 									>
 										Model
 									</th>
@@ -46,7 +46,7 @@ const MatchupsTab = () => {
 										<th
 											key={idx}
 											scope="col"
-											className="px-2 sm:px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
+											className="px-2 sm:px-4 py-3 text-center text-xs font-medium text-gray-500 tracking-tight whitespace-wrap"
 										>
 											{model}
 										</th>
