@@ -162,7 +162,7 @@ class PrisonersDilemmaProcessor(GameProcessor):
             })
 
         # Sort leaderboard by win rate (primary) and average score (secondary)
-        leaderboard = sorted(leaderboard, key=lambda x: (x['winrate'], x['avg_score']), reverse=True)
+        leaderboard = sorted(leaderboard, key=lambda x: (x['avg_score'], x['winrate']), reverse=True)
 
         # Add rank
         for i, entry in enumerate(leaderboard):
@@ -561,6 +561,11 @@ class PoetryProcessor(GameProcessor):
             # Handle tie case
             is_tie = winner_id == 'tie'
 
+            # If it's a tie, find the highest score
+            highest_score = 0
+            if is_tie:
+                highest_score = max(player.get('score', 0) for player in players)
+
             # Process each player
             for player in players:
                 model_id = player['model']
@@ -583,7 +588,11 @@ class PoetryProcessor(GameProcessor):
 
                 # Update win/loss/tie stats
                 if is_tie:
-                    models[model_id]['ties'] += 1
+                    # Only count as tie for players that tied for the highest score
+                    if player.get('score', 0) == highest_score:
+                        models[model_id]['ties'] += 1
+                    else:
+                        models[model_id]['losses'] += 1
                 elif winner_id == player_id:
                     models[model_id]['wins'] += 1
                 else:
@@ -619,7 +628,7 @@ class PoetryProcessor(GameProcessor):
             })
 
         # Sort leaderboard by win rate (primary) and average score (secondary)
-        leaderboard = sorted(leaderboard, key=lambda x: (x['winrate'], x['avg_score']), reverse=True)
+        leaderboard = sorted(leaderboard, key=lambda x: (x['avg_score'], x['winrate']), reverse=True)
 
         # Add rank
         for i, entry in enumerate(leaderboard):

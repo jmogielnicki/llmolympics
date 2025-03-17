@@ -143,7 +143,7 @@
               "opponent_decision": "defect"
             }
           ],
-          "was_first_defector": false
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250312_160707",
@@ -222,7 +222,7 @@
         "first_move_cooperation_rate": 1.0,
         "retaliation_rate": 1.0,
         "total_decisions": 30,
-        "first_to_defect_rate": 0.5
+        "first_to_defect_rate": 0.6666666666666666
       }
     },
     {
@@ -262,7 +262,7 @@
               "opponent_decision": "defect"
             }
           ],
-          "was_first_defector": false
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250311_144545",
@@ -367,7 +367,7 @@
               "opponent_decision": "defect"
             }
           ],
-          "was_first_defector": false
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161223",
@@ -446,7 +446,7 @@
         "first_move_cooperation_rate": 1.0,
         "retaliation_rate": 1.0,
         "total_decisions": 30,
-        "first_to_defect_rate": 0.16666666666666666
+        "first_to_defect_rate": 0.5
       }
     },
     {
@@ -591,7 +591,7 @@
               "opponent_decision": "defect"
             }
           ],
-          "was_first_defector": false
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161451",
@@ -626,7 +626,7 @@
               "opponent_decision": "defect"
             }
           ],
-          "was_first_defector": true
+          "was_first_defector": false
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161547",
@@ -710,7 +710,7 @@
               "opponent_decision": "defect"
             }
           ],
-          "was_first_defector": false
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250311_153322",
@@ -815,7 +815,7 @@
               "opponent_decision": "defect"
             }
           ],
-          "was_first_defector": false
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161728",
@@ -894,7 +894,7 @@
         "first_move_cooperation_rate": 1.0,
         "retaliation_rate": 0.714,
         "total_decisions": 30,
-        "first_to_defect_rate": 0.6666666666666666
+        "first_to_defect_rate": 1.0
       }
     },
     {
@@ -1074,7 +1074,7 @@
               "opponent_decision": "defect"
             }
           ],
-          "was_first_defector": false
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161948",
@@ -1118,7 +1118,7 @@
         "first_move_cooperation_rate": 1.0,
         "retaliation_rate": 0.833,
         "total_decisions": 30,
-        "first_to_defect_rate": 0.16666666666666666
+        "first_to_defect_rate": 0.3333333333333333
       }
     },
     {
@@ -1228,7 +1228,7 @@
               "opponent_decision": "defect"
             }
           ],
-          "was_first_defector": false
+          "was_first_defector": true
         },
         {
           "session_id": "prisoner's_dilemma_20250312_161728",
@@ -1333,7 +1333,7 @@
               "opponent_decision": "defect"
             }
           ],
-          "was_first_defector": false
+          "was_first_defector": true
         }
       ],
       "stats": {
@@ -1342,7 +1342,7 @@
         "first_move_cooperation_rate": 1.0,
         "retaliation_rate": 1.0,
         "total_decisions": 30,
-        "first_to_defect_rate": 0.0
+        "first_to_defect_rate": 0.3333333333333333
       }
     },
     {
@@ -1557,7 +1557,7 @@
               "opponent_decision": "defect"
             }
           ],
-          "was_first_defector": true
+          "was_first_defector": false
         }
       ],
       "stats": {
@@ -1566,7 +1566,7 @@
         "first_move_cooperation_rate": 1.0,
         "retaliation_rate": 1.0,
         "total_decisions": 30,
-        "first_to_defect_rate": 0.16666666666666666
+        "first_to_defect_rate": 0.0
       }
     }
   ]

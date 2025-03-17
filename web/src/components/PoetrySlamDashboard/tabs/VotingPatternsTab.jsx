@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import { useGameData } from "../../../context/GameDataContext";
-import { shortenModelName } from "../../../utils/commonUtils";
 
 /**
  * Voting Patterns Tab to visualize which models vote for which other models
@@ -111,7 +110,7 @@ const VotingPatternsTab = () => {
 											key={model.id}
 											className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
 										>
-											{shortenModelName(model.name)}
+											{model.name}
 										</th>
 									))}
 									<th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
@@ -126,7 +125,7 @@ const VotingPatternsTab = () => {
 										className="hover:bg-gray-50"
 									>
 										<td className="px-4 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
-											{shortenModelName(voter.name)}
+											{voter.name}
 										</td>
 										{votingPatterns.models.map(
 											(candidate) => (
@@ -219,7 +218,7 @@ const VotingPatternsTab = () => {
 										className="flex justify-between items-center"
 									>
 										<span className="text-gray-800">
-											{shortenModelName(model.name)}
+											{model.name}
 										</span>
 										<div className="flex items-center">
 											<div
@@ -257,7 +256,7 @@ const VotingPatternsTab = () => {
 										className="flex justify-between items-center"
 									>
 										<span className="text-gray-800">
-											{shortenModelName(model.name)}
+											{model.name}
 										</span>
 										<div className="flex items-center">
 											<div

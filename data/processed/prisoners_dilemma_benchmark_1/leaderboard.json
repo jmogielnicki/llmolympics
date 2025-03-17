@@ -1,6 +1,20 @@
 {
   "leaderboard": [
     {
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "wins": 1,
+      "losses": 2,
+      "ties": 3,
+      "games": 6,
+      "winrate": 0.167,
+      "avg_score": 12.67,
+      "first_to_defect_count": 3,
+      "first_to_defect_rate": 0.5,
+      "total_score": 76,
+      "rank": 1
+    },
+    {
       "model_id": "xai:grok-2-1212",
       "model_name": "xAI Grok-2",
       "wins": 5,
@@ -11,7 +25,8 @@
       "avg_score": 12.5,
       "first_to_defect_count": 6,
       "first_to_defect_rate": 1.0,
-      "rank": 1
+      "total_score": 75,
+      "rank": 2
     },
     {
       "model_id": "anthropic:claude-3-5-sonnet-20240620",
@@ -24,7 +39,8 @@
       "avg_score": 12.5,
       "first_to_defect_count": 3,
       "first_to_defect_rate": 0.5,
-      "rank": 2
+      "total_score": 75,
+      "rank": 3
     },
     {
       "model_id": "anthropic:claude-3-7-sonnet-20250219",
@@ -37,7 +53,8 @@
       "avg_score": 12.33,
       "first_to_defect_count": 2,
       "first_to_defect_rate": 0.333,
-      "rank": 3
+      "total_score": 74,
+      "rank": 4
     },
     {
       "model_id": "deepseek:deepseek-chat",
@@ -50,19 +67,7 @@
       "avg_score": 11.67,
       "first_to_defect_count": 4,
       "first_to_defect_rate": 0.667,
-      "rank": 4
-    },
-    {
-      "model_id": "openai:gpt-4o",
-      "model_name": "OpenAI GPT-4o",
-      "wins": 1,
-      "losses": 2,
-      "ties": 3,
-      "games": 6,
-      "winrate": 0.167,
-      "avg_score": 12.67,
-      "first_to_defect_count": 3,
-      "first_to_defect_rate": 0.5,
+      "total_score": 70,
       "rank": 5
     },
     {
@@ -76,6 +81,7 @@
       "avg_score": 11.33,
       "first_to_defect_count": 2,
       "first_to_defect_rate": 0.333,
+      "total_score": 68,
       "rank": 6
     },
     {
@@ -89,6 +95,7 @@
       "avg_score": 9.83,
       "first_to_defect_count": 0,
       "first_to_defect_rate": 0.0,
+      "total_score": 59,
       "rank": 7
     }
   ],

@@ -35,6 +35,12 @@ const prisonersDilemmaDefinition = {
 		leaderboardColumns: [
 			{ key: "rank", label: "Rank", align: "left" },
 			{ key: "model_name", label: "Model", align: "left" },
+            {
+                key: "avg_score",
+                label: "Avg. Score",
+                align: "right",
+                formatter: (value) => value.toFixed(1),
+            },
 			{ key: "wins", label: "Wins", align: "right" },
 			{ key: "losses", label: "Losses", align: "right" },
 			{ key: "ties", label: "Ties", align: "right" },
@@ -49,12 +55,6 @@ const prisonersDilemmaDefinition = {
 				label: "First Defector",
 				align: "right",
 				formatter: (value) => `${(value * 100).toFixed(0)}%`,
-			},
-			{
-				key: "avg_score",
-				label: "Avg. Score",
-				align: "right",
-				formatter: (value) => value.toFixed(1),
 			},
 		],
 	},
@@ -135,6 +135,12 @@ const poetrySlamDefinition = {
 		leaderboardColumns: [
 			{ key: "rank", label: "Rank", align: "left" },
 			{ key: "model_name", label: "Model", align: "left" },
+            {
+                key: "avg_score",
+                label: "Avg. Votes",
+                align: "right",
+                formatter: (value) => value.toFixed(1),
+            },
 			{ key: "wins", label: "Wins", align: "right" },
 			{ key: "losses", label: "Losses", align: "right" },
 			{ key: "ties", label: "Ties", align: "right" },
@@ -143,12 +149,6 @@ const poetrySlamDefinition = {
 				label: "Win Rate",
 				align: "right",
 				formatter: (value) => `${(value * 100).toFixed(0)}%`,
-			},
-			{
-				key: "avg_score",
-				label: "Avg. Votes",
-				align: "right",
-				formatter: (value) => value.toFixed(1),
 			},
 		],
 	},
@@ -331,7 +331,6 @@ function createVotingPatterns(modelProfiles) {
                     const voted_for_model = modelProfiles.models.find(
 						(m) => m.player_id === game.voting.voted_for
 					);
-                    console.log(voted_for_model);
 					votingMatrix[model.id][voted_for_model.model_id]++;
 				}
 			});
