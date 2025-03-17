@@ -1,0 +1,29 @@
+# Benchmark configuration for Debate Slam
+# This file defines which models to test and how to run the benchmark
+
+# Core benchmark settings
+benchmark:
+  id: "debate_slam_benchmark_1"                # Unique identifier for this benchmark
+  base_config: "config/games/debate_slam.yaml" # Base game configuration
+  type: "multi_player"                         # Multi-player tournament
+  sessions: 5                                  # Number of tournament sessions to run
+  output_dir: "data/benchmark"                 # Directory for benchmark results
+  players_per_game: 5                          # Number of players per game (2 debaters, 3 judges)
+
+  # Selection strategy settings
+  selection:
+    debater_selection: "weighted_inverse"      # Weight = 1/(debater_count + 1)
+    judge_selection: "weighted_inverse"        # Weight = 1/(judge_count + 1)
+
+# Models to benchmark
+models:
+  - deepseek:deepseek-chat
+  - deepseek:deepseek-reasoner
+  - openai:gpt-4o
+  - openai:gpt-4.5-preview
+  - anthropic:claude-3-5-sonnet-20240620
+  - anthropic:claude-3-7-sonnet-20250219
+  - xai:grok-2-1212
+  - mistral:mistral-large-latest
+  - google:gemini-2.0-flash
+  - google:gemini-2.0-flash-thinking-exp-01-21

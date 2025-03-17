@@ -1,0 +1,22 @@
+Current game state:
+- Game: Debate Slam
+- Your role: Debater
+- Debate topic: {debate_topic}
+- Your position: {position}
+
+You are participating in a debate on the topic: "{debate_topic}"
+
+You have been assigned to argue the following position:
+{position}
+
+This is the opening argument phase. You need to present your initial position on this topic.
+
+Guidelines:
+- Provide a clear, structured, and persuasive opening argument
+- Present the strongest case for your assigned position
+- Be respectful and focused on the merits of your position
+- Aim for around 250 words
+
+Please present your opening argument now. Your entire argument must be enclosed in double brackets like this:
+
+[[Your opening argument goes here.]]

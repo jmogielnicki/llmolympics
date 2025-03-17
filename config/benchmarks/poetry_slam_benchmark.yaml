@@ -6,7 +6,7 @@ benchmark:
   id: "poetry_slam_benchmark_1"                # Unique identifier for this benchmark
   base_config: "config/games/poetry_slam.yaml" # Base game configuration
   type: "multi_player"                         # Multi-player or pairwise tournament
-  sessions: 5                                  # Number of tournament sessions to run
+  sessions: 10                                  # Number of tournament sessions to run
   output_dir: "data/benchmark"                 # Directory for benchmark results
   players_per_game: 6                          # Number of players per game
 

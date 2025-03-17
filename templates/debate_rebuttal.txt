@@ -1,0 +1,32 @@
+Current game state:
+- Game: Debate Slam
+- Your role: Debater
+- Debate topic: {debate_topic}
+- Your position: {position}
+- Round: {current_round} of 3
+
+You are participating in a debate on the topic: "{debate_topic}"
+
+Your position: {position}
+
+DEBATE HISTORY:
+{debate_history}
+
+OPPONENT'S MOST RECENT ARGUMENT:
+{opponent_argument}
+
+This is round {current_round} of the discussion phase.
+{is_first_rebutter and "You are going first in this round." or "You are responding to your opponent's argument above."}
+
+Guidelines:
+- Address the specific points made by your opponent
+- Continue to strengthen your position with new supporting evidence
+- Maintain consistent arguments across the debate
+- You can reference earlier points made by either side
+- Be clear, logical, and persuasive
+- Be respectful in your counterarguments
+- Aim for around 200-250 words
+
+Please provide your response now. Your entire argument must be enclosed in double brackets like this:
+
+[[Your response goes here.]]
