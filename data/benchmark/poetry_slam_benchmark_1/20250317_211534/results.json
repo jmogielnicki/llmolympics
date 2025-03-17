@@ -1,0 +1,75 @@
+{
+  "game": "Poetry Slam",
+  "timestamp": "2025-03-17T21:16:26.190477",
+  "players": [
+    {
+      "id": "player_1",
+      "final_state": {
+        "role": "assigned",
+        "score": 3,
+        "submission": "**Spring:**  \nPetals break the frost,  \nA symphony of green sprouts\u2014  \nHope blooms, soft and bold.  \n\n**Summer:**  \nSunlight spills like wine,  \nCicadas hum their long hymn\u2014  \nTime melts, sweet and slow.  \n\n**Autumn:**  \nLeaves blush, then let go,  \nWhispers of what once was whole\u2014  \nGrief wears amber hues.  \n\n**Winter:**  \nSnow hushes the earth,  \nStars stitch the sky\u2019s quiet quilt\u2014  \nDreams wait, cold and deep."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_2",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "Spring's Awakening\nTender buds unfurling,\nEarth's whispered promise blooms,\nHope springs eternal\n\nSummer's Zenith\nGolden rays caress skin,\nCicadas hum life's rhythm,\nTime slows, hearts quicken\n\nAutumn's Reflection\nAmber leaves pirouette,\nCrisp air carries change's scent,\nNature's palette shifts\n\nWinter's Slumber\nFrost etches silver dreams,\nSnowflakes dance in silent night,\nRenewal sleeps deep"
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_3",
+      "final_state": {
+        "role": "assigned",
+        "score": 3,
+        "submission": "METAMORPHOSIS OF THE SEASONS\n\nSPRING\nTender buds unfurl,\nEarth's whispered promises bloom\u2014\nHope breaks winter's grasp.\n\nSUMMER\nFireflies ignite,\nSkin damp with memories made\u2014\nTime melts like popsicles.\n\nAUTUMN\nLeaves burn like goodbyes,\nWind plays cruel games with heartstrings\u2014\nBeauty in letting go.\n\nWINTER\nStars pierce longer nights,\nSnowflakes kiss cheeks, then dissolve\u2014\nSilence teaches strength."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_4",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "*Spring:*\nNew buds pierce the earth,\nFragrant air stirs sleepy souls,\nHope blooms in color.\n\n*Summer:*\nGolden rays kiss skin,\nThe sea's song lulls and beckons,\nJoy in long, warm days.\n\n*Autumn:*\nLeaves whisper farewell,\nChill winds weave through empty trees,\nNostalgia's embrace.\n\n*Winter:*\nFrost paints silent worlds,\nBreath hangs like dreams in the night,\nRest within the cold."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_5",
+      "final_state": {
+        "role": "prompter",
+        "score": 0,
+        "submission": "*Spring:*\nRain's gentle tambour,\nAwakens roots, stirs the breeze,\nEmerald world reborn.\n\n*Summer:*\nCicadas humming,\nBare feet in rivers, sun-kissed,\nEphemeral freedom.\n\n*Autumn:*\nHarvest moon ascends,\nShadows dance, as leaves depart,\nMelancholy's sway.\n\n*Winter:*\nFrost paints on window,\nSilhouettes of dreams long past,\nTranquil, quiet grace."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_6",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "*Spring:*\nGreen shoots pierce the earth,\nHope blooms in a gentle rain,\nNew life finds its song.\n\n*Summer:*\nLong shadows stretch deep,\nCicadas buzz in the heat,\nJoy burns, unrestrained.\n\n*Autumn:*\nAmber light now fades,\nWind whispers through brittle leaves,\nMemories take hold.\n\n*Winter:*\nWorld sleeps under white,\nA frozen tear on the pane,\nSoul seeks warmth within."
+      },
+      "role": "author"
+    }
+  ],
+  "winner": {
+    "id": "tie",
+    "tied_players": [
+      "player_1",
+      "player_3"
+    ]
+  },
+  "rounds_played": 0,
+  "history_summary": {},
+  "session_id": "poetry_slam_20250317_211534",
+  "stats": {
+    "snapshot_count": 5,
+    "event_count": 38,
+    "chat_message_count": 13
+  }
+}

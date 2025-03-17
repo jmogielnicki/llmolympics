@@ -1,0 +1,71 @@
+{
+  "game": "Poetry Slam",
+  "timestamp": "2025-03-17T21:10:55.588791",
+  "players": [
+    {
+      "id": "player_1",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "**Metamorphosis of Seasons**  \n\nThe emerald arms of summer sway,  \nA golden sun commands the day.  \nBut whispers rise, a subtle plea\u2014  \nThe maple blushes, crimson free.  \n\nThe clock of leaves begins to chime,  \nAs autumn steals the hands of time.  \nA russet quilt, the earth now wears,  \nWhile frosty breath hangs in the air.  \n\nThe river sighs, its flow grown slow,  \nA mirror for the falling snow.  \nThe white of winter claims the land,  \nA silent, cold, unyielding hand.  \n\nYet deep below, the roots still dream,  \nOf spring\u2019s return, a verdant stream.  \nThe crocus breaks through frozen ground,  \nA purple promise, soft and sound.  \n\nThe seasons turn, a wheel of hues,  \nA dance of loss, of old and new.  \nI stand between, a fleeting guest,  \nLonging for warmth, yet chilled by rest."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_2",
+      "final_state": {
+        "role": "prompter",
+        "score": 0,
+        "submission": "In verdant gown of spring, she dances,\nA nymph in green, with blossoms in her hair,\nShe paints the meadows bright with daffodils,\nAnd weaves a melody with songbirds fair.\n\nThe brook awakes from winter's icy slumber,\nA silver thread that mirrors skies above,\nIt whispers tales of time's eternal plunder,\nAnd sings a lullaby to winter's dove.\n\nYet soon, the green goddess must surrender,\nHer reign is brief, like dawn's ephemeral glow,\nFor summer's king, in robes of golden splendor,\nAscends the throne, as calendulas grow.\n\nHe reigns with warmth, a fiery passion burning,\nThe sun, his crown, in azure skies so high,\nBut even kings must face the wheel's eternal turning,\nAs autumn's breath begins to whisper nigh.\n\nShe drifts in cloaks of crimson and of amber,\nA queen of twilight, bearing harvest's fruit,\nHer sighs are heard in every leaf's descent, remember,\nThe seasons' dance, no soul can absolutey mute.\n\nThe calendar, a testament to change,\nEach page a leaf that echoes nature's call,\nAnd every sunset, in its hues, a range\nOf seasons past, a nostalgic thrall.\n\nFor in this waltz of seasons, we discover,\nA longing for what's lost, a yearning deep,\nAs winter's shroud of white descends to cover\nThe world in slumber, secrets to keep.\n\nYet fear not, child, for spring will rise again,\nAnd with it, hope, like crocuses, will bloom,\nFor time may pass, but every ending ken\nA beginning new, in endless, ageless room."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_3",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "The emerald cloak of Summer, bold and bright,\nBegan to fray, its laughter turned to sighs.\nThe sun-dial marked the dwindling of light,\nAs butterflies, like painted memories, rise.\n\nThen Autumn swept in, draped in rusty red,\nA blaze of glory 'fore the frost's sharp bite.\nThe hourglass dripped, secrets softly said,\nAs crimson leaves danced in the fading light.\n\nOld Winter came, a canvas stark and white,\nA blanket woven from the wind's cold breath.\nThe frozen clock ticked slowly through the night,\nA whispered promise of a coming death.\n\nBut underneath, a stirring, faint and low,\nA turquoise dream of Spring begins to bloom.\nThe seeds await, the melting ice will flow,\nEscaping Winter's icy, silent tomb."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_4",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "The gold of Autumn, rich and deep,\nBegan to falter, start to sleep.\nThe amber leaves, like coins of old,\nReleased their grip, and stories told\nOf summer's green, a vibrant hue,\nNow fading fast, as days withdrew.\n\nThe wind, a breath both sharp and cold,\nWhispered of tales yet to unfold.\nThe sun, a clock in hurried flight,\nMarked shorter days and longer night.\nThen silver frost, a sudden sign,\nThat winter's hand, would soon be mine.\n\nThe white of winter, pure and bright,\nDescended softly in the night.\nA hush fell on the sleeping land,\nAs time stood still, in frozen sand.\nThough warmth is lost, and green is gone,\nA quiet beauty, lingers on."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_5",
+      "final_state": {
+        "role": "assigned",
+        "score": 5,
+        "submission": "**\"The Weavers\u2019 Lament\"**  \n\nSummer, queen in golden gown,  \nher reign thins to rustling sound\u2014  \nsundial\u2019s shadow stains the creek,  \nwhere Autumn dips her amber beak.  \n\nShe feathers trees with foxfire hues,  \nsteals warmth from dawn\u2019s reluctant dews.  \nGeese etch their *V*s\u2014a fleeting hymn\u2014  \nas frost embroiders twilight\u2019s rim.  \n\nThen Winter, cloaked in ivory thread,  \nweaves silence where the blooms once bled.  \nHer loom spins hours to ice, then drips  \ntime\u2019s tears from thawing maple lips.  \n\nBut Spring, a child with jade-stained hands,  \nunstitches snow from fallow lands.  \nYet in her laugh, a whisper stays\u2014  \nthe ghost of seasons\u2019 lost mosaics.  \n\nWe cling to blooms, to harvest\u2019s flame,  \nto crystal nights we cannot name.  \nEach turn, a thread pulled through the loom:  \nthe world remade, the heart in tomb."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_6",
+      "final_state": {
+        "role": "assigned",
+        "score": 1,
+        "submission": "In the twilight of summer\u2019s crimson blush,  \nWhere golden fields whisper secrets in the breeze,  \nThe amber glow begins to gently hush,  \nAs autumn drapes her quilt upon the trees.  \n\nThe sun dips lower in the painted sky,  \nA setting stage for fall\u2019s soft, lilting dance,  \nWhile russet leaves like tumbling kites drift by,  \nIn winds that weave an ancient, wistful trance.  \n\nOnce vibrant greens now fade to sepia tones,  \nAs autumn's brush strokes sweep the land anew;  \nWith every rustle, nature softly moans,  \nIn mellow hues of ochre and deep blue.  \n\nThe harvest moon, a sentinel of change,  \nWatches as time, like rust, erodes the day;  \nIts golden glow casts shadows long and strange,  \nWhich tell of things that come and slip away.   \n\nOh, fleeting warmth, in autumn\u2019s arms you lie,  \nA whispered promise of what\u2019s yet to claim;  \nWhile winter waits beneath November\u2019s sigh,  \nEnshrouded in a frosty, silver frame."
+      },
+      "role": "author"
+    }
+  ],
+  "winner": {
+    "id": "player_5"
+  },
+  "rounds_played": 0,
+  "history_summary": {},
+  "session_id": "poetry_slam_20250317_210835",
+  "stats": {
+    "snapshot_count": 5,
+    "event_count": 38,
+    "chat_message_count": 13
+  }
+}
