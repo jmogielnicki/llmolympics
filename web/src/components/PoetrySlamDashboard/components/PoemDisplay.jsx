@@ -1,6 +1,7 @@
 import React from "react";
 import { Award, ThumbsUp } from "lucide-react";
 import { shortenModelName } from "../../../utils/commonUtils";
+import ReactMarkdown from "react-markdown";
 
 /**
  * Component to display a poem with voting information
@@ -15,14 +16,6 @@ import { shortenModelName } from "../../../utils/commonUtils";
  */
 const PoemDisplay = ({ poem, showBorder = true }) => {
 	if (!poem) return null;
-
-	// Format the poem text to maintain line breaks
-	const formattedText = poem.text.split("\n").map((line, i) => (
-		<React.Fragment key={i}>
-			{line}
-			<br />
-		</React.Fragment>
-	));
 
 	return (
 		<div
@@ -54,7 +47,11 @@ const PoemDisplay = ({ poem, showBorder = true }) => {
 			</div>
 
 			<div className="p-4 prose prose-sm max-w-none bg-white">
-				<div className="whitespace-pre-line">{formattedText}</div>
+				<div className="whitespace-pre-line">
+					<ReactMarkdown>
+						{poem.text.replace(/  \n/g, "\n")}
+					</ReactMarkdown>
+				</div>
 			</div>
 
 			{poem.votedBy && poem.votedBy.length > 0 && (

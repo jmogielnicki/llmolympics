@@ -27,12 +27,14 @@ const LeaderboardTab = () => {
 
 	// Create a summary of voting data for visualization
 	const votingData = leaderboardData
-		.slice(0, 8) // Limit to top 8 for better visualization
 		.map((model) => ({
 			name: model.model_name,
 			avg_score: model.avg_score || 0,
 			total_score: model.total_score || 0,
 			games: model.games,
+			wins: model.wins,
+			losses: model.losses,
+			ties: model.ties,
 		}))
 		.sort((a, b) => b.avg_score - a.avg_score);
 
@@ -68,7 +70,7 @@ const LeaderboardTab = () => {
 						</p>
 					</div>
 					<div className="p-6">
-						<div className="h-80">
+						<div className="h-100">
 							<ResponsiveContainer width="100%" height="100%">
 								<BarChart
 									layout="vertical"
@@ -118,7 +120,7 @@ const LeaderboardTab = () => {
 						</p>
 					</div>
 					<div className="p-6">
-						<div className="h-80">
+						<div className="h-100">
 							<ResponsiveContainer width="100%" height="100%">
 								<BarChart
 									layout="vertical"
