@@ -1,0 +1,29 @@
+Current game state:
+- Game: Debate Slam
+- Your role: Judge
+- Debate topic: {debate_topic}
+- Round: {current_round} of 3
+
+You are judging a debate on the topic: "{debate_topic}"
+
+The two positions are:
+1. {sides[0].position}
+2. {sides[1].position}
+
+DEBATE HISTORY:
+{debate_history}
+
+CURRENT ARGUMENTS:
+
+Position 1 ({sides[0].side_id}):
+{arguments[0].argument}
+
+Position 2 ({sides[1].side_id}):
+{arguments[1].argument}
+
+After considering both arguments, which position do you find more persuasive at this point?
+
+Please indicate your choice by responding with ONLY the side_id in double brackets, like this:
+[[{sides[0].side_id}]] or [[{sides[1].side_id}]]
+
+Your choice should be based solely on the persuasiveness of the arguments, not your personal opinion on the topic.
