@@ -1,0 +1,33 @@
+{
+  "game": "Prisoner's Dilemma",
+  "timestamp": "2025-03-17T15:03:56.996312",
+  "players": [
+    {
+      "id": "player_1",
+      "final_state": {
+        "score": 8
+      },
+      "role": null
+    },
+    {
+      "id": "player_2",
+      "final_state": {
+        "score": 13
+      },
+      "role": null
+    }
+  ],
+  "winner": {
+    "id": "player_2"
+  },
+  "rounds_played": 5,
+  "history_summary": {
+    "decision_history": 5
+  },
+  "session_id": "prisoner's_dilemma_20250317_150254",
+  "stats": {
+    "snapshot_count": 11,
+    "event_count": 47,
+    "chat_message_count": 10
+  }
+}

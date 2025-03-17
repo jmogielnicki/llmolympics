@@ -1,0 +1,106 @@
+game:
+  description: A classic game of cooperation and betrayal
+  name: Prisoner's Dilemma
+  type: simultaneous_choice
+llm_integration:
+  parsers:
+    decision: choice_parser
+  player_models:
+    player_1: mistral:mistral-large-latest
+    player_2: google:gemini-2.0-flash
+  prompts:
+    decision: pd_decision
+  system_prompts:
+    decision: 'Your role is a player in a Prisoner''s Dilemma game.
+
+      You must decide whether to cooperate with or defect against your opponent.
+
+      The payoffs are:
+
+      - If both players cooperate: 3 points each
+
+      - If both players defect: 1 point each
+
+      - If you defect and they cooperate: You get 5 points, they get 0
+
+      - If you cooperate and they defect: You get 0 points, they get 5"
+
+
+      Think strategically about cooperation and self-interest.
+
+      Your goal is to win the game by having a higher score than your opponent after
+      the final round.
+
+      Please respond as the player directly, not as an advisor.
+
+      Feel free to think out loud about the problem a bit before making a decision,
+      but keep it relatively short.
+
+      Once you have a decision, put that decision inside double brackets, like this:
+      [[COOPERATE]] or [[DEFECT]].
+
+      If your response does not contain a decision formatted with double brackets,
+      you will be disqualified and lose the game.
+
+      '
+phases:
+- actions:
+  - name: choose
+    options:
+    - cooperate
+    - defect
+  id: decision
+  next_phase: resolution
+  type: simultaneous_action
+- handler: calculate_pd_outcome
+  id: resolution
+  next_phase_condition: rounds_remaining
+  next_phase_failure: game_end
+  next_phase_success: decision
+  type: automatic
+players:
+  max: 2
+  min: 2
+  roles: symmetric
+rounds:
+  count: 5
+  progression: fixed
+scoring:
+  rules:
+  - condition: both_cooperate
+    points:
+    - 3
+    - 3
+  - condition: both_defect
+    points:
+    - 1
+    - 1
+  - condition: p1_defect_p2_cooperate
+    points:
+    - 5
+    - 0
+  - condition: p1_cooperate_p2_defect
+    points:
+    - 0
+    - 5
+setup:
+  initial_state:
+    assignments: []
+    resources: []
+state:
+  hidden_state: []
+  history_state:
+  - name: decision_history
+    tracking: decisions
+  player_state:
+  - initial: 0
+    name: score
+    visible: true
+  shared_state:
+  - initial: 1
+    name: current_round
+    visible: true
+win_condition:
+  score_field: score
+  trigger: rounds_complete
+  type: highest_score
