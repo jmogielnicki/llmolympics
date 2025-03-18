@@ -1,0 +1,436 @@
+{
+  "game": {
+    "session_id": "20250318_105708",
+    "game_name": "Poetry Slam",
+    "player_models": {
+      "player_1": {
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking"
+      },
+      "player_2": {
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat"
+      },
+      "player_3": {
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner"
+      },
+      "player_4": {
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o"
+      },
+      "player_5": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      },
+      "player_6": {
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5"
+      },
+      "player_7": {
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_2",
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_3",
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner",
+        "final_score": 4,
+        "role": "author"
+      },
+      {
+        "id": "player_4",
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_5",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 1,
+        "role": "author"
+      },
+      {
+        "id": "player_6",
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_7",
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7",
+        "final_score": 2,
+        "role": "author"
+      }
+    ],
+    "rounds_played": 0,
+    "winner": "player_3",
+    "final_scores": {
+      "player_1": 0,
+      "player_2": 0,
+      "player_3": 4,
+      "player_4": 0,
+      "player_5": 1,
+      "player_6": 0,
+      "player_7": 2
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_3",
+      "winning_model_name": "DeepSeek Reasoner",
+      "final_scores_display": "Google Gemini 2.0 Thinking: 0, DeepSeek Chat: 0, DeepSeek Reasoner: 4, OpenAI GPT-4o: 0, OpenAI GPT-4.5: 1, Anthropic Claude 3.5: 0, Anthropic Claude 3.7: 2"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-18 10:57:08",
+      "message": "Game started",
+      "data": {
+        "game_name": "Poetry Slam",
+        "player_count": 7,
+        "config_summary": {
+          "phases": [
+            "prompt_creation",
+            "content_creation",
+            "voting",
+            "resolution"
+          ],
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 10:57:08",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase started"
+    },
+    {
+      "type": "prompt_creation",
+      "timestamp": "2025-03-18 10:58:00",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "prompt": "**Poem Prompt:**  \n*\"Compose a villanelle that juxtaposes a cliff\u2019s stoic endurance with the sea\u2019s relentless erosion, exploring time\u2019s passage. Use vivid sensory details (sight, sound, touch) to mirror the tension between permanence and impermanence. Incorporate the repeated lines:  \n\u2018The stone remembers what the waves forget\u2019  \nand  \n\u2018Time carves its truth where land and water meet.\u2019\"*  \n\n**Requirements:**  \n- Form: Villanelle (19 lines, 5 tercets + 1 quatrain, ABA rhyme scheme with refrains).  \n- Theme: Time\u2019s duality through natural conflict.  \n- Must include the two provided repeating lines.  \n- Focus on tactile and auditory imagery.",
+      "message": "Prompt created by DeepSeek Reasoner"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 10:58:00",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 10:58:00",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase started"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 10:58:13",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "poem": "[[The grey cliff stands, a weathered, stony face,\nThe roaring ocean crashes on the shore,\nTime carves its truth where land and water meet.\n\nThe wind whips salt, a bitter, stinging spray,\nEach wave repeats the rhythm known before,\nThe stone remembers what the waves forget.\n\nIt feels the wind, though sun and rain have beat,\nA constant surge, a rhythmic, watery pour,\nTime carves its truth where land and water meet.\n\nIt sees the seasons, change and then repeat,\nThe tireless tide advancing evermore,\nThe stone remembers what the waves forget.\n\nThough ages pass, no yielding it has yet,\nWhile grains are pulled and scattered to the floor,\nTime carves its truth where land and water meet.\n\nThis ancient struggle, fiercely held and met,\nThe stone remembers what the waves forget,\nIn every scar, a story to beget,\nTime carves its truth where land and water meet.]]",
+      "message": "Poem submitted by Google Gemini 2.0 Thinking"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 10:58:39",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "poem": "[[  \nThe stone remembers what the waves forget,  \nIts jagged face a ledger etched in scars.  \nTime carves its truth where land and water meet.  \n\nThe sea\u2019s cold fingers claw, relentless, wet,  \nA symphony of whispers, near and far.  \nThe stone remembers what the waves forget.  \n\nSalt-kissed and battered, cliffs endure, and yet  \nTheir edges crumble, grain by grain, to mar.  \nTime carves its truth where land and water meet.  \n\nThe wind\u2019s low hum, the crash of tides, beget  \nA rhythm older than the evening star.  \nThe stone remembers what the waves forget.  \n\nBeneath the moon, the ocean\u2019s silhouette  \nUnfurls its silver tongue, a ceaseless spar.  \nTime carves its truth where land and water meet.  \n\nThe cliff stands tall, though years conspire to fret  \nIts ancient bones, to wear its edges bare.  \nThe stone remembers what the waves forget.  \nTime carves its truth where land and water meet.  \n]]",
+      "message": "Poem submitted by DeepSeek Chat"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 11:02:48",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "poem": "[[  \n**Elegy of the Edge**  \n\nThe stone remembers what the waves forget\u2014  \nwaves gnaw its ribs, their teeth of frost and sleet.  \nTime carves its truth where land and water meet.  \n\nSalt licks the crag\u2019s raw skin, a cold vignette  \nof scars that hum when tides and tempests greet.  \nThe stone remembers what the waves forget.  \n\nGranite, once molten, now bears each regret\u2014  \nits fissures bloom with brine\u2019s unyielding beat.  \nTime carves its truth where land and water meet.  \n\nThe cliff\u2019s broad palms catch spray, yet stand unbent,  \nwhile seabirds scream the anthem of retreat.  \nThe stone remembers what the waves forget.  \n\nSand grinds like static in the ocean\u2019s net,  \na hymn of hunger, endless and incomplete.  \nTime carves its truth where land and water meet.  \n\nIn every crash, a dirge of *almost*\u2014not yet\u2014  \nthe cliff\u2019s slow breath, the surf\u2019s arrhythmic heat.  \nThe stone remembers what the waves forget.  \nTime carves its truth where land and water meet.  \n]]",
+      "message": "Poem submitted by DeepSeek Reasoner"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 11:02:53",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "poem": "[[  \nUpon the edge, where earth and sea compete,  \nThe stone remembers what the waves forget,  \nTime carves its truth where land and water meet.  \n\nThe cliffs rise tall, their faces stern and neat,  \nWeathered whispers echo in silhouette\u2014  \nUpon the edge, where earth and sea compete.  \n\nThe ocean roars, a distant drumbeat fleet,  \nIts salty breath in misty beads of sweat,  \nTime carves its truth where land and water meet.  \n\nUnder moonlit nights, the waters repeat,  \nA lapping lullaby, no regret\u2014  \nUpon the edge, where earth and sea compete.  \n\nThe rough-hewn rock resists retreat\u2019s deceit,  \nYet slowly yields to time\u2019s insistent threat,  \nTime carves its truth where land and water meet.  \n\nIn endless dance, with rhythms bittersweet,  \nAn ancient saga told in duet\u2014  \nUpon the edge, where earth and sea compete,  \nTime carves its truth where land and water meet.  \n]]",
+      "message": "Poem submitted by OpenAI GPT-4o"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 11:03:20",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "poem": "[[\nThe stone remembers what the waves forget,  \nA patient cliff, worn smooth through wind and spray;  \nTime carves its truth where land and water meet.\n\nThe pulse of tides relentless in their threat,  \nSalt whispers etch deep scars in granite grey;  \nThe stone remembers what the waves forget.\n\nBeneath the moon's pale gaze, night's silhouette  \nFeels ocean's rhythm hammering away\u2014  \nTime carves its truth where land and water meet.\n\nThe cliff stands stoic, drenched and brine-beset,  \nIts silence louder than the sea\u2019s fierce fray;  \nThe stone remembers what the waves forget.\n\nTouch arched edges that careful hands regret,  \nFingers trace fractures, grains begin to fray;  \nTime carves its truth where land and water meet.\n\nYet gently, stubborn rock resists the threat,  \nEndures the ceaseless roar, the misted spray;  \nThe stone remembers what the waves forget\u2014  \nTime carves its truth where land and water meet.\n]]",
+      "message": "Poem submitted by OpenAI GPT-4.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 11:03:25",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "poem": "Here is my villanelle poem for the Poetry Slam, following the given prompt:\n\n[[The stone remembers what the waves forget,\nEons etched in layers, silent and deep.\nTime carves its truth where land and water meet.\n\nThe cliff face stands, unmoved by surf's threat,\nWhile breakers crash and tumble, never sleep.\nThe stone remembers what the waves forget.\n\nSalt spray stings, wind-whipped and cold and wet,\nAs tides advance, retreat, advance, repeat.\nTime carves its truth where land and water meet.\n\nGulls cry above the ceaseless sea's fret,\nTheir calls like echoes of the earth's heartbeat.\nThe stone remembers what the waves forget.\n\nRock crumbles slowly, grains of sand offset\nThe ocean's rage, a battle incomplete.\nTime carves its truth where land and water meet.\n\nThe shore endures, though changed, unyielding yet,\nAs rhythmic waves its weathered contours sweep.\nThe stone remembers what the waves forget.\nTime carves its truth where land and water meet.]]",
+      "message": "Poem submitted by Anthropic Claude 3.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 11:03:31",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "poem": "I've composed a villanelle that explores the relationship between cliff and sea, focusing on time's passage with sensory details. Here's my submission:\n\n[[The Dialogue of Stone and Sea\n\nThe stone remembers what the waves forget,\nWhile thunder-crashes pound the weathered shore.\nTime carves its truth where land and water meet.\n\nRough fingers of the coast still harbor yet\nThe ancient whispers from earth's molten core.\nThe stone remembers what the waves forget.\n\nSalt-spray and wind-song weave a cold duet,\nAs jagged edges smooth to something more.\nTime carves its truth where land and water meet.\n\nThe cliff stands proud, unmoved by foam-flecked threat,\nThough each collision claims what came before.\nThe stone remembers what the waves forget.\n\nSharp echoes ricochet like a regret\nThrough misty caverns sculpted to endure.\nTime carves its truth where land and water meet.\n\nThe touch of centuries leaves no debt,\nJust silent witness to an endless war.\nThe stone remembers what the waves forget.\nTime carves its truth where land and water meet.]]",
+      "message": "Poem submitted by Anthropic Claude 3.7"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 11:03:31",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 11:03:31",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase started"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 11:03:42",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "voted_for": "player_7",
+      "voted_for_model": "Anthropic Claude 3.7",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_7",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_7]]",
+      "message": "Google Gemini 2.0 Thinking voted for Anthropic Claude 3.7"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 11:03:49",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "voted_for": "player_5",
+      "voted_for_model": "OpenAI GPT-4.5",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_5",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_5]]",
+      "message": "DeepSeek Chat voted for OpenAI GPT-4.5"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 11:04:32",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "voted_for": "player_7",
+      "voted_for_model": "Anthropic Claude 3.7",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_7",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_7]]",
+      "message": "DeepSeek Reasoner voted for Anthropic Claude 3.7"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 11:04:33",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "voted_for": "player_3",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "OpenAI GPT-4o voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 11:04:35",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "voted_for": "player_3",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "OpenAI GPT-4.5 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 11:04:36",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "voted_for": "player_3",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "Anthropic Claude 3.5 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 11:04:38",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "voted_for": "player_3",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "Anthropic Claude 3.7 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 11:04:38",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 11:04:38",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase started"
+    },
+    {
+      "type": "voting_resolution",
+      "timestamp": "2025-03-18 11:04:38",
+      "round": 0,
+      "scores": {
+        "player_1": 0,
+        "player_2": 0,
+        "player_3": 4,
+        "player_4": 0,
+        "player_5": 1,
+        "player_6": 0,
+        "player_7": 2
+      },
+      "running_scores": {
+        "player_1": 0,
+        "player_2": 0,
+        "player_3": 4,
+        "player_4": 0,
+        "player_5": 1,
+        "player_6": 0,
+        "player_7": 2
+      },
+      "vote_counts": {
+        "player_7": 2,
+        "player_5": 1,
+        "player_3": 4
+      },
+      "winners": [
+        "player_3"
+      ],
+      "message": "Votes tallied and points awarded"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 11:04:38",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase ended"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-18 11:04:38",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_3",
+        "rounds_played": 0
+      },
+      "final_scores": {
+        "player_1": 0,
+        "player_2": 0,
+        "player_3": 4,
+        "player_4": 0,
+        "player_5": 1,
+        "player_6": 0,
+        "player_7": 2
+      }
+    }
+  ]
+}
