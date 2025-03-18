@@ -207,14 +207,39 @@
             ],
             "vote_count": 2
           }
+        },
+        {
+          "session_id": "poetry_slam_20250318_121046",
+          "role": "author",
+          "score": 1,
+          "result": "loss",
+          "other_players": [
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview"
+          ],
+          "voting": {
+            "voted_for": "player_5",
+            "voted_for_model": "deepseek:deepseek-reasoner",
+            "votes_received": [
+              "player_5"
+            ],
+            "votes_received_models": [
+              "deepseek:deepseek-reasoner"
+            ],
+            "vote_count": 1
+          }
         }
       ],
       "stats": {
-        "prompter_rate": 0.25,
-        "avg_votes_received": 1.375,
-        "total_votes_received": 11,
-        "total_vote_actions": 8,
-        "total_games": 8
+        "prompter_rate": 0.222,
+        "avg_votes_received": 1.333,
+        "total_votes_received": 12,
+        "total_vote_actions": 9,
+        "total_games": 9
       }
     },
     {
@@ -469,14 +494,49 @@
             ],
             "vote_count": 4
           }
+        },
+        {
+          "session_id": "poetry_slam_20250318_121046",
+          "role": "author",
+          "score": 6,
+          "result": "win",
+          "other_players": [
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview"
+          ],
+          "voting": {
+            "voted_for": "player_4",
+            "voted_for_model": "deepseek:deepseek-chat",
+            "votes_received": [
+              "player_1",
+              "player_2",
+              "player_3",
+              "player_4",
+              "player_6",
+              "player_7"
+            ],
+            "votes_received_models": [
+              "mistral:mistral-large-latest",
+              "google:gemini-2.0-flash",
+              "google:gemini-2.0-flash-thinking-exp-01-21",
+              "deepseek:deepseek-chat",
+              "openai:gpt-4o",
+              "openai:gpt-4.5-preview"
+            ],
+            "vote_count": 6
+          }
         }
       ],
       "stats": {
-        "prompter_rate": 0.125,
-        "avg_votes_received": 4.0,
-        "total_votes_received": 32,
-        "total_vote_actions": 8,
-        "total_games": 8
+        "prompter_rate": 0.111,
+        "avg_votes_received": 4.222,
+        "total_votes_received": 38,
+        "total_vote_actions": 9,
+        "total_games": 9
       }
     },
     {
@@ -669,14 +729,35 @@
             "votes_received_models": [],
             "vote_count": 0
           }
+        },
+        {
+          "session_id": "poetry_slam_20250318_121046",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4.5-preview"
+          ],
+          "voting": {
+            "voted_for": "player_5",
+            "voted_for_model": "deepseek:deepseek-reasoner",
+            "votes_received": [],
+            "votes_received_models": [],
+            "vote_count": 0
+          }
         }
       ],
       "stats": {
-        "prompter_rate": 0.125,
-        "avg_votes_received": 0.75,
+        "prompter_rate": 0.111,
+        "avg_votes_received": 0.667,
         "total_votes_received": 6,
-        "total_vote_actions": 8,
-        "total_games": 8
+        "total_vote_actions": 9,
+        "total_games": 9
       }
     },
     {
@@ -873,14 +954,35 @@
             ],
             "vote_count": 1
           }
+        },
+        {
+          "session_id": "poetry_slam_20250318_121046",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o"
+          ],
+          "voting": {
+            "voted_for": "player_5",
+            "voted_for_model": "deepseek:deepseek-reasoner",
+            "votes_received": [],
+            "votes_received_models": [],
+            "vote_count": 0
+          }
         }
       ],
       "stats": {
         "prompter_rate": 0.0,
-        "avg_votes_received": 0.75,
+        "avg_votes_received": 0.667,
         "total_votes_received": 6,
-        "total_vote_actions": 8,
-        "total_games": 8
+        "total_vote_actions": 9,
+        "total_games": 9
       }
     },
     {
@@ -1630,14 +1732,35 @@
             "votes_received_models": [],
             "vote_count": 0
           }
+        },
+        {
+          "session_id": "poetry_slam_20250318_121046",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview"
+          ],
+          "voting": {
+            "voted_for": "player_5",
+            "voted_for_model": "deepseek:deepseek-reasoner",
+            "votes_received": [],
+            "votes_received_models": [],
+            "vote_count": 0
+          }
         }
       ],
       "stats": {
         "prompter_rate": 0.0,
-        "avg_votes_received": 0.286,
+        "avg_votes_received": 0.25,
         "total_votes_received": 2,
-        "total_vote_actions": 7,
-        "total_games": 7
+        "total_vote_actions": 8,
+        "total_games": 8
       }
     },
     {
@@ -1809,14 +1932,35 @@
             ],
             "vote_count": 2
           }
+        },
+        {
+          "session_id": "poetry_slam_20250318_121046",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview"
+          ],
+          "voting": {
+            "voted_for": "player_5",
+            "voted_for_model": "deepseek:deepseek-reasoner",
+            "votes_received": [],
+            "votes_received_models": [],
+            "vote_count": 0
+          }
         }
       ],
       "stats": {
-        "prompter_rate": 0.286,
-        "avg_votes_received": 0.857,
+        "prompter_rate": 0.25,
+        "avg_votes_received": 0.75,
         "total_votes_received": 6,
-        "total_vote_actions": 7,
-        "total_games": 7
+        "total_vote_actions": 8,
+        "total_games": 8
       }
     },
     {
@@ -1974,14 +2118,35 @@
             "votes_received_models": [],
             "vote_count": 0
           }
+        },
+        {
+          "session_id": "poetry_slam_20250318_121046",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview"
+          ],
+          "voting": {
+            "voted_for": "player_5",
+            "voted_for_model": "deepseek:deepseek-reasoner",
+            "votes_received": [],
+            "votes_received_models": [],
+            "vote_count": 0
+          }
         }
       ],
       "stats": {
-        "prompter_rate": 0.143,
-        "avg_votes_received": 0.143,
+        "prompter_rate": 0.125,
+        "avg_votes_received": 0.125,
         "total_votes_received": 1,
-        "total_vote_actions": 7,
-        "total_games": 7
+        "total_vote_actions": 8,
+        "total_games": 8
       }
     }
   ]
