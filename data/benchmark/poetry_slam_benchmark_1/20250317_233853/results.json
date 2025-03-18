@@ -1,0 +1,80 @@
+{
+  "game": "Poetry Slam",
+  "timestamp": "2025-03-18T00:16:06.409868",
+  "players": [
+    {
+      "id": "player_1",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "In the hallway of hours, I pause and I wait,\nA breath between moments, a hinge in the day,\nNeither coming nor going, I oscillate,\nIn this liminal space, I hang in delay.\n\nA breath between moments, a hinge in the day,\nAirports and stations, the echoes resound,\nIn this liminal space, I hang in delay,\nBetween hello and goodbye, I am unbound.\n\nAirports and stations, the echoes resound,\nNeither here nor there, in transit I stand,\nBetween hello and goodbye, I am unbound,\nA vessel of waiting, an uncharted land.\n\nNeither here nor there, in transit I stand,\nAdolescent twilight, a bridge in the night,\nA vessel of waiting, an uncharted land,\nGrief's dawning, uncertain, neither dark nor light.\n\nAdolescent twilight, a bridge in the night,\nNeither coming nor going, I oscillate,\nGrief's dawning, uncertain, neither dark nor light,\nIn the hallway of hours, I pause and I wait."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_2",
+      "final_state": {
+        "role": "prompter",
+        "score": 0,
+        "submission": "The gate hums a song of leaving soon,\nA waiting room filled with echoes of goodbye,\nSuspended between a fading afternoon,\nAnd journeys etched beneath a restless eye.\n\nA waiting room filled with echoes of goodbye,\nEach face a story, unwritten and untold,\nAnd journeys etched beneath a restless eye,\nA narrative where futures quickly unfold.\n\nEach face a story, unwritten and untold,\nLike hallways stretching, vanishing from sight,\nA narrative where futures quickly unfold,\nBathed in the fluorescent, sterile light.\n\nLike hallways stretching, vanishing from sight,\nA moment frozen, neither lost nor found,\nBathed in the fluorescent, sterile light,\nA hollow echo where no solid ground.\n\nA moment frozen, neither lost nor found,\nSuspended between a fading afternoon,\nA hollow echo where no solid ground,\nThe gate hums a song of leaving soon."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_3",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "Empty chairs in rows, a silent hum,\nThe clock hands pause, suspended in the air.\nA space between where we have come from,\nAnd where we\u2019re going, hanging unaware.\n\nThe clock hands pause, suspended in the air,\nEchoes whisper of departures, soft and low.\nAnd where we\u2019re going, hanging unaware,\nA future glimpsed in strangers\u2019 transient flow.\n\nEchoes whisper of departures, soft and low,\nWe wander hallways paved with muted grey.\nA future glimpsed in strangers\u2019 transient flow,\nIn this suspended moment, come what may.\n\nWe wander hallways paved with muted grey,\nA sense of waiting, pregnant and unknown.\nIn this suspended moment, come what may,\nEmpty chairs in rows, a silent hum is sown."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_4",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "The hallway stretches, endless and dim,  \nA threshold of shadows, a space in between.  \nThe clock ticks softly, a faint, hollow hymn,  \nA pause in the world, unseen, yet keen.  \n\nA threshold of shadows, a space in between,  \nWhere echoes of footsteps linger and fade.  \nA pause in the world, unseen, yet keen,  \nA bridge to the future, yet to be made.  \n\nWhere echoes of footsteps linger and fade,  \nThe air hums with questions, unanswered, still.  \nA bridge to the future, yet to be made,  \nA weight in the chest, a void to fill.  \n\nThe air hums with questions, unanswered, still,  \nThe walls hold their breath, the moment suspends.  \nA weight in the chest, a void to fill,  \nA journey that starts where the waiting ends.  \n\nThe walls hold their breath, the moment suspends,  \nThe clock ticks softly, a faint, hollow hymn.  \nA journey that starts where the waiting ends,  \nThe hallway stretches, endless and dim."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_5",
+      "final_state": {
+        "role": "assigned",
+        "score": 6,
+        "submission": "**Liminal Pantoum**  \n\nThe clock blinks 3 AM in a terminal\u2019s throat,  \nFluorescent hum devours the shadow of feet.  \nWe are all echoes learning the same note\u2014  \nA breath held between landing and retreat.  \n\nFluorescent hum devours the shadow of feet,  \nA suitcase wheels its ghost through empty gates.  \nA breath held between landing and retreat,  \nThe escalator hums but never translates.  \n\nA suitcase wheels its ghost through empty gates,  \nAdolescence curls like smoke in my palm.  \nThe escalator hums but never translates  \nThe distance between calm and the alarm.  \n\nAdolescence curls like smoke in my palm,  \nA verdict waits in the phone\u2019s silent stare.  \nThe distance between calm and the alarm  \nIs a hallway where all the doors are air.  \n\nA verdict waits in the phone\u2019s silent stare,  \nGrief folds itself into a paper crane.  \nIs a hallway where all the doors are air\u2014  \nThe clock blinks 3 AM in a terminal\u2019s throat again.  \n\nGrief folds itself into a paper crane,  \nWe are all echoes learning the same note.  \nThe clock blinks 3 AM in a terminal\u2019s throat again\u2014  \nA breath held between landing and retreat."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_6",
+      "final_state": {
+        "role": "assigned",
+        "score": 1,
+        "submission": "In corridors where silence hums,  \nWe drift between the in-betweens.  \nEach echo of a footstep drums,  \nWhen futures wait behind the scenes.  \n\nWe drift between the in-betweens,  \nWhere shadows stretch and daylight bends.  \nWhen futures wait behind the scenes,  \nUncertainty, our closest friend.  \n\nWhere shadows stretch and daylight bends,  \nThe window frames a sky of gray.  \nUncertainty, our closest friend,  \nAs time dissolves the hours away.  \n\nThe window frames a sky of gray,  \nEach echo of a footstep drums.  \nAs time dissolves the hours away,  \nIn corridors where silence hums."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_7",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "In hallways long, between whispers and sighs,  \nshadows waver, linger, hesitate and stall;  \ncaught between hellos and quiet goodbyes,  \nwe wait suspended, uncertain of it all.  \n\nShadows waver, linger, hesitate and stall,  \nfootsteps echo softly, yet never seem to land;  \nwe wait suspended, uncertain of it all\u2014  \na heartbeat paused, no destination planned.  \n\nFootsteps echo softly, yet never seem to land,  \nin terminals quiet, stark corridors austere;  \na heartbeat paused, no destination planned,  \nat thresholds blurred, we linger here.  \n\nIn terminals quiet, stark corridors austere,  \nmemories drift faintly, half-formed and unclear;  \nat thresholds blurred, we linger here,  \ncaught in twilight's hush, between hope and fear.  \n\nMemories drift faintly, half-formed and unclear,  \ncaught between hellos and quiet goodbyes;  \ncaught in twilight's hush, between hope and fear,  \nin hallways long, between whispers and sighs."
+      },
+      "role": "author"
+    }
+  ],
+  "winner": {
+    "id": "player_5"
+  },
+  "rounds_played": 0,
+  "history_summary": {},
+  "session_id": "poetry_slam_20250317_233853",
+  "stats": {
+    "snapshot_count": 5,
+    "event_count": 42,
+    "chat_message_count": 15
+  }
+}

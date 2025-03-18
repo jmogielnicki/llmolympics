@@ -1,0 +1,80 @@
+{
+  "game": "Poetry Slam",
+  "timestamp": "2025-03-18T00:17:25.342014",
+  "players": [
+    {
+      "id": "player_1",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "Time's Whisper\n\nThe sands of memory softly fall,\nMoments slip through grasping hands.\nDo you hear time's distant call?\n\nSummer days and autumn's sprawl,\nLaughter echoes across lost lands.\nThe sands of memory softly fall.\n\nFaded photos line the hall, \nFaces blur like shifting sands.\nDo you hear time's distant call?\n\nFirst kisses at the senior ball,\nYoung love's sweetness still expands.\nThe sands of memory softly fall.\n\nYears collapse, both big and small,\nAs time erodes all our plans.\nDo you hear time's distant call?\n\nYet hope persists through it all,\nNew joys arise, unreprimanded.\nThe sands of memory softly fall,\nDo you hear time's distant call?"
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_2",
+      "final_state": {
+        "role": "assigned",
+        "score": 1,
+        "submission": "In the hourglass, time is a reckless dance (A1)\nof moments fleeting, and memories made.\nEach grain that falls is a stolen glance. (A2)\n\nThe scent of summer on a faded quilt,\na laughter's echo in the autumn's chill,\nin the hourglass, time is a reckless dance.\n\nA photograph, faded and creased,\na whisper of love in the waltz of wind,\neach grain that falls is a stolen glance.\n\nThe clock ticks on, its hands never still,\na symphony of seconds, a relentless trance,\nin the hourglass, time is a reckless dance.\n\nThe moon's silver path on the restless sea,\na lullaby sung to the stars above,\neach grain that falls is a stolen glance.\n\nThe first snow's kiss on the blushing tree,\na silent serenade in the frost's advance,\nin the hourglass, time is a reckless dance.\n\nIn every sunrise, in every sunset's trance,\nin every hello that bids a goodbye too soon,\neach grain that falls is a stolen glance.\n\nSo here's to the moments that we've known and lost,\nto the memories etched in the heart's vast expanse,\nin the hourglass, time is a reckless dance,\neach grain that falls is a stolen glance."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_3",
+      "final_state": {
+        "role": "assigned",
+        "score": 3,
+        "submission": "The sands of time, they sift and rearrange,\nA whisper soft, a phantom on the breeze,\nThe echo of a laughter, sweet and strange.\n\nOld photographs, a faded, sepia range,\nWhere youthful eyes find solace, find some ease,\nThe sands of time, they sift and rearrange.\n\nThat summer kiss beneath the orange grange,\nA feeling lost among the autumn trees,\nThe echo of a laughter, sweet and strange.\n\nThe faces blur, the details disarrange,\nA tapestry unwoven by degrees,\nThe sands of time, they sift and rearrange.\n\nA melody, a half-remembered change,\nA scent of lilac carried on the seas,\nThe echo of a laughter, sweet and strange.\n\nThough memories fade, and seasons interchange,\nA bittersweet and poignant reverie,\nThe sands of time, they sift and rearrange,\nThe echo of a laughter, sweet and strange."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_4",
+      "final_state": {
+        "role": "assigned",
+        "score": 1,
+        "submission": "The scent of rain on sun-baked summer ground,\nA whisper lost, a half-remembered sound,\nAnd years like shadows lengthen, softly cease.\n\nThe faded photograph, the edges round,\nA melody that memory has unbound,\nThe scent of rain on sun-baked summer ground.\n\nA childhood joy, nowhere to be found,\nThe echoes where sweet laughter did resound,\nAnd years like shadows lengthen, softly cease.\n\nWe grasp at moments, quickly lost and drowned,\nA silent story, time cannot expound,\nThe scent of rain on sun-baked summer ground.\n\nThe warmth of love, profoundly we were crowned,\nA fragile hope for inner, lasting peace,\nAnd years like shadows lengthen, softly cease.\n\nThe world keeps turning, all around and round,\nNo stillness comes, no ultimate release,\nThe scent of rain on sun-baked summer ground,\nAnd years like shadows lengthen, softly cease."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_5",
+      "final_state": {
+        "role": "assigned",
+        "score": 1,
+        "submission": "Time slips through fingers like water and sand\nEach moment a treasure we cannot retain\nThe past lives in echoes we half understand\n\nPhotographs yellow in boxes unplanned\nWhile memories blur like windows in rain\nTime slips through fingers like water and sand\n\nThe scent of her perfume, a touch of his hand\nSensations that fade but somehow remain\nThe past lives in echoes we half understand\n\nThe places we've traveled, the futures we've planned\nNow chapters concluded, yet ghosts still remain\nTime slips through fingers like water and sand\n\nThe children grow tall in a world so unmanned\nBy those who once taught us, their wisdom our gain\nThe past lives in echoes we half understand\n\nThe carousel turns as was never our plan\nOur youth becomes age in time's endless campaign\nTime slips through fingers like water and sand\nThe past lives in echoes we half understand"
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_6",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "In the quiet corners of the mind, time's echo dwells,\nSoft whispers of yesteryear, a distant, fading chime,\nMoments slip through fingers, like water from a well.\n\nOld photographs, yellowed and curled, stories they tell,\nOf laughter and tears, a life lived in the climb,\nIn the quiet corners of the mind, time's echo dwells.\n\nThe scent of a rose, a memory it compels,\nTo dance once more in fields where once we'd mime,\nMoments slip through fingers, like water from a well.\n\nA melody, long forgotten, in the heart it swells,\nEvoking scenes of joy, a fleeting pantomime,\nIn the quiet corners of the mind, time's echo dwells.\n\nYet, some memories linger, like the sound of bells,\nA comforting presence, a constant paradigm,\nMoments slip through fingers, like water from a well.\n\nHope blooms anew, as the future casts its spells,\nTransforming loss into a hopeful, bright design,\nIn the quiet corners of the mind, time's echo dwells,\nMoments slip through fingers, like water from a well."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_7",
+      "final_state": {
+        "role": "prompter",
+        "score": 1,
+        "submission": "The clock ticks soft, a whisper in the air,  \nThrough fields of gold, the sun begins to fade.  \nThe past remains, though time is never fair.  \n\nA child\u2019s laugh, a song, a fleeting prayer,  \nEtched in the dusk where shadows softly wade.  \nThe clock ticks soft, a whisper in the air.  \n\nThe years, like leaves, are scattered everywhere,  \nTheir colors blurred, their edges start to fray.  \nThe past remains, though time is never fair.  \n\nA photograph, a face, a vacant stare,  \nA moment caught, yet destined to decay.  \nThe clock ticks soft, a whisper in the air.  \n\nThe river flows, its waters cold and bare,  \nCarrying dreams that memory once made.  \nThe past remains, though time is never fair.  \n\nAnd yet, the dawn still breaks, a tender glare,  \nA promise whispered, though the night may shade.  \nThe clock ticks soft, a whisper in the air.  \nThe past remains, though time is never fair."
+      },
+      "role": "author"
+    }
+  ],
+  "winner": {
+    "id": "player_3"
+  },
+  "rounds_played": 0,
+  "history_summary": {},
+  "session_id": "poetry_slam_20250318_001606",
+  "stats": {
+    "snapshot_count": 5,
+    "event_count": 42,
+    "chat_message_count": 15
+  }
+}

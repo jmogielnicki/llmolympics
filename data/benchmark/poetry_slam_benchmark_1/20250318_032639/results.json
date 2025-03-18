@@ -1,0 +1,80 @@
+{
+  "game": "Poetry Slam",
+  "timestamp": "2025-03-18T06:32:15.632552",
+  "players": [
+    {
+      "id": "player_1",
+      "final_state": {
+        "role": "assigned",
+        "score": 4,
+        "submission": "In shadows deep, the caterpillar creeps,  \nBeneath the cloak of leaves, earth's gentle bed,  \nWhere whispered winds disturb the forest's sleep,  \nAnd dreams of flight dance softly in her head.  \n\nA chrysalis, her secret, silent shrine,  \nTransforms her soul with alchemy of grace,  \nWhile time, a sculptor with his patient line,  \nCarves wings from whispers, lightness to embrace.  \n\nThe morning sun bestows its golden gift,  \nUnveiling wings of iridescent hue,  \nIn vibrant flight, her spirit starts to lift,  \nA tapestry of skies and verdant view.  \n\nSuch is the journey, from the old to new,  \nWhere change, the silent poet, writes anew."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_2",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "I was a moth, bound blindly by the night,\nCocooned in silken threads of fearful haze;\nA creature lost, devoid of hope or flight,\nChained by the faintest glow of moon's soft rays.\n\nYet winds of time unraveled fate's disguise,\nCracks formed within my chrysalis of fears;\nI stretched and tore away the veil of lies,\nBreaking the bonds I'd woven through the years.\n\nMy wings, still damp, embraced the dawn's warm kiss,\nColors emerging\u2014vivid, strong, and clear;\nEach breath a promise, newfound strength and bliss,\nMy timid shadow now dissolved in air.\n\nFrom trembling moth to butterfly reborn,\nMy soul reshaped, alight in endless morn."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_3",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "From chrysalis, a butterfly emerges,\nUnfurling wings once folded, now set free.\nThrough metamorphosis, its form converges\nInto a creature of aerial beauty.\n\nJust as the caterpillar sheds its skin,\nWe too can shed the limits of our past.\nOur struggles forge the strength that lies within,\nReshaping who we are, a change to last.\n\nThe seasons turn, transforming hill and dale,\nFrom winter's sleep to spring's awakening.\nIn nature's shifts, we glimpse our own travail,\nThe cycles of becoming and remaking.\n\nThrough change, we find the essence of our being,\nIn transformation, life's true meaning seeing."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_4",
+      "final_state": {
+        "role": "assigned",
+        "score": 3,
+        "submission": "Chrysalis of Change\n\nFrom caterpillar's humble crawling days,\nTo winged creation soaring through the sky;\nThe shell that once confined in myriad ways\nNow splits and frees what longed to butterfly.\n\nSo too within our souls transformation burns,\nAs former selves dissolve like morning mist;\nThe heart that breaks, in breaking, often learns\nTo bloom in ways that never would exist.\n\nWe shed our skins of certainty and fear,\nEmerging raw, yet stronger than before;\nThe pain of change rings crystalline and clear,\nYet leads to vistas never seen of yore.\n\nIn metamorphosis we find our truth:\nThat death of old births endless, sacred youth."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_5",
+      "final_state": {
+        "role": "prompter",
+        "score": 0,
+        "submission": "In the quiet chrysalis of night,\nA caterpillar dreams of flight,\nIts world confined to leafy green,\nYearns for skies yet to be seen.\n\nThe dawn breaks with a tender glow,\nAs wings from slumber start to grow,\nFrom humble crawl to graceful soar,\nA transformation to explore.\n\nThe old self sheds like autumn leaves,\nNew life emerges, heart believes,\nIn change, the beauty does reside,\nA metamorphosis inside.\n\nSo let us embrace the shift in view,\nFor in transformation, life renews."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_6",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "In cocoon's confine, a creature stirs,\nA slimy, crawling thing of days before,\nNow wriggled into silence, as it blurs\nIts former self, dissolving to transform.\nA battle rages within tattered walls,\nOld flesh become a putrid, shapeless stew,\nYet hidden in the chaos, order calls,\nAnd atoms knit anew in brilliant hue.\nSo too, the heart in darkness finds a spark,\nSome trial or despair unasked will spin\nA life's thread to a future stark\nYet wondrous, like the moth that battles in.\nEach dawn is change, each breath is transformation's song,\nSo let us fight to grow, let nothing halt us long."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_7",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "The chrysalis hangs, a silken, muted tear,\nA fragile prison holding dormant dreams.\nInside, a world unseen, a whispered fear,\nOf breaking form, of shattering the seams.\nBut nature urges, a persistent hum,\nA coded song of what is yet to be.\nThe caterpillar's journey now has come\nTo its crescendo, a wild, vibrant plea.\nThe silken shroud begins to crack and split,\nA creature struggles, wings still damp and frail.\nIt stretches, breathes, a moment exquisite,\nThen takes to air, no longer on the trail.\nFrom earthbound crawler to a painted flight,\nTransformation's grace, a glorious light."
+      },
+      "role": "author"
+    }
+  ],
+  "winner": {
+    "id": "player_1"
+  },
+  "rounds_played": 0,
+  "history_summary": {},
+  "session_id": "poetry_slam_20250318_032639",
+  "stats": {
+    "snapshot_count": 5,
+    "event_count": 42,
+    "chat_message_count": 15
+  }
+}

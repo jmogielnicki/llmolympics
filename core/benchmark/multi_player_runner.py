@@ -330,6 +330,9 @@ class MultiPlayerBenchmarkRunner:
         for i in range(1, len(models) + 1):
             game_config['llm_integration']['player_models'][f"player_{i}"] = models[i-1]
 
+        game_config['players']['min'] = self.players_per_game
+        game_config['players']['max'] = self.players_per_game
+
         # Find which player has the prompter model
         prompter_player_id = None
         for i, model in enumerate(models, 1):

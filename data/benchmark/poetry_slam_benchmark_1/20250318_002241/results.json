@@ -1,0 +1,80 @@
+{
+  "game": "Poetry Slam",
+  "timestamp": "2025-03-18T03:10:33.533118",
+  "players": [
+    {
+      "id": "player_1",
+      "final_state": {
+        "role": "assigned",
+        "score": 1,
+        "submission": "Unbreakable\n\nWinter branch cracks loud\u2014\nBeneath ice, green cells whisper\n\"We are still alive\"\n\nMorning dewdrops rest\nOn a spider's broken web\u2014\nRebuilding begins\n\nAfter wildfire,\nFirst sprouts push through blackened earth\u2014\nGreen defies the ash\n\nStorm-weathered lighthouse\nStands guard over angry waves\u2014\nPaint peels, light still burns\n\nChild falls, scrapes her knee\nTears dry quickly in the sun\u2014\nTomorrow, she runs"
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_2",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "In the storm's fierce grasp,\nBranches snap, leaves are torn,\nYet roots hold steadfast.\n\nFrom the shattered earth,\nA single sprout dares to rise,\nWhispering of hope.\n\nStep by weary step,\nThe climb reclaims lost terrain,\nMuscles ache with growth.\n\nBeneath the new sun,\nScars become a tapestry,\nStrength woven from pain."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_3",
+      "final_state": {
+        "role": "assigned",
+        "score": 1,
+        "submission": "In the heart of storm,\nA great oak bows but does not\nYield to winds that bite.\n\nMorning light reveals\nFractures hidden by the dark,\nYet the sapling stands.\n\nRaindrops nourish roots,\nAwhisper of life stirs in\nBuds that defy death.\n\nGnarled hands reach for sun,\nCaressing warmth and growing\nStronger than before.\n\nBlossoms paint the sky,\nA testament to the strength\nFound in adversity.\n\nEternal dance,\nThe ebb and flow of resilience,\nIn every soul's breath.\n\nWith each setting sun,\nA phoenix rises from ash,\nResolute and free.\n\nScars adorn the skin,\nSilent tales of battles won,\nBeacons of hope shine.\n\nThrough the coldest night,\nA star's unyielding light\nGuides the weary heart home.\n\nUnseen embers glow,\nForging courage from despair,\nResilience reigns."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_4",
+      "final_state": {
+        "role": "prompter",
+        "score": 0,
+        "submission": "Shattered vase on floor,\nFragrant water soaks the wood,\nSilence fills the room.\n\nTiny green shoot now,\nPushing through the cracked concrete,\nSun, a gentle kiss.\n\nSlowly, roots descend,\nGrasping earth with patient hold,\nWind cannot now break.\n\nScar upon the hand,\nReminder of burning heat,\nStronger skin remains.\n\nOcean's constant roar,\nWears the stones to smoothest form,\nPatience carves new strength.\n\nDust motes in the sun,\nDancing on a silent breeze,\nLife, a quiet hum."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_5",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "Sharp shards pierce the skin,\nSilence screams on empty floor,\nHeartwood starts to split.\n\nCracked earth drinks the rain,\nTiny green shoot starts to push,\nLife hums in the soil.\n\nSlow breath, steady hands,\nWoven threads replace the torn,\nLight returns in lines.\n\nScarred bark marks the storm,\nDeeper roots now grip the ground,\nStronger than before."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_6",
+      "final_state": {
+        "role": "assigned",
+        "score": 2,
+        "submission": "Cracks in the pavement\u2014  \na single weed pushes through,  \ndefying the stone.  \n\nWind howls, branches break,  \nyet roots hold firm in the dark,  \nsilent, unyielding.  \n\nMorning light returns,  \na scarred tree stands taller now,  \nits leaves whisper strength.  \n\nThe storm\u2019s echo fades,  \na bird builds its nest anew,  \nhope takes fragile form.  \n\nThrough ash and debris,  \ngreen shoots rise, unasked, unseen\u2014  \nlife insists on life."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_7",
+      "final_state": {
+        "role": "assigned",
+        "score": 3,
+        "submission": "**Resilience: A Seasonal Cartography**  \n\nWinter\u2019s weight fractures\u2014  \nsplintered aria\u2014sap beads  \nlike first words unsaid.  \n\nConcrete cracks whisper.  \nA green fist uncurling, drinks  \nlightnings of April.  \n\nRoots drunk on stone-dew,  \nsummer\u2019s furnace forges veins\u2014  \nthirst turned to marrow.  \n\nBare-knuckled branches  \nclutch the wind\u2019s throat\u2014autumn sings  \nour old, borrowed tune."
+      },
+      "role": "author"
+    }
+  ],
+  "winner": {
+    "id": "player_7"
+  },
+  "rounds_played": 0,
+  "history_summary": {},
+  "session_id": "poetry_slam_20250318_002241",
+  "stats": {
+    "snapshot_count": 5,
+    "event_count": 42,
+    "chat_message_count": 15
+  }
+}

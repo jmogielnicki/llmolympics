@@ -1,0 +1,85 @@
+{
+  "game": "Poetry Slam",
+  "timestamp": "2025-03-17T23:38:53.424919",
+  "players": [
+    {
+      "id": "player_1",
+      "final_state": {
+        "role": "assigned",
+        "score": 2,
+        "submission": "Beneath the oak, its roots like veins entwined,  \nI watched the seasons paint their fleeting art.  \nThe autumn leaves, in crimson hues confined,  \nFell soft as whispers, stirring my still heart.  \n\nThe winter came, a shroud of frost and white,  \nIts silence taught me patience, deep and pure.  \nThe barren boughs, though stripped of all their light,  \nHeld secrets of a strength that would endure.  \n\nThen spring arrived, a burst of green and gold,  \nIts tender shoots a promise of rebirth.  \nThe world awoke, its stories yet untold,  \nAnd I, reborn, embraced my newfound worth.  \n\nThrough nature\u2019s cycles, I have learned to grow\u2014  \nA seed transformed, now rooted, strong, aglow."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_2",
+      "final_state": {
+        "role": "assigned",
+        "score": 2,
+        "submission": "I wandered where the winter stripped the trees,  \nEach branch a brittle cipher of the freeze,  \nThe earth a vault of locked, unyielding keys\u2014  \nMy heart ached with the weight of its unease.  \n\nThen came the thaw\u2014a murmur through the stone,  \nA chrysalis of ice began to thin,  \nTo bleed into the roots, once stark and lone,  \nAnd wake the dormant song beneath my skin.  \n\nThe river, once a serpent bound in chains,  \nNow shook its scales of glass, embraced the climb,  \nAnd in its roar, I learned to shed my pains\u2014  \nEach blossom broke the chrysalis of time.  \n\nSo let the frost return\u2014I\u2019ll bear no fright,  \nFor I\u2019ve become the wild, unyielding light."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_3",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "In the embrace of autumn's whispered chill,  \nThe forest sheds its golden, fiery gown,  \nA dance of leaves that flutter, fall, and spill,  \nThey paint the earth in russet, red, and brown.  \n\nBeneath the boughs, a river's gentle sweep,  \nReflects the sky's descent from bold to gray,  \nIn every ripple, secrets old and deep,  \nTransforming night into the hopeful day.  \n\nThe mountains clad in winter's purest shroud,  \nStand guard as silent sentinels of time,  \nTheir icy breath commands the drifting cloud,  \nEach peak and vale a muse, a sage, a rhyme.  \n\nThrough nature's change, my spirit finds its way,  \nShedding the past, like trees in fall decay."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_4",
+      "final_state": {
+        "role": "assigned",
+        "score": 1,
+        "submission": "I walked the woods when spring was young and shy,  \nBeneath new leaves that whispered tales of growth;  \nWithin the bud, I glimpsed a butterfly,  \nEmerging bright, released from winter's oath.  \n\nThe river, thawing, coursed with fierce intent,  \nIts currents carving pathways ever new;  \nMy spirit, drifting restless yet content,  \nFlowed onward, changed by waters swift and true.  \n\nWhen autumn came, the trees unmasked their fire,  \nBrave shedding leaves amid the falling cold;  \nA courage kindled, born from earth's desire,  \nTo strip away the old, embrace the bold.  \n\nAs nature shifts, transforms beneath the sun,  \nSo too shall I, reborn, becoming one."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_5",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "As winter's frost recedes from barren ground,\nThe dormant seeds awaken from their sleep.\nNew life emerges, stretching skyward bound,\nWhile I, too, from my slumber slowly creep.\n\nThe budding trees inspire my own growth,\nTheir branches reaching ever toward the light.\nLike them, I shed the old, renew my oath,\nTo blossom fully, standing tall and bright.\n\nThe rushing stream erodes the hardened stone,\nIts patient force reshaping all it meets.\nI let its lessons carve away my own\nRigid edges, as transformation fleets.\n\nThrough nature's change, I find my truest form,\nReborn, like spring, after the winter's storm."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_6",
+      "final_state": {
+        "role": "assigned",
+        "score": 2,
+        "submission": "As winter fades to spring, I too unfold,\nLike petals stretching toward the warming light.\nMy dormant dreams, once frozen, now grow bold,\nAs mountains teach me strength beyond my might.\n\nThe river's rush reminds me I can flow\nAround the stones that once had blocked my way.\nThrough forest paths where ancient cedars grow,\nI learn that growth requires both night and day.\n\nThe eagle soaring high on thermal streams\nShows how to rise above what kept me bound.\nWhile tidal pools reflect my changing dreams,\nIn nature's quiet whispers, truth is found.\n\nThrough seasons' dance, my spirit's now renewed,\nMy essence transformed, wild and unsubdued."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_7",
+      "final_state": {
+        "role": "prompter",
+        "score": 0,
+        "submission": "In autumn's arms, I found my quiet change,\nAs leaves transformed, my thoughts began to soar.\nThe crisp air whispered secrets, not before,\nRevealed to me; my heart it did estrange.\n\nThe winter's snow, a canvas pure and strange,\nUpon its blankness, dreams I did explore.\nEach flake a fleeting thought, a silent lore,\nIn frost, my fears began to disarrange.\n\nThen spring arrived with blossoms bold and bright,\nIts vibrant hues my soul began to mend.\nThe river's flow, a journey without end,\nIn nature's pulse, I found my own delight.\n\nThrough seasons' dance, I learned to shift and grow,\nTransformed by nature's hand, I now bestow."
+      },
+      "role": "author"
+    }
+  ],
+  "winner": {
+    "id": "tie",
+    "tied_players": [
+      "player_1",
+      "player_2",
+      "player_6"
+    ]
+  },
+  "rounds_played": 0,
+  "history_summary": {},
+  "session_id": "poetry_slam_20250317_223533",
+  "stats": {
+    "snapshot_count": 5,
+    "event_count": 42,
+    "chat_message_count": 15
+  }
+}
