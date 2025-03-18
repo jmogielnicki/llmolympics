@@ -50,20 +50,6 @@ DEBATE_TOPICS = [
             {"side_id": "pro-nuclear", "position": "Nuclear energy is the best solution for climate change"},
             {"side_id": "anti-nuclear", "position": "Nuclear energy is not the best solution for climate change"}
         ]
-    },
-    {
-        "topic": "Should college education be free for all citizens?",
-        "sides": [
-            {"side_id": "pro-free-college", "position": "College education should be free for all citizens"},
-            {"side_id": "anti-free-college", "position": "College education should not be free for all citizens"}
-        ]
-    },
-    {
-        "topic": "Should autonomous weapons systems be banned internationally?",
-        "sides": [
-            {"side_id": "pro-ban", "position": "Autonomous weapons systems should be banned internationally"},
-            {"side_id": "anti-ban", "position": "Autonomous weapons systems should not be banned internationally"}
-        ]
     }
 ]
 

@@ -17,7 +17,7 @@ benchmark:
       selection: "weighted_inverse"
       incompatible_with: ["judge"]  # Can't be both debater and judge
     judge:
-      count: 3
+      count: 5
       selection: "weighted_inverse"
       incompatible_with: ["debater"]  # Can't be both judge and debater
 
