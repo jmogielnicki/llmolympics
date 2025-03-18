@@ -305,12 +305,14 @@ function extractPoetrySlamSessions(modelProfiles) {
 }
 
 function createVotingPatterns(modelProfiles) {
-	const votingMatrix = {};
+	// Extract model information
 	const models = modelProfiles.models.map((m) => ({
 		id: m.model_id,
 		name: shortenModelName(m.model_name),
 	}));
 
+	// Initialize the voting matrix with zeros
+	const votingMatrix = {};
 	models.forEach((voter) => {
 		votingMatrix[voter.id] = {};
 		models.forEach((candidate) => {
@@ -318,20 +320,27 @@ function createVotingPatterns(modelProfiles) {
 		});
 	});
 
-	models.forEach((model) => {
-		modelProfiles.models
-			.find((m) => m.model_id === model.id)
-			?.games.forEach((game) => {
+	// Process votes using the explicit model IDs in the data
+	modelProfiles.models.forEach((model) => {
+		const voterId = model.model_id;
+
+		model.games.forEach((game) => {
+			if (game.voting && game.voting.voted_for_model) {
+				const votedForModelId = game.voting.voted_for_model;
+
+				// Increment vote count in the matrix
 				if (
-					game.voting &&
-					game.voting.voted_for
+					votingMatrix[voterId] &&
+					votingMatrix[voterId][votedForModelId] !== undefined
 				) {
-                    const voted_for_model = modelProfiles.models.find(
-						(m) => m.player_id === game.voting.voted_for
+					votingMatrix[voterId][votedForModelId]++;
+				} else {
+					console.warn(
+						`Unable to record vote from ${voterId} to ${votedForModelId}`
 					);
-					votingMatrix[model.id][voted_for_model.model_id]++;
 				}
-			});
+			}
+		});
 	});
 
 	return {
