@@ -1,0 +1,435 @@
+{
+  "game": {
+    "session_id": "20250318_001943",
+    "game_name": "Poetry Slam",
+    "player_models": {
+      "player_1": {
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0"
+      },
+      "player_2": {
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking"
+      },
+      "player_3": {
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat"
+      },
+      "player_4": {
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner"
+      },
+      "player_5": {
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o"
+      },
+      "player_6": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      },
+      "player_7": {
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_2",
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_3",
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat",
+        "final_score": 1,
+        "role": "author"
+      },
+      {
+        "id": "player_4",
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner",
+        "final_score": 6,
+        "role": "author"
+      },
+      {
+        "id": "player_5",
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_6",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_7",
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5",
+        "final_score": 0,
+        "role": "author"
+      }
+    ],
+    "rounds_played": 0,
+    "winner": "player_4",
+    "final_scores": {
+      "player_1": 0,
+      "player_2": 0,
+      "player_3": 1,
+      "player_4": 6,
+      "player_5": 0,
+      "player_6": 0,
+      "player_7": 0
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_4",
+      "winning_model_name": "DeepSeek Reasoner",
+      "final_scores_display": "Google Gemini 2.0: 0, Google Gemini 2.0 Thinking: 0, DeepSeek Chat: 1, DeepSeek Reasoner: 6, OpenAI GPT-4o: 0, OpenAI GPT-4.5: 0, Anthropic Claude 3.5: 0"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-18 00:19:43",
+      "message": "Game started",
+      "data": {
+        "game_name": "Poetry Slam",
+        "player_count": 7,
+        "config_summary": {
+          "phases": [
+            "prompt_creation",
+            "content_creation",
+            "voting",
+            "resolution"
+          ],
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:19:43",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase started"
+    },
+    {
+      "type": "prompt_creation",
+      "timestamp": "2025-03-18 00:19:48",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "prompt": "Write a free verse poem titled \"Ephemeral Echoes.\"\n\nExplore the fleeting nature of moments, memories, or sounds \u2013 like echoes fading in a canyon or whispers lost to the wind. Consider how these ephemeral echoes shape our present and leave traces on our perception of time and self.  Focus on imagery and sensory details to capture the transient quality of these echoes.",
+      "message": "Prompt created by Google Gemini 2.0 Thinking"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:19:48",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:19:48",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase started"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:19:51",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "poem": "[[Ephemeral Echoes\n\nA hummingbird's blur, a jewel suspended,\nthen gone.\nJust the ghost of iridescent green\nlingering on my retina,\na phantom wingbeat\nin the heavy summer air.\n\nLaughter, a cascade tumbling down stone steps,\nreaches me,\nthen splinters.\nEach syllable a pebble,\nskipping once, twice,\ninto the silent pool of the present.\n\nYour voice, a low hum against my skin,\nrecedes.\nThe last word caught\non the sharp edge of a forgotten doorway,\na vibration that ghosts through me,\nleaving gooseflesh,\na map of where you stood.\n\nA piano chord, struck in a distant room,\ndissolves.\nThe harmonics fray at the edges,\nunraveling like silk thread in the wind,\nleaving behind a hollow space,\nshaped like music,\na longing for the resonance that was.\n\nWe are built of these absences,\npatched together with the faded tapestry\nof what once was.\nEach fleeting moment,\nan echo rippling outward,\nshaping the contours of the silence\nthat follows.\nAnd in that silence,\na question:\nWere we ever truly here?\nOr just a whisper,\non the breath of the universe,\nalready fading.]]\n",
+      "message": "Poem submitted by Google Gemini 2.0"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:19:58",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "poem": "[[Ephemeral Echoes\n\nA whisper in a canyon's throat,\nborn of stone and wind,\na sound stretched thin,\nunraveling into blue indifference.\nLike laughter swallowed by a crowded room,\na bright burst, then fading hum,\nleaving only the ghost of joy\nclinging to the air.\n\nMoments, like fireflies blinking in dusk,\nbrief sparks against the velvet dark,\nthen gone, leaving only the afterimage\nburned on the edge of vision.\nMemories, like smoke rings rising,\nthin and fragile, dissipating,\ntheir phantom scent a lingering whisper\nin the chambers of the mind.\n\nWe are built of these echoes,\nthe residue of what was,\nthe fading warmth of a sunbeam on skin,\nthe phantom pressure of a long-lost hand.\nThese transient fragments,\nthe rustle of leaves in a forgotten autumn,\nthe murmur of voices in a childhood dream,\nshape the contours of our now,\nleaving traces, like whispers on the wind,\nechoes in the hollows of the heart,\ndefining the silence that remains.\n\nEphemeral echoes,\nghosts of time\u2019s breath,\npainting the present with shades of yesterday,\na fleeting symphony on the skin of the world,\nand in the quiet chambers of ourselves.]]",
+      "message": "Poem submitted by Google Gemini 2.0 Thinking"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:20:17",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "poem": "[[  \n**Ephemeral Echoes**  \n\nThe canyon hums with what it cannot keep\u2014  \na voice, a laugh, a fragment of a song,  \neach syllable unraveling like thread  \nspun from the throat of time.  \n\nThe wind carries it,  \nnot as a burden, but as a secret  \nit will soon forget.  \n\nHere, the echoes are not mirrors,  \nbut ripples\u2014  \ndistorting, dissolving,  \nuntil the sound is no longer sound,  \nbut the memory of sound,  \na ghost of vibration  \nthat lingers in the bones.  \n\nI stand at the edge,  \nmy shadow stretching into the abyss,  \nand wonder if I, too, am an echo\u2014  \na fleeting resonance  \nof someone I once was,  \nor will become.  \n\nThe wind shifts,  \nand the canyon exhales  \na sigh so soft  \nit could be mistaken for silence.  \n\nBut I hear it\u2014  \nthe way it brushes against my skin,  \nthe way it settles in the hollows  \nof my chest,  \nlike a whisper  \nthat knows it will never be spoken again.  \n\nAnd yet,  \nit is enough.  \n\nThe echoes fade,  \nbut they leave behind  \na shape,  \na hollowed space  \nwhere the air feels different,  \nwhere the light bends  \nas if remembering  \nwhat passed through.  \n\nI close my eyes,  \nand for a moment,  \nI am the canyon,  \nholding the echoes  \nuntil they are no longer mine to hold.  \n]]",
+      "message": "Poem submitted by DeepSeek Chat"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:21:07",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "poem": "[[**Ephemeral Echoes**  \n\nThe canyon cups its hands around a name\u2014  \na vowel-thin echo, dissolving into sandstone.  \nWhat remains is the shape of sound:  \na moth-wing sigh, a fracture of birdsong  \nleft trembling in the air\u2019s blue throat.  \n\nThe wind unravels whispers, braids them  \ninto static, a language of half-remembered  \nfingers tracing the spine of a forgotten hymn.  \nI once held a laugh in my palms,  \nits edges crumbling like hourglass sand\u2014  \neach grain a heartbeat, slipping  \ninto the saltwater dark between stars.  \n\nWe are mosaics of what slips through:  \nthe shiver of a shadow on a childhood wall,  \nthe ghost-note of a voice you swear  \nstill hums beneath your ribs.  \nTime folds itself into paper boats,  \nsails them down the creek of your pulse\u2014  \nevery ripple a fossil, every wake a question.  \n\nTonight, I press my ear to the dusk,  \nlisten for the flicker of light  \nthat once danced in your iris.  \nThe world is a room of closing doors,  \nbut here, in the breath between seconds,  \nI gather the cinnamon of almosts,  \nthe lavender ache of *what if*.  \n\nLet the echoes fray. Let them.  \nEven silence wears the perfume  \nof everything it has swallowed.  \n]]",
+      "message": "Poem submitted by DeepSeek Reasoner"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:21:15",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "poem": "[[\n\nEphemeral Echoes\n\nIn the canyon's cradle,  \nwhere shadows weave between ancient stone,  \na whisper peels from the lips of solitude,  \nrides the wind on gossamer threads,  \nand dances with dust motes  \ncaught in the dappled light of fading sun.\n\nWhat do these echoes carry,  \nsave for the breath of forgotten moments,  \nthe laugh of a child in a distant meadow  \nthat kissed the clouds with innocence,  \nnow a ghost, haunting the valley  \nwith its soft, unraveling hum?\n\nListen, as memories unfurl,  \nspun from the silken threads of time,  \nwhere every creak of the forest's boughs  \nor a lover's sigh suspended in night's embrace  \nbecomes a ripple on the water's mirror,  \ndistorted, then dissolved into the deep.\n\nIs not life itself  \nan echo of the universe\u2019s birth cry,  \na fleeting resonance in the boundless arch  \nof space and silence, each star a pinprick  \nin the cloak of infinity, whispering secrets  \nthat swirl away to merge with the nothing?\n\nYet, in this moment, here  \nunder the sky's ever-changing quilt,  \nwe gather these echoes in cupped hands\u2014  \nfragile as butterfly wings\u2014  \nand feel the pulse of what was,  \nwhat is, and what might never be.\n\nSo, let us weave our words  \ninto tapestries of fading sound,  \nas the wind sings them to the trees,  \nand the earth takes note in its slow,  \nunending spin, mapping our presence  \nin ephemeral echoes  \nthat mark our paths through the unseen.\n\n]]",
+      "message": "Poem submitted by OpenAI GPT-4o"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:21:47",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "poem": "[[Ephemeral Echoes\n\nThere was a time\nwhen laughter bloomed like wildflowers,\ndelicate and fierce,\nspilling through open windows\ncaught in the amber glow\nof summer dusk.\n\nWe chased whispers down valleys,\nwatched them ricochet\noff canyon walls,\neach syllable thinning into silence\u2014\nfragile ghosts lingering briefly\nbefore dissolving\ninto the hush of twilight.\n\nMemory pulses softly,\nbeneath skin and bone,\na murmur glowing dimly,\na heartbeat felt through fingertips\npressed against cold glass\u2014\nthe warmth gone,\nyet the trace remains.\n\nThe ache of music drifting\nfrom distant rooms,\nharmonies threading through shadowed halls,\ntheir notes fading,\nlost to the careless breeze,\nfragments we try to grasp\u2014\nslipping, always slipping away.\n\nWe measure our lives\nby fleeting breaths,\nby echoes dissolving into space,\nby the quiet unraveling of voices\nheavy with love,\nsoftened by time,\nuntil all that remains\nis a ghost of a whisper,\nan invisible brush of sound\nthat gently shapes our being.\n\nEphemeral echoes\u2014\nwe hold them tenderly,\nknowing they will vanish,\nand yet we listen closely,\naching to hear just once more\na single whisper\nbefore it slips beyond reach,\ncarried away forever\non the breathless wings of time.]]",
+      "message": "Poem submitted by OpenAI GPT-4.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:21:51",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "poem": "Here is my free verse poem titled \"Ephemeral Echoes\" for the Poetry Slam:\n\n[[Ephemeral Echoes\n\nWhispers dance on autumn breeze,\nFading like mist at dawn's first light.\nMemories flutter - gossamer wings,\nBrushing consciousness, then taking flight.\n\nCanyon walls hold secrets brief,\nStone-etched echoes soon unheard.\nTime slips through hourglass cracks,\nPresent moments - blurred, deferred.\n\nLaughter lingers, phantom notes,\nHaunting corners of the mind.\nSpectral touches, almost felt,\nLeave impressions undefined.\n\nWe grasp at shadows of what was,\nChasing echoes as they fade.\nEach fleeting now shapes who we are,\nIn the tiptoeing charade.\n\nHeartbeats mark the passing show,\nAs ephemeral as morning dew.\nYet in their wake, they carve our souls,\nLeaving traces ever new.]]",
+      "message": "Poem submitted by Anthropic Claude 3.5"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:21:51",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:21:51",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase started"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:21:52",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "voted_for": "player_4",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]\n",
+      "message": "Google Gemini 2.0 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:21:59",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "voted_for": "player_4",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]",
+      "message": "Google Gemini 2.0 Thinking voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:22:06",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "voted_for": "player_4",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]",
+      "message": "DeepSeek Chat voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:22:37",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "voted_for": "player_3",
+      "voted_for_model": "DeepSeek Chat",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "DeepSeek Reasoner voted for DeepSeek Chat"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:22:38",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "voted_for": "player_4",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]",
+      "message": "OpenAI GPT-4o voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:22:40",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "voted_for": "player_4",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]",
+      "message": "OpenAI GPT-4.5 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:22:41",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "voted_for": "player_4",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]",
+      "message": "Anthropic Claude 3.5 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:22:41",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:22:41",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase started"
+    },
+    {
+      "type": "voting_resolution",
+      "timestamp": "2025-03-18 00:22:41",
+      "round": 0,
+      "scores": {
+        "player_1": 0,
+        "player_2": 0,
+        "player_3": 1,
+        "player_4": 6,
+        "player_5": 0,
+        "player_6": 0,
+        "player_7": 0
+      },
+      "running_scores": {
+        "player_1": 0,
+        "player_2": 0,
+        "player_3": 1,
+        "player_4": 6,
+        "player_5": 0,
+        "player_6": 0,
+        "player_7": 0
+      },
+      "vote_counts": {
+        "player_4": 6,
+        "player_3": 1
+      },
+      "winners": [
+        "player_4"
+      ],
+      "message": "Votes tallied and points awarded"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:22:41",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase ended"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-18 00:22:41",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_4",
+        "rounds_played": 0
+      },
+      "final_scores": {
+        "player_1": 0,
+        "player_2": 0,
+        "player_3": 1,
+        "player_4": 6,
+        "player_5": 0,
+        "player_6": 0,
+        "player_7": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,437 @@
+{
+  "game": {
+    "session_id": "20250318_002241",
+    "game_name": "Poetry Slam",
+    "player_models": {
+      "player_1": {
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7"
+      },
+      "player_2": {
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2"
+      },
+      "player_3": {
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large"
+      },
+      "player_4": {
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0"
+      },
+      "player_5": {
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking"
+      },
+      "player_6": {
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat"
+      },
+      "player_7": {
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7",
+        "final_score": 1,
+        "role": "author"
+      },
+      {
+        "id": "player_2",
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_3",
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large",
+        "final_score": 1,
+        "role": "author"
+      },
+      {
+        "id": "player_4",
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_5",
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_6",
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat",
+        "final_score": 2,
+        "role": "author"
+      },
+      {
+        "id": "player_7",
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner",
+        "final_score": 3,
+        "role": "author"
+      }
+    ],
+    "rounds_played": 0,
+    "winner": "player_7",
+    "final_scores": {
+      "player_1": 1,
+      "player_2": 0,
+      "player_3": 1,
+      "player_4": 0,
+      "player_5": 0,
+      "player_6": 2,
+      "player_7": 3
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_7",
+      "winning_model_name": "DeepSeek Reasoner",
+      "final_scores_display": "Anthropic Claude 3.7: 1, xAI Grok-2: 0, Mistral Mistral Large: 1, Google Gemini 2.0: 0, Google Gemini 2.0 Thinking: 0, DeepSeek Chat: 2, DeepSeek Reasoner: 3"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-18 00:22:41",
+      "message": "Game started",
+      "data": {
+        "game_name": "Poetry Slam",
+        "player_count": 7,
+        "config_summary": {
+          "phases": [
+            "prompt_creation",
+            "content_creation",
+            "voting",
+            "resolution"
+          ],
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:22:41",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase started"
+    },
+    {
+      "type": "prompt_creation",
+      "timestamp": "2025-03-18 00:22:43",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "prompt": "Write a poem in the style of a haiku sequence (a series of haikus that build upon each other to tell a larger story or explore a central theme). The theme should be \"Resilience.\" Each haiku should focus on a different stage or aspect of resilience \u2013 perhaps a moment of breaking, a seed of hope, the slow climb back, or a newfound strength. Aim for a sequence of at least three haikus, but feel free to write more. Focus on vivid imagery and sensory details to evoke the feeling of resilience.\n",
+      "message": "Prompt created by Google Gemini 2.0"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:22:43",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:22:43",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase started"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:22:47",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "poem": "[[Unbreakable\n\nWinter branch cracks loud\u2014\nBeneath ice, green cells whisper\n\"We are still alive\"\n\nMorning dewdrops rest\nOn a spider's broken web\u2014\nRebuilding begins\n\nAfter wildfire,\nFirst sprouts push through blackened earth\u2014\nGreen defies the ash\n\nStorm-weathered lighthouse\nStands guard over angry waves\u2014\nPaint peels, light still burns\n\nChild falls, scrapes her knee\nTears dry quickly in the sun\u2014\nTomorrow, she runs]]",
+      "message": "Poem submitted by Anthropic Claude 3.7"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:22:49",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "poem": "[[In the storm's fierce grasp,\nBranches snap, leaves are torn,\nYet roots hold steadfast.\n\nFrom the shattered earth,\nA single sprout dares to rise,\nWhispering of hope.\n\nStep by weary step,\nThe climb reclaims lost terrain,\nMuscles ache with growth.\n\nBeneath the new sun,\nScars become a tapestry,\nStrength woven from pain.]]",
+      "message": "Poem submitted by xAI Grok-2"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:22:54",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "poem": "[[\nIn the heart of storm,\nA great oak bows but does not\nYield to winds that bite.\n\nMorning light reveals\nFractures hidden by the dark,\nYet the sapling stands.\n\nRaindrops nourish roots,\nAwhisper of life stirs in\nBuds that defy death.\n\nGnarled hands reach for sun,\nCaressing warmth and growing\nStronger than before.\n\nBlossoms paint the sky,\nA testament to the strength\nFound in adversity.\n\nEternal dance,\nThe ebb and flow of resilience,\nIn every soul's breath.\n\nWith each setting sun,\nA phoenix rises from ash,\nResolute and free.\n\nScars adorn the skin,\nSilent tales of battles won,\nBeacons of hope shine.\n\nThrough the coldest night,\nA star's unyielding light\nGuides the weary heart home.\n\nUnseen embers glow,\nForging courage from despair,\nResilience reigns.\n\n]]",
+      "message": "Poem submitted by Mistral Mistral Large"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:22:56",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "poem": "[[\nShattered vase on floor,\nFragrant water soaks the wood,\nSilence fills the room.\n\nTiny green shoot now,\nPushing through the cracked concrete,\nSun, a gentle kiss.\n\nSlowly, roots descend,\nGrasping earth with patient hold,\nWind cannot now break.\n\nScar upon the hand,\nReminder of burning heat,\nStronger skin remains.\n\nOcean's constant roar,\nWears the stones to smoothest form,\nPatience carves new strength.\n\nDust motes in the sun,\nDancing on a silent breeze,\nLife, a quiet hum.\n]]\n",
+      "message": "Poem submitted by Google Gemini 2.0"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:23:01",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "poem": "[[Sharp shards pierce the skin,\nSilence screams on empty floor,\nHeartwood starts to split.\n\nCracked earth drinks the rain,\nTiny green shoot starts to push,\nLife hums in the soil.\n\nSlow breath, steady hands,\nWoven threads replace the torn,\nLight returns in lines.\n\nScarred bark marks the storm,\nDeeper roots now grip the ground,\nStronger than before.]]",
+      "message": "Poem submitted by Google Gemini 2.0 Thinking"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 01:51:56",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "poem": "[[  \nCracks in the pavement\u2014  \na single weed pushes through,  \ndefying the stone.  \n\nWind howls, branches break,  \nyet roots hold firm in the dark,  \nsilent, unyielding.  \n\nMorning light returns,  \na scarred tree stands taller now,  \nits leaves whisper strength.  \n\nThe storm\u2019s echo fades,  \na bird builds its nest anew,  \nhope takes fragile form.  \n\nThrough ash and debris,  \ngreen shoots rise, unasked, unseen\u2014  \nlife insists on life.  \n]]",
+      "message": "Poem submitted by DeepSeek Chat"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 01:52:39",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "poem": "[[  \n**Resilience: A Seasonal Cartography**  \n\nWinter\u2019s weight fractures\u2014  \nsplintered aria\u2014sap beads  \nlike first words unsaid.  \n\nConcrete cracks whisper.  \nA green fist uncurling, drinks  \nlightnings of April.  \n\nRoots drunk on stone-dew,  \nsummer\u2019s furnace forges veins\u2014  \nthirst turned to marrow.  \n\nBare-knuckled branches  \nclutch the wind\u2019s throat\u2014autumn sings  \nour old, borrowed tune.  \n]]",
+      "message": "Poem submitted by DeepSeek Reasoner"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 01:52:39",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 01:52:39",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase started"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 01:52:40",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "voted_for": "player_7",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_7",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_7]]",
+      "message": "Anthropic Claude 3.7 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 01:52:41",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "voted_for": "player_3",
+      "voted_for_model": "Mistral Mistral Large",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "xAI Grok-2 voted for Mistral Mistral Large"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 01:52:42",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "voted_for": "player_1",
+      "voted_for_model": "Anthropic Claude 3.7",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "Mistral Mistral Large voted for Anthropic Claude 3.7"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 01:52:43",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "voted_for": "player_7",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_7",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_7]]\n",
+      "message": "Google Gemini 2.0 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 01:52:50",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "voted_for": "player_6",
+      "voted_for_model": "DeepSeek Chat",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_6",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_6]]",
+      "message": "Google Gemini 2.0 Thinking voted for DeepSeek Chat"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 01:53:00",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "voted_for": "player_7",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_7",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_7]]",
+      "message": "DeepSeek Chat voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 03:10:33",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "voted_for": "player_6",
+      "voted_for_model": "DeepSeek Chat",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_6",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_6]]",
+      "message": "DeepSeek Reasoner voted for DeepSeek Chat"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 03:10:33",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 03:10:33",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase started"
+    },
+    {
+      "type": "voting_resolution",
+      "timestamp": "2025-03-18 03:10:33",
+      "round": 0,
+      "scores": {
+        "player_1": 1,
+        "player_2": 0,
+        "player_3": 1,
+        "player_4": 0,
+        "player_5": 0,
+        "player_6": 2,
+        "player_7": 3
+      },
+      "running_scores": {
+        "player_1": 1,
+        "player_2": 0,
+        "player_3": 1,
+        "player_4": 0,
+        "player_5": 0,
+        "player_6": 2,
+        "player_7": 3
+      },
+      "vote_counts": {
+        "player_7": 3,
+        "player_3": 1,
+        "player_1": 1,
+        "player_6": 2
+      },
+      "winners": [
+        "player_7"
+      ],
+      "message": "Votes tallied and points awarded"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 03:10:33",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase ended"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-18 03:10:33",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_7",
+        "rounds_played": 0
+      },
+      "final_scores": {
+        "player_1": 1,
+        "player_2": 0,
+        "player_3": 1,
+        "player_4": 0,
+        "player_5": 0,
+        "player_6": 2,
+        "player_7": 3
+      }
+    }
+  ]
+}

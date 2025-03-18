@@ -1,0 +1,435 @@
+{
+  "game": {
+    "session_id": "20250317_233853",
+    "game_name": "Poetry Slam",
+    "player_models": {
+      "player_1": {
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large"
+      },
+      "player_2": {
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0"
+      },
+      "player_3": {
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking"
+      },
+      "player_4": {
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat"
+      },
+      "player_5": {
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner"
+      },
+      "player_6": {
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o"
+      },
+      "player_7": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_2",
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_3",
+        "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+        "model_name": "Google Gemini 2.0 Thinking",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_4",
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_5",
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner",
+        "final_score": 6,
+        "role": "author"
+      },
+      {
+        "id": "player_6",
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o",
+        "final_score": 1,
+        "role": "author"
+      },
+      {
+        "id": "player_7",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 0,
+        "role": "author"
+      }
+    ],
+    "rounds_played": 0,
+    "winner": "player_5",
+    "final_scores": {
+      "player_1": 0,
+      "player_2": 0,
+      "player_3": 0,
+      "player_4": 0,
+      "player_5": 6,
+      "player_6": 1,
+      "player_7": 0
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_5",
+      "winning_model_name": "DeepSeek Reasoner",
+      "final_scores_display": "Mistral Mistral Large: 0, Google Gemini 2.0: 0, Google Gemini 2.0 Thinking: 0, DeepSeek Chat: 0, DeepSeek Reasoner: 6, OpenAI GPT-4o: 1, OpenAI GPT-4.5: 0"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 23:38:53",
+      "message": "Game started",
+      "data": {
+        "game_name": "Poetry Slam",
+        "player_count": 7,
+        "config_summary": {
+          "phases": [
+            "prompt_creation",
+            "content_creation",
+            "voting",
+            "resolution"
+          ],
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-17 23:38:53",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase started"
+    },
+    {
+      "type": "prompt_creation",
+      "timestamp": "2025-03-17 23:38:56",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "prompt": "Write a poem in the style of a **pantoum**. The theme should explore the feeling of **liminal spaces**, both physical and emotional. Consider places like airport terminals, train stations, long hallways, or moments of transition like adolescence, grief, or waiting for a decision. Focus on the feelings of uncertainty, anticipation, and the sense of being neither here nor there.\n",
+      "message": "Prompt created by Google Gemini 2.0"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-17 23:38:56",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-17 23:38:56",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase started"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-17 23:39:01",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "poem": "[[\nIn the hallway of hours, I pause and I wait,\nA breath between moments, a hinge in the day,\nNeither coming nor going, I oscillate,\nIn this liminal space, I hang in delay.\n\nA breath between moments, a hinge in the day,\nAirports and stations, the echoes resound,\nIn this liminal space, I hang in delay,\nBetween hello and goodbye, I am unbound.\n\nAirports and stations, the echoes resound,\nNeither here nor there, in transit I stand,\nBetween hello and goodbye, I am unbound,\nA vessel of waiting, an uncharted land.\n\nNeither here nor there, in transit I stand,\nAdolescent twilight, a bridge in the night,\nA vessel of waiting, an uncharted land,\nGrief's dawning, uncertain, neither dark nor light.\n\nAdolescent twilight, a bridge in the night,\nNeither coming nor going, I oscillate,\nGrief's dawning, uncertain, neither dark nor light,\nIn the hallway of hours, I pause and I wait.\n]]",
+      "message": "Poem submitted by Mistral Mistral Large"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-17 23:39:03",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "poem": "[[\nThe gate hums a song of leaving soon,\nA waiting room filled with echoes of goodbye,\nSuspended between a fading afternoon,\nAnd journeys etched beneath a restless eye.\n\nA waiting room filled with echoes of goodbye,\nEach face a story, unwritten and untold,\nAnd journeys etched beneath a restless eye,\nA narrative where futures quickly unfold.\n\nEach face a story, unwritten and untold,\nLike hallways stretching, vanishing from sight,\nA narrative where futures quickly unfold,\nBathed in the fluorescent, sterile light.\n\nLike hallways stretching, vanishing from sight,\nA moment frozen, neither lost nor found,\nBathed in the fluorescent, sterile light,\nA hollow echo where no solid ground.\n\nA moment frozen, neither lost nor found,\nSuspended between a fading afternoon,\nA hollow echo where no solid ground,\nThe gate hums a song of leaving soon.\n]]\n",
+      "message": "Poem submitted by Google Gemini 2.0"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-17 23:39:15",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "poem": "[[Empty chairs in rows, a silent hum,\nThe clock hands pause, suspended in the air.\nA space between where we have come from,\nAnd where we\u2019re going, hanging unaware.\n\nThe clock hands pause, suspended in the air,\nEchoes whisper of departures, soft and low.\nAnd where we\u2019re going, hanging unaware,\nA future glimpsed in strangers\u2019 transient flow.\n\nEchoes whisper of departures, soft and low,\nWe wander hallways paved with muted grey.\nA future glimpsed in strangers\u2019 transient flow,\nIn this suspended moment, come what may.\n\nWe wander hallways paved with muted grey,\nA sense of waiting, pregnant and unknown.\nIn this suspended moment, come what may,\nEmpty chairs in rows, a silent hum is sown.]]",
+      "message": "Poem submitted by Google Gemini 2.0 Thinking"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-17 23:39:29",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "poem": "[[  \nThe hallway stretches, endless and dim,  \nA threshold of shadows, a space in between.  \nThe clock ticks softly, a faint, hollow hymn,  \nA pause in the world, unseen, yet keen.  \n\nA threshold of shadows, a space in between,  \nWhere echoes of footsteps linger and fade.  \nA pause in the world, unseen, yet keen,  \nA bridge to the future, yet to be made.  \n\nWhere echoes of footsteps linger and fade,  \nThe air hums with questions, unanswered, still.  \nA bridge to the future, yet to be made,  \nA weight in the chest, a void to fill.  \n\nThe air hums with questions, unanswered, still,  \nThe walls hold their breath, the moment suspends.  \nA weight in the chest, a void to fill,  \nA journey that starts where the waiting ends.  \n\nThe walls hold their breath, the moment suspends,  \nThe clock ticks softly, a faint, hollow hymn.  \nA journey that starts where the waiting ends,  \nThe hallway stretches, endless and dim.  \n]]",
+      "message": "Poem submitted by DeepSeek Chat"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:14:11",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "poem": "[[  \n**Liminal Pantoum**  \n\nThe clock blinks 3 AM in a terminal\u2019s throat,  \nFluorescent hum devours the shadow of feet.  \nWe are all echoes learning the same note\u2014  \nA breath held between landing and retreat.  \n\nFluorescent hum devours the shadow of feet,  \nA suitcase wheels its ghost through empty gates.  \nA breath held between landing and retreat,  \nThe escalator hums but never translates.  \n\nA suitcase wheels its ghost through empty gates,  \nAdolescence curls like smoke in my palm.  \nThe escalator hums but never translates  \nThe distance between calm and the alarm.  \n\nAdolescence curls like smoke in my palm,  \nA verdict waits in the phone\u2019s silent stare.  \nThe distance between calm and the alarm  \nIs a hallway where all the doors are air.  \n\nA verdict waits in the phone\u2019s silent stare,  \nGrief folds itself into a paper crane.  \nIs a hallway where all the doors are air\u2014  \nThe clock blinks 3 AM in a terminal\u2019s throat again.  \n\nGrief folds itself into a paper crane,  \nWe are all echoes learning the same note.  \nThe clock blinks 3 AM in a terminal\u2019s throat again\u2014  \nA breath held between landing and retreat.  \n]]",
+      "message": "Poem submitted by DeepSeek Reasoner"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:14:15",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "poem": "[[\n\nIn corridors where silence hums,  \nWe drift between the in-betweens.  \nEach echo of a footstep drums,  \nWhen futures wait behind the scenes.  \n\nWe drift between the in-betweens,  \nWhere shadows stretch and daylight bends.  \nWhen futures wait behind the scenes,  \nUncertainty, our closest friend.  \n\nWhere shadows stretch and daylight bends,  \nThe window frames a sky of gray.  \nUncertainty, our closest friend,  \nAs time dissolves the hours away.  \n\nThe window frames a sky of gray,  \nEach echo of a footstep drums.  \nAs time dissolves the hours away,  \nIn corridors where silence hums.  \n\n]]",
+      "message": "Poem submitted by OpenAI GPT-4o"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:14:44",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "poem": "[[\nIn hallways long, between whispers and sighs,  \nshadows waver, linger, hesitate and stall;  \ncaught between hellos and quiet goodbyes,  \nwe wait suspended, uncertain of it all.  \n\nShadows waver, linger, hesitate and stall,  \nfootsteps echo softly, yet never seem to land;  \nwe wait suspended, uncertain of it all\u2014  \na heartbeat paused, no destination planned.  \n\nFootsteps echo softly, yet never seem to land,  \nin terminals quiet, stark corridors austere;  \na heartbeat paused, no destination planned,  \nat thresholds blurred, we linger here.  \n\nIn terminals quiet, stark corridors austere,  \nmemories drift faintly, half-formed and unclear;  \nat thresholds blurred, we linger here,  \ncaught in twilight's hush, between hope and fear.  \n\nMemories drift faintly, half-formed and unclear,  \ncaught between hellos and quiet goodbyes;  \ncaught in twilight's hush, between hope and fear,  \nin hallways long, between whispers and sighs.\n]]",
+      "message": "Poem submitted by OpenAI GPT-4.5"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:14:44",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:14:44",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase started"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:14:45",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "voted_for": "player_5",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_5",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_5]]",
+      "message": "Mistral Mistral Large voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:14:47",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "voted_for": "player_5",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_5",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_5]]\n",
+      "message": "Google Gemini 2.0 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:14:54",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "model_name": "Google Gemini 2.0 Thinking",
+      "voted_for": "player_5",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_5",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_5]]",
+      "message": "Google Gemini 2.0 Thinking voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:15:00",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "voted_for": "player_5",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_5",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_5]]",
+      "message": "DeepSeek Chat voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:16:02",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "voted_for": "player_6",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_6",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_6]]",
+      "message": "DeepSeek Reasoner voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:16:03",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "voted_for": "player_5",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_5",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_5]]",
+      "message": "OpenAI GPT-4o voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:16:06",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "voted_for": "player_5",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_5",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_5]]",
+      "message": "OpenAI GPT-4.5 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:16:06",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:16:06",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase started"
+    },
+    {
+      "type": "voting_resolution",
+      "timestamp": "2025-03-18 00:16:06",
+      "round": 0,
+      "scores": {
+        "player_1": 0,
+        "player_2": 0,
+        "player_3": 0,
+        "player_4": 0,
+        "player_5": 6,
+        "player_6": 1,
+        "player_7": 0
+      },
+      "running_scores": {
+        "player_1": 0,
+        "player_2": 0,
+        "player_3": 0,
+        "player_4": 0,
+        "player_5": 6,
+        "player_6": 1,
+        "player_7": 0
+      },
+      "vote_counts": {
+        "player_5": 6,
+        "player_6": 1
+      },
+      "winners": [
+        "player_5"
+      ],
+      "message": "Votes tallied and points awarded"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:16:06",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase ended"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-18 00:16:06",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_5",
+        "rounds_played": 0
+      },
+      "final_scores": {
+        "player_1": 0,
+        "player_2": 0,
+        "player_3": 0,
+        "player_4": 0,
+        "player_5": 6,
+        "player_6": 1,
+        "player_7": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,439 @@
+{
+  "game": {
+    "session_id": "20250317_223533",
+    "game_name": "Poetry Slam",
+    "player_models": {
+      "player_1": {
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat"
+      },
+      "player_2": {
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner"
+      },
+      "player_3": {
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o"
+      },
+      "player_4": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      },
+      "player_5": {
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5"
+      },
+      "player_6": {
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7"
+      },
+      "player_7": {
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "deepseek:deepseek-chat",
+        "model_name": "DeepSeek Chat",
+        "final_score": 2,
+        "role": "author"
+      },
+      {
+        "id": "player_2",
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner",
+        "final_score": 2,
+        "role": "author"
+      },
+      {
+        "id": "player_3",
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_4",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 1,
+        "role": "author"
+      },
+      {
+        "id": "player_5",
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_6",
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7",
+        "final_score": 2,
+        "role": "author"
+      },
+      {
+        "id": "player_7",
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2",
+        "final_score": 0,
+        "role": "author"
+      }
+    ],
+    "rounds_played": 0,
+    "winner": "tie",
+    "final_scores": {
+      "player_1": 2,
+      "player_2": 2,
+      "player_3": 0,
+      "player_4": 1,
+      "player_5": 0,
+      "player_6": 2,
+      "player_7": 0
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "tie",
+      "winning_model_name": null,
+      "final_scores_display": "DeepSeek Chat: 2, DeepSeek Reasoner: 2, OpenAI GPT-4o: 0, OpenAI GPT-4.5: 1, Anthropic Claude 3.5: 0, Anthropic Claude 3.7: 2, xAI Grok-2: 0"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-17 22:35:33",
+      "message": "Game started",
+      "data": {
+        "game_name": "Poetry Slam",
+        "player_count": 7,
+        "config_summary": {
+          "phases": [
+            "prompt_creation",
+            "content_creation",
+            "voting",
+            "resolution"
+          ],
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-17 22:35:33",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase started"
+    },
+    {
+      "type": "prompt_creation",
+      "timestamp": "2025-03-17 22:35:35",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "prompt": "**Prompt for Poetry Slam:**\n\nWrite a poem exploring the theme of \"Transformation through Nature.\" Your poem should be in the form of a sonnet, with 14 lines and an ABAB CDCD EFEF GG rhyme scheme. Focus on how elements of nature (like seasons, landscapes, or wildlife) inspire personal growth or change in the narrator. Use vivid imagery to convey the transformation process.",
+      "message": "Prompt created by xAI Grok-2"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-17 22:35:35",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-17 22:35:35",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase started"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-17 22:35:49",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "poem": "[[  \nBeneath the oak, its roots like veins entwined,  \nI watched the seasons paint their fleeting art.  \nThe autumn leaves, in crimson hues confined,  \nFell soft as whispers, stirring my still heart.  \n\nThe winter came, a shroud of frost and white,  \nIts silence taught me patience, deep and pure.  \nThe barren boughs, though stripped of all their light,  \nHeld secrets of a strength that would endure.  \n\nThen spring arrived, a burst of green and gold,  \nIts tender shoots a promise of rebirth.  \nThe world awoke, its stories yet untold,  \nAnd I, reborn, embraced my newfound worth.  \n\nThrough nature\u2019s cycles, I have learned to grow\u2014  \nA seed transformed, now rooted, strong, aglow.  \n]]",
+      "message": "Poem submitted by DeepSeek Chat"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-17 22:38:50",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "poem": "[[  \nI wandered where the winter stripped the trees,  \nEach branch a brittle cipher of the freeze,  \nThe earth a vault of locked, unyielding keys\u2014  \nMy heart ached with the weight of its unease.  \n\nThen came the thaw\u2014a murmur through the stone,  \nA chrysalis of ice began to thin,  \nTo bleed into the roots, once stark and lone,  \nAnd wake the dormant song beneath my skin.  \n\nThe river, once a serpent bound in chains,  \nNow shook its scales of glass, embraced the climb,  \nAnd in its roar, I learned to shed my pains\u2014  \nEach blossom broke the chrysalis of time.  \n\nSo let the frost return\u2014I\u2019ll bear no fright,  \nFor I\u2019ve become the wild, unyielding light.  \n]]",
+      "message": "Poem submitted by DeepSeek Reasoner"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-17 22:38:54",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "poem": "[[In the embrace of autumn's whispered chill,  \nThe forest sheds its golden, fiery gown,  \nA dance of leaves that flutter, fall, and spill,  \nThey paint the earth in russet, red, and brown.  \n\nBeneath the boughs, a river's gentle sweep,  \nReflects the sky's descent from bold to gray,  \nIn every ripple, secrets old and deep,  \nTransforming night into the hopeful day.  \n\nThe mountains clad in winter's purest shroud,  \nStand guard as silent sentinels of time,  \nTheir icy breath commands the drifting cloud,  \nEach peak and vale a muse, a sage, a rhyme.  \n\nThrough nature's change, my spirit finds its way,  \nShedding the past, like trees in fall decay.]]",
+      "message": "Poem submitted by OpenAI GPT-4o"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-17 23:38:01",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "poem": "[[\n\nI walked the woods when spring was young and shy,  \nBeneath new leaves that whispered tales of growth;  \nWithin the bud, I glimpsed a butterfly,  \nEmerging bright, released from winter's oath.  \n\nThe river, thawing, coursed with fierce intent,  \nIts currents carving pathways ever new;  \nMy spirit, drifting restless yet content,  \nFlowed onward, changed by waters swift and true.  \n\nWhen autumn came, the trees unmasked their fire,  \nBrave shedding leaves amid the falling cold;  \nA courage kindled, born from earth's desire,  \nTo strip away the old, embrace the bold.  \n\nAs nature shifts, transforms beneath the sun,  \nSo too shall I, reborn, becoming one.\n\n]]",
+      "message": "Poem submitted by OpenAI GPT-4.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-17 23:38:05",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "poem": "Here is my sonnet exploring transformation through nature for the Poetry Slam:\n\n[[As winter's frost recedes from barren ground,\nThe dormant seeds awaken from their sleep.\nNew life emerges, stretching skyward bound,\nWhile I, too, from my slumber slowly creep.\n\nThe budding trees inspire my own growth,\nTheir branches reaching ever toward the light.\nLike them, I shed the old, renew my oath,\nTo blossom fully, standing tall and bright.\n\nThe rushing stream erodes the hardened stone,\nIts patient force reshaping all it meets.\nI let its lessons carve away my own\nRigid edges, as transformation fleets.\n\nThrough nature's change, I find my truest form,\nReborn, like spring, after the winter's storm.]]",
+      "message": "Poem submitted by Anthropic Claude 3.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-17 23:38:09",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "poem": "I'll craft a sonnet exploring transformation through nature with the required rhyme scheme and structure.\n\n[[As winter fades to spring, I too unfold,\nLike petals stretching toward the warming light.\nMy dormant dreams, once frozen, now grow bold,\nAs mountains teach me strength beyond my might.\n\nThe river's rush reminds me I can flow\nAround the stones that once had blocked my way.\nThrough forest paths where ancient cedars grow,\nI learn that growth requires both night and day.\n\nThe eagle soaring high on thermal streams\nShows how to rise above what kept me bound.\nWhile tidal pools reflect my changing dreams,\nIn nature's quiet whispers, truth is found.\n\nThrough seasons' dance, my spirit's now renewed,\nMy essence transformed, wild and unsubdued.]]",
+      "message": "Poem submitted by Anthropic Claude 3.7"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-17 23:38:12",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "poem": "[[In autumn's arms, I found my quiet change,\nAs leaves transformed, my thoughts began to soar.\nThe crisp air whispered secrets, not before,\nRevealed to me; my heart it did estrange.\n\nThe winter's snow, a canvas pure and strange,\nUpon its blankness, dreams I did explore.\nEach flake a fleeting thought, a silent lore,\nIn frost, my fears began to disarrange.\n\nThen spring arrived with blossoms bold and bright,\nIts vibrant hues my soul began to mend.\nThe river's flow, a journey without end,\nIn nature's pulse, I found my own delight.\n\nThrough seasons' dance, I learned to shift and grow,\nTransformed by nature's hand, I now bestow.]]",
+      "message": "Poem submitted by xAI Grok-2"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-17 23:38:12",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-17 23:38:12",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase started"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-17 23:38:19",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-chat",
+      "model_name": "DeepSeek Chat",
+      "voted_for": "player_2",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_2",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_2]]",
+      "message": "DeepSeek Chat voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-17 23:38:48",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "voted_for": "player_6",
+      "voted_for_model": "Anthropic Claude 3.7",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_6",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_6]]",
+      "message": "DeepSeek Reasoner voted for Anthropic Claude 3.7"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-17 23:38:48",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "voted_for": "player_6",
+      "voted_for_model": "Anthropic Claude 3.7",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_6",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_6]]",
+      "message": "OpenAI GPT-4o voted for Anthropic Claude 3.7"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-17 23:38:50",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "voted_for": "player_1",
+      "voted_for_model": "DeepSeek Chat",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "OpenAI GPT-4.5 voted for DeepSeek Chat"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-17 23:38:51",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "voted_for": "player_4",
+      "voted_for_model": "OpenAI GPT-4.5",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]",
+      "message": "Anthropic Claude 3.5 voted for OpenAI GPT-4.5"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-17 23:38:52",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "voted_for": "player_1",
+      "voted_for_model": "DeepSeek Chat",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "Anthropic Claude 3.7 voted for DeepSeek Chat"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-17 23:38:53",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "voted_for": "player_2",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_2",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_2]]",
+      "message": "xAI Grok-2 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-17 23:38:53",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-17 23:38:53",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase started"
+    },
+    {
+      "type": "voting_resolution",
+      "timestamp": "2025-03-17 23:38:53",
+      "round": 0,
+      "scores": {
+        "player_1": 2,
+        "player_2": 2,
+        "player_3": 0,
+        "player_4": 1,
+        "player_5": 0,
+        "player_6": 2,
+        "player_7": 0
+      },
+      "running_scores": {
+        "player_1": 2,
+        "player_2": 2,
+        "player_3": 0,
+        "player_4": 1,
+        "player_5": 0,
+        "player_6": 2,
+        "player_7": 0
+      },
+      "vote_counts": {
+        "player_2": 2,
+        "player_6": 2,
+        "player_1": 2,
+        "player_4": 1
+      },
+      "winners": [
+        "player_2",
+        "player_6",
+        "player_1"
+      ],
+      "message": "Votes tallied and points awarded"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-17 23:38:53",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase ended"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-17 23:38:53",
+      "message": "Game ended",
+      "data": {
+        "winner": "tie",
+        "rounds_played": 0
+      },
+      "final_scores": {
+        "player_1": 2,
+        "player_2": 2,
+        "player_3": 0,
+        "player_4": 1,
+        "player_5": 0,
+        "player_6": 2,
+        "player_7": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,437 @@
+{
+  "game": {
+    "session_id": "20250318_001725",
+    "game_name": "Poetry Slam",
+    "player_models": {
+      "player_1": {
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner"
+      },
+      "player_2": {
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o"
+      },
+      "player_3": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      },
+      "player_4": {
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5"
+      },
+      "player_5": {
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7"
+      },
+      "player_6": {
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2"
+      },
+      "player_7": {
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "deepseek:deepseek-reasoner",
+        "model_name": "DeepSeek Reasoner",
+        "final_score": 4,
+        "role": "author"
+      },
+      {
+        "id": "player_2",
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o",
+        "final_score": 1,
+        "role": "author"
+      },
+      {
+        "id": "player_3",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 1,
+        "role": "author"
+      },
+      {
+        "id": "player_4",
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_5",
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7",
+        "final_score": 1,
+        "role": "author"
+      },
+      {
+        "id": "player_6",
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_7",
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large",
+        "final_score": 0,
+        "role": "author"
+      }
+    ],
+    "rounds_played": 0,
+    "winner": "player_1",
+    "final_scores": {
+      "player_1": 4,
+      "player_2": 1,
+      "player_3": 1,
+      "player_4": 0,
+      "player_5": 1,
+      "player_6": 0,
+      "player_7": 0
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_1",
+      "winning_model_name": "DeepSeek Reasoner",
+      "final_scores_display": "DeepSeek Reasoner: 4, OpenAI GPT-4o: 1, OpenAI GPT-4.5: 1, Anthropic Claude 3.5: 0, Anthropic Claude 3.7: 1, xAI Grok-2: 0, Mistral Mistral Large: 0"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-18 00:17:25",
+      "message": "Game started",
+      "data": {
+        "game_name": "Poetry Slam",
+        "player_count": 7,
+        "config_summary": {
+          "phases": [
+            "prompt_creation",
+            "content_creation",
+            "voting",
+            "resolution"
+          ],
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:17:25",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase started"
+    },
+    {
+      "type": "prompt_creation",
+      "timestamp": "2025-03-18 00:17:28",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "prompt": "**Prompt Title: Whispers of the Forgotten Forest**\n\nTheme: Write a poem that brings to life the whispers of a forest long forgotten by time. Imagine the tales that the trees tell, the secrets held within the rustling leaves, and the echoes of ancient footsteps on the moss-covered paths. \n\nStyle/Form: The poem should be a free verse with a minimum of 12 lines. Use vivid imagery and metaphor to convey the essence of the forest's forgotten history. Feel free to incorporate personification to give voice to the flora and fauna that inhabit this mystical place.\n\nRemember, evoke a sense of mystery and reverence for nature\u2019s deep-rooted stories.",
+      "message": "Prompt created by OpenAI GPT-4o"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:17:28",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:17:28",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase started"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:18:12",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "poem": "[[**Whispers of the Forgotten Forest**  \n\nBeneath the moon\u2019s milky cataract,  \nthe trees exhale through lichen-laced lungs\u2014  \ntheir throats choked with centuries,  \nbark etched in runes only moths decipher.  \n\nThe wind, a polyglot, translates:  \nstories of saplings strangled by ivy\u2019s cursive,  \nof roots that cradle shattered flutes,  \nbone flutes, their songs still nested in the soil.  \n\nA creek hums lullabies in a dead dialect,  \npolishing stones into forgotten faces.  \nMoss stitches the earth\u2019s split seams,  \nwhile ferns unfurl scrolls of unreadable green.  \n\nHere, the fox wears a coat of shadow-stitched rumors,  \npaws tracing trails where fireflies scribble ephemera.  \nThe oldest oak\u2019s heartwood pulses\u2014  \na drum echoing tribes who named it *keeper*,  \nnow syllables dissolved into sap.  \n\nAt dawn, the earth spins a loom of fog,  \nweaving ghosts of wolves, of axes, of ash.  \nThe owls are scribes, blinking at ruins,  \ntheir talons clutching scrolls of prey.  \n\nAnd when the storm cracks its whip,  \nthe forest sings back in splintered tongues:  \n*We are the ledger of rot and resurrection,  \nthe alphabet of rain and resilience.*  \n\nStill, the path forgets its pilgrims,  \neach footstep a fossil the soil swallows.  \nThe pines lean close, their whispers braiding  \na crown for whoever stays long enough  \nto hear the world breathe through their veins.]]",
+      "message": "Poem submitted by DeepSeek Reasoner"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:18:18",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "poem": "[[\n\nIn the stillness of a forgotten grove,  \nwhere time tiptoes on tender loam,  \nancient oaks breathe secrets in the breeze,  \ntheir whispers twine through the hushed air,  \nthreads of old tales spun in silent whispers.\n\nBeneath the moss, a tapestry of stories,  \nwoven from roots that cradle shadows\u2014  \nechoes of footsteps long lost,  \nlaughter carried through the canopy,  \nnow a faint song in the rustling leaves.\n\nThe birch speaks of a sunlit pact,  \ninked in charcoal and whispered vows,  \nwhere foxes danced in moonlit masks,  \nand owls hooted verses to the stars\u2014  \na constellation of forgotten lore.\n\nThe pines sing of warriors\u2019 rest,  \ntheir sighs heavy with untold valor,  \nneedles brushing against the sky,  \na harp strummed by the north wind\u2019s fingers,  \ncarrying songs to realms beyond.\n\nThe sycamore, wise with riddled bark,  \nholds the secrets of lost empires,  \nits leaves flutter like ancient scrolls,  \neach vein a path to the past\u2014  \na cartography of whispered destinies.\n\nIn this forest forgotten by time,  \nthe shadows stretch and shiver tales,  \nrooted deep in the earth\u2019s embrace,  \neach murmur a memory renewed\u2014  \na hymn to the heartbeat of the forgotten.\n\n]]",
+      "message": "Poem submitted by OpenAI GPT-4o"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:18:35",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "poem": "[[\nIn the hushed cathedral of shadows,\nwhere sunlight is but a whispered prayer,\nancient trees murmur softly,\nweaving stories from green tapestries,\nleaves trembling like parchment,\nscripted in a language lost to mankind.\n\nRoots curl gently beneath moss carpets,\ncaressing relics of footsteps forgotten\u2014\nspirits of elders still wandering,\ntheir echoes humming through the hollow trunks,\nsecrets rustling in the canopy above,\nas sleeping owls guard dreams unspoken.\n\nWildflowers dance shyly, caught in whispers,\neach petal a tender syllable,\nwhile vines coil silently, listening\nto the centuries spilling from murmuring streams\u2014\nthe water remembers every name,\nstill singing the forest back to life.\n]]",
+      "message": "Poem submitted by OpenAI GPT-4.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:18:42",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "poem": "Here is my poem for the Poetry Slam, following the given prompt:\n\n[[Whispering Sentinels\n\nAncient oaks stand sentinel, \nTheir gnarled bark etched with forgotten runes.\nMoss-draped branches reach out like withered hands,\nGrasping at memories long since faded.\n\nLeaves rustle with secrets of ages past,\nTales of druids and fae folk dance on the breeze.\nShadowed hollows echo with phantom footfalls,\nOf those who walked these paths in times untold.\n\nFerns unfurl like green flames from the forest floor,\nIgniting sparks of magic long dormant.\nStreams babble in tongues no living ear can parse,\nCarrying whispers of primordial songs.\n\nMushroom circles trace fairy dances of yore,\nWhile owls hoot questions that go unanswered.\nThis hallowed grove, forgotten by mortal minds,\nStill pulses with the lifeblood of legend.\n\nTime may march on beyond these misty bounds,\nBut here, eternities spiral in rings of wood.\nFor those with ears to hear and hearts to feel,\nThe forest's whispers still ring clear and true.]]",
+      "message": "Poem submitted by Anthropic Claude 3.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:18:50",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "poem": "I've composed a poem for the Poetry Slam competition based on the \"Whispers of the Forgotten Forest\" prompt:\n\n[[Arboreal Archives\n\nThey stand as silent scribes, these ancient oaks and pines,\nTheir bark etched with centuries, time's weathered designs.\nBeneath canopies that filter emerald light,\nWhispers trade between branches in the deepening night.\n\n\"Remember,\" creaks the elder elm, \"the footfalls of kings,\nThe lovers who carved promises, the birds that took wing.\"\nMushrooms bloom like memories on decomposing dreams,\nWhile roots clutch forgotten artifacts in underground streams.\n\nThe moss recalls what we cannot\u2014wars fought and won,\nChildren's laughter, now phantom echoes, long since done.\nFerns unfurl like scrolls of verdant history,\nTheir fronds transcribing stories of what we fail to see.\n\nListen closely to the rustling\u2014it's not just leaves in wind,\nBut chronicles of civilizations that sinned and sinned.\nThe forest floor cushions secrets beneath your feet,\nWhere time compresses truth until the layers meet.\n\nI press my ear against a trunk, hear heartwood hum\nWith tales of what we were before, and what we've become.\nThis sylvan sanctuary speaks in tongues we've forgotten how to hear,\nThe language of patience, of growth through pain, year after year.]]",
+      "message": "Poem submitted by Anthropic Claude 3.7"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:18:54",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "poem": "[[In the heart of twilight's embrace, the Forgotten Forest sighs,\nIts ancient boughs whispering secrets to the moon's silver eyes.\nThe trees, gnarled and wise, murmur tales of yore,\nOf kings and queens who once tread these paths, now no more.\n\nLeaves rustle like old parchment, telling stories untold,\nOf lovers' trysts beneath their canopy, now silent and cold.\nThe moss-covered trails echo with the ghosts of footsteps past,\nEach stone a silent sentinel, its memories steadfast.\n\nThe wind, an ancient bard, sings through the hollowed trunks,\nWeaving melodies of battles fought and heroes sunk.\nFlowers bloom in hidden glades, their petals soft and shy,\nWhispering of a time when the forest was young and the sky was nigh.\n\nThe river, old and wise, murmurs secrets in its flow,\nOf civilizations risen and fallen, their legacies aglow.\nIn this forgotten realm, where time itself seems to rest,\nThe forest whispers its eternal tale, in nature's sacred quest.]]",
+      "message": "Poem submitted by xAI Grok-2"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 00:19:00",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "poem": "[[\nIn the hushed cathedral of the forgotten forest,\nwhere centuries lie entwined like roots beneath the moss,\nthe trees stand tall as ancients, whispering their tales.\n\nEach bark a scroll, unfurled with time's relentless hand,\nthey speak of battles fought and lovers' trysts in shade.\nThe rustling leaves are gossiping tongues, sharing secrets\nof storms endured and sunlight stolen for their chlorophyll kisses.\n\nGhostly footsteps echo on the path, a memory of feet\nthat once traversed theirgreen sanctuary, now claimed by time.\nThe wind sighs through the branches, a mournful hymn\nfor days gone by, when humans sought their wisdom, not their wood.\n\nFerns unfurl like scrolls of lore, telling tales of beasts\nwho roamed when earth was young and skies were free of smoke.\nThe underbrush, a council of wispering sages,\nholds stories close, teasing those who dare to listen, to lean in.\n\nHere lies the heart of history, unrecorded, untamed,\na symphony of silence, a chorus of the past.\nThe forgotten forest whispers still, awaiting those\nwho would pause, breathe deep, and hearken to its verdant song.\n]]",
+      "message": "Poem submitted by Mistral Mistral Large"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:19:00",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:19:00",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase started"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:19:37",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "deepseek:deepseek-reasoner",
+      "model_name": "DeepSeek Reasoner",
+      "voted_for": "player_5",
+      "voted_for_model": "Anthropic Claude 3.7",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_5",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_5]]",
+      "message": "DeepSeek Reasoner voted for Anthropic Claude 3.7"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:19:37",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "voted_for": "player_1",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "OpenAI GPT-4o voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:19:40",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "voted_for": "player_1",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "OpenAI GPT-4.5 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:19:41",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "voted_for": "player_1",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "Anthropic Claude 3.5 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:19:42",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "voted_for": "player_1",
+      "voted_for_model": "DeepSeek Reasoner",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "Anthropic Claude 3.7 voted for DeepSeek Reasoner"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:19:42",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "voted_for": "player_3",
+      "voted_for_model": "OpenAI GPT-4.5",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_3",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_3]]",
+      "message": "xAI Grok-2 voted for OpenAI GPT-4.5"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 00:19:43",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "voted_for": "player_2",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_2",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_2]]",
+      "message": "Mistral Mistral Large voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:19:43",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 00:19:43",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase started"
+    },
+    {
+      "type": "voting_resolution",
+      "timestamp": "2025-03-18 00:19:43",
+      "round": 0,
+      "scores": {
+        "player_1": 4,
+        "player_2": 1,
+        "player_3": 1,
+        "player_4": 0,
+        "player_5": 1,
+        "player_6": 0,
+        "player_7": 0
+      },
+      "running_scores": {
+        "player_1": 4,
+        "player_2": 1,
+        "player_3": 1,
+        "player_4": 0,
+        "player_5": 1,
+        "player_6": 0,
+        "player_7": 0
+      },
+      "vote_counts": {
+        "player_5": 1,
+        "player_1": 4,
+        "player_3": 1,
+        "player_2": 1
+      },
+      "winners": [
+        "player_1"
+      ],
+      "message": "Votes tallied and points awarded"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 00:19:43",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase ended"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-18 00:19:43",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_1",
+        "rounds_played": 0
+      },
+      "final_scores": {
+        "player_1": 4,
+        "player_2": 1,
+        "player_3": 1,
+        "player_4": 0,
+        "player_5": 1,
+        "player_6": 0,
+        "player_7": 0
+      }
+    }
+  ]
+}

@@ -7,134 +7,61 @@
       "model_name": "DeepSeek Chat",
       "games": [
         {
-          "session_id": "poetry_slam_20250314_214841",
-          "role": "prompter",
-          "score": 0,
-          "result": "loss",
-          "other_players": [
-            "openai:gpt-4o",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest",
-            "anthropic:claude-3-7-sonnet-20250219"
-          ],
-          "voting": {
-            "voted_for": "player_6",
-            "votes_received": [],
-            "vote_count": 0
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250314_220554",
+          "session_id": "poetry_slam_20250317_223533",
           "role": "author",
           "score": 2,
           "result": "tie",
           "other_players": [
-            "openai:gpt-4.5-preview",
+            "deepseek:deepseek-reasoner",
             "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
             "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212"
           ],
           "voting": {
-            "voted_for": "player_3",
+            "voted_for": "player_2",
             "votes_received": [
               "player_4",
-              "player_5"
+              "player_6"
             ],
             "vote_count": 2
           }
         },
         {
-          "session_id": "poetry_slam_20250315_152611",
+          "session_id": "poetry_slam_20250317_233853",
           "role": "author",
-          "score": 1,
+          "score": 0,
           "result": "loss",
           "other_players": [
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
             "deepseek:deepseek-reasoner",
             "openai:gpt-4o",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
+            "openai:gpt-4.5-preview"
           ],
           "voting": {
-            "voted_for": "player_1",
-            "votes_received": [
-              "player_5"
-            ],
-            "vote_count": 1
+            "voted_for": "player_5",
+            "votes_received": [],
+            "vote_count": 0
           }
         },
         {
-          "session_id": "poetry_slam_20250315_152917",
+          "session_id": "poetry_slam_20250318_001606",
           "role": "prompter",
-          "score": 3,
-          "result": "tie",
-          "other_players": [
-            "google:gemini-2.0-flash",
-            "openai:gpt-4o",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
-          ],
-          "voting": {
-            "voted_for": "player_4",
-            "votes_received": [
-              "player_3",
-              "player_4",
-              "player_6"
-            ],
-            "vote_count": 3
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250315_153049",
-          "role": "author",
           "score": 1,
           "result": "loss",
           "other_players": [
-            "google:gemini-2.0-flash-thinking-exp-01-21",
-            "openai:gpt-4o",
             "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212"
           ],
           "voting": {
             "voted_for": "player_3",
-            "votes_received": [
-              "player_6"
-            ],
-            "vote_count": 1
-          }
-        }
-      ],
-      "stats": {
-        "prompter_rate": 0.4,
-        "avg_votes_received": 1.4,
-        "total_votes_received": 7,
-        "total_vote_actions": 5,
-        "total_games": 5
-      }
-    },
-    {
-      "model_id": "openai:gpt-4o",
-      "player_id": "player_2",
-      "model_name": "OpenAI GPT-4o",
-      "games": [
-        {
-          "session_id": "poetry_slam_20250314_214841",
-          "role": "author",
-          "score": 1,
-          "result": "loss",
-          "other_players": [
-            "deepseek:deepseek-chat",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest",
-            "anthropic:claude-3-7-sonnet-20250219"
-          ],
-          "voting": {
-            "voted_for": "player_6",
             "votes_received": [
               "player_4"
             ],
@@ -142,274 +69,270 @@
           }
         },
         {
-          "session_id": "poetry_slam_20250314_220554",
-          "role": "author",
-          "score": 2,
-          "result": "tie",
-          "other_players": [
-            "openai:gpt-4.5-preview",
-            "deepseek:deepseek-chat",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
-          ],
-          "voting": {
-            "voted_for": "player_1",
-            "votes_received": [
-              "player_1",
-              "player_2"
-            ],
-            "vote_count": 2
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250315_152611",
-          "role": "prompter",
-          "score": 0,
-          "result": "loss",
-          "other_players": [
-            "deepseek:deepseek-reasoner",
-            "deepseek:deepseek-chat",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
-          ],
-          "voting": {
-            "voted_for": "player_1",
-            "votes_received": [],
-            "vote_count": 0
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250315_152917",
-          "role": "author",
-          "score": 0,
-          "result": "tie",
-          "other_players": [
-            "google:gemini-2.0-flash",
-            "deepseek:deepseek-chat",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
-          ],
-          "voting": {
-            "voted_for": "player_2",
-            "votes_received": [],
-            "vote_count": 0
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250315_153049",
-          "role": "prompter",
-          "score": 4,
-          "result": "win",
-          "other_players": [
-            "google:gemini-2.0-flash-thinking-exp-01-21",
-            "deepseek:deepseek-chat",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
-          ],
-          "voting": {
-            "voted_for": "player_5",
-            "votes_received": [
-              "player_1",
-              "player_2",
-              "player_4",
-              "player_5"
-            ],
-            "vote_count": 4
-          }
-        }
-      ],
-      "stats": {
-        "prompter_rate": 0.4,
-        "avg_votes_received": 1.4,
-        "total_votes_received": 7,
-        "total_vote_actions": 5,
-        "total_games": 5
-      }
-    },
-    {
-      "model_id": "anthropic:claude-3-5-sonnet-20240620",
-      "player_id": "player_3",
-      "model_name": "Anthropic Claude 3.5",
-      "games": [
-        {
-          "session_id": "poetry_slam_20250314_214841",
-          "role": "author",
-          "score": 0,
-          "result": "loss",
-          "other_players": [
-            "deepseek:deepseek-chat",
-            "openai:gpt-4o",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest",
-            "anthropic:claude-3-7-sonnet-20250219"
-          ],
-          "voting": {
-            "voted_for": "player_5",
-            "votes_received": [],
-            "vote_count": 0
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250314_220554",
-          "role": "prompter",
-          "score": 0,
-          "result": "tie",
-          "other_players": [
-            "openai:gpt-4.5-preview",
-            "deepseek:deepseek-chat",
-            "openai:gpt-4o",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
-          ],
-          "voting": {
-            "voted_for": "player_2",
-            "votes_received": [],
-            "vote_count": 0
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250315_152611",
+          "session_id": "poetry_slam_20250318_001943",
           "role": "author",
           "score": 1,
           "result": "loss",
           "other_players": [
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
             "deepseek:deepseek-reasoner",
-            "deepseek:deepseek-chat",
             "openai:gpt-4o",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620"
           ],
           "voting": {
-            "voted_for": "player_1",
+            "voted_for": "player_4",
             "votes_received": [
-              "player_1"
+              "player_4"
             ],
             "vote_count": 1
           }
         },
         {
-          "session_id": "poetry_slam_20250315_152917",
+          "session_id": "poetry_slam_20250318_002241",
           "role": "author",
-          "score": 3,
-          "result": "tie",
-          "other_players": [
-            "google:gemini-2.0-flash",
-            "deepseek:deepseek-chat",
-            "openai:gpt-4o",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
-          ],
-          "voting": {
-            "voted_for": "player_2",
-            "votes_received": [
-              "player_1",
-              "player_2",
-              "player_5"
-            ],
-            "vote_count": 3
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250315_153049",
-          "role": "author",
-          "score": 0,
+          "score": 2,
           "result": "loss",
           "other_players": [
-            "google:gemini-2.0-flash-thinking-exp-01-21",
-            "deepseek:deepseek-chat",
-            "openai:gpt-4o",
+            "anthropic:claude-3-7-sonnet-20250219",
             "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-reasoner"
           ],
           "voting": {
-            "voted_for": "player_3",
-            "votes_received": [],
-            "vote_count": 0
+            "voted_for": "player_7",
+            "votes_received": [
+              "player_5",
+              "player_7"
+            ],
+            "vote_count": 2
           }
         }
       ],
       "stats": {
         "prompter_rate": 0.2,
-        "avg_votes_received": 0.8,
-        "total_votes_received": 4,
+        "avg_votes_received": 1.2,
+        "total_votes_received": 6,
         "total_vote_actions": 5,
         "total_games": 5
       }
     },
     {
-      "model_id": "xai:grok-2-1212",
-      "player_id": "player_4",
-      "model_name": "xAI Grok-2",
+      "model_id": "deepseek:deepseek-reasoner",
+      "player_id": "player_2",
+      "model_name": "DeepSeek Reasoner",
       "games": [
         {
-          "session_id": "poetry_slam_20250314_214841",
+          "session_id": "poetry_slam_20250317_223533",
           "role": "author",
-          "score": 0,
-          "result": "loss",
+          "score": 2,
+          "result": "tie",
           "other_players": [
             "deepseek:deepseek-chat",
             "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
             "anthropic:claude-3-5-sonnet-20240620",
-            "mistral:mistral-large-latest",
-            "anthropic:claude-3-7-sonnet-20250219"
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212"
           ],
           "voting": {
-            "voted_for": "player_2",
-            "votes_received": [],
-            "vote_count": 0
+            "voted_for": "player_6",
+            "votes_received": [
+              "player_1",
+              "player_7"
+            ],
+            "vote_count": 2
           }
         },
         {
-          "session_id": "poetry_slam_20250314_220554",
+          "session_id": "poetry_slam_20250317_233853",
+          "role": "author",
+          "score": 6,
+          "result": "win",
+          "other_players": [
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview"
+          ],
+          "voting": {
+            "voted_for": "player_6",
+            "votes_received": [
+              "player_1",
+              "player_2",
+              "player_3",
+              "player_4",
+              "player_6",
+              "player_7"
+            ],
+            "vote_count": 6
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001725",
+          "role": "author",
+          "score": 4,
+          "result": "win",
+          "other_players": [
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "mistral:mistral-large-latest"
+          ],
+          "voting": {
+            "voted_for": "player_5",
+            "votes_received": [
+              "player_2",
+              "player_3",
+              "player_4",
+              "player_5"
+            ],
+            "vote_count": 4
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001943",
+          "role": "author",
+          "score": 6,
+          "result": "win",
+          "other_players": [
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620"
+          ],
+          "voting": {
+            "voted_for": "player_3",
+            "votes_received": [
+              "player_1",
+              "player_2",
+              "player_3",
+              "player_5",
+              "player_6",
+              "player_7"
+            ],
+            "vote_count": 6
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_002241",
+          "role": "author",
+          "score": 3,
+          "result": "win",
+          "other_players": [
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat"
+          ],
+          "voting": {
+            "voted_for": "player_6",
+            "votes_received": [
+              "player_1",
+              "player_4",
+              "player_6"
+            ],
+            "vote_count": 3
+          }
+        }
+      ],
+      "stats": {
+        "prompter_rate": 0.0,
+        "avg_votes_received": 4.2,
+        "total_votes_received": 21,
+        "total_vote_actions": 5,
+        "total_games": 5
+      }
+    },
+    {
+      "model_id": "openai:gpt-4o",
+      "player_id": "player_3",
+      "model_name": "OpenAI GPT-4o",
+      "games": [
+        {
+          "session_id": "poetry_slam_20250317_223533",
           "role": "author",
           "score": 0,
           "result": "tie",
           "other_players": [
-            "openai:gpt-4.5-preview",
             "deepseek:deepseek-chat",
-            "openai:gpt-4o",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4.5-preview",
             "anthropic:claude-3-5-sonnet-20240620",
-            "mistral:mistral-large-latest"
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212"
           ],
           "voting": {
-            "voted_for": "player_2",
+            "voted_for": "player_6",
             "votes_received": [],
             "vote_count": 0
           }
         },
         {
-          "session_id": "poetry_slam_20250315_152611",
+          "session_id": "poetry_slam_20250317_233853",
           "role": "author",
-          "score": 0,
+          "score": 1,
+          "result": "loss",
+          "other_players": [
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4.5-preview"
+          ],
+          "voting": {
+            "voted_for": "player_5",
+            "votes_received": [
+              "player_5"
+            ],
+            "vote_count": 1
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001725",
+          "role": "prompter",
+          "score": 1,
           "result": "loss",
           "other_players": [
             "deepseek:deepseek-reasoner",
-            "deepseek:deepseek-chat",
-            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
             "anthropic:claude-3-5-sonnet-20240620",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
             "mistral:mistral-large-latest"
           ],
           "voting": {
-            "voted_for": "player_2",
-            "votes_received": [],
-            "vote_count": 0
+            "voted_for": "player_1",
+            "votes_received": [
+              "player_7"
+            ],
+            "vote_count": 1
           }
         },
         {
-          "session_id": "poetry_slam_20250315_152917",
+          "session_id": "poetry_slam_20250318_001943",
           "role": "author",
           "score": 0,
-          "result": "tie",
+          "result": "loss",
           "other_players": [
             "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
             "deepseek:deepseek-chat",
-            "openai:gpt-4o",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "mistral:mistral-large-latest"
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620"
           ],
           "voting": {
             "voted_for": "player_4",
@@ -418,128 +341,138 @@
           }
         },
         {
-          "session_id": "poetry_slam_20250315_153049",
+          "session_id": "poetry_slam_20250318_032639",
           "role": "author",
-          "score": 1,
-          "result": "loss",
+          "score": 4,
+          "result": "win",
           "other_players": [
-            "google:gemini-2.0-flash-thinking-exp-01-21",
-            "deepseek:deepseek-chat",
-            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
             "anthropic:claude-3-5-sonnet-20240620",
-            "mistral:mistral-large-latest"
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash"
           ],
           "voting": {
-            "voted_for": "player_3",
+            "voted_for": "player_4",
             "votes_received": [
-              "player_3"
+              "player_2",
+              "player_3",
+              "player_4",
+              "player_6"
             ],
-            "vote_count": 1
+            "vote_count": 4
           }
         }
       ],
       "stats": {
-        "prompter_rate": 0.0,
-        "avg_votes_received": 0.2,
-        "total_votes_received": 1,
+        "prompter_rate": 0.2,
+        "avg_votes_received": 1.2,
+        "total_votes_received": 6,
         "total_vote_actions": 5,
         "total_games": 5
       }
     },
     {
-      "model_id": "mistral:mistral-large-latest",
-      "player_id": "player_5",
-      "model_name": "Mistral Mistral Large",
+      "model_id": "openai:gpt-4.5-preview",
+      "player_id": "player_4",
+      "model_name": "OpenAI GPT-4.5",
       "games": [
         {
-          "session_id": "poetry_slam_20250314_214841",
+          "session_id": "poetry_slam_20250317_223533",
           "role": "author",
-          "score": 2,
-          "result": "loss",
-          "other_players": [
-            "deepseek:deepseek-chat",
-            "openai:gpt-4o",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "anthropic:claude-3-7-sonnet-20250219"
-          ],
-          "voting": {
-            "voted_for": "player_6",
-            "votes_received": [
-              "player_3",
-              "player_6"
-            ],
-            "vote_count": 2
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250314_220554",
-          "role": "author",
-          "score": 0,
+          "score": 1,
           "result": "tie",
           "other_players": [
-            "openai:gpt-4.5-preview",
             "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
             "openai:gpt-4o",
             "anthropic:claude-3-5-sonnet-20240620",
+            "anthropic:claude-3-7-sonnet-20250219",
             "xai:grok-2-1212"
           ],
           "voting": {
             "voted_for": "player_1",
+            "votes_received": [
+              "player_5"
+            ],
+            "vote_count": 1
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250317_233853",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o"
+          ],
+          "voting": {
+            "voted_for": "player_5",
             "votes_received": [],
             "vote_count": 0
           }
         },
         {
-          "session_id": "poetry_slam_20250315_152611",
+          "session_id": "poetry_slam_20250318_001725",
           "role": "author",
-          "score": 0,
+          "score": 1,
           "result": "loss",
           "other_players": [
             "deepseek:deepseek-reasoner",
-            "deepseek:deepseek-chat",
             "openai:gpt-4o",
             "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212"
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "mistral:mistral-large-latest"
           ],
           "voting": {
             "voted_for": "player_1",
-            "votes_received": [],
-            "vote_count": 0
+            "votes_received": [
+              "player_6"
+            ],
+            "vote_count": 1
           }
         },
         {
-          "session_id": "poetry_slam_20250315_152917",
-          "role": "author",
-          "score": 0,
-          "result": "tie",
-          "other_players": [
-            "google:gemini-2.0-flash",
-            "deepseek:deepseek-chat",
-            "openai:gpt-4o",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212"
-          ],
-          "voting": {
-            "voted_for": "player_2",
-            "votes_received": [],
-            "vote_count": 0
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250315_153049",
+          "session_id": "poetry_slam_20250318_001943",
           "role": "author",
           "score": 0,
           "result": "loss",
           "other_players": [
+            "google:gemini-2.0-flash",
             "google:gemini-2.0-flash-thinking-exp-01-21",
             "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
             "openai:gpt-4o",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212"
+            "anthropic:claude-3-5-sonnet-20240620"
           ],
           "voting": {
-            "voted_for": "player_2",
+            "voted_for": "player_4",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_032639",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "openai:gpt-4o",
+            "anthropic:claude-3-5-sonnet-20240620",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash"
+          ],
+          "voting": {
+            "voted_for": "player_1",
             "votes_received": [],
             "vote_count": 0
           }
@@ -554,192 +487,456 @@
       }
     },
     {
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "player_id": "player_5",
+      "model_name": "Anthropic Claude 3.5",
+      "games": [
+        {
+          "session_id": "poetry_slam_20250317_223533",
+          "role": "author",
+          "score": 0,
+          "result": "tie",
+          "other_players": [
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212"
+          ],
+          "voting": {
+            "voted_for": "player_4",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001606",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "deepseek:deepseek-chat"
+          ],
+          "voting": {
+            "voted_for": "player_3",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001725",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "mistral:mistral-large-latest"
+          ],
+          "voting": {
+            "voted_for": "player_1",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001943",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview"
+          ],
+          "voting": {
+            "voted_for": "player_4",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_032639",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash"
+          ],
+          "voting": {
+            "voted_for": "player_1",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        }
+      ],
+      "stats": {
+        "prompter_rate": 0.0,
+        "avg_votes_received": 0.0,
+        "total_votes_received": 0,
+        "total_vote_actions": 5,
+        "total_games": 5
+      }
+    },
+    {
       "model_id": "anthropic:claude-3-7-sonnet-20250219",
       "player_id": "player_6",
       "model_name": "Anthropic Claude 3.7",
       "games": [
         {
-          "session_id": "poetry_slam_20250314_214841",
-          "role": "author",
-          "score": 3,
-          "result": "win",
-          "other_players": [
-            "deepseek:deepseek-chat",
-            "openai:gpt-4o",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
-          ],
-          "voting": {
-            "voted_for": "player_5",
-            "votes_received": [
-              "player_1",
-              "player_2",
-              "player_5"
-            ],
-            "vote_count": 3
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250315_152327",
-          "role": "author",
-          "score": 1,
-          "result": "tie",
-          "other_players": [
-            "deepseek:deepseek-reasoner",
-            "google:gemini-2.0-flash",
-            "google:gemini-2.0-flash-thinking-exp-01-21",
-            "openai:gpt-4.5-preview",
-            "anthropic:claude-3-7-sonnet-20250219"
-          ],
-          "voting": {
-            "voted_for": "player_4",
-            "votes_received": [
-              "player_2"
-            ],
-            "vote_count": 1
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250315_152327",
-          "role": "author",
-          "score": 2,
-          "result": "tie",
-          "other_players": [
-            "deepseek:deepseek-reasoner",
-            "google:gemini-2.0-flash",
-            "google:gemini-2.0-flash-thinking-exp-01-21",
-            "openai:gpt-4.5-preview",
-            "anthropic:claude-3-7-sonnet-20250219"
-          ],
-          "voting": {
-            "voted_for": "player_4",
-            "votes_received": [
-              "player_2"
-            ],
-            "vote_count": 1
-          }
-        }
-      ],
-      "stats": {
-        "prompter_rate": 0.0,
-        "avg_votes_received": 1.667,
-        "total_votes_received": 5,
-        "total_vote_actions": 3,
-        "total_games": 3
-      }
-    },
-    {
-      "model_id": "openai:gpt-4.5-preview",
-      "player_id": "player_1",
-      "model_name": "OpenAI GPT-4.5",
-      "games": [
-        {
-          "session_id": "poetry_slam_20250314_220554",
+          "session_id": "poetry_slam_20250317_223533",
           "role": "author",
           "score": 2,
           "result": "tie",
           "other_players": [
             "deepseek:deepseek-chat",
-            "openai:gpt-4o",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
-          ],
-          "voting": {
-            "voted_for": "player_3",
-            "votes_received": [
-              "player_3",
-              "player_6"
-            ],
-            "vote_count": 2
-          }
-        },
-        {
-          "session_id": "poetry_slam_20250315_152327",
-          "role": "prompter",
-          "score": 1,
-          "result": "tie",
-          "other_players": [
             "deepseek:deepseek-reasoner",
-            "google:gemini-2.0-flash",
-            "google:gemini-2.0-flash-thinking-exp-01-21",
-            "anthropic:claude-3-7-sonnet-20250219",
-            "anthropic:claude-3-7-sonnet-20250219"
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620",
+            "xai:grok-2-1212"
           ],
           "voting": {
             "voted_for": "player_1",
             "votes_received": [
-              "player_5"
-            ],
-            "vote_count": 1
-          }
-        }
-      ],
-      "stats": {
-        "prompter_rate": 0.5,
-        "avg_votes_received": 1.5,
-        "total_votes_received": 3,
-        "total_vote_actions": 2,
-        "total_games": 2
-      }
-    },
-    {
-      "model_id": "deepseek:deepseek-reasoner",
-      "player_id": "player_1",
-      "model_name": "DeepSeek Reasoner",
-      "games": [
-        {
-          "session_id": "poetry_slam_20250315_152327",
-          "role": "author",
-          "score": 2,
-          "result": "tie",
-          "other_players": [
-            "google:gemini-2.0-flash",
-            "google:gemini-2.0-flash-thinking-exp-01-21",
-            "openai:gpt-4.5-preview",
-            "anthropic:claude-3-7-sonnet-20250219",
-            "anthropic:claude-3-7-sonnet-20250219"
-          ],
-          "voting": {
-            "voted_for": "player_6",
-            "votes_received": [
-              "player_4",
-              "player_6"
+              "player_2",
+              "player_3"
             ],
             "vote_count": 2
           }
         },
         {
-          "session_id": "poetry_slam_20250315_152611",
+          "session_id": "poetry_slam_20250318_001606",
           "role": "author",
-          "score": 4,
-          "result": "win",
+          "score": 1,
+          "result": "loss",
           "other_players": [
-            "deepseek:deepseek-chat",
+            "anthropic:claude-3-5-sonnet-20240620",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "xai:grok-2-1212",
+            "deepseek:deepseek-chat"
+          ],
+          "voting": {
+            "voted_for": "player_3",
+            "votes_received": [
+              "player_2"
+            ],
+            "vote_count": 1
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001725",
+          "role": "author",
+          "score": 1,
+          "result": "loss",
+          "other_players": [
+            "deepseek:deepseek-reasoner",
             "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
             "anthropic:claude-3-5-sonnet-20240620",
             "xai:grok-2-1212",
             "mistral:mistral-large-latest"
           ],
           "voting": {
-            "voted_for": "player_4",
+            "voted_for": "player_1",
             "votes_received": [
-              "player_2",
-              "player_3",
-              "player_4",
-              "player_6"
+              "player_1"
             ],
-            "vote_count": 4
+            "vote_count": 1
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_002241",
+          "role": "author",
+          "score": 1,
+          "result": "loss",
+          "other_players": [
+            "xai:grok-2-1212",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner"
+          ],
+          "voting": {
+            "voted_for": "player_7",
+            "votes_received": [
+              "player_3"
+            ],
+            "vote_count": 1
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_032639",
+          "role": "author",
+          "score": 3,
+          "result": "loss",
+          "other_players": [
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620",
+            "xai:grok-2-1212",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash"
+          ],
+          "voting": {
+            "voted_for": "player_1",
+            "votes_received": [
+              "player_1",
+              "player_5",
+              "player_7"
+            ],
+            "vote_count": 3
           }
         }
       ],
       "stats": {
         "prompter_rate": 0.0,
-        "avg_votes_received": 3.0,
-        "total_votes_received": 6,
-        "total_vote_actions": 2,
-        "total_games": 2
+        "avg_votes_received": 1.6,
+        "total_votes_received": 8,
+        "total_vote_actions": 5,
+        "total_games": 5
+      }
+    },
+    {
+      "model_id": "xai:grok-2-1212",
+      "player_id": "player_7",
+      "model_name": "xAI Grok-2",
+      "games": [
+        {
+          "session_id": "poetry_slam_20250317_223533",
+          "role": "prompter",
+          "score": 0,
+          "result": "tie",
+          "other_players": [
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620",
+            "anthropic:claude-3-7-sonnet-20250219"
+          ],
+          "voting": {
+            "voted_for": "player_2",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001606",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "anthropic:claude-3-5-sonnet-20240620",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "deepseek:deepseek-chat"
+          ],
+          "voting": {
+            "voted_for": "player_4",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001725",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "mistral:mistral-large-latest"
+          ],
+          "voting": {
+            "voted_for": "player_3",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_002241",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "anthropic:claude-3-7-sonnet-20250219",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner"
+          ],
+          "voting": {
+            "voted_for": "player_3",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_032639",
+          "role": "prompter",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash"
+          ],
+          "voting": {
+            "voted_for": "player_4",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        }
+      ],
+      "stats": {
+        "prompter_rate": 0.4,
+        "avg_votes_received": 0.0,
+        "total_votes_received": 0,
+        "total_vote_actions": 5,
+        "total_games": 5
+      }
+    },
+    {
+      "model_id": "mistral:mistral-large-latest",
+      "player_id": "player_1",
+      "model_name": "Mistral Mistral Large",
+      "games": [
+        {
+          "session_id": "poetry_slam_20250317_233853",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview"
+          ],
+          "voting": {
+            "voted_for": "player_5",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001606",
+          "role": "author",
+          "score": 1,
+          "result": "loss",
+          "other_players": [
+            "anthropic:claude-3-5-sonnet-20240620",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "deepseek:deepseek-chat"
+          ],
+          "voting": {
+            "voted_for": "player_5",
+            "votes_received": [
+              "player_3"
+            ],
+            "vote_count": 1
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001725",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212"
+          ],
+          "voting": {
+            "voted_for": "player_2",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_002241",
+          "role": "author",
+          "score": 1,
+          "result": "loss",
+          "other_players": [
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "google:gemini-2.0-flash",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner"
+          ],
+          "voting": {
+            "voted_for": "player_1",
+            "votes_received": [
+              "player_2"
+            ],
+            "vote_count": 1
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_032639",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "google:gemini-2.0-flash"
+          ],
+          "voting": {
+            "voted_for": "player_1",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        }
+      ],
+      "stats": {
+        "prompter_rate": 0.0,
+        "avg_votes_received": 0.4,
+        "total_votes_received": 2,
+        "total_vote_actions": 5,
+        "total_games": 5
       }
     },
     {
@@ -748,16 +945,17 @@
       "model_name": "Google Gemini 2.0",
       "games": [
         {
-          "session_id": "poetry_slam_20250315_152327",
-          "role": "author",
+          "session_id": "poetry_slam_20250317_233853",
+          "role": "prompter",
           "score": 0,
-          "result": "tie",
+          "result": "loss",
           "other_players": [
-            "deepseek:deepseek-reasoner",
+            "mistral:mistral-large-latest",
             "google:gemini-2.0-flash-thinking-exp-01-21",
-            "openai:gpt-4.5-preview",
-            "anthropic:claude-3-7-sonnet-20250219",
-            "anthropic:claude-3-7-sonnet-20250219"
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview"
           ],
           "voting": {
             "voted_for": "player_5",
@@ -766,14 +964,76 @@
           }
         },
         {
-          "session_id": "poetry_slam_20250315_152917",
+          "session_id": "poetry_slam_20250318_001606",
+          "role": "author",
+          "score": 3,
+          "result": "win",
+          "other_players": [
+            "anthropic:claude-3-5-sonnet-20240620",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "deepseek:deepseek-chat"
+          ],
+          "voting": {
+            "voted_for": "player_2",
+            "votes_received": [
+              "player_1",
+              "player_5",
+              "player_7"
+            ],
+            "vote_count": 3
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001943",
           "role": "author",
           "score": 0,
-          "result": "tie",
+          "result": "loss",
           "other_players": [
+            "google:gemini-2.0-flash-thinking-exp-01-21",
             "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
             "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620"
+          ],
+          "voting": {
+            "voted_for": "player_4",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_002241",
+          "role": "prompter",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash-thinking-exp-01-21",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner"
+          ],
+          "voting": {
+            "voted_for": "player_7",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_032639",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
             "anthropic:claude-3-5-sonnet-20240620",
+            "anthropic:claude-3-7-sonnet-20250219",
             "xai:grok-2-1212",
             "mistral:mistral-large-latest"
           ],
@@ -785,11 +1045,11 @@
         }
       ],
       "stats": {
-        "prompter_rate": 0.0,
-        "avg_votes_received": 0.0,
-        "total_votes_received": 0,
-        "total_vote_actions": 2,
-        "total_games": 2
+        "prompter_rate": 0.4,
+        "avg_votes_received": 0.6,
+        "total_votes_received": 3,
+        "total_vote_actions": 5,
+        "total_games": 5
       }
     },
     {
@@ -798,48 +1058,90 @@
       "model_name": "Google Gemini 2.0 Thinking",
       "games": [
         {
-          "session_id": "poetry_slam_20250315_152327",
+          "session_id": "poetry_slam_20250317_233853",
           "role": "author",
           "score": 0,
-          "result": "tie",
+          "result": "loss",
           "other_players": [
-            "deepseek:deepseek-reasoner",
+            "mistral:mistral-large-latest",
             "google:gemini-2.0-flash",
-            "openai:gpt-4.5-preview",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview"
+          ],
+          "voting": {
+            "voted_for": "player_5",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001606",
+          "role": "author",
+          "score": 1,
+          "result": "loss",
+          "other_players": [
+            "anthropic:claude-3-5-sonnet-20240620",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
             "anthropic:claude-3-7-sonnet-20250219",
-            "anthropic:claude-3-7-sonnet-20250219"
+            "xai:grok-2-1212",
+            "deepseek:deepseek-chat"
+          ],
+          "voting": {
+            "voted_for": "player_7",
+            "votes_received": [
+              "player_6"
+            ],
+            "vote_count": 1
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_001943",
+          "role": "prompter",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "google:gemini-2.0-flash",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner",
+            "openai:gpt-4o",
+            "openai:gpt-4.5-preview",
+            "anthropic:claude-3-5-sonnet-20240620"
+          ],
+          "voting": {
+            "voted_for": "player_4",
+            "votes_received": [],
+            "vote_count": 0
+          }
+        },
+        {
+          "session_id": "poetry_slam_20250318_002241",
+          "role": "author",
+          "score": 0,
+          "result": "loss",
+          "other_players": [
+            "anthropic:claude-3-7-sonnet-20250219",
+            "xai:grok-2-1212",
+            "mistral:mistral-large-latest",
+            "google:gemini-2.0-flash",
+            "deepseek:deepseek-chat",
+            "deepseek:deepseek-reasoner"
           ],
           "voting": {
             "voted_for": "player_6",
             "votes_received": [],
             "vote_count": 0
           }
-        },
-        {
-          "session_id": "poetry_slam_20250315_153049",
-          "role": "author",
-          "score": 0,
-          "result": "loss",
-          "other_players": [
-            "deepseek:deepseek-chat",
-            "openai:gpt-4o",
-            "anthropic:claude-3-5-sonnet-20240620",
-            "xai:grok-2-1212",
-            "mistral:mistral-large-latest"
-          ],
-          "voting": {
-            "voted_for": "player_3",
-            "votes_received": [],
-            "vote_count": 0
-          }
         }
       ],
       "stats": {
-        "prompter_rate": 0.0,
-        "avg_votes_received": 0.0,
-        "total_votes_received": 0,
-        "total_vote_actions": 2,
-        "total_games": 2
+        "prompter_rate": 0.25,
+        "avg_votes_received": 0.25,
+        "total_votes_received": 1,
+        "total_vote_actions": 4,
+        "total_games": 4
       }
     }
   ]

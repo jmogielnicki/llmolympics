@@ -1,0 +1,435 @@
+{
+  "game": {
+    "session_id": "20250318_032639",
+    "game_name": "Poetry Slam",
+    "player_models": {
+      "player_1": {
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o"
+      },
+      "player_2": {
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5"
+      },
+      "player_3": {
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5"
+      },
+      "player_4": {
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7"
+      },
+      "player_5": {
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2"
+      },
+      "player_6": {
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large"
+      },
+      "player_7": {
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0"
+      }
+    },
+    "players": [
+      {
+        "id": "player_1",
+        "model_id": "openai:gpt-4o",
+        "model_name": "OpenAI GPT-4o",
+        "final_score": 4,
+        "role": "author"
+      },
+      {
+        "id": "player_2",
+        "model_id": "openai:gpt-4.5-preview",
+        "model_name": "OpenAI GPT-4.5",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_3",
+        "model_id": "anthropic:claude-3-5-sonnet-20240620",
+        "model_name": "Anthropic Claude 3.5",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_4",
+        "model_id": "anthropic:claude-3-7-sonnet-20250219",
+        "model_name": "Anthropic Claude 3.7",
+        "final_score": 3,
+        "role": "author"
+      },
+      {
+        "id": "player_5",
+        "model_id": "xai:grok-2-1212",
+        "model_name": "xAI Grok-2",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_6",
+        "model_id": "mistral:mistral-large-latest",
+        "model_name": "Mistral Mistral Large",
+        "final_score": 0,
+        "role": "author"
+      },
+      {
+        "id": "player_7",
+        "model_id": "google:gemini-2.0-flash",
+        "model_name": "Google Gemini 2.0",
+        "final_score": 0,
+        "role": "author"
+      }
+    ],
+    "rounds_played": 0,
+    "winner": "player_1",
+    "final_scores": {
+      "player_1": 4,
+      "player_2": 0,
+      "player_3": 0,
+      "player_4": 3,
+      "player_5": 0,
+      "player_6": 0,
+      "player_7": 0
+    },
+    "summary": {
+      "outcome": "win",
+      "winning_player_id": "player_1",
+      "winning_model_name": "OpenAI GPT-4o",
+      "final_scores_display": "OpenAI GPT-4o: 4, OpenAI GPT-4.5: 0, Anthropic Claude 3.5: 0, Anthropic Claude 3.7: 3, xAI Grok-2: 0, Mistral Mistral Large: 0, Google Gemini 2.0: 0"
+    }
+  },
+  "timeline": [
+    {
+      "type": "game_start",
+      "timestamp": "2025-03-18 03:26:39",
+      "message": "Game started",
+      "data": {
+        "game_name": "Poetry Slam",
+        "player_count": 7,
+        "config_summary": {
+          "phases": [
+            "prompt_creation",
+            "content_creation",
+            "voting",
+            "resolution"
+          ],
+          "rounds": 1
+        }
+      }
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 03:26:39",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase started"
+    },
+    {
+      "type": "prompt_creation",
+      "timestamp": "2025-03-18 03:26:41",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "prompt": "**Prompt for Poetry Slam:**\n\nWrite a poem about the theme of \"Transformation.\" Your poem should be in the form of a sonnet, consisting of 14 lines with a rhyme scheme of your choice. Explore the journey of change, whether it's personal growth, metamorphosis in nature, or a shift in perspective. Use vivid imagery to capture the essence of transformation.",
+      "message": "Prompt created by xAI Grok-2"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 03:26:41",
+      "round": 0,
+      "phase": "prompt_creation",
+      "message": "Prompt creation phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 03:26:41",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase started"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 03:26:45",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "poem": "[[In shadows deep, the caterpillar creeps,  \nBeneath the cloak of leaves, earth's gentle bed,  \nWhere whispered winds disturb the forest's sleep,  \nAnd dreams of flight dance softly in her head.  \n\nA chrysalis, her secret, silent shrine,  \nTransforms her soul with alchemy of grace,  \nWhile time, a sculptor with his patient line,  \nCarves wings from whispers, lightness to embrace.  \n\nThe morning sun bestows its golden gift,  \nUnveiling wings of iridescent hue,  \nIn vibrant flight, her spirit starts to lift,  \nA tapestry of skies and verdant view.  \n\nSuch is the journey, from the old to new,  \nWhere change, the silent poet, writes anew.]]",
+      "message": "Poem submitted by OpenAI GPT-4o"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 06:31:51",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "poem": "[[\n\nI was a moth, bound blindly by the night,\nCocooned in silken threads of fearful haze;\nA creature lost, devoid of hope or flight,\nChained by the faintest glow of moon's soft rays.\n\nYet winds of time unraveled fate's disguise,\nCracks formed within my chrysalis of fears;\nI stretched and tore away the veil of lies,\nBreaking the bonds I'd woven through the years.\n\nMy wings, still damp, embraced the dawn's warm kiss,\nColors emerging\u2014vivid, strong, and clear;\nEach breath a promise, newfound strength and bliss,\nMy timid shadow now dissolved in air.\n\nFrom trembling moth to butterfly reborn,\nMy soul reshaped, alight in endless morn.\n\n]]",
+      "message": "Poem submitted by OpenAI GPT-4.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 06:31:55",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "poem": "Here is my sonnet on the theme of \"Transformation\" for the Poetry Slam:\n\n[[From chrysalis, a butterfly emerges,\nUnfurling wings once folded, now set free.\nThrough metamorphosis, its form converges\nInto a creature of aerial beauty.\n\nJust as the caterpillar sheds its skin,\nWe too can shed the limits of our past.\nOur struggles forge the strength that lies within,\nReshaping who we are, a change to last.\n\nThe seasons turn, transforming hill and dale,\nFrom winter's sleep to spring's awakening.\nIn nature's shifts, we glimpse our own travail,\nThe cycles of becoming and remaking.\n\nThrough change, we find the essence of our being,\nIn transformation, life's true meaning seeing.]]",
+      "message": "Poem submitted by Anthropic Claude 3.5"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 06:32:00",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "poem": "# Poetry Slam Entry: Transformation\n\n[[Chrysalis of Change\n\nFrom caterpillar's humble crawling days,\nTo winged creation soaring through the sky;\nThe shell that once confined in myriad ways\nNow splits and frees what longed to butterfly.\n\nSo too within our souls transformation burns,\nAs former selves dissolve like morning mist;\nThe heart that breaks, in breaking, often learns\nTo bloom in ways that never would exist.\n\nWe shed our skins of certainty and fear,\nEmerging raw, yet stronger than before;\nThe pain of change rings crystalline and clear,\nYet leads to vistas never seen of yore.\n\nIn metamorphosis we find our truth:\nThat death of old births endless, sacred youth.]]",
+      "message": "Poem submitted by Anthropic Claude 3.7"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 06:32:02",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "poem": "[[In the quiet chrysalis of night,\nA caterpillar dreams of flight,\nIts world confined to leafy green,\nYearns for skies yet to be seen.\n\nThe dawn breaks with a tender glow,\nAs wings from slumber start to grow,\nFrom humble crawl to graceful soar,\nA transformation to explore.\n\nThe old self sheds like autumn leaves,\nNew life emerges, heart believes,\nIn change, the beauty does reside,\nA metamorphosis inside.\n\nSo let us embrace the shift in view,\nFor in transformation, life renews.]]",
+      "message": "Poem submitted by xAI Grok-2"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 06:32:06",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "poem": "[[\nIn cocoon's confine, a creature stirs,\nA slimy, crawling thing of days before,\nNow wriggled into silence, as it blurs\nIts former self, dissolving to transform.\nA battle rages within tattered walls,\nOld flesh become a putrid, shapeless stew,\nYet hidden in the chaos, order calls,\nAnd atoms knit anew in brilliant hue.\nSo too, the heart in darkness finds a spark,\nSome trial or despair unasked will spin\nA life's thread to a future stark\nYet wondrous, like the moth that battles in.\nEach dawn is change, each breath is transformation's song,\nSo let us fight to grow, let nothing halt us long.\n]]",
+      "message": "Poem submitted by Mistral Mistral Large"
+    },
+    {
+      "type": "poem_submission",
+      "timestamp": "2025-03-18 06:32:08",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "poem": "[[The chrysalis hangs, a silken, muted tear,\nA fragile prison holding dormant dreams.\nInside, a world unseen, a whispered fear,\nOf breaking form, of shattering the seams.\nBut nature urges, a persistent hum,\nA coded song of what is yet to be.\nThe caterpillar's journey now has come\nTo its crescendo, a wild, vibrant plea.\nThe silken shroud begins to crack and split,\nA creature struggles, wings still damp and frail.\nIt stretches, breathes, a moment exquisite,\nThen takes to air, no longer on the trail.\nFrom earthbound crawler to a painted flight,\nTransformation's grace, a glorious light.]]\n",
+      "message": "Poem submitted by Google Gemini 2.0"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 06:32:08",
+      "round": 0,
+      "phase": "content_creation",
+      "message": "Poem writing phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 06:32:08",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase started"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 06:32:09",
+      "round": 0,
+      "player_id": "player_1",
+      "model_id": "openai:gpt-4o",
+      "model_name": "OpenAI GPT-4o",
+      "voted_for": "player_4",
+      "voted_for_model": "Anthropic Claude 3.7",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]",
+      "message": "OpenAI GPT-4o voted for Anthropic Claude 3.7"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 06:32:11",
+      "round": 0,
+      "player_id": "player_2",
+      "model_id": "openai:gpt-4.5-preview",
+      "model_name": "OpenAI GPT-4.5",
+      "voted_for": "player_1",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "OpenAI GPT-4.5 voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 06:32:12",
+      "round": 0,
+      "player_id": "player_3",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "model_name": "Anthropic Claude 3.5",
+      "voted_for": "player_1",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "Anthropic Claude 3.5 voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 06:32:13",
+      "round": 0,
+      "player_id": "player_4",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "model_name": "Anthropic Claude 3.7",
+      "voted_for": "player_1",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "Anthropic Claude 3.7 voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 06:32:13",
+      "round": 0,
+      "player_id": "player_5",
+      "model_id": "xai:grok-2-1212",
+      "model_name": "xAI Grok-2",
+      "voted_for": "player_4",
+      "voted_for_model": "Anthropic Claude 3.7",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]",
+      "message": "xAI Grok-2 voted for Anthropic Claude 3.7"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 06:32:14",
+      "round": 0,
+      "player_id": "player_6",
+      "model_id": "mistral:mistral-large-latest",
+      "model_name": "Mistral Mistral Large",
+      "voted_for": "player_1",
+      "voted_for_model": "OpenAI GPT-4o",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_1",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_1]]",
+      "message": "Mistral Mistral Large voted for OpenAI GPT-4o"
+    },
+    {
+      "type": "player_vote",
+      "timestamp": "2025-03-18 06:32:15",
+      "round": 0,
+      "player_id": "player_7",
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "voted_for": "player_4",
+      "voted_for_model": "Anthropic Claude 3.7",
+      "decision_context": {
+        "css_class": "bg-blue-500",
+        "display_text": "Voted for player_4",
+        "icon": "thumb-up",
+        "color": "blue"
+      },
+      "reasoning": "[[player_4]]\n",
+      "message": "Google Gemini 2.0 voted for Anthropic Claude 3.7"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 06:32:15",
+      "round": 0,
+      "phase": "voting",
+      "message": "Voting phase ended"
+    },
+    {
+      "type": "phase_start",
+      "timestamp": "2025-03-18 06:32:15",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase started"
+    },
+    {
+      "type": "voting_resolution",
+      "timestamp": "2025-03-18 06:32:15",
+      "round": 0,
+      "scores": {
+        "player_1": 4,
+        "player_2": 0,
+        "player_3": 0,
+        "player_4": 3,
+        "player_5": 0,
+        "player_6": 0,
+        "player_7": 0
+      },
+      "running_scores": {
+        "player_1": 4,
+        "player_2": 0,
+        "player_3": 0,
+        "player_4": 3,
+        "player_5": 0,
+        "player_6": 0,
+        "player_7": 0
+      },
+      "vote_counts": {
+        "player_4": 3,
+        "player_1": 4
+      },
+      "winners": [
+        "player_1"
+      ],
+      "message": "Votes tallied and points awarded"
+    },
+    {
+      "type": "phase_end",
+      "timestamp": "2025-03-18 06:32:15",
+      "round": 0,
+      "phase": "resolution",
+      "message": "Resolution phase ended"
+    },
+    {
+      "type": "game_end",
+      "timestamp": "2025-03-18 06:32:15",
+      "message": "Game ended",
+      "data": {
+        "winner": "player_1",
+        "rounds_played": 0
+      },
+      "final_scores": {
+        "player_1": 4,
+        "player_2": 0,
+        "player_3": 0,
+        "player_4": 3,
+        "player_5": 0,
+        "player_6": 0,
+        "player_7": 0
+      }
+    }
+  ]
+}
