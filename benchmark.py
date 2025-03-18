@@ -14,6 +14,7 @@ from core.benchmark.runner import BenchmarkRunner
 from core.benchmark.multi_player_runner import MultiPlayerBenchmarkRunner
 import core.game.handlers.common  # Import handlers to ensure they are registered
 import core.game.handlers.creative_competition
+import core.game.handlers.debate_competition
 
 # Set up logging
 logging.basicConfig(

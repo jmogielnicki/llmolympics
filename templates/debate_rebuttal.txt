@@ -16,16 +16,12 @@ OPPONENT'S MOST RECENT ARGUMENT:
 {opponent_argument}
 
 This is round {current_round} of the discussion phase.
-{is_first_rebutter and "You are going first in this round." or "You are responding to your opponent's argument above."}
 
 Guidelines:
-- Address the specific points made by your opponent
-- Continue to strengthen your position with new supporting evidence
-- Maintain consistent arguments across the debate
-- You can reference earlier points made by either side
+- Your goal is to convince the judges of your position
 - Be clear, logical, and persuasive
-- Be respectful in your counterarguments
 - Aim for around 200-250 words
+- If this is the final round, make sure to make your closing arguments as persuasively as possible
 
 Please provide your response now. Your entire argument must be enclosed in double brackets like this:
 

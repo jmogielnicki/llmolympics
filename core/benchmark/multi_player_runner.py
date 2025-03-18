@@ -21,9 +21,8 @@ class MultiPlayerBenchmarkRunner:
     """
     Manages the execution of multi-player model benchmarks.
 
-    This extends the standard BenchmarkRunner to support games
-    with more than 2 players, using the "opponent diversity first"
-    selection strategy.
+    Supports configurable role assignments and selection strategies
+    for games with complex role relationships.
     """
 
     def __init__(self, benchmark_config: BenchmarkConfig):
@@ -49,9 +48,11 @@ class MultiPlayerBenchmarkRunner:
         self.players_per_game = benchmark_config.config['benchmark'].get('players_per_game', 4)
         self.sessions = benchmark_config.config['benchmark'].get('sessions', 50)
 
-        # Get selection strategy
-        self.selection = benchmark_config.config['benchmark'].get('selection', {})
-        self.prompter_selection = self.selection.get('prompter_selection', 'weighted_inverse')
+        # Get roles configuration
+        self.roles_config = benchmark_config.config['benchmark'].get('roles', {})
+
+        # Validate role configuration
+        self._validate_roles_config()
 
         # Get models
         self.models = benchmark_config.get_models()
@@ -59,7 +60,7 @@ class MultiPlayerBenchmarkRunner:
         # Initialize tracking state
         self.opponent_matrix = {}  # Maps model -> set of opponents faced
         self.game_counts = {}      # Maps model -> number of games played
-        self.prompter_counts = {}  # Maps model -> number of times as prompter
+        self.role_counts = {}      # Maps model -> {role -> count}
         self.sessions_run = 0
 
         # Load existing state if available
@@ -68,6 +69,71 @@ class MultiPlayerBenchmarkRunner:
         logger.info(f"Initialized multi-player benchmark runner for {benchmark_config.get_benchmark_id()}")
         logger.info(f"Output directory: {self.output_dir}")
         logger.info(f"Models: {len(self.models)}, Players per game: {self.players_per_game}")
+        logger.info(f"Roles: {list(self.roles_config.keys())}")
+
+    def _validate_roles_config(self):
+        """
+        Validate the roles configuration.
+
+        Checks:
+        1. Total role counts match players_per_game
+        2. Role relationships are valid
+        """
+        # Check that we have a roles configuration
+        if not self.roles_config:
+            raise ValueError("No roles configuration found in benchmark config")
+
+        # Prepare to track roles
+        required_player_slots = 0
+        inherited_slots = 0
+
+        # Track which roles inherit others
+        inheritance_graph = {}
+
+        # Check each role
+        for role_name, role_config in self.roles_config.items():
+            # Ensure count is present
+            if 'count' not in role_config:
+                raise ValueError(f"Role {role_name} missing required 'count' field")
+
+            role_count = role_config['count']
+
+            # Track inheritance relationships
+            if 'inherits' in role_config:
+                inheritance_graph[role_name] = role_config['inherits']
+                # These slots are filled by players who already have other roles
+                inherited_slots += role_count
+            else:
+                # If no inheritance, this requires dedicated players
+                required_player_slots += role_count
+
+        # Check for inheritance cycles
+        for role in inheritance_graph:
+            visited = set()
+            self._check_inheritance_cycle(role, inheritance_graph, visited)
+
+        # Validate player counts - accounting for inheritance
+        if required_player_slots != self.players_per_game:
+            logger.warning(f"Sum of dedicated role counts ({required_player_slots}) doesn't match players_per_game ({self.players_per_game})")
+
+    def _check_inheritance_cycle(self, role, inheritance_graph, visited):
+        """
+        Check for cycles in role inheritance graph.
+
+        Args:
+            role: The current role to check
+            inheritance_graph: Map of role -> list of inherited roles
+            visited: Set of visited roles in current path
+        """
+        if role in visited:
+            raise ValueError(f"Cycle detected in role inheritance graph involving {role}")
+
+        visited.add(role)
+
+        # Check all inherited roles
+        for inherited_role in inheritance_graph.get(role, []):
+            if inherited_role in inheritance_graph:
+                self._check_inheritance_cycle(inherited_role, inheritance_graph, visited.copy())
 
     def _load_state(self) -> None:
         """
@@ -78,7 +144,7 @@ class MultiPlayerBenchmarkRunner:
             for model in self.models:
                 self.opponent_matrix[model] = set()
                 self.game_counts[model] = 0
-                self.prompter_counts[model] = 0
+                self.role_counts[model] = {role: 0 for role in self.roles_config}
             logger.info("No existing benchmark state found, starting fresh")
             return
 
@@ -89,7 +155,7 @@ class MultiPlayerBenchmarkRunner:
             # Reload state
             self.opponent_matrix = {model: set(opponents) for model, opponents in state.get('opponent_matrix', {}).items()}
             self.game_counts = state.get('game_counts', {})
-            self.prompter_counts = state.get('prompter_counts', {})
+            self.role_counts = state.get('role_counts', {})
             self.sessions_run = state.get('sessions_run', 0)
 
             # Handle new models that weren't in the previous state
@@ -98,8 +164,13 @@ class MultiPlayerBenchmarkRunner:
                     self.opponent_matrix[model] = set()
                 if model not in self.game_counts:
                     self.game_counts[model] = 0
-                if model not in self.prompter_counts:
-                    self.prompter_counts[model] = 0
+                if model not in self.role_counts:
+                    self.role_counts[model] = {role: 0 for role in self.roles_config}
+                # Add any new roles to existing models
+                else:
+                    for role in self.roles_config:
+                        if role not in self.role_counts[model]:
+                            self.role_counts[model][role] = 0
 
             logger.info(f"Loaded benchmark state: {self.sessions_run} sessions run")
 
@@ -109,7 +180,7 @@ class MultiPlayerBenchmarkRunner:
             for model in self.models:
                 self.opponent_matrix[model] = set()
                 self.game_counts[model] = 0
-                self.prompter_counts[model] = 0
+                self.role_counts[model] = {role: 0 for role in self.roles_config}
 
     def _save_state(self) -> None:
         """
@@ -119,7 +190,7 @@ class MultiPlayerBenchmarkRunner:
             state = {
                 'opponent_matrix': {model: list(opponents) for model, opponents in self.opponent_matrix.items()},
                 'game_counts': self.game_counts,
-                'prompter_counts': self.prompter_counts,
+                'role_counts': self.role_counts,
                 'sessions_run': self.sessions_run
             }
 
@@ -208,33 +279,184 @@ class MultiPlayerBenchmarkRunner:
         logger.info(f"Selected models for session: {selected_models}")
         return selected_models
 
-    def _select_prompter(self, models: List[str]) -> str:
+    def _select_models_for_role(self, role: str, count: int, eligible_models: List[str],
+                                assigned_roles: Dict[str, List[str]]) -> List[str]:
         """
-        Select a prompter from the models using weighted inverse selection.
+        Select models for a specific role using the configured selection strategy.
 
         Args:
-            models (List[str]): List of models to choose from
+            role (str): Role to select models for
+            count (int): Number of models to select
+            eligible_models (List[str]): Available models to choose from
+            assigned_roles (Dict[str, List[str]]): Current role assignments
 
         Returns:
-            str: The selected prompter model
+            List[str]: Selected models for this role
         """
-        if self.prompter_selection == 'weighted_inverse':
-            # Calculate weights: 1 / (prompter_count + 1)
-            weights = [1.0 / (self.prompter_counts.get(model, 0) + 1.0) for model in models]
+        role_config = self.roles_config[role]
+        selection_strategy = role_config.get('selection', 'random')
+
+        # Filter out models that have incompatible roles already assigned
+        incompatible_roles = role_config.get('incompatible_with', [])
+
+        filtered_models = []
+        for model in eligible_models:
+            # Skip if model already has this role
+            if model in assigned_roles and role in assigned_roles[model]:
+                continue
+
+            # Check incompatible roles
+            has_incompatible_role = False
+            if model in assigned_roles:
+                for incompatible_role in incompatible_roles:
+                    if incompatible_role in assigned_roles[model]:
+                        has_incompatible_role = True
+                        break
+
+            if not has_incompatible_role:
+                filtered_models.append(model)
+
+        # Check if we have enough eligible models
+        if len(filtered_models) < count:
+            logger.warning(f"Not enough eligible models for role {role}: {len(filtered_models)}/{count}")
+            # If we're short on models, we'll need to pick from all available models
+            filtered_models = eligible_models
+
+        # Apply selection strategy
+        if selection_strategy == 'weighted_inverse':
+            # Calculate weights: 1 / (role_count + 1)
+            weights = [1.0 / (self.role_counts.get(model, {}).get(role, 0) + 1.0) for model in filtered_models]
 
             # Normalize weights
             total_weight = sum(weights)
             probabilities = [w / total_weight for w in weights]
 
             # Weighted random selection
-            prompter = np.random.choice(models, p=probabilities)
-            logger.info(f"Selected prompter {prompter} using weighted selection")
-            return prompter
+            selected = []
+            remaining_models = filtered_models.copy()
+            remaining_probs = probabilities.copy()
+
+            for _ in range(min(count, len(filtered_models))):
+                if not remaining_models:
+                    break
+
+                # Normalize remaining probabilities
+                if sum(remaining_probs) > 0:
+                    remaining_probs = [p / sum(remaining_probs) for p in remaining_probs]
+                    chosen_idx = np.random.choice(len(remaining_models), p=remaining_probs)
+                else:
+                    chosen_idx = random.randrange(len(remaining_models))
+
+                selected.append(remaining_models[chosen_idx])
+                remaining_models.pop(chosen_idx)
+                remaining_probs.pop(chosen_idx)
+
+            logger.info(f"Selected models for role {role} using weighted selection: {selected}")
+            return selected
+
         else:
             # Default to random selection
-            prompter = random.choice(models)
-            logger.info(f"Selected prompter {prompter} using random selection")
-            return prompter
+            if len(filtered_models) <= count:
+                selected = filtered_models
+            else:
+                selected = random.sample(filtered_models, count)
+
+            logger.info(f"Selected models for role {role} using random selection: {selected}")
+            return selected
+
+    def _assign_roles_to_models(self, selected_models: List[str]) -> Tuple[Dict[str, Dict[str, str]], Dict[str, List[str]]]:
+        """
+        Assign roles to models based on the configuration.
+
+        Args:
+            selected_models (List[str]): Models to assign roles to
+
+        Returns:
+            Tuple containing:
+                - Dict[str, Dict[str, str]]: Maps roles to {player_id: model}
+                - Dict[str, List[str]]: Maps models to their assigned roles
+        """
+        # Initialize tracking structures
+        assigned_roles = {model: [] for model in selected_models}  # model -> [roles]
+        role_assignments = {}  # role -> {player_id: model}
+        player_lookup = {f"player_{i+1}": model for i, model in enumerate(selected_models)}
+
+        # Order roles for processing - base roles first, then roles with inheritance
+        base_roles = []
+        dependent_roles = []
+
+        for role, config in self.roles_config.items():
+            if 'inherits' not in config or not config['inherits']:
+                base_roles.append(role)
+            else:
+                dependent_roles.append(role)
+
+        # Process base roles first, then dependent roles
+        ordered_roles = base_roles + dependent_roles
+        logger.info(f"Processing roles in order: {ordered_roles}")
+
+        # Assign each role
+        for role in ordered_roles:
+            role_config = self.roles_config[role]
+            count = role_config.get('count', 0)
+
+            # Skip if no models needed for this role
+            if count <= 0:
+                continue
+
+            # Check exclusive flag
+            is_exclusive = role_config.get('exclusive', False)
+
+            # Get models eligible for this role
+            if is_exclusive:
+                # Only models with no roles yet
+                eligible_models = [m for m in selected_models if not assigned_roles[m]]
+            else:
+                # All models are eligible, filtered by incompatibility in selection method
+                eligible_models = selected_models
+
+            # Select models for this role
+            selected_for_role = self._select_models_for_role(
+                role, count, eligible_models, assigned_roles
+            )
+
+            # Assign role to selected models
+            role_assignments[role] = {}
+            for i, model in enumerate(selected_for_role):
+                # Find player_id corresponding to this model
+                player_id = next((pid for pid, mod in player_lookup.items() if mod == model), None)
+                if not player_id:
+                    logger.error(f"Could not find player_id for model {model}")
+                    continue
+
+                role_assignments[role][player_id] = model
+
+                # Record assignment
+                assigned_roles[model].append(role)
+
+                # If this role inherits other roles, assign those too
+                if 'inherits' in role_config:
+                    for inherited_role in role_config['inherits']:
+                        if inherited_role not in assigned_roles[model]:
+                            assigned_roles[model].append(inherited_role)
+
+                            # Add to role assignments if not already present
+                            if inherited_role not in role_assignments:
+                                role_assignments[inherited_role] = {}
+                            role_assignments[inherited_role][player_id] = model
+
+        # Validate all roles have been assigned
+        for role, config in self.roles_config.items():
+            required_count = config.get('count', 0)
+            assigned_count = len(role_assignments.get(role, {}))
+
+            if assigned_count < required_count:
+                logger.warning(f"Insufficient assignments for role {role}: {assigned_count}/{required_count}")
+
+        logger.info(f"Role assignments: {role_assignments}")
+        logger.info(f"Model roles: {assigned_roles}")
+
+        return role_assignments, assigned_roles
 
     def run_benchmark(self) -> None:
         """
@@ -246,44 +468,39 @@ class MultiPlayerBenchmarkRunner:
         # Run remaining sessions
         for i in range(self.sessions_run, self.sessions):
             logger.info(f"Running session {i+1}/{self.sessions}")
-            try:
-                # Select models for this session
-                selected_models = self._select_models_for_session()
+            # Select models for this session
+            selected_models = self._select_models_for_session()
 
-                # Select prompter
-                prompter_model = self._select_prompter(selected_models)
+            # Assign roles to models
+            role_assignments, model_roles = self._assign_roles_to_models(selected_models)
 
-                # Run the session
-                session_id, session_dir = self._run_session(selected_models, prompter_model)
+            # Run the session
+            session_id, session_dir = self._run_session(selected_models, role_assignments, model_roles)
 
-                # Update state
-                self._update_state_after_session(selected_models, prompter_model)
+            # Update state
+            self._update_state_after_session(selected_models, model_roles)
 
-                # Save current state
-                self._save_state()
+            # Save current state
+            self._save_state()
 
-                # Log the result
-                self._log_session_result(selected_models, prompter_model, session_id, session_dir)
+            # Log the result
+            self._log_session_result(selected_models, model_roles, session_id, session_dir)
 
-                # Update counter
-                self.sessions_run += 1
+            # Update counter
+            self.sessions_run += 1
 
-            except Exception as e:
-                logger.error(f"Error running session {i+1}: {str(e)}")
-                # Continue with the next session
-                continue
 
         # Calculate benchmark stats
         elapsed_time = time.time() - start_time
         logger.info(f"Benchmark complete. Ran {self.sessions_run} sessions in {elapsed_time:.2f} seconds")
 
-    def _update_state_after_session(self, models: List[str], prompter: str) -> None:
+    def _update_state_after_session(self, models: List[str], model_roles: Dict[str, List[str]]) -> None:
         """
         Update tracking state after a session.
 
         Args:
             models (List[str]): Models that participated in the session
-            prompter (str): Model that was the prompter
+            model_roles (Dict[str, List[str]]): Roles assigned to each model
         """
         # Update opponent matrix for each model
         for model in models:
@@ -295,16 +512,23 @@ class MultiPlayerBenchmarkRunner:
             # Increment game count
             self.game_counts[model] = self.game_counts.get(model, 0) + 1
 
-        # Increment prompter count
-        self.prompter_counts[prompter] = self.prompter_counts.get(prompter, 0) + 1
+            # Increment role counts
+            for role in model_roles.get(model, []):
+                if model not in self.role_counts:
+                    self.role_counts[model] = {}
+                if role not in self.role_counts[model]:
+                    self.role_counts[model][role] = 0
+                self.role_counts[model][role] += 1
 
-    def _run_session(self, models: List[str], prompter: str) -> Tuple[str, str]:
+    def _run_session(self, models: List[str], role_assignments: Dict[str, Dict[str, str]],
+                    model_roles: Dict[str, List[str]]) -> Tuple[str, str]:
         """
-        Run a single poetry slam session with the specified models.
+        Run a single game session with the specified models and role assignments.
 
         Args:
             models (List[str]): Models participating in the session
-            prompter (str): Model designated as the prompter
+            role_assignments (Dict[str, Dict[str, str]]): Maps roles to {player_id: model}
+            model_roles (Dict[str, List[str]]): Maps models to their assigned roles
 
         Returns:
             tuple: (session_id, session_dir) of the completed session
@@ -325,22 +549,11 @@ class MultiPlayerBenchmarkRunner:
             player_id = f"player_{i}"
             game_config['llm_integration']['player_models'][player_id] = model
 
-        # Set up roles - make one model the prompter
-        # First, ensure all players are authors
-        for i in range(1, len(models) + 1):
-            game_config['llm_integration']['player_models'][f"player_{i}"] = models[i-1]
+        # Update player count
+        game_config['players']['min'] = len(models)
+        game_config['players']['max'] = len(models)
 
-        game_config['players']['min'] = self.players_per_game
-        game_config['players']['max'] = self.players_per_game
-
-        # Find which player has the prompter model
-        prompter_player_id = None
-        for i, model in enumerate(models, 1):
-            if model == prompter:
-                prompter_player_id = f"player_{i}"
-                break
-
-        # Update setup to assign prompter role
+        # Update setup to assign roles
         if 'setup' not in game_config:
             game_config['setup'] = {}
 
@@ -348,15 +561,15 @@ class MultiPlayerBenchmarkRunner:
             game_config['setup']['assignments'] = []
 
         # Clear existing assignments
-        prompter_assignments = [a for a in game_config['setup']['assignments'] if a.get('role') == 'prompter']
-        for assignment in prompter_assignments:
-            game_config['setup']['assignments'].remove(assignment)
+        game_config['setup']['assignments'] = []
 
-        # Add new prompter assignment
-        game_config['setup']['assignments'].append({
-            'role': 'prompter',
-            'assignment_to': prompter_player_id
-        })
+        # Add role assignments
+        for role, assignments in role_assignments.items():
+            for player_id, model in assignments.items():
+                game_config['setup']['assignments'].append({
+                    'role': role,
+                    'assignment_to': player_id
+                })
 
         # Create a temp config file
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -368,9 +581,9 @@ class MultiPlayerBenchmarkRunner:
         try:
             # Initialize and run the game
             engine = GameEngine(
-                temp_config_path, 
+                temp_config_path,
                 base_output_dir=self.output_dir,
-                benchmark_config=self.benchmark_config  # Pass the benchmark config
+                benchmark_config=self.benchmark_config
             )
             engine.run_game()
 
@@ -388,13 +601,14 @@ class MultiPlayerBenchmarkRunner:
                 os.remove(temp_config_path)
             raise
 
-    def _log_session_result(self, models: List[str], prompter: str, session_id: str, session_dir: str) -> None:
+    def _log_session_result(self, models: List[str], model_roles: Dict[str, List[str]],
+                           session_id: str, session_dir: str) -> None:
         """
         Log the result of a session to the benchmark log.
 
         Args:
             models (List[str]): Models that participated in the session
-            prompter (str): Model that was the prompter
+            model_roles (Dict[str, List[str]]): Roles assigned to each model
             session_id (str): Session ID of the completed game
             session_dir (str): Directory of the session
         """
@@ -420,7 +634,7 @@ class MultiPlayerBenchmarkRunner:
                     "id": player_id,
                     "model": model,
                     "score": player_data.get('final_state', {}).get('score'),
-                    "is_prompter": (model == prompter)
+                    "roles": model_roles.get(model, [])
                 })
 
             # Create the log entry
@@ -431,7 +645,6 @@ class MultiPlayerBenchmarkRunner:
                 "session_number": self.sessions_run + 1,
                 "players": player_results,
                 "winner": results.get('winner', {}).get('id') if results.get('winner') else "tie",
-                "prompter": prompter,
                 "benchmark_id": self.benchmark_config.get_benchmark_id()
             }
 

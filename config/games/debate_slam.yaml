@@ -144,8 +144,7 @@ llm_integration:
     round_judging: "You are a judge evaluating arguments in a debate. Your task is to indicate which side you find more persuasive."
     final_judging: "You are a judge providing a final verdict on a debate after hearing all arguments."
   prompts:
-    topic_selection: "debate_topic_selection"
-    opening_arguments: "debate_opening_argument"
+    opening_arguments: "debate_opening_arguments"
     round_discussion: "debate_rebuttal"
     round_judging: "debate_judging"
     final_judging: "debate_final_judging"

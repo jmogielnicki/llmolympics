@@ -5,14 +5,20 @@
 benchmark:
   id: "poetry_slam_benchmark_1"                # Unique identifier for this benchmark
   base_config: "config/games/poetry_slam.yaml" # Base game configuration
-  type: "multi_player"                         # Multi-player or pairwise tournament
+  type: "multi_player"                         # Multi-player tournament
   sessions: 10                                 # Number of tournament sessions to run
   output_dir: "data/benchmark"                 # Directory for benchmark results
   players_per_game: 7                          # Number of players per game
 
-  # Selection strategy settings
-  selection:
-    prompter_selection: "weighted_inverse"     # Weight = 1/(prompter_count + 1)
+  # Role definitions with relationships
+  roles:
+    author:
+      count: 7  # All players are authors
+      selection: "random"
+    prompter:
+      count: 1
+      selection: "weighted_inverse"
+      inherits: ["author"]  # Prompter is also an author
 
 # Models to benchmark
 models:

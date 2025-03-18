@@ -10,10 +10,16 @@ benchmark:
   output_dir: "data/benchmark"                 # Directory for benchmark results
   players_per_game: 5                          # Number of players per game (2 debaters, 3 judges)
 
-  # Selection strategy settings
-  selection:
-    debater_selection: "weighted_inverse"      # Weight = 1/(debater_count + 1)
-    judge_selection: "weighted_inverse"        # Weight = 1/(judge_count + 1)
+  # Role definitions with relationships
+  roles:
+    debater:
+      count: 2
+      selection: "weighted_inverse"
+      incompatible_with: ["judge"]  # Can't be both debater and judge
+    judge:
+      count: 3
+      selection: "weighted_inverse"
+      incompatible_with: ["debater"]  # Can't be both judge and debater
 
 # Models to benchmark
 models:

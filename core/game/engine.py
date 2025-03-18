@@ -40,7 +40,7 @@ class GameEngine:
 
         # Create a game session with the specified base directory and benchmark config
         self.game_session = GameSession(
-            self.config, 
+            self.config,
             base_dir=base_output_dir,
             benchmark_config=benchmark_config
         )
@@ -199,9 +199,27 @@ class GameEngine:
 
         return handler.process(self.state)
 
+    def _get_eligible_players(self, all_active_players, eligible_role):
+        if eligible_role:
+            active_players = []
+            for player in all_active_players:
+                # Check roles list first (new format)
+                if 'roles' in player and eligible_role in player['roles']:
+                    active_players.append(player)
+                # Check legacy role field as fallback
+                elif player.get('role') == eligible_role:
+                    active_players.append(player)
+
+            logger.info(f"Processing simultaneous actions for {len(active_players)} players with role '{eligible_role}'")
+        else:
+            active_players = all_active_players
+            logger.info(f"Processing simultaneous actions for {len(active_players)} players")
+        return active_players
+
+
     def _process_simultaneous_phase(self, phase_config):
         """
-        Process a phase where all players act simultaneously.
+        Process a phase where eligible players act simultaneously.
 
         Args:
             phase_config (dict): The phase configuration
@@ -209,8 +227,12 @@ class GameEngine:
         Returns:
             bool: True if successful
         """
-        active_players = self.state.get_active_players()
-        logger.info(f"Processing simultaneous actions for {len(active_players)} players")
+        # Get all active players
+        all_active_players = self.state.get_active_players()
+
+        # Filter by eligible role if specified
+        eligible_role = phase_config.get('eligible_role')
+        eligible_players = self._get_eligible_players(all_active_players, eligible_role)
 
         # Get the handler for individual player actions
         handler_name = phase_config.get('handler')
@@ -219,9 +241,9 @@ class GameEngine:
         else:
             handler = HandlerRegistry.get_handler('player_action_handler')
 
-        # Process actions for all players
+        # Process actions for eligible players
         responses = {}
-        for player in active_players:
+        for player in eligible_players:
             player_id = player['id']
             logger.info(f"Getting action for player: {player_id}")
 
@@ -277,18 +299,24 @@ class GameEngine:
             handler = HandlerRegistry.get_handler('player_action_handler')
 
         # Get active players
-        active_players = self.state.get_active_players()
-        if not active_players:
-            logger.warning("No active players found, skipping phase")
+        all_active_players = self.state.get_active_players()
+
+        # Filter by eligible role if specified
+        eligible_role = phase_config.get('eligible_role')
+        eligible_players = self._get_eligible_players(all_active_players, eligible_role)
+
+
+        if not eligible_players:
+            logger.warning("No eligible active players found, skipping phase")
             return True
 
         # Initialize phase-specific responses
         responses = {}
 
         # Process each player in sequence
-        for i, player in enumerate(active_players):
+        for i, player in enumerate(eligible_players):
             player_id = player['id']
-            logger.info(f"Processing action for player {i+1}/{len(active_players)}: {player_id}")
+            logger.info(f"Processing action for player {i+1}/{len(eligible_players)}: {player_id}")
 
             # Log player action start
             action_id = self.game_session.save_event(
