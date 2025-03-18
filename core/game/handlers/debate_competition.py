@@ -210,9 +210,6 @@ class DebateArgumentHandler(PhaseHandler):
 
         logger.info(f"Received opening argument from {player['id']} for side {side_id}")
 
-        # Store the argument in player state and shared state
-        player['state']['current_argument'] = opening_argument
-
         # Store in shared state for access by other players
         current_arguments = game_state.shared_state.get('current_arguments', {})
         current_arguments[player['id']] = {
@@ -348,6 +345,54 @@ class DebateRebuttalHandler(PhaseHandler):
 
         return rebuttal
 
+def get_formatted_history(game_state):
+
+    # Get debate history (all rounds so far in this debate)
+    debate_history = []
+    debater_ids = {}
+
+    # Map side_ids to player_ids for both debaters
+    for p in game_state.get_active_players():
+        if 'roles' in p and 'debater' in p['roles']:
+            side_id = p['state'].get('side_id', '')
+            debater_ids[side_id] = p['id']
+
+    # Get history from argument_history
+    if 'argument_history' in game_state.history_state:
+        for entry in game_state.history_state['argument_history']:
+            if entry.get('responses'):
+                for pid, response in entry.get('responses').items():
+                    player_side_id = None
+                    for p in game_state.players:
+                        if p['id'] == pid:
+                            player_side_id = p['state'].get('side_id', '')
+                            break
+
+                    if player_side_id:
+                        debate_history.append({
+                            "round": entry.get('round', 0),
+                            "player_id": pid,
+                            "side_id": player_side_id,
+                            "argument": response
+                        })
+
+    # Sort by round number
+    debate_history.sort(key=lambda x: x.get('round', 0))
+
+    # Format debate history as text
+    formatted_history = ""
+    for entry in debate_history:
+        round_label = "Opening Arguments" if entry.get('round', 0) == 0 else f"Round {entry.get('round', 0)}"
+
+        # Find the position for this side_id
+        position = ""
+        for side in game_state.shared_state.get('sides', []):
+            if side.get('side_id') == entry.get('side_id', ''):
+                position = side.get('position', '')
+                break
+
+        formatted_history += f"{round_label} - {entry['side_id']} ({position}):\n{entry['argument']}\n\n"
+    return formatted_history
 
 @HandlerRegistry.register("debate_judging_handler")
 class DebateJudgingHandler(PhaseHandler):
@@ -369,74 +414,7 @@ class DebateJudgingHandler(PhaseHandler):
             logger.error(f"Player {player['id']} is not a judge")
             raise ValueError(f"Player {player['id']} is not a judge")
 
-        # Get current arguments from all debaters
-        current_arguments = game_state.shared_state.get('current_arguments', {})
-
-        # Format arguments for the prompt
-        formatted_arguments = []
-        for player_id, arg_data in current_arguments.items():
-            side_id = arg_data.get('side_id', '')
-            argument = arg_data.get('argument', '')
-
-            # Find the position for this side_id
-            position = ''
-            for side in game_state.shared_state.get('sides', []):
-                if side.get('side_id') == side_id:
-                    position = side.get('position', '')
-                    break
-
-            formatted_arguments.append({
-                "player_id": player_id,
-                "side_id": side_id,
-                "position": position,
-                "argument": argument
-            })
-
-        # Get debate history (all rounds so far in this debate)
-        debate_history = []
-        debater_ids = {}
-
-        # Map side_ids to player_ids for both debaters
-        for p in game_state.get_active_players():
-            if 'roles' in p and 'debater' in p['roles']:
-                side_id = p['state'].get('side_id', '')
-                debater_ids[side_id] = p['id']
-
-        # Get history from argument_history
-        if 'argument_history' in game_state.history_state:
-            for entry in game_state.history_state['argument_history']:
-                if entry.get('responses'):
-                    for pid, response in entry.get('responses').items():
-                        player_side_id = None
-                        for p in game_state.players:
-                            if p['id'] == pid:
-                                player_side_id = p['state'].get('side_id', '')
-                                break
-
-                        if player_side_id:
-                            debate_history.append({
-                                "round": entry.get('round', 0),
-                                "player_id": pid,
-                                "side_id": player_side_id,
-                                "argument": response
-                            })
-
-        # Sort by round number
-        debate_history.sort(key=lambda x: x.get('round', 0))
-
-        # Format debate history as text
-        formatted_history = ""
-        for entry in debate_history:
-            round_label = "Opening Arguments" if entry.get('round', 0) == 0 else f"Round {entry.get('round', 0)}"
-
-            # Find the position for this side_id
-            position = ""
-            for side in game_state.shared_state.get('sides', []):
-                if side.get('side_id') == entry.get('side_id', ''):
-                    position = side.get('position', '')
-                    break
-
-            formatted_history += f"{round_label} - {entry['side_id']} ({position}):\n{entry['argument']}\n\n"
+        formatted_history = get_formatted_history(game_state)
 
         # sides array
         game_state.shared_state.get('sides', [])
@@ -450,7 +428,6 @@ class DebateJudgingHandler(PhaseHandler):
             "sides": game_state.shared_state.get('sides', []),
             "sides_ids": sides_ids,
             "current_round": game_state.shared_state.get('current_round', 1),
-            "arguments": formatted_arguments,
             "sides_swapped": game_state.shared_state.get('sides_swapped', False),
             "is_final": False,
             "debate_history": formatted_history
@@ -515,28 +492,7 @@ class DebateFinalJudgingHandler(PhaseHandler):
             logger.error(f"Player {player['id']} is not a judge")
             raise ValueError(f"Player {player['id']} is not a judge")
 
-        # Get current arguments from all debaters
-        current_arguments = game_state.shared_state.get('current_arguments', {})
-
-        # Format arguments for the prompt
-        formatted_arguments = []
-        for player_id, arg_data in current_arguments.items():
-            side_id = arg_data.get('side_id', '')
-            argument = arg_data.get('argument', '')
-
-            # Find the position for this side_id
-            position = ''
-            for side in game_state.shared_state.get('sides', []):
-                if side.get('side_id') == side_id:
-                    position = side.get('position', '')
-                    break
-
-            formatted_arguments.append({
-                "player_id": player_id,
-                "side_id": side_id,
-                "position": position,
-                "argument": argument
-            })
+        formatted_history = get_formatted_history(game_state)
 
         # sides array
         game_state.shared_state.get('sides', [])
@@ -550,7 +506,7 @@ class DebateFinalJudgingHandler(PhaseHandler):
             "sides": game_state.shared_state.get('sides', []),
             "sides_ids": sides_ids,
             "current_round": game_state.shared_state.get('current_round', 1),
-            "debate_history": formatted_arguments,
+            "debate_history": formatted_history,
             "sides_swapped": game_state.shared_state.get('sides_swapped', False),
             "is_final": True
         }
@@ -601,14 +557,11 @@ class DebateFinalJudgingHandler(PhaseHandler):
             side_id = debater['state'].get('side_id', '')
             votes = side_votes.get(side_id, 0)
 
-            # Store the votes for this debate in player state
-            if game_state.shared_state.get('sides_swapped', False):
-                debater['state']['second_debate_votes'] = votes
-            else:
-                debater['state']['first_debate_votes'] = votes
 
         # Store the results of this debate
         if not game_state.shared_state.get('sides_swapped', False):
+            # Store the votes for this debate in player state
+            debater['state']['first_debate_votes'] = votes
             # First debate - store results in hidden state
             first_debate_results = {
                 "votes": side_votes,
@@ -624,6 +577,9 @@ class DebateFinalJudgingHandler(PhaseHandler):
             # Return True to indicate we need to swap sides
             return True
         else:
+            # Store the votes for this debate in player state
+            debater['state']['second_debate_votes'] = votes
+
             # Second debate - store results in hidden state
             second_debate_results = {
                 "votes": side_votes,
@@ -680,6 +636,20 @@ class DebateSideSwapHandler(PhaseHandler):
 
         # Reset judge opinions for the new debate
         game_state.shared_state['judge_opinions'] = {}
+
+        # Save first debate history to hidden state but clear for the second debate
+        if 'complete_history' not in game_state.hidden_state:
+            game_state.hidden_state['complete_history'] = {}
+
+        # Save the argument and judging history
+        game_state.hidden_state['complete_history']['first_debate_arguments'] = copy.deepcopy(game_state.history_state.get('argument_history', []))
+        game_state.hidden_state['complete_history']['first_debate_judging'] = copy.deepcopy(game_state.history_state.get('judging_history', []))
+
+        # Clear history state for the new debate
+        for key in game_state.history_state:
+            game_state.history_state[key] = []
+
+        logger.info("Saved first debate history to hidden state and cleared history state for second debate")
 
         # Log the event
         game_state.game_session.save_event(

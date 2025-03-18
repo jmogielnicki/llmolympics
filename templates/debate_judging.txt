@@ -11,10 +11,8 @@ The two positions are {sides_ids}
 DEBATE HISTORY:
 {debate_history}
 
-CURRENT ARGUMENTS:
-
 After considering both arguments, which position do you find more persuasive at this point?
 
-Please indicate your choice by responding with ONLY the side_id in double brackets.  The two sides ids are {sides_ids}.
+Please indicate your choice by responding with ONLY the side_id in double brackets like [[side_id]].  The two sides ids are {sides_ids}.
 
 Your choice should be based solely on the persuasiveness of the arguments, not your personal opinion on the topic.

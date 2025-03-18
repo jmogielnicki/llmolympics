@@ -89,7 +89,7 @@ state:
       visible: true
     - name: "score"
       initial: 0
-      visible: true
+      visible: false
   shared_state:
     - name: "debate_topic"
       initial: ""
@@ -105,7 +105,7 @@ state:
       visible: true
     - name: "sides_swapped"
       initial: false
-      visible: true
+      visible: false
     - name: "current_arguments"
       initial: {}
       visible: true

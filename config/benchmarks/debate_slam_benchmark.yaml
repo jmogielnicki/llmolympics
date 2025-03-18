@@ -25,7 +25,6 @@ benchmark:
 models:
   - deepseek:deepseek-chat
   - deepseek:deepseek-reasoner
-  - openai:gpt-4o
   - xai:grok-2-1212
   - mistral:mistral-large-latest
   - google:gemini-2.0-flash
