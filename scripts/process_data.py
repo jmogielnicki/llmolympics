@@ -647,7 +647,7 @@ class PoetryProcessor(GameProcessor):
             'raw_matchups': {}
         }
 
-    def analyze_game_decisions(self, session_dir, model_id):
+    def analyze_game_decisions(self, session_dir, model_id, game_models):
         """Analyze voting decisions for Poetry Slam."""
         # Map model ID to player ID
         with open(os.path.join(session_dir, "game_config.yaml"), 'r') as f:
@@ -702,15 +702,23 @@ class PoetryProcessor(GameProcessor):
                 # Get this player's vote
                 voted_for = voting_results.get(player_id)
 
+                voted_for_model = game_models.get(voted_for)
+
                 # Get votes received by this player
                 votes_received = []
+                votes_received_models = []
                 for voter, vote in voting_results.items():
                     if vote == player_id:
                         votes_received.append(voter)
+                        voter_model = game_models.get(voter)
+                        votes_received_models.append(voter_model)
+
 
                 decisions = {
                     "voted_for": voted_for,
+                    "voted_for_model": voted_for_model,
                     "votes_received": votes_received,
+                    "votes_received_models": votes_received_models,
                     "vote_count": len(votes_received)
                 }
         except:
@@ -757,7 +765,7 @@ class PoetryProcessor(GameProcessor):
                 other_models = [p['model'] for p in other_players]
 
                 # Get voting decisions
-                voting_data = self.analyze_game_decisions(session_dir, model_id)
+                voting_data = self.analyze_game_decisions(session_dir, model_id, game_models)
 
                 # Add game info to model's profile
                 models[model_id]['games'].append({
