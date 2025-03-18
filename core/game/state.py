@@ -251,13 +251,28 @@ class GameState:
         current_phase = self.current_phase
 
         for history_item in self.config['state'].get('history_state', []):
-            if history_item.get('tracking') == current_phase:
+            tracking = history_item.get('tracking')
+
+            # Skip if tracking is not configured
+            if not tracking:
+                continue
+
+            # Check if tracking is a list or a string
+            if isinstance(tracking, list) and current_phase in tracking:
+                # Handle list of tracking phases
                 self.history_state[history_item['name']].append({
                     'round': self.shared_state.get('current_round', 0),
                     'responses': responses,
                     'timestamp': time.time()
                 })
-                break
+            elif isinstance(tracking, str) and tracking == current_phase:
+                # Handle string tracking phase (original behavior)
+                self.history_state[history_item['name']].append({
+                    'round': self.shared_state.get('current_round', 0),
+                    'responses': responses,
+                    'timestamp': time.time()
+                })
+            # If tracking isn't a list or string that matches, do nothing
 
         # Store in shared state for current round processing
         self.shared_state[f"{current_phase}_responses"] = responses

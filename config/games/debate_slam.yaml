@@ -38,21 +38,21 @@ phases:
     type: "simultaneous_action"
     handler: "debate_argument_handler"
     eligible_role: "debater"
-    next_phase: "round_discussion"
+    next_phase: "round_judging"
 
   - id: "round_discussion"
     type: "sequential_action"
     handler: "debate_rebuttal_handler"
     eligible_role: "debater"
-    next_phase: "round_judging"
+    next_phase_condition: "is_final_round"
+    next_phase_success: "final_judging"
+    next_phase_failure: "round_judging"
 
   - id: "round_judging"
     type: "simultaneous_action"
     handler: "debate_judging_handler"
     eligible_role: "judge"
-    next_phase_condition: "rounds_remaining"
-    next_phase_success: "round_discussion"
-    next_phase_failure: "final_judging"
+    next_phase: "round_discussion"
 
   - id: "final_judging"
     type: "simultaneous_action"
@@ -121,9 +121,9 @@ state:
       visible: false
   history_state:
     - name: "argument_history"
-      tracking: "arguments"
+      tracking: ["opening_arguments", "round_discussion"]  # Track both phases
     - name: "judging_history"
-      tracking: "votes"
+      tracking: ["round_judging", "final_judging"]  # Track both judging phases
 
 win_condition:
   type: "highest_score"

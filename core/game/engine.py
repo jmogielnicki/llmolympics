@@ -277,7 +277,10 @@ class GameEngine:
         # Store all responses in the game state
         self.state.set_action_responses(responses)
 
-        return True
+        # Call the handler's process method to perform post-player-processing
+        phase_result = handler.process(self.state)
+
+        return phase_result
 
     def _process_sequential_phase(self, phase_config):
         """
@@ -362,8 +365,10 @@ class GameEngine:
         # Store all responses in the game state
         self.state.set_action_responses(responses)
 
-        # Indicate successful completion of the entire sequential phase
-        return True
+        # Call the handler's process method to perform post-player-processing
+        phase_result = handler.process(self.state)
+
+        return phase_result
 
     def _process_single_player_action(self, phase_config):
         """

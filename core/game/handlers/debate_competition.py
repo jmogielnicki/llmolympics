@@ -147,6 +147,24 @@ class DebateSideAssignmentHandler(PhaseHandler):
             }
         )
 
+        # Reorder debaters so the one with first_rebutter_side_id comes first
+        reordered_debaters = sorted(debaters, key=lambda p: 0 if p['state'].get('side_id') == first_rebutter_side_id else 1)
+
+        # Rebuild players array preserving non-debaters at their positions
+        new_players = []
+        debater_idx = 0
+
+        for p in game_state.players:
+            if p in debaters:
+                new_players.append(reordered_debaters[debater_idx])
+                debater_idx += 1
+            else:
+                new_players.append(p)
+
+        game_state.players = new_players
+
+        logger.info(f"Reordered players array with first rebutter {first_rebutter_side_id} first among debaters")
+
         return True
 
 
@@ -215,25 +233,18 @@ class DebateRebuttalHandler(PhaseHandler):
         self.llm_client = None
 
     def process(self, game_state):
-        """Process the rebuttal round in sequence based on first_rebutter."""
-        # Determine player order based on first_rebutter_side_id
-        first_rebutter_side_id = game_state.shared_state.get('first_rebutter_side_id', '')
+        # Check if we're in the final round
+        current_round = game_state.shared_state.get('current_round', 1)
+        max_rounds = game_state.shared_state.get('max_rounds', 3)
 
-        debaters = [p for p in game_state.get_active_players()
-                   if 'roles' in p and 'debater' in p['roles']]
+        logger.info(f"DebateRebuttalHandler - Round {current_round}/{max_rounds}")
 
-        if len(debaters) != 2:
-            logger.error(f"Expected 2 debaters, found {len(debaters)}")
-            raise ValueError(f"Expected 2 debaters, found {len(debaters)}")
+        # Return True ONLY if we're in the final round
+        is_final_round = (current_round >= max_rounds)
 
-        # Sort debaters so the first_rebutter is first
-        debaters.sort(key=lambda p: 0 if p['state'].get('side_id') == first_rebutter_side_id else 1)
+        logger.info(f"DebateRebuttalHandler - Is final round? {is_final_round}")
+        return is_final_round
 
-        # Process each debater in sequence
-        for debater in debaters:
-            self.process_player(game_state, debater)
-
-        return True
 
     def process_player(self, game_state, player):
         """Process a player's rebuttal."""
@@ -427,10 +438,17 @@ class DebateJudgingHandler(PhaseHandler):
 
             formatted_history += f"{round_label} - {entry['side_id']} ({position}):\n{entry['argument']}\n\n"
 
+        # sides array
+        game_state.shared_state.get('sides', [])
+
+        # sides ids concated string
+        sides_ids = " vs ".join([side.get('side_id') for side in game_state.shared_state.get('sides', [])])
+
         # Add context for judging
         extra_context = {
             "debate_topic": game_state.shared_state.get('debate_topic', ''),
             "sides": game_state.shared_state.get('sides', []),
+            "sides_ids": sides_ids,
             "current_round": game_state.shared_state.get('current_round', 1),
             "arguments": formatted_arguments,
             "sides_swapped": game_state.shared_state.get('sides_swapped', False),
@@ -520,11 +538,19 @@ class DebateFinalJudgingHandler(PhaseHandler):
                 "argument": argument
             })
 
-        # Add context for final judging
+        # sides array
+        game_state.shared_state.get('sides', [])
+
+        # sides ids concated string
+        sides_ids = " vs ".join([side.get('side_id') for side in game_state.shared_state.get('sides', [])])
+
+        # Add context for judging
         extra_context = {
             "debate_topic": game_state.shared_state.get('debate_topic', ''),
             "sides": game_state.shared_state.get('sides', []),
-            "arguments": formatted_arguments,
+            "sides_ids": sides_ids,
+            "current_round": game_state.shared_state.get('current_round', 1),
+            "debate_history": formatted_arguments,
             "sides_swapped": game_state.shared_state.get('sides_swapped', False),
             "is_final": True
         }
@@ -666,6 +692,25 @@ class DebateSideSwapHandler(PhaseHandler):
                 "first_rebutter": first_rebutter_side_id
             }
         )
+
+        # Reorder debaters so the one with first_rebutter_side_id comes first
+        reordered_debaters = sorted(debaters, key=lambda p: 0 if p['state'].get('side_id') == first_rebutter_side_id else 1)
+
+        # Rebuild players array preserving non-debaters at their positions
+        new_players = []
+        debater_idx = 0
+
+        for p in game_state.players:
+            if p in debaters:
+                new_players.append(reordered_debaters[debater_idx])
+                debater_idx += 1
+            else:
+                new_players.append(p)
+
+        game_state.players = new_players
+
+        logger.info(f"Reordered players array with first rebutter {first_rebutter_side_id} first among debaters")
+
 
         return True
 

@@ -26,9 +26,6 @@ models:
   - deepseek:deepseek-chat
   - deepseek:deepseek-reasoner
   - openai:gpt-4o
-  - openai:gpt-4.5-preview
-  - anthropic:claude-3-5-sonnet-20240620
-  - anthropic:claude-3-7-sonnet-20250219
   - xai:grok-2-1212
   - mistral:mistral-large-latest
   - google:gemini-2.0-flash

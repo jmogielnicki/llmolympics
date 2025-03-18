@@ -6,24 +6,15 @@ Current game state:
 
 You are providing a final verdict on a debate about: "{debate_topic}"
 
-The two positions are:
-1. {sides[0].position}
-2. {sides[1].position}
+The two positions are {sides_ids}
 
 COMPLETE DEBATE HISTORY:
 {debate_history}
 
 FINAL ARGUMENTS:
 
-Position 1 ({sides[0].side_id}):
-{arguments[0].argument}
-
-Position 2 ({sides[1].side_id}):
-{arguments[1].argument}
-
 After all rounds of discussion, considering the totality of arguments presented by both sides, which position do you find more persuasive overall?
 
-Please provide your FINAL VERDICT by responding with ONLY the side_id in double brackets, like this:
-[[{sides[0].side_id}]] or [[{sides[1].side_id}]]
+Please indicate your choice by responding with ONLY the side_id in double brackets.  The two sides ids are {sides_ids}.
 
 Your choice should be based solely on the persuasiveness of the entire debate, not your personal opinion on the topic.
