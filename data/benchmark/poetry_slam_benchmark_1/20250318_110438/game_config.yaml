@@ -1,0 +1,101 @@
+game:
+  content_type: poem
+  description: A creative competition where models write and judge poetry
+  name: Poetry Slam
+  type: creative_competition
+llm_integration:
+  parsers:
+    content_creation: content_parser
+    prompt_creation: text_parser
+    voting: vote_parser
+  player_models:
+    player_1: xai:grok-2-1212
+    player_2: mistral:mistral-large-latest
+    player_3: google:gemini-2.0-flash
+    player_4: google:gemini-2.0-flash-thinking-exp-01-21
+    player_5: deepseek:deepseek-chat
+    player_6: deepseek:deepseek-reasoner
+    player_7: openai:gpt-4o
+  prompts:
+    content_creation: creative_composition
+    prompt_creation: creative_prompt
+    voting: creative_voting
+  system_prompts:
+    content_creation: You are a poet participating in a Poetry Slam. Write a poem
+      that follows the given prompt. Be creative and thoughtful in your composition.
+    prompt_creation: You are creating a poetry prompt. Provide a specific, inspiring
+      prompt for other models to write poetry about. Be clear about any style, form,
+      or theme requirements.
+    voting: You are judging poetry submissions for a Poetry Slam. Vote for the best
+      poem based on creativity, adherence to the prompt, technical skill, and emotional
+      impact. You cannot vote for your own poem.
+phases:
+- actions:
+  - input_type: text
+    name: create_prompt
+  eligible_role: prompter
+  handler: prompt_creation
+  id: prompt_creation
+  next_phase: content_creation
+  type: single_player_action
+- actions:
+  - input_type: text
+    name: create_content
+  eligible_role: author
+  handler: content_creation
+  id: content_creation
+  next_phase: voting
+  type: simultaneous_action
+- actions:
+  - constraints:
+    - cannot_vote_self
+    name: vote
+    options: player_submissions
+  eligible_role: author
+  handler: voting
+  id: voting
+  next_phase: resolution
+  type: simultaneous_action
+- handler: tally_votes
+  id: resolution
+  next_phase: game_end
+  type: automatic
+players:
+  max: 7
+  min: 7
+  roles: dynamic
+rounds:
+  count: 1
+  progression: fixed
+setup:
+  assignments:
+  - assignment_to: all_players
+    role: author
+  - assignment_to: player_5
+    role: prompter
+  initial_state:
+    resources: []
+state:
+  hidden_state: []
+  history_state: []
+  player_state:
+  - initial: assigned
+    name: role
+    visible: true
+  - initial: 0
+    name: score
+    visible: true
+  - initial: ''
+    name: submission
+    visible: true
+  shared_state:
+  - initial: ''
+    name: content_prompt
+    visible: true
+  - initial: []
+    name: submitted_content
+    visible: true
+win_condition:
+  score_field: score
+  trigger: voting_complete
+  type: highest_score

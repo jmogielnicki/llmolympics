@@ -1,0 +1,80 @@
+{
+  "game": "Poetry Slam",
+  "timestamp": "2025-03-18T11:17:46.109463",
+  "players": [
+    {
+      "id": "player_1",
+      "final_state": {
+        "role": "assigned",
+        "score": 2,
+        "submission": "The city stirs, a yawn of steel and stone,  \nAs dawn spills gold on streets still slick with rain.  \nA pigeon\u2019s coo, a distant train\u2019s low moan,  \nThe scent of bread, warm whispers through the pane.  \n\nA tulip cracks the concrete, bold and red,  \nWhile neon signs flicker, ghosts of the night.  \nThe river hums, its silver thread widespread,  \nReflecting skies that blush with morning light.  \n\nA banker\u2019s tie, a beggar\u2019s cup collide\u2014  \nThe city breathes, both cruel and kind, alive.  \nIts heartbeat pulses, vast and undenied,  \nA symphony where all things strive."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_2",
+      "final_state": {
+        "role": "assigned",
+        "score": 4,
+        "submission": "Concrete yawns beneath a blush of sky,  \nsteam from manholes whispers where night ghosts lie.  \nTraffic lights blink\u2014fireflies in reverse\u2014  \nbakery breath hugs rain-slicked asphalt\u2019s curse.  \n\nA sparrow cracks the code of subway drones,  \ndew licks neon from the phone booth\u2019s bones.  \nMoon\u2014a lost coin\u2014waits in the gutter\u2019s keep,  \nwhile shadows stretch to drink the first light\u2019s seep."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_3",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "In the city's gentle cradle, dawn\u2019s amber breath,  \nSteam from a cart mingles with jasmine\u2019s sweet caress,  \nConcrete whispers stir beneath the morning's quilt,  \nWindows yawn awake, shedding night's gilt.  \n\nCobblestones remember the hush of the moon's decree,  \nWings of pigeons flutter, stitching the sky\u2019s tapestry,  \nFar-off clang of metal, a symphony's first note,  \nAsphalt blushes pink, blurs where sunbeams float.\n\nA waft of roasted beans and bread\u2019s golden kiss,  \nA harmony of scents that conjure a morning\u2019s bliss.  \nYet, cobwebs of shadows lace the sunlit street,  \nAs dreams linger, entwined at waking\u2019s feet."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_4",
+      "final_state": {
+        "role": "assigned",
+        "score": 1,
+        "submission": "Concrete veins pulse softly, bathed in golden glow,  \nStreetlamps fade like fireflies in morning's gentle flow.  \nCoffee steam entwined with scents of dew-kissed grass,  \nA distant siren humming as night shadows slowly pass.  \n\nSkyscrapers stretch upward, ivy breathing life anew\u2014  \nBirdsong weaves with taxi honks, harmonies askew.  \nWarmth spreads along pavement, touches cold steel doors;  \nPastry sweetness lingering near gritty subway floors.  \n\nAmid glass reflections, dawn whispers gently roam,  \nUrban chaos blending with nature's quiet poem.  \nIn crowded solitude, the city dreams alone,  \nSunrise builds a garden in the heart of polished stone."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_5",
+      "final_state": {
+        "role": "prompter",
+        "score": 0,
+        "submission": "Concrete slumbers, steel dreams unfurl,\nAs golden fingers paint the urban pearl.\nPigeons coo a gentle dawn reveille, \nWhile traffic lights blink in lazy revelry.\n\nScent of fresh bread and exhaust intertwine,\nNature and progress in fragrant design.\nDewdrops glisten on a fire escape's rust,\nAs joggers' footfalls echo morning's thrust.\n\nFrom high-rise nests, suits and briefcases fly,\nYet in a cracked sidewalk, a daisy stands high.\nIn this moment when day and night collide,\nThe city breathes \u2013 both tamed and wild inside."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_6",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "Concrete Crescendo\n\nSteel stretches, yawning into amber light,\nAs pigeons harmonize with traffic's drone.\nDew glistens where skyscrapers cast their shade,\nWhile coffee steam meets subway's musty breath.\n\nBetween glass towers, a dandelion\nSplits concrete\u2014defiant, golden crown.\nThe city's heart beats slower at this hour,\nWhen shadows still outnumber footfall sounds.\n\nThis fragile moment balances in time,\nWhen night surrenders to the coming day.\nIn this brief pause, the universe conspires\nTo make the mundane sacred, just because."
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_7",
+      "final_state": {
+        "role": "assigned",
+        "score": 0,
+        "submission": "Whispers of the City at Dawn\n\nThe city stirs with a soft golden light,\nAs dawn's first rays embrace the urban sprawl.\nA symphony of sounds begins to call\u2014\nBirds chirping, mingled with the rush of flight.\n\nThe scent of fresh-baked bread wafts through the streets,\nWhile dew-kissed petals bloom in hidden nooks.\nAmidst the concrete, nature gently speaks,\nIn the touch of cool breeze on weary cheeks.\n\nA silent dance of fog and skyscraper\u2014\nAn unexpected waltz at break of day.\nThe city breathes, a world in soft display,\nA fleeting peace before the storm's caper."
+      },
+      "role": "author"
+    }
+  ],
+  "winner": {
+    "id": "player_2"
+  },
+  "rounds_played": 0,
+  "history_summary": {},
+  "session_id": "poetry_slam_20250318_111410",
+  "stats": {
+    "snapshot_count": 5,
+    "event_count": 42,
+    "chat_message_count": 15
+  }
+}
