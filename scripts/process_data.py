@@ -838,6 +838,322 @@ class PoetryProcessor(GameProcessor):
             "color": "blue"
         }
 
+class DebateProcessor(GameProcessor):
+    """Processor for Debate Slam game."""
+
+    def can_process(self, session_id):
+        """Determine if this processor can handle this game type."""
+        return 'debate' in session_id.lower() or ('slam' in session_id.lower() and 'poetry' not in session_id.lower())
+
+    def generate_leaderboard(self, benchmark_logs, benchmark_dir):
+        """Generate leaderboard data for Debate Slam."""
+        models = {}
+
+        # First pass: collect statistics
+        for game in benchmark_logs:
+            players = game.get('players', [])
+            winner = game.get('winner', {})
+
+            # Handle tie case
+            is_tie = winner.get('id') == 'tie'
+            tied_players = winner.get('tied_players', []) if is_tie else []
+
+            # Process each player
+            for player in players:
+                model_id = player.get('model')
+                player_id = player.get('id')
+
+                # Skip non-debaters
+                if player.get('role') != 'debater':
+                    continue
+
+                if model_id not in models:
+                    models[model_id] = {
+                        'full_name': model_id,
+                        'name': extract_model_name(model_id),
+                        'wins': 0,
+                        'losses': 0,
+                        'ties': 0,
+                        'total_score': 0,
+                        'games': 0,
+                        'avg_votes': 0,
+                        'pro_score': 0,
+                        'con_score': 0,
+                        'pro_games': 0,
+                        'con_games': 0
+                    }
+
+                models[model_id]['games'] += 1
+
+                # Get score from final_state
+                score = player.get('final_state', {}).get('score', 0)
+                models[model_id]['total_score'] += score
+
+                # Track if the player was arguing pro or con position
+                # This requires looking at the player's final_state
+                pro_position = False
+                if 'first_debate_votes' in player.get('final_state', {}):
+                    pro_position = True
+                    models[model_id]['pro_score'] += player.get('final_state', {}).get('first_debate_votes', 0)
+                    models[model_id]['pro_games'] += 1
+                elif 'second_debate_votes' in player.get('final_state', {}):
+                    models[model_id]['con_score'] += player.get('final_state', {}).get('second_debate_votes', 0)
+                    models[model_id]['con_games'] += 1
+
+                # Update win/loss/tie stats
+                if is_tie:
+                    if player_id in tied_players:
+                        models[model_id]['ties'] += 1
+                    else:
+                        models[model_id]['losses'] += 1
+                elif winner.get('id') == player_id:
+                    models[model_id]['wins'] += 1
+                else:
+                    models[model_id]['losses'] += 1
+
+        # Calculate averages and format for output
+        leaderboard = self._format_leaderboard(models)
+
+        return {
+            'leaderboard': leaderboard,
+            'game_count': len(benchmark_logs)
+        }
+
+    def _format_leaderboard(self, models):
+        """Format model data for leaderboard."""
+        leaderboard = []
+        for model_id, stats in models.items():
+            winrate = stats['wins'] / stats['games'] if stats['games'] > 0 else 0
+            avg_score = stats['total_score'] / stats['games'] if stats['games'] > 0 else 0
+
+            # Calculate position bias (diff between pro and con performance)
+            pro_avg = stats['pro_score'] / stats['pro_games'] if stats['pro_games'] > 0 else 0
+            con_avg = stats['con_score'] / stats['con_games'] if stats['con_games'] > 0 else 0
+            position_bias = abs(pro_avg - con_avg)
+
+            leaderboard.append({
+                'model_id': model_id,
+                'model_name': stats['name'],
+                'wins': stats['wins'],
+                'losses': stats['losses'],
+                'ties': stats['ties'],
+                'games': stats['games'],
+                'winrate': round(winrate, 3),
+                'avg_score': round(avg_score, 2),
+                'total_score': stats['total_score'],
+                'pro_avg': round(pro_avg, 2),
+                'con_avg': round(con_avg, 2),
+                'position_bias': round(position_bias, 2)
+            })
+
+        # Sort leaderboard by average score (primary) and win rate (secondary)
+        leaderboard = sorted(leaderboard, key=lambda x: (x['avg_score'], x['winrate']), reverse=True)
+
+        # Add rank
+        for i, entry in enumerate(leaderboard):
+            entry['rank'] = i + 1
+
+        return leaderboard
+
+    def generate_matchup_matrix(self, benchmark_logs):
+        """Generate voting pattern matrix for Debate Slam - judges voting for positions."""
+        # Extract unique models
+        models = set()
+        judge_models = set()
+
+        for game in benchmark_logs:
+            for player in game.get('players', []):
+                model_id = player.get('model')
+                models.add(model_id)
+                if player.get('role') == 'judge':
+                    judge_models.add(model_id)
+
+        models = sorted(list(models))
+        judge_models = sorted(list(judge_models))
+        model_names = [extract_model_name(m) for m in models]
+
+        # Initialize voting data
+        # For each judge model, track votes for pro/con positions
+        voting_data = {}
+        for model in models:
+            voting_data[model] = {
+                'pro_votes': 0,
+                'con_votes': 0,
+                'total_votes': 0
+            }
+
+        # Process game results
+        for game in benchmark_logs:
+            session_id = game.get('session_id', '')
+            session_dir = get_session_directory(benchmark_dir, session_id)
+
+            # Process judge voting data from results.json
+            # This is a placeholder - the real implementation would need to analyze
+            # snapshots.jsonl to extract voting patterns
+
+        # Create heatmap matrix format
+        columns = ['pro-position', 'con-position']
+        rows = []
+        for model in judge_models:
+            data = voting_data.get(model, {})
+            pro_rate = data.get('pro_votes', 0) / data.get('total_votes', 1) if data.get('total_votes', 0) > 0 else 0
+            con_rate = data.get('con_votes', 0) / data.get('total_votes', 1) if data.get('total_votes', 0) > 0 else 0
+            rows.append([round(pro_rate, 2), round(con_rate, 2)])
+
+        return {
+            'models': judge_models,
+            'model_names': [extract_model_name(m) for m in judge_models],
+            'columns': columns,
+            'vote_matrix': rows,
+            'raw_voting_data': voting_data
+        }
+
+    def analyze_round_progression(self, benchmark_logs, benchmark_dir):
+        """Analyze round progression focusing on judge opinion shifts."""
+        round_stats = {}
+        max_rounds = 3  # Debates typically have 3 rounds
+
+        # Process snapshots for each game
+        for game in benchmark_logs:
+            session_id = game.get('session_id', '')
+            session_dir = get_session_directory(benchmark_dir, session_id)
+
+            # Here we would analyze judge opinion shifts across rounds
+            # This requires detailed analysis of snapshots.jsonl
+
+            # Initialize round stats if needed
+            for round_num in range(1, max_rounds + 1):
+                if round_num not in round_stats:
+                    round_stats[round_num] = {
+                        'pro_votes': 0,
+                        'con_votes': 0,
+                        'opinion_shifts': 0,
+                        'total_votes': 0
+                    }
+
+        # Format for output
+        progression = []
+        for round_num in range(1, max_rounds + 1):
+            if round_num in round_stats:
+                stats = round_stats[round_num]
+                total = stats['total_votes']
+                pro_rate = stats['pro_votes'] / total if total > 0 else 0
+                con_rate = stats['con_votes'] / total if total > 0 else 0
+                shift_rate = stats['opinion_shifts'] / total if total > 0 else 0
+
+                progression.append({
+                    'round': round_num,
+                    'pro_vote_rate': round(pro_rate, 3),
+                    'con_vote_rate': round(con_rate, 3),
+                    'opinion_shift_rate': round(shift_rate, 3),
+                    'total_votes': total
+                })
+
+        return {
+            'round_progression': progression,
+            'max_rounds': max_rounds
+        }
+
+    def get_decision_context(self, decision):
+        """Get UI context for a Debate Slam decision (which side was voted for)."""
+        position_contexts = {
+            "pro-tariffs": {
+                "css_class": "bg-blue-500",
+                "display_text": "Voted Pro",
+                "icon": "thumbs-up",
+                "color": "blue"
+            },
+            "anti-tariffs": {
+                "css_class": "bg-red-500",
+                "display_text": "Voted Con",
+                "icon": "thumbs-down",
+                "color": "red"
+            }
+        }
+
+        return position_contexts.get(decision, {
+            "css_class": "bg-gray-500",
+            "display_text": f"Voted {decision}",
+            "icon": "circle",
+            "color": "gray"
+        })
+
+    def generate_model_profiles(self, benchmark_logs, benchmark_dir):
+        """Generate detailed model profiles for Debate Slam."""
+        models = {}
+
+        # Initialize model profiles
+        for game in benchmark_logs:
+            for player in game.get('players', []):
+                model_id = player.get('model')
+                if model_id not in models:
+                    models[model_id] = {
+                        'model_id': model_id,
+                        'model_name': extract_model_name(model_id),
+                        'games': [],
+                        'stats': {}
+                    }
+
+        # Add game data to profiles
+        for game in benchmark_logs:
+            session_id = game.get('session_id', '')
+
+            for player in game.get('players', []):
+                model_id = player.get('model')
+                role = player.get('role')
+
+                # Skip non-debaters
+                if role != 'debater':
+                    continue
+
+                # Extract position info from final_state
+                pro_position = False
+                pro_votes = con_votes = 0
+
+                if 'first_debate_votes' in player.get('final_state', {}):
+                    pro_position = True
+                    pro_votes = player.get('final_state', {}).get('first_debate_votes', 0)
+                elif 'second_debate_votes' in player.get('final_state', {}):
+                    con_votes = player.get('final_state', {}).get('second_debate_votes', 0)
+
+                # Add game to model profile
+                models[model_id]['games'].append({
+                    'session_id': session_id,
+                    'role': role,
+                    'pro_position': pro_position,
+                    'pro_votes': pro_votes,
+                    'con_votes': con_votes,
+                    'total_score': player.get('final_state', {}).get('score', 0),
+                    'topic': game.get('topic', 'Unknown')
+                })
+
+        # Calculate aggregate stats
+        for model_id, profile in models.items():
+            games = profile['games']
+            if not games:
+                continue
+
+            total_pro_games = sum(1 for g in games if g.get('pro_position'))
+            total_con_games = sum(1 for g in games if not g.get('pro_position'))
+
+            total_pro_votes = sum(g.get('pro_votes', 0) for g in games)
+            total_con_votes = sum(g.get('con_votes', 0) for g in games)
+
+            profile['stats'] = {
+                'total_games': len(games),
+                'pro_games': total_pro_games,
+                'con_games': total_con_games,
+                'avg_pro_votes': round(total_pro_votes / total_pro_games, 2) if total_pro_games > 0 else 0,
+                'avg_con_votes': round(total_con_votes / total_con_games, 2) if total_con_games > 0 else 0,
+                'position_bias': round(abs((total_pro_votes / total_pro_games if total_pro_games > 0 else 0) -
+                                     (total_con_votes / total_con_games if total_con_games > 0 else 0)), 2)
+            }
+
+        return {
+            'game_type': 'debate_slam',
+            'models': list(models.values())
+        }
+
 
 class GameProcessorFactory:
     """Factory for creating game-specific processors."""
@@ -845,7 +1161,8 @@ class GameProcessorFactory:
     def __init__(self):
         self.processors = [
             PrisonersDilemmaProcessor(),
-            PoetryProcessor()
+            PoetryProcessor(),
+            DebateProcessor()
         ]
 
     def get_processor(self, session_id):

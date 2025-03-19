@@ -526,7 +526,7 @@ class DebateFinalJudgingHandler(PhaseHandler):
 
         # Get all debaters
         debaters = [p for p in game_state.get_active_players()
-                   if 'roles' in p and 'debater' in p['roles']]
+                if 'roles' in p and 'debater' in p['roles']]
 
         # Count votes for each side
         side_votes = {}
@@ -538,48 +538,48 @@ class DebateFinalJudgingHandler(PhaseHandler):
             if opinion in side_votes:
                 side_votes[opinion] += 1
 
-        # Assign points to debaters based on their current side
-        for debater in debaters:
-            side_id = debater['state'].get('side_id', '')
-            votes = side_votes.get(side_id, 0)
-
-
         # Store the results of this debate
         if not game_state.shared_state.get('sides_swapped', False):
-            # Store the votes for this debate in player state
-            debater['state']['first_debate_votes'] = votes
-            # First debate - store results in hidden state
+            # First debate - store in both player state and hidden state
+
+            # Track votes and sides for each player during first debate
+            for debater in debaters:
+                side_id = debater['state'].get('side_id', '')
+                votes = side_votes.get(side_id, 0)
+                debater['state']['first_debate_votes'] = votes
+                # Also store which side they had in first debate for later reference
+                debater['state']['first_debate_side'] = side_id
+
+            # Store in hidden state as before
             first_debate_results = {
                 "votes": side_votes,
                 "judge_opinions": copy.deepcopy(judge_opinions)
             }
-
             complete_history = game_state.hidden_state.get('complete_history', {})
             complete_history['first_debate'] = first_debate_results
             game_state.hidden_state['complete_history'] = complete_history
 
             logger.info(f"Stored first debate results: {side_votes}")
+            return True  # Keep original logic to move to side swap
 
-            # Return True to indicate we need to swap sides
-            return True
         else:
-            # Store the votes for this debate in player state
-            debater['state']['second_debate_votes'] = votes
+            # Second debate
+            for debater in debaters:
+                side_id = debater['state'].get('side_id', '')
+                votes = side_votes.get(side_id, 0)
+                debater['state']['second_debate_votes'] = votes
 
-            # Second debate - store results in hidden state
+            # Store in hidden state as before
             second_debate_results = {
                 "votes": side_votes,
                 "judge_opinions": copy.deepcopy(judge_opinions)
             }
-
             complete_history = game_state.hidden_state.get('complete_history', {})
             complete_history['second_debate'] = second_debate_results
             game_state.hidden_state['complete_history'] = complete_history
 
             logger.info(f"Stored second debate results: {side_votes}")
-
-            # Return False to indicate we're done with both debates
-            return False
+            return False  # Keep original logic to proceed to resolution
 
 
 @HandlerRegistry.register("debate_side_swap_handler")
