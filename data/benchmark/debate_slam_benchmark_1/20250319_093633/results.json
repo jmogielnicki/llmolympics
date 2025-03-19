@@ -10,7 +10,8 @@
         "position": "",
         "score": 0
       },
-      "role": "judge"
+      "role": "judge",
+      "model_id": "openai:gpt-4o"
     },
     {
       "id": "player_5",
@@ -28,7 +29,8 @@
           "score": 5
         }
       },
-      "role": "debater"
+      "role": "debater",
+      "model_id": "deepseek:deepseek-reasoner"
     },
     {
       "id": "player_3",
@@ -38,7 +40,8 @@
         "position": "",
         "score": 0
       },
-      "role": "judge"
+      "role": "judge",
+      "model_id": "xai:grok-2-1212"
     },
     {
       "id": "player_4",
@@ -48,7 +51,8 @@
         "position": "",
         "score": 0
       },
-      "role": "judge"
+      "role": "judge",
+      "model_id": "deepseek:deepseek-chat"
     },
     {
       "id": "player_2",
@@ -66,7 +70,8 @@
           "score": 0
         }
       },
-      "role": "debater"
+      "role": "debater",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620"
     },
     {
       "id": "player_6",
@@ -76,7 +81,8 @@
         "position": "",
         "score": 0
       },
-      "role": "judge"
+      "role": "judge",
+      "model_id": "mistral:mistral-large-latest"
     },
     {
       "id": "player_7",
@@ -86,7 +92,8 @@
         "position": "",
         "score": 0
       },
-      "role": "judge"
+      "role": "judge",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21"
     }
   ],
   "winner": {

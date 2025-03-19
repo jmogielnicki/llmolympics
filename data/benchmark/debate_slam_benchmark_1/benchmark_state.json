@@ -112,58 +112,58 @@
     ]
   },
   "game_counts": {
-    "deepseek:deepseek-chat": 7,
-    "deepseek:deepseek-reasoner": 6,
-    "openai:gpt-4o": 7,
-    "openai:gpt-4.5-preview": 8,
-    "anthropic:claude-3-5-sonnet-20240620": 8,
-    "anthropic:claude-3-7-sonnet-20250219": 7,
-    "xai:grok-2-1212": 7,
-    "mistral:mistral-large-latest": 7,
-    "google:gemini-2.0-flash": 6,
-    "google:gemini-2.0-flash-thinking-exp-01-21": 7
+		"deepseek:deepseek-chat": 5,
+		"deepseek:deepseek-reasoner": 4,
+		"openai:gpt-4o": 6,
+		"openai:gpt-4.5-preview": 5,
+		"anthropic:claude-3-5-sonnet-20240620": 6,
+		"anthropic:claude-3-7-sonnet-20250219": 4,
+		"xai:grok-2-1212": 5,
+		"mistral:mistral-large-latest": 6,
+		"google:gemini-2.0-flash": 4,
+		"google:gemini-2.0-flash-thinking-exp-01-21": 4
   },
   "role_counts": {
     "deepseek:deepseek-chat": {
-      "debater": 2,
-      "judge": 5
+      "debater": 1,
+      "judge": 4
     },
     "deepseek:deepseek-reasoner": {
       "debater": 2,
-      "judge": 4
+      "judge": 2
     },
     "openai:gpt-4o": {
-      "debater": 2,
+      "debater": 1,
       "judge": 5
     },
     "openai:gpt-4.5-preview": {
       "debater": 2,
-      "judge": 6
+      "judge": 3
     },
     "anthropic:claude-3-5-sonnet-20240620": {
-      "debater": 2,
-      "judge": 6
+      "debater": 1,
+      "judge": 5
     },
     "anthropic:claude-3-7-sonnet-20250219": {
       "debater": 2,
-      "judge": 5
+      "judge": 2
     },
     "xai:grok-2-1212": {
-      "debater": 2,
+      "debater": 0,
       "judge": 5
     },
     "mistral:mistral-large-latest": {
-      "debater": 2,
+      "debater": 1,
       "judge": 5
     },
     "google:gemini-2.0-flash": {
       "debater": 2,
-      "judge": 4
+      "judge": 2
     },
     "google:gemini-2.0-flash-thinking-exp-01-21": {
       "debater": 2,
-      "judge": 5
+      "judge": 2
     }
   },
-  "sessions_run": 8
+  "sessions_run": 5
 }

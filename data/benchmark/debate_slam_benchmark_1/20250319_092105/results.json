@@ -10,7 +10,8 @@
         "position": "",
         "score": 0
       },
-      "role": "judge"
+      "role": "judge",
+      "model_id": "deepseek:deepseek-reasoner"
     },
     {
       "id": "player_2",
@@ -20,7 +21,8 @@
         "position": "",
         "score": 0
       },
-      "role": "judge"
+      "role": "judge",
+      "model_id": "openai:gpt-4o"
     },
     {
       "id": "player_3",
@@ -30,7 +32,8 @@
         "position": "",
         "score": 0
       },
-      "role": "judge"
+      "role": "judge",
+      "model_id": "deepseek:deepseek-chat"
     },
     {
       "id": "player_4",
@@ -40,7 +43,8 @@
         "position": "",
         "score": 0
       },
-      "role": "judge"
+      "role": "judge",
+      "model_id": "google:gemini-2.0-flash"
     },
     {
       "id": "player_5",
@@ -58,7 +62,8 @@
           "score": 4
         }
       },
-      "role": "debater"
+      "role": "debater",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219"
     },
     {
       "id": "player_6",
@@ -68,7 +73,8 @@
         "position": "",
         "score": 0
       },
-      "role": "judge"
+      "role": "judge",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620"
     },
     {
       "id": "player_7",
@@ -86,7 +92,8 @@
           "score": 1
         }
       },
-      "role": "debater"
+      "role": "debater",
+      "model_id": "mistral:mistral-large-latest"
     }
   ],
   "winner": {
