@@ -1,0 +1,94 @@
+{
+  "game": "Debate Slam",
+  "timestamp": "2025-03-19T09:48:11.160587",
+  "players": [
+    {
+      "id": "player_1",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_5",
+      "final_state": {
+        "role": "debater",
+        "side_id": "pro-ubi",
+        "position": "Universal basic income is viable",
+        "score": 5,
+        "current_argument": "Ladies and gentlemen, my opponent\u2019s rebuttal clings to outdated economic dogmas and misrepresents UBI\u2019s potential. Let\u2019s address their concerns decisively.  \n\n**First, affordability.** The Alaska model isn\u2019t a blueprint but a proof of concept: universal cash distributions *work*. Scaling UBI nationally requires modern solutions, not oil revenues. By taxing extreme wealth\u2014the top 1% owns $50 trillion in the U.S. alone\u2014and capturing a fraction of the $10 trillion in annual corporate profits, we can fund UBI without burdening the middle class. Economists like Piketty and Yang propose taxes on automation, data usage, and financial transactions\u2014sectors that profit from labor displacement. Canada\u2019s proposed national UBI for low-income earners, costed at $85 billion annually, is just 4% of its GDP. The money exists; it\u2019s a matter of priorities.  \n\n**Second, systemic poverty.** UBI doesn\u2019t \u201cignore\u201d root causes\u2014it *disarms* them. Poverty is a trap of chronic scarcity that stifles long-term planning. In Stockton\u2019s UBI experiment, recipients doubled their full-time employment rates. Financial security lets people invest in education, flee abusive jobs, or care for loved ones\u2014actions that address systemic barriers. UBI isn\u2019t a replacement for education reform; it\u2019s the stability that makes reform accessible.  \n\n**Third, social programs.** The claim that UBI necessitates cuts is a false dilemma. Norway funds universal healthcare, free college, *and* robust welfare through strategic oil taxation. UBI\u2019s funding can coexist with social services if we reject austerity logic. In fact, UBI strengthens public support for welfare by proving cash aid works.  \n\n**Work disincentives?** Alaska\u2019s 40-year dividend shows no employment decline. A 2023 study in Spain found UBI recipients were *more* likely to seek training. When survival isn\u2019t tied to exploitative wages, people pursue meaningful work.  \n\nThe real risk isn\u2019t UBI\u2014it\u2019s clinging to systems that let billionaires hoard wealth while automation erodes jobs. UBI is the viable path to an economy where dignity isn\u2019t a privilege. The future demands courage, not fear. Thank you.",
+        "first_debate_votes": 5
+      },
+      "role": "debater"
+    },
+    {
+      "id": "player_3",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_4",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_2",
+      "final_state": {
+        "role": "debater",
+        "side_id": "anti-ubi",
+        "position": "Universal basic income is not viable",
+        "score": 0,
+        "current_argument": "Ladies and gentlemen, as we conclude this debate, it's clear that while universal basic income may sound appealing in theory, it remains an economically unviable and potentially harmful policy.\n\nMy opponent's arguments rely heavily on cherry-picked studies and optimistic projections, ignoring the broader economic realities. The claim that UBI can be funded by taxing extreme wealth and corporate profits fails to consider the economic disruption such massive wealth redistribution would cause. It risks capital flight, reduced investment, and ultimately, a shrinking economic pie for everyone.\n\nThe assertion that UBI \"disarms\" root causes of poverty is overly simplistic. While financial security is important, it doesn't address fundamental issues like education quality, healthcare access, or job market skills mismatches. We need targeted, efficient solutions for these complex problems, not a blanket cash distribution.\n\nFurthermore, the comparison to Norway's social programs is misguided. Norway's system is built on vast oil wealth relative to its small population \u2013 a model that simply isn't replicable for larger, more diverse economies.\n\nLastly, the long-term effects of UBI on work incentives and societal productivity remain a serious concern. Short-term studies cannot capture the potential generational impacts of guaranteed income regardless of contribution.\n\nIn conclusion, while addressing poverty and inequality is crucial, UBI is not the answer. We need practical, sustainable policies that promote economic growth, job creation, and targeted support for those in need. UBI is an expensive experiment we cannot afford to risk. Thank you.",
+        "second_debate_votes": 0
+      },
+      "role": "debater"
+    },
+    {
+      "id": "player_6",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_7",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    }
+  ],
+  "winner": {
+    "id": "player_5"
+  },
+  "rounds_played": 3,
+  "history_summary": {
+    "argument_history": 3,
+    "judging_history": 3
+  },
+  "session_id": "debate_slam_20250319_093633",
+  "stats": {
+    "snapshot_count": 17,
+    "event_count": 126,
+    "chat_message_count": 42
+  }
+}
