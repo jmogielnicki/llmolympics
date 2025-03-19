@@ -47,6 +47,8 @@ class MultiPlayerBenchmarkRunner:
         # Get multi-player specific settings
         self.players_per_game = benchmark_config.config['benchmark'].get('players_per_game', 4)
         self.sessions = benchmark_config.config['benchmark'].get('sessions', 50)
+        self.player_selection_strategy = benchmark_config.config['benchmark'].get('player_selection_strategy', 'opponent_diversity')
+        self.player_selection_strategy_role = benchmark_config.config['benchmark'].get('player_selection_strategy_role', '')
 
         # Get roles configuration
         self.roles_config = benchmark_config.config['benchmark'].get('roles', {})
@@ -201,6 +203,48 @@ class MultiPlayerBenchmarkRunner:
 
         except Exception as e:
             logger.error(f"Error saving benchmark state: {str(e)}")
+
+
+    def _select_models_for_session_prioritize_role(self, role):
+        """
+        Select models for debate slam, prioritizing models with fewer debater opportunities.
+
+        Returns:
+            List[str]: List of selected model identifiers with debaters first, then judges
+        """
+        # Get role counts from state
+        all_roles_counts = getattr(self, 'role_counts', {})
+
+        # If role_counts not initialized, create it
+        if not all_roles_counts:
+            for model in self.models:
+                self.role_counts[model] = {role: 0 for role in self.roles_config}
+
+        # Get debater counts for all models
+        specified_role_counts = {model: self.role_counts.get(model, {}).get(role, 0) for model in self.models}
+
+        # Sort models by debater count (ascending)
+        sorted_models = sorted(self.models, key=lambda model: specified_role_counts.get(model, 0))
+
+        # Select the 2 models with fewest debater roles as debaters
+        selected_debaters = sorted_models[:2]
+
+        logger.info(f"Selected debaters: {selected_debaters}")
+
+        # Exclude the selected debaters from judge selection
+        judge_candidates = [model for model in self.models if model not in selected_debaters]
+
+        # Randomly select 3 judges
+        num_judges = self.players_per_game - 2  # Should be 3 for debate slam
+        selected_judges = random.sample(judge_candidates, min(num_judges, len(judge_candidates)))
+
+        logger.info(f"Selected judges: {selected_judges}")
+
+        # Return debaters first, then judges (order matters for role assignment)
+        selected_models = selected_debaters + selected_judges
+
+        return selected_models
+
 
     def _select_models_for_session(self) -> List[str]:
         """
@@ -468,8 +512,11 @@ class MultiPlayerBenchmarkRunner:
         # Run remaining sessions
         for i in range(self.sessions_run, self.sessions):
             logger.info(f"Running session {i+1}/{self.sessions}")
-            # Select models for this session
-            selected_models = self._select_models_for_session()
+
+            if self.player_selection_strategy == 'least_games_with_role':
+                selected_models = self._select_models_for_session_prioritize_role(self.player_selection_strategy_role)
+            else:
+                selected_models = self._select_models_for_session()
 
             # Assign roles to models
             role_assignments, model_roles = self._assign_roles_to_models(selected_models)
