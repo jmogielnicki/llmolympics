@@ -526,7 +526,7 @@ class DebateFinalJudgingHandler(PhaseHandler):
 
         # Get all debaters
         debaters = [p for p in game_state.get_active_players()
-                if 'roles' in p and 'debater' in p['roles']]
+                   if 'roles' in p and 'debater' in p['roles']]
 
         # Count votes for each side
         side_votes = {}
@@ -540,17 +540,22 @@ class DebateFinalJudgingHandler(PhaseHandler):
 
         # Store the results of this debate
         if not game_state.shared_state.get('sides_swapped', False):
-            # First debate - store in both player state and hidden state
-
-            # Track votes and sides for each player during first debate
+            # First debate - use pre_swap
             for debater in debaters:
                 side_id = debater['state'].get('side_id', '')
+                position = debater['state'].get('position', '')
                 votes = side_votes.get(side_id, 0)
-                debater['state']['first_debate_votes'] = votes
-                # Also store which side they had in first debate for later reference
-                debater['state']['first_debate_side'] = side_id
 
-            # Store in hidden state as before
+                # Initialize pre_swap object
+                if 'pre_swap' not in debater['state']:
+                    debater['state']['pre_swap'] = {}
+
+                # Store data in pre_swap
+                debater['state']['pre_swap']['side_id'] = side_id
+                debater['state']['pre_swap']['position'] = position
+                debater['state']['pre_swap']['score'] = votes
+
+            # Store results in hidden state
             first_debate_results = {
                 "votes": side_votes,
                 "judge_opinions": copy.deepcopy(judge_opinions)
@@ -559,17 +564,26 @@ class DebateFinalJudgingHandler(PhaseHandler):
             complete_history['first_debate'] = first_debate_results
             game_state.hidden_state['complete_history'] = complete_history
 
-            logger.info(f"Stored first debate results: {side_votes}")
-            return True  # Keep original logic to move to side swap
+            logger.info(f"Stored first debate results in pre_swap: {side_votes}")
+            return True
 
         else:
-            # Second debate
+            # Second debate - use post_swap
             for debater in debaters:
                 side_id = debater['state'].get('side_id', '')
+                position = debater['state'].get('position', '')
                 votes = side_votes.get(side_id, 0)
-                debater['state']['second_debate_votes'] = votes
 
-            # Store in hidden state as before
+                # Initialize post_swap object
+                if 'post_swap' not in debater['state']:
+                    debater['state']['post_swap'] = {}
+
+                # Store data in post_swap
+                debater['state']['post_swap']['side_id'] = side_id
+                debater['state']['post_swap']['position'] = position
+                debater['state']['post_swap']['score'] = votes
+
+            # Store results in hidden state
             second_debate_results = {
                 "votes": side_votes,
                 "judge_opinions": copy.deepcopy(judge_opinions)
@@ -578,8 +592,8 @@ class DebateFinalJudgingHandler(PhaseHandler):
             complete_history['second_debate'] = second_debate_results
             game_state.hidden_state['complete_history'] = complete_history
 
-            logger.info(f"Stored second debate results: {side_votes}")
-            return False  # Keep original logic to proceed to resolution
+            logger.info(f"Stored second debate results in post_swap: {side_votes}")
+            return False
 
 
 @HandlerRegistry.register("debate_side_swap_handler")
@@ -687,14 +701,19 @@ class DebateResolutionHandler(PhaseHandler):
 
         # Calculate total votes across both debates
         for debater in debaters:
-            first_debate_votes = debater['state'].get('first_debate_votes', 0)
-            second_debate_votes = debater['state'].get('second_debate_votes', 0)
-            total_votes = first_debate_votes + second_debate_votes
+            pre_swap_score = debater['state'].get('pre_swap', {}).get('score', 0)
+            post_swap_score = debater['state'].get('post_swap', {}).get('score', 0)
+            total_score = pre_swap_score + post_swap_score
 
             # Set final score
-            debater['state']['score'] = total_votes
+            debater['state']['score'] = total_score
 
-            logger.info(f"Debater {debater['id']} final score: {total_votes} (first: {first_debate_votes}, second: {second_debate_votes})")
+            # Clean up - remove current_argument
+            if 'current_argument' in debater['state']:
+                del debater['state']['current_argument']
+
+            logger.info(f"Debater {debater['id']} final score: {total_score} " +
+                       f"(pre-swap: {pre_swap_score}, post-swap: {post_swap_score})")
 
         # Determine winner
         debater1, debater2 = debaters
