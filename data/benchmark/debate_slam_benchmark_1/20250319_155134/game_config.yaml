@@ -1,0 +1,156 @@
+game:
+  description: A debate competition testing persuasion skills by requiring models
+    to argue both sides
+  name: Debate Slam
+  type: debate_competition
+llm_integration:
+  parsers:
+    final_judging: vote_parser
+    opening_arguments: content_parser
+    round_discussion: content_parser
+    round_judging: vote_parser
+  player_models:
+    player_1: deepseek:deepseek-chat
+    player_2: anthropic:claude-3-5-sonnet-20240620
+    player_3: google:gemini-2.0-flash
+    player_4: anthropic:claude-3-7-sonnet-20250219
+    player_5: deepseek:deepseek-reasoner
+    player_6: xai:grok-2-1212
+    player_7: openai:gpt-4o
+  prompts:
+    final_judging: debate_final_judging
+    opening_arguments: debate_opening_arguments
+    round_discussion: debate_rebuttal
+    round_judging: debate_judging
+  system_prompts:
+    final_judging: You are a judge providing a final verdict on a debate after hearing
+      all arguments.
+    opening_arguments: You are a debater presenting an opening argument on a given
+      topic.
+    round_discussion: You are a debater responding to arguments in a structured debate.
+    round_judging: You are a judge evaluating arguments in a debate. Your task is
+      to indicate which side you find more persuasive.
+    topic_selection: You are selecting a debate topic for a competition between AI
+      models.
+phases:
+- handler: debate_topic_selection
+  id: topic_selection
+  next_phase: side_assignment
+  type: automatic
+- handler: debate_side_assignment
+  id: side_assignment
+  next_phase: opening_arguments
+  type: automatic
+- eligible_role: debater
+  handler: debate_argument_handler
+  id: opening_arguments
+  next_phase: round_judging
+  type: simultaneous_action
+- eligible_role: debater
+  handler: debate_rebuttal_handler
+  id: round_discussion
+  next_phase_condition: is_final_round
+  next_phase_failure: round_judging
+  next_phase_success: final_judging
+  type: sequential_action
+- eligible_role: judge
+  handler: debate_judging_handler
+  id: round_judging
+  next_phase: round_discussion
+  type: simultaneous_action
+- eligible_role: judge
+  handler: debate_final_judging_handler
+  id: final_judging
+  next_phase_condition: sides_swapped
+  next_phase_failure: resolution
+  next_phase_success: side_swap
+  type: simultaneous_action
+- handler: debate_side_swap_handler
+  id: side_swap
+  next_phase: opening_arguments
+  type: automatic
+- handler: debate_resolution_handler
+  id: resolution
+  next_phase: game_end
+  type: automatic
+players:
+  max: 7
+  min: 7
+  roles: dynamic
+rounds:
+  count: 3
+  progression: fixed
+setup:
+  assignments:
+  - assignment_to: player_2
+    role: debater
+  - assignment_to: player_7
+    role: debater
+  - assignment_to: player_4
+    role: judge
+  - assignment_to: player_1
+    role: judge
+  - assignment_to: player_6
+    role: judge
+  - assignment_to: player_3
+    role: judge
+  - assignment_to: player_5
+    role: judge
+  initial_state:
+    resources: []
+state:
+  hidden_state:
+  - initial: {}
+    name: complete_history
+    visible: false
+  history_state:
+  - name: argument_history
+    tracking:
+    - opening_arguments
+    - round_discussion
+  - name: judging_history
+    tracking:
+    - round_judging
+    - final_judging
+  player_state:
+  - initial: assigned
+    name: role
+    visible: true
+  - initial: ''
+    name: side_id
+    visible: true
+  - initial: ''
+    name: position
+    visible: true
+  - initial: 0
+    name: score
+    visible: false
+  shared_state:
+  - initial: ''
+    name: debate_topic
+    visible: true
+  - initial: []
+    name: sides
+    visible: true
+  - initial: 1
+    name: current_round
+    visible: true
+  - initial: 3
+    name: max_rounds
+    visible: true
+  - initial: false
+    name: sides_swapped
+    visible: false
+  - initial: {}
+    name: current_arguments
+    visible: true
+  - initial: {}
+    name: judge_opinions
+    visible: true
+  - initial: ''
+    name: first_rebutter_side_id
+    visible: true
+win_condition:
+  score_field: score
+  trigger: resolution_complete
+  type: highest_score
