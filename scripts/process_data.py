@@ -869,7 +869,7 @@ class DebateProcessor(GameProcessor):
                         }
 
                     debater_models[model_id]['games'] += 1
-                    print(player)
+
                     final_score = player.get('score', {})
                     debater_models[model_id]['total_score'] += final_score
                     # Determine win/loss/tie status
@@ -1044,26 +1044,29 @@ class DebateProcessor(GameProcessor):
 
         # First identify all models and their roles
         for game in benchmark_logs:
-            for player in game.get('players', []):
-                model_id = player.get('model_id')
-                role = player.get('role')
+            players = game.get('players', [])
+            for player in players:
+                model = player.get('model')
+                roles = player.get('roles', [])
 
-                if not model_id:
+                if not model or not roles:
                     continue
 
+                role = roles[0] if roles else ""
+
                 if role == 'debater':
-                    if model_id not in debater_profiles:
-                        debater_profiles[model_id] = {
-                            'model_id': model_id,
-                            'model_name': extract_model_name(model_id),
+                    if model not in debater_profiles:
+                        debater_profiles[model] = {
+                            'model_id': model,
+                            'model_name': extract_model_name(model),
                             'games': [],
                             'stats': {}
                         }
                 elif role == 'judge':
-                    if model_id not in judge_profiles:
-                        judge_profiles[model_id] = {
-                            'model_id': model_id,
-                            'model_name': extract_model_name(model_id),
+                    if model not in judge_profiles:
+                        judge_profiles[model] = {
+                            'model_id': model,
+                            'model_name': extract_model_name(model),
                             'games': [],
                             'stats': {}
                         }
@@ -1093,79 +1096,91 @@ class DebateProcessor(GameProcessor):
             except:
                 pass
 
-            # Map player IDs to models
-            player_models = {}
-            for player in game.get('players', []):
-                player_models[player.get('id')] = player.get('model_id')
+            # Load results.json to get detailed player information
+            results_path = os.path.join(session_dir, "results.json")
+            results_data = {}
+            if os.path.exists(results_path):
+                try:
+                    with open(results_path, 'r') as f:
+                        results_data = json.load(f)
+                except Exception as e:
+                    print(f"Error loading results.json from {session_id}: {e}")
+                    continue
+            else:
+                print(f"results.json not found in {session_id}")
+                continue
 
-            # Process each player
-            for player in game.get('players', []):
-                model_id = player.get('model_id')
-                role = player.get('role')
-                player_id = player.get('id')
+            # Process players from results.json
+            if results_data and 'players' in results_data:
+                for player in results_data.get('players', []):
+                    model_id = player.get('model_id')
+                    role = player.get('role')
+                    player_id = player.get('id')
 
-                if role == 'debater' and model_id in debater_profiles:
-                    # Get pre-swap and post-swap data
-                    pre_swap = player.get('final_state', {}).get('pre_swap', {})
-                    post_swap = player.get('final_state', {}).get('post_swap', {})
+                    if role == 'debater' and model_id in debater_profiles:
+                        # Get pre-swap and post-swap data from results.json
+                        final_state = player.get('final_state', {})
+                        pre_swap = final_state.get('pre_swap', {})
+                        post_swap = final_state.get('post_swap', {})
 
-                    debater_profiles[model_id]['games'].append({
-                        'session_id': session_id,
-                        'topic': debate_topic,
-                        'pre_swap_position': pre_swap.get('position', ''),
-                        'post_swap_position': post_swap.get('position', ''),
-                        'pre_swap_score': pre_swap.get('score', 0),
-                        'post_swap_score': post_swap.get('score', 0),
-                        'total_score': player.get('final_state', {}).get('score', 0)
-                    })
+                        debater_profiles[model_id]['games'].append({
+                            'session_id': session_id,
+                            'topic': debate_topic,
+                            'pre_swap_side': pre_swap.get('side_id', ''),
+                            'post_swap_side': post_swap.get('side_id', ''),
+                            'pre_swap_position': pre_swap.get('position', ''),
+                            'post_swap_position': post_swap.get('position', ''),
+                            'pre_swap_score': pre_swap.get('score', 0),
+                            'post_swap_score': post_swap.get('score', 0),
+                            'total_score': final_state.get('score', 0)
+                        })
+                    elif role == 'judge' and model_id in judge_profiles:
+                        # Find this judge's voting pattern from snapshots
+                        try:
+                            snapshots = []
+                            snapshot_path = os.path.join(session_dir, "snapshots.jsonl")
+                            if os.path.exists(snapshot_path):
+                                with open(snapshot_path, 'r') as f:
+                                    for line in f:
+                                        try:
+                                            data = json.loads(line)
+                                            if data.get("record_type") == "snapshot":
+                                                snapshots.append(data)
+                                        except:
+                                            continue
 
-                elif role == 'judge' and model_id in judge_profiles:
-                    # Find this judge's voting pattern from snapshots
-                    try:
-                        snapshots = []
-                        snapshot_path = os.path.join(session_dir, "snapshots.jsonl")
-                        if os.path.exists(snapshot_path):
-                            with open(snapshot_path, 'r') as f:
-                                for line in f:
-                                    try:
-                                        data = json.loads(line)
-                                        if data.get("record_type") == "snapshot":
-                                            snapshots.append(data)
-                                    except:
-                                        continue
+                            # Get the last snapshot
+                            if snapshots:
+                                final_snapshot = max(snapshots, key=lambda x: x.get('snapshot_id', 0))
+                                judge_opinions = final_snapshot.get('shared_state', {}).get('judge_opinions', {})
 
-                        # Get the last snapshot
-                        if snapshots:
-                            final_snapshot = max(snapshots, key=lambda x: x.get('snapshot_id', 0))
-                            judge_opinions = final_snapshot.get('shared_state', {}).get('judge_opinions', {})
+                                # Get judge votes by round
+                                round_votes = {}
+                                for round_num, votes in judge_opinions.get('rounds', {}).items():
+                                    if player_id in votes:
+                                        round_votes[round_num] = votes[player_id]
 
-                            # Get judge votes by round
-                            round_votes = {}
-                            for round_num, votes in judge_opinions.get('rounds', {}).items():
-                                if player_id in votes:
-                                    round_votes[round_num] = votes[player_id]
+                                # Get final vote
+                                final_vote = judge_opinions.get('final', {}).get(player_id, '')
 
-                            # Get final vote
-                            final_vote = judge_opinions.get('final', {}).get(player_id, '')
-
-                            judge_profiles[model_id]['games'].append({
-                                'session_id': session_id,
-                                'topic': debate_topic,
-                                'round_votes': round_votes,
-                                'final_vote': final_vote
-                            })
-                        else:
-                            # If no snapshots, still record the game
+                                judge_profiles[model_id]['games'].append({
+                                    'session_id': session_id,
+                                    'topic': debate_topic,
+                                    'round_votes': round_votes,
+                                    'final_vote': final_vote
+                                })
+                            else:
+                                # If no snapshots, still record the game
+                                judge_profiles[model_id]['games'].append({
+                                    'session_id': session_id,
+                                    'topic': debate_topic
+                                })
+                        except:
+                            # If we can't get voting data, still record the game
                             judge_profiles[model_id]['games'].append({
                                 'session_id': session_id,
                                 'topic': debate_topic
                             })
-                    except:
-                        # If we can't get voting data, still record the game
-                        judge_profiles[model_id]['games'].append({
-                            'session_id': session_id,
-                            'topic': debate_topic
-                        })
 
         # Calculate stats for debaters
         for model_id, profile in debater_profiles.items():
