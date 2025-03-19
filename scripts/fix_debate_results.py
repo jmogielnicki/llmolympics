@@ -1,6 +1,7 @@
 import os
 import json
 import glob
+import yaml  # You'll need to pip install pyyaml if not already installed
 
 def fix_debate_slam_results(root_directory):
     """
@@ -12,6 +13,7 @@ def fix_debate_slam_results(root_directory):
     for results_path in results_files:
         session_dir = os.path.dirname(results_path)
         snapshots_path = os.path.join(session_dir, "snapshots.jsonl")
+        config_path = os.path.join(session_dir, "game_config.yaml")
 
         if not os.path.exists(snapshots_path):
             print(f"Skipping {results_path}: No snapshots file found")
@@ -27,14 +29,28 @@ def fix_debate_slam_results(root_directory):
 
         print(f"Processing: {results_path}")
 
+        # Extract model IDs from config
+        model_ids = {}
+        if os.path.exists(config_path):
+            try:
+                with open(config_path, 'r') as f:
+                    config = yaml.safe_load(f)
+
+                # Extract from the YAML structure
+                if 'llm_integration' in config and 'player_models' in config['llm_integration']:
+                    model_ids = config['llm_integration']['player_models']
+                    print(f"  Found {len(model_ids)} model IDs in game_config.yaml")
+            except Exception as e:
+                print(f"  Error reading config: {e}")
+
         # Extract complete voting data from snapshots
         complete_history, player_sides = extract_history_and_sides(snapshots_path)
         if not complete_history:
             print(f"  Could not extract vote data from {snapshots_path}")
             continue
 
-        # Fix the player scores, sides, and remove current_argument
-        fixed = fix_player_data(results, complete_history, player_sides)
+        # Fix the player scores, sides, add model_ids and remove current_argument
+        fixed = fix_player_data(results, complete_history, player_sides, model_ids)
 
         if fixed:
             # Save the updated results
@@ -44,92 +60,94 @@ def fix_debate_slam_results(root_directory):
         else:
             print(f"  ✗ No changes needed or couldn't fix")
 
+
 def extract_history_and_sides(snapshots_path):
     """Extract complete vote history and side assignments from snapshots file."""
     complete_history = None
     player_sides = {}
 
-    # Read all snapshots to track side changes
-    snapshots = []
+    # First find the side assignments from events
+    with open(snapshots_path, 'r') as f:
+        for line in f:
+            try:
+                data = json.loads(line)
+                if data.get('record_type') == 'event':
+                    # Pre-swap assignments
+                    if data.get('event_type') == 'side_assignment':
+                        assignments = data.get('data', {}).get('assignments', [])
+                        for assignment in assignments:
+                            player_id = assignment.get('player_id')
+                            side_id = assignment.get('side_id')
+                            if player_id and side_id:
+                                if player_id not in player_sides:
+                                    player_sides[player_id] = {}
+                                player_sides[player_id]['first_side_id'] = side_id
+
+                    # Post-swap assignments
+                    elif data.get('event_type') == 'side_swap':
+                        assignments = data.get('data', {}).get('new_assignments', [])
+                        for assignment in assignments:
+                            player_id = assignment.get('player_id')
+                            side_id = assignment.get('side_id')
+                            if player_id and side_id:
+                                if player_id not in player_sides:
+                                    player_sides[player_id] = {}
+                                player_sides[player_id]['second_side_id'] = side_id
+            except:
+                continue
+
+    # Now get the positions that correspond to each side_id
+    sides_info = {}
     with open(snapshots_path, 'r') as f:
         for line in f:
             try:
                 data = json.loads(line)
                 if data.get('record_type') == 'snapshot':
-                    snapshots.append(data)
-            except json.JSONDecodeError:
+                    sides = data.get('shared_state', {}).get('sides', [])
+                    for side in sides:
+                        side_id = side.get('side_id')
+                        position = side.get('position')
+                        if side_id and position:
+                            sides_info[side_id] = position
+
+                    # Once we have sides info, stop looking
+                    if sides_info:
+                        break
+            except:
                 continue
 
-    # Get final complete history
-    for snapshot in reversed(snapshots):
-        if snapshot.get('game_over', False) and 'hidden_state' in snapshot and 'complete_history' in snapshot['hidden_state']:
-            complete_history = snapshot['hidden_state']['complete_history']
-            break
+    # Complete the player_sides with position information
+    for player_id, sides in player_sides.items():
+        if 'first_side_id' in sides:
+            first_side_id = sides['first_side_id']
+            if first_side_id in sides_info:
+                sides['first_position'] = sides_info[first_side_id]
 
-    # IMPROVED APPROACH: Look for side assignments more carefully
+        if 'second_side_id' in sides:
+            second_side_id = sides['second_side_id']
+            if second_side_id in sides_info:
+                sides['second_position'] = sides_info[second_side_id]
 
-    # Find the side assignment events
-    side_assignments = {}
+    # Finally, get the complete history from the last snapshot
     with open(snapshots_path, 'r') as f:
-        for line in f:
+        lines = f.readlines()
+
+        # Process snapshots in reverse to find the complete history
+        for line in reversed(lines):
             try:
                 data = json.loads(line)
-                if data.get('record_type') == 'event' and data.get('event_type') == 'side_assignment':
-                    # First debate assignments
-                    side_assignments['pre_swap'] = data.get('data', {}).get('assignments', [])
-                elif data.get('record_type') == 'event' and data.get('event_type') == 'side_swap':
-                    # Second debate assignments after swap
-                    side_assignments['post_swap'] = data.get('data', {}).get('new_assignments', [])
-            except json.JSONDecodeError:
+                if data.get('record_type') == 'snapshot' and data.get('game_over', False):
+                    if 'hidden_state' in data and 'complete_history' in data['hidden_state']:
+                        complete_history = data['hidden_state']['complete_history']
+                        break
+            except:
                 continue
-
-    # Process side assignments for both debates
-    if 'pre_swap' in side_assignments:
-        for assignment in side_assignments['pre_swap']:
-            player_id = assignment.get('player_id')
-            side_id = assignment.get('side_id')
-
-            if player_id and side_id:
-                if player_id not in player_sides:
-                    player_sides[player_id] = {}
-
-                player_sides[player_id]['first_side_id'] = side_id
-
-                # Look up the position from sides info in a snapshot
-                for snapshot in snapshots:
-                    sides = snapshot.get('shared_state', {}).get('sides', [])
-                    for side in sides:
-                        if side.get('side_id') == side_id:
-                            player_sides[player_id]['first_position'] = side.get('position', '')
-                            break
-                    if 'first_position' in player_sides[player_id]:
-                        break
-
-    if 'post_swap' in side_assignments:
-        for assignment in side_assignments['post_swap']:
-            player_id = assignment.get('player_id')
-            side_id = assignment.get('side_id')
-
-            if player_id and side_id:
-                if player_id not in player_sides:
-                    player_sides[player_id] = {}
-
-                player_sides[player_id]['second_side_id'] = side_id
-
-                # Look up the position from sides info in a snapshot
-                for snapshot in snapshots:
-                    sides = snapshot.get('shared_state', {}).get('sides', [])
-                    for side in sides:
-                        if side.get('side_id') == side_id:
-                            player_sides[player_id]['second_position'] = side.get('position', '')
-                            break
-                    if 'second_position' in player_sides[player_id]:
-                        break
 
     return complete_history, player_sides
 
-def fix_player_data(results, complete_history, player_sides):
-    """Fix player scores and data structure using pre_swap/post_swap objects."""
+
+def fix_player_data(results, complete_history, player_sides, model_ids):
+    """Fix player scores and structure, adding model IDs and using pre_swap/post_swap objects."""
     if not complete_history or 'first_debate' not in complete_history or 'second_debate' not in complete_history:
         return False
 
@@ -148,7 +166,18 @@ def fix_player_data(results, complete_history, player_sides):
     made_changes = False
 
     # Update each player's data
-    for player in debaters:
+    for player in results['players']:
+        player_id = player['id']
+
+        # Add model_id from config
+        if player_id in model_ids:
+            player['model_id'] = model_ids[player_id]
+            made_changes = True
+
+        # Skip non-debaters
+        if player not in debaters:
+            continue
+
         # Make sure final_state exists
         if 'final_state' not in player:
             player['final_state'] = {}
@@ -167,13 +196,13 @@ def fix_player_data(results, complete_history, player_sides):
         # Preserve role
         role = final_state.get('role', '')
 
-        # Determine sides and positions from existing data or player_sides
-        first_side_id = final_state.get('first_side_id') or player_sides.get(player['id'], {}).get('first_side_id', '')
-        first_position = final_state.get('first_position') or player_sides.get(player['id'], {}).get('first_position', '')
+        # Get data from existing fields or player_sides
+        first_side_id = final_state.get('first_side_id') or player_sides.get(player_id, {}).get('first_side_id', '')
+        first_position = final_state.get('first_position') or player_sides.get(player_id, {}).get('first_position', '')
         first_debate_votes = final_state.get('first_debate_votes', 0)
 
-        second_side_id = final_state.get('second_side_id') or player_sides.get(player['id'], {}).get('second_side_id', '')
-        second_position = final_state.get('second_position') or player_sides.get(player['id'], {}).get('second_position', '')
+        second_side_id = final_state.get('second_side_id') or player_sides.get(player_id, {}).get('second_side_id', '')
+        second_position = final_state.get('second_position') or player_sides.get(player_id, {}).get('second_position', '')
         second_debate_votes = final_state.get('second_debate_votes', 0)
 
         # If we have side IDs but not scores, try to get them from complete_history
@@ -226,6 +255,7 @@ def fix_player_data(results, complete_history, player_sides):
             results['winner'] = {'id': sorted_debaters[0]['id']}
 
     return made_changes
+
 
 # Usage
 if __name__ == "__main__":
