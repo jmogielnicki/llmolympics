@@ -16,11 +16,17 @@
       "id": "player_2",
       "final_state": {
         "role": "debater",
-        "side_id": "anti-nuclear",
-        "position": "Nuclear energy is not the best solution for climate change",
-        "score": 2,
-        "current_argument": "Ladies and gentlemen, my opponent continues to advocate for nuclear energy as the *best* solution, but their arguments consistently fall short of demonstrating its superiority over a diversified renewable energy portfolio.\n\nFirstly, while they highlight nuclear's reliability, they downplay the rapid advancements in renewable energy storage. The cost of batteries is plummeting, and innovative solutions like pumped hydro and compressed air energy storage are gaining traction. Claiming nuclear is the *only* reliable solution ignores the dynamic nature of the energy sector. Furthermore, a diverse portfolio with distributed generation is inherently more resilient to disruptions, whether from natural disasters or unforeseen technological failures.\n\nSecondly, comparing land use is misleading. While nuclear plants have a smaller footprint than sprawling solar farms, the argument conveniently ignores the vast land areas impacted by uranium mining and the long-term storage of radioactive waste. These are environmental burdens that renewable energy sources largely avoid. To suggest the fuel cycle is a minor impact is disingenuous.\n\nFinally, the \"France model\" is not universally applicable. The upfront investment required for nuclear infrastructure is enormous, and diverting these funds away from readily deployable renewable energy projects delays meaningful climate action. The best solution is not the one that requires decades of development and massive government subsidies, but the one that can be implemented quickly, affordably, and sustainably. We maintain that a diversified renewable strategy is the most effective, scalable, and ultimately, the *best* approach to combating climate change. Thank you.",
-        "first_debate_votes": 2
+        "score": 4,
+        "pre_swap": {
+          "side_id": "pro-nuclear",
+          "position": "Nuclear energy is the best solution for climate change",
+          "score": 2
+        },
+        "post_swap": {
+          "side_id": "anti-nuclear",
+          "position": "Nuclear energy is not the best solution for climate change",
+          "score": 2
+        }
       },
       "role": "debater"
     },
@@ -68,11 +74,17 @@
       "id": "player_7",
       "final_state": {
         "role": "debater",
-        "side_id": "pro-nuclear",
-        "position": "Nuclear energy is the best solution for climate change",
-        "score": 3,
-        "current_argument": "Ladies and gentlemen, as we conclude this important debate, the overarching goal remains clear: To effectively combat climate change, we must rapidly and drastically reduce greenhouse gas emissions with reliable, scalable, and proven technologies. Nuclear energy uniquely meets this challenge.\n\nMy opponent rightly highlights advancements in renewable energy storage technologies; however, despite their promise, these solutions remain largely untested at the global scale required for rapid decarbonization. The urgency of climate action demands that we utilize the most proven, immediately deployable strategies at our disposal. Nuclear power has a demonstrated record in swiftly decarbonizing major economies and can reliably sustain continuous, carbon-free electricity generation irrespective of external conditions or weather.\n\nRegarding land use, all energy sources have footprints; yet nuclear's total lifecycle impact, when accounting for massive ongoing improvements in reactor efficiency and waste management techniques like advanced reprocessing, remains significantly smaller and more controllable than large-scale renewable deployments, which require extensive ecosystem disruption.\n\nWhile building nuclear infrastructure demands initial investments, history proves that rapid decarbonization with nuclear energy is achievable when priorities are aligned\u2014as in France and Sweden. Ignoring such potential in favor of unproven large-scale renewable deployment risks losing precious decades we simply cannot afford.\n\nIn conclusion, nuclear energy, with its unmatched reliability, proven scalability, manageable environmental footprint, and demonstrated success in rapid decarbonization, remains our best available weapon against climate change. For the futures of the coming generations, nuclear energy is not merely an option\u2014it is our best pathway toward a sustainable planet. Thank you.",
-        "second_debate_votes": 3
+        "score": 6,
+        "pre_swap": {
+          "side_id": "anti-nuclear",
+          "position": "Nuclear energy is not the best solution for climate change",
+          "score": 3
+        },
+        "post_swap": {
+          "side_id": "pro-nuclear",
+          "position": "Nuclear energy is the best solution for climate change",
+          "score": 3
+        }
       },
       "role": "debater"
     }

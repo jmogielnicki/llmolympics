@@ -6,11 +6,17 @@
       "id": "player_1",
       "final_state": {
         "role": "debater",
-        "side_id": "anti-nuclear",
-        "position": "Nuclear energy is not the best solution for climate change",
-        "score": 5,
-        "current_argument": "Honorable judges, my opponent clings to nuclear energy as a climate savior by misrepresenting both its capabilities and alternatives. Let\u2019s address their claims with facts.  \n\n**Baseload reliability is a red herring.** Modern grids don\u2019t need inflexible nuclear plants\u2014they need adaptable systems. Texas\u2019s winter storms in 2021 proved nuclear plants are not immune to climate-driven failures, with one reactor shutting down due to freezing equipment. Meanwhile, South Australia\u2019s 70% renewable grid, bolstered by battery storage, has outperformed fossil-dependent regions in reliability. The International Energy Agency confirms renewables with storage can meet 95% of grid needs cost-effectively by 2050. Nuclear\u2019s \u201c24/7\u201d claim ignores its frequent unscheduled outages and vulnerability to heatwaves that force shutdowns\u2014a growing risk as temperatures rise.  \n\n**Land use arguments misdirect.** Comparing uranium mining to fossil fuels is irrelevant\u2014renewables are the alternative. Solar farms can coexist with agriculture (agrivoltaics), and offshore wind uses no arable land. Nuclear\u2019s \u201csmall footprint\u201d omits uranium mines\u2019 contamination of Indigenous lands, as seen at Kakadu in Australia, and the 20,000-year threat of waste repositories. CO2 is catastrophic, but replacing fossil fuels with nuclear substitutes one risk for another; renewables eliminate both.  \n\n**Advanced nuclear is a dangerous gamble.** The U.S. NuScale SMR project collapsed in 2023 after costs ballooned to $9.3 billion for a mere 462 MW. Waiting decades for unproven tech while emissions soar is indefensible. The IPCC stresses that *existing* renewables can achieve net-zero by 2050\u2014if we prioritize them. Nuclear\u2019s delays and costs directly undermine this.  \n\nThe climate crisis demands solutions that are fast, equitable, and safe. Nuclear fails on all counts. Let\u2019s choose progress, not plutonium.",
-        "first_debate_votes": 5
+        "score": 10,
+        "pre_swap": {
+          "side_id": "pro-nuclear",
+          "position": "Nuclear energy is the best solution for climate change",
+          "score": 5
+        },
+        "post_swap": {
+          "side_id": "anti-nuclear",
+          "position": "Nuclear energy is not the best solution for climate change",
+          "score": 5
+        }
       },
       "role": "debater"
     },
@@ -28,11 +34,17 @@
       "id": "player_3",
       "final_state": {
         "role": "debater",
-        "side_id": "pro-nuclear",
-        "position": "Nuclear energy is the best solution for climate change",
         "score": 0,
-        "current_argument": "Honorable judges, my opponent continues to downplay the critical need for consistent, large-scale power in a decarbonized world. While grid modernization is essential, claiming baseload is a \u201cred herring\u201d ignores the fundamental physics of energy demand.  Fluctuations in renewable generation, even with improved storage, still require backup, and relying solely on variable sources introduces vulnerability at scale, especially as we electrify transportation and industry. The Texas freeze was an *exception*, not the rule, and nuclear plants are built to withstand extreme conditions.  All energy sources have outages; nuclear\u2019s are less frequent than fossil fuels per unit energy produced.\n\nThe land use argument similarly misrepresents the scale needed for renewables to replace fossil fuels and meet growing energy demands.  Vast solar and wind farms, while seemingly \u201ccoexisting,\u201d still require enormous land areas and material resources, dwarfing the footprint of nuclear plants which provide significantly more power per acre.  Uranium mining\u2019s impact is localized and manageable with strict environmental controls, unlike the global atmospheric impact of CO2. Nuclear waste is a manageable, contained problem with long-term solutions like geological repositories \u2013 a stark contrast to the continuous release of greenhouse gases.\n\nFinally, dismissing advanced nuclear due to one project\u2019s cost overruns is myopic.  Innovation inevitably involves challenges.  Investing in advanced nuclear is crucial for long-term efficiency and safety improvements.  The urgency of climate change demands we utilize *all* effective tools, and nuclear energy, both current and future generations, offers the most powerful, reliable, and scalable solution available today.  Let\u2019s not sacrifice speed and scale on the altar of theoretical renewable dominance; the stakes are too high.  Nuclear is not just *a* solution, it is the *best* solution for securing a livable climate.",
-        "second_debate_votes": 0
+        "pre_swap": {
+          "side_id": "anti-nuclear",
+          "position": "Nuclear energy is not the best solution for climate change",
+          "score": 0
+        },
+        "post_swap": {
+          "side_id": "pro-nuclear",
+          "position": "Nuclear energy is the best solution for climate change",
+          "score": 0
+        }
       },
       "role": "debater"
     },

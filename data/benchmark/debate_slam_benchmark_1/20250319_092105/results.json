@@ -46,11 +46,17 @@
       "id": "player_5",
       "final_state": {
         "role": "debater",
-        "side_id": "anti-ubi",
-        "position": "Universal basic income is not viable",
-        "score": 5,
-        "current_argument": "Ladies and gentlemen, let's conclude by addressing three critical realities about UBI.\n\nFirst, the financial math remains insurmountable. My opponent cites the Roosevelt Institute study claiming deficit-funded UBI would grow the economy by 12%. This analysis relies on questionable assumptions about multiplier effects while ignoring the long-term consequences of massively increased national debt. Economists across the spectrum agree that such deficit spending would eventually trigger destructive inflation, currency devaluation, or crippling interest payments.\n\nSecond, the pilot programs remain insufficient evidence. The Finland experiment showed subjective well-being improvements but no meaningful employment gains. The Stockton study's employment findings are promising but come from a tiny sample with limited duration. Neither addresses the macroeconomic disruptions of full implementation. Scaling these programs nationwide would fundamentally alter economic incentives, labor markets, and fiscal policy in ways these limited experiments cannot predict.\n\nThird, my opponent characterizes wealth redistribution as a feature rather than a bug. However, UBI's universal nature means redistributing significant resources to those who don't need assistance, creating enormous inefficiency. This is fundamentally different from targeted progressive taxation that funds specific needs.\n\nThe appeal of UBI is understandable \u2013 poverty and inequality demand solutions. But economic viability requires policies that are fiscally sustainable, maintain productive incentives, and efficiently direct resources where needed most. UBI fails on all three counts. We need targeted approaches that preserve economic dynamism while protecting vulnerable citizens \u2013 not an unsustainable program that risks our economic foundations.",
-        "first_debate_votes": 5
+        "score": 9,
+        "pre_swap": {
+          "side_id": "pro-ubi",
+          "position": "Universal basic income is viable",
+          "score": 5
+        },
+        "post_swap": {
+          "side_id": "anti-ubi",
+          "position": "Universal basic income is not viable",
+          "score": 4
+        }
       },
       "role": "debater"
     },
@@ -68,11 +74,17 @@
       "id": "player_7",
       "final_state": {
         "role": "debater",
-        "side_id": "pro-ubi",
-        "position": "Universal basic income is viable",
         "score": 1,
-        "current_argument": "Ladies and Gentlemen,\n\nLet's address the final arguments and reinforce the compelling case for Universal Basic Income (UBI).\n\nFirst, the financial math is not insurmountable but manageable. My opponent dismisses the Roosevelt Institute study, yet many economists recognize that strategic deficit spending can stimulate growth. Moreover, funding UBI through progressive tax reform, closing loopholes, or reducing inefficient subsidies makes it fiscally viable. Alaska's Permanent Fund Dividend, a form of UBI, has successfully operated for decades without bankrupting the state.\n\nSecond, pilot programs provide valuable insights and dispel myths. While not perfect, they offer real-world evidence that UBI reduces poverty and improves well-being. The lack of employment gains in Finland was due to the experiment's design, not UBI itself. Long-term, large-scale studies are indeed needed, but existing data points to UBI's potential.\n\nThird, UBI's universality is not a flaw but a strength. It eliminates stigma, reduces bureaucracy, and ensures no one falls through the cracks. Targeted programs, while helpful, often miss those in need and create administrative bloat. UBI, combined with targeted supplements for specific groups, can create a more efficient and effective safety net.\n\nIn conclusion, UBI is a viable, bold solution to address poverty, inequality, and economic insecurity. It's time to embrace progress and innovate our social welfare system. UBI is not a panacea, but a foundation upon which we can build a more equitable and prosperous society. Let's seize this opportunity and invest in our collective future.",
-        "second_debate_votes": 1
+        "pre_swap": {
+          "side_id": "anti-ubi",
+          "position": "Universal basic income is not viable",
+          "score": 0
+        },
+        "post_swap": {
+          "side_id": "pro-ubi",
+          "position": "Universal basic income is viable",
+          "score": 1
+        }
       },
       "role": "debater"
     }

@@ -6,11 +6,17 @@
       "id": "player_1",
       "final_state": {
         "role": "debater",
-        "side_id": "anti-crypto",
-        "position": "Cryptocurrency is not a legitimate alternative to traditional banking",
         "score": 3,
-        "current_argument": "Ladies and gentlemen, while my opponent suggests that the evolving nature of cryptocurrency can overcome its current barriers, we must critically assess whether this potential equates to present viability as a legitimate alternative to traditional banking. Trust in financial transactions isn't merely theoretical\u2014it's built on a foundation of tangible assurances. Traditional banks offer these through insurance, regulatory frameworks, and accessible recourse in cases of fraud\u2014benefits that are not yet matched by the burgeoning crypto market, despite regulatory advancements.\n\nMoreover, while the digital divide is indeed a global challenge, relying on future technological advancements and education to make cryptocurrency accessible evokes promises over practice. A significant portion of the global population continues to lack internet access and digital literacy, making the leapfrogging potential of cryptocurrency more aspirational than functional at this point.\n\nWhile advancements in blockchain technology aim to address energy consumption and transaction fees, widespread adoption of these solutions is not yet a reality. Traditional banks, on the other hand, provide stability, reliability, and comprehensive services today, not tomorrow.\n\nIn closing, while cryptocurrency may eventually complement traditional banking, it does not currently offer the practical, secure, and inclusive services that consumers need. Cryptocurrency, for now, is an intriguing experiment rather than a substitute for the established banking systems that reliably serve billions worldwide. Let us not mistake potential for current legitimacy.",
-        "first_debate_votes": 3
+        "pre_swap": {
+          "side_id": "pro-crypto",
+          "position": "Cryptocurrency is a legitimate alternative to traditional banking",
+          "score": 3
+        },
+        "post_swap": {
+          "side_id": "anti-crypto",
+          "position": "Cryptocurrency is not a legitimate alternative to traditional banking",
+          "score": 0
+        }
       },
       "role": "debater"
     },
@@ -58,11 +64,17 @@
       "id": "player_6",
       "final_state": {
         "role": "debater",
-        "side_id": "pro-crypto",
-        "position": "Cryptocurrency is a legitimate alternative to traditional banking",
-        "score": 5,
-        "current_argument": "Honorable judges, our opponent's closing argument hinges on the idea that \"potential\" does not equal \"current legitimacy.\"  We agree that cryptocurrency is still evolving, but we firmly believe that its *current* capabilities and trajectory demonstrably prove its legitimacy as an alternative to traditional banking.  While traditional banking boasts established systems, these systems are also demonstrably flawed, riddled with exclusionary practices, and resistant to innovation.\n\nOur opponent emphasizes the \"tangible assurances\" of traditional banks. But what tangible assurance do billions of unbanked individuals have? What assurance do users have against inflation eroding their savings due to centralized monetary policy? Cryptocurrency offers a different kind of assurance: verifiable code, transparent transactions, and user empowerment.\n\nYes, challenges remain in accessibility and regulation. But these are being actively addressed with user-friendly solutions and evolving regulatory frameworks.  To dismiss cryptocurrency as merely an \"experiment\" is to ignore the millions already using it for transactions, savings, and remittances, often in areas underserved by traditional banks.  We are not arguing for immediate, wholesale replacement, but for recognition of cryptocurrency as a *legitimate and increasingly robust alternative* that is rapidly realizing its potential to create a more inclusive and efficient financial future. The evolution is ongoing, but the legitimacy is already here.",
-        "second_debate_votes": 5
+        "score": 7,
+        "pre_swap": {
+          "side_id": "anti-crypto",
+          "position": "Cryptocurrency is not a legitimate alternative to traditional banking",
+          "score": 2
+        },
+        "post_swap": {
+          "side_id": "pro-crypto",
+          "position": "Cryptocurrency is a legitimate alternative to traditional banking",
+          "score": 5
+        }
       },
       "role": "debater"
     },
