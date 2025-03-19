@@ -354,6 +354,7 @@ class GameState:
             'players': [
                 {
                     'id': p['id'],
+                    'model_id': p.get('model_id', ''),  # Add model_id here
                     'final_state': p['state'],
                     'role': p.get('role')
                 }
