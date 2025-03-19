@@ -1,0 +1,119 @@
+{
+  "round_progression": [
+    {
+      "round": 1,
+      "total_votes": 10,
+      "side_votes": {
+        "pro-genetic-mod": 7,
+        "anti-genetic-mod": 3
+      },
+      "pro-genetic-mod_percentage": 0.7,
+      "anti-genetic-mod_percentage": 0.3
+    },
+    {
+      "round": 2,
+      "total_votes": 10,
+      "side_votes": {
+        "pro-genetic-mod": 6,
+        "anti-genetic-mod": 4
+      },
+      "pro-genetic-mod_percentage": 0.6,
+      "anti-genetic-mod_percentage": 0.4
+    }
+  ],
+  "topic_analysis": [
+    {
+      "topic": "Is nuclear energy the best solution for climate change?",
+      "rounds": {
+        "1": {
+          "total_votes": 0,
+          "side_votes": {
+            "pro-nuclear": 0,
+            "anti-nuclear": 0
+          },
+          "pro-nuclear_percentage": 0,
+          "anti-nuclear_percentage": 0
+        },
+        "2": {
+          "total_votes": 0,
+          "side_votes": {
+            "pro-nuclear": 0,
+            "anti-nuclear": 0
+          },
+          "pro-nuclear_percentage": 0,
+          "anti-nuclear_percentage": 0
+        }
+      }
+    },
+    {
+      "topic": "Should genetic modification of human embryos be permitted?",
+      "rounds": {
+        "1": {
+          "total_votes": 10,
+          "side_votes": {
+            "pro-genetic-mod": 7,
+            "anti-genetic-mod": 3
+          },
+          "pro-genetic-mod_percentage": 0.7,
+          "anti-genetic-mod_percentage": 0.3
+        },
+        "2": {
+          "total_votes": 10,
+          "side_votes": {
+            "pro-genetic-mod": 6,
+            "anti-genetic-mod": 4
+          },
+          "pro-genetic-mod_percentage": 0.6,
+          "anti-genetic-mod_percentage": 0.4
+        }
+      }
+    },
+    {
+      "topic": "Is universal basic income a viable economic policy?",
+      "rounds": {
+        "1": {
+          "total_votes": 0,
+          "side_votes": {
+            "pro-ubi": 0,
+            "anti-ubi": 0
+          },
+          "pro-ubi_percentage": 0,
+          "anti-ubi_percentage": 0
+        },
+        "2": {
+          "total_votes": 0,
+          "side_votes": {
+            "pro-ubi": 0,
+            "anti-ubi": 0
+          },
+          "pro-ubi_percentage": 0,
+          "anti-ubi_percentage": 0
+        }
+      }
+    },
+    {
+      "topic": "Is cryptocurrency a legitimate alternative to traditional banking?",
+      "rounds": {
+        "1": {
+          "total_votes": 0,
+          "side_votes": {
+            "pro-crypto": 0,
+            "anti-crypto": 0
+          },
+          "pro-crypto_percentage": 0,
+          "anti-crypto_percentage": 0
+        },
+        "2": {
+          "total_votes": 0,
+          "side_votes": {
+            "pro-crypto": 0,
+            "anti-crypto": 0
+          },
+          "pro-crypto_percentage": 0,
+          "anti-crypto_percentage": 0
+        }
+      }
+    }
+  ],
+  "max_rounds": 2
+}

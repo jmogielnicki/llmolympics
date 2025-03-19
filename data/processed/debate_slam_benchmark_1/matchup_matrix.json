@@ -1,0 +1,18 @@
+{
+  "models": [],
+  "model_names": [],
+  "positions": [
+    "Cryptocurrency is a legitimate alternative to traditional banking",
+    "Cryptocurrency is not a legitimate alternative to traditional banking",
+    "Genetic modification of human embryos should be permitted",
+    "Genetic modification of human embryos should not be permitted",
+    "Nuclear energy is not the best solution for climate change",
+    "Nuclear energy is the best solution for climate change",
+    "Universal basic income is not viable",
+    "Universal basic income is viable"
+  ],
+  "vote_matrix": [],
+  "vote_rate_matrix": [],
+  "judge_models": [],
+  "judge_model_names": []
+}
