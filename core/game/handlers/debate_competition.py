@@ -10,24 +10,10 @@ logger = logging.getLogger("DebateCompetition")
 # List of debate topics with neutral side identifiers
 DEBATE_TOPICS = [
     {
-        "topic": "Should tariffs be used to protect domestic industries?",
-        "sides": [
-            {"side_id": "pro-tariffs", "position": "Tariffs should be used to protect domestic industries"},
-            {"side_id": "anti-tariffs", "position": "Tariffs should not be used to protect domestic industries"}
-        ]
-    },
-    {
         "topic": "Is universal basic income a viable economic policy?",
         "sides": [
             {"side_id": "pro-ubi", "position": "Universal basic income is viable"},
             {"side_id": "anti-ubi", "position": "Universal basic income is not viable"}
-        ]
-    },
-    {
-        "topic": "Should social media platforms be regulated like public utilities?",
-        "sides": [
-            {"side_id": "pro-regulation", "position": "Social media should be regulated like utilities"},
-            {"side_id": "anti-regulation", "position": "Social media should not be regulated like utilities"}
         ]
     },
     {
