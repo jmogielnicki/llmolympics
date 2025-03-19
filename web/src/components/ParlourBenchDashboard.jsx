@@ -11,12 +11,14 @@ import {
 import { ChevronDown, Info, Github, Menu, X, Users } from "lucide-react";
 import { useState } from "react";
 import PrisonersDilemmaDashboard from "./PrisonersDilemmaDashboard/components/PrisonersDilemmaDashboard";
-import PoetrySlamDashboard from "./PoetrySlamDashboard/components/PoetrySlamDashboard"; // Add import
+import PoetrySlamDashboard from "./PoetrySlamDashboard/components/PoetrySlamDashboard";
+import DebateSlamDashboard from "./DebateSlamDashboard/components/DebateSlamDashboard";
 import AboutParlourBench from "./AboutParlourBench";
 
 // Import metadata for games
 import prisonersDilemmaMetadata from "@data/processed/prisoners_dilemma_benchmark_1/metadata.json";
 import poetrySlamMetadata from "@data/processed/poetry_slam_benchmark_1/metadata.json";
+import debateSlamMetadata from "@data/processed/debate_slam_benchmark_1/metadata.json";
 
 
 /**
@@ -55,6 +57,17 @@ const ParlourBenchDashboard = () => {
       `,
 			icon: "📝", // Pencil emoji
 			stats: poetrySlamMetadata,
+		},
+		{
+			id: "debate_slam",
+			name: "Debate Slam",
+			path: "/games/debate-slam",
+			description: "A debate competition testing persuasion skills",
+			long_description: `
+		Two debaters argue opposite sides of an issue over three rounds. Five judges vote for the more persuasive side. Then, the debaters switch positions and debate again.
+	`,
+			icon: "🎤", // Microphone emoji
+			stats: debateSlamMetadata,
 		},
 		{
 			id: "ghost",
@@ -209,6 +222,10 @@ const ParlourBenchDashboard = () => {
 						<Route
 							path="/games/poetry-slam/*"
 							element={<PoetrySlamDashboard />}
+						/>
+						<Route
+							path="/games/debate-slam/*"
+							element={<DebateSlamDashboard />}
 						/>
 						<Route
 							path="/games/:gameId"

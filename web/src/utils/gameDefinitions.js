@@ -189,6 +189,79 @@ const poetrySlamDefinition = {
 	},
 };
 
+export const debateSlamDefinition = {
+	config: {
+		name: "Debate Slam",
+		description: "An argumentative competition testing reasoning skills",
+		dataTypes: ["matchup_matrix", "round_progression", "model_profiles"],
+		leaderboardColumns: [
+			{
+				key: "rank",
+				label: "Rank",
+				align: "left",
+			},
+			{
+				key: "model_name",
+				label: "Model",
+				align: "left",
+			},
+			{
+				key: "avg_score",
+				label: "Avg Score",
+				align: "right",
+				formatter: (value) => value.toFixed(2),
+			},
+			{
+				key: "wins",
+				label: "Wins",
+				align: "right",
+			},
+			{
+				key: "losses",
+				label: "Losses",
+				align: "right",
+			},
+			{
+				key: "ties",
+				label: "Ties",
+				align: "right",
+			},
+			{
+				key: "games",
+				label: "Games",
+				align: "right",
+			},
+			{
+				key: "winrate",
+				label: "Win Rate",
+				align: "right",
+				formatter: (value) => `${(value * 100).toFixed(1)}%`,
+			},
+		],
+	},
+
+	transformData: ({ leaderboard, metadata, gameSpecific }) => {
+		return {
+			leaderboard: leaderboard.leaderboard || [],
+			metadata: metadata,
+			gameSessions: [], // We would populate this with session data when available
+			gameSpecific: {
+				matchupMatrix: gameSpecific.matchup_matrix || {},
+				roundProgression: gameSpecific.round_progression || {},
+				positions:
+					(gameSpecific.matchup_matrix &&
+						gameSpecific.matchup_matrix.positions) ||
+					[],
+			},
+		};
+	},
+
+	transformGameDetail: (gameDetail) => {
+		// Basic transformation - would expand as needed
+		return gameDetail;
+	},
+};
+
 // Helper functions for Prisoner's Dilemma
 function extractPrisonersDilemmaGames(modelProfiles) {
 	try {
@@ -396,6 +469,7 @@ function extractPrompt(gameDetail) {
 const gameDefinitions = {
 	prisoners_dilemma: prisonersDilemmaDefinition,
 	poetry_slam: poetrySlamDefinition,
+	debate_slam: debateSlamDefinition,
 };
 
 /**
