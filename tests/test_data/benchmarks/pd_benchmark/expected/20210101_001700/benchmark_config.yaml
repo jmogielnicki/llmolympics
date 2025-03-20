@@ -1,0 +1,9 @@
+benchmark:
+  base_config: tests/test_data/benchmarks/pd_benchmark/game_config.yaml
+  games_per_pair: 1
+  id: prisoners_dilemma_benchmark_test
+  output_dir: data/test_output
+  type: pairwise
+models:
+- openai:gpt-4o
+- anthropic:claude-3-7-sonnet

@@ -65,8 +65,8 @@ scoring:
 
 llm_integration:
   player_models:
-    player_1: "openai:gpt-4o"
-    player_2: "deepseek:deepseek-chat"
+    player_1: "will-be-replaced-by-benchmark1"
+    player_2: "will-be-replaced-by-benchmark2"
   system_prompts:
     decision: |
       Your role is a player in a Prisoner's Dilemma game.

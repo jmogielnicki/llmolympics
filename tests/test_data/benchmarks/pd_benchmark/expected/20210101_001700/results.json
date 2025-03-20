@@ -1,0 +1,35 @@
+{
+  "game": "Prisoner's Dilemma",
+  "timestamp": "2021-01-01T04:04:00",
+  "players": [
+    {
+      "id": "player_1",
+      "model_id": "openai:gpt-4o",
+      "final_state": {
+        "score": 8
+      },
+      "role": null
+    },
+    {
+      "id": "player_2",
+      "model_id": "anthropic:claude-3-7-sonnet",
+      "final_state": {
+        "score": 13
+      },
+      "role": null
+    }
+  ],
+  "winner": {
+    "id": "player_2"
+  },
+  "rounds_played": 5,
+  "history_summary": {
+    "decision_history": 5
+  },
+  "session_id": "prisoner's_dilemma_20210101_001700",
+  "stats": {
+    "snapshot_count": 11,
+    "event_count": 47,
+    "chat_message_count": 10
+  }
+}
