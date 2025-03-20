@@ -55,6 +55,7 @@ RESPONSE_EXAMPLES_TEMPLATES = {
   - "Let me try [[DEFECT]] and see how they respond."
   - "Back to [[COOPERATE]] to rebuild trust."
   - "Final round, I'll [[DEFECT]] for maximum points." """,
+}
 
 def parse_args():
     """Parse command line arguments."""

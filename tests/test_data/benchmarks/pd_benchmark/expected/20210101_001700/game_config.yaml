@@ -11,38 +11,7 @@ llm_integration:
   prompts:
     decision: pd_decision
   system_prompts:
-    decision: 'Your role is a player in a Prisoner''s Dilemma game.
-
-      You must decide whether to cooperate with or defect against your opponent.
-
-      The payoffs are:
-
-      - If both players cooperate: 3 points each
-
-      - If both players defect: 1 point each
-
-      - If you defect and they cooperate: You get 5 points, they get 0
-
-      - If you cooperate and they defect: You get 0 points, they get 5"
-
-
-      Think strategically about cooperation and self-interest.
-
-      Your goal is to win the game by having a higher score than your opponent after
-      the final round.
-
-      Please respond as the player directly, not as an advisor.
-
-      Feel free to think out loud about the problem a bit before making a decision,
-      but keep it relatively short.
-
-      Once you have a decision, put that decision inside double brackets, like this:
-      [[COOPERATE]] or [[DEFECT]].
-
-      If your response does not contain a decision formatted with double brackets,
-      you will be disqualified and lose the game.
-
-      '
+    decision: test
 phases:
 - actions:
   - name: choose
