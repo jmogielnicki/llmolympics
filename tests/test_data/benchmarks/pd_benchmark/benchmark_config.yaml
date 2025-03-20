@@ -1,0 +1,12 @@
+# Benchmark configuration for ParlourBench (modified for testing)
+benchmark:
+  id: "prisoners_dilemma_benchmark_test"
+  base_config: "tests/test_data/benchmarks/pd_benchmark/game_config.yaml"
+  games_per_pair: 2
+  output_dir: "data/test_output"
+  type: "pairwise"
+
+# Models to benchmark - using just 2 for tests
+models:
+  - "openai:gpt-4o"
+  - "anthropic:claude-3-7-sonnet"

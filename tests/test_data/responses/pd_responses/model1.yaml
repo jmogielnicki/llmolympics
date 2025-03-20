@@ -1,0 +1,26 @@
+model: "openai:gpt-4o"
+responses:
+  # Decision phase examples with specific round patterns
+  - phase: "decision"
+    round: 1
+    content: "In the first round, I'll establish trust and goodwill. [[COOPERATE]]"
+
+  - phase: "decision"
+    round: 2
+    content: "Our mutual cooperation in the first round was beneficial. I'll continue to [[COOPERATE]]."
+
+  - phase: "decision"
+    round: 3
+    content: "We've established a good pattern of cooperation. I'll maintain it. [[COOPERATE]]"
+
+  - phase: "decision"
+    round: 4
+    content: "As we near the end, the temptation to defect grows. But I'll stay loyal. [[COOPERATE]]"
+
+  - phase: "decision"
+    round: 5
+    content: "In the final round, the rational move is to defect since there are no future consequences. [[DEFECT]]"
+
+  # Default fallback
+  - default: true
+    content: "I'll choose to [[COOPERATE]]."

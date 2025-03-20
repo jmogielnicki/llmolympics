@@ -1,0 +1,16 @@
+name: "Prisoner's Dilemma Benchmark Test"
+description: "Integration test for Prisoner's Dilemma benchmark"
+
+# Configuration paths - using the correct paths for our test directory structure
+benchmark_config: "tests/test_data/benchmarks/pd_benchmark/benchmark_config.yaml"
+game_config: "tests/test_data/benchmarks/pd_benchmark/game_config.yaml"
+
+# Mock LLM responses
+mock_responses:
+  - "tests/test_data/responses/pd_responses/model1.yaml"
+  - "tests/test_data/responses/pd_responses/model2.yaml"
+
+# Validation configuration
+validation:
+  type: "snapshot"
+  snapshot_dir: "tests/test_data/benchmarks/pd_benchmark/expected"

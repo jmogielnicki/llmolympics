@@ -1,0 +1,26 @@
+model: "anthropic:claude-3-7-sonnet"
+responses:
+  # Decision phase examples with specific round patterns
+  - phase: "decision"
+    round: 1
+    content: "For the first round, I'll establish cooperation to build trust. [[COOPERATE]]"
+
+  - phase: "decision"
+    round: 2
+    content: "Since we both cooperated in round 1, I'll continue the pattern. [[COOPERATE]]"
+
+  - phase: "decision"
+    round: 3
+    content: "I've established trust for two rounds, but now I'll try to gain an advantage. [[DEFECT]]"
+
+  - phase: "decision"
+    round: 4
+    content: "After my defection, I should expect retaliation. The strategic choice is [[DEFECT]]."
+
+  - phase: "decision"
+    round: 5
+    content: "In the final round, there's no incentive to cooperate. [[DEFECT]]"
+
+  # Default fallback
+  - default: true
+    content: "I'll choose to [[DEFECT]]."
