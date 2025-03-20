@@ -1,0 +1,117 @@
+{
+  "game": "Debate Slam",
+  "timestamp": "2025-03-20T21:17:30.771155",
+  "players": [
+    {
+      "id": "player_6",
+      "model_id": "",
+      "final_state": {
+        "role": "debater",
+        "side_id": "pro-crypto",
+        "position": "Cryptocurrency is a legitimate alternative to traditional banking",
+        "score": 8,
+        "pre_swap": {
+          "side_id": "anti-crypto",
+          "position": "Cryptocurrency is not a legitimate alternative to traditional banking",
+          "score": 4
+        },
+        "post_swap": {
+          "side_id": "pro-crypto",
+          "position": "Cryptocurrency is a legitimate alternative to traditional banking",
+          "score": 4
+        }
+      },
+      "role": "debater"
+    },
+    {
+      "id": "player_2",
+      "model_id": "",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_3",
+      "model_id": "",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_4",
+      "model_id": "",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_5",
+      "model_id": "",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_1",
+      "model_id": "",
+      "final_state": {
+        "role": "debater",
+        "side_id": "anti-crypto",
+        "position": "Cryptocurrency is not a legitimate alternative to traditional banking",
+        "score": 2,
+        "pre_swap": {
+          "side_id": "pro-crypto",
+          "position": "Cryptocurrency is a legitimate alternative to traditional banking",
+          "score": 1
+        },
+        "post_swap": {
+          "side_id": "anti-crypto",
+          "position": "Cryptocurrency is not a legitimate alternative to traditional banking",
+          "score": 1
+        }
+      },
+      "role": "debater"
+    },
+    {
+      "id": "player_7",
+      "model_id": "",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    }
+  ],
+  "winner": {
+    "id": "player_6"
+  },
+  "rounds_played": 3,
+  "history_summary": {
+    "argument_history": 3,
+    "judging_history": 3
+  },
+  "session_id": "debate_slam_20250320_211310",
+  "stats": {
+    "snapshot_count": 17,
+    "event_count": 126,
+    "chat_message_count": 42
+  }
+}
