@@ -43,89 +43,18 @@ validation:
 
 MOCK_RESPONSE_TEMPLATE = """model: "{model}"
 responses:
-  # Examples for different phases (customize based on your game)
+  # Example responses for the {model} model
   {response_examples}
 
-  # Default fallback
-  - default: true
-    content: "I choose the first option available."
+  # Add more responses as needed
 """
 
 RESPONSE_EXAMPLES_TEMPLATES = {
-    "prisoners_dilemma": """# Decision phase examples
-  - phase: "decision"
-    round: 1
-    content: "I'll [[COOPERATE]] to establish trust."
-
-  - phase: "decision"
-    round: 2
-    content: "I'll continue to [[COOPERATE]] since they cooperated."
-
-  - phase: "decision"
-    round: 3
-    content: "Let me try [[DEFECT]] and see how they respond."
-
-  - phase: "decision"
-    round: 4
-    content: "Back to [[COOPERATE]] to rebuild trust."
-
-  - phase: "decision"
-    round: 5
-    content: "Final round, I'll [[DEFECT]] for maximum points." """,
-
-    "diplomacy": """# Discussion phase examples
-  - phase: "discussion"
-    role: "player"
-    content: "I suggest we form an alliance against player_3, they seem to be ahead."
-
-  # Voting phase examples
-  - phase: "voting"
-    role: "player"
-    content: "After careful consideration, I'll vote to eliminate [[player_3]]." """,
-
-    "ghost": """# Add letter phase examples
-  - phase: "add_letter"
-    content: "I'll add the letter 'a' to continue building towards 'appliance'."
-
-  - phase: "add_letter"
-    content: "I'll add the letter 's' to build towards 'strategy'." """,
-
-    "werewolf": """# Discussion phase examples
-  - phase: "discussion"
-    role: "villager"
-    content: "I'm suspicious of player_3, their actions don't add up."
-
-  - phase: "discussion"
-    role: "werewolf"
-    content: "As a villager, I'm concerned about player_2's inconsistent stories."
-
-  # Voting phase examples
-  - phase: "voting"
-    content: "I vote to eliminate [[player_3]] for the reasons I explained." """,
-
-    "debate": """# Opening argument examples
-  - phase: "debate_argument"
-    role: "debater"
-    content: "My position is clearly superior because of three key factors: First..."
-
-  # Rebuttal examples
-  - phase: "debate_rebuttal"
-    role: "debater"
-    content: "My opponent's arguments fail to consider the economic impact..."
-
-  # Judging examples
-  - phase: "debate_judging"
-    role: "judge"
-    content: "I vote for the first debater who presented more compelling evidence." """,
-
-    "default": """# Action phase examples
-  - phase: "action"
-    content: "I choose option A because it maximizes my chance of success."
-
-  # Response phase examples
-  - phase: "response"
-    content: "I believe this is the correct answer: Paris." """
-}
+    "prisoners_dilemma": """- "I'll [[COOPERATE]] to establish trust."
+  - "I'll continue to [[COOPERATE]] since they cooperated."
+  - "Let me try [[DEFECT]] and see how they respond."
+  - "Back to [[COOPERATE]] to rebuild trust."
+  - "Final round, I'll [[DEFECT]] for maximum points." """,
 
 def parse_args():
     """Parse command line arguments."""

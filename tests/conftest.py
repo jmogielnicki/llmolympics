@@ -12,7 +12,6 @@ project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, project_root)
 
 # Import our mock utilities
-from tests.mock.llm_client import MockLLMClient
 from tests.mock.random_patch import DeterministicRandom
 from tests.mock.time_patch import DeterministicTime
 
@@ -26,20 +25,20 @@ logger = logging.getLogger("ParlourBenchTest")
 def pytest_addoption(parser):
     """Add custom command line options for the test system"""
     parser.addoption(
-        "--update-snapshots", 
-        action="store_true", 
+        "--update-snapshots",
+        action="store_true",
         default=False,
         help="Update expected output snapshots instead of comparing"
     )
     parser.addoption(
-        "--benchmark", 
-        action="store", 
+        "--benchmark",
+        action="store",
         default=None,
         help="Run tests for a specific benchmark configuration"
     )
     parser.addoption(
-        "--game", 
-        action="store", 
+        "--game",
+        action="store",
         default=None,
         help="Run tests for a specific game configuration"
     )
@@ -63,35 +62,35 @@ def game_filter(request):
 def deterministic_environment():
     """
     Set up a fully deterministic environment for testing.
-    
+
     This patches random functions, time functions, and UUID generation
     to ensure tests are completely reproducible.
     """
     # Create patchers
     det_random = DeterministicRandom()
     det_time = DeterministicTime()
-    
+
     # Define deterministic UUID function
     def fixed_uuid4():
         return uuid.UUID('00000000-0000-0000-0000-000000000000')
-    
+
     # Apply patches
     random_patches = det_random.apply_patches()
     time_patches = det_time.apply_patches()
     uuid_patch = patch('uuid.uuid4', fixed_uuid4)
     uuid_patch.start()
-    
+
     # Store original directory for restoration
     original_dir = os.getcwd()
-    
+
     # Ensure we're in the project root for consistent path resolution
     os.chdir(project_root)
-    
+
     yield
-    
+
     # Restore original directory
     os.chdir(original_dir)
-    
+
     # Stop all patches
     uuid_patch.stop()
     # Use the custom stop method for time patches
@@ -102,8 +101,8 @@ def deterministic_environment():
 @pytest.fixture
 def mock_llm(request):
     """
-    Create and inject a mock LLM client.
-    
+    Create and inject a mock aisuite client.
+
     The fixture is parameterized with the test configuration path.
     """
     # Get test config from parameter
@@ -113,7 +112,7 @@ def mock_llm(request):
         # If we're passed a dict, it should be a loaded config
         config = request.param
         config_path = config.get('path', 'unknown_path')
-    
+
     # Load the test configuration
     try:
         if isinstance(request.param, str):
@@ -121,65 +120,71 @@ def mock_llm(request):
                 config = yaml.safe_load(f)
         else:
             config = request.param
-            
+
         mock_responses = config.get('mock_responses', [])
-        logger.info(f"Configuring mock LLM with responses from: {mock_responses}")
-        
-        # Create the mock LLM client
-        client = MockLLMClient(mock_responses)
-        client.test_config_path = config_path
-        
-        # Apply patches - based on the actual module structure:
-        
-        # 1. Patch the ProductionLLMClient directly
-        production_client_patch = patch('core.llm.production_llm_client.ProductionLLMClient', return_value=client)
-        production_client_patch.start()
-        
-        # 3. Patch OpenAI for any direct usage
-        openai_patch = patch('openai.OpenAI', return_value=client)
-        openai_patch.start()
-        
-        # 4. Patch Anthropic for any direct usage
-        anthropic_patch = patch('anthropic.Anthropic', return_value=client)
-        anthropic_patch.start()
-        
+
+        # Get response directory from the first mock_responses path
+        if mock_responses:
+            response_dir = os.path.dirname(mock_responses[0])
+        else:
+            response_dir = os.path.join(os.path.dirname(config_path), "responses")
+
+        logger.info(f"Configuring mock aisuite with responses from: {response_dir}")
+
+        # Import our mock aisuite client
+        from tests.mock.aisuite_client import MockAISuiteClient
+
+        # Create the mock client
+        client = MockAISuiteClient(response_dir)
+        client.test_config_path = config_path  # For backward compatibility
+
+        # Create a mock aisuite module
+        import sys
+        import types
+
+        # Create mock module
+        mock_aisuite = types.ModuleType('aisuite')
+        mock_aisuite.Client = lambda: client
+
+        # Patch the aisuite module in sys.modules
+        aisuite_patch = patch.dict('sys.modules', {'aisuite': mock_aisuite})
+        aisuite_patch.start()
+
         yield client
-        
-        # Stop all patches
-        production_client_patch.stop()
-        openai_patch.stop()
-        anthropic_patch.stop()
-        
+
+        # Stop patches
+        aisuite_patch.stop()
+
     except Exception as e:
-        logger.error(f"Failed to set up mock LLM: {str(e)}")
+        logger.error(f"Failed to set up mock aisuite: {str(e)}")
         raise
 
 def load_test_configs(directory_pattern):
     """
     Load all test configurations matching the pattern.
-    
+
     Args:
         directory_pattern (str): Pattern to match test directories
-        
+
     Returns:
         list: List of test configuration paths
     """
     # Get absolute path for pattern
     abs_pattern = os.path.join(project_root, directory_pattern)
     test_dirs = glob.glob(abs_pattern)
-    
+
     configs = []
     for test_dir in test_dirs:
         config_path = os.path.join(test_dir, "test_config.yaml")
         if os.path.exists(config_path):
             configs.append(config_path)
-    
+
     return configs
 
 def pytest_generate_tests(metafunc):
     """
     Auto-discover and filter test configurations.
-    
+
     This allows automatic parameterization of test functions
     that use the mock_llm fixture.
     """
@@ -187,19 +192,19 @@ def pytest_generate_tests(metafunc):
         # Get filters
         benchmark_filter = metafunc.config.getoption("--benchmark")
         game_filter = metafunc.config.getoption("--game")
-        
+
         # Load benchmark configs
         benchmark_configs = load_test_configs("tests/test_data/benchmarks/*")
-        
+
         # Load game configs
         game_configs = load_test_configs("tests/test_data/games/*")
-        
+
         all_configs = []
-        
+
         # Apply filters to benchmarks
         if benchmark_filter:
             filtered_benchmarks = [
-                config for config in benchmark_configs 
+                config for config in benchmark_configs
                 if benchmark_filter.lower() in config.lower()
             ]
             all_configs.extend(filtered_benchmarks)
@@ -212,7 +217,7 @@ def pytest_generate_tests(metafunc):
         else:
             # Use all configs if no filter
             all_configs = benchmark_configs + game_configs
-            
+
         # If we have no configs even after filtering, use a sensible default
         if not all_configs and (benchmark_filter or game_filter):
             logger.warning(f"No configs found for filter: benchmark={benchmark_filter}, game={game_filter}")
@@ -220,10 +225,10 @@ def pytest_generate_tests(metafunc):
             default_config = os.path.join(project_root, "tests/test_data/default_test_config.yaml")
             if os.path.exists(default_config):
                 all_configs = [default_config]
-        
+
         if not all_configs:
             logger.error("No test configurations found!")
-        
+
         # Parameterize the test
-        metafunc.parametrize("mock_llm", all_configs, indirect=True, 
+        metafunc.parametrize("mock_llm", all_configs, indirect=True,
                             ids=[os.path.basename(os.path.dirname(c)) for c in all_configs])
