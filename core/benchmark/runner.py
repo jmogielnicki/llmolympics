@@ -52,9 +52,6 @@ class BenchmarkRunner:
     def load_benchmark_log(self) -> None:
         """
         Load the existing benchmark log if it exists.
-
-        This method reads the benchmark log JSONL file and tracks
-        which matchups have already been completed.
         """
         if not os.path.exists(self.log_path):
             logger.info("No existing benchmark log found, starting fresh")
@@ -68,6 +65,7 @@ class BenchmarkRunner:
                         entry = json.loads(line.strip())
                         # Skip invalid entries
                         if not self._is_valid_log_entry(entry):
+                            logger.warning(f"Invalid log entry found: {entry}")
                             continue
 
                         # Check if the game config hash matches
@@ -95,6 +93,7 @@ class BenchmarkRunner:
             logger.error(f"Error loading benchmark log: {str(e)}")
             raise
 
+
     def _is_valid_log_entry(self, entry: Dict[str, Any]) -> bool:
         """
         Check if a log entry contains all required fields.
@@ -121,19 +120,23 @@ class BenchmarkRunner:
     def generate_matchups(self) -> None:
         """
         Generate all possible matchups for the benchmark.
-
-        This method creates a list of all model pairs that need to be tested,
-        taking into account the number of games per pair and which matchups
-        have already been completed.
         """
         models = self.benchmark_config.get_models()
         games_per_pair = self.benchmark_config.get_games_per_pair()
         logger.info(f"Generating matchups for {len(models)} models, {games_per_pair} games per pair")
+        
+        # Debug information
+        logger.info(f"Models to test: {models}")
+        logger.info(f"Completed matchups before generation: {len(self.completed_matchups)}")
+        if self.completed_matchups:
+            logger.info(f"Sample completed matchup: {next(iter(self.completed_matchups))}")
 
         # Check if game is symmetric or asymmetric
         is_asymmetric = False
         if 'roles' in self.base_game_config.get('players', {}):
             is_asymmetric = self.base_game_config['players']['roles'] == 'asymmetric'
+        
+        logger.info(f"Game is {'asymmetric' if is_asymmetric else 'symmetric'}")
 
         # Generate all model pairs
         matchups = []

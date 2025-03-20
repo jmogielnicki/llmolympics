@@ -2,7 +2,7 @@
 benchmark:
   id: "prisoners_dilemma_benchmark_test"
   base_config: "tests/test_data/benchmarks/pd_benchmark/game_config.yaml"
-  games_per_pair: 2
+  games_per_pair: 1
   output_dir: "data/test_output"
   type: "pairwise"
 

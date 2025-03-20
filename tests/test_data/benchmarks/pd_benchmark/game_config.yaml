@@ -1,4 +1,4 @@
-# config/games/prisoners_dilemma.yaml (modified for testing)
+# config/games/prisoners_dilemma.yaml
 game:
   name: "Prisoner's Dilemma"
   description: "A classic game of cooperation and betrayal"
@@ -45,7 +45,7 @@ state:
   hidden_state: []
   history_state:
     - name: "decision_history"
-      tracking: "decision"
+      tracking: "decisions"
 
 win_condition:
   type: "highest_score"
@@ -66,7 +66,7 @@ scoring:
 llm_integration:
   player_models:
     player_1: "openai:gpt-4o"
-    player_2: "anthropic:claude-3-7-sonnet"
+    player_2: "deepseek:deepseek-chat"
   system_prompts:
     decision: |
       Your role is a player in a Prisoner's Dilemma game.
@@ -82,3 +82,8 @@ llm_integration:
       Please respond as the player directly, not as an advisor.
       Feel free to think out loud about the problem a bit before making a decision, but keep it relatively short.
       Once you have a decision, put that decision inside double brackets, like this: [[COOPERATE]] or [[DEFECT]].
+      If your response does not contain a decision formatted with double brackets, you will be disqualified and lose the game.
+  prompts:
+    decision: "pd_decision"
+  parsers:
+    decision: "choice_parser"

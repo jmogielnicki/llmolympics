@@ -3,7 +3,10 @@ import os
 import yaml
 import logging
 import time
+import shutil
 from pathlib import Path
+from tests.mock.time_patch import DeterministicTime
+
 
 from tests.validation.snapshot import compare_with_snapshot, update_snapshot
 from tests.validation.assertions import validate_assertions
@@ -43,11 +46,19 @@ def test_benchmark(mock_llm, deterministic_environment, update_snapshots):
     # Initialize the benchmark
     benchmark_config = BenchmarkConfig(benchmark_config_path)
 
+    # Before running the benchmark
+    output_dir = benchmark_config.get_output_dir()
+    if os.path.exists(output_dir):
+        shutil.rmtree(output_dir)
+    os.makedirs(output_dir, exist_ok=True)
+
     # Initialize the runner
     runner = BenchmarkRunner(benchmark_config)
 
     # Run the benchmark
     start_time = time.time()
+    runner.load_benchmark_log()
+    runner.generate_matchups()
     runner.run_benchmark()
     elapsed_time = time.time() - start_time
 
