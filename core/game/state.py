@@ -108,8 +108,6 @@ class GameState:
                 else:
                     player['role'] = None
 
-                # logger.info(f"Player {player['id']} has roles: {player['roles']}, primary: {player['role']}")
-
         return players
 
     def _initialize_shared_state(self):
@@ -347,6 +345,11 @@ class GameState:
             else {'id': winner['id']}
         )
 
+        # Get model IDs from config if available
+        model_ids = {}
+        if hasattr(self, 'config') and 'llm_integration' in self.config and 'player_models' in self.config['llm_integration']:
+            model_ids = self.config['llm_integration']['player_models']
+
         # Create results object
         results = {
             'game': self.config['game']['name'],
@@ -354,7 +357,7 @@ class GameState:
             'players': [
                 {
                     'id': p['id'],
-                    'model_id': p.get('model_id', ''),  # Add model_id here
+                    'model_id': model_ids.get(p['id'], ''),
                     'final_state': p['state'],
                     'role': p.get('role')
                 }
