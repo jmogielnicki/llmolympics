@@ -150,10 +150,10 @@ class DebateArgumentHandler(PhaseHandler):
 
     def process_player(self, game_state, player):
         """Process a player's opening argument."""
-        from core.llm.client_factory import create_llm_client
+        from core.llm.production_llm_client import ProductionLLMClient
 
         if self.llm_client is None:
-            self.llm_client = create_llm_client(chat_logger=game_state.chat_logger)
+            self.llm_client = ProductionLLMClient(chat_logger=game_state.chat_logger)
 
         # Get player's assigned side
         side_id = player['state'].get('side_id')
@@ -217,10 +217,10 @@ class DebateRebuttalHandler(PhaseHandler):
 
     def process_player(self, game_state, player):
         """Process a player's rebuttal."""
-        from core.llm.client_factory import create_llm_client
+        from core.llm.production_llm_client import ProductionLLMClient
 
         if self.llm_client is None:
-            self.llm_client = create_llm_client(chat_logger=game_state.chat_logger)
+            self.llm_client = ProductionLLMClient(chat_logger=game_state.chat_logger)
 
         # Get player's assigned side
         side_id = player['state'].get('side_id')
@@ -376,10 +376,10 @@ class DebateJudgingHandler(PhaseHandler):
 
     def process_player(self, game_state, player):
         """Process a judge's opinion after a round."""
-        from core.llm.client_factory import create_llm_client
+        from core.llm.production_llm_client import ProductionLLMClient
 
         if self.llm_client is None:
-            self.llm_client = create_llm_client(chat_logger=game_state.chat_logger)
+            self.llm_client = ProductionLLMClient(chat_logger=game_state.chat_logger)
 
         # Ensure this is a judge
         if 'roles' not in player or 'judge' not in player['roles']:
@@ -454,10 +454,10 @@ class DebateFinalJudgingHandler(PhaseHandler):
 
     def process_player(self, game_state, player):
         """Process a judge's final opinion."""
-        from core.llm.client_factory import create_llm_client
+        from core.llm.production_llm_client import ProductionLLMClient
 
         if self.llm_client is None:
-            self.llm_client = create_llm_client(chat_logger=game_state.chat_logger)
+            self.llm_client = ProductionLLMClient(chat_logger=game_state.chat_logger)
 
         # Ensure this is a judge
         if 'roles' not in player or 'judge' not in player['roles']:

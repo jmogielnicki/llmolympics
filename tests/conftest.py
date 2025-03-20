@@ -135,10 +135,6 @@ def mock_llm(request):
         production_client_patch = patch('core.llm.production_llm_client.ProductionLLMClient', return_value=client)
         production_client_patch.start()
         
-        # 2. Also patch the factory for backward compatibility
-        factory_patch = patch('core.llm.client_factory.create_llm_client', return_value=client)
-        factory_patch.start()
-        
         # 3. Patch OpenAI for any direct usage
         openai_patch = patch('openai.OpenAI', return_value=client)
         openai_patch.start()
@@ -151,7 +147,6 @@ def mock_llm(request):
         
         # Stop all patches
         production_client_patch.stop()
-        factory_patch.stop()
         openai_patch.stop()
         anthropic_patch.stop()
         

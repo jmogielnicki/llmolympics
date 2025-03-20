@@ -3,7 +3,7 @@ import logging
 import random
 from core.game.handlers.base import PhaseHandler
 from core.game.handlers.registry import HandlerRegistry
-from core.llm.client_factory import create_llm_client
+from core.llm.production_llm_client import ProductionLLMClient
 
 logger = logging.getLogger("CreativeCompetition")
 
@@ -36,7 +36,7 @@ class CreativePromptHandler(PhaseHandler, CreativeCompetitionBase):
     def process_player(self, game_state, player):
         """Process a single player's action (prompt creation)."""
         if self.llm_client is None:
-            self.llm_client = create_llm_client(chat_logger=game_state.chat_logger)
+            self.llm_client = ProductionLLMClient(chat_logger=game_state.chat_logger)
 
         # Check that this player is the prompter (check both roles list and legacy role field)
         has_prompter_role = ('roles' in player and 'prompter' in player['roles']) or player.get('role') == 'prompter'
@@ -81,7 +81,7 @@ class CreativeContentHandler(PhaseHandler, CreativeCompetitionBase):
     def process_player(self, game_state, player):
         """Process a single player's content creation."""
         if self.llm_client is None:
-            self.llm_client = create_llm_client(chat_logger=game_state.chat_logger)
+            self.llm_client = ProductionLLMClient(chat_logger=game_state.chat_logger)
 
         # Get the prompt from shared state
         prompt = game_state.shared_state.get('content_prompt')
@@ -126,7 +126,7 @@ class ContentVotingHandler(PhaseHandler, CreativeCompetitionBase):
     def process_player(self, game_state, player):
         """Process a single player's vote."""
         if self.llm_client is None:
-            self.llm_client = create_llm_client(chat_logger=game_state.chat_logger)
+            self.llm_client = ProductionLLMClient(chat_logger=game_state.chat_logger)
 
         player_id = player['id']
 

@@ -2,7 +2,7 @@
 import logging
 from core.game.handlers.base import PhaseHandler
 from core.game.handlers.registry import HandlerRegistry
-from core.llm.client_factory import create_llm_client
+from core.llm.production_llm_client import ProductionLLMClient
 
 logger = logging.getLogger("ProductionHandlers")
 
@@ -35,7 +35,7 @@ class PlayerActionHandler(PhaseHandler):
             if not hasattr(game_state, 'chat_logger') or game_state.chat_logger is None:
                 raise ValueError("GameState must have a chat_logger attribute")
 
-            self.llm_client = create_llm_client(chat_logger=game_state.chat_logger)
+            self.llm_client = ProductionLLMClient(chat_logger=game_state.chat_logger)
 
         phase_id = game_state.current_phase
         phase_config = self._get_phase_config(game_state)
