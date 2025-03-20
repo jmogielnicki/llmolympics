@@ -1,6 +1,7 @@
 #project specific
 data/sessions
 data/test
+data/test_output
 
 # Python
 __pycache__/
