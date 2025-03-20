@@ -1308,6 +1308,9 @@ class DebateProcessor(GameProcessor):
                 # Get judge opinions by round
                 judge_opinions = final_snapshot.get('shared_state', {}).get('judge_opinions', {})
                 rounds_opinions = judge_opinions.get('rounds', {})
+                max_round = max(int(round_num) for round_num in rounds_opinions.keys())
+                final_round_num = str(max_round + 1)
+                rounds_opinions[final_round_num] = judge_opinions["final"]
 
                 for round_num, opinions in rounds_opinions.items():
                     try:

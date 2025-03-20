@@ -19,9 +19,51 @@
       },
       "pro-genetic-mod_percentage": 0.6,
       "anti-genetic-mod_percentage": 0.4
+    },
+    {
+      "round": 3,
+      "total_votes": 10,
+      "side_votes": {
+        "pro-genetic-mod": 5,
+        "anti-genetic-mod": 5
+      },
+      "pro-genetic-mod_percentage": 0.5,
+      "anti-genetic-mod_percentage": 0.5
     }
   ],
   "topic_analysis": [
+    {
+      "topic": "Is cryptocurrency a legitimate alternative to traditional banking?",
+      "rounds": {
+        "1": {
+          "total_votes": 0,
+          "side_votes": {
+            "pro-crypto": 0,
+            "anti-crypto": 0
+          },
+          "pro-crypto_percentage": 0,
+          "anti-crypto_percentage": 0
+        },
+        "2": {
+          "total_votes": 0,
+          "side_votes": {
+            "pro-crypto": 0,
+            "anti-crypto": 0
+          },
+          "pro-crypto_percentage": 0,
+          "anti-crypto_percentage": 0
+        },
+        "3": {
+          "total_votes": 0,
+          "side_votes": {
+            "pro-crypto": 0,
+            "anti-crypto": 0
+          },
+          "pro-crypto_percentage": 0,
+          "anti-crypto_percentage": 0
+        }
+      }
+    },
     {
       "topic": "Is universal basic income a viable economic policy?",
       "rounds": {
@@ -35,6 +77,15 @@
           "anti-ubi_percentage": 0
         },
         "2": {
+          "total_votes": 0,
+          "side_votes": {
+            "pro-ubi": 0,
+            "anti-ubi": 0
+          },
+          "pro-ubi_percentage": 0,
+          "anti-ubi_percentage": 0
+        },
+        "3": {
           "total_votes": 0,
           "side_votes": {
             "pro-ubi": 0,
@@ -65,29 +116,15 @@
           },
           "pro-genetic-mod_percentage": 0.6,
           "anti-genetic-mod_percentage": 0.4
-        }
-      }
-    },
-    {
-      "topic": "Is cryptocurrency a legitimate alternative to traditional banking?",
-      "rounds": {
-        "1": {
-          "total_votes": 0,
-          "side_votes": {
-            "pro-crypto": 0,
-            "anti-crypto": 0
-          },
-          "pro-crypto_percentage": 0,
-          "anti-crypto_percentage": 0
         },
-        "2": {
-          "total_votes": 0,
+        "3": {
+          "total_votes": 10,
           "side_votes": {
-            "pro-crypto": 0,
-            "anti-crypto": 0
+            "pro-genetic-mod": 5,
+            "anti-genetic-mod": 5
           },
-          "pro-crypto_percentage": 0,
-          "anti-crypto_percentage": 0
+          "pro-genetic-mod_percentage": 0.5,
+          "anti-genetic-mod_percentage": 0.5
         }
       }
     },
@@ -111,9 +148,18 @@
           },
           "pro-nuclear_percentage": 0,
           "anti-nuclear_percentage": 0
+        },
+        "3": {
+          "total_votes": 0,
+          "side_votes": {
+            "pro-nuclear": 0,
+            "anti-nuclear": 0
+          },
+          "pro-nuclear_percentage": 0,
+          "anti-nuclear_percentage": 0
         }
       }
     }
   ],
-  "max_rounds": 2
+  "max_rounds": 3
 }
