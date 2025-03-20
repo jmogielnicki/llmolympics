@@ -1277,73 +1277,68 @@ class DebateProcessor(GameProcessor):
             session_id = game.get('session_id', '')
             session_dir = get_session_directory(benchmark_dir, session_id)
 
-            try:
-                # Load snapshots to get judge opinions
-                snapshots = []
-                with open(os.path.join(session_dir, "snapshots.jsonl"), 'r') as f:
-                    for line in f:
-                        data = json.loads(line)
-                        if data.get("record_type") == "snapshot":
-                            snapshots.append(data)
+            # Load snapshots to get judge opinions
+            snapshots = []
+            with open(os.path.join(session_dir, "snapshots.jsonl"), 'r') as f:
+                for line in f:
+                    data = json.loads(line)
+                    if data.get("record_type") == "snapshot":
+                        snapshots.append(data)
 
-                # Find final snapshot with complete judge opinions
-                final_snapshot = None
-                for snapshot in sorted(snapshots, key=lambda x: x.get('snapshot_id', 0), reverse=True):
-                    if snapshot.get('shared_state', {}).get('judge_opinions'):
-                        final_snapshot = snapshot
-                        break
+            # Find final snapshot with complete judge opinions
+            final_snapshot = None
+            for snapshot in sorted(snapshots, key=lambda x: x.get('snapshot_id', 0), reverse=True):
+                if snapshot.get('shared_state', {}).get('judge_opinions'):
+                    final_snapshot = snapshot
+                    break
 
-                if not final_snapshot:
-                    continue
-
-                # Get debate topic
-                debate_topic = final_snapshot.get('shared_state', {}).get('debate_topic', '')
-                if debate_topic:
-                    topics.add(debate_topic)
-
-                # Get sides
-                sides = final_snapshot.get('shared_state', {}).get('sides', [])
-                side_ids = [side.get('side_id') for side in sides if side.get('side_id')]
-
-                # Get judge opinions by round
-                judge_opinions = final_snapshot.get('shared_state', {}).get('judge_opinions', {})
-                rounds_opinions = judge_opinions.get('rounds', {})
-                max_round = max(int(round_num) for round_num in rounds_opinions.keys())
-                final_round_num = str(max_round + 1)
-                rounds_opinions[final_round_num] = judge_opinions["final"]
-
-                for round_num, opinions in rounds_opinions.items():
-                    try:
-                        round_num = int(round_num)
-                        max_rounds = max(max_rounds, round_num)
-
-                        if round_num not in round_stats:
-                            round_stats[round_num] = {
-                                'total_votes': 0,
-                                'topic_votes': {},
-                                'side_votes': {side_id: 0 for side_id in side_ids}
-                            }
-
-                        # Add this topic if not seen before
-                        if debate_topic and debate_topic not in round_stats[round_num]['topic_votes']:
-                            round_stats[round_num]['topic_votes'][debate_topic] = {
-                                'total': 0,
-                                'sides': {side_id: 0 for side_id in side_ids}
-                            }
-
-                        # Count votes for each side
-                        for vote in opinions.values():
-                            if vote in side_ids:
-                                round_stats[round_num]['side_votes'][vote] += 1
-                                round_stats[round_num]['total_votes'] += 1
-
-                                if debate_topic:
-                                    round_stats[round_num]['topic_votes'][debate_topic]['total'] += 1
-                                    round_stats[round_num]['topic_votes'][debate_topic]['sides'][vote] += 1
-                    except:
-                        continue
-            except:
+            if not final_snapshot:
                 continue
+
+            # Get debate topic
+            debate_topic = final_snapshot.get('shared_state', {}).get('debate_topic', '')
+            if debate_topic:
+                topics.add(debate_topic)
+
+            # Get sides
+            sides = final_snapshot.get('shared_state', {}).get('sides', [])
+            side_ids = [side.get('side_id') for side in sides if side.get('side_id')]
+
+            # Get judge opinions by round
+            judge_opinions = final_snapshot.get('shared_state', {}).get('judge_opinions', {})
+            rounds_opinions = judge_opinions.get('rounds', {})
+            max_round = max(int(round_num) for round_num in rounds_opinions.keys())
+            final_round_num = str(max_round + 1)
+            rounds_opinions[final_round_num] = judge_opinions["final"]
+
+            for round_num, opinions in rounds_opinions.items():
+                round_num = int(round_num)
+                max_rounds = max(max_rounds, round_num)
+
+                if round_num not in round_stats:
+                    round_stats[round_num] = {
+                        'total_votes': 0,
+                        'topic_votes': {},
+                        'side_votes': defaultdict(int)
+                    }
+
+                # Add this topic if not seen before
+                if debate_topic and debate_topic not in round_stats[round_num]['topic_votes']:
+                    round_stats[round_num]['topic_votes'][debate_topic] = {
+                        'total': 0,
+                        'sides': {side_id: 0 for side_id in side_ids}
+                    }
+
+                # Count votes for each side
+                for vote in opinions.values():
+                    if vote in side_ids:
+                        round_stats[round_num]['side_votes'][vote] += 1
+                        round_stats[round_num]['total_votes'] += 1
+
+                        if debate_topic:
+                            round_stats[round_num]['topic_votes'][debate_topic]['total'] += 1
+                            round_stats[round_num]['topic_votes'][debate_topic]['sides'][vote] += 1
+
 
         # Format for output
         round_progression = []

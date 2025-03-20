@@ -35,12 +35,12 @@
         "avg_total_score": 3.0,
         "adaptability": 2.0,
         "positions_defended": [
-          "Cryptocurrency is a legitimate alternative to traditional banking",
-          "Genetic modification of human embryos should be permitted"
+          "Genetic modification of human embryos should be permitted",
+          "Cryptocurrency is a legitimate alternative to traditional banking"
         ],
         "positions_attacked": [
-          "Cryptocurrency is not a legitimate alternative to traditional banking",
-          "Genetic modification of human embryos should not be permitted"
+          "Genetic modification of human embryos should not be permitted",
+          "Cryptocurrency is not a legitimate alternative to traditional banking"
         ]
       }
     },
@@ -82,8 +82,8 @@
           "Nuclear energy is not the best solution for climate change"
         ],
         "positions_attacked": [
-          "Nuclear energy is the best solution for climate change",
-          "Genetic modification of human embryos should be permitted"
+          "Genetic modification of human embryos should be permitted",
+          "Nuclear energy is the best solution for climate change"
         ]
       }
     },
@@ -132,8 +132,8 @@
         "avg_total_score": 7.0,
         "adaptability": 1.33,
         "positions_defended": [
-          "Nuclear energy is the best solution for climate change",
-          "Universal basic income is viable"
+          "Universal basic income is viable",
+          "Nuclear energy is the best solution for climate change"
         ],
         "positions_attacked": [
           "Universal basic income is not viable",
@@ -220,8 +220,8 @@
           "Nuclear energy is the best solution for climate change"
         ],
         "positions_attacked": [
-          "Nuclear energy is not the best solution for climate change",
-          "Universal basic income is viable"
+          "Universal basic income is viable",
+          "Nuclear energy is not the best solution for climate change"
         ]
       }
     },
@@ -274,8 +274,8 @@
           "Nuclear energy is not the best solution for climate change"
         ],
         "positions_attacked": [
-          "Cryptocurrency is a legitimate alternative to traditional banking",
-          "Nuclear energy is the best solution for climate change"
+          "Nuclear energy is the best solution for climate change",
+          "Cryptocurrency is a legitimate alternative to traditional banking"
         ]
       }
     },
@@ -335,13 +335,13 @@
         "avg_total_score": 3.75,
         "adaptability": 0.5,
         "positions_defended": [
+          "Universal basic income is viable",
           "Cryptocurrency is not a legitimate alternative to traditional banking",
-          "Nuclear energy is the best solution for climate change",
-          "Universal basic income is viable"
+          "Nuclear energy is the best solution for climate change"
         ],
         "positions_attacked": [
-          "Universal basic income is not viable",
           "Cryptocurrency is a legitimate alternative to traditional banking",
+          "Universal basic income is not viable",
           "Nuclear energy is not the best solution for climate change"
         ]
       }
@@ -391,14 +391,14 @@
         "avg_total_score": 3.33,
         "adaptability": 0.25,
         "positions_defended": [
-          "Cryptocurrency is a legitimate alternative to traditional banking",
+          "Nuclear energy is not the best solution for climate change",
           "Genetic modification of human embryos should not be permitted",
-          "Nuclear energy is not the best solution for climate change"
+          "Cryptocurrency is a legitimate alternative to traditional banking"
         ],
         "positions_attacked": [
           "Cryptocurrency is not a legitimate alternative to traditional banking",
-          "Nuclear energy is the best solution for climate change",
-          "Genetic modification of human embryos should be permitted"
+          "Genetic modification of human embryos should be permitted",
+          "Nuclear energy is the best solution for climate change"
         ]
       }
     },
