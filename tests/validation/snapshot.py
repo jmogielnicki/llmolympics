@@ -168,14 +168,22 @@ def compare_with_snapshot(actual_dir, expected_dir, update=False):
     Returns:
         tuple: (bool, str) - Success flag and detailed message
     """
+    logger.info(f"SNAPSHOT DEBUG - actual_dir: {actual_dir}, expected_dir: {expected_dir}, update: {update}")
+    
     if not os.path.exists(actual_dir):
+        logger.error(f"Actual directory does not exist: {actual_dir}")
         return False, f"Actual directory does not exist: {actual_dir}"
 
     # If updating, copy the actual results to the expected directory
     if update:
+        logger.info(f"SNAPSHOT DEBUG - Attempting to update snapshots")
         # Ensure parent directory exists
-        os.makedirs(os.path.dirname(expected_dir), exist_ok=True)
-
+        try:
+            os.makedirs(os.path.dirname(expected_dir), exist_ok=True)
+            logger.info(f"SNAPSHOT DEBUG - Created parent directory: {os.path.dirname(expected_dir)}")
+        except Exception as e:
+            logger.error(f"SNAPSHOT DEBUG - Failed to create parent directory: {str(e)}")
+        
         # Remove existing directory if it exists
         if os.path.exists(expected_dir):
             shutil.rmtree(expected_dir)
