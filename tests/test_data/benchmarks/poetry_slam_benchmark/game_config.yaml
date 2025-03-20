@@ -1,0 +1,105 @@
+game:
+  name: "Poetry Slam"
+  description: "A creative competition where models write and judge poetry"
+  type: "creative_competition"
+  content_type: "poem"
+
+players:
+  min: 3
+  max: 3
+  roles: "dynamic"  # One prompter, all are authors
+
+setup:
+  initial_state:
+    resources: []
+  assignments:
+    - role: "prompter"
+      assignment_to: "random_player"
+    - role: "author"
+      assignment_to: "all_players"  # Everyone is an author, including the prompter
+
+phases:
+  - id: "prompt_creation"
+    type: "single_player_action"
+    handler: "prompt_creation"
+    eligible_role: "prompter"
+    actions:
+      - name: "create_prompt"
+        input_type: "text"
+    next_phase: "content_creation"
+
+  - id: "content_creation"
+    type: "simultaneous_action"
+    handler: "content_creation"
+    eligible_role: "author"  # All players are authors, including the prompter
+    actions:
+      - name: "create_content"
+        input_type: "text"
+    next_phase: "voting"
+
+  - id: "voting"
+    type: "simultaneous_action"
+    handler: "voting"
+    eligible_role: "author"
+    actions:
+      - name: "vote"
+        options: "player_submissions"
+        constraints:
+          - "cannot_vote_self"
+    next_phase: "resolution"
+
+  - id: "resolution"
+    type: "automatic"
+    handler: "tally_votes"
+    next_phase: "game_end"
+
+rounds:
+  count: 1
+  progression: "fixed"
+
+state:
+  player_state:
+    - name: "role"
+      initial: "assigned"
+      visible: true
+    - name: "score"
+      initial: 0
+      visible: true
+    - name: "submission"
+      initial: ""
+      visible: true
+  shared_state:
+    - name: "content_prompt"
+      initial: ""
+      visible: true
+    - name: "submitted_content"
+      initial: []
+      visible: true
+  hidden_state: []
+  history_state: []
+
+win_condition:
+  type: "highest_score"
+  score_field: "score"
+  trigger: "voting_complete"
+
+llm_integration:
+  player_models:
+    player_1: "google:gemini-2.0-flash"
+    player_2: "google:gemini-2.0-flash"
+    player_3: "google:gemini-2.0-flash"
+    player_4: "google:gemini-2.0-flash"
+    player_5: "google:gemini-2.0-flash"
+    player_6: "google:gemini-2.0-flash"
+  system_prompts:
+    prompt_creation: "system prompt - prompt_creation Test"
+    content_creation: "system prompt - content_creation test"
+    voting: "system prompt - voting test"
+  prompts:
+    prompt_creation: "creative_prompt"
+    content_creation: "creative_composition"
+    voting: "creative_voting"
+  parsers:
+    prompt_creation: "text_parser"
+    content_creation: "content_parser"
+    voting: "vote_parser"

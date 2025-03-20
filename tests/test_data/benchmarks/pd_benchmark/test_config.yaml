@@ -7,8 +7,8 @@ game_config: "tests/test_data/benchmarks/pd_benchmark/game_config.yaml"
 
 # Mock LLM responses
 mock_responses:
-  - "tests/test_data/responses/pd_responses/model1.yaml"
-  - "tests/test_data/responses/pd_responses/model2.yaml"
+  - "tests/test_data/benchmarks/pd_benchmark/responses/model1.yaml"
+  - "tests/test_data/benchmarks/pd_benchmark/responses/model2.yaml"
 
 # Validation configuration
 validation:

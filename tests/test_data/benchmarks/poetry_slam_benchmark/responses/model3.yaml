@@ -1,0 +1,7 @@
+model: "anthropic:claude-3-5-sonnet-20240620"
+responses:
+  - "1 | anthropic:claude-3-7-sonnet | [[COOPERATE]]"
+  - "2 | anthropic:claude-3-7-sonnet | [[COOPERATE]]"
+  - "3 | anthropic:claude-3-7-sonnet | [[DEFECT]]"
+  - "4 | anthropic:claude-3-7-sonnet | [[DEFECT]]"
+  - "5 | anthropic:claude-3-7-sonnet | [[DEFECT]]"

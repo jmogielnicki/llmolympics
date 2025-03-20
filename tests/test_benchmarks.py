@@ -11,6 +11,8 @@ from tests.mock.time_patch import DeterministicTime
 from tests.validation.snapshot import compare_with_snapshot, update_snapshot
 from tests.validation.assertions import validate_assertions
 import core.game.handlers.common  # Import handlers to ensure they are registered
+import core.game.handlers.creative_competition  # Import handlers to ensure they are registered
+import core.game.handlers.debate_competition  # Import handlers to ensure they are registered
 
 
 logger = logging.getLogger("BenchmarkTest")

@@ -1,0 +1,7 @@
+model: "deepseek:deepseek-chat"
+responses:
+  - "1 | openai:gpt-4o | [[COOPERATE]]"
+  - "2 | openai:gpt-4o | [[COOPERATE]]"
+  - "3 | openai:gpt-4o | [[COOPERATE]]"
+  - "4 | openai:gpt-4o | [[DEFECT]]"
+  - "5 | openai:gpt-4o | [[DEFECT]]"
