@@ -242,7 +242,10 @@ export const debateSlamDefinition = {
 
 	transformData: ({ leaderboard, metadata, gameSpecific }) => {
 		return {
-			leaderboard: leaderboard.leaderboard || [],
+			leaderboard: leaderboard.leaderboard.map((model) => ({
+				...model,
+				model_name: shortenModelName(model.model_name),
+			})),
 			metadata: metadata,
 			gameSessions: [], // We would populate this with session data when available
 			gameSpecific: {

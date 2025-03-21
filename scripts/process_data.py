@@ -33,7 +33,7 @@ class GameProcessor:
         """Generate leaderboard data for this game type."""
         raise NotImplementedError
 
-    def generate_matchup_matrix(self, benchmark_logs):
+    def generate_matchup_matrix(self, benchmark_logs, benchmark_dir):
         """Generate matchup matrix for this game type."""
         raise NotImplementedError
 
