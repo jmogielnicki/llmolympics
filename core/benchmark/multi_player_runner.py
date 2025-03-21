@@ -190,7 +190,7 @@ class MultiPlayerBenchmarkRunner:
         """
         try:
             state = {
-                'opponent_matrix': {model: list(opponents) for model, opponents in self.opponent_matrix.items()},
+                'opponent_matrix': {model: sorted(list(opponents)) for model, opponents in self.opponent_matrix.items()},
                 'game_counts': self.game_counts,
                 'role_counts': self.role_counts,
                 'sessions_run': self.sessions_run
