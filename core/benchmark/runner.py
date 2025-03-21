@@ -48,6 +48,8 @@ class BenchmarkRunner:
 
         logger.info(f"Initialized benchmark runner for {benchmark_config.get_benchmark_id()}")
         logger.info(f"Output directory: {self.output_dir}")
+        self.load_benchmark_log()
+        self.generate_matchups()
 
     def load_benchmark_log(self) -> None:
         """

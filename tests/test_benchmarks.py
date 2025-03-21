@@ -44,6 +44,7 @@ def test_benchmark(mock_llm, deterministic_environment, update_snapshots):
     # Import here to use the patched environment
     from core.benchmark.config import BenchmarkConfig
     from core.benchmark.runner import BenchmarkRunner
+    from core.benchmark.multi_player_runner import MultiPlayerBenchmarkRunner
 
     # Initialize the benchmark
     benchmark_config = BenchmarkConfig(benchmark_config_path)
@@ -54,13 +55,22 @@ def test_benchmark(mock_llm, deterministic_environment, update_snapshots):
         shutil.rmtree(output_dir)
     os.makedirs(output_dir, exist_ok=True)
 
-    # Initialize the runner
-    runner = BenchmarkRunner(benchmark_config)
+    benchmark_type = benchmark_config.config['benchmark'].get('type', 'pairwise')
+    logger.info(f"Benchmark type: {benchmark_type}")
+    runner = None
+
+    if benchmark_type == 'multi_player':
+        # Create multi-player benchmark runner
+        logger.info(f"Initializing multi-player benchmark runner")
+        runner = MultiPlayerBenchmarkRunner(benchmark_config)
+
+    else:
+        # Create standard pairwise benchmark runner
+        logger.info(f"Initializing pairwise benchmark runner")
+        runner = BenchmarkRunner(benchmark_config)
 
     # Run the benchmark
     start_time = time.time()
-    runner.load_benchmark_log()
-    runner.generate_matchups()
     runner.run_benchmark()
     elapsed_time = time.time() - start_time
 

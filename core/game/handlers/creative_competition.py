@@ -167,13 +167,8 @@ class ContentVotingHandler(PhaseHandler, CreativeCompetitionBase):
 
         # Validate vote - must be a player ID and not self
         if vote not in submissions:
-            logger.warning(f"Invalid vote from player {player_id}: {vote}. Defaulting to random valid vote.")
-            valid_votes = list(submissions.keys())
-            if valid_votes:
-                vote = random.choice(valid_votes)
-            else:
-                logger.error(f"No valid votes available for player {player_id}")
-                return None
+            logger.warning(f"Invalid vote from player {player_id}: {vote}. Defaulting to None.")
+            return None
 
         logger.info(f"Player {player_id} voted for: {vote}")
 
