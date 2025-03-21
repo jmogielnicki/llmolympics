@@ -1,0 +1,5 @@
+model: "openai:gpt-4o"
+responses:
+  - "This text should disappear when argument is parsed [[Here are my (gpt-4o's) opening arguments]]"
+  - "[[Second round arguments, gpt-4o]]"
+  - "[[Third round arguments, gpt-4o]]"

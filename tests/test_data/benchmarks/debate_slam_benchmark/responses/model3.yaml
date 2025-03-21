@@ -1,0 +1,8 @@
+model: "mistral:mistral-large"
+responses:
+  - "[[pro-ubi]]"
+  - "[[pro-ubi]]"
+  - "[[pro-ubi]]"
+  - "[[anti-ubi]]"
+  - "[[anti-ubi]]"
+  - "[[anti-ubi]]"

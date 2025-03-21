@@ -1,0 +1,26 @@
+benchmark:
+  id: "debate_slam_benchmark_1_test"
+  base_config: "tests/test_data/benchmarks/debate_slam_benchmark/game_config.yaml"
+  type: "multi_player"
+  sessions: 1
+  output_dir: "data/test_output"
+  players_per_game: 7
+  player_selection_strategy: "least_games_with_role"
+  player_selection_strategy_role: "debater"
+
+  roles:
+    debater:
+      count: 2
+      selection: "weighted_inverse"
+      incompatible_with: ["judge"]  # Can't be both debater and judge
+    judge:
+      count: 3
+      selection: "weighted_inverse"
+      incompatible_with: ["debater"]  # Can't be both judge and debater
+
+models:
+  - openai:gpt-4o
+  - anthropic:claude-3.7
+  - mistral:mistral-large
+  - deepseek:deepseek-chat
+  - xai:grok-2

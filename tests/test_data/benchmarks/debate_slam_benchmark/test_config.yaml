@@ -1,0 +1,19 @@
+name: "Debate Slam Benchmark Test"
+description: "Integration test for Debate Slam benchmark"
+
+# Configuration paths - using the correct paths for our test directory structure
+benchmark_config: "tests/test_data/benchmarks/debate_slam_benchmark/benchmark_config.yaml"
+game_config: "tests/test_data/benchmarks/debate_slam_benchmark/game_config.yaml"
+
+# Mock LLM responses
+mock_responses:
+  - "tests/test_data/benchmarks/debate_slam_benchmark/responses/model1.yaml"
+  - "tests/test_data/benchmarks/debate_slam_benchmark/responses/model2.yaml"
+  - "tests/test_data/benchmarks/debate_slam_benchmark/responses/model3.yaml"
+  - "tests/test_data/benchmarks/debate_slam_benchmark/responses/model4.yaml"
+  - "tests/test_data/benchmarks/debate_slam_benchmark/responses/model5.yaml"
+
+# Validation configuration
+validation:
+  type: "snapshot"
+  snapshot_dir: "tests/test_data/benchmarks/debate_slam_benchmark/expected"

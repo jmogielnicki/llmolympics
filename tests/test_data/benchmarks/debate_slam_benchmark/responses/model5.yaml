@@ -1,0 +1,8 @@
+model: "xai:grok-2"
+responses:
+  - "[[pro-ubi]]"
+  - "[[pro-ubi]]"
+  - "[[pro-ubi]]"
+  - "[[pro-ubi]]"
+  - "[[pro-ubi]]"
+  - "[[anti-ubi]]"

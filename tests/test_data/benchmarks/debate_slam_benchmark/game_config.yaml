@@ -1,0 +1,155 @@
+game:
+  name: "Debate Slam"
+  description: "A debate competition testing persuasion skills by requiring models to argue both sides"
+  type: "debate_competition"
+
+players:
+  min: 5
+  max: 5
+  roles: "dynamic"  # 2 debaters, 3 judges
+
+setup:
+  initial_state:
+    resources: []
+  assignments:
+    - role: "debater"
+      assignment_to: "player_1"
+    - role: "debater"
+      assignment_to: "player_2"
+    - role: "judge"
+      assignment_to: "player_3"
+    - role: "judge"
+      assignment_to: "player_4"
+    - role: "judge"
+      assignment_to: "player_5"
+
+phases:
+  - id: "topic_selection"
+    type: "automatic"
+    handler: "debate_topic_selection"
+    next_phase: "side_assignment"
+
+  - id: "side_assignment"
+    type: "automatic"
+    handler: "debate_side_assignment"
+    next_phase: "opening_arguments"
+
+  - id: "opening_arguments"
+    type: "simultaneous_action"
+    handler: "debate_argument_handler"
+    eligible_role: "debater"
+    next_phase: "round_judging"
+
+  - id: "round_discussion"
+    type: "sequential_action"
+    handler: "debate_rebuttal_handler"
+    eligible_role: "debater"
+    next_phase_condition: "is_final_round"
+    next_phase_success: "final_judging"
+    next_phase_failure: "round_judging"
+
+  - id: "round_judging"
+    type: "simultaneous_action"
+    handler: "debate_judging_handler"
+    eligible_role: "judge"
+    next_phase: "round_discussion"
+
+  - id: "final_judging"
+    type: "simultaneous_action"
+    handler: "debate_final_judging_handler"
+    eligible_role: "judge"
+    next_phase_condition: "sides_swapped"
+    next_phase_success: "side_swap"
+    next_phase_failure: "resolution"
+
+  - id: "side_swap"
+    type: "automatic"
+    handler: "debate_side_swap_handler"
+    next_phase: "opening_arguments"
+
+  - id: "resolution"
+    type: "automatic"
+    handler: "debate_resolution_handler"
+    next_phase: "game_end"
+
+rounds:
+  count: 3  # Number of discussion rounds per debate
+  progression: "fixed"
+
+state:
+  player_state:
+    - name: "role"
+      initial: "assigned"
+      visible: true
+    - name: "side_id"
+      initial: ""
+      visible: true
+    - name: "position"
+      initial: ""
+      visible: true
+    - name: "score"
+      initial: 0
+      visible: false
+  shared_state:
+    - name: "debate_topic"
+      initial: ""
+      visible: true
+    - name: "sides"
+      initial: []
+      visible: true
+    - name: "current_round"
+      initial: 1
+      visible: true
+    - name: "max_rounds"
+      initial: 3
+      visible: true
+    - name: "sides_swapped"
+      initial: false
+      visible: false
+    - name: "current_arguments"
+      initial: {}
+      visible: true
+    - name: "judge_opinions"
+      initial: {}
+      visible: true
+    - name: "first_rebutter_side_id"
+      initial: ""
+      visible: true
+  hidden_state:
+    - name: "complete_history"
+      initial: {}
+      visible: false
+  history_state:
+    - name: "argument_history"
+      tracking: ["opening_arguments", "round_discussion"]  # Track both phases
+    - name: "judging_history"
+      tracking: ["round_judging", "final_judging"]  # Track both judging phases
+
+win_condition:
+  type: "highest_score"
+  score_field: "score"
+  trigger: "resolution_complete"
+
+llm_integration:
+  player_models:
+    player_1: "this should be overriden"
+    player_2: "this should be overriden"
+    player_3: "this should be overriden"
+    player_4: "this should be overriden"
+    player_5: "this should be overriden"
+  system_prompts:
+    topic_selection: "You are selecting a debate topic for a competition between AI models."
+    opening_arguments: "You are a debater presenting an opening argument on a given topic."
+    round_discussion: "You are a debater responding to arguments in a structured debate."
+    round_judging: "You are a judge evaluating arguments in a debate. Your task is to indicate which side you find more persuasive."
+    final_judging: "You are a judge providing a final verdict on a debate after hearing all arguments."
+  prompts:
+    opening_arguments: "debate_opening_arguments"
+    round_discussion: "debate_rebuttal"
+    round_judging: "debate_judging"
+    final_judging: "debate_final_judging"
+  parsers:
+    opening_arguments: "content_parser"
+    round_discussion: "content_parser"
+    round_judging: "vote_parser"
+    final_judging: "vote_parser"
