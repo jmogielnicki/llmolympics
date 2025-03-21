@@ -261,8 +261,7 @@ export const debateSlamDefinition = {
 	},
 
 	transformGameDetail: (gameDetail) => {
-		// Basic transformation - would expand as needed
-		return gameDetail;
+		return gameDetail
 	},
 };
 
