@@ -6,6 +6,7 @@ import { GameDataProvider, useGameData } from "@/context/GameDataContext";
 
 // Import tab components
 import LeaderboardTab from "../tabs/LeaderboardTab";
+import TimelineTab from "../tabs/TimelineTab";
 import TabNavigation from "../../TabNavigation";
 
 /**
@@ -43,7 +44,7 @@ const ErrorState = ({ message }) => (
  * Main content component that handles routing between tabs
  */
 const DashboardContent = () => {
-	const { isLoading, error } = useGameData();
+	const { isLoading, error, gameConfig } = useGameData();
 
 	// If still loading, show loading state
 	if (isLoading) {
@@ -56,7 +57,11 @@ const DashboardContent = () => {
 	}
 
 	// Tab configuration - for now, just Leaderboard
-	const tabs = [{ id: "leaderboard", label: "Leaderboard" }];
+	const tabs = [
+		{ id: "leaderboard", label: "Leaderboard" },
+		{ id: "timeline", label: "Timeline" },
+
+	];
 
 	return (
 		<div>
@@ -72,6 +77,7 @@ const DashboardContent = () => {
 					}
 				/>
 				<Route path="/leaderboard" element={<LeaderboardTab />} />
+				<Route path="/timeline" element={<TimelineTab />} />
 				<Route
 					path="*"
 					element={

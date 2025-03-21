@@ -240,14 +240,15 @@ export const debateSlamDefinition = {
 		],
 	},
 
-	transformData: ({ leaderboard, metadata, gameSpecific }) => {
+	// Update the debateSlamDefinition transformData method to include:
+	transformData: ({ leaderboard, metadata, modelProfiles, gameSpecific }) => {
 		return {
 			leaderboard: leaderboard.leaderboard.map((model) => ({
 				...model,
 				model_name: shortenModelName(model.model_name),
 			})),
+			gameSessions: extractSessions(modelProfiles),
 			metadata: metadata,
-			gameSessions: [], // We would populate this with session data when available
 			gameSpecific: {
 				matchupMatrix: gameSpecific.matchup_matrix || {},
 				roundProgression: gameSpecific.round_progression || {},
@@ -466,6 +467,50 @@ function extractPrompt(gameDetail) {
 		text: promptEvent.prompt,
 		author: promptEvent.model_name,
 	};
+}
+
+function extractSessions(data) {
+	// Early validation
+	if (!data || !data.game_type || !data.debater_profiles) {
+		return [];
+	}
+
+	// Get game type to use as title
+	const gameTitle = data.game_type
+		.split("_")
+		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(" ");
+
+	// Create a map to collect unique session data
+	const sessionsMap = new Map();
+
+	// Process all debater profiles to extract session information
+	data.debater_profiles.forEach((profile) => {
+		const modelName = profile.model_name;
+
+		// Process each game the model participated in
+		profile.games.forEach((game) => {
+			const sessionId = game.session_id;
+
+			// If this session is not yet in our map, initialize it
+			if (!sessionsMap.has(sessionId)) {
+				sessionsMap.set(sessionId, {
+					id: sessionId,
+					title: gameTitle,
+					participants: [modelName],
+				});
+			} else {
+				// If the session exists but this participant isn't listed, add them
+				const session = sessionsMap.get(sessionId);
+				if (!session.participants.includes(modelName)) {
+					session.participants.push(modelName);
+				}
+			}
+		});
+	});
+
+	// Convert the map to an array of sessions
+	return Array.from(sessionsMap.values());
 }
 
 // Map of game types to their definitions
