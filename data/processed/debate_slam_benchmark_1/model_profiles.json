@@ -39,8 +39,8 @@
           "Cryptocurrency is a legitimate alternative to traditional banking"
         ],
         "positions_attacked": [
-          "Genetic modification of human embryos should not be permitted",
-          "Cryptocurrency is not a legitimate alternative to traditional banking"
+          "Cryptocurrency is not a legitimate alternative to traditional banking",
+          "Genetic modification of human embryos should not be permitted"
         ]
       }
     },
@@ -78,12 +78,12 @@
         "avg_total_score": 7.0,
         "adaptability": 1.33,
         "positions_defended": [
-          "Genetic modification of human embryos should not be permitted",
-          "Nuclear energy is not the best solution for climate change"
+          "Nuclear energy is not the best solution for climate change",
+          "Genetic modification of human embryos should not be permitted"
         ],
         "positions_attacked": [
-          "Genetic modification of human embryos should be permitted",
-          "Nuclear energy is the best solution for climate change"
+          "Nuclear energy is the best solution for climate change",
+          "Genetic modification of human embryos should be permitted"
         ]
       }
     },
@@ -132,8 +132,8 @@
         "avg_total_score": 7.0,
         "adaptability": 1.33,
         "positions_defended": [
-          "Universal basic income is viable",
-          "Nuclear energy is the best solution for climate change"
+          "Nuclear energy is the best solution for climate change",
+          "Universal basic income is viable"
         ],
         "positions_attacked": [
           "Universal basic income is not viable",
@@ -155,13 +155,24 @@
           "pre_swap_score": 0,
           "post_swap_score": 1,
           "total_score": 1
+        },
+        {
+          "session_id": "debate_slam_20250319_164539",
+          "topic": "Is universal basic income a viable economic policy?",
+          "pre_swap_side": "anti-ubi",
+          "post_swap_side": "pro-ubi",
+          "pre_swap_position": "Universal basic income is not viable",
+          "post_swap_position": "Universal basic income is viable",
+          "pre_swap_score": 0,
+          "post_swap_score": 4,
+          "total_score": 4
         }
       ],
       "stats": {
-        "games_played": 1,
+        "games_played": 2,
         "avg_pre_swap_score": 0.0,
-        "avg_post_swap_score": 1.0,
-        "avg_total_score": 1.0,
+        "avg_post_swap_score": 2.5,
+        "avg_total_score": 2.5,
         "adaptability": 0,
         "positions_defended": [
           "Universal basic income is not viable"
@@ -335,14 +346,14 @@
         "avg_total_score": 3.75,
         "adaptability": 0.5,
         "positions_defended": [
-          "Universal basic income is viable",
           "Cryptocurrency is not a legitimate alternative to traditional banking",
-          "Nuclear energy is the best solution for climate change"
+          "Nuclear energy is the best solution for climate change",
+          "Universal basic income is viable"
         ],
         "positions_attacked": [
-          "Cryptocurrency is a legitimate alternative to traditional banking",
           "Universal basic income is not viable",
-          "Nuclear energy is not the best solution for climate change"
+          "Nuclear energy is not the best solution for climate change",
+          "Cryptocurrency is a legitimate alternative to traditional banking"
         ]
       }
     },
@@ -397,8 +408,8 @@
         ],
         "positions_attacked": [
           "Cryptocurrency is not a legitimate alternative to traditional banking",
-          "Genetic modification of human embryos should be permitted",
-          "Nuclear energy is the best solution for climate change"
+          "Nuclear energy is the best solution for climate change",
+          "Genetic modification of human embryos should be permitted"
         ]
       }
     },
@@ -459,18 +470,31 @@
           "pre_swap_score": 0,
           "post_swap_score": 5,
           "total_score": 5
+        },
+        {
+          "session_id": "debate_slam_20250319_164539",
+          "topic": "Is universal basic income a viable economic policy?",
+          "pre_swap_side": "pro-ubi",
+          "post_swap_side": "anti-ubi",
+          "pre_swap_position": "Universal basic income is viable",
+          "post_swap_position": "Universal basic income is not viable",
+          "pre_swap_score": 5,
+          "post_swap_score": 1,
+          "total_score": 6
         }
       ],
       "stats": {
-        "games_played": 1,
-        "avg_pre_swap_score": 0.0,
-        "avg_post_swap_score": 5.0,
-        "avg_total_score": 5.0,
-        "adaptability": 0,
+        "games_played": 2,
+        "avg_pre_swap_score": 2.5,
+        "avg_post_swap_score": 3.0,
+        "avg_total_score": 5.5,
+        "adaptability": 1.2,
         "positions_defended": [
+          "Universal basic income is viable",
           "Genetic modification of human embryos should be permitted"
         ],
         "positions_attacked": [
+          "Universal basic income is not viable",
           "Genetic modification of human embryos should not be permitted"
         ]
       }
@@ -725,10 +749,19 @@
             "2": "pro-ubi"
           },
           "final_vote": "pro-ubi"
+        },
+        {
+          "session_id": "debate_slam_20250319_164539",
+          "topic": "Is universal basic income a viable economic policy?",
+          "round_votes": {
+            "1": "pro-ubi",
+            "2": "pro-ubi"
+          },
+          "final_vote": "pro-ubi"
         }
       ],
       "stats": {
-        "games_judged": 7,
+        "games_judged": 8,
         "position_votes": {
           "pro-genetic-mod": 1,
           "anti-ubi": 1,
@@ -736,20 +769,20 @@
           "pro-nuclear": 1,
           "anti-nuclear": 1,
           "anti-genetic-mod": 1,
-          "pro-ubi": 1
+          "pro-ubi": 2
         },
         "position_bias": {
-          "pro-genetic-mod": 0.14,
-          "anti-ubi": 0.14,
-          "pro-crypto": 0.14,
-          "pro-nuclear": 0.14,
-          "anti-nuclear": 0.14,
-          "anti-genetic-mod": 0.14,
-          "pro-ubi": 0.14
+          "pro-genetic-mod": 0.12,
+          "anti-ubi": 0.12,
+          "pro-crypto": 0.12,
+          "pro-nuclear": 0.12,
+          "anti-nuclear": 0.12,
+          "anti-genetic-mod": 0.12,
+          "pro-ubi": 0.25
         },
         "round_flips": 2,
-        "consistent_judgments": 5,
-        "consistency": 0.71
+        "consistent_judgments": 6,
+        "consistency": 0.75
       }
     },
     {
@@ -800,25 +833,36 @@
             "2": "anti-ubi"
           },
           "final_vote": "pro-ubi"
+        },
+        {
+          "session_id": "debate_slam_20250319_164539",
+          "topic": "Is universal basic income a viable economic policy?",
+          "round_votes": {
+            "1": "anti-ubi",
+            "2": "pro-ubi"
+          },
+          "final_vote": "anti-ubi"
         }
       ],
       "stats": {
-        "games_judged": 5,
+        "games_judged": 6,
         "position_votes": {
           "pro-genetic-mod": 1,
           "pro-ubi": 2,
           "anti-genetic-mod": 1,
-          "anti-crypto": 1
+          "anti-crypto": 1,
+          "anti-ubi": 1
         },
         "position_bias": {
-          "pro-genetic-mod": 0.2,
-          "pro-ubi": 0.4,
-          "anti-genetic-mod": 0.2,
-          "anti-crypto": 0.2
+          "pro-genetic-mod": 0.17,
+          "pro-ubi": 0.33,
+          "anti-genetic-mod": 0.17,
+          "anti-crypto": 0.17,
+          "anti-ubi": 0.17
         },
-        "round_flips": 0,
+        "round_flips": 1,
         "consistent_judgments": 5,
-        "consistency": 1.0
+        "consistency": 0.83
       }
     },
     {
@@ -936,22 +980,31 @@
             "2": "anti-nuclear"
           },
           "final_vote": "anti-nuclear"
+        },
+        {
+          "session_id": "debate_slam_20250319_164539",
+          "topic": "Is universal basic income a viable economic policy?",
+          "round_votes": {
+            "1": "anti-ubi",
+            "2": "anti-ubi"
+          },
+          "final_vote": "pro-ubi"
         }
       ],
       "stats": {
-        "games_judged": 5,
+        "games_judged": 6,
         "position_votes": {
           "anti-ubi": 1,
           "anti-nuclear": 3,
-          "pro-ubi": 1
+          "pro-ubi": 2
         },
         "position_bias": {
-          "anti-ubi": 0.2,
-          "anti-nuclear": 0.6,
-          "pro-ubi": 0.2
+          "anti-ubi": 0.17,
+          "anti-nuclear": 0.5,
+          "pro-ubi": 0.33
         },
         "round_flips": 0,
-        "consistent_judgments": 5,
+        "consistent_judgments": 6,
         "consistency": 1.0
       }
     },
@@ -1012,27 +1065,36 @@
             "2": "pro-nuclear"
           },
           "final_vote": "pro-nuclear"
+        },
+        {
+          "session_id": "debate_slam_20250319_164539",
+          "topic": "Is universal basic income a viable economic policy?",
+          "round_votes": {
+            "1": "pro-ubi",
+            "2": "pro-ubi"
+          },
+          "final_vote": "pro-ubi"
         }
       ],
       "stats": {
-        "games_judged": 6,
+        "games_judged": 7,
         "position_votes": {
-          "pro-ubi": 2,
+          "pro-ubi": 3,
           "pro-crypto": 1,
           "anti-nuclear": 1,
           "anti-genetic-mod": 1,
           "pro-nuclear": 1
         },
         "position_bias": {
-          "pro-ubi": 0.33,
-          "pro-crypto": 0.17,
-          "anti-nuclear": 0.17,
-          "anti-genetic-mod": 0.17,
-          "pro-nuclear": 0.17
+          "pro-ubi": 0.43,
+          "pro-crypto": 0.14,
+          "anti-nuclear": 0.14,
+          "anti-genetic-mod": 0.14,
+          "pro-nuclear": 0.14
         },
         "round_flips": 2,
-        "consistent_judgments": 4,
-        "consistency": 0.67
+        "consistent_judgments": 5,
+        "consistency": 0.71
       }
     },
     {
@@ -1201,25 +1263,36 @@
             "2": "pro-nuclear"
           },
           "final_vote": "pro-nuclear"
+        },
+        {
+          "session_id": "debate_slam_20250319_164539",
+          "topic": "Is universal basic income a viable economic policy?",
+          "round_votes": {
+            "1": "anti-ubi",
+            "2": "pro-ubi"
+          },
+          "final_vote": "pro-ubi"
         }
       ],
       "stats": {
-        "games_judged": 6,
+        "games_judged": 7,
         "position_votes": {
           "anti-nuclear": 3,
           "anti-genetic-mod": 1,
           "pro-crypto": 1,
-          "pro-nuclear": 1
+          "pro-nuclear": 1,
+          "pro-ubi": 1
         },
         "position_bias": {
-          "anti-nuclear": 0.5,
-          "anti-genetic-mod": 0.17,
-          "pro-crypto": 0.17,
-          "pro-nuclear": 0.17
+          "anti-nuclear": 0.43,
+          "anti-genetic-mod": 0.14,
+          "pro-crypto": 0.14,
+          "pro-nuclear": 0.14,
+          "pro-ubi": 0.14
         },
-        "round_flips": 3,
+        "round_flips": 4,
         "consistent_judgments": 3,
-        "consistency": 0.5
+        "consistency": 0.43
       }
     },
     {

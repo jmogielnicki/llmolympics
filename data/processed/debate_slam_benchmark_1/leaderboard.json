@@ -73,6 +73,18 @@
       "rank": 6
     },
     {
+      "model_id": "google:gemini-2.0-flash",
+      "model_name": "Google Gemini 2.0",
+      "wins": 1,
+      "losses": 2,
+      "ties": 0,
+      "games": 3,
+      "winrate": 0.333,
+      "avg_score": 3.67,
+      "total_score": 11,
+      "rank": 7
+    },
+    {
       "model_id": "openai:gpt-4o",
       "model_name": "OpenAI GPT-4o",
       "wins": 0,
@@ -82,19 +94,19 @@
       "winrate": 0.0,
       "avg_score": 3.33,
       "total_score": 10,
-      "rank": 7
+      "rank": 8
     },
     {
       "model_id": "deepseek:deepseek-chat",
       "model_name": "DeepSeek Chat",
       "wins": 0,
-      "losses": 2,
+      "losses": 3,
       "ties": 0,
-      "games": 2,
+      "games": 3,
       "winrate": 0.0,
-      "avg_score": 3.0,
-      "total_score": 6,
-      "rank": 8
+      "avg_score": 2.67,
+      "total_score": 8,
+      "rank": 9
     },
     {
       "model_id": "mistral:mistral-large-latest",
@@ -106,20 +118,8 @@
       "winrate": 0.0,
       "avg_score": 2.5,
       "total_score": 5,
-      "rank": 9
-    },
-    {
-      "model_id": "google:gemini-2.0-flash",
-      "model_name": "Google Gemini 2.0",
-      "wins": 0,
-      "losses": 2,
-      "ties": 0,
-      "games": 2,
-      "winrate": 0.0,
-      "avg_score": 1.5,
-      "total_score": 3,
       "rank": 10
     }
   ],
-  "game_count": 13
+  "game_count": 14
 }

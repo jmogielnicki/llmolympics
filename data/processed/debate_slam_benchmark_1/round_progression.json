@@ -2,29 +2,29 @@
   "round_progression": [
     {
       "round": 1,
-      "total_votes": 65,
+      "total_votes": 70,
       "side_votes": {
         "pro-genetic-mod": 7,
         "pro-ubi": 10,
         "anti-ubi": 10,
         "anti-nuclear": 14,
-        "anti-crypto": 8,
-        "pro-crypto": 2,
+        "anti-crypto": 12,
+        "pro-crypto": 3,
         "pro-nuclear": 11,
         "anti-genetic-mod": 3
       },
-      "pro-genetic-mod_percentage": 0.108,
-      "pro-ubi_percentage": 0.154,
-      "anti-ubi_percentage": 0.154,
-      "anti-nuclear_percentage": 0.215,
-      "anti-crypto_percentage": 0.123,
-      "pro-crypto_percentage": 0.031,
-      "pro-nuclear_percentage": 0.169,
-      "anti-genetic-mod_percentage": 0.046
+      "pro-genetic-mod_percentage": 0.1,
+      "pro-ubi_percentage": 0.143,
+      "anti-ubi_percentage": 0.143,
+      "anti-nuclear_percentage": 0.2,
+      "anti-crypto_percentage": 0.171,
+      "pro-crypto_percentage": 0.043,
+      "pro-nuclear_percentage": 0.157,
+      "anti-genetic-mod_percentage": 0.043
     },
     {
       "round": 2,
-      "total_votes": 65,
+      "total_votes": 70,
       "side_votes": {
         "pro-genetic-mod": 6,
         "anti-ubi": 6,
@@ -32,39 +32,39 @@
         "anti-nuclear": 10,
         "pro-nuclear": 15,
         "pro-crypto": 4,
-        "anti-crypto": 6,
+        "anti-crypto": 11,
         "anti-genetic-mod": 4
       },
-      "pro-genetic-mod_percentage": 0.092,
-      "anti-ubi_percentage": 0.092,
-      "pro-ubi_percentage": 0.215,
-      "anti-nuclear_percentage": 0.154,
-      "pro-nuclear_percentage": 0.231,
-      "pro-crypto_percentage": 0.062,
-      "anti-crypto_percentage": 0.092,
-      "anti-genetic-mod_percentage": 0.062
+      "pro-genetic-mod_percentage": 0.086,
+      "anti-ubi_percentage": 0.086,
+      "pro-ubi_percentage": 0.2,
+      "anti-nuclear_percentage": 0.143,
+      "pro-nuclear_percentage": 0.214,
+      "pro-crypto_percentage": 0.057,
+      "anti-crypto_percentage": 0.157,
+      "anti-genetic-mod_percentage": 0.057
     },
     {
       "round": 3,
-      "total_votes": 65,
+      "total_votes": 70,
       "side_votes": {
         "pro-genetic-mod": 5,
         "anti-ubi": 8,
         "pro-ubi": 12,
         "anti-nuclear": 16,
-        "pro-crypto": 6,
+        "pro-crypto": 10,
         "pro-nuclear": 9,
         "anti-genetic-mod": 5,
-        "anti-crypto": 4
+        "anti-crypto": 5
       },
-      "pro-genetic-mod_percentage": 0.077,
-      "anti-ubi_percentage": 0.123,
-      "pro-ubi_percentage": 0.185,
-      "anti-nuclear_percentage": 0.246,
-      "pro-crypto_percentage": 0.092,
-      "pro-nuclear_percentage": 0.138,
-      "anti-genetic-mod_percentage": 0.077,
-      "anti-crypto_percentage": 0.062
+      "pro-genetic-mod_percentage": 0.071,
+      "anti-ubi_percentage": 0.114,
+      "pro-ubi_percentage": 0.171,
+      "anti-nuclear_percentage": 0.229,
+      "pro-crypto_percentage": 0.143,
+      "pro-nuclear_percentage": 0.129,
+      "anti-genetic-mod_percentage": 0.071,
+      "anti-crypto_percentage": 0.071
     }
   ],
   "topic_analysis": [
@@ -97,6 +97,38 @@
           },
           "pro-ubi_percentage": 0.6,
           "anti-ubi_percentage": 0.4
+        }
+      }
+    },
+    {
+      "topic": "Is cryptocurrency a legitimate alternative to traditional banking?",
+      "rounds": {
+        "1": {
+          "total_votes": 15,
+          "side_votes": {
+            "pro-crypto": 3,
+            "anti-crypto": 12
+          },
+          "pro-crypto_percentage": 0.2,
+          "anti-crypto_percentage": 0.8
+        },
+        "2": {
+          "total_votes": 15,
+          "side_votes": {
+            "pro-crypto": 4,
+            "anti-crypto": 11
+          },
+          "pro-crypto_percentage": 0.267,
+          "anti-crypto_percentage": 0.733
+        },
+        "3": {
+          "total_votes": 15,
+          "side_votes": {
+            "pro-crypto": 10,
+            "anti-crypto": 5
+          },
+          "pro-crypto_percentage": 0.667,
+          "anti-crypto_percentage": 0.333
         }
       }
     },
@@ -161,38 +193,6 @@
           },
           "pro-nuclear_percentage": 0.36,
           "anti-nuclear_percentage": 0.64
-        }
-      }
-    },
-    {
-      "topic": "Is cryptocurrency a legitimate alternative to traditional banking?",
-      "rounds": {
-        "1": {
-          "total_votes": 10,
-          "side_votes": {
-            "pro-crypto": 2,
-            "anti-crypto": 8
-          },
-          "pro-crypto_percentage": 0.2,
-          "anti-crypto_percentage": 0.8
-        },
-        "2": {
-          "total_votes": 10,
-          "side_votes": {
-            "pro-crypto": 4,
-            "anti-crypto": 6
-          },
-          "pro-crypto_percentage": 0.4,
-          "anti-crypto_percentage": 0.6
-        },
-        "3": {
-          "total_votes": 10,
-          "side_votes": {
-            "pro-crypto": 6,
-            "anti-crypto": 4
-          },
-          "pro-crypto_percentage": 0.6,
-          "anti-crypto_percentage": 0.4
         }
       }
     }
