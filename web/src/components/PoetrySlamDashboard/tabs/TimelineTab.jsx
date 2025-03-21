@@ -215,8 +215,8 @@ const TimelineTab = () => {
 						<div className="space-y-6">
 							{/* Session metadata */}
 							<div className="bg-indigo-50 rounded-lg p-4">
-								<div className="mb-2">
-									<p className="text-sm text-gray-600 mb-2 flex items-center">
+								<div className="mb-2 flex items-center gap-4">
+									<p className="text-sm text-gray-600 flex items-center">
 										{gameDetail.game?.players?.length || 0}{" "}
 										participants
 									</p>
@@ -233,7 +233,7 @@ const TimelineTab = () => {
 									<p className="font-medium mb-1 flex">
 										Final scores:
 									</p>
-									<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 pl-2">
+									<div className="grid grid-flow-col sm:grid-rows-3 grid-rows-10 gap-1 pl-2">
 										{Array.isArray(finalScores) ? (
 											finalScores.map((score, index) => {
 												const highestScore = Math.max(
@@ -261,7 +261,8 @@ const TimelineTab = () => {
 														)}
 														: {score.score}
 													</div>
-												);})
+												);
+											})
 										) : (
 											<div className="text-sm">
 												{finalScores}
@@ -292,7 +293,7 @@ const TimelineTab = () => {
 										)}
 									</div>
 									<div className="p-6 prose prose-sm max-w-none">
-										<div className="whitespace-normal bg-yellow-50 p-4 rounded border border-yellow-100">
+										<div className="whitespace-normal bg-lime-50 p-4 rounded border border-lime-100">
 											<ReactMarkdown>
 												{prompt.text.replace(
 													/\n\n/g,
