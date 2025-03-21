@@ -41,14 +41,11 @@ const LeaderboardTab = () => {
 			/>
 
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-				{/* Use the AverageVotesChart Component */}
 				<AverageVotesChart
 					data={votingData}
 					title={"Average votes"}
 					subtitle={"The average number of votes received by each model"}
 				/>
-
-				{/* Use the PerformanceSummaryChart Component */}
 				<PerformanceSummaryChart
 					data={votingData}
 					title={"Performance Summary"}

@@ -12,7 +12,7 @@ import {
 } from "recharts";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
-const PerformanceSummaryChart = ({ data, title, subtitle }) => {
+const PerformanceSummaryChart = ({ data, title, subtitle, dataKey="name" }) => {
 	const { width } = useWindowDimensions();
 	// Responsive chart margins based on screen width
 	const chartMargins = {
@@ -39,7 +39,7 @@ const PerformanceSummaryChart = ({ data, title, subtitle }) => {
 							<CartesianGrid strokeDasharray="3 3" />
 							<XAxis type="number" />
 							<YAxis
-								dataKey="name"
+								dataKey={dataKey}
 								type="category"
 								width={40}
 								tick={{ fontSize: 12 }}

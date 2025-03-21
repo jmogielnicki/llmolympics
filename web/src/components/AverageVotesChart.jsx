@@ -11,7 +11,7 @@ import {
 } from "recharts";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
-const AverageVotesChart = ({ data, title, subtitle }) => {
+const AverageVotesChart = ({ data, title, subtitle, dataKey="name" }) => {
     const { width } = useWindowDimensions();
     // Responsive chart margins based on screen width
     const chartMargins = {
@@ -44,7 +44,7 @@ const AverageVotesChart = ({ data, title, subtitle }) => {
 								]}
 							/>
 							<YAxis
-								dataKey="name"
+								dataKey={dataKey}
 								type="category"
 								width={40}
 								tick={{ fontSize: 12 }}
