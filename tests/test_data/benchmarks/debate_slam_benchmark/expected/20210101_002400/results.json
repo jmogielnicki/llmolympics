@@ -1,0 +1,95 @@
+{
+  "game": "Debate Slam",
+  "timestamp": "2021-01-01T08:00:00",
+  "players": [
+    {
+      "id": "player_2",
+      "model_id": "anthropic:claude-3.7",
+      "final_state": {
+        "role": "debater",
+        "side_id": "pro-ubi",
+        "position": "Universal basic income is viable",
+        "score": 0,
+        "pre_swap": {
+          "side_id": "anti-ubi",
+          "position": "Universal basic income is not viable",
+          "score": 0
+        },
+        "post_swap": {
+          "side_id": "pro-ubi",
+          "position": "Universal basic income is viable",
+          "score": 0
+        }
+      },
+      "role": "debater"
+    },
+    {
+      "id": "player_1",
+      "model_id": "openai:gpt-4o",
+      "final_state": {
+        "role": "debater",
+        "side_id": "anti-ubi",
+        "position": "Universal basic income is not viable",
+        "score": 5,
+        "pre_swap": {
+          "side_id": "pro-ubi",
+          "position": "Universal basic income is viable",
+          "score": 2
+        },
+        "post_swap": {
+          "side_id": "anti-ubi",
+          "position": "Universal basic income is not viable",
+          "score": 3
+        }
+      },
+      "role": "debater"
+    },
+    {
+      "id": "player_3",
+      "model_id": "mistral:mistral-large",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_4",
+      "model_id": "deepseek:deepseek-chat",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_5",
+      "model_id": "xai:grok-2",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    }
+  ],
+  "winner": {
+    "id": "player_1"
+  },
+  "rounds_played": 3,
+  "history_summary": {
+    "argument_history": 3,
+    "judging_history": 3
+  },
+  "session_id": "debate_slam_20210101_002400",
+  "stats": {
+    "snapshot_count": 17,
+    "event_count": 102,
+    "chat_message_count": 30
+  }
+}

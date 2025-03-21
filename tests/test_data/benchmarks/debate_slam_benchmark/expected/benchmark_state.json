@@ -1,0 +1,64 @@
+{
+  "opponent_matrix": {
+    "openai:gpt-4o": [
+      "anthropic:claude-3.7",
+      "deepseek:deepseek-chat",
+      "mistral:mistral-large",
+      "xai:grok-2"
+    ],
+    "anthropic:claude-3.7": [
+      "deepseek:deepseek-chat",
+      "mistral:mistral-large",
+      "openai:gpt-4o",
+      "xai:grok-2"
+    ],
+    "mistral:mistral-large": [
+      "anthropic:claude-3.7",
+      "deepseek:deepseek-chat",
+      "openai:gpt-4o",
+      "xai:grok-2"
+    ],
+    "deepseek:deepseek-chat": [
+      "anthropic:claude-3.7",
+      "mistral:mistral-large",
+      "openai:gpt-4o",
+      "xai:grok-2"
+    ],
+    "xai:grok-2": [
+      "anthropic:claude-3.7",
+      "deepseek:deepseek-chat",
+      "mistral:mistral-large",
+      "openai:gpt-4o"
+    ]
+  },
+  "game_counts": {
+    "openai:gpt-4o": 1,
+    "anthropic:claude-3.7": 1,
+    "mistral:mistral-large": 1,
+    "deepseek:deepseek-chat": 1,
+    "xai:grok-2": 1
+  },
+  "role_counts": {
+    "openai:gpt-4o": {
+      "debater": 1,
+      "judge": 0
+    },
+    "anthropic:claude-3.7": {
+      "debater": 1,
+      "judge": 0
+    },
+    "mistral:mistral-large": {
+      "debater": 0,
+      "judge": 1
+    },
+    "deepseek:deepseek-chat": {
+      "debater": 0,
+      "judge": 1
+    },
+    "xai:grok-2": {
+      "debater": 0,
+      "judge": 1
+    }
+  },
+  "sessions_run": 0
+}

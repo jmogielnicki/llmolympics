@@ -1,0 +1,26 @@
+benchmark:
+  base_config: tests/test_data/benchmarks/debate_slam_benchmark/game_config.yaml
+  id: debate_slam_benchmark_1_test
+  output_dir: data/test_output
+  player_selection_strategy: least_games_with_role
+  player_selection_strategy_role: debater
+  players_per_game: 7
+  roles:
+    debater:
+      count: 2
+      incompatible_with:
+      - judge
+      selection: weighted_inverse
+    judge:
+      count: 3
+      incompatible_with:
+      - debater
+      selection: weighted_inverse
+  sessions: 1
+  type: multi_player
+models:
+- openai:gpt-4o
+- anthropic:claude-3.7
+- mistral:mistral-large
+- deepseek:deepseek-chat
+- xai:grok-2
