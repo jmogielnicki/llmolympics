@@ -1,0 +1,352 @@
+{
+  "metadata": {
+    "topic": "Should genetic modification of human embryos be permitted?",
+    "session_id": "debate_slam_20250319_154446",
+    "rounds_per_side": 3,
+    "debater_count": 2,
+    "judge_count": 5
+  },
+  "summary": {
+    "winner": {
+      "player_id": "player_1",
+      "model_name": "xai:grok-2-1212",
+      "total_score": 5
+    },
+    "voting_summary": {
+      "pre_swap": {
+        "anti-genetic-mod": 5
+      },
+      "post_swap": {
+        "anti-genetic-mod": 5
+      },
+      "total": {
+        "player_1": 5,
+        "player_7": 5
+      }
+    }
+  },
+  "players": {
+    "debaters": [
+      {
+        "player_id": "player_1",
+        "model": "xai:grok-2-1212",
+        "pre_swap_side": "pro-genetic-mod",
+        "post_swap_side": "anti-genetic-mod"
+      },
+      {
+        "player_id": "player_7",
+        "model": "openai:gpt-4o",
+        "pre_swap_side": "anti-genetic-mod",
+        "post_swap_side": "pro-genetic-mod"
+      }
+    ],
+    "judges": [
+      {
+        "player_id": "player_2",
+        "model": "deepseek:deepseek-chat"
+      },
+      {
+        "player_id": "player_3",
+        "model": "anthropic:claude-3-7-sonnet-20250219"
+      },
+      {
+        "player_id": "player_4",
+        "model": "anthropic:claude-3-5-sonnet-20240620"
+      },
+      {
+        "player_id": "player_5",
+        "model": "google:gemini-2.0-flash-thinking-exp-01-21"
+      },
+      {
+        "player_id": "player_6",
+        "model": "deepseek:deepseek-reasoner"
+      }
+    ]
+  },
+  "pre_swap": {
+    "rounds": [
+      {
+        "round_number": 1,
+        "debater_arguments": [
+          {
+            "player_id": "player_1",
+            "side_id": "pro-genetic-mod",
+            "position": "Genetic modification of human embryos should be permitted",
+            "argument": "Ladies and gentlemen, esteemed judges, and fellow debaters, today I stand before you to argue in favor of the genetic modification of human embryos. This revolutionary technology holds the potential to eradicate hereditary diseases, enhance human capabilities, and promote a healthier, more equitable society.\n\nFirstly, genetic modification offers a powerful tool to prevent the transmission of genetic disorders. Conditions such as cystic fibrosis, Huntington's disease, and many others could be eradicated before they even begin, sparing countless individuals and families from suffering and medical expenses. By allowing genetic modifications, we embrace a proactive approach to health, rather than merely reacting to diseases after they have manifested.\n\nSecondly, the enhancement of human capabilities through genetic modification can lead to significant societal benefits. Imagine a world where individuals are not only free from disease but are also endowed with enhanced cognitive and physical abilities. Such advancements could lead to breakthroughs in science, technology, and the arts, propelling humanity to new heights.\n\nMoreover, genetic modification can address social inequalities. By making these technologies accessible and regulated, we can ensure that all individuals have the opportunity to benefit from genetic enhancements, rather than only the affluent. This approach fosters a more level playing field, promoting fairness and reducing disparities.\n\nIn conclusion, the genetic modification of human embryos should be permitted because it offers the promise of a healthier, more capable, and more equitable society. We must embrace this technology with responsible regulations to ensure its ethical application and widespread benefits. Thank you."
+          },
+          {
+            "player_id": "player_7",
+            "side_id": "anti-genetic-mod",
+            "position": "Genetic modification of human embryos should not be permitted",
+            "argument": "Ladies and gentlemen, the prospect of genetic modification of human embryos poses profound ethical, social, and scientific concerns that cannot be overlooked. Firstly, the manipulation of human embryos ventures into ethically precarious territory, disrupting the natural course of life and potentially leading to unanticipated consequences. The idea of \u201cdesigner babies\u201d raises significant moral dilemmas about our societal values\u2014where such practices could exacerbate existing inequalities, granting privilege to those who can afford genetic enhancements while marginalizing those who cannot.\n\nFrom a scientific standpoint, our understanding of genetics remains incomplete. The CRISPR-Cas9 technology, though promising, comes with risks of off-target effects, where unintended genetic alterations could introduce new diseases or health issues that might not manifest until later in life. Such irreversible changes have uncertain long-term implications that could affect not only the individual but also future generations.\n\nMoreover, permitting genetic modification of embryos could pave the way for eugenics-driven ideologies, where subjective definitions of \u201cperfection\u201d begin to dictate who deserves certain genetic traits. This could lead to a homogenization of traits, undermining the rich diversity that defines humanity and fuels innovation and adaptability.\n\nIn conclusion, the implications of allowing genetic modification of human embryos extend far beyond individual choice, threatening fundamental ethical principles and societal cohesion. Until we possess a comprehensive understanding and framework to address these concerns, such practices should not be permitted. We must prioritize caution and respect for the natural genetic heritage every human inherits."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_2",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_3",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_5",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "anti-genetic-mod"
+          }
+        ],
+        "vote_tally": {
+          "anti-genetic-mod": 5
+        }
+      },
+      {
+        "round_number": 2,
+        "debater_arguments": [
+          {
+            "player_id": "player_1",
+            "side_id": "pro-genetic-mod",
+            "position": "Genetic modification of human embryos should be permitted",
+            "argument": "Ladies and gentlemen, I appreciate the concerns raised by my esteemed opponent, yet I contend that the benefits of genetic modification of human embryos far outweigh the potential risks, provided we implement robust regulatory frameworks.\n\nFirstly, addressing the ethical concerns, I assert that genetic modification can be conducted ethically if we focus solely on eliminating debilitating genetic diseases rather than pursuing enhancements that could lead to \"designer babies.\" By restricting modifications to essential health improvements, we safeguard against the creation of societal disparities.\n\nOn the scientific front, while it is true that our knowledge of genetics is still evolving, significant advancements in gene-editing technologies like CRISPR-Cas9 have shown promising results with decreasing off-target effects. Continuous research and stringent pre-clinical trials can further mitigate risks, ensuring that modifications are safe and effective.\n\nRegarding the fear of eugenics, comprehensive regulation and oversight can prevent the misuse of genetic modification for non-therapeutic enhancements. By establishing clear guidelines, we can maintain genetic diversity and prevent the homogenization of human traits.\n\nIn conclusion, while the concerns my opponent raises are valid, they can be addressed through thoughtful regulation and ethical considerations. The potential to eradicate genetic diseases and enhance human health justifies the careful and controlled use of genetic modification. We must not let fear of the unknown hinder progress that could significantly improve the quality of life for future generations."
+          },
+          {
+            "player_id": "player_7",
+            "side_id": "anti-genetic-mod",
+            "position": "Genetic modification of human embryos should not be permitted",
+            "argument": "Ladies and gentlemen, while my opponent argues for the potential benefits of genetic modification under robust regulations, we must remain cautious about the limitations of such oversight. Historical precedents in medical and scientific fields demonstrate that regulatory frameworks can be slow to adapt to rapid technological advancements, potentially allowing for misuse or unforeseen consequences before measures are adjusted.\n\nAdditionally, my opponent suggests that modifications should focus solely on eliminating genetic diseases, yet the line between therapy and enhancement is often blurred. Defining what constitutes an \"essential health improvement\" can be subjective, and societal pressures can easily shift towards non-therapeutic enhancements, spurring a market-driven approach that prioritizes profit over ethical considerations.\n\nMoreover, the assumption that genetic modification with current technologies can be performed safely ignores the complexity of polygenic traits and gene-environment interactions that cannot be fully controlled or predicted. The promise of eradicating genetic diseases is not as straightforward when considering the intricate interplay of multiple genes and external factors that contribute to most hereditary conditions.\n\nFinally, relying on regulations to prevent eugenics-driven ideologies underestimates the socio-economic dynamics at play. Genetic modification could exacerbate inequities, with wealthier individuals gaining earlier access to new technologies, thereby deepening societal divides rather than bridging them.\n\nIn conclusion, while the potential benefits of genetic modification are alluring, the ethical, scientific, and societal risks demand a cautious approach. Until we can ensure comprehensive safety and fairness, genetic modification of human embryos should not be permitted. Thank you."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_2",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_3",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_5",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "anti-genetic-mod"
+          }
+        ],
+        "vote_tally": {
+          "anti-genetic-mod": 5
+        }
+      },
+      {
+        "round_number": 3,
+        "debater_arguments": [
+          {
+            "player_id": "player_1",
+            "side_id": "pro-genetic-mod",
+            "position": "Genetic modification of human embryos should be permitted",
+            "argument": "Ladies and gentlemen, I appreciate the concerns raised by my esteemed opponent, yet I contend that the benefits of genetic modification of human embryos far outweigh the potential risks, provided we implement robust regulatory frameworks.\n\nFirstly, addressing the ethical concerns, I assert that genetic modification can be conducted ethically if we focus solely on eliminating debilitating genetic diseases rather than pursuing enhancements that could lead to \"designer babies.\" By restricting modifications to essential health improvements, we safeguard against the creation of societal disparities.\n\nOn the scientific front, while it is true that our knowledge of genetics is still evolving, significant advancements in gene-editing technologies like CRISPR-Cas9 have shown promising results with decreasing off-target effects. Continuous research and stringent pre-clinical trials can further mitigate risks, ensuring that modifications are safe and effective.\n\nRegarding the fear of eugenics, comprehensive regulation and oversight can prevent the misuse of genetic modification for non-therapeutic enhancements. By establishing clear guidelines, we can maintain genetic diversity and prevent the homogenization of human traits.\n\nIn conclusion, while the concerns my opponent raises are valid, they can be addressed through thoughtful regulation and ethical considerations. The potential to eradicate genetic diseases and enhance human health justifies the careful and controlled use of genetic modification. We must not let fear of the unknown hinder progress that could significantly improve the quality of life for future generations."
+          },
+          {
+            "player_id": "player_7",
+            "side_id": "anti-genetic-mod",
+            "position": "Genetic modification of human embryos should not be permitted",
+            "argument": "Ladies and gentlemen, while my opponent argues for the potential benefits of genetic modification under robust regulations, we must remain cautious about the limitations of such oversight. Historical precedents in medical and scientific fields demonstrate that regulatory frameworks can be slow to adapt to rapid technological advancements, potentially allowing for misuse or unforeseen consequences before measures are adjusted.\n\nAdditionally, my opponent suggests that modifications should focus solely on eliminating genetic diseases, yet the line between therapy and enhancement is often blurred. Defining what constitutes an \"essential health improvement\" can be subjective, and societal pressures can easily shift towards non-therapeutic enhancements, spurring a market-driven approach that prioritizes profit over ethical considerations.\n\nMoreover, the assumption that genetic modification with current technologies can be performed safely ignores the complexity of polygenic traits and gene-environment interactions that cannot be fully controlled or predicted. The promise of eradicating genetic diseases is not as straightforward when considering the intricate interplay of multiple genes and external factors that contribute to most hereditary conditions.\n\nFinally, relying on regulations to prevent eugenics-driven ideologies underestimates the socio-economic dynamics at play. Genetic modification could exacerbate inequities, with wealthier individuals gaining earlier access to new technologies, thereby deepening societal divides rather than bridging them.\n\nIn conclusion, while the potential benefits of genetic modification are alluring, the ethical, scientific, and societal risks demand a cautious approach. Until we can ensure comprehensive safety and fairness, genetic modification of human embryos should not be permitted. Thank you."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_2",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_3",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_5",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "anti-genetic-mod"
+          }
+        ],
+        "vote_tally": {
+          "anti-genetic-mod": 5
+        }
+      }
+    ],
+    "final_votes": {
+      "votes": {
+        "anti-genetic-mod": 5
+      },
+      "judge_breakdown": {
+        "player_2": "anti-genetic-mod",
+        "player_3": "anti-genetic-mod",
+        "player_4": "anti-genetic-mod",
+        "player_5": "anti-genetic-mod",
+        "player_6": "anti-genetic-mod"
+      }
+    }
+  },
+  "post_swap": {
+    "rounds": [
+      {
+        "round_number": 1,
+        "debater_arguments": [
+          {
+            "player_id": "player_7",
+            "side_id": "pro-genetic-mod",
+            "position": "Genetic modification of human embryos should be permitted",
+            "argument": "Ladies and gentlemen, the prospect of genetic modification of human embryos poses profound ethical, social, and scientific concerns that cannot be overlooked. Firstly, the manipulation of human embryos ventures into ethically precarious territory, disrupting the natural course of life and potentially leading to unanticipated consequences. The idea of \u201cdesigner babies\u201d raises significant moral dilemmas about our societal values\u2014where such practices could exacerbate existing inequalities, granting privilege to those who can afford genetic enhancements while marginalizing those who cannot.\n\nFrom a scientific standpoint, our understanding of genetics remains incomplete. The CRISPR-Cas9 technology, though promising, comes with risks of off-target effects, where unintended genetic alterations could introduce new diseases or health issues that might not manifest until later in life. Such irreversible changes have uncertain long-term implications that could affect not only the individual but also future generations.\n\nMoreover, permitting genetic modification of embryos could pave the way for eugenics-driven ideologies, where subjective definitions of \u201cperfection\u201d begin to dictate who deserves certain genetic traits. This could lead to a homogenization of traits, undermining the rich diversity that defines humanity and fuels innovation and adaptability.\n\nIn conclusion, the implications of allowing genetic modification of human embryos extend far beyond individual choice, threatening fundamental ethical principles and societal cohesion. Until we possess a comprehensive understanding and framework to address these concerns, such practices should not be permitted. We must prioritize caution and respect for the natural genetic heritage every human inherits."
+          },
+          {
+            "player_id": "player_1",
+            "side_id": "anti-genetic-mod",
+            "position": "Genetic modification of human embryos should not be permitted",
+            "argument": "Ladies and gentlemen, esteemed judges, and fellow debaters, today I stand before you to argue in favor of the genetic modification of human embryos. This revolutionary technology holds the potential to eradicate hereditary diseases, enhance human capabilities, and promote a healthier, more equitable society.\n\nFirstly, genetic modification offers a powerful tool to prevent the transmission of genetic disorders. Conditions such as cystic fibrosis, Huntington's disease, and many others could be eradicated before they even begin, sparing countless individuals and families from suffering and medical expenses. By allowing genetic modifications, we embrace a proactive approach to health, rather than merely reacting to diseases after they have manifested.\n\nSecondly, the enhancement of human capabilities through genetic modification can lead to significant societal benefits. Imagine a world where individuals are not only free from disease but are also endowed with enhanced cognitive and physical abilities. Such advancements could lead to breakthroughs in science, technology, and the arts, propelling humanity to new heights.\n\nMoreover, genetic modification can address social inequalities. By making these technologies accessible and regulated, we can ensure that all individuals have the opportunity to benefit from genetic enhancements, rather than only the affluent. This approach fosters a more level playing field, promoting fairness and reducing disparities.\n\nIn conclusion, the genetic modification of human embryos should be permitted because it offers the promise of a healthier, more capable, and more equitable society. We must embrace this technology with responsible regulations to ensure its ethical application and widespread benefits. Thank you."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_2",
+            "vote": "pro-genetic-mod"
+          },
+          {
+            "player_id": "player_3",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "pro-genetic-mod"
+          },
+          {
+            "player_id": "player_5",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "anti-genetic-mod"
+          }
+        ],
+        "vote_tally": {
+          "pro-genetic-mod": 2,
+          "anti-genetic-mod": 3
+        }
+      },
+      {
+        "round_number": 2,
+        "debater_arguments": [
+          {
+            "player_id": "player_7",
+            "side_id": "pro-genetic-mod",
+            "position": "Genetic modification of human embryos should be permitted",
+            "argument": "Ladies and gentlemen, esteemed judges, allow me to conclude this critical debate by reiterating why the genetic modification of human embryos should not be permitted.\n\nWhile my opponent emphasizes adaptive regulatory bodies and ethical boundaries, history warns us of the gap between regulation and practice. Regulatory frameworks often lag behind technological advancements, and establishing \u201cadaptive\u201d bodies does not guarantee immediate or effective responses to emerging ethical and practical challenges.\n\nFurthermore, the proposed focus on eliminating diseases while avoiding enhancements lacks feasibility. Medical necessity is not immune to societal influence, and as our understanding of genetics grows, so does the potential for blurred lines between health and enhancement, potentially leading to slippery slopes of \u201cimprovement\u201d driven by subjective ideals of perfection.\n\nAdditionally, my opponent's faith in mitigating genetic complexities underestimates the intricacy of human genetics and the unpredictable nature of gene-environment interactions. No amount of pre-clinical trials can foresee long-term effects on diverse genetic backgrounds, particularly when polygenic traits are involved.\n\nLastly, while equitable access sounds promising, the reality often contradicts intentions. Technologies initially aimed at equality can become tools of disparity due to economic and political dynamics, further entrenching existing inequalities.\n\nIn conclusion, the stakes of genetic modification on human embryos are too high, with uncertainties and ethical dilemmas that technology and regulation cannot currently surmount. We must prioritize caution over expediency and preserve the diversity and freedom that define humanity. Thank you."
+          },
+          {
+            "player_id": "player_1",
+            "side_id": "anti-genetic-mod",
+            "position": "Genetic modification of human embryos should not be permitted",
+            "argument": "Ladies and gentlemen, I thank my opponent for their thoughtful arguments. In this final round, I will address the concerns raised and reinforce why genetic modification of human embryos should be permitted.\n\nFirstly, regarding regulatory limitations, I acknowledge that frameworks must evolve with technology. However, this is not a reason to halt progress. We can establish adaptive regulatory bodies, similar to those in pharmaceuticals, which continuously update guidelines to ensure safety and ethical compliance. Such bodies would monitor and adjust policies as new data emerges, preventing misuse and unforeseen consequences.\n\nSecondly, the distinction between therapy and enhancement is indeed complex, but we can set clear ethical boundaries. We must define \"essential health improvements\" based on medical necessity, not societal pressure. By focusing on eliminating debilitating genetic diseases, we prioritize health over profit, maintaining ethical integrity.\n\nThirdly, while the complexity of genetics is undeniable, ongoing research is narrowing the gaps. With advancements in gene-editing technologies and comprehensive pre-clinical trials, we can mitigate risks associated with polygenic traits and gene-environment interactions. The potential to eradicate genetic diseases justifies cautious progress.\n\nLastly, to address socio-economic disparities, we can implement equitable access policies, ensuring that genetic modification technologies are available to all, not just the affluent. By doing so, we can prevent the exacerbation of inequalities.\n\nIn conclusion, with responsible regulation, clear ethical guidelines, and equitable access, the benefits of genetic modification far outweigh the risks. We have the opportunity to enhance human health and reduce suffering. Let us not let fear of the unknown prevent us from pursuing a better future. Thank you."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_2",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_3",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "pro-genetic-mod"
+          },
+          {
+            "player_id": "player_5",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "anti-genetic-mod"
+          }
+        ],
+        "vote_tally": {
+          "anti-genetic-mod": 4,
+          "pro-genetic-mod": 1
+        }
+      },
+      {
+        "round_number": 3,
+        "debater_arguments": [
+          {
+            "player_id": "player_7",
+            "side_id": "pro-genetic-mod",
+            "position": "Genetic modification of human embryos should be permitted",
+            "argument": "Esteemed judges, ladies and gentlemen, let me address the concerns raised by my opponent.\n\nFirst, the ethical argument of \u201cplaying God\u201d lacks nuance. Genetic modification aims to alleviate suffering by eradicating diseases, a goal aligned with the ethical principle of promoting well-being. The comparison to playing God is often used to resist technological advancements that could benefit humanity, yet society has adapted and benefited from such advancements in fields like medicine and agriculture.\n\nOn the point of social inequality, it is crucial to consider that this challenge is not exclusive to genetic modification. Healthcare access, education, and even technology have all faced similar issues, yet we strive for broader accessibility rather than abandoning progress. With proper regulation and international cooperation, genetic modification could become an equitable solution, rather than a privilege for the few.\n\nConcerning long-term scientific uncertainties, it\u2019s important to note that all emerging technologies carry initial unknowns. This should not deter scientific exploration but instead encourage meticulous research and development. Controlled use, alongside rigorous ethical and safety checks, can help alleviate fears of unintended consequences.\n\nIn closing, rather than fearing change, we should shape a future where genetic modification is responsibly integrated into society, providing hope for those afflicted by genetic disorders and paving the way for medical progress. Let us focus on crafting a regulated path forward, ensuring the benefits of genetic advancements are realized for all humanity."
+          },
+          {
+            "player_id": "player_1",
+            "side_id": "anti-genetic-mod",
+            "position": "Genetic modification of human embryos should not be permitted",
+            "argument": "Esteemed judges, ladies and gentlemen, I appreciate my opponent's response, but I must reaffirm that the genetic modification of human embryos should not be permitted.\n\nOn the ethical front, my opponent's dismissal of the \"playing God\" argument oversimplifies the issue. While alleviating suffering is a noble goal, the power to decide which traits are eradicated or enhanced inherently involves subjective judgments about what constitutes a \"better\" human. This power can lead to eugenics and a loss of human diversity, which is ethically unacceptable.\n\nRegarding social inequality, my opponent's comparison to other fields is flawed. Genetic modification directly alters human biology, creating inherent advantages that cannot be easily leveled by policy. Even with regulations, the initial advantage will still exist, perpetuating a genetic divide that undermines societal equality.\n\nAs for scientific uncertainties, my opponent's call for continued research overlooks the potential harm to human subjects. The precautionary principle should guide our approach to such irreversible modifications. We cannot risk unintended consequences on future generations when the full impact is still unknown.\n\nIn conclusion, the potential for ethical violations, social inequality, and unknown scientific risks outweighs the speculative benefits of genetic modification. We must prioritize caution and ethical responsibility over the allure of technological advancement. Therefore, I strongly argue that the genetic modification of human embryos should not be permitted."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_2",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_3",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_5",
+            "vote": "anti-genetic-mod"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "anti-genetic-mod"
+          }
+        ],
+        "vote_tally": {
+          "anti-genetic-mod": 5
+        }
+      }
+    ],
+    "final_votes": {
+      "votes": {
+        "anti-genetic-mod": 5
+      },
+      "judge_breakdown": {
+        "player_2": "anti-genetic-mod",
+        "player_3": "anti-genetic-mod",
+        "player_4": "anti-genetic-mod",
+        "player_5": "anti-genetic-mod",
+        "player_6": "anti-genetic-mod"
+      }
+    }
+  }
+}

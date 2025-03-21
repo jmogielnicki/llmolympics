@@ -1,0 +1,356 @@
+{
+  "metadata": {
+    "topic": "Is nuclear energy the best solution for climate change?",
+    "session_id": "debate_slam_20250319_104112",
+    "rounds_per_side": 3,
+    "debater_count": 2,
+    "judge_count": 5
+  },
+  "summary": {
+    "winner": {
+      "player_id": "player_3",
+      "model_name": "anthropic:claude-3-7-sonnet-20250219",
+      "total_score": 9
+    },
+    "voting_summary": {
+      "pre_swap": {
+        "pro-nuclear": 4,
+        "anti-nuclear": 1
+      },
+      "post_swap": {
+        "anti-nuclear": 5
+      },
+      "total": {
+        "player_3": 9,
+        "player_5": 1
+      }
+    }
+  },
+  "players": {
+    "debaters": [
+      {
+        "player_id": "player_3",
+        "model": "anthropic:claude-3-7-sonnet-20250219",
+        "pre_swap_side": "pro-nuclear",
+        "post_swap_side": "anti-nuclear"
+      },
+      {
+        "player_id": "player_5",
+        "model": "google:gemini-2.0-flash",
+        "pre_swap_side": "anti-nuclear",
+        "post_swap_side": "pro-nuclear"
+      }
+    ],
+    "judges": [
+      {
+        "player_id": "player_1",
+        "model": "openai:gpt-4o"
+      },
+      {
+        "player_id": "player_2",
+        "model": "anthropic:claude-3-5-sonnet-20240620"
+      },
+      {
+        "player_id": "player_4",
+        "model": "deepseek:deepseek-chat"
+      },
+      {
+        "player_id": "player_6",
+        "model": "xai:grok-2-1212"
+      },
+      {
+        "player_id": "player_7",
+        "model": "openai:gpt-4.5-preview"
+      }
+    ]
+  },
+  "pre_swap": {
+    "rounds": [
+      {
+        "round_number": 1,
+        "debater_arguments": [
+          {
+            "player_id": "player_3",
+            "side_id": "pro-nuclear",
+            "position": "Nuclear energy is the best solution for climate change",
+            "argument": "Ladies and gentlemen, I stand before you today to argue that nuclear energy represents our most effective solution to combat climate change. The urgency of our climate crisis demands solutions that are both immediate and sustainable, and nuclear energy uniquely meets these criteria.\n\nFirst, nuclear energy provides unparalleled carbon efficiency. Nuclear power plants produce zero direct carbon emissions during operation. When considering lifecycle emissions, including construction and fuel processing, nuclear energy generates just 12 grams of CO2 per kilowatt-hour \u2013 comparable to wind and significantly lower than solar, and drastically lower than fossil fuels.\n\nSecond, nuclear power delivers unmatched reliability and energy density. A single nuclear plant can generate enormous amounts of electricity 24/7, regardless of weather conditions, with a capacity factor exceeding 90% \u2013 far outperforming intermittent renewables. This reliability is crucial for maintaining stable grids while decarbonizing our energy systems.\n\nThird, the technology is available now. We don't need to wait for technological breakthroughs \u2013 we can deploy nuclear power immediately using proven designs, while incorporating advances in safety and efficiency from next-generation reactors.\n\nFourth, nuclear energy has the smallest land footprint of any clean energy source, preserving natural habitats and biodiversity while we address climate change.\n\nFinally, contrary to common misconceptions, nuclear power has proven to be exceptionally safe, with the lowest mortality rate per unit of energy produced among all major energy sources.\n\nThe climate crisis demands pragmatic solutions that can deliver clean energy at scale. While a diversified approach is necessary, nuclear energy must be the cornerstone of any serious climate strategy due to its unmatched combination of zero-carbon operation, reliability, energy density, and proven technology."
+          },
+          {
+            "player_id": "player_5",
+            "side_id": "anti-nuclear",
+            "position": "Nuclear energy is not the best solution for climate change",
+            "argument": "Good morning, judges and esteemed opponents. We stand here today to argue that while nuclear energy may play a role in a diversified energy portfolio, it is demonstrably *not* the best solution for climate change. The pursuit of a single \"best\" solution is a dangerous oversimplification, and focusing solely on nuclear power distracts us from more effective, readily deployable, and sustainable strategies.\n\nOur primary argument rests on the inherent risks and limitations associated with nuclear energy. The potential for catastrophic accidents, like Chernobyl and Fukushima, however rare, carries devastating environmental and human consequences that far outweigh its benefits. Furthermore, the problem of nuclear waste disposal remains unsolved, leaving a toxic legacy for future generations to manage. The long-term storage costs and potential for environmental contamination are significant and cannot be ignored.\n\nBeyond safety concerns, the economic realities of nuclear energy paint a bleak picture. Nuclear power plants are incredibly expensive to build and maintain, often facing significant delays and cost overruns. These massive upfront investments could be better allocated to rapidly scaling up renewable energy sources like solar and wind, which are becoming increasingly cost-competitive and have a significantly smaller environmental footprint.\n\nFinally, focusing solely on nuclear energy neglects the vital role of energy efficiency, grid modernization, and demand-side management. A holistic approach, embracing diverse renewable sources coupled with aggressive efficiency measures, offers a far more sustainable, resilient, and economically viable path to combatting climate change than relying solely on the promise of nuclear power. We will demonstrate throughout this debate why a diversified and sustainable strategy is the truly \"best\" solution. Thank you."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_1",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_2",
+            "vote": "pro-nuclear"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "pro-nuclear"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "pro-nuclear"
+          },
+          {
+            "player_id": "player_7",
+            "vote": "pro-nuclear"
+          }
+        ],
+        "vote_tally": {
+          "anti-nuclear": 1,
+          "pro-nuclear": 4
+        }
+      },
+      {
+        "round_number": 2,
+        "debater_arguments": [
+          {
+            "player_id": "player_3",
+            "side_id": "pro-nuclear",
+            "position": "Nuclear energy is the best solution for climate change",
+            "argument": "Thank you for your thoughtful response. I want to address several misconceptions in my opponent's argument.\n\nFirst, regarding safety: Nuclear power has statistically proven to be the safest form of energy per kilowatt-hour produced. Even including Chernobyl and Fukushima, nuclear energy causes fewer deaths than any other major energy source. Modern reactor designs have multiple passive safety systems that make such accidents virtually impossible.\n\nSecond, on nuclear waste: Unlike carbon emissions, which disperse uncontrollably into our atmosphere, nuclear waste is fully contained, measurable, and manageable. Advanced reactor designs can actually use existing waste as fuel, drastically reducing storage requirements.\n\nThird, on economics: While upfront costs are significant, nuclear plants operate for 60-80 years with minimal fuel costs, making their lifetime cost highly competitive. The IPCC itself acknowledges nuclear power as necessary for cost-effective climate mitigation.\n\nFourth, regarding diversification: I never suggested nuclear energy alone would solve climate change. Rather, it must be the backbone of a reliable grid that includes renewables. The intermittency of wind and solar necessitates either massive overbuilding plus storage (at tremendous economic and environmental cost) or reliable baseload power \u2013 which nuclear uniquely provides while remaining carbon-free.\n\nClimate change demands immediate, scalable action. Nuclear energy is the only proven, reliable, carbon-free energy source that can replace fossil fuels at the scale and timeline required to avoid catastrophic warming."
+          },
+          {
+            "player_id": "player_5",
+            "side_id": "anti-nuclear",
+            "position": "Nuclear energy is not the best solution for climate change",
+            "argument": "Thank you, opponent, for clarifying your position. However, even with these clarifications, nuclear energy remains a less desirable solution compared to a diversified approach prioritizing renewables and efficiency.\n\nFirstly, while statistically nuclear may be \"safe,\" the *potential* for catastrophic events, however small, introduces unacceptable risk. We are not just discussing statistics; we're talking about existential threats to entire regions, as history has shown. Claiming modern designs make accidents \"virtually impossible\" is a dangerous overstatement, as no technology is infallible.\n\nSecondly, the manageability of nuclear waste does not negate the problem. It requires long-term storage solutions that are politically and environmentally challenging. While advanced reactors *could* use waste, they are not yet widely deployed, and the fundamental problem of long-term storage remains. Funding for these hypothetical reactors further diverts resources from proven solutions.\n\nThirdly, the IPCC's acknowledgement of nuclear power does not equate to endorsement as the *best* solution. They acknowledge it as *part* of a portfolio. The long-term cost competitiveness is also dependent on factors like government subsidies and regulatory burdens, which are subject to change. Resources spent on building and maintaining nuclear plants would be more effectively used to expand existing renewable infrastructure.\n\nFinally, while you acknowledge the need for diversification, framing nuclear as the \"backbone\" is precisely the problem. This prioritization locks us into an expensive, risky technology, hindering the development and deployment of more sustainable and cost-effective alternatives. A truly diversified grid should prioritize renewables, supported by grid modernization and demand-side management, not reliant on a single, potentially catastrophic, technology."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_1",
+            "vote": "pro-nuclear"
+          },
+          {
+            "player_id": "player_2",
+            "vote": "pro-nuclear"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "pro-nuclear"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_7",
+            "vote": "pro-nuclear"
+          }
+        ],
+        "vote_tally": {
+          "pro-nuclear": 4,
+          "anti-nuclear": 1
+        }
+      },
+      {
+        "round_number": 3,
+        "debater_arguments": [
+          {
+            "player_id": "player_3",
+            "side_id": "pro-nuclear",
+            "position": "Nuclear energy is the best solution for climate change",
+            "argument": "Thank you for your thoughtful response. I want to address several misconceptions in my opponent's argument.\n\nFirst, regarding safety: Nuclear power has statistically proven to be the safest form of energy per kilowatt-hour produced. Even including Chernobyl and Fukushima, nuclear energy causes fewer deaths than any other major energy source. Modern reactor designs have multiple passive safety systems that make such accidents virtually impossible.\n\nSecond, on nuclear waste: Unlike carbon emissions, which disperse uncontrollably into our atmosphere, nuclear waste is fully contained, measurable, and manageable. Advanced reactor designs can actually use existing waste as fuel, drastically reducing storage requirements.\n\nThird, on economics: While upfront costs are significant, nuclear plants operate for 60-80 years with minimal fuel costs, making their lifetime cost highly competitive. The IPCC itself acknowledges nuclear power as necessary for cost-effective climate mitigation.\n\nFourth, regarding diversification: I never suggested nuclear energy alone would solve climate change. Rather, it must be the backbone of a reliable grid that includes renewables. The intermittency of wind and solar necessitates either massive overbuilding plus storage (at tremendous economic and environmental cost) or reliable baseload power \u2013 which nuclear uniquely provides while remaining carbon-free.\n\nClimate change demands immediate, scalable action. Nuclear energy is the only proven, reliable, carbon-free energy source that can replace fossil fuels at the scale and timeline required to avoid catastrophic warming."
+          },
+          {
+            "player_id": "player_5",
+            "side_id": "anti-nuclear",
+            "position": "Nuclear energy is not the best solution for climate change",
+            "argument": "Thank you, opponent, for clarifying your position. However, even with these clarifications, nuclear energy remains a less desirable solution compared to a diversified approach prioritizing renewables and efficiency.\n\nFirstly, while statistically nuclear may be \"safe,\" the *potential* for catastrophic events, however small, introduces unacceptable risk. We are not just discussing statistics; we're talking about existential threats to entire regions, as history has shown. Claiming modern designs make accidents \"virtually impossible\" is a dangerous overstatement, as no technology is infallible.\n\nSecondly, the manageability of nuclear waste does not negate the problem. It requires long-term storage solutions that are politically and environmentally challenging. While advanced reactors *could* use waste, they are not yet widely deployed, and the fundamental problem of long-term storage remains. Funding for these hypothetical reactors further diverts resources from proven solutions.\n\nThirdly, the IPCC's acknowledgement of nuclear power does not equate to endorsement as the *best* solution. They acknowledge it as *part* of a portfolio. The long-term cost competitiveness is also dependent on factors like government subsidies and regulatory burdens, which are subject to change. Resources spent on building and maintaining nuclear plants would be more effectively used to expand existing renewable infrastructure.\n\nFinally, while you acknowledge the need for diversification, framing nuclear as the \"backbone\" is precisely the problem. This prioritization locks us into an expensive, risky technology, hindering the development and deployment of more sustainable and cost-effective alternatives. A truly diversified grid should prioritize renewables, supported by grid modernization and demand-side management, not reliant on a single, potentially catastrophic, technology."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_1",
+            "vote": "pro-nuclear"
+          },
+          {
+            "player_id": "player_2",
+            "vote": "pro-nuclear"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "pro-nuclear"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_7",
+            "vote": "pro-nuclear"
+          }
+        ],
+        "vote_tally": {
+          "pro-nuclear": 4,
+          "anti-nuclear": 1
+        }
+      }
+    ],
+    "final_votes": {
+      "votes": {
+        "pro-nuclear": 4,
+        "anti-nuclear": 1
+      },
+      "judge_breakdown": {
+        "player_1": "pro-nuclear",
+        "player_2": "pro-nuclear",
+        "player_4": "pro-nuclear",
+        "player_6": "anti-nuclear",
+        "player_7": "pro-nuclear"
+      }
+    }
+  },
+  "post_swap": {
+    "rounds": [
+      {
+        "round_number": 1,
+        "debater_arguments": [
+          {
+            "player_id": "player_5",
+            "side_id": "pro-nuclear",
+            "position": "Nuclear energy is the best solution for climate change",
+            "argument": "Good morning, judges and esteemed opponents. We stand here today to argue that while nuclear energy may play a role in a diversified energy portfolio, it is demonstrably *not* the best solution for climate change. The pursuit of a single \"best\" solution is a dangerous oversimplification, and focusing solely on nuclear power distracts us from more effective, readily deployable, and sustainable strategies.\n\nOur primary argument rests on the inherent risks and limitations associated with nuclear energy. The potential for catastrophic accidents, like Chernobyl and Fukushima, however rare, carries devastating environmental and human consequences that far outweigh its benefits. Furthermore, the problem of nuclear waste disposal remains unsolved, leaving a toxic legacy for future generations to manage. The long-term storage costs and potential for environmental contamination are significant and cannot be ignored.\n\nBeyond safety concerns, the economic realities of nuclear energy paint a bleak picture. Nuclear power plants are incredibly expensive to build and maintain, often facing significant delays and cost overruns. These massive upfront investments could be better allocated to rapidly scaling up renewable energy sources like solar and wind, which are becoming increasingly cost-competitive and have a significantly smaller environmental footprint.\n\nFinally, focusing solely on nuclear energy neglects the vital role of energy efficiency, grid modernization, and demand-side management. A holistic approach, embracing diverse renewable sources coupled with aggressive efficiency measures, offers a far more sustainable, resilient, and economically viable path to combatting climate change than relying solely on the promise of nuclear power. We will demonstrate throughout this debate why a diversified and sustainable strategy is the truly \"best\" solution. Thank you."
+          },
+          {
+            "player_id": "player_3",
+            "side_id": "anti-nuclear",
+            "position": "Nuclear energy is not the best solution for climate change",
+            "argument": "Ladies and gentlemen, I stand before you today to argue that nuclear energy represents our most effective solution to combat climate change. The urgency of our climate crisis demands solutions that are both immediate and sustainable, and nuclear energy uniquely meets these criteria.\n\nFirst, nuclear energy provides unparalleled carbon efficiency. Nuclear power plants produce zero direct carbon emissions during operation. When considering lifecycle emissions, including construction and fuel processing, nuclear energy generates just 12 grams of CO2 per kilowatt-hour \u2013 comparable to wind and significantly lower than solar, and drastically lower than fossil fuels.\n\nSecond, nuclear power delivers unmatched reliability and energy density. A single nuclear plant can generate enormous amounts of electricity 24/7, regardless of weather conditions, with a capacity factor exceeding 90% \u2013 far outperforming intermittent renewables. This reliability is crucial for maintaining stable grids while decarbonizing our energy systems.\n\nThird, the technology is available now. We don't need to wait for technological breakthroughs \u2013 we can deploy nuclear power immediately using proven designs, while incorporating advances in safety and efficiency from next-generation reactors.\n\nFourth, nuclear energy has the smallest land footprint of any clean energy source, preserving natural habitats and biodiversity while we address climate change.\n\nFinally, contrary to common misconceptions, nuclear power has proven to be exceptionally safe, with the lowest mortality rate per unit of energy produced among all major energy sources.\n\nThe climate crisis demands pragmatic solutions that can deliver clean energy at scale. While a diversified approach is necessary, nuclear energy must be the cornerstone of any serious climate strategy due to its unmatched combination of zero-carbon operation, reliability, energy density, and proven technology."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_1",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_2",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "pro-nuclear"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_7",
+            "vote": "anti-nuclear"
+          }
+        ],
+        "vote_tally": {
+          "anti-nuclear": 4,
+          "pro-nuclear": 1
+        }
+      },
+      {
+        "round_number": 2,
+        "debater_arguments": [
+          {
+            "player_id": "player_5",
+            "side_id": "pro-nuclear",
+            "position": "Nuclear energy is the best solution for climate change",
+            "argument": "Esteemed judges, my opponent continues to frame nuclear energy as the indispensable solution, but this ignores the crucial limitations and risks that make it a less desirable path than a diversified approach.\n\nFirstly, while comparing real-world risks is important, dismissing the potential for nuclear catastrophe as merely \"theoretical\" is irresponsible. The low probability does not negate the high *impact*. We're talking about potential devastation that could render large areas uninhabitable, a risk not comparable to other energy sources. Focusing solely on deaths per TWh ignores the qualitative difference in potential harm.\n\nSecondly, claiming nuclear waste has never killed anyone is a misleading statistic. The danger lies in long-term storage and the potential for future contamination, a burden we pass on to future generations. Highlighting France's nuclear program ignores the significant government subsidies and the unique political context that enabled its success \u2013 a model not easily replicable globally. Furthermore, even France is now diversifying its energy mix.\n\nFinally, the IPCC's models are not prescriptive. They explore various scenarios, and while some include nuclear, many prioritize renewables and efficiency. Emulating France, Sweden and Ontario, requires significant upfront investment in nuclear which is not the best choice for countries that can more quickly deploy solar and wind.\n\nIn conclusion, while nuclear energy might have a role, prioritizing it as the \"best\" solution locks us into a costly, risky path, hindering the development of more sustainable, resilient, and ultimately safer alternatives. A diversified strategy focusing on renewables, efficiency, and grid modernization offers a more pragmatic and responsible way to combat climate change. Thank you."
+          },
+          {
+            "player_id": "player_3",
+            "side_id": "anti-nuclear",
+            "position": "Nuclear energy is not the best solution for climate change",
+            "argument": "Distinguished judges, I want to close by addressing three critical points.\n\nFirst, regarding risk: We must compare real-world risks, not theoretical ones. Climate change is an immediate, existential threat with 100% probability. Every year we delay decarbonization guarantees suffering for billions. When comparing energy sources that can replace fossil fuels at scale, nuclear has proven to be the safest. Even including historical accidents, nuclear causes fewer deaths per TWh than any alternative \u2013 99.7% fewer deaths than coal, 99.4% fewer than oil, and 97.5% fewer than natural gas. The safety record speaks for itself.\n\nSecond, on waste and economics: Nuclear waste has never killed anyone, unlike the millions who die annually from fossil fuel pollution. The volume is minuscule \u2013 all waste produced by American nuclear plants since the 1950s would fit on a single football field. Regarding costs, France demonstrated that standardized nuclear deployment can be cost-effective, achieving 75% nuclear electricity in just 15 years while maintaining some of Europe's lowest electricity prices and carbon emissions.\n\nFinally, on implementation: The IPCC's own models show that excluding nuclear makes meeting climate targets significantly more expensive or potentially impossible. Countries with the cleanest grids worldwide \u2013 France, Sweden, and Ontario \u2013 all rely heavily on nuclear combined with hydropower.\n\nClimate change demands practical solutions, not perfect ones. Nuclear energy's proven track record of reliable, safe, and scalable carbon-free power makes it indispensable to any serious climate strategy. Thank you."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_1",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_2",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_7",
+            "vote": "anti-nuclear"
+          }
+        ],
+        "vote_tally": {
+          "anti-nuclear": 5
+        }
+      },
+      {
+        "round_number": 3,
+        "debater_arguments": [
+          {
+            "player_id": "player_5",
+            "side_id": "pro-nuclear",
+            "position": "Nuclear energy is the best solution for climate change",
+            "argument": "Honorable judges, our opponent has raised several concerns regarding nuclear energy, but we believe these concerns are either overstated or do not outweigh the critical advantages nuclear offers in combating climate change.\n\nFirstly, regarding the time factor, while initial construction may take time, the long lifespan of nuclear plants \u2013 60-80 years or more \u2013 provides decades of continuous, carbon-free energy. Moreover, the development of Small Modular Reactors (SMRs) promises faster deployment times and reduced construction costs. We are not arguing against renewables playing a role, but they cannot be solely relied upon due to intermittency.\n\nSecondly, while some nuclear projects have faced cost overruns, this is not universally true, and it's crucial to consider the long-term operational costs. Renewables require significant land use and backup systems to address intermittency, which adds to their overall cost. The levelized cost of energy for nuclear, considering its reliability and longevity, is competitive and becoming more so with advancements in technology.\n\nThirdly, concerning safety and waste, modern nuclear plants have multiple layers of safety features, significantly reducing the risk of accidents. Nuclear waste is a manageable problem, with ongoing research into advanced recycling technologies that can further reduce its volume and radioactivity. This is a contained problem, unlike the continuous atmospheric pollution from fossil fuels.\n\nFinally, nuclear's perceived inflexibility is being addressed with designs that can adjust output to complement renewable energy sources. And while distributed renewable energy has its merits, centralized nuclear power provides a stable, reliable backbone for the grid, ensuring energy security and affordability.\n\nNuclear energy is not just a solution; it is the *best* solution because it offers the unique combination of scalability, reliability, and low-carbon emissions necessary to effectively combat climate change."
+          },
+          {
+            "player_id": "player_3",
+            "side_id": "anti-nuclear",
+            "position": "Nuclear energy is not the best solution for climate change",
+            "argument": "Distinguished judges, let me address the core flaws in my opponent's defense of nuclear energy.\n\nThe time argument remains decisive. Even with SMRs (which remain largely theoretical at commercial scale), we cannot afford to wait years when climate science demands immediate action. My opponent concedes that \"initial construction may take time\" \u2013 this understatement obscures the reality that even expedited nuclear projects take a decade while solar farms and wind turbines can be operational within months.\n\nRegarding economics, my opponent suggests we consider \"long-term operational costs,\" yet this ignores the immediate capital requirements. Climate change requires redirecting trillions of investment dollars today \u2013 and every dollar spent on expensive nuclear infrastructure is a dollar not spent on cheaper, faster renewable deployment. The International Energy Agency confirms renewable energy now offers the lowest cost of electricity in history.\n\nOn safety, while modern designs are improved, nuclear remains uniquely catastrophic when systems fail. Furthermore, no permanent waste solution exists anywhere in the world despite decades of trying.\n\nMy opponent claims nuclear's inflexibility is \"being addressed,\" but this acknowledgment reveals the technology isn't ready now \u2013 when we need solutions. Meanwhile, battery storage technologies are rapidly advancing, with costs dropping 97% over three decades.\n\nThe climate crisis demands proven, scalable, economical solutions available immediately. Renewables backed by advancing storage technologies meet these criteria today, while nuclear remains too slow, too expensive, and too inflexible to be our best option."
+          }
+        ],
+        "judge_votes": [
+          {
+            "player_id": "player_1",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_2",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_4",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_6",
+            "vote": "anti-nuclear"
+          },
+          {
+            "player_id": "player_7",
+            "vote": "anti-nuclear"
+          }
+        ],
+        "vote_tally": {
+          "anti-nuclear": 5
+        }
+      }
+    ],
+    "final_votes": {
+      "votes": {
+        "anti-nuclear": 5
+      },
+      "judge_breakdown": {
+        "player_1": "anti-nuclear",
+        "player_2": "anti-nuclear",
+        "player_4": "anti-nuclear",
+        "player_6": "anti-nuclear",
+        "player_7": "anti-nuclear"
+      }
+    }
+  }
+}
