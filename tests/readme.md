@@ -8,36 +8,6 @@ This directory contains an integration testing system for ParlourBench that allo
 - Fully deterministic execution (random, time, UUID)
 - Configurable mock LLM responses through YAML files
 - Support for both snapshot-based and assertion-based validation
-- Helper script for easy creation of new tests
-
-## Directory Structure
-
-```
-tests/
-├── mock/                       # Mock implementations
-│   ├── llm_client.py           # Mock LLM client
-│   ├── random_patch.py         # Deterministic random functions
-│   └── time_patch.py           # Deterministic time functions
-├── validation/                 # Validation utilities
-│   ├── snapshot.py             # Snapshot comparison
-│   └── assertions.py           # Assertion-based validation
-├── test_benchmarks.py          # Benchmark tests
-├── test_games.py               # Individual game tests
-├── conftest.py                 # pytest fixtures and configuration
-├── create_test.py              # Helper script for creating new tests
-└── test_data/                  # Test configurations and mock responses
-    ├── benchmarks/             # Benchmark test configurations
-    │   └── prisoners_dilemma_benchmark/
-    │       ├── test_config.yaml
-    │       ├── benchmark_config.yaml
-    │       ├── game_config.yaml
-    │       └── expected/      # Expected output snapshots
-    ├── games/                  # Game test configurations
-    └── responses/              # Mock LLM responses
-        └── pd_responses/
-            ├── model1.yaml
-            └── model2.yaml
-```
 
 ## Running Tests
 
@@ -68,94 +38,38 @@ pytest tests/test_benchmarks.py -v --benchmark=prisoners_dilemma_benchmark --upd
 ```
 
 ## Creating a New Test
+Note: See [this commit](https://github.com/jmogielnicki/parlourbench/commit/ab88ebdcfaa6cb7ce5c0338711f2fa07446ce574) for an example of adding new config files and [this commit](https://github.com/jmogielnicki/parlourbench/commit/6b6c23f164a7b603830331758bcdf692f430b2fa) to see the saved snapshots.
 
-The easiest way to create a new test is to use the helper script:
+__________________
+
+To create a new test, you will need to create a new directory like tests/test_data/benchmarks/<benchmark_name>.
+
+Then add the required configuration files:
+- benchmark_config.py
+- game_config.py
+- test_config.py
+- responses (directory)
+  - model1.yaml
+  - model2.yaml
+  - etc
+
+Once these files have been added you should be able to run the test like this:
 
 ```bash
-# For a benchmark test
-python tests/create_test.py --benchmark werewolf_benchmark
-
-# For a game test
-python tests/create_test.py --game werewolf
-
-# Specify models
-python tests/create_test.py --game werewolf --models "openai:gpt-4o" "anthropic:claude-3-7-sonnet" "mistral:mistral-large"
-
-# Use specific example template
-python tests/create_test.py --game werewolf --example werewolf
+# For a specific benchmark test
+pytest tests/test_benchmarks.py -v --benchmark=prisoners_dilemma_benchmark
 ```
 
-This will create all necessary directories and files with appropriate templates.
+The integration test should output the benchmark json files into the directory you specify in test_config.py.  You can then go and inspect these results to see if they match your expectations of what should happen given your configuration - game/benchmark setup and deterministic model responses.
 
-For snapshot-based tests, you must then establish a baseline by running with the `--update-snapshots` flag:
+Once you've determined that the results match expectations, you can update the snapshot with
 
 ```bash
 # For a specific benchmark test
 pytest tests/test_benchmarks.py -v --benchmark=prisoners_dilemma_benchmark --update-snapshots
-
-# For a specific game test
-pytest tests/test_games.py -v --game=prisoners_dilemma --update-snapshots
 ```
 
 This creates the expected output directory and populates it with the current test results. After this initial setup, you can run tests normally to compare against this baseline.
-
-
-## Test Configuration Format
-
-Each test requires a `test_config.yaml` file:
-
-```yaml
-name: "Test Name"
-description: "Description of what this test verifies"
-
-# Configuration paths - use either benchmark_config or game_config depending on test type
-benchmark_config: "path/to/benchmark_config.yaml"  # For benchmark tests
-game_config: "path/to/game_config.yaml"           # For game tests
-
-# Mock LLM responses
-mock_responses:
-  - "path/to/model1_responses.yaml"
-  - "path/to/model2_responses.yaml"
-
-# Validation configuration - use either snapshot or assertion validation
-validation:
-  type: "snapshot"
-  snapshot_dir: "path/to/expected_output"
-
-  # Or for assertion-based validation:
-  # type: "assertion"
-  # assertions:
-  #   - "games_completed == 5"
-  #   - "player_scores['player_1'] >= 8"
-  #   - "winners.count('player_2') >= 3"
-```
-
-## Mock Response Format
-
-Mock responses are defined in YAML files:
-
-```yaml
-model: "provider:model-name"  # e.g., "openai:gpt-4o"
-responses:
-  # Phase-specific responses with context matching
-  - phase: "decision"
-    round: 1
-    content: "I'll [[COOPERATE]] in this first round to establish trust."
-
-  - phase: "voting"
-    role: "villager"
-    content: "I vote to eliminate [[player_3]]."
-
-  # Keywords for matching specific prompts
-  - match_keywords: ["final decision", "urgent"]
-    content: "My final decision is option C."
-
-  # Default fallback response
-  - default: true
-    content: "I'll choose the first available option."
-```
-
-The mock LLM client will select the best matching response based on the context and prompt content.
 
 ## Adding Custom Validation
 
@@ -178,12 +92,3 @@ To debug interactively:
 ```bash
 pytest tests/test_benchmarks.py -v --benchmark=prisoners_dilemma_benchmark --pdb
 ```
-
-## Best Practices
-
-1. **Always establish snapshots first** - Run new tests with `--update-snapshots` before running normal comparison tests.
-2. **Keep mock responses minimal** - Define only the responses you need for the test case.
-3. **Make tests deterministic** - Don't rely on random behavior; design tests with predictable outcomes.
-4. **Validate key outcomes** - Focus validation on important aspects like winner determination, score distribution, etc.
-5. **Use descriptive test names** - Name tests clearly based on what they verify.
-6. **Group related tests** - Keep related test configurations and responses together.
