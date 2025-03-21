@@ -1,0 +1,36 @@
+{
+  "opponent_matrix": {
+    "deepseek:deepseek-chat": [
+      "anthropic:claude-3-5-sonnet-20240620",
+      "openai:gpt-4o"
+    ],
+    "openai:gpt-4o": [
+      "anthropic:claude-3-5-sonnet-20240620",
+      "deepseek:deepseek-chat"
+    ],
+    "anthropic:claude-3-5-sonnet-20240620": [
+      "deepseek:deepseek-chat",
+      "openai:gpt-4o"
+    ]
+  },
+  "game_counts": {
+    "deepseek:deepseek-chat": 1,
+    "openai:gpt-4o": 1,
+    "anthropic:claude-3-5-sonnet-20240620": 1
+  },
+  "role_counts": {
+    "deepseek:deepseek-chat": {
+      "author": 1,
+      "prompter": 1
+    },
+    "openai:gpt-4o": {
+      "author": 1,
+      "prompter": 0
+    },
+    "anthropic:claude-3-5-sonnet-20240620": {
+      "author": 1,
+      "prompter": 0
+    }
+  },
+  "sessions_run": 0
+}

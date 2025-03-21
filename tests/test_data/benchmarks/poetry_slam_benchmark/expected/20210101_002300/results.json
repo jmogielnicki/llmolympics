@@ -1,0 +1,47 @@
+{
+  "game": "Poetry Slam",
+  "timestamp": "2021-01-01T02:19:00",
+  "players": [
+    {
+      "id": "player_1",
+      "model_id": "deepseek:deepseek-chat",
+      "final_state": {
+        "role": "prompter",
+        "score": 0,
+        "submission": "this is my poem"
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_2",
+      "model_id": "openai:gpt-4o",
+      "final_state": {
+        "role": "author",
+        "score": 2,
+        "submission": "voilet's are blue, openai"
+      },
+      "role": "author"
+    },
+    {
+      "id": "player_3",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "final_state": {
+        "role": "author",
+        "score": 0,
+        "submission": "roses are red, Claude"
+      },
+      "role": "author"
+    }
+  ],
+  "winner": {
+    "id": "player_2"
+  },
+  "rounds_played": 0,
+  "history_summary": {},
+  "session_id": "poetry_slam_20210101_002300",
+  "stats": {
+    "snapshot_count": 5,
+    "event_count": 26,
+    "chat_message_count": 7
+  }
+}

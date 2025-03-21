@@ -1,0 +1,20 @@
+benchmark:
+  base_config: config/games/poetry_slam.yaml
+  id: poetry_slam_benchmark_1_test
+  output_dir: data/test_output
+  players_per_game: 3
+  roles:
+    author:
+      count: 3
+      selection: random
+    prompter:
+      count: 1
+      inherits:
+      - author
+      selection: weighted_inverse
+  sessions: 1
+  type: multi_player
+models:
+- deepseek:deepseek-chat
+- openai:gpt-4o
+- anthropic:claude-3-5-sonnet-20240620
