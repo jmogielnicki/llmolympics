@@ -12,7 +12,7 @@ const TabNavigation = ({ tabs, basePath }) => {
 	const currentPath = location.pathname;
 
 	return (
-		<div className="mb-8">
+		<div className="mb-2">
 			{/* Scrollable tab bar on small screens */}
 			<div className="overflow-x-auto pb-1">
 				<div className="flex border-b border-gray-200 min-w-max justify-left">

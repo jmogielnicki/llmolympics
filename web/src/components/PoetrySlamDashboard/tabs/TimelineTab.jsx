@@ -159,11 +159,11 @@ const TimelineTab = () => {
 
 	return (
 		<div className="w-full max-w-4xl mx-auto">
-			<div className="mb-8">
-				<h2 className="text-2xl font-bold text-center mb-1">
+			<div className="mb-8 mt-4">
+				<h2 className="text-xl font-bold text-center mb-1">
 					Poetry Session Details
 				</h2>
-				<p className="text-center text-gray-600 mb-6">
+				<p className="text-sm text-center text-gray-600 mb-6">
 					View prompts, poems, and voting results from poetry slam
 					sessions
 				</p>
