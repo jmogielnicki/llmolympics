@@ -47,6 +47,7 @@ const DebateRound = ({
 	// Calculate percentage for progress bar
 	const leftVotes = votesPerSide[leftSide] || 0;
 	const leftPercentage = totalVotes ? (leftVotes / totalVotes) * 100 : 50;
+	const rightVotes = votesPerSide[rightSide] || 0;
 
 	// Map player IDs to judge information
 	const judgeMap = {};
@@ -80,14 +81,18 @@ const DebateRound = ({
 					<div className="flex-1 h-8 flex pb-2">
 						{/* Left side progress - always purple */}
 						<div
-							className="h-full bg-purple-400"
+							className="h-full bg-purple-400 text-purple-600 text-xs flex align-center items-center justify-center"
 							style={{ width: `${leftPercentage}%` }}
-						></div>
+						>
+							{leftVotes}
+						</div>
 						{/* Right side progress - always amber */}
 						<div
-							className="h-full bg-amber-400"
+							className="h-full bg-amber-400  text-amber-600 text-xs flex align-center items-center justify-center"
 							style={{ width: `${100 - leftPercentage}%` }}
-						></div>
+						>
+							{rightVotes}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -147,30 +152,18 @@ const DebateRound = ({
 
 										{/* Content with increased left padding due to accent line */}
 										<div className="pl-3">
-											{/* Header with model name and stance */}
-											<div className="font-medium mb-3 flex flex-col">
-												<span className="text-gray-900 font-bold">
-													{shortenModelName(
-														debater?.model ||
-															argument.player_id
-													)}
-												</span>
-												<span
-													className={textColorClass}
-												>
-													{sideText}
-												</span>
-											</div>
+
 
 											{/* Argument text */}
-											<p className="text-sm whitespace-pre-line mb-4">
+											<p className={`text-sm whitespace-pre-line mb-4 ${textColorClass}`}>
 												{argument.argument}
 											</p>
 
 											{/* Integrated judge section */}
 											<div className="mt-3 pt-3 border-t border-gray-100">
 												<p className="text-xs text-gray-500 mb-2">
-													Judges who agreed:
+													Judges who agreed (⭐ =
+													swayed):
 												</p>
 												<div className="flex flex-wrap gap-1">
 													{judgeVotes

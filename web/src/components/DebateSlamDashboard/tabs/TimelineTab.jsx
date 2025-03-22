@@ -135,7 +135,7 @@ const getDebateData = () => {
 					>
 						{gameSessions?.map((session) => (
 							<option key={session.id} value={session.id}>
-								{session.id}
+								{`${session["participants"][0]} vs ${session["participants"][1]}`}
 							</option>
 						))}
 					</select>
@@ -176,7 +176,8 @@ const getDebateData = () => {
 										Debate Rounds
 									</h3>
 									<h1 className="text-sm text-stone-500">
-										How many votes did each model receive after each round
+										How many votes did each model receive
+										after each round
 									</h1>
 								</div>
 

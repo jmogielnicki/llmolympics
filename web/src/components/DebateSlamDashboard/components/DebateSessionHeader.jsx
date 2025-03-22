@@ -23,7 +23,7 @@ const DebateSessionHeader = ({
 						<h4 className="text-sm text-black-800">Debaters:</h4>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-2 ml-8">
+					<div className="grid grid-cols-1 gap-1 ml-8">
 						{debateData.debaters.map((debater) => {
 							// Use config to get consistent color for each debater
 							const color =

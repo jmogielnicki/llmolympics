@@ -261,7 +261,19 @@ export const debateSlamDefinition = {
 	},
 
 	transformGameDetail: (gameDetail) => {
-		return gameDetail
+		return {
+			...gameDetail,
+			players: {
+				debaters: gameDetail.players.debaters.map((debater) => ({
+					...debater,
+					model: shortenModelName(debater.model),
+				})),
+				judges: gameDetail.players.judges.map((judge) => ({
+					...judge,
+					model: shortenModelName(judge.model),
+				})),
+			},
+		};
 	},
 };
 
@@ -496,13 +508,13 @@ function extractSessions(data) {
 				sessionsMap.set(sessionId, {
 					id: sessionId,
 					title: gameTitle,
-					participants: [modelName],
+					participants: [shortenModelName(modelName)],
 				});
 			} else {
 				// If the session exists but this participant isn't listed, add them
 				const session = sessionsMap.get(sessionId);
 				if (!session.participants.includes(modelName)) {
-					session.participants.push(modelName);
+					session.participants.push(shortenModelName(modelName));
 				}
 			}
 		});
