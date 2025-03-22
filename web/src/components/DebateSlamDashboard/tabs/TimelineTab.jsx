@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useGameData } from "../../../context/GameDataContext";
 import DebateRound from "../components/DebateRound";
-import { Calendar } from "lucide-react";
-import { Plus } from "lucide-react";
+import { Calendar, Plus, Trophy, Users } from "lucide-react";
+import DebateSessionHeader from "../components/DebateSessionHeader"; // Import the new component
 
 /**
  * Timeline tab for displaying debate slam sessions
@@ -156,24 +156,14 @@ const TimelineTab = () => {
 				) : (
 					debateData && (
 						<div className="space-y-6">
-							{/* Debate metadata */}
-							<div className="bg-indigo-50 rounded-lg p-4">
-								<div className="mb-2">
-									<h3 className="font-semibold text-lg mb-2">
-										{debateData.topic}
-									</h3>
-									<p className="text-sm text-gray-600 mb-2 flex items-center">
-										{debateData.judges.length} judges,{" "}
-										{debateData.debaters.length} debaters
-									</p>
-									<p className="text-sm text-gray-600 flex items-center">
-										<Calendar size={14} className="mr-1" />
-										{getSessionDate(selectedSession)}
-									</p>
-								</div>
-							</div>
+							{/* Use the new enhanced debate header component */}
+							<DebateSessionHeader
+								debateData={debateData}
+								selectedSession={selectedSession}
+								getSessionDate={getSessionDate}
+							/>
 
-							{/* Pre-swap rounds */}
+							{/* Debate rounds */}
 							<div className="bg-white rounded-lg shadow-md overflow-hidden">
 								<div className="px-6 py-4 border-b border-gray-200">
 									<h3 className="text-lg font-semibold">
@@ -341,12 +331,16 @@ const TimelineTab = () => {
 							{debateData.summary &&
 								debateData.summary.winner && (
 									<div className="bg-amber-50 p-4 border border-amber-200 rounded-lg text-center">
-										<h3 className="font-semibold text-lg">
+										<h3 className="font-semibold text-lg flex items-center justify-center">
 											Overall Winner:{" "}
 											{getDebaterName(
 												debateData.summary.winner
 													.player_id
 											)}
+											<Trophy
+												size={18}
+												className="ml-2 text-amber-500 fill-amber-500"
+											/>
 										</h3>
 										<p className="text-sm">
 											Total Score:{" "}
