@@ -5,6 +5,7 @@ import os
 from collections import defaultdict
 import argparse
 from pathlib import Path
+from common_utils import extract_model_name
 
 def split_events_by_swap(events):
     """Split events into pre-swap and post-swap collections."""
@@ -408,7 +409,7 @@ def process_single_session(session_dir, output_file, verbose=True):
             llm_integration = config.get('llm_integration', {})
             for player_id, model in llm_integration.get('player_models', {}).items():
                 # Extract friendly model name
-                model_name = model.split('/')[-1] if '/' in model else model
+                model_name = extract_model_name(model)
                 player_models[player_id] = model_name
         except Exception as e:
             if verbose:
@@ -527,7 +528,7 @@ def main():
                 llm_integration = config.get('llm_integration', {})
                 for player_id, model in llm_integration.get('player_models', {}).items():
                     # Extract friendly model name
-                    model_name = model.split('/')[-1] if '/' in model else model
+                    model_name = extract_model_name(model)
                     player_models[player_id] = model_name
             except Exception as e:
                 print(f"Error loading config: {e}")
