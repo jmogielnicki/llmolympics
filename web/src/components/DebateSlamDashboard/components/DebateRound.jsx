@@ -71,22 +71,26 @@ const DebateRound = ({
 			>
 				<div className="flex-col w-full">
 					<div className="flex items-center justify-center align-center">
-						<div className="px-4 pt-4 pb-1 text-sm font-medium w-auto">
+						<div className="px-4 pt-4 pb-1 text-sm font-medium w-auto text-stone-600">
 							Round {round.round_number}
 						</div>
-						<div className="bg-gray-50 mt-3 p-1 flex items-center">
-							{isExpanded ? <Minus size={18} /> : <Plus size={18} />}
+						<div className="bg-gray-50 mt-3 p-1 flex items-center text-stone-600">
+							{isExpanded ? (
+								<Minus size={18} />
+							) : (
+								<Plus size={18} />
+							)}
 						</div>
 					</div>
 					<div className="flex-1 h-8 flex pb-2">
 						{/* Left side progress (green) */}
 						<div
-							className="h-full bg-green-200"
+							className="h-full bg-green-300"
 							style={{ width: `${side1Percentage}%` }}
 						></div>
 						{/* Right side progress (orange) */}
 						<div
-							className="h-full bg-orange-200"
+							className="h-full bg-orange-300"
 							style={{ width: `${100 - side1Percentage}%` }}
 						></div>
 					</div>
@@ -97,103 +101,118 @@ const DebateRound = ({
 			{isExpanded && (
 				<div className="px-4 py-3">
 					{/* Debater arguments */}
-					<div className="grid grid-cols-2 gap-4 mb-4">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
 						{round.debater_arguments.map((argument, index) => {
 							const debater = debaters?.find(
 								(d) => d.player_id === argument.player_id
 							);
 							const isLeftSide = index === 0;
+							const sideText = argument.side_id.replace(
+								/-/g,
+								" "
+							);
 
 							return (
 								<div
 									key={argument.player_id}
-									className={`p-4 rounded-md ${
-										isLeftSide
-											? "bg-green-50"
-											: "bg-orange-50"
-									}`}
+									className={`p-4 rounded-md shadow-sm border border-gray-200 relative overflow-hidden`}
 								>
-									<div className="font-medium mb-2 flex justify-between">
-										<span>
-											{shortenModelName(
-												debater?.model ||
-													argument.player_id
-											)}
-										</span>
+									{/* Accent line on the left */}
+									<div
+										className={`absolute left-0 top-0 bottom-0 w-1 ${
+											isLeftSide
+												? "bg-green-500"
+												: "bg-orange-500"
+										}`}
+									></div>
+
+									{/* Content with increased left padding due to accent line */}
+									<div className="pl-3">
+										{/* Header with model name and stance */}
+										<div className="font-medium mb-3 flex flex-col">
+											<span className="text-gray-900 font-bold">
+												{shortenModelName(
+													debater?.model ||
+														argument.player_id
+												)}
+											</span>
+											<span
+												className={`text-sm ${
+													isLeftSide
+														? "text-green-600"
+														: "text-orange-600"
+												}`}
+											>
+												{sideText}
+											</span>
+										</div>
+
+										{/* Argument text */}
+										<p className="text-sm whitespace-pre-line mb-4">
+											{argument.argument}
+										</p>
+
+										{/* Integrated judge section */}
+										<div className="mt-3 pt-3 border-t border-gray-100">
+											<p className="text-xs text-gray-500 mb-2">
+												Judges who agreed:
+											</p>
+											<div className="flex flex-wrap gap-1">
+												{judgeVotes
+													.filter(
+														(vote) =>
+															vote.vote ===
+															argument.side_id
+													)
+													.map((vote) => {
+														const judge =
+															judges?.find(
+																(j) =>
+																	j.player_id ===
+																	vote.player_id
+															);
+
+														// Check if judge was swayed
+														const wasSwayed =
+															previousVotes[
+																vote.player_id
+															] &&
+															previousVotes[
+																vote.player_id
+															] !== vote.vote;
+
+														return (
+															<span
+																key={
+																	vote.player_id
+																}
+																className={`inline-flex items-center px-2 py-1 rounded text-xs
+																	${
+																		wasSwayed
+																			? "bg-yellow-50 border border-yellow-200 text-yellow-700"
+																			: "bg-gray-50 text-gray-700"
+																	}`}
+																title={
+																	wasSwayed
+																		? "Changed vote from previous round"
+																		: ""
+																}
+															>
+																{shortenModelName(
+																	judge?.model ||
+																		vote.player_id
+																)}
+																{wasSwayed &&
+																	" ★"}
+															</span>
+														);
+													})}
+											</div>
+										</div>
 									</div>
-									<p className="text-sm whitespace-pre-line">
-										{argument.argument}
-									</p>
 								</div>
 							);
 						})}
-					</div>
-
-					{/* Judge votes */}
-					<div className="mt-4">
-						<h4 className="font-medium mb-2">Judge Votes</h4>
-						<div className="grid grid-cols-2 gap-4">
-							{sides.map((side_id, index) => {
-								const isLeftSide = index === 0;
-								const votes =
-									judgeVotes.filter(
-										(vote) => vote.vote === side_id
-									) || [];
-
-								return (
-									<div
-										key={side_id}
-										className={`p-3 rounded-md ${
-											isLeftSide
-												? "bg-green-50"
-												: "bg-orange-50"
-										}`}
-									>
-										<p className="font-medium mb-2">
-											{side_id.replace(/-/g, " ")} (
-											{votes.length} votes)
-										</p>
-										<div className="flex flex-wrap gap-2">
-											{votes.map((vote) => {
-												const judge = judges?.find(
-													(j) =>
-														j.player_id ===
-														vote.player_id
-												);
-
-												// A judge is swayed if their vote in this round differs from previous round
-												const wasSwayed =
-													previousVotes[
-														vote.player_id
-													] &&
-													previousVotes[
-														vote.player_id
-													] !== vote.vote;
-
-												return (
-													<span
-														key={vote.player_id}
-														className={`inline-flex items-center px-2 py-1 rounded text-xs
-															${wasSwayed ? "bg-yellow-100 border border-yellow-300" : "bg-gray-100"}`}
-														title={
-															wasSwayed
-																? "Changed vote from previous round"
-																: ""
-														}
-													>
-														{shortenModelName(
-															judge?.model ||
-																vote.player_id
-														)}
-														{wasSwayed && " ★"}
-													</span>
-												);
-											})}
-										</div>
-									</div>
-								);
-							})}
-						</div>
 					</div>
 				</div>
 			)}

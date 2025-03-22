@@ -103,35 +103,6 @@ const TimelineTab = () => {
 
 	const debateData = getDebateData();
 
-	// Process rounds to include previous vote information
-	const processPreSwapRounds = (rounds) => {
-		return rounds.map((round, index) => {
-			// Get previous round votes for comparison
-			const previousVotes = {};
-			if (index > 0) {
-				const prevRound = rounds[index - 1];
-				prevRound.judge_votes.forEach((vote) => {
-					previousVotes[vote.player_id] = vote.vote;
-				});
-			}
-			return { ...round, previousRoundVotes: previousVotes };
-		});
-	};
-
-	const processPostSwapRounds = (rounds) => {
-		return rounds.map((round, index) => {
-			// Get previous round votes for comparison
-			const previousVotes = {};
-			if (index > 0) {
-				const prevRound = rounds[index - 1];
-				prevRound.judge_votes.forEach((vote) => {
-					previousVotes[vote.player_id] = vote.vote;
-				});
-			}
-			return { ...round, previousRoundVotes: previousVotes };
-		});
-	};
-
 	return (
 		<div className="w-full max-w-4xl mx-auto">
 			<div className="mb-8 mt-4">
@@ -218,17 +189,21 @@ const TimelineTab = () => {
 												debater.pre_swap_side || "TBD";
 											const colorClass =
 												index === 0
-													? "bg-green-100"
-													: "bg-orange-100";
+													? "green-600"
+													: "orange-600";
 											return (
 												<div
 													key={debater.player_id}
-													className={`flex-1/2 p-4 ${colorClass} text-center`}
+													className={`flex-1/2 p-4 text-center`}
 												>
-													<div className="font-medium">
+													<div
+														className={`font-medium text-${colorClass}`}
+													>
 														{debater.model}
 													</div>
-													<div className="text-sm">
+													<div
+														className={`text-sm text-${colorClass}`}
+													>
 														{side.replace(
 															/-/g,
 															" "
@@ -292,17 +267,21 @@ const TimelineTab = () => {
 												debater.post_swap_side || "TBD";
 											const colorClass =
 												index === 0
-													? "bg-green-100"
-													: "bg-orange-100";
+													? "green-600"
+													: "orange-600";
 											return (
 												<div
 													key={debater.player_id}
-													className={`flex-1/2 p-4 ${colorClass} text-center`}
+													className={`flex-1/2 p-4 text-center`}
 												>
-													<div className="font-medium">
+													<div
+														className={`font-medium text-${colorClass}`}
+													>
 														{debater.model}
 													</div>
-													<div className="text-sm">
+													<div
+														className={`text-sm text-${colorClass}`}
+													>
 														{side.replace(
 															/-/g,
 															" "
