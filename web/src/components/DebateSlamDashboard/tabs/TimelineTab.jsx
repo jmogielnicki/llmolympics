@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useGameData } from "../../../context/GameDataContext";
 import DebateRound from "../components/DebateRound";
 import { Calendar } from "lucide-react";
+import { Plus } from "lucide-react";
 
 /**
  * Timeline tab for displaying debate slam sessions
@@ -88,7 +89,6 @@ const TimelineTab = () => {
 
 	// Extract debate data for rendering
 	const getDebateData = () => {
-        console.log(gameDetail);
 		if (!gameDetail) return null;
 
 		return {
@@ -102,6 +102,35 @@ const TimelineTab = () => {
 	};
 
 	const debateData = getDebateData();
+
+	// Process rounds to include previous vote information
+	const processPreSwapRounds = (rounds) => {
+		return rounds.map((round, index) => {
+			// Get previous round votes for comparison
+			const previousVotes = {};
+			if (index > 0) {
+				const prevRound = rounds[index - 1];
+				prevRound.judge_votes.forEach((vote) => {
+					previousVotes[vote.player_id] = vote.vote;
+				});
+			}
+			return { ...round, previousRoundVotes: previousVotes };
+		});
+	};
+
+	const processPostSwapRounds = (rounds) => {
+		return rounds.map((round, index) => {
+			// Get previous round votes for comparison
+			const previousVotes = {};
+			if (index > 0) {
+				const prevRound = rounds[index - 1];
+				prevRound.judge_votes.forEach((vote) => {
+					previousVotes[vote.player_id] = vote.vote;
+				});
+			}
+			return { ...round, previousRoundVotes: previousVotes };
+		});
+	};
 
 	return (
 		<div className="w-full max-w-4xl mx-auto">
@@ -182,68 +211,72 @@ const TimelineTab = () => {
 								</div>
 
 								{/* Debater header */}
-								<div className="flex border-b border-gray-200">
-									<div className="w-1/4"></div>
-									<div className="w-3/4 flex">
-										{debateData.debaters.map(
-											(debater, index) => {
-												const side =
-													debater.pre_swap_side ||
-													"TBD";
-												const colorClass =
-													index === 0
-														? "bg-purple-100"
-														: "bg-orange-100";
-												return (
-													<div
-														key={debater.player_id}
-														className={`w-1/2 p-4 ${colorClass} text-center`}
-													>
-														<div className="font-medium">
-															{
-																debater.model
-															}
-														</div>
-														<div className="text-sm">
-															{side.replace(
-																/-/g,
-																" "
-															)}
-														</div>
+								<div className="flex flex-row border-b border-gray-200">
+									{debateData.debaters.map(
+										(debater, index) => {
+											const side =
+												debater.pre_swap_side || "TBD";
+											const colorClass =
+												index === 0
+													? "bg-green-100"
+													: "bg-orange-100";
+											return (
+												<div
+													key={debater.player_id}
+													className={`flex-1/2 p-4 ${colorClass} text-center`}
+												>
+													<div className="font-medium">
+														{debater.model}
 													</div>
-												);
-											}
-										)}
-									</div>
+													<div className="text-sm">
+														{side.replace(
+															/-/g,
+															" "
+														)}
+													</div>
+												</div>
+											);
+										}
+									)}
 								</div>
 
-								{/* Preswap rounds */}
+								{/* Pre-swap rounds */}
 								{debateData.preSwapRounds.map(
-									(round, index) => (
-										<DebateRound
-											key={`pre_${index}`}
-											roundKey={`pre_${index}`}
-											roundNumber={round.round_number}
-											debaters={debateData.debaters}
-											arguments={round.debater_arguments}
-											judges={debateData.judges}
-											judgeVotes={round.judge_votes || []}
-											isExpanded={
-												expandedRound === `pre_${index}`
-											}
-											toggleRound={() =>
-												toggleRound(`pre_${index}`)
-											}
-											phase="preswap"
-											previousRoundVotes={
+									(round, index) => {
+										const processedRound = {
+											...round,
+											previousRoundVotes:
 												index > 0
-													? debateData.preSwapRounds[
-															index - 1
-													  ].judge_votes || []
-													: []
-											}
-										/>
-									)
+													? Object.fromEntries(
+															debateData.preSwapRounds[
+																index - 1
+															].judge_votes.map(
+																(vote) => [
+																	vote.player_id,
+																	vote.vote,
+																]
+															)
+													  )
+													: {},
+										};
+										return (
+											<DebateRound
+												key={`pre_${index}`}
+												roundId={`pre_${index}`}
+												round={processedRound}
+												debaters={debateData.debaters}
+												judges={debateData.judges}
+												isExpanded={
+													expandedRound ===
+													`pre_${index}`
+												}
+												onToggle={() =>
+													toggleRound(`pre_${index}`)
+												}
+												isPostSwap={false}
+											/>
+										);
+									}
 								)}
 
 								{/* Side swap indicator */}
@@ -252,67 +285,72 @@ const TimelineTab = () => {
 								</div>
 
 								{/* Debater header post-swap */}
-								<div className="flex border-b border-gray-200">
-									<div className="w-1/4"></div>
-									<div className="w-3/4 flex">
-										{debateData.debaters.map(
-											(debater, index) => {
-												const side =
-													debater.post_swap_side ||
-													"TBD";
-												const colorClass =
-													index === 0
-														? "bg-purple-100"
-														: "bg-orange-100";
-												return (
-													<div
-														key={debater.player_id}
-														className={`w-1/2 p-4 ${colorClass} text-center`}
-													>
-														<div className="font-medium">
-															{debater.model}
-														</div>
-														<div className="text-sm">
-															{side.replace(
-																/-/g,
-																" "
-															)}
-														</div>
+								<div className="flex flex-row border-b border-gray-200">
+									{debateData.debaters.map(
+										(debater, index) => {
+											const side =
+												debater.post_swap_side || "TBD";
+											const colorClass =
+												index === 0
+													? "bg-green-100"
+													: "bg-orange-100";
+											return (
+												<div
+													key={debater.player_id}
+													className={`flex-1/2 p-4 ${colorClass} text-center`}
+												>
+													<div className="font-medium">
+														{debater.model}
 													</div>
-												);
-											}
-										)}
-									</div>
+													<div className="text-sm">
+														{side.replace(
+															/-/g,
+															" "
+														)}
+													</div>
+												</div>
+											);
+										}
+									)}
 								</div>
 
 								{/* Post-swap rounds */}
 								{debateData.postSwapRounds.map(
-									(round, index) => (
-										<DebateRound
-											key={`post_${index}`}
-											roundKey={`post_${index}`}
-											roundNumber={round.round_number}
-											debaters={debateData.debaters}
-											arguments={round.debater_arguments}
-											judges={debateData.judges}
-											judgeVotes={round.judge_votes || []}
-											isExpanded={
-												expandedRound ===
-												`post_${index}`
-											}
-											toggleRound={() =>
-												toggleRound(`post_${index}`)
-											}
-											phase="post-swap"
-											previousRoundVotes={
+									(round, index) => {
+										const processedRound = {
+											...round,
+											previousRoundVotes:
 												index > 0
-													? debateData.postSwapRounds[
-															index - 1
-													  ].judge_votes || []
-													: []
-											}
-										/>
-									)
+													? Object.fromEntries(
+															debateData.postSwapRounds[
+																index - 1
+															].judge_votes.map(
+																(vote) => [
+																	vote.player_id,
+																	vote.vote,
+																]
+															)
+													  )
+													: {},
+										};
+										return (
+											<DebateRound
+												key={`post_${index}`}
+												roundId={`post_${index}`}
+												round={processedRound}
+												debaters={debateData.debaters}
+												judges={debateData.judges}
+												isExpanded={
+													expandedRound ===
+													`post_${index}`
+												}
+												onToggle={() =>
+													toggleRound(`post_${index}`)
+												}
+												isPostSwap={true}
+											/>
+										);
+									}
 								)}
 							</div>
 
@@ -330,7 +368,8 @@ const TimelineTab = () => {
 										<p className="text-sm">
 											Total Score:{" "}
 											{
-												debateData.summary.winner.total_score
+												debateData.summary.winner
+													.total_score
 											}
 										</p>
 									</div>
