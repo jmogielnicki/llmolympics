@@ -347,19 +347,22 @@ const getDebateData = () => {
 											Overall Winner:{" "}
 											{getDebaterName(
 												debateData.summary.winner
-													.player_id
+													.model_name
 											)}
 											<Trophy
 												size={18}
 												className="ml-2 text-amber-500 fill-amber-500"
 											/>
 										</h3>
-										<p className="text-sm">
+										<p className="text-sm mb-2">
 											Total Score:{" "}
 											{
 												debateData.summary.winner
 													.total_score
 											}
+										</p>
+										<p className="text-xs text-stone-500">
+											* Total score is calculated by taking the final score before and after swap
 										</p>
 									</div>
 								)}
