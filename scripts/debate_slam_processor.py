@@ -6,6 +6,219 @@ from collections import defaultdict
 import argparse
 from pathlib import Path
 
+def split_events_by_swap(events):
+    """Split events into pre-swap and post-swap collections."""
+    # Find the swap event
+    swap_event = next((e for e in events if e.get('event_type') == 'side_swap'), None)
+    
+    pre_swap_events = []
+    post_swap_events = []
+    
+    if swap_event:
+        swap_timestamp = swap_event.get('timestamp')
+        
+        for event in events:
+            event_timestamp = event.get('timestamp')
+            
+            # Handle string timestamps (most common case)
+            if isinstance(event_timestamp, str) and isinstance(swap_timestamp, str):
+                if event_timestamp < swap_timestamp:
+                    pre_swap_events.append(event)
+                else:
+                    post_swap_events.append(event)
+            # Handle numeric timestamps
+            elif event_timestamp is not None and swap_timestamp is not None:
+                if float(event_timestamp) < float(swap_timestamp):
+                    pre_swap_events.append(event)
+                else:
+                    post_swap_events.append(event) 
+    else:
+        # If no swap event found, all events are pre-swap
+        pre_swap_events = events
+    
+    return pre_swap_events, post_swap_events
+
+
+def extract_round_data(round_events, round_num, player_roles):
+    """Extract data for a single debate round using only events."""
+    debater_arguments = []
+    judge_votes = []
+    
+    # Get debater arguments from round_discussion or opening_arguments
+    for event in round_events:
+        if (event.get('event_type') == 'player_action_complete' and 
+            (event.get('phase_id') == 'round_discussion' or event.get('phase_id') == 'opening_arguments')):
+            
+            player_id = event.get('data', {}).get('player_id')
+            argument = event.get('data', {}).get('action')
+            
+            if player_id and argument and not any(arg['player_id'] == player_id for arg in debater_arguments):
+                # Get side_id and role from player_roles dictionary
+                side_id = player_roles.get(player_id, {}).get('side_id', '')
+                position = player_roles.get(player_id, {}).get('position', '')
+                
+                debater_arguments.append({
+                    "player_id": player_id,
+                    "side_id": side_id,
+                    "position": position,
+                    "argument": argument
+                })
+    
+    # Get judge votes from round_judging or final_judging
+    for event in round_events:
+        if (event.get('event_type') == 'player_action_complete' and 
+            (event.get('phase_id') == 'round_judging' or event.get('phase_id') == 'final_judging')):
+            
+            player_id = event.get('data', {}).get('player_id')
+            vote = event.get('data', {}).get('action')
+            
+            if player_id and vote and not any(v['player_id'] == player_id for v in judge_votes):
+                judge_votes.append({
+                    "player_id": player_id,
+                    "vote": vote
+                })
+    
+    # Calculate vote tally
+    vote_tally = defaultdict(int)
+    for vote_data in judge_votes:
+        vote_tally[vote_data['vote']] += 1
+    
+    return {
+        "round_number": round_num,
+        "debater_arguments": debater_arguments,
+        "judge_votes": judge_votes,
+        "vote_tally": dict(vote_tally)
+    }
+
+
+def extract_final_votes(events):
+    """Extract final votes using only events."""
+    # Get votes from final_judging events
+    judge_breakdown = {}
+    
+    for event in events:
+        if (event.get('event_type') == 'player_action_complete' and 
+            event.get('phase_id') == 'final_judging'):
+            
+            player_id = event.get('data', {}).get('player_id')
+            vote = event.get('data', {}).get('action')
+            
+            if player_id and vote:
+                judge_breakdown[player_id] = vote
+    
+    # Calculate vote totals
+    vote_counts = defaultdict(int)
+    for vote in judge_breakdown.values():
+        vote_counts[vote] += 1
+    
+    return {
+        "votes": dict(vote_counts),
+        "judge_breakdown": judge_breakdown
+    }
+
+
+def extract_player_roles(events, snapshots):
+    """Extract player roles, side assignments and positions split into pre-swap and post-swap."""
+    # Initialize structure with pre-swap and post-swap sections
+    result = {
+        "pre-swap": {},
+        "post-swap": {}
+    }
+    
+    # First capture basic role information that's common to both phases
+    base_roles = {}
+    for snapshot in snapshots:
+        players = snapshot.get('players', [])
+        for player in players:
+            player_id = player.get('id')
+            if player_id:
+                role = player.get('role')
+                if player_id not in base_roles:
+                    base_roles[player_id] = {'role': role}
+    
+    # Find pre-swap side assignments - look at early snapshots before any swap
+    pre_swap_sides = {}
+    for snapshot in snapshots:
+        # Stop once we detect a side swap
+        if snapshot.get('shared_state', {}).get('sides_swapped', False):
+            break
+            
+        players = snapshot.get('players', [])
+        for player in players:
+            player_id = player.get('id')
+            if player_id and player_id in base_roles:
+                side_id = player.get('state', {}).get('side_id', '')
+                position = player.get('state', {}).get('position', '')
+                
+                if side_id and player_id not in pre_swap_sides:
+                    pre_swap_sides[player_id] = {
+                        'side_id': side_id,
+                        'position': position
+                    }
+    
+    # Create pre-swap roles by combining base roles with pre-swap side info
+    for player_id, base_data in base_roles.items():
+        result["pre-swap"][player_id] = base_data.copy()
+        if player_id in pre_swap_sides:
+            result["pre-swap"][player_id].update(pre_swap_sides[player_id])
+    
+    # Find post-swap side assignments - look at snapshots after the swap
+    post_swap_found = False
+    for snapshot in snapshots:
+        if snapshot.get('shared_state', {}).get('sides_swapped', False):
+            post_swap_found = True
+            players = snapshot.get('players', [])
+            for player in players:
+                player_id = player.get('id')
+                if player_id and player_id in base_roles:
+                    # For post-swap, copy the sides directly
+                    result["post-swap"][player_id] = base_roles[player_id].copy()
+                    
+                    # Add side information for debaters
+                    if base_roles[player_id]['role'] == 'debater':
+                        side_id = player.get('state', {}).get('side_id', '')
+                        position = player.get('state', {}).get('position', '')
+                        result["post-swap"][player_id]['side_id'] = side_id
+                        result["post-swap"][player_id]['position'] = position
+                    
+    # If no post-swap was found, make post-swap the same as pre-swap
+    if not post_swap_found:
+        result["post-swap"] = result["pre-swap"]
+    
+    return result
+
+
+def process_debate_phase(phase_events, player_roles):
+    """Process debate rounds for a phase (pre-swap or post-swap)."""
+    # Group events by round
+    rounds_events = {}
+    for event in phase_events:
+        round_num = event.get('round_num')
+        if round_num and round_num > 0:
+            if round_num not in rounds_events:
+                rounds_events[round_num] = []
+            rounds_events[round_num].append(event)
+    
+    # Process each round
+    processed_rounds = []
+    
+    for round_num in sorted(rounds_events.keys()):
+        round_data = extract_round_data(
+            rounds_events[round_num],
+            round_num,
+            player_roles
+        )
+        processed_rounds.append(round_data)
+    
+    # Get final votes
+    final_votes = extract_final_votes(phase_events)
+    
+    return {
+        "rounds": processed_rounds,
+        "final_votes": final_votes
+    }
+
+
 def extract_metadata(snapshots, events):
     """Extract debate metadata."""
     # Find the first snapshot with debate_topic
@@ -33,402 +246,42 @@ def extract_metadata(snapshots, events):
 
     return {"topic": "Unknown", "session_id": "Unknown"}
 
-def extract_players(snapshots, player_models=None):
-    """Extract player information."""
-    # Find snapshot with player role information
-    players = {}
 
-    # First, find debaters and judges
-    for snapshot in snapshots:
-        snapshot_players = snapshot.get('players', [])
-        for player in snapshot_players:
-            player_id = player.get('id')
-            if player_id not in players:
-                players[player_id] = {
-                    "player_id": player_id,
-                    "role": player.get('role'),
-                    "model": player_models.get(player_id, "Unknown Model") if player_models else f"Model {player_id}"
-                }
-
-    # Then, find side assignments
-    for snapshot in snapshots:
-        if snapshot.get('current_phase') == 'side_assignment' and not snapshot.get('shared_state', {}).get('sides_swapped', False):
-            snapshot_players = snapshot.get('players', [])
-            for player in snapshot_players:
-                player_id = player.get('id')
-                if player_id in players and players[player_id]["role"] == "debater":
-                    players[player_id]["pre_swap_side"] = player.get('state', {}).get('side_id', '')
-
-    # Find post-swap assignments
-    for snapshot in snapshots:
-        if snapshot.get('shared_state', {}).get('sides_swapped', False):
-            snapshot_players = snapshot.get('players', [])
-            for player in snapshot_players:
-                player_id = player.get('id')
-                if player_id in players and players[player_id]["role"] == "debater":
-                    players[player_id]["post_swap_side"] = player.get('state', {}).get('side_id', '')
-
-    # Organize into debaters and judges
+def extract_players(player_roles, player_models=None):
+    """Extract player information from the split player_roles structure."""
     debaters = []
     judges = []
-
-    for player_id, player_data in players.items():
-        if player_data["role"] == "debater":
+    
+    # Get player ids from pre-swap roles (all players should be here)
+    pre_swap_roles = player_roles.get("pre-swap", {})
+    post_swap_roles = player_roles.get("post-swap", {})
+    
+    for player_id, role_data in pre_swap_roles.items():
+        role = role_data.get('role')
+        model_name = player_models.get(player_id, f"Model {player_id}") if player_models else f"Model {player_id}"
+        
+        if role == 'debater':
+            # Get side assignments from both phases
+            pre_swap_side = role_data.get("side_id", "")
+            post_swap_side = post_swap_roles.get(player_id, {}).get("side_id", "")
+            
             debaters.append({
                 "player_id": player_id,
-                "model": player_data["model"],
-                "pre_swap_side": player_data.get("pre_swap_side", ""),
-                "post_swap_side": player_data.get("post_swap_side", "")
+                "model": model_name,
+                "pre_swap_side": pre_swap_side,
+                "post_swap_side": post_swap_side
             })
-        elif player_data["role"] == "judge":
+        elif role == 'judge':
             judges.append({
                 "player_id": player_id,
-                "model": player_data["model"]
+                "model": model_name
             })
-
+    
     return {
         "debaters": debaters,
         "judges": judges
     }
 
-def find_swap_transition(snapshots, events):
-    """Find index where the sides are swapped."""
-    # First try to find the side_swap event
-    swap_event = next((e for e in events if e.get('event_type') == 'side_swap'), None)
-    if swap_event:
-        swap_timestamp = swap_event.get('timestamp')
-        for i, snapshot in enumerate(snapshots):
-            snapshot_time = snapshot.get('timestamp', 0)
-            # Find the first snapshot after the swap event
-            if str(snapshot_time) > str(swap_timestamp):
-                return i
-
-    # Fall back to checking snapshots directly
-    for i, snapshot in enumerate(snapshots):
-        if snapshot.get('shared_state', {}).get('sides_swapped', False):
-            return i
-
-    return len(snapshots)  # Default to end if no swap found
-
-def extract_round_data(round_snapshots, round_events, round_num, max_round=False):
-    """Extract data for a single debate round."""
-    # Find debater arguments
-    debater_arguments = []
-    judge_votes = []
-
-    # Extract arguments from opening_arguments or round_discussion
-    for snapshot in round_snapshots:
-        shared_state = snapshot.get('shared_state', {})
-
-        # Look for arguments in various places
-        if round_num == 1:
-            # Round 1 arguments are in opening_arguments_responses
-            arguments = shared_state.get('opening_arguments_responses', {})
-        else:
-            # Later rounds use round_discussion_responses
-            arguments = shared_state.get('round_discussion_responses', {})
-
-        # Extract all debater arguments
-        players = snapshot.get('players', [])
-        for player in players:
-            player_id = player.get('id')
-            if player.get('role') == 'debater' and player_id in arguments:
-                argument = arguments.get(player_id)
-                side_id = player.get('state', {}).get('side_id', '')
-                position = player.get('state', {}).get('position', '')
-
-                # Only add if we have actual argument content
-                if argument and not any(arg['player_id'] == player_id for arg in debater_arguments):
-                    debater_arguments.append({
-                        "player_id": player_id,
-                        "side_id": side_id,
-                        "position": position,
-                        "argument": argument
-                    })
-
-        # Extract judge votes
-        judge_opinions = shared_state.get('judge_opinions', {}).get('rounds', {}).get(str(round_num), {})
-        if judge_opinions:
-            for judge_id, vote in judge_opinions.items():
-                if not any(v['player_id'] == judge_id for v in judge_votes):
-                    judge_votes.append({
-                        "player_id": judge_id,
-                        "vote": vote
-                    })
-
-    # If no arguments were found, try to find them in current_arguments
-    if not debater_arguments:
-        for snapshot in round_snapshots:
-            shared_state = snapshot.get('shared_state', {})
-            current_args = shared_state.get('current_arguments', {})
-
-            if current_args:
-                players = snapshot.get('players', [])
-                for player in players:
-                    player_id = player.get('id')
-                    if player.get('role') == 'debater' and player_id in current_args:
-                        arg_data = current_args.get(player_id, {})
-                        side_id = arg_data.get('side_id', player.get('state', {}).get('side_id', ''))
-                        argument = arg_data.get('argument', '')
-                        position = player.get('state', {}).get('position', '')
-
-                        if argument and not any(arg['player_id'] == player_id for arg in debater_arguments):
-                            debater_arguments.append({
-                                "player_id": player_id,
-                                "side_id": side_id,
-                                "position": position,
-                                "argument": argument
-                            })
-
-    # Extract judge votes from events
-    phase_ids_to_check = ['round_judging']
-    if max_round:
-        # For the final round, also check final_judging events
-        phase_ids_to_check.append('final_judging')
-
-    for event in round_events:
-        if (event.get('event_type') == 'player_action_complete' and
-            event.get('phase_id') in phase_ids_to_check):
-            player_id = event.get('data', {}).get('player_id')
-            vote = event.get('data', {}).get('action')
-
-            if player_id and vote and not any(v['player_id'] == player_id for v in judge_votes):
-                judge_votes.append({
-                    "player_id": player_id,
-                    "vote": vote
-                })
-
-    # Calculate vote tally
-    vote_tally = defaultdict(int)
-    for vote_data in judge_votes:
-        vote_tally[vote_data['vote']] += 1
-
-    return {
-        "round_number": round_num,
-        "debater_arguments": debater_arguments,
-        "judge_votes": judge_votes,
-        "vote_tally": dict(vote_tally)
-    }
-
-def extract_final_votes(snapshots, events, is_pre_swap=True):
-    """Extract final votes for pre_swap or post_swap."""
-    # Try to get votes from events first
-    judge_breakdown = {}
-
-    # Filter events to final_judging for the appropriate phase
-    swap_event = next((e for e in events if e.get('event_type') == 'side_swap'), None)
-
-    if swap_event:
-        swap_timestamp = swap_event.get('timestamp')
-        final_events = []
-
-        for event in events:
-            if event.get('phase_id') == 'final_judging':
-                event_timestamp = event.get('timestamp')
-                # Pre-swap events are before swap timestamp
-                if (is_pre_swap and event_timestamp < swap_timestamp) or \
-                   (not is_pre_swap and event_timestamp > swap_timestamp):
-                    final_events.append(event)
-    else:
-        # If no swap event, assume all final_judging events are pre-swap
-        final_events = [e for e in events if e.get('phase_id') == 'final_judging']
-
-    # Extract votes from player_action_complete events
-    for event in final_events:
-        if event.get('event_type') == 'player_action_complete':
-            player_id = event.get('data', {}).get('player_id')
-            vote = event.get('data', {}).get('action')
-
-            if player_id and vote:
-                judge_breakdown[player_id] = vote
-
-    # If we found votes from events, calculate totals
-    if judge_breakdown:
-        vote_counts = defaultdict(int)
-        for vote in judge_breakdown.values():
-            vote_counts[vote] += 1
-
-        return {
-            "votes": dict(vote_counts),
-            "judge_breakdown": judge_breakdown
-        }
-
-    # Fall back to snapshot method if events don't have the data
-    for snapshot in reversed(snapshots):  # Start from the latest and work backwards
-        shared_state = snapshot.get('shared_state', {})
-        sides_swapped = shared_state.get('sides_swapped', False)
-
-        # We're looking for the final judging phase results
-        if (is_pre_swap and not sides_swapped) or (not is_pre_swap and sides_swapped):
-            judge_opinions = shared_state.get('judge_opinions', {}).get('final', {})
-
-            if judge_opinions:
-                # Calculate vote totals
-                vote_counts = defaultdict(int)
-                for vote in judge_opinions.values():
-                    vote_counts[vote] += 1
-
-                return {
-                    "votes": dict(vote_counts),
-                    "judge_breakdown": judge_opinions
-                }
-
-            # Try the hidden state for pre-swap results when looking at post-swap data
-            if not is_pre_swap:
-                hidden_state = snapshot.get('hidden_state', {}).get('complete_history', {})
-                first_debate = hidden_state.get('first_debate', {})
-                judge_opinions = first_debate.get('judge_opinions', {}).get('final', {})
-
-                if judge_opinions:
-                    vote_counts = defaultdict(int)
-                    for vote in judge_opinions.values():
-                        vote_counts[vote] += 1
-
-                    return {
-                        "votes": dict(vote_counts),
-                        "judge_breakdown": judge_opinions
-                    }
-
-    # If we can't find final votes, try to use the last round's votes
-    empty_result = {"votes": {}, "judge_breakdown": {}}
-
-    for snapshot in reversed(snapshots):
-        shared_state = snapshot.get('shared_state', {})
-        sides_swapped = shared_state.get('sides_swapped', False)
-
-        if (is_pre_swap and not sides_swapped) or (not is_pre_swap and sides_swapped):
-            rounds = shared_state.get('judge_opinions', {}).get('rounds', {})
-            if rounds:
-                # Get the votes from the last round
-                last_round = max(int(r) for r in rounds.keys() if r.isdigit())
-                judge_opinions = rounds.get(str(last_round), {})
-
-                vote_counts = defaultdict(int)
-                for vote in judge_opinions.values():
-                    vote_counts[vote] += 1
-
-                return {
-                    "votes": dict(vote_counts),
-                    "judge_breakdown": judge_opinions
-                }
-
-    return empty_result
-
-def process_pre_swap(snapshots, events):
-    """Process pre-swap debate rounds."""
-    # Find where the swap happens
-    swap_index = find_swap_transition(snapshots, events)
-    pre_swap_snapshots = snapshots[:swap_index]
-
-    # Find pre-swap events
-    swap_event = next((e for e in events if e.get('event_type') == 'side_swap'), None)
-    pre_swap_events = []
-    if swap_event:
-        swap_timestamp = swap_event.get('timestamp')
-        for event in events:
-            event_timestamp = event.get('timestamp')
-            if str(event_timestamp) < str(swap_timestamp):
-                pre_swap_events.append(event)
-    else:
-        pre_swap_events = events  # If no swap event found, use all events
-
-    # Group snapshots by round
-    rounds_data = {}
-    rounds_events = {}
-    for snapshot in pre_swap_snapshots:
-        current_round = snapshot.get('shared_state', {}).get('current_round', 0)
-        if current_round > 0:
-            if current_round not in rounds_data:
-                rounds_data[current_round] = []
-            rounds_data[current_round].append(snapshot)
-
-    # Group events by round
-    for event in pre_swap_events:
-        round_num = event.get('round_num')
-        if round_num and round_num > 0:
-            if round_num not in rounds_events:
-                rounds_events[round_num] = []
-            rounds_events[round_num].append(event)
-
-    # Process each round
-    processed_rounds = []
-    max_round = max(rounds_data.keys()) if rounds_data else 0
-
-    for round_num in sorted(rounds_data.keys()):
-        is_max_round = (round_num == max_round)
-        round_data = extract_round_data(
-            rounds_data[round_num],
-            rounds_events.get(round_num, []),
-            round_num,
-            max_round=is_max_round
-        )
-        processed_rounds.append(round_data)
-
-    # Get final votes
-    final_votes = extract_final_votes(pre_swap_snapshots, pre_swap_events, is_pre_swap=True)
-
-    return {
-        "rounds": processed_rounds,
-        "final_votes": final_votes
-    }
-
-def process_post_swap(snapshots, events):
-    """Process post-swap debate rounds."""
-    # Find where the swap happens
-    swap_index = find_swap_transition(snapshots, events)
-    post_swap_snapshots = snapshots[swap_index:]
-
-    # Find post-swap events
-    swap_event = next((e for e in events if e.get('event_type') == 'side_swap'), None)
-    post_swap_events = []
-    if swap_event:
-        swap_timestamp = swap_event.get('timestamp')
-        for event in events:
-            event_timestamp = event.get('timestamp')
-            if str(event_timestamp) > str(swap_timestamp):
-                post_swap_events.append(event)
-    else:
-        post_swap_events = []  # If no swap event found, assume no post-swap events
-
-    # Group snapshots by round
-    rounds_data = {}
-    rounds_events = {}
-    for snapshot in post_swap_snapshots:
-        current_round = snapshot.get('shared_state', {}).get('current_round', 0)
-        if current_round > 0:
-            if current_round not in rounds_data:
-                rounds_data[current_round] = []
-            rounds_data[current_round].append(snapshot)
-
-    # Group events by round
-    for event in post_swap_events:
-        round_num = event.get('round_num')
-        if round_num and round_num > 0:
-            if round_num not in rounds_events:
-                rounds_events[round_num] = []
-            rounds_events[round_num].append(event)
-
-    # Process each round
-    processed_rounds = []
-    max_round = max(rounds_data.keys()) if rounds_data else 0
-
-    for round_num in sorted(rounds_data.keys()):
-        is_max_round = (round_num == max_round)
-        round_data = extract_round_data(
-            rounds_data[round_num],
-            rounds_events.get(round_num, []),
-            round_num,
-            max_round=is_max_round
-        )
-        processed_rounds.append(round_data)
-
-    # Get final votes
-    final_votes = extract_final_votes(post_swap_snapshots, post_swap_events, is_pre_swap=False)
-
-    return {
-        "rounds": processed_rounds,
-        "final_votes": final_votes
-    }
 
 def calculate_summary(pre_swap_data, post_swap_data, players):
     """Calculate summary and determine winner."""
@@ -470,12 +323,13 @@ def calculate_summary(pre_swap_data, post_swap_data, players):
         }
     }
 
+
 def process_debate_slam(snapshots_file, player_models=None):
     """Process debate slam data from snapshots file."""
     # Read snapshots and events
     snapshots = []
     events = []
-
+    
     with open(snapshots_file, 'r') as f:
         for line in f:
             record = json.loads(line)
@@ -483,36 +337,39 @@ def process_debate_slam(snapshots_file, player_models=None):
                 snapshots.append(record)
             elif record.get("record_type") == 'event':
                 events.append(record)
-
-    # Sort snapshots by timestamp for chronological order
-    snapshots.sort(key=lambda x: x.get('timestamp', 0))
-
-    # Sort events chronologically - handle various timestamp formats safely
+    
+    # Sort events chronologically
     def safe_event_time(event):
         timestamp = event.get('timestamp', 0)
         if isinstance(timestamp, (int, float)):
             return timestamp
         elif isinstance(timestamp, str):
-            # For ISO format timestamps, use the raw string for sorting (lexicographically)
-            # This works because ISO timestamps sort correctly as strings
             return timestamp
         return 0
-
+    
     events.sort(key=safe_event_time)
-
+    
+    # Split events into pre-swap and post-swap
+    pre_swap_events, post_swap_events = split_events_by_swap(events)
+    
+    # Extract player roles and side assignments - now split by phase
+    player_roles = extract_player_roles(events, snapshots)
+    pre_swap_roles = player_roles["pre-swap"]
+    post_swap_roles = player_roles["post-swap"]
+    
     # Extract metadata
     metadata = extract_metadata(snapshots, events)
-
+    
     # Extract player information
-    players = extract_players(snapshots, player_models)
-
-    # Process pre-swap and post-swap rounds
-    pre_swap_data = process_pre_swap(snapshots, events)
-    post_swap_data = process_post_swap(snapshots, events)
-
+    players = extract_players(player_roles, player_models)
+    
+    # Process pre-swap and post-swap rounds with their respective roles
+    pre_swap_data = process_debate_phase(pre_swap_events, pre_swap_roles)
+    post_swap_data = process_debate_phase(post_swap_events, post_swap_roles)
+    
     # Calculate summary and determine winner
     summary = calculate_summary(pre_swap_data, post_swap_data, players)
-
+    
     # Construct final data structure
     result = {
         "metadata": metadata,
@@ -521,8 +378,9 @@ def process_debate_slam(snapshots_file, player_models=None):
         "pre_swap": pre_swap_data,
         "post_swap": post_swap_data
     }
-
+    
     return result
+
 
 def process_single_session(session_dir, output_file, verbose=True):
     """Process a single debate slam session directory."""
@@ -602,6 +460,7 @@ def process_single_session(session_dir, output_file, verbose=True):
         if verbose:
             print(f"Error processing {session_dir}: {e}")
         return False
+
 
 def process_all_sessions(benchmark_dir, output_dir="data/processed", verbose=True):
     """Process all debate slam sessions in a benchmark directory."""
