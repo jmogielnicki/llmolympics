@@ -5,6 +5,7 @@ const DebateSessionHeader = ({
 	debateData,
 	selectedSession,
 	getSessionDate,
+	config,
 }) => {
 	// Find winner among debaters
 	const winnerPlayerId = debateData?.summary?.winner?.player_id;
@@ -23,23 +24,35 @@ const DebateSessionHeader = ({
 					</div>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-2 ml-8">
-						{debateData.debaters.map((debater) => (
-							<div
-								key={debater.player_id}
-								className="flex items-center"
-							>
-								<span className={`text-sm text-gray-700`}>
-									{debater.model || debater.player_id}
-								</span>
+						{debateData.debaters.map((debater) => {
+							// Use config to get consistent color for each debater
+							const color =
+								config?.getDebaterColor(debater.player_id) ||
+								"gray";
+							const textColorClass =
+								config?.getColorClass(color, "text", "600") ||
+								"text-gray-600";
 
-								{debater.player_id === winnerPlayerId && (
-									<Trophy
-										size={16}
-										className="ml-2 text-amber-500 fill-amber-500"
-									/>
-								)}
-							</div>
-						))}
+							return (
+								<div
+									key={debater.player_id}
+									className="flex items-center"
+								>
+									<span
+										className={`text-sm ${textColorClass}`}
+									>
+										{debater.model || debater.player_id}
+									</span>
+
+									{debater.player_id === winnerPlayerId && (
+										<Trophy
+											size={16}
+											className="ml-2 text-amber-500 fill-amber-500"
+										/>
+									)}
+								</div>
+							);
+						})}
 					</div>
 				</div>
 
@@ -53,9 +66,14 @@ const DebateSessionHeader = ({
 						{debateData.judges.map((judge) => (
 							<div
 								key={judge.player_id}
-								className="text-gray-700 text-sm"
+								className="flex items-center"
 							>
-								{judge.model || judge.player_id}
+								<span
+									key={judge.player_id}
+									className="text-gray-700 text-sm"
+								>
+									{judge.model || judge.player_id}
+								</span>
 							</div>
 						))}
 					</div>

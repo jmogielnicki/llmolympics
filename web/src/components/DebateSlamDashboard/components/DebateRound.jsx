@@ -13,6 +13,7 @@ import { shortenModelName } from "../../../utils/commonUtils";
  * @param {boolean} props.isExpanded - Whether this round is expanded
  * @param {Function} props.onToggle - Function to call when toggling expansion
  * @param {boolean} props.isPostSwap - Whether this round is after the side swap
+ * @param {Object} props.config - Debate configuration object
  */
 const DebateRound = ({
 	round,
@@ -22,8 +23,9 @@ const DebateRound = ({
 	isExpanded,
 	onToggle,
 	isPostSwap = false,
+	config,
 }) => {
-	if (!round) return null;
+	if (!round || !config) return null;
 
 	// Extract vote data
 	const judgeVotes = round.judge_votes || [];
@@ -38,20 +40,13 @@ const DebateRound = ({
 		votesPerSide[vote.vote]++;
 	});
 
-	// Get all sides from the debater arguments
-	const sides = round.debater_arguments.map((arg) => arg.side_id);
-	const side1 = sides[0];
-	const side2 = sides[1];
+	// Get sides from config for left and right positions
+	const leftSide = config.getPositionSide("left", isPostSwap);
+	const rightSide = config.getPositionSide("right", isPostSwap);
 
 	// Calculate percentage for progress bar
-	const side1Votes = votesPerSide[side1] || 0;
-	const side1Percentage = totalVotes ? (side1Votes / totalVotes) * 100 : 50;
-
-	// Map player IDs to debater information
-	const debaterMap = {};
-	debaters?.forEach((debater) => {
-		debaterMap[debater.player_id] = debater;
-	});
+	const leftVotes = votesPerSide[leftSide] || 0;
+	const leftPercentage = totalVotes ? (leftVotes / totalVotes) * 100 : 50;
 
 	// Map player IDs to judge information
 	const judgeMap = {};
@@ -83,15 +78,15 @@ const DebateRound = ({
 						</div>
 					</div>
 					<div className="flex-1 h-8 flex pb-2">
-						{/* Left side progress (purple) */}
+						{/* Left side progress - always purple */}
 						<div
 							className="h-full bg-purple-400"
-							style={{ width: `${side1Percentage}%` }}
+							style={{ width: `${leftPercentage}%` }}
 						></div>
-						{/* Right side progress (amber) */}
+						{/* Right side progress - always amber */}
 						<div
 							className="h-full bg-amber-400"
-							style={{ width: `${100 - side1Percentage}%` }}
+							style={{ width: `${100 - leftPercentage}%` }}
 						></div>
 					</div>
 				</div>
@@ -102,49 +97,52 @@ const DebateRound = ({
 				<div className="px-4 py-3">
 					{/* Debater arguments */}
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-						{/* Sort arguments to maintain consistent left/right positions based on player_id */}
+						{/* Process arguments to ensure they're shown in consistent positions */}
 						{[...round.debater_arguments]
 							.sort((a, b) => {
-								// If we have a consistent ordering in the debaters array, use that
-								const indexA = debaters?.findIndex(
-									(d) => d.player_id === a.player_id
+								// Sort by position (left always comes before right)
+								const posA = config.getDebaterPosition(
+									a.player_id
 								);
-								const indexB = debaters?.findIndex(
-									(d) => d.player_id === b.player_id
+								const posB = config.getDebaterPosition(
+									b.player_id
 								);
-
-								// Sort by index to maintain left/right consistency
-								return indexA - indexB;
+								return posA === "left" ? -1 : 1;
 							})
-							.map((argument, index) => {
+							.map((argument) => {
 								const debater = debaters?.find(
 									(d) => d.player_id === argument.player_id
 								);
 
-								// Determine if pro or anti based on side_id
+								// Get color based on debater (not position or side)
+								const debaterColor = config.getDebaterColor(
+									argument.player_id
+								);
+								const colorClass = config.getColorClass(
+									debaterColor,
+									"bg",
+									"500"
+								);
+								const textColorClass = config.getColorClass(
+									debaterColor,
+									"text",
+									"600"
+								);
+
+								// Format side text
 								const sideText = argument.side_id.replace(
 									/-/g,
 									" "
 								);
 
-								// Get player position (0 = left, 1 = right)
-								const playerIndex =
-									debaters?.findIndex(
-										(d) =>
-											d.player_id === argument.player_id
-									) || 0;
-								// Determine color based on the player's consistent position
-								const playerColor =
-									playerIndex === 0 ? "purple" : "amber";
-
 								return (
 									<div
 										key={argument.player_id}
-										className={`p-4 rounded-md shadow-sm border border-gray-200 relative overflow-hidden`}
+										className="p-4 rounded-md shadow-sm border border-gray-200 relative overflow-hidden"
 									>
-										{/* Accent line on the left - color tied to player, not position */}
+										{/* Accent line on the left using the consistent debater color */}
 										<div
-											className={`absolute left-0 top-0 bottom-0 w-1 bg-${playerColor}-500`}
+											className={`absolute left-0 top-0 bottom-0 w-1 ${colorClass}`}
 										></div>
 
 										{/* Content with increased left padding due to accent line */}
@@ -158,7 +156,7 @@ const DebateRound = ({
 													)}
 												</span>
 												<span
-													className={`text-sm text-${playerColor}-600`}
+													className={textColorClass}
 												>
 													{sideText}
 												</span>
@@ -206,11 +204,11 @@ const DebateRound = ({
 																		vote.player_id
 																	}
 																	className={`inline-flex items-center px-2 py-1 rounded text-xs
-																		${
-																			wasSwayed
-																				? "bg-yellow-50 border border-yellow-200 text-yellow-700"
-																				: "bg-gray-50 text-gray-700"
-																		}`}
+                                    ${
+										wasSwayed
+											? "bg-yellow-50 border border-yellow-200 text-yellow-700"
+											: "bg-gray-50 text-gray-700"
+									}`}
 																	title={
 																		wasSwayed
 																			? "Changed vote from previous round"

@@ -3,6 +3,7 @@ import { useGameData } from "../../../context/GameDataContext";
 import DebateRound from "../components/DebateRound";
 import { Calendar, Plus, Trophy, Users } from "lucide-react";
 import DebateSessionHeader from "../components/DebateSessionHeader"; // Import the new component
+import { createDebateConfig } from "../../../utils/debateConfigUtils";
 
 /**
  * Timeline tab for displaying debate slam sessions
@@ -88,18 +89,23 @@ const TimelineTab = () => {
 	};
 
 	// Extract debate data for rendering
-	const getDebateData = () => {
-		if (!gameDetail) return null;
+const getDebateData = () => {
+	if (!gameDetail) return null;
 
-		return {
-			topic: gameDetail.metadata.topic,
-			debaters: gameDetail.players.debaters,
-			judges: gameDetail.players.judges,
-			preSwapRounds: gameDetail.pre_swap.rounds || [],
-			postSwapRounds: gameDetail.post_swap.rounds || [],
-			summary: gameDetail.summary,
-		};
+	const data = {
+		topic: gameDetail.metadata.topic,
+		debaters: gameDetail.players.debaters,
+		judges: gameDetail.players.judges,
+		preSwapRounds: gameDetail.pre_swap.rounds || [],
+		postSwapRounds: gameDetail.post_swap.rounds || [],
+		summary: gameDetail.summary,
 	};
+
+	// Create the debate configuration
+	data.config = createDebateConfig(data);
+
+	return data;
+};
 
 	const debateData = getDebateData();
 
@@ -169,40 +175,43 @@ const TimelineTab = () => {
 									<h3 className="text-lg font-semibold">
 										Debate Rounds
 									</h3>
+									<h1 className="text-sm text-stone-500">
+										How many votes did each model receive after each round
+									</h1>
 								</div>
 
 								{/* Debater header */}
 								<div className="flex flex-row border-b border-gray-200">
-									{debateData.debaters.map(
-										(debater, index) => {
-											const side =
-												debater.pre_swap_side || "TBD";
-											const colorClass =
-												index === 0
-													? "purple-600"
-													: "amber-600";
-											return (
-												<div
-													key={debater.player_id}
-													className={`flex-1/2 pb-2 pt-4 text-center`}
-												>
-													<div
-														className={`font-medium text-${colorClass}`}
-													>
-														{debater.model}
-													</div>
-													<div
-														className={`text-sm text-${colorClass}`}
-													>
-														{side.replace(
-															/-/g,
-															" "
-														)}
-													</div>
-												</div>
+									{debateData.debaters.map((debater) => {
+										const color =
+											debateData.config.getDebaterColor(
+												debater.player_id
 											);
-										}
-									)}
+										const side =
+											debater.pre_swap_side || "TBD";
+										const colorClass =
+											debateData.config.getColorClass(
+												color
+											);
+
+										return (
+											<div
+												key={debater.player_id}
+												className={`flex-1/2 pb-2 pt-4 text-center`}
+											>
+												<div
+													className={`font-medium ${colorClass}`}
+												>
+													{debater.model}
+												</div>
+												<div
+													className={`text-sm ${colorClass}`}
+												>
+													{side.replace(/-/g, " ")}
+												</div>
+											</div>
+										);
+									})}
 								</div>
 
 								{/* Pre-swap rounds */}
@@ -239,6 +248,7 @@ const TimelineTab = () => {
 													toggleRound(`pre_${index}`)
 												}
 												isPostSwap={false}
+												config={debateData.config}
 											/>
 										);
 									}
@@ -321,6 +331,7 @@ const TimelineTab = () => {
 													toggleRound(`post_${index}`)
 												}
 												isPostSwap={true}
+												config={debateData.config}
 											/>
 										);
 									}
