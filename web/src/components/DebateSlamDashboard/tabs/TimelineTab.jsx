@@ -104,7 +104,7 @@ const TimelineTab = () => {
 	const debateData = getDebateData();
 
 	return (
-		<div className="w-full max-w-4xl mx-auto">
+		<div className="w-full mx-auto">
 			<div className="mb-8 mt-4">
 				<h2 className="text-xl font-bold text-center mb-1">
 					Debate Session Details
@@ -189,12 +189,12 @@ const TimelineTab = () => {
 												debater.pre_swap_side || "TBD";
 											const colorClass =
 												index === 0
-													? "green-600"
-													: "orange-600";
+													? "purple-600"
+													: "amber-600";
 											return (
 												<div
 													key={debater.player_id}
-													className={`flex-1/2 p-4 text-center`}
+													className={`flex-1/2 pb-2 pt-4 text-center`}
 												>
 													<div
 														className={`font-medium text-${colorClass}`}
@@ -255,8 +255,12 @@ const TimelineTab = () => {
 								)}
 
 								{/* Side swap indicator */}
-								<div className="bg-gray-200 py-3 text-center font-semibold">
-									Side Swap
+								<div className="pt-3 flex items-center justify-center">
+									<div className="h-px bg-stone-300 w-full m-4"></div>
+									<span className="px-3 font-semibold text-center text-stone-600">
+										Side Swap
+									</span>
+									<div className="h-px bg-stone-300 w-full m-4"></div>
 								</div>
 
 								{/* Debater header post-swap */}
@@ -267,12 +271,12 @@ const TimelineTab = () => {
 												debater.post_swap_side || "TBD";
 											const colorClass =
 												index === 0
-													? "green-600"
-													: "orange-600";
+													? "purple-600"
+													: "amber-600";
 											return (
 												<div
 													key={debater.player_id}
-													className={`flex-1/2 p-4 text-center`}
+													className={`flex-1/2 px-4 py-2 text-center`}
 												>
 													<div
 														className={`font-medium text-${colorClass}`}
@@ -336,7 +340,7 @@ const TimelineTab = () => {
 							{/* Winner info */}
 							{debateData.summary &&
 								debateData.summary.winner && (
-									<div className="bg-yellow-50 p-4 border border-yellow-200 rounded-lg text-center">
+									<div className="bg-amber-50 p-4 border border-amber-200 rounded-lg text-center">
 										<h3 className="font-semibold text-lg">
 											Overall Winner:{" "}
 											{getDebaterName(
