@@ -26,7 +26,7 @@ export const PlayerDecision = ({ modelName, decision }) => {
 				</span>
 			</div>
 
-			<div className="p-3 text-sm bg-gray-50 h-40 overflow-y-auto">
+			<div className="p-3 text-sm bg-gray-50">
 				{decision.reasoning}
 			</div>
 		</div>
