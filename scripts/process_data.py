@@ -1473,7 +1473,8 @@ def process_benchmark(benchmark_dir, output_dir="data/processed"):
         unique_models = set()
         for game in benchmark_logs:
             for player in game.get('players', []):
-                model_id = player.get('model_id')
+                print(player)
+                model_id = player.get('model_id') or player.get('model')
                 if model_id:
                     unique_models.add(model_id)
         num_models = len(unique_models)
