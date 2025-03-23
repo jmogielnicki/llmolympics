@@ -206,7 +206,7 @@ const TimelineTab = () => {
 							/>
 
 							{/* Debate rounds */}
-							<div className="bg-white rounded-lg shadow-md overflow-hidden">
+							<div className="bg-white rounded-lg shadow-md">
 								<div className="px-6 py-4 border-b border-gray-200">
 									<h3 className="text-lg font-semibold">
 										Debate Rounds
@@ -218,7 +218,15 @@ const TimelineTab = () => {
 								</div>
 
 								{/* Debater header */}
-								<div className="flex flex-row border-b border-gray-200">
+								<div
+									className={
+										(expandedRound?.includes("pre")
+											? "sticky top-0 "
+											: "") +
+										"z-20 bg-white flex flex-row border-b border-gray-200"
+									}
+								>
+									{" "}
 									{debateData.debaters.map((debater) => {
 										const color =
 											debateData.config.getDebaterColor(
@@ -301,7 +309,7 @@ const TimelineTab = () => {
 								</div>
 
 								{/* Debater header post-swap */}
-								<div className="flex flex-row border-b border-gray-200">
+								<div className="sticky top-0 z-21 bg-white flex flex-row border-b border-gray-200 pt-2">
 									{debateData.debaters.map(
 										(debater, index) => {
 											const side =
