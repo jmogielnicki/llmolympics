@@ -368,8 +368,12 @@ class MultiPlayerBenchmarkRunner:
 
         # Apply selection strategy
         if selection_strategy == 'weighted_inverse':
-            # Calculate weights: 1 / (role_count + 1)
-            weights = [1.0 / (self.role_counts.get(model, {}).get(role, 0) + 1.0) for model in filtered_models]
+            # Power factor to increase the strength of the inverse weighting
+            # Higher values create stronger bias toward models with fewer role assignments
+            power_factor = 5.0  # Adjust this to control strength (was effectively 1.0 before)
+
+            # Calculate weights: 1 / (role_count + 1)^power_factor
+            weights = [1.0 / ((self.role_counts.get(model, {}).get(role, 0) + 1.0) ** power_factor) for model in filtered_models]
 
             # Normalize weights
             total_weight = sum(weights)

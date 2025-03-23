@@ -67,7 +67,6 @@ def main():
         logger.info(f"Initializing pairwise benchmark runner")
         runner = BenchmarkRunner(benchmark_config)
 
-    logger.info(f"Running benchmark with {len(runner.matchups_to_run)} matchups")
     runner.run_benchmark()
 
     logger.info(f"Benchmark complete! Results available in: {benchmark_config.get_output_dir()}")
