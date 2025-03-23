@@ -8,7 +8,25 @@ import {
 	useLocation,
 	useParams,
 } from "react-router-dom";
-import { ChevronDown, Info, Github, Menu, X, Users } from "lucide-react";
+import {
+	ChevronDown,
+	Info,
+	Github,
+	Menu,
+	X,
+	Users,
+	Lock,
+	BookOpen,
+	DollarSign,
+	Hand,
+	PenTool,
+	MessageCircle,
+	Ghost,
+	Handshake,
+	Coins,
+	Eye,
+	VenetianMask
+} from "lucide-react";
 import { useState } from "react";
 import PrisonersDilemmaDashboard from "./PrisonersDilemmaDashboard/components/PrisonersDilemmaDashboard";
 import PoetrySlamDashboard from "./PoetrySlamDashboard/components/PoetrySlamDashboard";
@@ -42,7 +60,7 @@ const ParlourBenchDashboard = () => {
               (1,1), while unilateral defection yields high reward
               for the defector (5,0).
       `,
-			icon: "🔒", // Lock icon as emoji alternative
+			icon: Lock,
 			stats: prisonersDilemmaMetadata,
 		},
 		{
@@ -55,7 +73,7 @@ const ParlourBenchDashboard = () => {
               their favorites. Tests creativity, emotional expression,
               and aesthetic judgment capabilities.
       `,
-			icon: "📝", // Pencil emoji
+			icon: PenTool,
 			stats: poetrySlamMetadata,
 		},
 		{
@@ -66,7 +84,7 @@ const ParlourBenchDashboard = () => {
 			long_description: `
 		Two debaters argue opposite sides of an issue over three rounds. Five judges vote for the more persuasive side. Then, the debaters switch positions and debate again.
 	`,
-			icon: "🎤", // Microphone emoji
+			icon: MessageCircle, // Microphone emoji
 			stats: debateSlamMetadata,
 		},
 		{
@@ -74,7 +92,7 @@ const ParlourBenchDashboard = () => {
 			name: "Ghost",
 			path: "/games/ghost",
 			comingSoon: true,
-			icon: "👻", // Ghost emoji
+			icon: Ghost, // Ghost emoji
 			description: "A word game where players avoid completing words",
 		},
 		{
@@ -82,7 +100,7 @@ const ParlourBenchDashboard = () => {
 			name: "Diplomacy",
 			path: "/games/diplomacy",
 			comingSoon: true,
-			icon: "🤝", // Handshake emoji
+			icon: Handshake, // Handshake emoji
 			description:
 				"A game of alliance building and strategic elimination",
 		},
@@ -91,15 +109,15 @@ const ParlourBenchDashboard = () => {
 			name: "Ultimatum Game",
 			path: "/games/ultimatum-game",
 			comingSoon: true,
-			icon: "💰", // Money bag emoji
+			icon: Coins, // Money bag emoji
 			description: "A negotiation game testing fairness and strategy",
 		},
 		{
-			id: "rock_paper_scissors",
-			name: "Rock Paper Scissors",
-			path: "/games/rock-paper-scissors",
+			id: "mafia",
+			name: "Mafia (aka werewolf)",
+			path: "/games/mafia",
 			comingSoon: true,
-			icon: "✂️", // Scissors emoji
+			icon: VenetianMask, // Scissors emoji
 			description: "A multi-round tournament with strategic deception",
 		},
 	];
@@ -323,11 +341,11 @@ const GameInfoCard = ({ games }) => {
 		}) || games[0];
 
 	return (
-		<div className="bg-indigo-50 rounded-lg shadow-sm overflow-hidden mb-4 sm:mb-6">
+		<div className="bg-white border-l-4 border-indigo-400 rounded-lg shadow-sm overflow-hidden mb-4 sm:mb-6">
 			<div className="flex flex-col sm:flex-row items-center sm:items-start p-3 sm:p-4">
-				<div className="flex-shrink-0 mb-3 sm:mb-0 sm:mr-4 bg-indigo-100 rounded-full p-1 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+				<div className="flex-shrink-0 mb-3 sm:mb-0 sm:mr-4 bg-indigo-50 rounded-full p-1 w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
 					<span className="text-2xl sm:text-3xl">
-						{currentGame.icon}
+						<currentGame.icon size={25} />
 					</span>
 				</div>
 				<div className="text-center sm:text-left">
@@ -341,7 +359,7 @@ const GameInfoCard = ({ games }) => {
 			</div>
 
 			{currentGame.long_description && (
-				<div className="p-3 sm:p-4 border-t border-indigo-100">
+				<div className="p-3 sm:p-4 border-t border-gray-200">
 					<p className="text-xs sm:text-sm text-gray-700 text-left">
 						{currentGame.long_description}
 					</p>
@@ -349,25 +367,29 @@ const GameInfoCard = ({ games }) => {
 			)}
 
 			{currentGame.stats && (
-				<div className="bg-indigo-100 px-3 sm:px-6 py-2 sm:py-3 flex justify-left items-center text-xs sm:text-sm text-gray-500">
-					<div className="flex flex-col sm:flex-row items-center text-left sm:text-left">
-						<Users size={12} className="mb-1 sm:mb-0 sm:mr-1" />
-						<span>
-							<span className="hidden sm:inline">
-								{currentGame.stats.game_count} games played
-								between {currentGame.stats.models} models
+				<>
+					<div className="border-t border-gray-200"></div>
+					<div className="px-3 sm:px-6 py-2 sm:py-3 flex justify-left items-center text-xs sm:text-sm text-gray-500">
+						<div className="flex flex-row items-center text-left">
+							<Users size={12} className="mr-2" />
+							<span>
+								<span className="hidden sm:inline">
+									{currentGame.stats.game_count} games played
+									between {currentGame.stats.models} models
+								</span>
+								<span className="sm:hidden">
+									{currentGame.stats.game_count} games •{" "}
+									{currentGame.stats.models} models
+								</span>
+								<span className="sm:inline">
+									{" "}
+									• Last updated{" "}
+									{currentGame.stats.processed_at}
+								</span>
 							</span>
-							<span className="sm:hidden">
-								{currentGame.stats.game_count} games •{" "}
-								{currentGame.stats.models} models
-							</span>
-							<span className="sm:inline">
-								{" "}
-								• Last updated {currentGame.stats.processed_at}
-							</span>
-						</span>
+						</div>
 					</div>
-				</div>
+				</>
 			)}
 		</div>
 	);
