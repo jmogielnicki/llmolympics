@@ -35,12 +35,12 @@
         "avg_total_score": 3.0,
         "adaptability": 2.0,
         "positions_defended": [
-          "Genetic modification of human embryos should be permitted",
-          "Cryptocurrency is a legitimate alternative to traditional banking"
+          "Cryptocurrency is a legitimate alternative to traditional banking",
+          "Genetic modification of human embryos should be permitted"
         ],
         "positions_attacked": [
-          "Cryptocurrency is not a legitimate alternative to traditional banking",
-          "Genetic modification of human embryos should not be permitted"
+          "Genetic modification of human embryos should not be permitted",
+          "Cryptocurrency is not a legitimate alternative to traditional banking"
         ]
       }
     },
@@ -69,21 +69,34 @@
           "pre_swap_score": 3,
           "post_swap_score": 3,
           "total_score": 6
+        },
+        {
+          "session_id": "debate_slam_20250323_164036",
+          "topic": "Should genetic modification of human embryos be permitted?",
+          "pre_swap_side": "pro-genetic-mod",
+          "post_swap_side": "anti-genetic-mod",
+          "pre_swap_position": "Genetic modification of human embryos should be permitted",
+          "post_swap_position": "Genetic modification of human embryos should not be permitted",
+          "pre_swap_score": 0,
+          "post_swap_score": 0,
+          "total_score": 0
         }
       ],
       "stats": {
-        "games_played": 2,
-        "avg_pre_swap_score": 3.0,
-        "avg_post_swap_score": 4.0,
-        "avg_total_score": 7.0,
+        "games_played": 3,
+        "avg_pre_swap_score": 2.0,
+        "avg_post_swap_score": 2.67,
+        "avg_total_score": 4.67,
         "adaptability": 1.33,
         "positions_defended": [
           "Nuclear energy is not the best solution for climate change",
-          "Genetic modification of human embryos should not be permitted"
+          "Genetic modification of human embryos should not be permitted",
+          "Genetic modification of human embryos should be permitted"
         ],
         "positions_attacked": [
-          "Nuclear energy is the best solution for climate change",
-          "Genetic modification of human embryos should be permitted"
+          "Genetic modification of human embryos should not be permitted",
+          "Genetic modification of human embryos should be permitted",
+          "Nuclear energy is the best solution for climate change"
         ]
       }
     },
@@ -132,12 +145,12 @@
         "avg_total_score": 7.0,
         "adaptability": 1.33,
         "positions_defended": [
-          "Nuclear energy is the best solution for climate change",
-          "Universal basic income is viable"
+          "Universal basic income is viable",
+          "Nuclear energy is the best solution for climate change"
         ],
         "positions_attacked": [
-          "Universal basic income is not viable",
-          "Nuclear energy is not the best solution for climate change"
+          "Nuclear energy is not the best solution for climate change",
+          "Universal basic income is not viable"
         ]
       }
     },
@@ -166,19 +179,32 @@
           "pre_swap_score": 0,
           "post_swap_score": 4,
           "total_score": 4
+        },
+        {
+          "session_id": "debate_slam_20250323_162108",
+          "topic": "Is nuclear energy the best solution for climate change?",
+          "pre_swap_side": "anti-nuclear",
+          "post_swap_side": "pro-nuclear",
+          "pre_swap_position": "Nuclear energy is not the best solution for climate change",
+          "post_swap_position": "Nuclear energy is the best solution for climate change",
+          "pre_swap_score": 4,
+          "post_swap_score": 4,
+          "total_score": 8
         }
       ],
       "stats": {
-        "games_played": 2,
-        "avg_pre_swap_score": 0.0,
-        "avg_post_swap_score": 2.5,
-        "avg_total_score": 2.5,
-        "adaptability": 0,
+        "games_played": 3,
+        "avg_pre_swap_score": 1.33,
+        "avg_post_swap_score": 3.0,
+        "avg_total_score": 4.33,
+        "adaptability": 2.25,
         "positions_defended": [
+          "Nuclear energy is not the best solution for climate change",
           "Universal basic income is not viable"
         ],
         "positions_attacked": [
-          "Universal basic income is viable"
+          "Universal basic income is viable",
+          "Nuclear energy is the best solution for climate change"
         ]
       }
     },
@@ -218,21 +244,34 @@
           "pre_swap_score": 5,
           "post_swap_score": 2,
           "total_score": 7
+        },
+        {
+          "session_id": "debate_slam_20250323_164036",
+          "topic": "Should genetic modification of human embryos be permitted?",
+          "pre_swap_side": "anti-genetic-mod",
+          "post_swap_side": "pro-genetic-mod",
+          "pre_swap_position": "Genetic modification of human embryos should not be permitted",
+          "post_swap_position": "Genetic modification of human embryos should be permitted",
+          "pre_swap_score": 5,
+          "post_swap_score": 5,
+          "total_score": 10
         }
       ],
       "stats": {
-        "games_played": 3,
+        "games_played": 4,
         "avg_pre_swap_score": 5.0,
-        "avg_post_swap_score": 4.0,
-        "avg_total_score": 9.0,
-        "adaptability": 0.8,
+        "avg_post_swap_score": 4.25,
+        "avg_total_score": 9.25,
+        "adaptability": 0.85,
         "positions_defended": [
+          "Genetic modification of human embryos should not be permitted",
           "Universal basic income is not viable",
           "Nuclear energy is the best solution for climate change"
         ],
         "positions_attacked": [
+          "Nuclear energy is not the best solution for climate change",
           "Universal basic income is viable",
-          "Nuclear energy is not the best solution for climate change"
+          "Genetic modification of human embryos should be permitted"
         ]
       }
     },
@@ -281,12 +320,12 @@
         "avg_total_score": 5.33,
         "adaptability": 1.29,
         "positions_defended": [
-          "Cryptocurrency is not a legitimate alternative to traditional banking",
-          "Nuclear energy is not the best solution for climate change"
+          "Nuclear energy is not the best solution for climate change",
+          "Cryptocurrency is not a legitimate alternative to traditional banking"
         ],
         "positions_attacked": [
-          "Nuclear energy is the best solution for climate change",
-          "Cryptocurrency is a legitimate alternative to traditional banking"
+          "Cryptocurrency is a legitimate alternative to traditional banking",
+          "Nuclear energy is the best solution for climate change"
         ]
       }
     },
@@ -346,14 +385,14 @@
         "avg_total_score": 3.75,
         "adaptability": 0.5,
         "positions_defended": [
+          "Universal basic income is viable",
           "Cryptocurrency is not a legitimate alternative to traditional banking",
-          "Nuclear energy is the best solution for climate change",
-          "Universal basic income is viable"
+          "Nuclear energy is the best solution for climate change"
         ],
         "positions_attacked": [
-          "Universal basic income is not viable",
           "Nuclear energy is not the best solution for climate change",
-          "Cryptocurrency is a legitimate alternative to traditional banking"
+          "Cryptocurrency is a legitimate alternative to traditional banking",
+          "Universal basic income is not viable"
         ]
       }
     },
@@ -402,14 +441,14 @@
         "avg_total_score": 3.33,
         "adaptability": 0.25,
         "positions_defended": [
-          "Nuclear energy is not the best solution for climate change",
+          "Cryptocurrency is a legitimate alternative to traditional banking",
           "Genetic modification of human embryos should not be permitted",
-          "Cryptocurrency is a legitimate alternative to traditional banking"
+          "Nuclear energy is not the best solution for climate change"
         ],
         "positions_attacked": [
+          "Genetic modification of human embryos should be permitted",
           "Cryptocurrency is not a legitimate alternative to traditional banking",
-          "Nuclear energy is the best solution for climate change",
-          "Genetic modification of human embryos should be permitted"
+          "Nuclear energy is the best solution for climate change"
         ]
       }
     },
@@ -447,12 +486,12 @@
         "avg_total_score": 2.5,
         "adaptability": 0.67,
         "positions_defended": [
-          "Nuclear energy is the best solution for climate change",
-          "Nuclear energy is not the best solution for climate change"
+          "Nuclear energy is not the best solution for climate change",
+          "Nuclear energy is the best solution for climate change"
         ],
         "positions_attacked": [
-          "Nuclear energy is the best solution for climate change",
-          "Nuclear energy is not the best solution for climate change"
+          "Nuclear energy is not the best solution for climate change",
+          "Nuclear energy is the best solution for climate change"
         ]
       }
     },
@@ -481,21 +520,34 @@
           "pre_swap_score": 5,
           "post_swap_score": 1,
           "total_score": 6
+        },
+        {
+          "session_id": "debate_slam_20250323_162108",
+          "topic": "Is nuclear energy the best solution for climate change?",
+          "pre_swap_side": "pro-nuclear",
+          "post_swap_side": "anti-nuclear",
+          "pre_swap_position": "Nuclear energy is the best solution for climate change",
+          "post_swap_position": "Nuclear energy is not the best solution for climate change",
+          "pre_swap_score": 1,
+          "post_swap_score": 1,
+          "total_score": 2
         }
       ],
       "stats": {
-        "games_played": 2,
-        "avg_pre_swap_score": 2.5,
-        "avg_post_swap_score": 3.0,
-        "avg_total_score": 5.5,
-        "adaptability": 1.2,
+        "games_played": 3,
+        "avg_pre_swap_score": 2.0,
+        "avg_post_swap_score": 2.33,
+        "avg_total_score": 4.33,
+        "adaptability": 1.17,
         "positions_defended": [
+          "Genetic modification of human embryos should be permitted",
           "Universal basic income is viable",
-          "Genetic modification of human embryos should be permitted"
+          "Nuclear energy is the best solution for climate change"
         ],
         "positions_attacked": [
-          "Universal basic income is not viable",
-          "Genetic modification of human embryos should not be permitted"
+          "Nuclear energy is not the best solution for climate change",
+          "Genetic modification of human embryos should not be permitted",
+          "Universal basic income is not viable"
         ]
       }
     }
@@ -656,12 +708,21 @@
             "2": "pro-ubi"
           },
           "final_vote": "anti-ubi"
+        },
+        {
+          "session_id": "debate_slam_20250323_164036",
+          "topic": "Should genetic modification of human embryos be permitted?",
+          "round_votes": {
+            "1": "pro-genetic-mod",
+            "2": "pro-genetic-mod"
+          },
+          "final_vote": "pro-genetic-mod"
         }
       ],
       "stats": {
-        "games_judged": 8,
+        "games_judged": 9,
         "position_votes": {
-          "pro-genetic-mod": 1,
+          "pro-genetic-mod": 2,
           "anti-nuclear": 1,
           "pro-ubi": 1,
           "pro-crypto": 1,
@@ -670,17 +731,17 @@
           "anti-ubi": 1
         },
         "position_bias": {
-          "pro-genetic-mod": 0.12,
-          "anti-nuclear": 0.12,
-          "pro-ubi": 0.12,
-          "pro-crypto": 0.12,
-          "pro-nuclear": 0.25,
-          "anti-crypto": 0.12,
-          "anti-ubi": 0.12
+          "pro-genetic-mod": 0.22,
+          "anti-nuclear": 0.11,
+          "pro-ubi": 0.11,
+          "pro-crypto": 0.11,
+          "pro-nuclear": 0.22,
+          "anti-crypto": 0.11,
+          "anti-ubi": 0.11
         },
         "round_flips": 2,
-        "consistent_judgments": 6,
-        "consistency": 0.75
+        "consistent_judgments": 7,
+        "consistency": 0.78
       }
     },
     {
@@ -758,12 +819,21 @@
             "2": "pro-ubi"
           },
           "final_vote": "pro-ubi"
+        },
+        {
+          "session_id": "debate_slam_20250323_164036",
+          "topic": "Should genetic modification of human embryos be permitted?",
+          "round_votes": {
+            "1": "pro-genetic-mod",
+            "2": "pro-genetic-mod"
+          },
+          "final_vote": "pro-genetic-mod"
         }
       ],
       "stats": {
-        "games_judged": 8,
+        "games_judged": 9,
         "position_votes": {
-          "pro-genetic-mod": 1,
+          "pro-genetic-mod": 2,
           "anti-ubi": 1,
           "pro-crypto": 1,
           "pro-nuclear": 1,
@@ -772,17 +842,17 @@
           "pro-ubi": 2
         },
         "position_bias": {
-          "pro-genetic-mod": 0.12,
-          "anti-ubi": 0.12,
-          "pro-crypto": 0.12,
-          "pro-nuclear": 0.12,
-          "anti-nuclear": 0.12,
-          "anti-genetic-mod": 0.12,
-          "pro-ubi": 0.25
+          "pro-genetic-mod": 0.22,
+          "anti-ubi": 0.11,
+          "pro-crypto": 0.11,
+          "pro-nuclear": 0.11,
+          "anti-nuclear": 0.11,
+          "anti-genetic-mod": 0.11,
+          "pro-ubi": 0.22
         },
         "round_flips": 2,
-        "consistent_judgments": 6,
-        "consistency": 0.75
+        "consistent_judgments": 7,
+        "consistency": 0.78
       }
     },
     {
@@ -842,27 +912,38 @@
             "2": "pro-ubi"
           },
           "final_vote": "anti-ubi"
+        },
+        {
+          "session_id": "debate_slam_20250323_162108",
+          "topic": "Is nuclear energy the best solution for climate change?",
+          "round_votes": {
+            "1": "pro-nuclear",
+            "2": "anti-nuclear"
+          },
+          "final_vote": "pro-nuclear"
         }
       ],
       "stats": {
-        "games_judged": 6,
+        "games_judged": 7,
         "position_votes": {
           "pro-genetic-mod": 1,
           "pro-ubi": 2,
           "anti-genetic-mod": 1,
           "anti-crypto": 1,
-          "anti-ubi": 1
+          "anti-ubi": 1,
+          "pro-nuclear": 1
         },
         "position_bias": {
-          "pro-genetic-mod": 0.17,
-          "pro-ubi": 0.33,
-          "anti-genetic-mod": 0.17,
-          "anti-crypto": 0.17,
-          "anti-ubi": 0.17
+          "pro-genetic-mod": 0.14,
+          "pro-ubi": 0.29,
+          "anti-genetic-mod": 0.14,
+          "anti-crypto": 0.14,
+          "anti-ubi": 0.14,
+          "pro-nuclear": 0.14
         },
-        "round_flips": 1,
+        "round_flips": 2,
         "consistent_judgments": 5,
-        "consistency": 0.83
+        "consistency": 0.71
       }
     },
     {
@@ -913,22 +994,33 @@
             "2": "anti-ubi"
           },
           "final_vote": "anti-ubi"
+        },
+        {
+          "session_id": "debate_slam_20250323_162108",
+          "topic": "Is nuclear energy the best solution for climate change?",
+          "round_votes": {
+            "1": "anti-nuclear",
+            "2": "anti-nuclear"
+          },
+          "final_vote": "anti-nuclear"
         }
       ],
       "stats": {
-        "games_judged": 5,
+        "games_judged": 6,
         "position_votes": {
           "pro-genetic-mod": 1,
           "anti-ubi": 2,
-          "pro-nuclear": 2
+          "pro-nuclear": 2,
+          "anti-nuclear": 1
         },
         "position_bias": {
-          "pro-genetic-mod": 0.2,
-          "anti-ubi": 0.4,
-          "pro-nuclear": 0.4
+          "pro-genetic-mod": 0.17,
+          "anti-ubi": 0.33,
+          "pro-nuclear": 0.33,
+          "anti-nuclear": 0.17
         },
         "round_flips": 0,
-        "consistent_judgments": 5,
+        "consistent_judgments": 6,
         "consistency": 1.0
       }
     },
@@ -989,23 +1081,45 @@
             "2": "anti-ubi"
           },
           "final_vote": "pro-ubi"
+        },
+        {
+          "session_id": "debate_slam_20250323_162108",
+          "topic": "Is nuclear energy the best solution for climate change?",
+          "round_votes": {
+            "1": "pro-nuclear",
+            "2": "anti-nuclear"
+          },
+          "final_vote": "pro-nuclear"
+        },
+        {
+          "session_id": "debate_slam_20250323_164036",
+          "topic": "Should genetic modification of human embryos be permitted?",
+          "round_votes": {
+            "1": "pro-genetic-mod",
+            "2": "pro-genetic-mod"
+          },
+          "final_vote": "pro-genetic-mod"
         }
       ],
       "stats": {
-        "games_judged": 6,
+        "games_judged": 8,
         "position_votes": {
           "anti-ubi": 1,
           "anti-nuclear": 3,
-          "pro-ubi": 2
+          "pro-ubi": 2,
+          "pro-nuclear": 1,
+          "pro-genetic-mod": 1
         },
         "position_bias": {
-          "anti-ubi": 0.17,
-          "anti-nuclear": 0.5,
-          "pro-ubi": 0.33
+          "anti-ubi": 0.12,
+          "anti-nuclear": 0.38,
+          "pro-ubi": 0.25,
+          "pro-nuclear": 0.12,
+          "pro-genetic-mod": 0.12
         },
-        "round_flips": 0,
-        "consistent_judgments": 6,
-        "consistency": 1.0
+        "round_flips": 1,
+        "consistent_judgments": 7,
+        "consistency": 0.88
       }
     },
     {
@@ -1074,27 +1188,38 @@
             "2": "pro-ubi"
           },
           "final_vote": "pro-ubi"
+        },
+        {
+          "session_id": "debate_slam_20250323_164036",
+          "topic": "Should genetic modification of human embryos be permitted?",
+          "round_votes": {
+            "1": "pro-genetic-mod",
+            "2": "pro-genetic-mod"
+          },
+          "final_vote": "pro-genetic-mod"
         }
       ],
       "stats": {
-        "games_judged": 7,
+        "games_judged": 8,
         "position_votes": {
           "pro-ubi": 3,
           "pro-crypto": 1,
           "anti-nuclear": 1,
           "anti-genetic-mod": 1,
-          "pro-nuclear": 1
+          "pro-nuclear": 1,
+          "pro-genetic-mod": 1
         },
         "position_bias": {
-          "pro-ubi": 0.43,
-          "pro-crypto": 0.14,
-          "anti-nuclear": 0.14,
-          "anti-genetic-mod": 0.14,
-          "pro-nuclear": 0.14
+          "pro-ubi": 0.38,
+          "pro-crypto": 0.12,
+          "anti-nuclear": 0.12,
+          "anti-genetic-mod": 0.12,
+          "pro-nuclear": 0.12,
+          "pro-genetic-mod": 0.12
         },
         "round_flips": 2,
-        "consistent_judgments": 5,
-        "consistency": 0.71
+        "consistent_judgments": 6,
+        "consistency": 0.75
       }
     },
     {
@@ -1272,27 +1397,47 @@
             "2": "pro-ubi"
           },
           "final_vote": "pro-ubi"
+        },
+        {
+          "session_id": "debate_slam_20250323_162108",
+          "topic": "Is nuclear energy the best solution for climate change?",
+          "round_votes": {
+            "1": "pro-nuclear",
+            "2": "pro-nuclear"
+          },
+          "final_vote": "pro-nuclear"
+        },
+        {
+          "session_id": "debate_slam_20250323_164036",
+          "topic": "Should genetic modification of human embryos be permitted?",
+          "round_votes": {
+            "1": "pro-genetic-mod",
+            "2": "pro-genetic-mod"
+          },
+          "final_vote": "pro-genetic-mod"
         }
       ],
       "stats": {
-        "games_judged": 7,
+        "games_judged": 9,
         "position_votes": {
           "anti-nuclear": 3,
           "anti-genetic-mod": 1,
           "pro-crypto": 1,
-          "pro-nuclear": 1,
-          "pro-ubi": 1
+          "pro-nuclear": 2,
+          "pro-ubi": 1,
+          "pro-genetic-mod": 1
         },
         "position_bias": {
-          "anti-nuclear": 0.43,
-          "anti-genetic-mod": 0.14,
-          "pro-crypto": 0.14,
-          "pro-nuclear": 0.14,
-          "pro-ubi": 0.14
+          "anti-nuclear": 0.33,
+          "anti-genetic-mod": 0.11,
+          "pro-crypto": 0.11,
+          "pro-nuclear": 0.22,
+          "pro-ubi": 0.11,
+          "pro-genetic-mod": 0.11
         },
         "round_flips": 4,
-        "consistent_judgments": 3,
-        "consistency": 0.43
+        "consistent_judgments": 5,
+        "consistency": 0.56
       }
     },
     {
@@ -1325,21 +1470,32 @@
             "2": "anti-nuclear"
           },
           "final_vote": "anti-nuclear"
+        },
+        {
+          "session_id": "debate_slam_20250323_162108",
+          "topic": "Is nuclear energy the best solution for climate change?",
+          "round_votes": {
+            "1": "pro-nuclear",
+            "2": "anti-nuclear"
+          },
+          "final_vote": "pro-nuclear"
         }
       ],
       "stats": {
-        "games_judged": 3,
+        "games_judged": 4,
         "position_votes": {
           "anti-nuclear": 2,
-          "pro-crypto": 1
+          "pro-crypto": 1,
+          "pro-nuclear": 1
         },
         "position_bias": {
-          "anti-nuclear": 0.67,
-          "pro-crypto": 0.33
+          "anti-nuclear": 0.5,
+          "pro-crypto": 0.25,
+          "pro-nuclear": 0.25
         },
-        "round_flips": 2,
+        "round_flips": 3,
         "consistent_judgments": 1,
-        "consistency": 0.33
+        "consistency": 0.25
       }
     }
   ]

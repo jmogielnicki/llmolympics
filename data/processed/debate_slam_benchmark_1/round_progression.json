@@ -2,104 +2,72 @@
   "round_progression": [
     {
       "round": 1,
-      "total_votes": 70,
+      "total_votes": 80,
       "side_votes": {
-        "pro-genetic-mod": 7,
+        "pro-genetic-mod": 12,
         "pro-ubi": 10,
         "anti-ubi": 10,
-        "anti-nuclear": 14,
+        "anti-nuclear": 15,
         "anti-crypto": 12,
         "pro-crypto": 3,
-        "pro-nuclear": 11,
+        "pro-nuclear": 15,
         "anti-genetic-mod": 3
       },
-      "pro-genetic-mod_percentage": 0.1,
-      "pro-ubi_percentage": 0.143,
-      "anti-ubi_percentage": 0.143,
-      "anti-nuclear_percentage": 0.2,
-      "anti-crypto_percentage": 0.171,
-      "pro-crypto_percentage": 0.043,
-      "pro-nuclear_percentage": 0.157,
-      "anti-genetic-mod_percentage": 0.043
+      "pro-genetic-mod_percentage": 0.15,
+      "pro-ubi_percentage": 0.125,
+      "anti-ubi_percentage": 0.125,
+      "anti-nuclear_percentage": 0.188,
+      "anti-crypto_percentage": 0.15,
+      "pro-crypto_percentage": 0.037,
+      "pro-nuclear_percentage": 0.188,
+      "anti-genetic-mod_percentage": 0.037
     },
     {
       "round": 2,
-      "total_votes": 70,
+      "total_votes": 80,
       "side_votes": {
-        "pro-genetic-mod": 6,
+        "pro-genetic-mod": 11,
         "anti-ubi": 6,
         "pro-ubi": 14,
-        "anti-nuclear": 10,
-        "pro-nuclear": 15,
+        "anti-nuclear": 14,
+        "pro-nuclear": 16,
         "pro-crypto": 4,
         "anti-crypto": 11,
         "anti-genetic-mod": 4
       },
-      "pro-genetic-mod_percentage": 0.086,
-      "anti-ubi_percentage": 0.086,
-      "pro-ubi_percentage": 0.2,
-      "anti-nuclear_percentage": 0.143,
-      "pro-nuclear_percentage": 0.214,
-      "pro-crypto_percentage": 0.057,
-      "anti-crypto_percentage": 0.157,
-      "anti-genetic-mod_percentage": 0.057
+      "pro-genetic-mod_percentage": 0.138,
+      "anti-ubi_percentage": 0.075,
+      "pro-ubi_percentage": 0.175,
+      "anti-nuclear_percentage": 0.175,
+      "pro-nuclear_percentage": 0.2,
+      "pro-crypto_percentage": 0.05,
+      "anti-crypto_percentage": 0.138,
+      "anti-genetic-mod_percentage": 0.05
     },
     {
       "round": 3,
-      "total_votes": 70,
+      "total_votes": 80,
       "side_votes": {
-        "pro-genetic-mod": 5,
+        "pro-genetic-mod": 10,
         "anti-ubi": 8,
         "pro-ubi": 12,
-        "anti-nuclear": 16,
+        "anti-nuclear": 17,
         "pro-crypto": 10,
-        "pro-nuclear": 9,
+        "pro-nuclear": 13,
         "anti-genetic-mod": 5,
         "anti-crypto": 5
       },
-      "pro-genetic-mod_percentage": 0.071,
-      "anti-ubi_percentage": 0.114,
-      "pro-ubi_percentage": 0.171,
-      "anti-nuclear_percentage": 0.229,
-      "pro-crypto_percentage": 0.143,
-      "pro-nuclear_percentage": 0.129,
-      "anti-genetic-mod_percentage": 0.071,
-      "anti-crypto_percentage": 0.071
+      "pro-genetic-mod_percentage": 0.125,
+      "anti-ubi_percentage": 0.1,
+      "pro-ubi_percentage": 0.15,
+      "anti-nuclear_percentage": 0.212,
+      "pro-crypto_percentage": 0.125,
+      "pro-nuclear_percentage": 0.163,
+      "anti-genetic-mod_percentage": 0.062,
+      "anti-crypto_percentage": 0.062
     }
   ],
   "topic_analysis": [
-    {
-      "topic": "Is universal basic income a viable economic policy?",
-      "rounds": {
-        "1": {
-          "total_votes": 20,
-          "side_votes": {
-            "pro-ubi": 10,
-            "anti-ubi": 10
-          },
-          "pro-ubi_percentage": 0.5,
-          "anti-ubi_percentage": 0.5
-        },
-        "2": {
-          "total_votes": 20,
-          "side_votes": {
-            "pro-ubi": 14,
-            "anti-ubi": 6
-          },
-          "pro-ubi_percentage": 0.7,
-          "anti-ubi_percentage": 0.3
-        },
-        "3": {
-          "total_votes": 20,
-          "side_votes": {
-            "pro-ubi": 12,
-            "anti-ubi": 8
-          },
-          "pro-ubi_percentage": 0.6,
-          "anti-ubi_percentage": 0.4
-        }
-      }
-    },
     {
       "topic": "Is cryptocurrency a legitimate alternative to traditional banking?",
       "rounds": {
@@ -133,34 +101,66 @@
       }
     },
     {
+      "topic": "Is universal basic income a viable economic policy?",
+      "rounds": {
+        "1": {
+          "total_votes": 20,
+          "side_votes": {
+            "pro-ubi": 10,
+            "anti-ubi": 10
+          },
+          "pro-ubi_percentage": 0.5,
+          "anti-ubi_percentage": 0.5
+        },
+        "2": {
+          "total_votes": 20,
+          "side_votes": {
+            "pro-ubi": 14,
+            "anti-ubi": 6
+          },
+          "pro-ubi_percentage": 0.7,
+          "anti-ubi_percentage": 0.3
+        },
+        "3": {
+          "total_votes": 20,
+          "side_votes": {
+            "pro-ubi": 12,
+            "anti-ubi": 8
+          },
+          "pro-ubi_percentage": 0.6,
+          "anti-ubi_percentage": 0.4
+        }
+      }
+    },
+    {
       "topic": "Should genetic modification of human embryos be permitted?",
       "rounds": {
         "1": {
-          "total_votes": 10,
+          "total_votes": 15,
           "side_votes": {
-            "pro-genetic-mod": 7,
+            "pro-genetic-mod": 12,
             "anti-genetic-mod": 3
           },
-          "pro-genetic-mod_percentage": 0.7,
-          "anti-genetic-mod_percentage": 0.3
+          "pro-genetic-mod_percentage": 0.8,
+          "anti-genetic-mod_percentage": 0.2
         },
         "2": {
-          "total_votes": 10,
+          "total_votes": 15,
           "side_votes": {
-            "pro-genetic-mod": 6,
+            "pro-genetic-mod": 11,
             "anti-genetic-mod": 4
           },
-          "pro-genetic-mod_percentage": 0.6,
-          "anti-genetic-mod_percentage": 0.4
+          "pro-genetic-mod_percentage": 0.733,
+          "anti-genetic-mod_percentage": 0.267
         },
         "3": {
-          "total_votes": 10,
+          "total_votes": 15,
           "side_votes": {
-            "pro-genetic-mod": 5,
+            "pro-genetic-mod": 10,
             "anti-genetic-mod": 5
           },
-          "pro-genetic-mod_percentage": 0.5,
-          "anti-genetic-mod_percentage": 0.5
+          "pro-genetic-mod_percentage": 0.667,
+          "anti-genetic-mod_percentage": 0.333
         }
       }
     },
@@ -168,31 +168,31 @@
       "topic": "Is nuclear energy the best solution for climate change?",
       "rounds": {
         "1": {
-          "total_votes": 25,
-          "side_votes": {
-            "pro-nuclear": 11,
-            "anti-nuclear": 14
-          },
-          "pro-nuclear_percentage": 0.44,
-          "anti-nuclear_percentage": 0.56
-        },
-        "2": {
-          "total_votes": 25,
+          "total_votes": 30,
           "side_votes": {
             "pro-nuclear": 15,
-            "anti-nuclear": 10
+            "anti-nuclear": 15
           },
-          "pro-nuclear_percentage": 0.6,
-          "anti-nuclear_percentage": 0.4
+          "pro-nuclear_percentage": 0.5,
+          "anti-nuclear_percentage": 0.5
+        },
+        "2": {
+          "total_votes": 30,
+          "side_votes": {
+            "pro-nuclear": 16,
+            "anti-nuclear": 14
+          },
+          "pro-nuclear_percentage": 0.533,
+          "anti-nuclear_percentage": 0.467
         },
         "3": {
-          "total_votes": 25,
+          "total_votes": 30,
           "side_votes": {
-            "pro-nuclear": 9,
-            "anti-nuclear": 16
+            "pro-nuclear": 13,
+            "anti-nuclear": 17
           },
-          "pro-nuclear_percentage": 0.36,
-          "anti-nuclear_percentage": 0.64
+          "pro-nuclear_percentage": 0.433,
+          "anti-nuclear_percentage": 0.567
         }
       }
     }
