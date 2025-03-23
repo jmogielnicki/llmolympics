@@ -271,7 +271,9 @@ const TimelineTab = () => {
 									<p className="font-medium mb-1 flex">
 										Final scores:
 									</p>
-									<div className="grid grid-flow-col sm:grid-rows-3 grid-rows-10 gap-1 pl-2">
+									<div
+										className={`grid grid-flow-col sm:grid-rows-3 grid-rows-${finalScores.length + 1} gap-1 pl-2`}
+									>
 										{Array.isArray(finalScores) ? (
 											finalScores.map((score, index) => {
 												const highestScore = Math.max(
