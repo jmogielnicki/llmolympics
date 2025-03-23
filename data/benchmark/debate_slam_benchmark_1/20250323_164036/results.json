@@ -1,0 +1,117 @@
+{
+  "game": "Debate Slam",
+  "timestamp": "2025-03-23T16:50:13.187070",
+  "players": [
+    {
+      "id": "player_5",
+      "model_id": "deepseek:deepseek-reasoner",
+      "final_state": {
+        "role": "debater",
+        "side_id": "pro-genetic-mod",
+        "position": "Genetic modification of human embryos should be permitted",
+        "score": 10,
+        "pre_swap": {
+          "side_id": "anti-genetic-mod",
+          "position": "Genetic modification of human embryos should not be permitted",
+          "score": 5
+        },
+        "post_swap": {
+          "side_id": "pro-genetic-mod",
+          "position": "Genetic modification of human embryos should be permitted",
+          "score": 5
+        }
+      },
+      "role": "debater"
+    },
+    {
+      "id": "player_2",
+      "model_id": "deepseek:deepseek-chat",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_3",
+      "model_id": "openai:gpt-4o",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_4",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "final_state": {
+        "role": "debater",
+        "side_id": "anti-genetic-mod",
+        "position": "Genetic modification of human embryos should not be permitted",
+        "score": 0,
+        "pre_swap": {
+          "side_id": "pro-genetic-mod",
+          "position": "Genetic modification of human embryos should be permitted",
+          "score": 0
+        },
+        "post_swap": {
+          "side_id": "anti-genetic-mod",
+          "position": "Genetic modification of human embryos should not be permitted",
+          "score": 0
+        }
+      },
+      "role": "debater"
+    },
+    {
+      "id": "player_6",
+      "model_id": "mistral:mistral-large-latest",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_7",
+      "model_id": "anthropic:claude-3-5-sonnet-20240620",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    }
+  ],
+  "winner": {
+    "id": "player_5"
+  },
+  "rounds_played": 3,
+  "history_summary": {
+    "argument_history": 3,
+    "judging_history": 3
+  },
+  "session_id": "debate_slam_20250323_164036",
+  "stats": {
+    "snapshot_count": 17,
+    "event_count": 126,
+    "chat_message_count": 42
+  }
+}

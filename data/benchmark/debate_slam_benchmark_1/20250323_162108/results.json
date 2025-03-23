@@ -1,0 +1,117 @@
+{
+  "game": "Debate Slam",
+  "timestamp": "2025-03-23T16:24:30.204352",
+  "players": [
+    {
+      "id": "player_1",
+      "model_id": "openai:gpt-4.5-preview",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_5",
+      "model_id": "mistral:mistral-large-latest",
+      "final_state": {
+        "role": "debater",
+        "side_id": "pro-nuclear",
+        "position": "Nuclear energy is the best solution for climate change",
+        "score": 8,
+        "pre_swap": {
+          "side_id": "anti-nuclear",
+          "position": "Nuclear energy is not the best solution for climate change",
+          "score": 4
+        },
+        "post_swap": {
+          "side_id": "pro-nuclear",
+          "position": "Nuclear energy is the best solution for climate change",
+          "score": 4
+        }
+      },
+      "role": "debater"
+    },
+    {
+      "id": "player_3",
+      "model_id": "google:gemini-2.0-flash",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_4",
+      "model_id": "openai:gpt-4o",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_2",
+      "model_id": "xai:grok-2-1212",
+      "final_state": {
+        "role": "debater",
+        "side_id": "anti-nuclear",
+        "position": "Nuclear energy is not the best solution for climate change",
+        "score": 2,
+        "pre_swap": {
+          "side_id": "pro-nuclear",
+          "position": "Nuclear energy is the best solution for climate change",
+          "score": 1
+        },
+        "post_swap": {
+          "side_id": "anti-nuclear",
+          "position": "Nuclear energy is not the best solution for climate change",
+          "score": 1
+        }
+      },
+      "role": "debater"
+    },
+    {
+      "id": "player_6",
+      "model_id": "anthropic:claude-3-7-sonnet-20250219",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    },
+    {
+      "id": "player_7",
+      "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
+      "final_state": {
+        "role": "judge",
+        "side_id": "",
+        "position": "",
+        "score": 0
+      },
+      "role": "judge"
+    }
+  ],
+  "winner": {
+    "id": "player_5"
+  },
+  "rounds_played": 3,
+  "history_summary": {
+    "argument_history": 3,
+    "judging_history": 3
+  },
+  "session_id": "debate_slam_20250323_162108",
+  "stats": {
+    "snapshot_count": 17,
+    "event_count": 126,
+    "chat_message_count": 42
+  }
+}

@@ -1,168 +1,168 @@
 {
   "opponent_matrix": {
     "deepseek:deepseek-chat": [
-      "google:gemini-2.0-flash-thinking-exp-01-21",
       "anthropic:claude-3-5-sonnet-20240620",
+      "anthropic:claude-3-7-sonnet-20250219",
+      "deepseek:deepseek-reasoner",
+      "google:gemini-2.0-flash",
+      "google:gemini-2.0-flash-thinking-exp-01-21",
+      "mistral:mistral-large-latest",
       "openai:gpt-4.5-preview",
       "openai:gpt-4o",
-      "xai:grok-2-1212",
-      "anthropic:claude-3-7-sonnet-20250219",
-      "mistral:mistral-large-latest",
-      "google:gemini-2.0-flash",
-      "deepseek:deepseek-reasoner"
+      "xai:grok-2-1212"
     ],
     "deepseek:deepseek-reasoner": [
-      "google:gemini-2.0-flash-thinking-exp-01-21",
       "anthropic:claude-3-5-sonnet-20240620",
-      "openai:gpt-4.5-preview",
-      "deepseek:deepseek-chat",
-      "openai:gpt-4o",
-      "xai:grok-2-1212",
       "anthropic:claude-3-7-sonnet-20250219",
+      "deepseek:deepseek-chat",
+      "google:gemini-2.0-flash",
+      "google:gemini-2.0-flash-thinking-exp-01-21",
       "mistral:mistral-large-latest",
-      "google:gemini-2.0-flash"
+      "openai:gpt-4.5-preview",
+      "openai:gpt-4o",
+      "xai:grok-2-1212"
     ],
     "openai:gpt-4o": [
-      "google:gemini-2.0-flash-thinking-exp-01-21",
       "anthropic:claude-3-5-sonnet-20240620",
-      "openai:gpt-4.5-preview",
-      "deepseek:deepseek-chat",
-      "xai:grok-2-1212",
       "anthropic:claude-3-7-sonnet-20250219",
-      "mistral:mistral-large-latest",
+      "deepseek:deepseek-chat",
+      "deepseek:deepseek-reasoner",
       "google:gemini-2.0-flash",
-      "deepseek:deepseek-reasoner"
+      "google:gemini-2.0-flash-thinking-exp-01-21",
+      "mistral:mistral-large-latest",
+      "openai:gpt-4.5-preview",
+      "xai:grok-2-1212"
     ],
     "openai:gpt-4.5-preview": [
-      "google:gemini-2.0-flash-thinking-exp-01-21",
       "anthropic:claude-3-5-sonnet-20240620",
-      "deepseek:deepseek-chat",
-      "openai:gpt-4o",
-      "xai:grok-2-1212",
       "anthropic:claude-3-7-sonnet-20250219",
-      "mistral:mistral-large-latest",
+      "deepseek:deepseek-chat",
+      "deepseek:deepseek-reasoner",
       "google:gemini-2.0-flash",
-      "deepseek:deepseek-reasoner"
+      "google:gemini-2.0-flash-thinking-exp-01-21",
+      "mistral:mistral-large-latest",
+      "openai:gpt-4o",
+      "xai:grok-2-1212"
     ],
     "anthropic:claude-3-5-sonnet-20240620": [
-      "google:gemini-2.0-flash-thinking-exp-01-21",
-      "openai:gpt-4.5-preview",
-      "deepseek:deepseek-chat",
-      "openai:gpt-4o",
-      "xai:grok-2-1212",
       "anthropic:claude-3-7-sonnet-20250219",
-      "mistral:mistral-large-latest",
+      "deepseek:deepseek-chat",
+      "deepseek:deepseek-reasoner",
       "google:gemini-2.0-flash",
-      "deepseek:deepseek-reasoner"
+      "google:gemini-2.0-flash-thinking-exp-01-21",
+      "mistral:mistral-large-latest",
+      "openai:gpt-4.5-preview",
+      "openai:gpt-4o",
+      "xai:grok-2-1212"
     ],
     "anthropic:claude-3-7-sonnet-20250219": [
-      "google:gemini-2.0-flash-thinking-exp-01-21",
       "anthropic:claude-3-5-sonnet-20240620",
-      "openai:gpt-4.5-preview",
       "deepseek:deepseek-chat",
-      "openai:gpt-4o",
-      "xai:grok-2-1212",
-      "mistral:mistral-large-latest",
+      "deepseek:deepseek-reasoner",
       "google:gemini-2.0-flash",
-      "deepseek:deepseek-reasoner"
+      "google:gemini-2.0-flash-thinking-exp-01-21",
+      "mistral:mistral-large-latest",
+      "openai:gpt-4.5-preview",
+      "openai:gpt-4o",
+      "xai:grok-2-1212"
     ],
     "xai:grok-2-1212": [
-      "google:gemini-2.0-flash-thinking-exp-01-21",
       "anthropic:claude-3-5-sonnet-20240620",
-      "openai:gpt-4.5-preview",
-      "deepseek:deepseek-chat",
-      "openai:gpt-4o",
       "anthropic:claude-3-7-sonnet-20250219",
-      "mistral:mistral-large-latest",
+      "deepseek:deepseek-chat",
+      "deepseek:deepseek-reasoner",
       "google:gemini-2.0-flash",
-      "deepseek:deepseek-reasoner"
+      "google:gemini-2.0-flash-thinking-exp-01-21",
+      "mistral:mistral-large-latest",
+      "openai:gpt-4.5-preview",
+      "openai:gpt-4o"
     ],
     "mistral:mistral-large-latest": [
-      "google:gemini-2.0-flash-thinking-exp-01-21",
       "anthropic:claude-3-5-sonnet-20240620",
-      "openai:gpt-4.5-preview",
-      "deepseek:deepseek-chat",
-      "openai:gpt-4o",
-      "xai:grok-2-1212",
       "anthropic:claude-3-7-sonnet-20250219",
+      "deepseek:deepseek-chat",
+      "deepseek:deepseek-reasoner",
       "google:gemini-2.0-flash",
-      "deepseek:deepseek-reasoner"
+      "google:gemini-2.0-flash-thinking-exp-01-21",
+      "openai:gpt-4.5-preview",
+      "openai:gpt-4o",
+      "xai:grok-2-1212"
     ],
     "google:gemini-2.0-flash": [
-      "google:gemini-2.0-flash-thinking-exp-01-21",
       "anthropic:claude-3-5-sonnet-20240620",
-      "openai:gpt-4.5-preview",
-      "deepseek:deepseek-chat",
-      "openai:gpt-4o",
-      "xai:grok-2-1212",
       "anthropic:claude-3-7-sonnet-20250219",
+      "deepseek:deepseek-chat",
+      "deepseek:deepseek-reasoner",
+      "google:gemini-2.0-flash-thinking-exp-01-21",
       "mistral:mistral-large-latest",
-      "deepseek:deepseek-reasoner"
+      "openai:gpt-4.5-preview",
+      "openai:gpt-4o",
+      "xai:grok-2-1212"
     ],
     "google:gemini-2.0-flash-thinking-exp-01-21": [
       "anthropic:claude-3-5-sonnet-20240620",
-      "openai:gpt-4.5-preview",
-      "deepseek:deepseek-chat",
-      "openai:gpt-4o",
-      "xai:grok-2-1212",
       "anthropic:claude-3-7-sonnet-20250219",
-      "mistral:mistral-large-latest",
+      "deepseek:deepseek-chat",
+      "deepseek:deepseek-reasoner",
       "google:gemini-2.0-flash",
-      "deepseek:deepseek-reasoner"
+      "mistral:mistral-large-latest",
+      "openai:gpt-4.5-preview",
+      "openai:gpt-4o",
+      "xai:grok-2-1212"
     ]
   },
   "game_counts": {
-    "deepseek:deepseek-chat": 10,
-    "deepseek:deepseek-reasoner": 10,
-    "openai:gpt-4o": 10,
-    "openai:gpt-4.5-preview": 5,
-    "anthropic:claude-3-5-sonnet-20240620": 12,
-    "anthropic:claude-3-7-sonnet-20250219": 11,
-    "xai:grok-2-1212": 12,
-    "mistral:mistral-large-latest": 11,
-    "google:gemini-2.0-flash": 8,
-    "google:gemini-2.0-flash-thinking-exp-01-21": 9
+    "deepseek:deepseek-chat": 11,
+    "deepseek:deepseek-reasoner": 11,
+    "openai:gpt-4o": 12,
+    "openai:gpt-4.5-preview": 7,
+    "anthropic:claude-3-5-sonnet-20240620": 13,
+    "anthropic:claude-3-7-sonnet-20250219": 13,
+    "xai:grok-2-1212": 13,
+    "mistral:mistral-large-latest": 13,
+    "google:gemini-2.0-flash": 9,
+    "google:gemini-2.0-flash-thinking-exp-01-21": 10
   },
   "role_counts": {
     "deepseek:deepseek-chat": {
       "debater": 3,
-      "judge": 7
+      "judge": 8
     },
     "deepseek:deepseek-reasoner": {
-      "debater": 3,
+      "debater": 4,
       "judge": 7
     },
     "openai:gpt-4o": {
       "debater": 3,
-      "judge": 7
+      "judge": 9
     },
     "openai:gpt-4.5-preview": {
-      "debater": 2,
-      "judge": 3
+      "debater": 3,
+      "judge": 4
     },
     "anthropic:claude-3-5-sonnet-20240620": {
       "debater": 4,
-      "judge": 8
+      "judge": 9
     },
     "anthropic:claude-3-7-sonnet-20250219": {
       "debater": 3,
-      "judge": 8
+      "judge": 10
     },
     "xai:grok-2-1212": {
-      "debater": 2,
+      "debater": 3,
       "judge": 10
     },
     "mistral:mistral-large-latest": {
-      "debater": 2,
-      "judge": 9
+      "debater": 3,
+      "judge": 10
     },
     "google:gemini-2.0-flash": {
       "debater": 3,
-      "judge": 5
+      "judge": 6
     },
     "google:gemini-2.0-flash-thinking-exp-01-21": {
       "debater": 3,
-      "judge": 6
+      "judge": 7
     }
   },
   "sessions_run": 9
