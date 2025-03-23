@@ -78,6 +78,7 @@ const DashboardContent = () => {
 				/>
 				<Route path="/leaderboard" element={<LeaderboardTab />} />
 				<Route path="/timeline" element={<TimelineTab />} />
+				<Route path="/timeline/:sessionId" element={<TimelineTab />} />
 				<Route
 					path="*"
 					element={

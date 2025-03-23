@@ -2,48 +2,84 @@ import React, { useState, useEffect } from "react";
 import { useGameData } from "../../../context/GameDataContext";
 import DebateRound from "../components/DebateRound";
 import { Calendar, Plus, Trophy, Users } from "lucide-react";
-import DebateSessionHeader from "../components/DebateSessionHeader"; // Import the new component
+import DebateSessionHeader from "../components/DebateSessionHeader";
 import { createDebateConfig } from "../../../utils/debateConfigUtils";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 /**
  * Timeline tab for displaying debate slam sessions
  */
 const TimelineTab = () => {
 	const { gameSessions, loadGameDetail } = useGameData();
-	const [selectedSession, setSelectedSession] = useState(null);
 	const [gameDetail, setGameDetail] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 	const [expandedRound, setExpandedRound] = useState(null);
 
-	// Initialize selected session when gameSessions are loaded
+	// Get sessionId from URL params
+	const { sessionId } = useParams();
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	// Handle session initialization and URL updates
 	useEffect(() => {
-		if (gameSessions?.length > 0 && !selectedSession) {
-			setSelectedSession(gameSessions[0].id);
+		if (!gameSessions || gameSessions.length === 0) {
+			return; // Wait for sessions to load
 		}
-	}, [gameSessions, selectedSession]);
 
-	// Load game detail when session changes
-	useEffect(() => {
-		const fetchGameDetail = async () => {
-			if (!selectedSession) return;
+		// If we're on the base timeline path without a session ID
+		if (location.pathname === "/games/debate-slam/timeline") {
+			// Navigate to the first session
+			navigate(`/games/debate-slam/timeline/${gameSessions[0].id}`, {
+				replace: true,
+			});
+			return;
+		}
 
-			setLoading(true);
-			setError(null);
+		// If we have a session ID in the URL
+		if (sessionId) {
+			// Check if it's a valid session ID
+			const isValidSession = gameSessions.some(
+				(session) => session.id === sessionId
+			);
 
-			try {
-				const detail = await loadGameDetail(selectedSession);
-				setGameDetail(detail);
-			} catch (err) {
-				console.error("Error loading game detail:", err);
-				setError("Failed to load game details. Please try again.");
-			} finally {
-				setLoading(false);
+			if (isValidSession) {
+				// Load this session
+				loadSessionDetails(sessionId);
+			} else {
+				// Invalid session ID - redirect to first session with error message
+				setError(
+					`Invalid session ID: ${sessionId}. Redirecting to a valid session.`
+				);
+				navigate(`/games/debate-slam/timeline/${gameSessions[0].id}`, {
+					replace: true,
+				});
 			}
-		};
+		}
+	}, [gameSessions, sessionId, navigate, location.pathname]);
 
-		fetchGameDetail();
-	}, [selectedSession, loadGameDetail]);
+	// Function to load session details
+	const loadSessionDetails = async (id) => {
+		if (!id) return;
+
+		setLoading(true);
+		setError(null);
+
+		try {
+			const detail = await loadGameDetail(id);
+			setGameDetail(detail);
+		} catch (err) {
+			console.error("Error loading game detail:", err);
+			setError("Failed to load game details. Please try again.");
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	// Handle session selection change
+	const handleSessionChange = (newSessionId) => {
+		navigate(`/games/debate-slam/timeline/${newSessionId}`);
+	};
 
 	// Get session date from session ID
 	const getSessionDate = (sessionId) => {
@@ -89,23 +125,23 @@ const TimelineTab = () => {
 	};
 
 	// Extract debate data for rendering
-const getDebateData = () => {
-	if (!gameDetail) return null;
+	const getDebateData = () => {
+		if (!gameDetail) return null;
 
-	const data = {
-		topic: gameDetail.metadata.topic,
-		debaters: gameDetail.players.debaters,
-		judges: gameDetail.players.judges,
-		preSwapRounds: gameDetail.pre_swap.rounds || [],
-		postSwapRounds: gameDetail.post_swap.rounds || [],
-		summary: gameDetail.summary,
+		const data = {
+			topic: gameDetail.metadata.topic,
+			debaters: gameDetail.players.debaters,
+			judges: gameDetail.players.judges,
+			preSwapRounds: gameDetail.pre_swap.rounds || [],
+			postSwapRounds: gameDetail.post_swap.rounds || [],
+			summary: gameDetail.summary,
+		};
+
+		// Create the debate configuration
+		data.config = createDebateConfig(data);
+
+		return data;
 	};
-
-	// Create the debate configuration
-	data.config = createDebateConfig(data);
-
-	return data;
-};
 
 	const debateData = getDebateData();
 
@@ -119,7 +155,7 @@ const getDebateData = () => {
 					View debate rounds, arguments, and judge decisions
 				</p>
 
-				{/* Session selector */}
+				{/* Session selector - updated to use URL params */}
 				<div className="mb-6">
 					<label
 						htmlFor="session-select"
@@ -130,8 +166,8 @@ const getDebateData = () => {
 					<select
 						id="session-select"
 						className="w-full border border-gray-300 rounded-md p-2"
-						value={selectedSession || ""}
-						onChange={(e) => setSelectedSession(e.target.value)}
+						value={sessionId || ""}
+						onChange={(e) => handleSessionChange(e.target.value)}
 					>
 						{gameSessions?.map((session) => (
 							<option key={session.id} value={session.id}>
@@ -165,7 +201,7 @@ const getDebateData = () => {
 							{/* Use the new enhanced debate header component */}
 							<DebateSessionHeader
 								debateData={debateData}
-								selectedSession={selectedSession}
+								selectedSession={sessionId}
 								getSessionDate={getSessionDate}
 							/>
 
@@ -362,7 +398,9 @@ const getDebateData = () => {
 											}
 										</p>
 										<p className="text-xs text-stone-500">
-											* Total score is calculated by taking the final score before and after swap
+											* Total score is calculated by
+											taking the final score before and
+											after swap
 										</p>
 									</div>
 								)}

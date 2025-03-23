@@ -339,6 +339,20 @@ const GameInfoCard = ({ games }) => {
 		games.find((game) => {
 			return location.pathname.includes(game.path.replace(/^\//, ""));
 		}) || games[0];
+	console.log(currentGame);
+
+	// Access the nested date string
+	const dateString = currentGame.stats.processed_at;
+
+	// Parse the date string (best way in modern JS)
+	const date = new Date(dateString);
+
+	// Format the date
+	const formattedDate = date.toLocaleDateString("en-US", {
+		year: "numeric",
+		month: "short",
+		day: "numeric",
+	});
 
 	return (
 		<div className="bg-white border-l-4 border-indigo-400 rounded-lg shadow-sm overflow-hidden mb-4 sm:mb-6">
@@ -383,8 +397,7 @@ const GameInfoCard = ({ games }) => {
 								</span>
 								<span className="sm:inline">
 									{" "}
-									• Last updated{" "}
-									{currentGame.stats.processed_at}
+									• Last updated {formattedDate}
 								</span>
 							</span>
 						</div>

@@ -3,56 +3,113 @@ import { useGameData } from "../../../context/GameDataContext";
 import { TimelineHeader } from "../components/TimelineHeader";
 import { TimelineRound } from "../components/TimelineRound";
 import { shortenModelName } from "@/utils/commonUtils";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 const TimelineTab = () => {
 	const { gameSessions, loadGameDetail } = useGameData();
-
-	const [selectedLeftModel, setSelectedLeftModel] = useState("");
-	const [selectedRightModel, setSelectedRightModel] = useState("");
 	const [gameDetail, setGameDetail] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 
-	// Initialize selected models when gameSessions are loaded
+	// Get model IDs from URL params
+	const { leftModelId, rightModelId } = useParams();
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	// Handle model initialization and URL updates
 	useEffect(() => {
-		if (gameSessions && Array.isArray(gameSessions) && gameSessions.length > 0) {
-			// Use the first matchup's model IDs
-			const firstMatchup = gameSessions[0];
-			setSelectedLeftModel(firstMatchup.player1_id);
-			setSelectedRightModel(firstMatchup.player2_id);
+		if (
+			!gameSessions ||
+			!Array.isArray(gameSessions) ||
+			gameSessions.length === 0
+		) {
+			return; // Wait for sessions to load
 		}
-	}, [gameSessions]);
 
-	// Find the current matchup based on selected models
-	const currentMatchup = gameSessions?.find(
-		(matchup) =>
-			(matchup?.player1_id === selectedLeftModel &&
-				matchup?.player2_id === selectedRightModel) ||
-			(matchup?.player1_id === selectedRightModel &&
-				matchup?.player2_id === selectedLeftModel)
-	);
+		// If we're on the base timeline path without model IDs
+		if (location.pathname === "/games/prisoners-dilemma/timeline") {
+			// Navigate to the first matchup
+			const firstMatchup = gameSessions[0];
+			navigate(
+				`/games/prisoners-dilemma/timeline/${firstMatchup.player1_id}/${firstMatchup.player2_id}`,
+				{ replace: true }
+			);
+			return;
+		}
 
-	// Load game detail when matchup changes
-	useEffect(() => {
-		const fetchGameDetail = async () => {
-			if (!currentMatchup?.session_id) return;
+		// If we have model IDs in the URL
+		if (leftModelId && rightModelId) {
+			// Check if it's a valid matchup
+			const isValidMatchup = gameSessions.some(
+				(matchup) =>
+					(matchup.player1_id === leftModelId &&
+						matchup.player2_id === rightModelId) ||
+					(matchup.player1_id === rightModelId &&
+						matchup.player2_id === leftModelId)
+			);
 
-			setLoading(true);
-			setError(null);
-
-			try {
-				const detail = await loadGameDetail(currentMatchup.session_id);
-				setGameDetail(detail);
-			} catch (err) {
-				console.error("Error loading game detail:", err);
-				setError("Failed to load game details. Please try again.");
-			} finally {
-				setLoading(false);
+			if (isValidMatchup) {
+				// Load this matchup
+				loadMatchupDetails(leftModelId, rightModelId);
+			} else {
+				// Invalid matchup - redirect to first matchup with error message
+				setError(
+					`Invalid model matchup. Redirecting to a valid matchup.`
+				);
+				const firstMatchup = gameSessions[0];
+				navigate(
+					`/games/prisoners-dilemma/timeline/${firstMatchup.player1_id}/${firstMatchup.player2_id}`,
+					{ replace: true }
+				);
 			}
-		};
+		}
+	}, [gameSessions, leftModelId, rightModelId, navigate, location.pathname]);
 
-		fetchGameDetail();
-	}, [currentMatchup, loadGameDetail]);
+	// Function to load matchup details
+	const loadMatchupDetails = async (leftId, rightId) => {
+		if (!leftId || !rightId) return;
+
+		setLoading(true);
+		setError(null);
+
+		// Find the current matchup based on selected models
+		const currentMatchup = gameSessions?.find(
+			(matchup) =>
+				(matchup?.player1_id === leftId &&
+					matchup?.player2_id === rightId) ||
+				(matchup?.player1_id === rightId &&
+					matchup?.player2_id === leftId)
+		);
+
+		if (!currentMatchup?.session_id) {
+			setLoading(false);
+			setError("Matchup not found.");
+			return;
+		}
+
+		try {
+			const detail = await loadGameDetail(currentMatchup.session_id);
+			setGameDetail(detail);
+		} catch (err) {
+			console.error("Error loading game detail:", err);
+			setError("Failed to load game details. Please try again.");
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	// Handle model selection change
+	const handleLeftModelChange = (newLeftModelId) => {
+		navigate(
+			`/games/prisoners-dilemma/timeline/${newLeftModelId}/${rightModelId}`
+		);
+	};
+
+	const handleRightModelChange = (newRightModelId) => {
+		navigate(
+			`/games/prisoners-dilemma/timeline/${leftModelId}/${newRightModelId}`
+		);
+	};
 
 	// Get timeline events and organize by rounds
 	const getRoundEvents = () => {
@@ -88,15 +145,6 @@ const TimelineTab = () => {
 	};
 
 	const roundEvents = getRoundEvents();
-
-	// Handle model selection change
-	const handleLeftModelChange = (e) => {
-		setSelectedLeftModel(e.target.value);
-	};
-
-	const handleRightModelChange = (e) => {
-		setSelectedRightModel(e.target.value);
-	};
 
 	// Get the list of unique models from gameSessions
 	const getUniqueModels = () => {
@@ -138,13 +186,13 @@ const TimelineTab = () => {
 	};
 
 	const leftModel = createModelObject(
-		selectedLeftModel,
-		modelOptions.find((m) => m.id === selectedLeftModel)?.name || "Unknown"
+		leftModelId,
+		modelOptions.find((m) => m.id === leftModelId)?.name || "Unknown"
 	);
 
 	const rightModel = createModelObject(
-		selectedRightModel,
-		modelOptions.find((m) => m.id === selectedRightModel)?.name || "Unknown"
+		rightModelId,
+		modelOptions.find((m) => m.id === rightModelId)?.name || "Unknown"
 	);
 
 	return (
@@ -154,21 +202,21 @@ const TimelineTab = () => {
 					Game Timeline View
 				</h2>
 				<p className="text-sm text-center text-gray-600 mb-6">
-					Detailed progression of individual gameSessions with decisions
-					and reasoning
+					Detailed progression of individual gameSessions with
+					decisions and reasoning
 				</p>
 
 				<div className="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
 					<div className="w-full md:w-1/2">
 						<select
 							className="w-full border border-gray-300 rounded-md p-2"
-							value={selectedLeftModel}
-							onChange={handleLeftModelChange}
+							value={leftModelId || ""}
+							onChange={(e) =>
+								handleLeftModelChange(e.target.value)
+							}
 						>
 							{modelOptions
-								.filter(
-									(model) => model.id !== selectedRightModel
-								)
+								.filter((model) => model.id !== rightModelId)
 								.map((model) => (
 									<option key={model.id} value={model.id}>
 										{shortenModelName(model.name)}
@@ -184,13 +232,13 @@ const TimelineTab = () => {
 					<div className="w-full md:w-1/2">
 						<select
 							className="w-full border border-gray-300 rounded-md p-2"
-							value={selectedRightModel}
-							onChange={handleRightModelChange}
+							value={rightModelId || ""}
+							onChange={(e) =>
+								handleRightModelChange(e.target.value)
+							}
 						>
 							{modelOptions
-								.filter(
-									(model) => model.id !== selectedLeftModel
-								)
+								.filter((model) => model.id !== leftModelId)
 								.map((model) => (
 									<option key={model.id} value={model.id}>
 										{shortenModelName(model.name)}
@@ -202,7 +250,7 @@ const TimelineTab = () => {
 
 				{error && <p className="text-center text-red-500">{error}</p>}
 
-				{gameDetail && currentMatchup && (
+				{gameDetail && (
 					<>
 						<TimelineHeader
 							gameDetail={gameDetail}
@@ -222,8 +270,8 @@ const TimelineTab = () => {
 								<TimelineRound
 									key={`round-${round.roundNumber}`}
 									round={round}
-									leftModelId={selectedLeftModel}
-									rightModelId={selectedRightModel}
+									leftModelId={leftModelId}
+									rightModelId={rightModelId}
 									leftModelName={shortenModelName(
 										leftModel.name
 									)}
