@@ -25,13 +25,6 @@ const prisonersDilemmaDefinition = {
 		name: "Prisoner's Dilemma",
 		description: "A classic game of cooperation and betrayal",
 		dataTypes: ["matchup_matrix", "round_progression"],
-		tabs: [
-			{ id: "leaderboard", label: "Leaderboard" },
-			{ id: "game-stats", label: "Stats" },
-			{ id: "matchups", label: "Matchups" },
-			{ id: "timeline", label: "Timeline" },
-			{ id: "about", label: "About" },
-		],
 		leaderboardColumns: [
 			{ key: "rank", label: "Rank", align: "left" },
 			{ key: "model_name", label: "Model", align: "left" },
@@ -126,12 +119,6 @@ const poetrySlamDefinition = {
 		name: "Poetry Slam",
 		description: "LLMs compete in creative poetry writing",
 		dataTypes: [],
-		tabs: [
-			{ id: "leaderboard", label: "Leaderboard" },
-			{ id: "voting-patterns", label: "Voting Patterns" },
-			{ id: "timeline", label: "Timeline" },
-			{ id: "about", label: "About" },
-		],
 		leaderboardColumns: [
 			{ key: "rank", label: "Rank", align: "left" },
 			{ key: "model_name", label: "Model", align: "left" },

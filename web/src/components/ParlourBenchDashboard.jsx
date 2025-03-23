@@ -339,7 +339,6 @@ const GameInfoCard = ({ games }) => {
 		games.find((game) => {
 			return location.pathname.includes(game.path.replace(/^\//, ""));
 		}) || games[0];
-	console.log(currentGame);
 
 	// Access the nested date string
 	const dateString = currentGame.stats.processed_at;

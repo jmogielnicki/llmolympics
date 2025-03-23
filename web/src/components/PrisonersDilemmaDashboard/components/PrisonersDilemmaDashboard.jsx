@@ -92,7 +92,11 @@ const DashboardContent = () => {
 				<Route path="/game-stats" element={<GameStatsTab />} />
 				<Route path="/matchups" element={<MatchupsTab />} />
 				<Route path="/timeline" element={<TimelineTab />} />
-				<Route path="/timeline/:sessionId" element={<TimelineTab />} />
+				<Route
+					path="/timeline/:leftModelId/:rightModelId"
+					element={<TimelineTab />}
+				/>
+
 				<Route path="/about" element={<AboutTab />} />
 				<Route
 					path="*"
