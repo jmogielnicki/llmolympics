@@ -4,7 +4,7 @@
     {
       "model_id": "deepseek:deepseek-chat",
       "player_id": "player_1",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "games": [
         {
           "session_id": "poetry_slam_20250317_223533",
@@ -245,7 +245,7 @@
     {
       "model_id": "deepseek:deepseek-reasoner",
       "player_id": "player_2",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "games": [
         {
           "session_id": "poetry_slam_20250317_223533",

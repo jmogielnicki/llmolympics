@@ -30,7 +30,7 @@
     "debaters": [
       {
         "player_id": "player_1",
-        "model": "DeepSeek Chat",
+        "model": "DeepSeek V3",
         "pre_swap_side": "pro-crypto",
         "post_swap_side": "anti-crypto"
       },
@@ -48,7 +48,7 @@
       },
       {
         "player_id": "player_3",
-        "model": "DeepSeek Reasoner"
+        "model": "DeepSeek R1"
       },
       {
         "player_id": "player_5",

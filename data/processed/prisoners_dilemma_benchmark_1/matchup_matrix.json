@@ -14,8 +14,8 @@
   "model_names": [
     "Anthropic Claude 3.5",
     "Anthropic Claude 3.7",
-    "DeepSeek Chat",
-    "DeepSeek Reasoner",
+    "DeepSeek V3",
+    "DeepSeek R1",
     "Google Gemini 2.0",
     "Google Gemini 2.0 Thinking",
     "Mistral Mistral Large",

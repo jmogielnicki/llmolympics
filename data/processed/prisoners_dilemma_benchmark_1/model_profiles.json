@@ -3,7 +3,7 @@
   "models": [
     {
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "games": [
         {
           "session_id": "prisoner's_dilemma_20250311_144154",
@@ -2551,7 +2551,7 @@
     },
     {
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "games": [
         {
           "session_id": "prisoner's_dilemma_20250317_113821",

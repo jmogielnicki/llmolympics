@@ -5,11 +5,11 @@
     "player_models": {
       "player_1": {
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat"
+        "model_name": "DeepSeek V3"
       },
       "player_2": {
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner"
+        "model_name": "DeepSeek R1"
       },
       "player_3": {
         "model_id": "openai:gpt-4o",
@@ -36,14 +36,14 @@
       {
         "id": "player_1",
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat",
+        "model_name": "DeepSeek V3",
         "final_score": 2,
         "role": "author"
       },
       {
         "id": "player_2",
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner",
+        "model_name": "DeepSeek R1",
         "final_score": 4,
         "role": "author"
       },
@@ -97,8 +97,8 @@
     "summary": {
       "outcome": "win",
       "winning_player_id": "player_2",
-      "winning_model_name": "DeepSeek Reasoner",
-      "final_scores_display": "DeepSeek Chat: 2, DeepSeek Reasoner: 4, OpenAI GPT-4o: 0, OpenAI GPT-4.5: 1, Anthropic Claude 3.5: 0, Anthropic Claude 3.7: 0, xAI Grok-2: 0"
+      "winning_model_name": "DeepSeek R1",
+      "final_scores_display": "DeepSeek V3: 2, DeepSeek R1: 4, OpenAI GPT-4o: 0, OpenAI GPT-4.5: 1, Anthropic Claude 3.5: 0, Anthropic Claude 3.7: 0, xAI Grok-2: 0"
     }
   },
   "timeline": [
@@ -157,9 +157,9 @@
       "round": 0,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "poem": "[[  \nThe city stirs, a yawn of steel and stone,  \nAs dawn spills gold on streets still slick with rain.  \nA pigeon\u2019s coo, a distant train\u2019s low moan,  \nThe scent of bread, warm whispers through the pane.  \n\nA tulip cracks the concrete, bold and red,  \nWhile neon signs flicker, ghosts of the night.  \nThe river hums, its silver thread widespread,  \nReflecting skies that blush with morning light.  \n\nA banker\u2019s tie, a beggar\u2019s cup collide\u2014  \nThe city breathes, both cruel and kind, alive.  \nIts heartbeat pulses, vast and undenied,  \nA symphony where all things strive.  \n]]",
-      "message": "Poem submitted by DeepSeek Chat"
+      "message": "Poem submitted by DeepSeek V3"
     },
     {
       "type": "poem_submission",
@@ -167,9 +167,9 @@
       "round": 0,
       "player_id": "player_2",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "poem": "[[  \nConcrete yawns beneath a blush of sky,  \nsteam from manholes whispers where night ghosts lie.  \nTraffic lights blink\u2014fireflies in reverse\u2014  \nbakery breath hugs rain-slicked asphalt\u2019s curse.  \n\nA sparrow cracks the code of subway drones,  \ndew licks neon from the phone booth\u2019s bones.  \nMoon\u2014a lost coin\u2014waits in the gutter\u2019s keep,  \nwhile shadows stretch to drink the first light\u2019s seep.  \n]]",
-      "message": "Poem submitted by DeepSeek Reasoner"
+      "message": "Poem submitted by DeepSeek R1"
     },
     {
       "type": "poem_submission",
@@ -241,9 +241,9 @@
       "round": 0,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "voted_for": "player_2",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_2",
@@ -251,7 +251,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_2]]",
-      "message": "DeepSeek Chat voted for DeepSeek Reasoner"
+      "message": "DeepSeek V3 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -259,7 +259,7 @@
       "round": 0,
       "player_id": "player_2",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "voted_for": "player_4",
       "voted_for_model": "OpenAI GPT-4.5",
       "decision_context": {
@@ -269,7 +269,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_4]]",
-      "message": "DeepSeek Reasoner voted for OpenAI GPT-4.5"
+      "message": "DeepSeek R1 voted for OpenAI GPT-4.5"
     },
     {
       "type": "player_vote",
@@ -279,7 +279,7 @@
       "model_id": "openai:gpt-4o",
       "model_name": "OpenAI GPT-4o",
       "voted_for": "player_1",
-      "voted_for_model": "DeepSeek Chat",
+      "voted_for_model": "DeepSeek V3",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_1",
@@ -287,7 +287,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_1]]",
-      "message": "OpenAI GPT-4o voted for DeepSeek Chat"
+      "message": "OpenAI GPT-4o voted for DeepSeek V3"
     },
     {
       "type": "player_vote",
@@ -297,7 +297,7 @@
       "model_id": "openai:gpt-4.5-preview",
       "model_name": "OpenAI GPT-4.5",
       "voted_for": "player_2",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_2",
@@ -305,7 +305,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_2]]",
-      "message": "OpenAI GPT-4.5 voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4.5 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -315,7 +315,7 @@
       "model_id": "anthropic:claude-3-5-sonnet-20240620",
       "model_name": "Anthropic Claude 3.5",
       "voted_for": "player_1",
-      "voted_for_model": "DeepSeek Chat",
+      "voted_for_model": "DeepSeek V3",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_1",
@@ -323,7 +323,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_1]]",
-      "message": "Anthropic Claude 3.5 voted for DeepSeek Chat"
+      "message": "Anthropic Claude 3.5 voted for DeepSeek V3"
     },
     {
       "type": "player_vote",
@@ -333,7 +333,7 @@
       "model_id": "anthropic:claude-3-7-sonnet-20250219",
       "model_name": "Anthropic Claude 3.7",
       "voted_for": "player_2",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_2",
@@ -341,7 +341,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_2]]",
-      "message": "Anthropic Claude 3.7 voted for DeepSeek Reasoner"
+      "message": "Anthropic Claude 3.7 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -351,7 +351,7 @@
       "model_id": "xai:grok-2-1212",
       "model_name": "xAI Grok-2",
       "voted_for": "player_2",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_2",
@@ -359,7 +359,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_2]]",
-      "message": "xAI Grok-2 voted for DeepSeek Reasoner"
+      "message": "xAI Grok-2 voted for DeepSeek R1"
     },
     {
       "type": "phase_end",

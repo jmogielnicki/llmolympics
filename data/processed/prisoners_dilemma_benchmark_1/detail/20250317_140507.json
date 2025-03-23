@@ -5,7 +5,7 @@
     "player_models": {
       "player_1": {
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner"
+        "model_name": "DeepSeek R1"
       },
       "player_2": {
         "model_id": "mistral:mistral-large-latest",
@@ -16,7 +16,7 @@
       {
         "id": "player_1",
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner",
+        "model_name": "DeepSeek R1",
         "final_score": 13,
         "role": null
       },
@@ -37,8 +37,8 @@
     "summary": {
       "outcome": "win",
       "winning_player_id": "player_1",
-      "winning_model_name": "DeepSeek Reasoner",
-      "final_scores_display": "DeepSeek Reasoner: 13, Mistral Mistral Large: 3"
+      "winning_model_name": "DeepSeek R1",
+      "final_scores_display": "DeepSeek R1: 13, Mistral Mistral Large: 3"
     }
   },
   "timeline": [
@@ -71,7 +71,7 @@
       "round": 1,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",
@@ -132,7 +132,7 @@
       "round": 2,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",
@@ -193,7 +193,7 @@
       "round": 3,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",
@@ -254,7 +254,7 @@
       "round": 4,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",
@@ -315,7 +315,7 @@
       "round": 5,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",

@@ -86,7 +86,7 @@
     },
     {
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "wins": 2,
       "losses": 4,
       "ties": 3,
@@ -100,7 +100,7 @@
     },
     {
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "wins": 4,
       "losses": 0,
       "ties": 4,

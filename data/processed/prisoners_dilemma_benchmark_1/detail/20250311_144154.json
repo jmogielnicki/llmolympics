@@ -5,7 +5,7 @@
     "player_models": {
       "player_1": {
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat"
+        "model_name": "DeepSeek V3"
       },
       "player_2": {
         "model_id": "openai:gpt-4o",
@@ -16,7 +16,7 @@
       {
         "id": "player_1",
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat",
+        "model_name": "DeepSeek V3",
         "final_score": 8,
         "role": null
       },
@@ -38,7 +38,7 @@
       "outcome": "win",
       "winning_player_id": "player_2",
       "winning_model_name": "OpenAI GPT-4o",
-      "final_scores_display": "DeepSeek Chat: 8, OpenAI GPT-4o: 13"
+      "final_scores_display": "DeepSeek V3: 8, OpenAI GPT-4o: 13"
     }
   },
   "timeline": [
@@ -71,7 +71,7 @@
       "round": 1,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "decision": "cooperate",
       "decision_context": {
         "css_class": "bg-green-500",
@@ -132,7 +132,7 @@
       "round": 2,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "decision": "cooperate",
       "decision_context": {
         "css_class": "bg-green-500",
@@ -193,7 +193,7 @@
       "round": 3,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "decision": "cooperate",
       "decision_context": {
         "css_class": "bg-green-500",
@@ -254,7 +254,7 @@
       "round": 4,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",
@@ -315,7 +315,7 @@
       "round": 5,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",

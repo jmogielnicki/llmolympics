@@ -9,7 +9,7 @@
   "summary": {
     "winner": {
       "player_id": "player_1",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "total_score": 10
     },
     "voting_summary": {
@@ -29,7 +29,7 @@
     "debaters": [
       {
         "player_id": "player_1",
-        "model": "DeepSeek Reasoner",
+        "model": "DeepSeek R1",
         "pre_swap_side": "pro-nuclear",
         "post_swap_side": "anti-nuclear"
       },

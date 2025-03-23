@@ -2,7 +2,7 @@
   "leaderboard": [
     {
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "wins": 7,
       "losses": 0,
       "ties": 2,
@@ -16,7 +16,7 @@
     },
     {
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "wins": 0,
       "losses": 7,
       "ties": 2,

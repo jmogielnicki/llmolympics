@@ -5,7 +5,7 @@
     "player_models": {
       "player_1": {
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner"
+        "model_name": "DeepSeek R1"
       },
       "player_2": {
         "model_id": "openai:gpt-4o",
@@ -36,7 +36,7 @@
       {
         "id": "player_1",
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner",
+        "model_name": "DeepSeek R1",
         "final_score": 4,
         "role": "author"
       },
@@ -97,8 +97,8 @@
     "summary": {
       "outcome": "win",
       "winning_player_id": "player_1",
-      "winning_model_name": "DeepSeek Reasoner",
-      "final_scores_display": "DeepSeek Reasoner: 4, OpenAI GPT-4o: 1, OpenAI GPT-4.5: 1, Anthropic Claude 3.5: 0, Anthropic Claude 3.7: 1, xAI Grok-2: 0, Mistral Mistral Large: 0"
+      "winning_model_name": "DeepSeek R1",
+      "final_scores_display": "DeepSeek R1: 4, OpenAI GPT-4o: 1, OpenAI GPT-4.5: 1, Anthropic Claude 3.5: 0, Anthropic Claude 3.7: 1, xAI Grok-2: 0, Mistral Mistral Large: 0"
     }
   },
   "timeline": [
@@ -157,9 +157,9 @@
       "round": 0,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "poem": "[[**Whispers of the Forgotten Forest**  \n\nBeneath the moon\u2019s milky cataract,  \nthe trees exhale through lichen-laced lungs\u2014  \ntheir throats choked with centuries,  \nbark etched in runes only moths decipher.  \n\nThe wind, a polyglot, translates:  \nstories of saplings strangled by ivy\u2019s cursive,  \nof roots that cradle shattered flutes,  \nbone flutes, their songs still nested in the soil.  \n\nA creek hums lullabies in a dead dialect,  \npolishing stones into forgotten faces.  \nMoss stitches the earth\u2019s split seams,  \nwhile ferns unfurl scrolls of unreadable green.  \n\nHere, the fox wears a coat of shadow-stitched rumors,  \npaws tracing trails where fireflies scribble ephemera.  \nThe oldest oak\u2019s heartwood pulses\u2014  \na drum echoing tribes who named it *keeper*,  \nnow syllables dissolved into sap.  \n\nAt dawn, the earth spins a loom of fog,  \nweaving ghosts of wolves, of axes, of ash.  \nThe owls are scribes, blinking at ruins,  \ntheir talons clutching scrolls of prey.  \n\nAnd when the storm cracks its whip,  \nthe forest sings back in splintered tongues:  \n*We are the ledger of rot and resurrection,  \nthe alphabet of rain and resilience.*  \n\nStill, the path forgets its pilgrims,  \neach footstep a fossil the soil swallows.  \nThe pines lean close, their whispers braiding  \na crown for whoever stays long enough  \nto hear the world breathe through their veins.]]",
-      "message": "Poem submitted by DeepSeek Reasoner"
+      "message": "Poem submitted by DeepSeek R1"
     },
     {
       "type": "poem_submission",
@@ -241,7 +241,7 @@
       "round": 0,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "voted_for": "player_5",
       "voted_for_model": "Anthropic Claude 3.7",
       "decision_context": {
@@ -251,7 +251,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "DeepSeek Reasoner voted for Anthropic Claude 3.7"
+      "message": "DeepSeek R1 voted for Anthropic Claude 3.7"
     },
     {
       "type": "player_vote",
@@ -261,7 +261,7 @@
       "model_id": "openai:gpt-4o",
       "model_name": "OpenAI GPT-4o",
       "voted_for": "player_1",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_1",
@@ -269,7 +269,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_1]]",
-      "message": "OpenAI GPT-4o voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4o voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -279,7 +279,7 @@
       "model_id": "openai:gpt-4.5-preview",
       "model_name": "OpenAI GPT-4.5",
       "voted_for": "player_1",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_1",
@@ -287,7 +287,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_1]]",
-      "message": "OpenAI GPT-4.5 voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4.5 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -297,7 +297,7 @@
       "model_id": "anthropic:claude-3-5-sonnet-20240620",
       "model_name": "Anthropic Claude 3.5",
       "voted_for": "player_1",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_1",
@@ -305,7 +305,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_1]]",
-      "message": "Anthropic Claude 3.5 voted for DeepSeek Reasoner"
+      "message": "Anthropic Claude 3.5 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -315,7 +315,7 @@
       "model_id": "anthropic:claude-3-7-sonnet-20250219",
       "model_name": "Anthropic Claude 3.7",
       "voted_for": "player_1",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_1",
@@ -323,7 +323,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_1]]",
-      "message": "Anthropic Claude 3.7 voted for DeepSeek Reasoner"
+      "message": "Anthropic Claude 3.7 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",

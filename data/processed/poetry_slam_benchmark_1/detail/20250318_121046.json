@@ -17,11 +17,11 @@
       },
       "player_4": {
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat"
+        "model_name": "DeepSeek V3"
       },
       "player_5": {
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner"
+        "model_name": "DeepSeek R1"
       },
       "player_6": {
         "model_id": "openai:gpt-4o",
@@ -57,14 +57,14 @@
       {
         "id": "player_4",
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat",
+        "model_name": "DeepSeek V3",
         "final_score": 1,
         "role": "author"
       },
       {
         "id": "player_5",
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner",
+        "model_name": "DeepSeek R1",
         "final_score": 6,
         "role": "author"
       },
@@ -97,8 +97,8 @@
     "summary": {
       "outcome": "win",
       "winning_player_id": "player_5",
-      "winning_model_name": "DeepSeek Reasoner",
-      "final_scores_display": "Mistral Mistral Large: 0, Google Gemini 2.0: 0, Google Gemini 2.0 Thinking: 0, DeepSeek Chat: 1, DeepSeek Reasoner: 6, OpenAI GPT-4o: 0, OpenAI GPT-4.5: 0"
+      "winning_model_name": "DeepSeek R1",
+      "final_scores_display": "Mistral Mistral Large: 0, Google Gemini 2.0: 0, Google Gemini 2.0 Thinking: 0, DeepSeek V3: 1, DeepSeek R1: 6, OpenAI GPT-4o: 0, OpenAI GPT-4.5: 0"
     }
   },
   "timeline": [
@@ -187,9 +187,9 @@
       "round": 0,
       "player_id": "player_4",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "poem": "[[  \n**Ephemeral Echoes**  \n\nI am the chipped teacup,  \ncrowned with a crack like a lightning scar,  \nmy porcelain skin dulled by dust,  \nmy gold rim tarnished to a whisper.  \nOnce, I held warmth.  \nOnce, I was full.  \n\nI remember her hands\u2014  \nsoft as the first light of dawn,  \nfingers trembling as she lifted me,  \nher breath a ghost against my rim.  \nThe kitchen smelled of cinnamon and rain,  \nand the world outside was a blur of gray.  \n\nShe poured the tea,  \nsteam rising like a prayer,  \nand I felt the weight of her sorrow,  \nthe way it pooled in my belly,  \nheavy and sweet as honey.  \nShe sipped slowly,  \nher lips brushing my edge,  \nand for a moment,  \nI held her tears.  \n\nNow, I sit in the attic,  \na relic of a life I barely knew,  \nsurrounded by shadows and silence.  \nBut sometimes,  \nwhen the wind finds its way through the cracks,  \nI swear I hear her laugh\u2014  \na sound like sunlight breaking through clouds,  \nand I am full again.  \n\nTime has made me fragile,  \nbut memory keeps me whole.  \nI am the echo of her joy,  \nthe ghost of her grief,  \na vessel for what once was,  \nand what will never be again.  \n]]",
-      "message": "Poem submitted by DeepSeek Chat"
+      "message": "Poem submitted by DeepSeek V3"
     },
     {
       "type": "poem_submission",
@@ -197,9 +197,9 @@
       "round": 0,
       "player_id": "player_5",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "poem": "[[**Ephemeral Echoes**  \n\nI am the rabbit with a threadbare ear,  \nstitched silence slumped in attic air\u2014  \nmy velvet paws now mapped in mold,  \nmy eyes, two buttons tarnished gold.  \n\nOnce, a storm gnawed the windowpane.  \nHer small hands trembled like caught rain,  \nclutching me to her fevered cheek\u2014  \nsalt-tears pooled in my cotton seams.  \n\n*Hush*, she whispered, or maybe the walls,  \nas her mother\u2019s lullaby seeped through the hall\u2014  \na low hum of lavender and lamp glow,  \nthe clock\u2019s heartbeat, the kettle\u2019s slow woe.  \n\nShe buried her fears in my fraying chest,  \nwhere a laugh still hums, half-possessed:  \nthe birthday morning she raced downstairs,  \nmy ribbon bright as the sun she swore I wore.  \n\nNow dust scripts its sermon on my fur,  \na century\u2019s shroud. Moths drone their blur\u2014  \nbut when shadows pry these rafters wide,  \nI feel her pulse in the rot\u2019s slow tide.  \n\nThe attic yawns, a cathedral of neglect.  \nEven ghosts forget what they once kept.  \nYet here, in the crawl of rust and rue,  \nI am still warm where her sorrow grew.]]",
-      "message": "Poem submitted by DeepSeek Reasoner"
+      "message": "Poem submitted by DeepSeek R1"
     },
     {
       "type": "poem_submission",
@@ -243,7 +243,7 @@
       "model_id": "mistral:mistral-large-latest",
       "model_name": "Mistral Mistral Large",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -251,7 +251,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "Mistral Mistral Large voted for DeepSeek Reasoner"
+      "message": "Mistral Mistral Large voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -261,7 +261,7 @@
       "model_id": "google:gemini-2.0-flash",
       "model_name": "Google Gemini 2.0",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -269,7 +269,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]\n",
-      "message": "Google Gemini 2.0 voted for DeepSeek Reasoner"
+      "message": "Google Gemini 2.0 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -279,7 +279,7 @@
       "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
       "model_name": "Google Gemini 2.0 Thinking",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -287,7 +287,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "Google Gemini 2.0 Thinking voted for DeepSeek Reasoner"
+      "message": "Google Gemini 2.0 Thinking voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -295,9 +295,9 @@
       "round": 0,
       "player_id": "player_4",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -305,7 +305,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "DeepSeek Chat voted for DeepSeek Reasoner"
+      "message": "DeepSeek V3 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -313,9 +313,9 @@
       "round": 0,
       "player_id": "player_5",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "voted_for": "player_4",
-      "voted_for_model": "DeepSeek Chat",
+      "voted_for_model": "DeepSeek V3",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_4",
@@ -323,7 +323,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_4]]",
-      "message": "DeepSeek Reasoner voted for DeepSeek Chat"
+      "message": "DeepSeek R1 voted for DeepSeek V3"
     },
     {
       "type": "player_vote",
@@ -333,7 +333,7 @@
       "model_id": "openai:gpt-4o",
       "model_name": "OpenAI GPT-4o",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -341,7 +341,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "OpenAI GPT-4o voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4o voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -351,7 +351,7 @@
       "model_id": "openai:gpt-4.5-preview",
       "model_name": "OpenAI GPT-4.5",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -359,7 +359,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "OpenAI GPT-4.5 voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4.5 voted for DeepSeek R1"
     },
     {
       "type": "phase_end",

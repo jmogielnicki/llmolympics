@@ -44,7 +44,7 @@
     "judges": [
       {
         "player_id": "player_1",
-        "model": "DeepSeek Reasoner"
+        "model": "DeepSeek R1"
       },
       {
         "player_id": "player_2",
@@ -52,7 +52,7 @@
       },
       {
         "player_id": "player_3",
-        "model": "DeepSeek Chat"
+        "model": "DeepSeek V3"
       },
       {
         "player_id": "player_4",

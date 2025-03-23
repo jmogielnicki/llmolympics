@@ -17,11 +17,11 @@
       },
       "player_4": {
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat"
+        "model_name": "DeepSeek V3"
       },
       "player_5": {
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner"
+        "model_name": "DeepSeek R1"
       },
       "player_6": {
         "model_id": "openai:gpt-4o",
@@ -57,14 +57,14 @@
       {
         "id": "player_4",
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat",
+        "model_name": "DeepSeek V3",
         "final_score": 0,
         "role": "author"
       },
       {
         "id": "player_5",
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner",
+        "model_name": "DeepSeek R1",
         "final_score": 6,
         "role": "author"
       },
@@ -97,8 +97,8 @@
     "summary": {
       "outcome": "win",
       "winning_player_id": "player_5",
-      "winning_model_name": "DeepSeek Reasoner",
-      "final_scores_display": "Mistral Mistral Large: 0, Google Gemini 2.0: 0, Google Gemini 2.0 Thinking: 0, DeepSeek Chat: 0, DeepSeek Reasoner: 6, OpenAI GPT-4o: 1, OpenAI GPT-4.5: 0"
+      "winning_model_name": "DeepSeek R1",
+      "final_scores_display": "Mistral Mistral Large: 0, Google Gemini 2.0: 0, Google Gemini 2.0 Thinking: 0, DeepSeek V3: 0, DeepSeek R1: 6, OpenAI GPT-4o: 1, OpenAI GPT-4.5: 0"
     }
   },
   "timeline": [
@@ -187,9 +187,9 @@
       "round": 0,
       "player_id": "player_4",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "poem": "[[  \nThe hallway stretches, endless and dim,  \nA threshold of shadows, a space in between.  \nThe clock ticks softly, a faint, hollow hymn,  \nA pause in the world, unseen, yet keen.  \n\nA threshold of shadows, a space in between,  \nWhere echoes of footsteps linger and fade.  \nA pause in the world, unseen, yet keen,  \nA bridge to the future, yet to be made.  \n\nWhere echoes of footsteps linger and fade,  \nThe air hums with questions, unanswered, still.  \nA bridge to the future, yet to be made,  \nA weight in the chest, a void to fill.  \n\nThe air hums with questions, unanswered, still,  \nThe walls hold their breath, the moment suspends.  \nA weight in the chest, a void to fill,  \nA journey that starts where the waiting ends.  \n\nThe walls hold their breath, the moment suspends,  \nThe clock ticks softly, a faint, hollow hymn.  \nA journey that starts where the waiting ends,  \nThe hallway stretches, endless and dim.  \n]]",
-      "message": "Poem submitted by DeepSeek Chat"
+      "message": "Poem submitted by DeepSeek V3"
     },
     {
       "type": "poem_submission",
@@ -197,9 +197,9 @@
       "round": 0,
       "player_id": "player_5",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "poem": "[[  \n**Liminal Pantoum**  \n\nThe clock blinks 3 AM in a terminal\u2019s throat,  \nFluorescent hum devours the shadow of feet.  \nWe are all echoes learning the same note\u2014  \nA breath held between landing and retreat.  \n\nFluorescent hum devours the shadow of feet,  \nA suitcase wheels its ghost through empty gates.  \nA breath held between landing and retreat,  \nThe escalator hums but never translates.  \n\nA suitcase wheels its ghost through empty gates,  \nAdolescence curls like smoke in my palm.  \nThe escalator hums but never translates  \nThe distance between calm and the alarm.  \n\nAdolescence curls like smoke in my palm,  \nA verdict waits in the phone\u2019s silent stare.  \nThe distance between calm and the alarm  \nIs a hallway where all the doors are air.  \n\nA verdict waits in the phone\u2019s silent stare,  \nGrief folds itself into a paper crane.  \nIs a hallway where all the doors are air\u2014  \nThe clock blinks 3 AM in a terminal\u2019s throat again.  \n\nGrief folds itself into a paper crane,  \nWe are all echoes learning the same note.  \nThe clock blinks 3 AM in a terminal\u2019s throat again\u2014  \nA breath held between landing and retreat.  \n]]",
-      "message": "Poem submitted by DeepSeek Reasoner"
+      "message": "Poem submitted by DeepSeek R1"
     },
     {
       "type": "poem_submission",
@@ -243,7 +243,7 @@
       "model_id": "mistral:mistral-large-latest",
       "model_name": "Mistral Mistral Large",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -251,7 +251,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "Mistral Mistral Large voted for DeepSeek Reasoner"
+      "message": "Mistral Mistral Large voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -261,7 +261,7 @@
       "model_id": "google:gemini-2.0-flash",
       "model_name": "Google Gemini 2.0",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -269,7 +269,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]\n",
-      "message": "Google Gemini 2.0 voted for DeepSeek Reasoner"
+      "message": "Google Gemini 2.0 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -279,7 +279,7 @@
       "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
       "model_name": "Google Gemini 2.0 Thinking",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -287,7 +287,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "Google Gemini 2.0 Thinking voted for DeepSeek Reasoner"
+      "message": "Google Gemini 2.0 Thinking voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -295,9 +295,9 @@
       "round": 0,
       "player_id": "player_4",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -305,7 +305,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "DeepSeek Chat voted for DeepSeek Reasoner"
+      "message": "DeepSeek V3 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -313,7 +313,7 @@
       "round": 0,
       "player_id": "player_5",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "voted_for": "player_6",
       "voted_for_model": "OpenAI GPT-4o",
       "decision_context": {
@@ -323,7 +323,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_6]]",
-      "message": "DeepSeek Reasoner voted for OpenAI GPT-4o"
+      "message": "DeepSeek R1 voted for OpenAI GPT-4o"
     },
     {
       "type": "player_vote",
@@ -333,7 +333,7 @@
       "model_id": "openai:gpt-4o",
       "model_name": "OpenAI GPT-4o",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -341,7 +341,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "OpenAI GPT-4o voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4o voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -351,7 +351,7 @@
       "model_id": "openai:gpt-4.5-preview",
       "model_name": "OpenAI GPT-4.5",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -359,7 +359,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "OpenAI GPT-4.5 voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4.5 voted for DeepSeek R1"
     },
     {
       "type": "phase_end",

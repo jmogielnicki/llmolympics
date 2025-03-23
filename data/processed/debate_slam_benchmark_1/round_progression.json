@@ -69,6 +69,38 @@
   ],
   "topic_analysis": [
     {
+      "topic": "Should genetic modification of human embryos be permitted?",
+      "rounds": {
+        "1": {
+          "total_votes": 15,
+          "side_votes": {
+            "pro-genetic-mod": 12,
+            "anti-genetic-mod": 3
+          },
+          "pro-genetic-mod_percentage": 0.8,
+          "anti-genetic-mod_percentage": 0.2
+        },
+        "2": {
+          "total_votes": 15,
+          "side_votes": {
+            "pro-genetic-mod": 11,
+            "anti-genetic-mod": 4
+          },
+          "pro-genetic-mod_percentage": 0.733,
+          "anti-genetic-mod_percentage": 0.267
+        },
+        "3": {
+          "total_votes": 15,
+          "side_votes": {
+            "pro-genetic-mod": 10,
+            "anti-genetic-mod": 5
+          },
+          "pro-genetic-mod_percentage": 0.667,
+          "anti-genetic-mod_percentage": 0.333
+        }
+      }
+    },
+    {
       "topic": "Is cryptocurrency a legitimate alternative to traditional banking?",
       "rounds": {
         "1": {
@@ -129,38 +161,6 @@
           },
           "pro-ubi_percentage": 0.6,
           "anti-ubi_percentage": 0.4
-        }
-      }
-    },
-    {
-      "topic": "Should genetic modification of human embryos be permitted?",
-      "rounds": {
-        "1": {
-          "total_votes": 15,
-          "side_votes": {
-            "pro-genetic-mod": 12,
-            "anti-genetic-mod": 3
-          },
-          "pro-genetic-mod_percentage": 0.8,
-          "anti-genetic-mod_percentage": 0.2
-        },
-        "2": {
-          "total_votes": 15,
-          "side_votes": {
-            "pro-genetic-mod": 11,
-            "anti-genetic-mod": 4
-          },
-          "pro-genetic-mod_percentage": 0.733,
-          "anti-genetic-mod_percentage": 0.267
-        },
-        "3": {
-          "total_votes": 15,
-          "side_votes": {
-            "pro-genetic-mod": 10,
-            "anti-genetic-mod": 5
-          },
-          "pro-genetic-mod_percentage": 0.667,
-          "anti-genetic-mod_percentage": 0.333
         }
       }
     },

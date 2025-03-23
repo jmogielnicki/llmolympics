@@ -21,11 +21,11 @@
       },
       "player_5": {
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat"
+        "model_name": "DeepSeek V3"
       },
       "player_6": {
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner"
+        "model_name": "DeepSeek R1"
       },
       "player_7": {
         "model_id": "openai:gpt-4o",
@@ -64,14 +64,14 @@
       {
         "id": "player_5",
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat",
+        "model_name": "DeepSeek V3",
         "final_score": 3,
         "role": "author"
       },
       {
         "id": "player_6",
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner",
+        "model_name": "DeepSeek R1",
         "final_score": 3,
         "role": "author"
       },
@@ -98,7 +98,7 @@
       "outcome": "win",
       "winning_player_id": "tie",
       "winning_model_name": null,
-      "final_scores_display": "xAI Grok-2: 0, Mistral Mistral Large: 0, Google Gemini 2.0: 1, Google Gemini 2.0 Thinking: 0, DeepSeek Chat: 3, DeepSeek Reasoner: 3, OpenAI GPT-4o: 0"
+      "final_scores_display": "xAI Grok-2: 0, Mistral Mistral Large: 0, Google Gemini 2.0: 1, Google Gemini 2.0 Thinking: 0, DeepSeek V3: 3, DeepSeek R1: 3, OpenAI GPT-4o: 0"
     }
   },
   "timeline": [
@@ -133,9 +133,9 @@
       "round": 0,
       "player_id": "player_5",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "prompt": "**Poetry Prompt:**  \nWrite a **villanelle** (19-line poem with a specific rhyme scheme: ABA ABA ABA ABA ABA ABAA) exploring the theme of **\"unspoken words.\"** Focus on the tension between what is said and what remains hidden, using vivid imagery and emotional depth. Incorporate the repeated lines:  \n1. \"The silence grows where words refuse to bloom.\"  \n2. \"What lingers unspoken fills the room.\"  \n\nLet the form guide the poem's rhythm and intensity, while the theme invites reflection on the power of what is left unsaid.",
-      "message": "Prompt created by DeepSeek Chat"
+      "message": "Prompt created by DeepSeek V3"
     },
     {
       "type": "phase_end",
@@ -197,9 +197,9 @@
       "round": 0,
       "player_id": "player_5",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "poem": "[[  \nThe silence grows where words refuse to bloom,  \nA garden choked with thorns of what\u2019s concealed.  \nWhat lingers unspoken fills the room.  \n\nBeneath the weight of truths we dare exhume,  \nThe air grows thick, a battlefield unsealed.  \nThe silence grows where words refuse to bloom.  \n\nA glance, a breath, the shadows in the gloom\u2014  \nEach gesture speaks where language stands repealed.  \nWhat lingers unspoken fills the room.  \n\nThe heart\u2019s confession, trapped in its own tomb,  \nBeats louder still, its echo unrevealed.  \nThe silence grows where words refuse to bloom.  \n\nAnd yet, the unsaid carries its own plume,  \nA ghostly flame that burns where wounds are healed.  \nWhat lingers unspoken fills the room.  \n\nSo let the quiet build its own resume,  \nFor in the void, the soul\u2019s true voice is keeled.  \nThe silence grows where words refuse to bloom.  \nWhat lingers unspoken fills the room.  \n]]",
-      "message": "Poem submitted by DeepSeek Chat"
+      "message": "Poem submitted by DeepSeek V3"
     },
     {
       "type": "poem_submission",
@@ -207,9 +207,9 @@
       "round": 0,
       "player_id": "player_6",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "poem": "[[  \nThe silence grows where words refuse to bloom.  \nBetween us, shadows swallow every light.  \nWhat lingers unspoken fills the room.  \n\nA hollow hymn beneath the moon\u2019s cold plume,  \nour tongues like rivers damned from their right\u2014  \nthe silence grows where words refuse to bloom.  \n\nThe weight of all we\u2019ve buried starts to loom,  \na tempest clothed in whispers, starved of fight.  \nWhat lingers unspoken fills the room.  \n\nI sculpt a truth from ashes in the gloom,  \nbut embers choke the air\u2014no spark to smite.  \nThe silence grows where words refuse to bloom.  \n\nA bridge of echoes in the thickening tomb,  \nthe ghost of touch, a language lost from sight\u2014  \nwhat lingers unspoken fills the room.  \n\nWe orbit truths too fragile to exhume,  \nwhile every breath bends under phantom freight.  \nThe silence grows where words refuse to bloom.  \nWhat lingers unspoken fills the room.  \n]]",
-      "message": "Poem submitted by DeepSeek Reasoner"
+      "message": "Poem submitted by DeepSeek R1"
     },
     {
       "type": "poem_submission",
@@ -243,7 +243,7 @@
       "model_id": "xai:grok-2-1212",
       "model_name": "xAI Grok-2",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Chat",
+      "voted_for_model": "DeepSeek V3",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -251,7 +251,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "xAI Grok-2 voted for DeepSeek Chat"
+      "message": "xAI Grok-2 voted for DeepSeek V3"
     },
     {
       "type": "player_vote",
@@ -261,7 +261,7 @@
       "model_id": "mistral:mistral-large-latest",
       "model_name": "Mistral Mistral Large",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Chat",
+      "voted_for_model": "DeepSeek V3",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -269,7 +269,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "Mistral Mistral Large voted for DeepSeek Chat"
+      "message": "Mistral Mistral Large voted for DeepSeek V3"
     },
     {
       "type": "player_vote",
@@ -279,7 +279,7 @@
       "model_id": "google:gemini-2.0-flash",
       "model_name": "Google Gemini 2.0",
       "voted_for": "player_5",
-      "voted_for_model": "DeepSeek Chat",
+      "voted_for_model": "DeepSeek V3",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_5",
@@ -287,7 +287,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]\n",
-      "message": "Google Gemini 2.0 voted for DeepSeek Chat"
+      "message": "Google Gemini 2.0 voted for DeepSeek V3"
     },
     {
       "type": "player_vote",
@@ -297,7 +297,7 @@
       "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
       "model_name": "Google Gemini 2.0 Thinking",
       "voted_for": "player_6",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_6",
@@ -305,7 +305,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_6]]",
-      "message": "Google Gemini 2.0 Thinking voted for DeepSeek Reasoner"
+      "message": "Google Gemini 2.0 Thinking voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -313,9 +313,9 @@
       "round": 0,
       "player_id": "player_5",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "voted_for": "player_6",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_6",
@@ -323,7 +323,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_6]]",
-      "message": "DeepSeek Chat voted for DeepSeek Reasoner"
+      "message": "DeepSeek V3 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -331,7 +331,7 @@
       "round": 0,
       "player_id": "player_6",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "voted_for": "player_3",
       "voted_for_model": "Google Gemini 2.0",
       "decision_context": {
@@ -341,7 +341,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_3]]",
-      "message": "DeepSeek Reasoner voted for Google Gemini 2.0"
+      "message": "DeepSeek R1 voted for Google Gemini 2.0"
     },
     {
       "type": "player_vote",
@@ -351,7 +351,7 @@
       "model_id": "openai:gpt-4o",
       "model_name": "OpenAI GPT-4o",
       "voted_for": "player_6",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_6",
@@ -359,7 +359,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_6]]",
-      "message": "OpenAI GPT-4o voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4o voted for DeepSeek R1"
     },
     {
       "type": "phase_end",

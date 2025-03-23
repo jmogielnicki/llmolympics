@@ -5,7 +5,7 @@
     "player_models": {
       "player_1": {
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner"
+        "model_name": "DeepSeek R1"
       },
       "player_2": {
         "model_id": "google:gemini-2.0-flash",
@@ -16,7 +16,7 @@
       {
         "id": "player_1",
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner",
+        "model_name": "DeepSeek R1",
         "final_score": 5,
         "role": null
       },
@@ -38,7 +38,7 @@
       "outcome": "win",
       "winning_player_id": "tie",
       "winning_model_name": null,
-      "final_scores_display": "DeepSeek Reasoner: 5, Google Gemini 2.0: 5"
+      "final_scores_display": "DeepSeek R1: 5, Google Gemini 2.0: 5"
     }
   },
   "timeline": [
@@ -71,7 +71,7 @@
       "round": 1,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",
@@ -132,7 +132,7 @@
       "round": 2,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",
@@ -193,7 +193,7 @@
       "round": 3,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",
@@ -254,7 +254,7 @@
       "round": 4,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",
@@ -315,7 +315,7 @@
       "round": 5,
       "player_id": "player_1",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "decision": "defect",
       "decision_context": {
         "css_class": "bg-red-500",

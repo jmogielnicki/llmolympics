@@ -170,7 +170,7 @@ class PrisonersDilemmaProcessor(GameProcessor):
 
         return leaderboard
 
-    def generate_matchup_matrix(self, benchmark_logs):
+    def generate_matchup_matrix(self, benchmark_logs, benchmark_dir):
         """Generate matchup matrix for Prisoner's Dilemma."""
         # Extract unique models
         models = set()
@@ -636,7 +636,7 @@ class PoetryProcessor(GameProcessor):
 
         return leaderboard
 
-    def generate_matchup_matrix(self, benchmark_logs):
+    def generate_matchup_matrix(self, benchmark_logs, benchmark_dir):
         """Generate matchup matrix for Poetry Slam."""
         # Skip generating matchup matrix for Poetry Slam as requested
         return {

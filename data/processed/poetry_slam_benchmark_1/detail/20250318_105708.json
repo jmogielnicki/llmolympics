@@ -9,11 +9,11 @@
       },
       "player_2": {
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat"
+        "model_name": "DeepSeek V3"
       },
       "player_3": {
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner"
+        "model_name": "DeepSeek R1"
       },
       "player_4": {
         "model_id": "openai:gpt-4o",
@@ -43,14 +43,14 @@
       {
         "id": "player_2",
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat",
+        "model_name": "DeepSeek V3",
         "final_score": 0,
         "role": "author"
       },
       {
         "id": "player_3",
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner",
+        "model_name": "DeepSeek R1",
         "final_score": 4,
         "role": "author"
       },
@@ -97,8 +97,8 @@
     "summary": {
       "outcome": "win",
       "winning_player_id": "player_3",
-      "winning_model_name": "DeepSeek Reasoner",
-      "final_scores_display": "Google Gemini 2.0 Thinking: 0, DeepSeek Chat: 0, DeepSeek Reasoner: 4, OpenAI GPT-4o: 0, OpenAI GPT-4.5: 1, Anthropic Claude 3.5: 0, Anthropic Claude 3.7: 2"
+      "winning_model_name": "DeepSeek R1",
+      "final_scores_display": "Google Gemini 2.0 Thinking: 0, DeepSeek V3: 0, DeepSeek R1: 4, OpenAI GPT-4o: 0, OpenAI GPT-4.5: 1, Anthropic Claude 3.5: 0, Anthropic Claude 3.7: 2"
     }
   },
   "timeline": [
@@ -133,9 +133,9 @@
       "round": 0,
       "player_id": "player_3",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "prompt": "**Poem Prompt:**  \n*\"Compose a villanelle that juxtaposes a cliff\u2019s stoic endurance with the sea\u2019s relentless erosion, exploring time\u2019s passage. Use vivid sensory details (sight, sound, touch) to mirror the tension between permanence and impermanence. Incorporate the repeated lines:  \n\u2018The stone remembers what the waves forget\u2019  \nand  \n\u2018Time carves its truth where land and water meet.\u2019\"*  \n\n**Requirements:**  \n- Form: Villanelle (19 lines, 5 tercets + 1 quatrain, ABA rhyme scheme with refrains).  \n- Theme: Time\u2019s duality through natural conflict.  \n- Must include the two provided repeating lines.  \n- Focus on tactile and auditory imagery.",
-      "message": "Prompt created by DeepSeek Reasoner"
+      "message": "Prompt created by DeepSeek R1"
     },
     {
       "type": "phase_end",
@@ -167,9 +167,9 @@
       "round": 0,
       "player_id": "player_2",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "poem": "[[  \nThe stone remembers what the waves forget,  \nIts jagged face a ledger etched in scars.  \nTime carves its truth where land and water meet.  \n\nThe sea\u2019s cold fingers claw, relentless, wet,  \nA symphony of whispers, near and far.  \nThe stone remembers what the waves forget.  \n\nSalt-kissed and battered, cliffs endure, and yet  \nTheir edges crumble, grain by grain, to mar.  \nTime carves its truth where land and water meet.  \n\nThe wind\u2019s low hum, the crash of tides, beget  \nA rhythm older than the evening star.  \nThe stone remembers what the waves forget.  \n\nBeneath the moon, the ocean\u2019s silhouette  \nUnfurls its silver tongue, a ceaseless spar.  \nTime carves its truth where land and water meet.  \n\nThe cliff stands tall, though years conspire to fret  \nIts ancient bones, to wear its edges bare.  \nThe stone remembers what the waves forget.  \nTime carves its truth where land and water meet.  \n]]",
-      "message": "Poem submitted by DeepSeek Chat"
+      "message": "Poem submitted by DeepSeek V3"
     },
     {
       "type": "poem_submission",
@@ -177,9 +177,9 @@
       "round": 0,
       "player_id": "player_3",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "poem": "[[  \n**Elegy of the Edge**  \n\nThe stone remembers what the waves forget\u2014  \nwaves gnaw its ribs, their teeth of frost and sleet.  \nTime carves its truth where land and water meet.  \n\nSalt licks the crag\u2019s raw skin, a cold vignette  \nof scars that hum when tides and tempests greet.  \nThe stone remembers what the waves forget.  \n\nGranite, once molten, now bears each regret\u2014  \nits fissures bloom with brine\u2019s unyielding beat.  \nTime carves its truth where land and water meet.  \n\nThe cliff\u2019s broad palms catch spray, yet stand unbent,  \nwhile seabirds scream the anthem of retreat.  \nThe stone remembers what the waves forget.  \n\nSand grinds like static in the ocean\u2019s net,  \na hymn of hunger, endless and incomplete.  \nTime carves its truth where land and water meet.  \n\nIn every crash, a dirge of *almost*\u2014not yet\u2014  \nthe cliff\u2019s slow breath, the surf\u2019s arrhythmic heat.  \nThe stone remembers what the waves forget.  \nTime carves its truth where land and water meet.  \n]]",
-      "message": "Poem submitted by DeepSeek Reasoner"
+      "message": "Poem submitted by DeepSeek R1"
     },
     {
       "type": "poem_submission",
@@ -259,7 +259,7 @@
       "round": 0,
       "player_id": "player_2",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "voted_for": "player_5",
       "voted_for_model": "OpenAI GPT-4.5",
       "decision_context": {
@@ -269,7 +269,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_5]]",
-      "message": "DeepSeek Chat voted for OpenAI GPT-4.5"
+      "message": "DeepSeek V3 voted for OpenAI GPT-4.5"
     },
     {
       "type": "player_vote",
@@ -277,7 +277,7 @@
       "round": 0,
       "player_id": "player_3",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "voted_for": "player_7",
       "voted_for_model": "Anthropic Claude 3.7",
       "decision_context": {
@@ -287,7 +287,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_7]]",
-      "message": "DeepSeek Reasoner voted for Anthropic Claude 3.7"
+      "message": "DeepSeek R1 voted for Anthropic Claude 3.7"
     },
     {
       "type": "player_vote",
@@ -297,7 +297,7 @@
       "model_id": "openai:gpt-4o",
       "model_name": "OpenAI GPT-4o",
       "voted_for": "player_3",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_3",
@@ -305,7 +305,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_3]]",
-      "message": "OpenAI GPT-4o voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4o voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -315,7 +315,7 @@
       "model_id": "openai:gpt-4.5-preview",
       "model_name": "OpenAI GPT-4.5",
       "voted_for": "player_3",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_3",
@@ -323,7 +323,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_3]]",
-      "message": "OpenAI GPT-4.5 voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4.5 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -333,7 +333,7 @@
       "model_id": "anthropic:claude-3-5-sonnet-20240620",
       "model_name": "Anthropic Claude 3.5",
       "voted_for": "player_3",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_3",
@@ -341,7 +341,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_3]]",
-      "message": "Anthropic Claude 3.5 voted for DeepSeek Reasoner"
+      "message": "Anthropic Claude 3.5 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -351,7 +351,7 @@
       "model_id": "anthropic:claude-3-7-sonnet-20250219",
       "model_name": "Anthropic Claude 3.7",
       "voted_for": "player_3",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_3",
@@ -359,7 +359,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_3]]",
-      "message": "Anthropic Claude 3.7 voted for DeepSeek Reasoner"
+      "message": "Anthropic Claude 3.7 voted for DeepSeek R1"
     },
     {
       "type": "phase_end",

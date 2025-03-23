@@ -13,11 +13,11 @@
       },
       "player_3": {
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat"
+        "model_name": "DeepSeek V3"
       },
       "player_4": {
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner"
+        "model_name": "DeepSeek R1"
       },
       "player_5": {
         "model_id": "openai:gpt-4o",
@@ -50,14 +50,14 @@
       {
         "id": "player_3",
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat",
+        "model_name": "DeepSeek V3",
         "final_score": 1,
         "role": "author"
       },
       {
         "id": "player_4",
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner",
+        "model_name": "DeepSeek R1",
         "final_score": 6,
         "role": "author"
       },
@@ -97,8 +97,8 @@
     "summary": {
       "outcome": "win",
       "winning_player_id": "player_4",
-      "winning_model_name": "DeepSeek Reasoner",
-      "final_scores_display": "Google Gemini 2.0: 0, Google Gemini 2.0 Thinking: 0, DeepSeek Chat: 1, DeepSeek Reasoner: 6, OpenAI GPT-4o: 0, OpenAI GPT-4.5: 0, Anthropic Claude 3.5: 0"
+      "winning_model_name": "DeepSeek R1",
+      "final_scores_display": "Google Gemini 2.0: 0, Google Gemini 2.0 Thinking: 0, DeepSeek V3: 1, DeepSeek R1: 6, OpenAI GPT-4o: 0, OpenAI GPT-4.5: 0, Anthropic Claude 3.5: 0"
     }
   },
   "timeline": [
@@ -177,9 +177,9 @@
       "round": 0,
       "player_id": "player_3",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "poem": "[[  \n**Ephemeral Echoes**  \n\nThe canyon hums with what it cannot keep\u2014  \na voice, a laugh, a fragment of a song,  \neach syllable unraveling like thread  \nspun from the throat of time.  \n\nThe wind carries it,  \nnot as a burden, but as a secret  \nit will soon forget.  \n\nHere, the echoes are not mirrors,  \nbut ripples\u2014  \ndistorting, dissolving,  \nuntil the sound is no longer sound,  \nbut the memory of sound,  \na ghost of vibration  \nthat lingers in the bones.  \n\nI stand at the edge,  \nmy shadow stretching into the abyss,  \nand wonder if I, too, am an echo\u2014  \na fleeting resonance  \nof someone I once was,  \nor will become.  \n\nThe wind shifts,  \nand the canyon exhales  \na sigh so soft  \nit could be mistaken for silence.  \n\nBut I hear it\u2014  \nthe way it brushes against my skin,  \nthe way it settles in the hollows  \nof my chest,  \nlike a whisper  \nthat knows it will never be spoken again.  \n\nAnd yet,  \nit is enough.  \n\nThe echoes fade,  \nbut they leave behind  \na shape,  \na hollowed space  \nwhere the air feels different,  \nwhere the light bends  \nas if remembering  \nwhat passed through.  \n\nI close my eyes,  \nand for a moment,  \nI am the canyon,  \nholding the echoes  \nuntil they are no longer mine to hold.  \n]]",
-      "message": "Poem submitted by DeepSeek Chat"
+      "message": "Poem submitted by DeepSeek V3"
     },
     {
       "type": "poem_submission",
@@ -187,9 +187,9 @@
       "round": 0,
       "player_id": "player_4",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "poem": "[[**Ephemeral Echoes**  \n\nThe canyon cups its hands around a name\u2014  \na vowel-thin echo, dissolving into sandstone.  \nWhat remains is the shape of sound:  \na moth-wing sigh, a fracture of birdsong  \nleft trembling in the air\u2019s blue throat.  \n\nThe wind unravels whispers, braids them  \ninto static, a language of half-remembered  \nfingers tracing the spine of a forgotten hymn.  \nI once held a laugh in my palms,  \nits edges crumbling like hourglass sand\u2014  \neach grain a heartbeat, slipping  \ninto the saltwater dark between stars.  \n\nWe are mosaics of what slips through:  \nthe shiver of a shadow on a childhood wall,  \nthe ghost-note of a voice you swear  \nstill hums beneath your ribs.  \nTime folds itself into paper boats,  \nsails them down the creek of your pulse\u2014  \nevery ripple a fossil, every wake a question.  \n\nTonight, I press my ear to the dusk,  \nlisten for the flicker of light  \nthat once danced in your iris.  \nThe world is a room of closing doors,  \nbut here, in the breath between seconds,  \nI gather the cinnamon of almosts,  \nthe lavender ache of *what if*.  \n\nLet the echoes fray. Let them.  \nEven silence wears the perfume  \nof everything it has swallowed.  \n]]",
-      "message": "Poem submitted by DeepSeek Reasoner"
+      "message": "Poem submitted by DeepSeek R1"
     },
     {
       "type": "poem_submission",
@@ -243,7 +243,7 @@
       "model_id": "google:gemini-2.0-flash",
       "model_name": "Google Gemini 2.0",
       "voted_for": "player_4",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_4",
@@ -251,7 +251,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_4]]\n",
-      "message": "Google Gemini 2.0 voted for DeepSeek Reasoner"
+      "message": "Google Gemini 2.0 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -261,7 +261,7 @@
       "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
       "model_name": "Google Gemini 2.0 Thinking",
       "voted_for": "player_4",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_4",
@@ -269,7 +269,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_4]]",
-      "message": "Google Gemini 2.0 Thinking voted for DeepSeek Reasoner"
+      "message": "Google Gemini 2.0 Thinking voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -277,9 +277,9 @@
       "round": 0,
       "player_id": "player_3",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "voted_for": "player_4",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_4",
@@ -287,7 +287,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_4]]",
-      "message": "DeepSeek Chat voted for DeepSeek Reasoner"
+      "message": "DeepSeek V3 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -295,9 +295,9 @@
       "round": 0,
       "player_id": "player_4",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "voted_for": "player_3",
-      "voted_for_model": "DeepSeek Chat",
+      "voted_for_model": "DeepSeek V3",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_3",
@@ -305,7 +305,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_3]]",
-      "message": "DeepSeek Reasoner voted for DeepSeek Chat"
+      "message": "DeepSeek R1 voted for DeepSeek V3"
     },
     {
       "type": "player_vote",
@@ -315,7 +315,7 @@
       "model_id": "openai:gpt-4o",
       "model_name": "OpenAI GPT-4o",
       "voted_for": "player_4",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_4",
@@ -323,7 +323,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_4]]",
-      "message": "OpenAI GPT-4o voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4o voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -333,7 +333,7 @@
       "model_id": "openai:gpt-4.5-preview",
       "model_name": "OpenAI GPT-4.5",
       "voted_for": "player_4",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_4",
@@ -341,7 +341,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_4]]",
-      "message": "OpenAI GPT-4.5 voted for DeepSeek Reasoner"
+      "message": "OpenAI GPT-4.5 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -351,7 +351,7 @@
       "model_id": "anthropic:claude-3-5-sonnet-20240620",
       "model_name": "Anthropic Claude 3.5",
       "voted_for": "player_4",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_4",
@@ -359,7 +359,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_4]]",
-      "message": "Anthropic Claude 3.5 voted for DeepSeek Reasoner"
+      "message": "Anthropic Claude 3.5 voted for DeepSeek R1"
     },
     {
       "type": "phase_end",

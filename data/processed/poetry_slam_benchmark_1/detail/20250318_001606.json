@@ -29,7 +29,7 @@
       },
       "player_7": {
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat"
+        "model_name": "DeepSeek V3"
       }
     },
     "players": [
@@ -78,7 +78,7 @@
       {
         "id": "player_7",
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat",
+        "model_name": "DeepSeek V3",
         "final_score": 1,
         "role": "author"
       }
@@ -98,7 +98,7 @@
       "outcome": "win",
       "winning_player_id": "player_3",
       "winning_model_name": "Google Gemini 2.0",
-      "final_scores_display": "Anthropic Claude 3.5: 0, Mistral Mistral Large: 1, Google Gemini 2.0: 3, Google Gemini 2.0 Thinking: 1, Anthropic Claude 3.7: 1, xAI Grok-2: 0, DeepSeek Chat: 1"
+      "final_scores_display": "Anthropic Claude 3.5: 0, Mistral Mistral Large: 1, Google Gemini 2.0: 3, Google Gemini 2.0 Thinking: 1, Anthropic Claude 3.7: 1, xAI Grok-2: 0, DeepSeek V3: 1"
     }
   },
   "timeline": [
@@ -133,9 +133,9 @@
       "round": 0,
       "player_id": "player_7",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "prompt": "**Prompt:**  \nWrite a **villanelle** (19-line poem with two repeating rhymes and two refrains) about **the passage of time and memory**. Explore how moments slip away, linger, or transform over the years. Use vivid imagery and sensory details to evoke nostalgia, loss, or hope. The first and third lines of the opening tercet must alternate as the final lines of the following stanzas, and both must appear in the final quatrain.  \n\nExample structure:  \nA1 (refrain)  \nB  \nA2 (refrain)  \nA  \nB  \nA1  \nA  \nB  \nA2  \nA  \nB  \nA1  \nA  \nB  \nA2  \nA  \nB  \nA1  \nA2  \n\nLet the rhythm of repetition mirror the cyclical nature of time.",
-      "message": "Prompt created by DeepSeek Chat"
+      "message": "Prompt created by DeepSeek V3"
     },
     {
       "type": "phase_end",
@@ -217,9 +217,9 @@
       "round": 0,
       "player_id": "player_7",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "poem": "[[  \nThe clock ticks soft, a whisper in the air,  \nThrough fields of gold, the sun begins to fade.  \nThe past remains, though time is never fair.  \n\nA child\u2019s laugh, a song, a fleeting prayer,  \nEtched in the dusk where shadows softly wade.  \nThe clock ticks soft, a whisper in the air.  \n\nThe years, like leaves, are scattered everywhere,  \nTheir colors blurred, their edges start to fray.  \nThe past remains, though time is never fair.  \n\nA photograph, a face, a vacant stare,  \nA moment caught, yet destined to decay.  \nThe clock ticks soft, a whisper in the air.  \n\nThe river flows, its waters cold and bare,  \nCarrying dreams that memory once made.  \nThe past remains, though time is never fair.  \n\nAnd yet, the dawn still breaks, a tender glare,  \nA promise whispered, though the night may shade.  \nThe clock ticks soft, a whisper in the air.  \nThe past remains, though time is never fair.  \n]]",
-      "message": "Poem submitted by DeepSeek Chat"
+      "message": "Poem submitted by DeepSeek V3"
     },
     {
       "type": "phase_end",
@@ -297,7 +297,7 @@
       "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
       "model_name": "Google Gemini 2.0 Thinking",
       "voted_for": "player_7",
-      "voted_for_model": "DeepSeek Chat",
+      "voted_for_model": "DeepSeek V3",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_7",
@@ -305,7 +305,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_7]]",
-      "message": "Google Gemini 2.0 Thinking voted for DeepSeek Chat"
+      "message": "Google Gemini 2.0 Thinking voted for DeepSeek V3"
     },
     {
       "type": "player_vote",
@@ -349,7 +349,7 @@
       "round": 0,
       "player_id": "player_7",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "voted_for": "player_3",
       "voted_for_model": "Google Gemini 2.0",
       "decision_context": {
@@ -359,7 +359,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_3]]",
-      "message": "DeepSeek Chat voted for Google Gemini 2.0"
+      "message": "DeepSeek V3 voted for Google Gemini 2.0"
     },
     {
       "type": "phase_end",

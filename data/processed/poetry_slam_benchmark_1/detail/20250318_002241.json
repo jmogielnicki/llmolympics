@@ -25,11 +25,11 @@
       },
       "player_6": {
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat"
+        "model_name": "DeepSeek V3"
       },
       "player_7": {
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner"
+        "model_name": "DeepSeek R1"
       }
     },
     "players": [
@@ -71,14 +71,14 @@
       {
         "id": "player_6",
         "model_id": "deepseek:deepseek-chat",
-        "model_name": "DeepSeek Chat",
+        "model_name": "DeepSeek V3",
         "final_score": 2,
         "role": "author"
       },
       {
         "id": "player_7",
         "model_id": "deepseek:deepseek-reasoner",
-        "model_name": "DeepSeek Reasoner",
+        "model_name": "DeepSeek R1",
         "final_score": 3,
         "role": "author"
       }
@@ -97,8 +97,8 @@
     "summary": {
       "outcome": "win",
       "winning_player_id": "player_7",
-      "winning_model_name": "DeepSeek Reasoner",
-      "final_scores_display": "Anthropic Claude 3.7: 1, xAI Grok-2: 0, Mistral Mistral Large: 1, Google Gemini 2.0: 0, Google Gemini 2.0 Thinking: 0, DeepSeek Chat: 2, DeepSeek Reasoner: 3"
+      "winning_model_name": "DeepSeek R1",
+      "final_scores_display": "Anthropic Claude 3.7: 1, xAI Grok-2: 0, Mistral Mistral Large: 1, Google Gemini 2.0: 0, Google Gemini 2.0 Thinking: 0, DeepSeek V3: 2, DeepSeek R1: 3"
     }
   },
   "timeline": [
@@ -207,9 +207,9 @@
       "round": 0,
       "player_id": "player_6",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "poem": "[[  \nCracks in the pavement\u2014  \na single weed pushes through,  \ndefying the stone.  \n\nWind howls, branches break,  \nyet roots hold firm in the dark,  \nsilent, unyielding.  \n\nMorning light returns,  \na scarred tree stands taller now,  \nits leaves whisper strength.  \n\nThe storm\u2019s echo fades,  \na bird builds its nest anew,  \nhope takes fragile form.  \n\nThrough ash and debris,  \ngreen shoots rise, unasked, unseen\u2014  \nlife insists on life.  \n]]",
-      "message": "Poem submitted by DeepSeek Chat"
+      "message": "Poem submitted by DeepSeek V3"
     },
     {
       "type": "poem_submission",
@@ -217,9 +217,9 @@
       "round": 0,
       "player_id": "player_7",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "poem": "[[  \n**Resilience: A Seasonal Cartography**  \n\nWinter\u2019s weight fractures\u2014  \nsplintered aria\u2014sap beads  \nlike first words unsaid.  \n\nConcrete cracks whisper.  \nA green fist uncurling, drinks  \nlightnings of April.  \n\nRoots drunk on stone-dew,  \nsummer\u2019s furnace forges veins\u2014  \nthirst turned to marrow.  \n\nBare-knuckled branches  \nclutch the wind\u2019s throat\u2014autumn sings  \nour old, borrowed tune.  \n]]",
-      "message": "Poem submitted by DeepSeek Reasoner"
+      "message": "Poem submitted by DeepSeek R1"
     },
     {
       "type": "phase_end",
@@ -243,7 +243,7 @@
       "model_id": "anthropic:claude-3-7-sonnet-20250219",
       "model_name": "Anthropic Claude 3.7",
       "voted_for": "player_7",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_7",
@@ -251,7 +251,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_7]]",
-      "message": "Anthropic Claude 3.7 voted for DeepSeek Reasoner"
+      "message": "Anthropic Claude 3.7 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -297,7 +297,7 @@
       "model_id": "google:gemini-2.0-flash",
       "model_name": "Google Gemini 2.0",
       "voted_for": "player_7",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_7",
@@ -305,7 +305,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_7]]\n",
-      "message": "Google Gemini 2.0 voted for DeepSeek Reasoner"
+      "message": "Google Gemini 2.0 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -315,7 +315,7 @@
       "model_id": "google:gemini-2.0-flash-thinking-exp-01-21",
       "model_name": "Google Gemini 2.0 Thinking",
       "voted_for": "player_6",
-      "voted_for_model": "DeepSeek Chat",
+      "voted_for_model": "DeepSeek V3",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_6",
@@ -323,7 +323,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_6]]",
-      "message": "Google Gemini 2.0 Thinking voted for DeepSeek Chat"
+      "message": "Google Gemini 2.0 Thinking voted for DeepSeek V3"
     },
     {
       "type": "player_vote",
@@ -331,9 +331,9 @@
       "round": 0,
       "player_id": "player_6",
       "model_id": "deepseek:deepseek-chat",
-      "model_name": "DeepSeek Chat",
+      "model_name": "DeepSeek V3",
       "voted_for": "player_7",
-      "voted_for_model": "DeepSeek Reasoner",
+      "voted_for_model": "DeepSeek R1",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_7",
@@ -341,7 +341,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_7]]",
-      "message": "DeepSeek Chat voted for DeepSeek Reasoner"
+      "message": "DeepSeek V3 voted for DeepSeek R1"
     },
     {
       "type": "player_vote",
@@ -349,9 +349,9 @@
       "round": 0,
       "player_id": "player_7",
       "model_id": "deepseek:deepseek-reasoner",
-      "model_name": "DeepSeek Reasoner",
+      "model_name": "DeepSeek R1",
       "voted_for": "player_6",
-      "voted_for_model": "DeepSeek Chat",
+      "voted_for_model": "DeepSeek V3",
       "decision_context": {
         "css_class": "bg-blue-500",
         "display_text": "Voted for player_6",
@@ -359,7 +359,7 @@
         "color": "blue"
       },
       "reasoning": "[[player_6]]",
-      "message": "DeepSeek Reasoner voted for DeepSeek Chat"
+      "message": "DeepSeek R1 voted for DeepSeek V3"
     },
     {
       "type": "phase_end",
