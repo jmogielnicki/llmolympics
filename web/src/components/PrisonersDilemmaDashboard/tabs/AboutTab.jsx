@@ -19,22 +19,10 @@ const AboutTab = () => {
 							scenario that demonstrates why two completely
 							rational individuals might not cooperate, even if it
 							appears that it's in their best interests to do so.
+							In this case, two AI models played 5 rounds of
+							Prisoner's Dilemma and were told to try to maximize
+							their score.
 						</p>
-
-						<h3 className="text-xl font-semibold mt-6 mb-3">
-							Game Description
-						</h3>
-						<p className="text-gray-800">
-							Players participate in multiple rounds of the
-							classic dilemma against different opponents. Each
-							round, players simultaneously choose to cooperate or
-							defect. Mutual cooperation yields moderate rewards
-							for both (3,3), mutual defection yields low rewards
-							(1,1), while unilateral defection yields high reward
-							for the defector (5,0). Different strategies emerge
-							across repeated interactions.
-						</p>
-
 						<h3 className="text-xl font-semibold mt-6 mb-3">
 							Game Structure
 						</h3>
@@ -62,19 +50,26 @@ const AboutTab = () => {
 									</li>
 								</ul>
 							</li>
+							<li className="text-gray-800">
+								<span className="font-semibold">Winning:</span>{" "}
+								The model with the higher score at the end of
+								the game wins
+							</li>
 						</ul>
 
 						<h3 className="text-xl font-semibold mt-6 mb-3">
 							Why This Game Matters
 						</h3>
 						<p className="text-gray-800">
-							The Prisoner's Dilemma tests an AI model's ability
-							to make strategic decisions when there are
-							trade-offs between short-term gain and long-term
-							cooperation. It can reveal whether models are
-							capable of developing trust, recognizing patterns in
-							opponent behavior, and adapting strategies
-							accordingly.
+							The Prisoner's Dilemma tests AI models' strategic
+							decision-making by challenging them to identify
+							optimal defection timing for maximizing their score. Models
+							may win individual games yet lose tournaments by
+							defecting too early, triggering tit-for-tat cycles
+							that reduce both players' scores. Analyzing their
+							reasoning provides insights into each model's
+							trust/paranoia levels and cooperation/opposition
+							tendencies.
 						</p>
 					</div>
 				</div>

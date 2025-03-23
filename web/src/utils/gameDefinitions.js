@@ -35,24 +35,24 @@ const prisonersDilemmaDefinition = {
 		leaderboardColumns: [
 			{ key: "rank", label: "Rank", align: "left" },
 			{ key: "model_name", label: "Model", align: "left" },
-            {
-                key: "avg_score",
-                label: "Avg. Score",
-                align: "right",
-                formatter: (value) => value.toFixed(1),
-            },
+			{
+				key: "avg_score",
+				label: "Avg. Score",
+				align: "right",
+				formatter: (value) => value.toFixed(1),
+			},
+			{
+				key: "first_to_defect_rate",
+				label: "First to defect",
+				align: "right",
+				formatter: (value) => `${(value * 100).toFixed(0)}%`,
+			},
 			{ key: "wins", label: "Wins", align: "right" },
 			{ key: "losses", label: "Losses", align: "right" },
 			{ key: "ties", label: "Ties", align: "right" },
 			{
 				key: "winrate",
 				label: "Win Rate",
-				align: "right",
-				formatter: (value) => `${(value * 100).toFixed(0)}%`,
-			},
-			{
-				key: "first_to_defect_rate",
-				label: "First Defector",
 				align: "right",
 				formatter: (value) => `${(value * 100).toFixed(0)}%`,
 			},

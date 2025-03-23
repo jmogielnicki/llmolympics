@@ -7,6 +7,7 @@ import { GameDataProvider, useGameData } from "@/context/GameDataContext";
 // Import tab components
 import LeaderboardTab from "../tabs/LeaderboardTab";
 import TimelineTab from "../tabs/TimelineTab";
+import AboutTab from "../tabs/AboutTab";
 import TabNavigation from "../../TabNavigation";
 
 /**
@@ -60,7 +61,7 @@ const DashboardContent = () => {
 	const tabs = [
 		{ id: "leaderboard", label: "Leaderboard" },
 		{ id: "timeline", label: "Timeline" },
-
+		{ id: "about", label: "About" },
 	];
 
 	return (
@@ -79,6 +80,7 @@ const DashboardContent = () => {
 				<Route path="/leaderboard" element={<LeaderboardTab />} />
 				<Route path="/timeline" element={<TimelineTab />} />
 				<Route path="/timeline/:sessionId" element={<TimelineTab />} />
+				<Route path="/about" element={<AboutTab />} />
 				<Route
 					path="*"
 					element={
