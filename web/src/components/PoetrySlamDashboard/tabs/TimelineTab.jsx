@@ -4,45 +4,81 @@ import PoemDisplay from "../components/PoemDisplay";
 import { Calendar, MessageSquare, Trophy } from "lucide-react";
 import { shortenModelName } from "../../../utils/commonUtils";
 import ReactMarkdown from "react-markdown";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 /**
  * Timeline tab for displaying poetry slam sessions
  */
 const TimelineTab = () => {
 	const { gameSessions, loadGameDetail } = useGameData();
-	const [selectedSession, setSelectedSession] = useState(null);
 	const [gameDetail, setGameDetail] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 
-	// Initialize selected session when gameSessions are loaded
+	// Get sessionId from URL params
+	const { sessionId } = useParams();
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	// Handle session initialization and URL updates
 	useEffect(() => {
-		if (gameSessions?.length > 0 && !selectedSession) {
-			setSelectedSession(gameSessions[0].id);
+		if (!gameSessions || gameSessions.length === 0) {
+			return; // Wait for sessions to load
 		}
-	}, [gameSessions, selectedSession]);
 
-	// Load game detail when session changes
-	useEffect(() => {
-		const fetchGameDetail = async () => {
-			if (!selectedSession) return;
+		// If we're on the base timeline path without a session ID
+		if (location.pathname === "/games/poetry-slam/timeline") {
+			// Navigate to the first session
+			navigate(`/games/poetry-slam/timeline/${gameSessions[0].id}`, {
+				replace: true,
+			});
+			return;
+		}
 
-			setLoading(true);
-			setError(null);
+		// If we have a session ID in the URL
+		if (sessionId) {
+			// Check if it's a valid session ID
+			const isValidSession = gameSessions.some(
+				(session) => session.id === sessionId
+			);
 
-			try {
-				const detail = await loadGameDetail(selectedSession);
-				setGameDetail(detail);
-			} catch (err) {
-				console.error("Error loading game detail:", err);
-				setError("Failed to load game details. Please try again.");
-			} finally {
-				setLoading(false);
+			if (isValidSession) {
+				// Load this session
+				loadSessionDetails(sessionId);
+			} else {
+				// Invalid session ID - redirect to first session with error message
+				setError(
+					`Invalid session ID: ${sessionId}. Redirecting to a valid session.`
+				);
+				navigate(`/games/poetry-slam/timeline/${gameSessions[0].id}`, {
+					replace: true,
+				});
 			}
-		};
+		}
+	}, [gameSessions, sessionId, navigate, location.pathname]);
 
-		fetchGameDetail();
-	}, [selectedSession, loadGameDetail]);
+	// Function to load session details
+	const loadSessionDetails = async (id) => {
+		if (!id) return;
+
+		setLoading(true);
+		setError(null);
+
+		try {
+			const detail = await loadGameDetail(id);
+			setGameDetail(detail);
+		} catch (err) {
+			console.error("Error loading game detail:", err);
+			setError("Failed to load game details. Please try again.");
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	// Handle session selection change
+	const handleSessionChange = (newSessionId) => {
+		navigate(`/games/poetry-slam/timeline/${newSessionId}`);
+	};
 
 	// Format poems with voting information
 	const formatPoems = () => {
@@ -168,7 +204,7 @@ const TimelineTab = () => {
 					sessions
 				</p>
 
-				{/* Session selector */}
+				{/* Session selector - updated to use URL params */}
 				<div className="mb-6">
 					<label
 						htmlFor="session-select"
@@ -179,16 +215,14 @@ const TimelineTab = () => {
 					<select
 						id="session-select"
 						className="w-full border border-gray-300 rounded-md p-2"
-						value={selectedSession || ""}
-						onChange={(e) => setSelectedSession(e.target.value)}
+						value={sessionId || ""}
+						onChange={(e) => handleSessionChange(e.target.value)}
 					>
-						{gameSessions?.map((session) => {
-							return (
-								<option key={session.id} value={session.id}>
-									{session.id}
-								</option>
-							);
-						})}
+						{gameSessions?.map((session) => (
+							<option key={session.id} value={session.id}>
+								{session.id}
+							</option>
+						))}
 					</select>
 				</div>
 
@@ -226,7 +260,7 @@ const TimelineTab = () => {
 											? formatTimestamp(
 													promptCreation.timestamp
 											  )
-											: getSessionDate(selectedSession)}
+											: getSessionDate(sessionId)}
 									</p>
 								</div>
 								<div className="mt-3">

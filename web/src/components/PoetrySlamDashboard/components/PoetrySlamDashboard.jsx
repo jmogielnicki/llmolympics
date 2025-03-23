@@ -86,7 +86,9 @@ const DashboardContent = () => {
 					path="/voting-patterns"
 					element={<VotingPatternsTab />}
 				/>
+				{/* Timeline routes - both with and without sessionId */}
 				<Route path="/timeline" element={<TimelineTab />} />
+				<Route path="/timeline/:sessionId" element={<TimelineTab />} />
 				<Route path="/about" element={<AboutTab />} />
 				<Route
 					path="*"

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 /**
  * Reusable tab navigation component with React Router integration
@@ -10,6 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 const TabNavigation = ({ tabs, basePath }) => {
 	const location = useLocation();
 	const currentPath = location.pathname;
+	const { sessionId } = useParams(); // Get the sessionId from URL params if available
 
 	return (
 		<div className="mb-2">
@@ -17,19 +18,34 @@ const TabNavigation = ({ tabs, basePath }) => {
 			<div className="overflow-x-auto pb-1">
 				<div className="flex border-b border-gray-200 min-w-max justify-left">
 					{tabs.map((tab) => {
-						const isActive =
-							currentPath === `${basePath}/${tab.id}` ||
-							(tab.id === "leaderboard" &&
-								currentPath === basePath);
+						// For the timeline tab, check if we should include the session ID
+						const tabPath =
+							tab.id === "timeline" && sessionId
+								? `${basePath}/${tab.id}/${sessionId}`
+								: tab.id === "leaderboard"
+								? basePath
+								: `${basePath}/${tab.id}`;
+
+						// Determine if this tab is active using a simplified logic
+						let isActive;
+
+						if (tab.id === "timeline") {
+							// Check if the current path contains "/timeline" anywhere in it
+							isActive = currentPath.includes("/timeline");
+						} else if (tab.id === "leaderboard") {
+							// Leaderboard is active if we're at the base path or the leaderboard path
+							isActive =
+								currentPath === basePath ||
+								currentPath === `${basePath}/leaderboard`;
+						} else {
+							// For any other tab, check for an exact path match
+							isActive = currentPath === `${basePath}/${tab.id}`;
+						}
 
 						return (
 							<Link
 								key={tab.id}
-								to={
-									tab.id === "leaderboard"
-										? basePath
-										: `${basePath}/${tab.id}`
-								}
+								to={tabPath}
 								className={`px-2 sm:px-4 py-2 text-xs sm:text-sm whitespace-nowrap ${
 									isActive
 										? "border-b-2 border-orange-600 text-orange-600 font-bold"
