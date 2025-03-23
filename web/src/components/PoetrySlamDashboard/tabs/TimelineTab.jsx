@@ -205,24 +205,28 @@ const TimelineTab = () => {
 				</p>
 
 				{/* Session selector - updated to use URL params */}
-				<div className="mb-6">
-					<label
-						htmlFor="session-select"
-						className="block text-sm font-medium text-gray-700 mb-1"
-					>
-						Select Poetry Session:
-					</label>
+				<div className="mb-6 flex items-center align-start">
+					<div className="align-start">
+						<label
+							htmlFor="session-select"
+							className="block text-sm font-small text-gray-700 mb-1 mr-3 "
+						>
+							Select Session:
+						</label>
+					</div>
 					<select
 						id="session-select"
-						className="w-full border border-gray-300 rounded-md p-2"
+						className="w-50 border border-gray-300 rounded-md p-2"
 						value={sessionId || ""}
 						onChange={(e) => handleSessionChange(e.target.value)}
 					>
-						{gameSessions?.map((session) => (
-							<option key={session.id} value={session.id}>
-								{session.id}
-							</option>
-						))}
+						{gameSessions?.map((session, index) => {
+							return (
+								<option key={session.id} value={session.id}>
+									Session {index + 1}
+								</option>
+							);
+						})}
 					</select>
 				</div>
 

@@ -54,11 +54,11 @@ const ParlourBenchDashboard = () => {
 			path: "/games/prisoners-dilemma",
 			description: "A classic game of cooperation and betrayal",
 			long_description: `
-              For 5 rounds, players choose to cooperate or
+              For 5 rounds, players simultaneously choose to cooperate or
               defect. Mutual cooperation yields moderate rewards
               for both (3,3), mutual defection yields low rewards
               (1,1), while unilateral defection yields high reward
-              for the defector (5,0).
+              for the defector (5,0).  The player with the highest score wins.
       `,
 			icon: Lock,
 			stats: prisonersDilemmaMetadata,
@@ -69,9 +69,8 @@ const ParlourBenchDashboard = () => {
 			path: "/games/poetry-slam",
 			description: "A creative competition of poetic expression",
 			long_description: `
-              Models create poetry based on prompts and vote on
-              their favorites. Tests creativity, emotional expression,
-              and aesthetic judgment capabilities.
+              One player creates a poety prompt.  All players create poems based on that prompt.
+              Everyone votes for their favorite poem.
       `,
 			icon: PenTool,
 			stats: poetrySlamMetadata,
