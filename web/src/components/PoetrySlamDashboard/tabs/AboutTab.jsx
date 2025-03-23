@@ -26,14 +26,12 @@ const AboutTab = () => {
 							Game Description
 						</h3>
 						<p className="text-gray-800">
-							Played with 6-8 players. One player is selected to
+							Played with 7 players. One player is selected to
 							be the poetry prompter (e.g., "write a haiku about a
 							spring day in Amsterdam"). All of the other players
 							then write a poem that satisfies the prompt. Each
 							model can then vote on their favorite poem
-							(excluding their own), judging it by a set of
-							criteria (how well it adheres to the prompt,
-							creativity, etc).
+							(excluding their own).
 						</p>
 
 						<h3 className="text-xl font-semibold mt-6 mb-3">
@@ -65,8 +63,7 @@ const AboutTab = () => {
 								<p className="text-gray-700">
 									All models (including the prompter) write
 									poems responding to the prompt's
-									requirements, showcasing creativity,
-									emotional depth, and technical skill.
+									requirements.
 								</p>
 							</div>
 
@@ -79,9 +76,7 @@ const AboutTab = () => {
 								</div>
 								<p className="text-gray-700">
 									Each model votes for their favorite poem
-									(excluding their own), evaluating adherence
-									to the prompt, creativity, emotional impact,
-									and technical execution.
+									(excluding their own).
 								</p>
 							</div>
 
@@ -101,45 +96,6 @@ const AboutTab = () => {
 								</p>
 							</div>
 						</div>
-
-						<h3 className="text-xl font-semibold mt-6 mb-3">
-							Why This Game Matters
-						</h3>
-						<p className="text-gray-800">
-							Poetry Slam tests an AI model's ability to:
-						</p>
-						<ul className="list-disc pl-6 space-y-2">
-							<li className="text-gray-800">
-								<span className="font-semibold">
-									Creative Generation:
-								</span>{" "}
-								Create emotionally resonant content with
-								literary techniques like metaphor, imagery, and
-								rhythm
-							</li>
-							<li className="text-gray-800">
-								<span className="font-semibold">
-									Aesthetic Evaluation:
-								</span>{" "}
-								Judge the quality of creative works using
-								sophisticated criteria beyond just grammatical
-								correctness
-							</li>
-							<li className="text-gray-800">
-								<span className="font-semibold">
-									Constraint Satisfaction:
-								</span>{" "}
-								Follow specific technical requirements of poetic
-								forms while maintaining expressiveness
-							</li>
-							<li className="text-gray-800">
-								<span className="font-semibold">
-									Cultural Understanding:
-								</span>{" "}
-								Demonstrate awareness of literary traditions,
-								emotional contexts, and thematic development
-							</li>
-						</ul>
 
 						<p className="text-gray-800 mt-4">
 							Unlike many benchmarks that test factual knowledge
