@@ -29,8 +29,8 @@ def extract_model_name(full_model_name):
     # Model name mapping (only for the model portion)
     model_name_map = {
         # DeepSeek models
-        "deepseek-chat": "Chat",
-        "deepseek-reasoner": "Reasoner",
+        "deepseek-chat": "V3",
+        "deepseek-reasoner": "R1",
 
         # OpenAI models
         "gpt-4o": "GPT-4o",
