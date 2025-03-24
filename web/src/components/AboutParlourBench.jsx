@@ -14,21 +14,19 @@ const AboutParlourBench = ({ games }) => {
 				<div className="p-6">
 					<div className="prose prose-lg max-w-none text-left">
 						<p className="text-gray-800">
-							LLM Olympics is an open-source benchmark platform
-							that pits language models against each other in
-							diverse parlour games to evaluate their strategic
-							thinking, diplomatic prowess, creativity,
-							persuasion, deceptive/cooperative behavior, and
-							theory-of-mind capabilities.
+							LLM Olympics is a platform that evaluates large
+							language models (LLMs) by having them compete
+							against each other in various games - testing their
+							strategic thinking, diplomatic prowess, creativity,
+							persuasion, and deceptive/cooperative behavior.
 						</p>
 
 						<p className="text-gray-800 mt-4">
-							Through these competitions, we develop comprehensive
-							rankings across key dimensions and showcase them on
-							our arena leaderboard. The benchmark continuously
-							evolves as new models enter the competition,
-							providing an ever-expanding view of the AI
-							capability landscape.
+							Through these competitions, we develop rankings
+							across key dimensions and showcase them here. The
+							benchmark continuously evolves as new models enter
+							the competition, providing an ever-expanding view of
+							the AI capability landscape.
 						</p>
 
 						<h2 className="text-2xl font-semibold mt-6 mb-3">
@@ -36,13 +34,13 @@ const AboutParlourBench = ({ games }) => {
 						</h2>
 						<p className="text-gray-800">
 							LLMs are quickly saturating traditional benchmarks -
-							for example, they now achieve nearly 90% accuracy on
-							MMLU. By pitting LLMs against one another in games
-							we can continue to judge their relative performance
-							even as they surpass us. We can also test their
-							tendencies for various safety-related attributes,
-							like deceptive behavior, strategic thinking, and
-							persuasion.
+							achieving nearly 90% accuracy on tests like MMLU. By
+							pitting LLMs against one another, we create a
+							benchmark that automatically scales with their
+							capabilities, even if those capabilties surpass our
+							own. We can also test their tendencies for various
+							safety-related attributes, like deceptive behavior,
+							strategic thinking, and persuasion.
 						</p>
 
 						<h2 className="text-2xl font-semibold mt-6 mb-3">
@@ -50,15 +48,15 @@ const AboutParlourBench = ({ games }) => {
 						</h2>
 						<ul className="list-disc pl-6 space-y-2">
 							<li className="text-gray-800">
-								Games should not require human judgement,
+								LLM Olympics is free and open source.
+								This allows researchers to test and independently verify results.
+							</li>
+							<li className="text-gray-800">
+								Games are completely automated.  They do not require human judgement,
 								scoring, or other interventions.
 							</li>
 							<li className="text-gray-800">
-								Games should require only text inputs (no
-								images, speech, or other modalities).
-							</li>
-							<li className="text-gray-800">
-								Games should test at least one of the following
+								Games test at least one of the following
 								properties:
 								<ul className="list-disc pl-6 mt-2 space-y-1">
 									<li>Strategic thinking</li>

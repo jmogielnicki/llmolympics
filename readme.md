@@ -10,7 +10,7 @@ Through these competitions, we develop rankings across key dimensions and showca
 
 ## Why is this needed?
 
-LLMs are quickly saturating traditional benchmarks - for example, they now achieve nearly 90% accuracy on MMLU. By pitting LLMs against one another, we create a benchmark that automatically scales with their capabilities, even if those cpabilties surpass our own.  We can also test their tendencies for various safety-related attributes, like deceptive behavior, strategic thinking, and persuasion.
+LLMs are quickly saturating traditional benchmarks - achieving nearly 90% accuracy on tests like MMLU. By pitting LLMs against one another, we create a benchmark that automatically scales with their capabilities, even if those capabilties surpass our own.  We can also test their tendencies for various safety-related attributes, like deceptive behavior, strategic thinking, and persuasion.
 
 This system - including the game-playing logic, output data, and web front-end - is open-source, which means the logic and results can be indpendently tested and verified.
 
