@@ -380,31 +380,6 @@ const GameInfoCard = ({ games }) => {
 					</p>
 				</div>
 			)}
-
-			{currentGame.stats && (
-				<>
-					<div className="border-t border-gray-200"></div>
-					<div className="px-3 sm:px-6 py-2 sm:py-3 flex justify-left items-center text-xs sm:text-sm text-gray-500">
-						<div className="flex flex-row items-center text-left">
-							<Users size={12} className="mr-2" />
-							<span>
-								<span className="hidden sm:inline">
-									{currentGame.stats.game_count} games played
-									between {currentGame.stats.models} models
-								</span>
-								<span className="sm:hidden">
-									{currentGame.stats.game_count} games •{" "}
-									{currentGame.stats.models} models
-								</span>
-								<span className="sm:inline">
-									{" "}
-									• Last updated {formattedDate}
-								</span>
-							</span>
-						</div>
-					</div>
-				</>
-			)}
 		</div>
 	);
 };
