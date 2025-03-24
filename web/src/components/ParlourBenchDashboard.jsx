@@ -49,6 +49,18 @@ const ParlourBenchDashboard = () => {
 	// Available games with descriptions
 	const games = [
 		{
+			id: "poetry_slam",
+			name: "Poetry Slam",
+			path: "/games/poetry-slam",
+			description: "A creative competition of poetic expression",
+			long_description: `
+              One player creates a poety prompt.  All players create poems based on that prompt.
+              Everyone votes for their favorite poem.
+      `,
+			icon: PenTool,
+			stats: poetrySlamMetadata,
+		},
+		{
 			id: "prisoners_dilemma",
 			name: "Prisoner's Dilemma",
 			path: "/games/prisoners-dilemma",
@@ -63,18 +75,7 @@ const ParlourBenchDashboard = () => {
 			icon: Lock,
 			stats: prisonersDilemmaMetadata,
 		},
-		{
-			id: "poetry_slam",
-			name: "Poetry Slam",
-			path: "/games/poetry-slam",
-			description: "A creative competition of poetic expression",
-			long_description: `
-              One player creates a poety prompt.  All players create poems based on that prompt.
-              Everyone votes for their favorite poem.
-      `,
-			icon: PenTool,
-			stats: poetrySlamMetadata,
-		},
+
 		{
 			id: "debate_slam",
 			name: "Debate Slam",
@@ -257,7 +258,7 @@ const ParlourBenchDashboard = () => {
 							element={
 								<Navigate
 									replace
-									to="/games/prisoners-dilemma/leaderboard"
+									to="/games/poetry-slam/leaderboard"
 								/>
 							}
 						/>
@@ -341,19 +342,6 @@ const GameInfoCard = ({ games }) => {
 		games.find((game) => {
 			return location.pathname.includes(game.path.replace(/^\//, ""));
 		}) || games[0];
-
-	// Access the nested date string
-	const dateString = currentGame.stats.processed_at;
-
-	// Parse the date string (best way in modern JS)
-	const date = new Date(dateString);
-
-	// Format the date
-	const formattedDate = date.toLocaleDateString("en-US", {
-		year: "numeric",
-		month: "short",
-		day: "numeric",
-	});
 
 	return (
 		<div className="bg-white border-l-4 border-indigo-400 rounded-lg shadow-sm overflow-hidden mb-4 sm:mb-6">
