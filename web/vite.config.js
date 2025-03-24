@@ -5,7 +5,7 @@ import path from "path";
 
 export default defineConfig({
 	plugins: [react(), tailwindcss()],
-	base: "/parlourbench/", // Make sure this matches your repo name
+	base: "/", // Make sure this matches your repo name
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"),
