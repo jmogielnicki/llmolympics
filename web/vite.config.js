@@ -5,17 +5,11 @@ import path from "path";
 
 export default defineConfig({
 	plugins: [react(), tailwindcss()],
-	base: "/", // For custom domain, use root path
+	base: "/", // Make sure this matches your repo name
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"),
 			"@data": path.resolve(__dirname, "../data"),
 		},
-	},
-	server: {
-		historyApiFallback: true, // Support for BrowserRouter
-	},
-	build: {
-		outDir: "dist",
 	},
 });
