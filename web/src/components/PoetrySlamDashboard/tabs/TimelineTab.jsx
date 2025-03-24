@@ -273,10 +273,8 @@ const TimelineTab = () => {
 									<p className="font-medium mb-1 flex">
 										Final scores:
 									</p>
-									<div
-										className={`grid grid-flow-col sm:grid-rows-3 grid-rows-${
-											finalScores.length + 1
-										} gap-1 pl-2`}
+									<ol
+										className={`list-none pl-5 columns-1 sm:columns-3 gap-8`}
 									>
 										{Array.isArray(finalScores) ? (
 											finalScores.map((score, index) => {
@@ -290,21 +288,23 @@ const TimelineTab = () => {
 														highestScore &&
 													score.score > 0;
 												return (
-													<div
-														key={index}
-														className="text-sm flex items-center"
-													>
-														{isHighestScore && (
-															<Trophy
-																size={14}
-																className="mr-1 text-yellow-500"
-															/>
-														)}
-														{shortenModelName(
-															score.model
-														)}
-														: {score.score}
-													</div>
+													<li className="break-inside-avoid">
+														<div
+															key={index}
+															className="text-sm flex items-center"
+														>
+															{isHighestScore && (
+																<Trophy
+																	size={14}
+																	className="mr-1 text-yellow-500"
+																/>
+															)}
+															{shortenModelName(
+																score.model
+															)}
+															: {score.score}
+														</div>
+													</li>
 												);
 											})
 										) : (
@@ -312,7 +312,7 @@ const TimelineTab = () => {
 												{finalScores}
 											</div>
 										)}
-									</div>
+									</ol>
 								</div>
 							</div>
 
@@ -344,8 +344,7 @@ const TimelineTab = () => {
 													prompt.text
 												),
 											}}
-										>
-										</div>
+										></div>
 									</div>
 								</div>
 							)}
