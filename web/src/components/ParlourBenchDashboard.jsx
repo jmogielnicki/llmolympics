@@ -248,7 +248,10 @@ const ParlourBenchDashboard = () => {
 							path="/games/:gameId"
 							element={<ComingSoonGame games={games} />}
 						/>
-						<Route path="/about" element={<AboutParlourBench />} />
+						<Route
+							path="/about"
+							element={<AboutParlourBench games={games} />}
+						/>
 						<Route
 							path="/"
 							element={

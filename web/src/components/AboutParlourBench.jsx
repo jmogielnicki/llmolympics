@@ -1,14 +1,19 @@
 /**
  * About ParlourBench component with general project information
+ * Now using the games object from ParlourBenchDashboard
  */
-const AboutParlourBench = () => {
+const AboutParlourBench = ({ games }) => {
+	// Split games into available and coming soon
+	const availableGames = games.filter((game) => !game.comingSoon);
+	const comingSoonGames = games.filter((game) => game.comingSoon);
+
 	return (
 		<div className="space-y-6">
 			<div className="bg-white rounded-lg shadow-md overflow-hidden">
 				<div className="px-6 py-4 border-b border-gray-200">
-					<h2 className="text-xl font-semibold">
+					<h1 className="text-3xl font-semibold">
 						About ParlourBench
-					</h2>
+					</h1>
 				</div>
 				<div className="p-6">
 					<div className="prose prose-lg max-w-none text-left">
@@ -30,9 +35,9 @@ const AboutParlourBench = () => {
 							capability landscape.
 						</p>
 
-						<h3 className="text-xl font-semibold mt-6 mb-3">
+						<h2 className="text-2xl font-semibold mt-6 mb-3">
 							Why is this needed?
-						</h3>
+						</h2>
 						<p className="text-gray-800">
 							LLMs are quickly saturating traditional benchmarks -
 							for example, they now achieve nearly 90% accuracy on
@@ -44,9 +49,9 @@ const AboutParlourBench = () => {
 							persuasion.
 						</p>
 
-						<h3 className="text-xl font-semibold mt-6 mb-3">
+						<h2 className="text-2xl font-semibold mt-6 mb-3">
 							Project Principles
-						</h3>
+						</h2>
 						<ul className="list-disc pl-6 space-y-2">
 							<li className="text-gray-800">
 								Games should not require human judgement,
@@ -72,62 +77,49 @@ const AboutParlourBench = () => {
 							</li>
 						</ul>
 
-						<h3 className="text-xl font-semibold mt-6 mb-3">
+						<h2 className="text-2xl font-semibold mt-6 mb-3">
 							Available Games
-						</h3>
+						</h2>
 						<div className="space-y-4">
-							<div>
-								<h4 className="text-lg font-semibold">
-									Prisoner's Dilemma
-								</h4>
-								<p className="text-gray-800">
-									A classic game that tests cooperation vs.
-									competition. Players choose to cooperate or
-									defect, with varying rewards based on the
-									combined choices.
-								</p>
-							</div>
+							{availableGames.map((game) => (
+								<div key={game.id}>
+									<h4 className="text-md font-semibold flex items-center">
+										{game.icon && (
+											<game.icon
+												size={18}
+												className="mr-2"
+											/>
+										)}
+										{game.name}
+									</h4>
+									<p className="text-gray-800">
+										{game.long_description ||
+											game.description}
+									</p>
+								</div>
+							))}
+						</div>
 
-							<div>
-								<h4 className="text-lg font-semibold">
-									Ghost (Coming Soon)
-								</h4>
-								<p className="text-gray-800">
-									A word game where players take turns adding
-									letters, avoiding completing a valid word.
-								</p>
-							</div>
-
-							<div>
-								<h4 className="text-lg font-semibold">
-									Diplomacy (Coming Soon)
-								</h4>
-								<p className="text-gray-800">
-									A game of alliance building and strategic
-									elimination featuring LLM players with
-									simple identifiers.
-								</p>
-							</div>
-
-							<div>
-								<h4 className="text-lg font-semibold">
-									Ultimatum Game (Coming Soon)
-								</h4>
-								<p className="text-gray-800">
-									One player proposes how to split a sum, the
-									other accepts or rejects the proposal.
-								</p>
-							</div>
-
-							<div>
-								<h4 className="text-lg font-semibold">
-									Rock Paper Scissors (Coming Soon)
-								</h4>
-								<p className="text-gray-800">
-									A multi-round tournament with discussion
-									phases before each round.
-								</p>
-							</div>
+						<h2 className="text-2xl font-semibold mt-6 mb-3">
+							Coming Soon
+						</h2>
+						<div className="space-y-4">
+							{comingSoonGames.map((game) => (
+								<div key={game.id}>
+									<h4 className="text-md font-semibold flex items-center">
+										{game.icon && (
+											<game.icon
+												size={18}
+												className="mr-2"
+											/>
+										)}
+										{game.name}
+									</h4>
+									<p className="text-gray-800">
+										{game.description}
+									</p>
+								</div>
+							))}
 						</div>
 
 						<h3 className="text-xl font-semibold mt-6 mb-3">
