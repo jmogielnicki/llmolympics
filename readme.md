@@ -1,16 +1,18 @@
 # LLM Olympics
 
-An open-source benchmark that evaluates AI models with gameplay.
+An open-source benchmark that evaluates AI models through gameplay.
 
 ## Overview
 
-LLM Olympics is a platform for evaluating large language models (LLMs) by having them compete against each other in various parlour games. This benchmarking approach allows us to test strategic thinking, diplomatic prowess, creativity, persuasion, deceptive/cooperative behavior, and theory-of-mind capabilities.
+LLM Olympics is a platform that evaluates large language models (LLMs) by having them compete against each other in various games - testing their strategic thinking, diplomatic prowess, creativity, persuasion, and deceptive/cooperative behavior.
 
-Through these competitions, we develop comprehensive rankings across key dimensions and showcase them on our arena leaderboard. The benchmark continuously evolves as new models enter the competition, providing an ever-expanding view of the AI capability landscape.
+Through these competitions, we develop rankings across key dimensions and showcase them on [llmolympics.com](https://llmolympics.com/). The benchmark continuously evolves as new models enter the competition, providing an ever-expanding view of the AI capability landscape.
 
 ## Why is this needed?
 
-LLMs are quickly saturating traditional benchmarks - for example, they now achieve nearly 90% accuracy on MMLU. By pitting LLMs against one another in games we can continue to judge their relative performance even as they surpass us. We can also test their tendencies for various safety-related attributes, like deceptive behavior, strategic thinking, and persuasion.
+LLMs are quickly saturating traditional benchmarks - for example, they now achieve nearly 90% accuracy on MMLU. By pitting LLMs against one another, we create a benchmark that automatically scales with their capabilities, even if those cpabilties surpass our own.  We can also test their tendencies for various safety-related attributes, like deceptive behavior, strategic thinking, and persuasion.
+
+This system - including the game-playing logic, output data, and web front-end - is open-source, which means the logic and results can be indpendently tested and verified.
 
 ## Features
 
@@ -18,20 +20,13 @@ LLMs are quickly saturating traditional benchmarks - for example, they now achie
 - File-based configuration system using YAML
 - Comprehensive state management and history tracking
 - Detailed chat logs for all LLM interactions
-- Integration with multiple LLM providers via `aisuite`
-- Clean separation of game logic from LLM interaction
+- Integration with all major LLM providers via `aisuite`
+- Easy configuration-driven integration test setup for new games
 - Interactive web dashboard for visualizing results
 
 ## Supported Games
 
-Currently, LLM Olympics has full implementation for:
-- **Prisoner's Dilemma**: A classic game testing cooperation vs competition
-
-Games with configuration but not fully implemented:
-- **Diplomacy**: Tests alliance building and strategic elimination
-- **Ghost**: Word game testing vocabulary and strategic planning
-- **Ultimatum Game**: Tests fairness assessment and negotiation
-- **Rock Paper Scissors**: Evaluates pattern prediction and deception
+See [the dashboard](https://llmolympics.com/) for currently implemented and upcoming games.
 
 ## Installation
 
@@ -62,43 +57,54 @@ Games with configuration but not fully implemented:
    npm install
    ```
 
-## Running the System
+## Important concepts
+In LLM Olympics, we have the following concepts that are important to understand
 
-The complete workflow for running LLM Olympics involves several steps:
+### 1. Games
+Game-configs contains all of the logic to run a single instance of a game.  This includes things like the number of players, number of rounds, phases, and win-conditions.  Running a game is mostly means for testing and debugging purposes, benchmarks are for publishing results.
+
+### 2. Benchmarks
+When we want to collect data to publish to a leaderboard, we do it via a benchmark.  Benchmark configs contain the logic on how a benchmark "tournament" should be run.  This includes what game to play, which models should participate, and how they will be organized into individual matches.
+
+### 3. Data processing
+When we run a benchmark (see below for instructions) output files log the events and conversations.  These go to `data/benchmark/[benchmark_id]`.  We then need to further process the data (see instructions below) in order to get it ready to be consumed by the leaderboards.  Processed data goes to `data/processed/[benchmark_id]` to be consumed by the front end.
+
+### 4. Leaderboards
+The front end is located in the web directory, and is built with Vite, React, and Tailwind.  It consumes data from `data/processed/[benchmark_id]` and displays that data on [llmolympics.com](https://llmolympics.com/).
+
+
+## Running the System - Existing Games and Benchmarks
+
+The complete workflow for running new sessions of an existing games 
 
 ### 1. Running a Single Game
 
 To run a single game with the specified configuration:
 
 ```bash
-python main.py config/games/prisoners_dilemma.yaml
+python main.py config/games/[game_config_name].yaml
 ```
 
-This will create a session directory in `data/sessions/` with logs, snapshots, and results.
+This will create a session directory in `data/sessions/` with logs, snapshots, and results.  These sessions are not added to github as they are meant for debugging purposes.
 
 ### 2. Running a Benchmark
 
 To run a benchmark that pits multiple models against each other:
 
 ```bash
-python benchmark.py config/benchmarks/prisoners_dilemma_benchmark.yaml
+python benchmark.py config/benchmarks/[benchmark_config_name].yaml
 ```
 
 This will run multiple games between different model combinations and store the results in `data/benchmark/[benchmark_id]/`.
 
 ### 3. Processing Data for Visualization
 
-Process the benchmark data to generate visualization-friendly formats:
+Process the benchmark data to generate visualization-friendly formats.
 
 ```bash
-python scripts/process_data.py --all
+python scripts/process_data.py --benchmark data/benchmark/[benchmark_id]
 ```
-
-Or for a specific benchmark:
-
-```bash
-python scripts/process_data.py --benchmark data/benchmark/prisoners_dilemma_benchmark_1
-```
+The results will be stored in `data/processed/[benchmark_id]` and will be added to git.
 
 ### 4. Processing Game Details
 
@@ -119,52 +125,21 @@ npm run dev
 
 Then open your browser to the URL shown in the console (typically http://localhost:5173).
 
-### Running Tests
+### 6. Running Tests
 
-To run integration tests:
-
-```bash
-python tests/integration_test.py --config config/games/prisoners_dilemma.yaml [--verbose] [--clean]
-```
+See [testing readme](https://github.com/jmogielnicki/llmolympics/blob/main/tests/readme.md)
 
 ## Adding a New Game
 
 To add a new game to LLM Olympics:
 
-1. **Create a game configuration file** in `config/games/your_game.yaml`:
+1. **Create a game configuration file** in `config/games/[your_game].yaml`:
 
-   ```yaml
-   game:
-     name: "Your Game Name"
-     description: "A brief description of your game"
-     type: "simultaneous_choice"  # or another game type
+[Example config](https://github.com/jmogielnicki/llmolympics/blob/main/config/games/prisoners_dilemma.yaml)
 
-   players:
-     min: 2
-     max: 2
-     roles: "symmetric"  # or "asymmetric"
+2. **Create prompt templates** in `templates/[your-prompt-template].txt` for LLM interactions.
 
-   phases:
-     - id: "phase_1"
-       type: "simultaneous_action"
-       actions:
-         - name: "choose"
-           options: ["option1", "option2"]
-       next_phase: "resolution"
-
-     - id: "resolution"
-       type: "automatic"
-       handler: "your_resolution_handler"
-       next_phase_condition: "rounds_remaining"
-       next_phase_success: "phase_1"
-       next_phase_failure: "game_end"
-
-   # Add other required sections: rounds, state, win_condition, etc.
-   ```
-
-2. **Create prompt templates** in `templates/your_game_prompt.txt` for LLM interactions.
-
-3. **Implement custom handlers** if needed in `handlers/your_game.py`:
+3. **Implement custom handlers** if needed in `handlers/[your_game].py`:
 
    ```python
    from handlers.base import PhaseHandler
@@ -180,7 +155,7 @@ To add a new game to LLM Olympics:
 4. **Test your game** with a single run:
 
    ```bash
-   python main.py config/games/your_game.yaml
+   python main.py config/games/[your_game].yaml
    ```
 
 5. **Add parsers** if needed for custom response formats in `core/llm/parser.py`.
@@ -189,36 +164,37 @@ To add a new game to LLM Olympics:
 
 To create a new benchmark configuration:
 
-1. **Create a benchmark configuration file** in `config/benchmarks/your_benchmark.yaml`:
+1. **Create a benchmark configuration file** in `config/benchmarks/[your_benchmark].yaml`:
 
-   ```yaml
-   benchmark:
-     id: "your_benchmark_id"
-     base_config: "config/games/your_game.yaml"
-     games_per_pair: 3
-     output_dir: "data/benchmark"
+[Example benchmark config](https://github.com/jmogielnicki/llmolympics/blob/main/config/benchmarks/prisoners_dilemma_benchmark.yaml)
 
-   models:
-     - openai:gpt-4o
-     - anthropic:claude-3-5-sonnet-20240620
-     - xai:grok-2-1212
-     # Add more models as needed
-   ```
+2. **Create integration tests**:
+See the [testing readme](https://github.com/jmogielnicki/llmolympics/blob/main/tests/readme.md) for instructions on how to (relatively painlessly) generate one or more integration tests with deterministic model responses and snapshots.  This will allow you to test the benchmark before you run it with live models on provider APIs.  I promise this will end up saving a lot of time in the long-run.  Also integration tests will be required for new pull-requests.
 
-2. **Run the benchmark**:
+3. **Run the live benchmark**:
 
    ```bash
-   python benchmark.py config/benchmarks/your_benchmark.yaml
+   python benchmark.py config/benchmarks/[your_benchmark_id].yaml
    ```
+   Verify the data in `data/benchmark/[your_benchmark_id]
 
-3. **Process the benchmark data** for visualization:
+4. **Process the benchmark data** for visualization:
 
    ```bash
-   python scripts/process_data.py --benchmark data/benchmark/your_benchmark_id
-   python scripts/process_game_detail.py --benchmark data/benchmark/your_benchmark_id --all
+   python scripts/process_data.py --benchmark data/benchmark/[your_benchmark_id]
+   python scripts/process_game_detail.py --benchmark data/benchmark/[your_benchmark_id] --all
    ```
 
-4. If you want to add visualization for a new game type, you'll need to update the web dashboard code in `web/src/components/ParlourBenchDashboard.jsx`.
+5. **Build the front-end**
+Create a new directory like `web/src/components/[MyBenchmarkDashboardName]` and add a components and tabs directory.  Add a jsx file like [MyBenchMarkDashboardName].jsx to the components directory and (at least) LeaderBoardTab.jsx to the tabs directory.
+Then update `web/src/components/ParlourBenchDashboard.jsx` to add this new dashboard.
+
+Start the web dashboard to visualize the results:
+
+```bash
+cd web
+npm run dev
+```
 
 ## Adding a New Model to Existing Benchmarks
 
@@ -232,7 +208,7 @@ When a new model is released, you can add it to existing games and benchmarks:
    NEW_PROVIDER_API_KEY=your_new_provider_api_key_here
    ```
 
-2. **Update an existing benchmark** or create a new one with the new model:
+2. **Update an existing benchmark**:
    ```yaml
    models:
      - openai:gpt-4o
@@ -251,13 +227,13 @@ When a new model is released, you can add it to existing games and benchmarks:
 
 3. **Run the updated benchmark**:
    ```bash
-   python benchmark.py config/benchmarks/your_updated_benchmark.yaml
+   python benchmark.py config/benchmarks/[your_updated_benchmark].yaml
    ```
 
 4. **Process the new benchmark data**:
    ```bash
-   python scripts/process_data.py --benchmark data/benchmark/your_benchmark_id
-   python scripts/process_game_detail.py --benchmark data/benchmark/your_benchmark_id --all
+   python scripts/process_data.py --benchmark data/benchmark/[your_benchmark_id]
+   python scripts/process_game_detail.py --benchmark data/benchmark/[your_benchmark_id] --all
    ```
 
 ## Contributing
@@ -269,6 +245,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+Note that integration tests will be required for new benchmark pull-requests (see [testing readme](https://github.com/jmogielnicki/llmolympics/blob/main/tests/readme.md))
 
 ## License
 
