@@ -7,6 +7,8 @@ from datetime import datetime
 from pathlib import Path
 from common_utils import extract_model_name
 
+from debate_slam_processor import process_single_session as process_debate_session
+
 
 def parse_timestamp(timestamp_str):
     """Convert ISO timestamp to readable format."""
@@ -298,7 +300,7 @@ class PoetryDetailGenerator(GameDetailGenerator):
     def can_process(self, config):
         """Determine if this generator can process this game type."""
         game_name = config.get('game', {}).get('name', '')
-        return 'poetry' in game_name.lower() or 'slam' in game_name.lower()
+        return 'poetry' in game_name.lower()
 
     def get_decision_context(self, decision):
         """Get UI context for a Poetry Slam decision (voting)."""
@@ -633,7 +635,7 @@ class GameDetailGeneratorFactory:
     def __init__(self):
         self.generators = [
             PrisonersDilemmaDetailGenerator(),
-            PoetryDetailGenerator()
+            PoetryDetailGenerator(),
         ]
 
     def get_generator(self, config):
@@ -815,9 +817,6 @@ def process_game_detail(benchmark_dir, session_id, output_dir="data/processed"):
     if not os.path.isdir(session_dir):
         return {"error": f"Session directory not found: {session_dir}"}
 
-    # Generate timeline
-    timeline_data = generate_game_timeline(session_dir)
-
     # Extract benchmark ID from benchmark_dir path
     benchmark_id = os.path.basename(benchmark_dir)
 
@@ -825,8 +824,19 @@ def process_game_detail(benchmark_dir, session_id, output_dir="data/processed"):
     detail_dir = os.path.join(output_dir, benchmark_id, "detail")
     os.makedirs(detail_dir, exist_ok=True)
 
-    # Save detail data
+    # Output file path
     output_file = os.path.join(detail_dir, f"{os.path.basename(session_dir)}.json")
+
+    timeline_data = None
+    # Check if this is a debate slam game
+    if "debate_slam" in benchmark_id:
+        print(f"Detected Debate Slam game, using debate_slam_processor")
+        timeline_data = process_debate_session(session_dir, output_file, verbose=True)
+    else:
+        # Standard processing for non-debate games or if debate processor failed
+        timeline_data = generate_game_timeline(session_dir)
+
+    # Save detail data
     with open(output_file, 'w') as f:
         json.dump(timeline_data, f, indent=2)
 
@@ -853,7 +863,6 @@ def process_all_games(benchmark_dir, output_dir="data/processed"):
 
     print(f"Found {len(sessions)} game sessions to process")
 
-    # Process each session
     for session_dir in sessions:
         process_game_detail(benchmark_dir, session_dir, output_dir)
 
