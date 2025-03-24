@@ -66,11 +66,11 @@ const ParlourBenchDashboard = () => {
 			path: "/games/prisoners-dilemma",
 			description: "A classic game of cooperation and betrayal",
 			long_description: `
-              For 5 rounds, players simultaneously choose to cooperate or
+              Over 5 rounds, players choose to cooperate or
               defect. Mutual cooperation yields moderate rewards
               for both (3,3), mutual defection yields low rewards
               (1,1), while unilateral defection yields high reward
-              for the defector (5,0).  The player with the highest score wins.
+              for the defector (5,0).
       `,
 			icon: Lock,
 			stats: prisonersDilemmaMetadata,
