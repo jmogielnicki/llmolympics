@@ -1,7 +1,9 @@
 import React from "react";
 import { Award, ThumbsUp } from "lucide-react";
-import { shortenModelName } from "../../../utils/commonUtils";
-import ReactMarkdown from "react-markdown";
+import {
+	shortenModelName,
+	convertStarsToBold,
+} from "../../../utils/commonUtils";
 
 /**
  * Component to display a poem with voting information
@@ -47,10 +49,15 @@ const PoemDisplay = ({ poem, showBorder = true }) => {
 			</div>
 
 			<div className="p-4 prose prose-sm max-w-none bg-white">
-				<div className="whitespace-pre-line">
-					<ReactMarkdown>
-						{poem.text.replace(/  \n/g, "\n")}
-					</ReactMarkdown>
+				<div
+					className="whitespace-pre-line text-stone-600"
+					dangerouslySetInnerHTML={{
+						__html: convertStarsToBold(
+							poem.text
+						),
+					}}
+				>
+					{}
 				</div>
 			</div>
 

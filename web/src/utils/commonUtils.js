@@ -22,3 +22,10 @@ export function shortenModelName(modelName, replacements = []) {
 
 	return result;
 }
+
+export function convertStarsToBold(text) {
+		return text.replace(
+			/\*\*(.*?)\*\*/g,
+			'<strong class="font-bold">$1</strong>'
+		);
+	}

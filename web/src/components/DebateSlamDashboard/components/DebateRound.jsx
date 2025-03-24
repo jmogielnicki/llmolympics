@@ -1,6 +1,6 @@
 import React from "react";
 import { Plus, Minus } from "lucide-react";
-import { shortenModelName } from "../../../utils/commonUtils";
+import { shortenModelName, convertStarsToBold } from "../../../utils/commonUtils";
 
 /**
  * Component for displaying a debate round with arguments and judge votes
@@ -152,11 +152,15 @@ const DebateRound = ({
 
 										{/* Content with increased left padding due to accent line */}
 										<div className="pl-3">
-
-
 											{/* Argument text */}
-											<p className={`text-sm whitespace-pre-line mb-4 ${textColorClass}`}>
-												{argument.argument}
+											<p
+												className={`text-sm whitespace-pre-line mb-4 ${textColorClass}`}
+												dangerouslySetInnerHTML={{
+													__html: convertStarsToBold(
+														argument.argument
+													),
+												}}
+											>
 											</p>
 
 											{/* Integrated judge section */}

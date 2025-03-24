@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useGameData } from "../../../context/GameDataContext";
 import PoemDisplay from "../components/PoemDisplay";
 import { Calendar, MessageSquare, Trophy } from "lucide-react";
-import { shortenModelName } from "../../../utils/commonUtils";
-import ReactMarkdown from "react-markdown";
+import {
+	shortenModelName,
+	convertStarsToBold,
+} from "../../../utils/commonUtils";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 /**
@@ -272,7 +274,9 @@ const TimelineTab = () => {
 										Final scores:
 									</p>
 									<div
-										className={`grid grid-flow-col sm:grid-rows-3 grid-rows-${finalScores.length + 1} gap-1 pl-2`}
+										className={`grid grid-flow-col sm:grid-rows-3 grid-rows-${
+											finalScores.length + 1
+										} gap-1 pl-2`}
 									>
 										{Array.isArray(finalScores) ? (
 											finalScores.map((score, index) => {
@@ -332,14 +336,15 @@ const TimelineTab = () => {
 											</span>
 										)}
 									</div>
-									<div className="p-6 prose prose-sm max-w-none">
-										<div className="whitespace-normal bg-lime-50 p-4 rounded border border-lime-100">
-											<ReactMarkdown>
-												{prompt.text.replace(
-													/\n\n/g,
-													"\n\n&nbsp;\n\n"
-												)}
-											</ReactMarkdown>
+									<div className="p-6 max-w-none">
+										<div
+											className="bg-lime-50 text-lime-800 p-4 rounded border border-lime-100 whitespace-pre-line"
+											dangerouslySetInnerHTML={{
+												__html: convertStarsToBold(
+													prompt.text
+												),
+											}}
+										>
 										</div>
 									</div>
 								</div>
