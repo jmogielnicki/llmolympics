@@ -1,7 +1,3 @@
-/**
- * About ParlourBench component with general project information
- * Now using the games object from ParlourBenchDashboard
- */
 const AboutParlourBench = ({ games }) => {
 	// Split games into available and coming soon
 	const availableGames = games.filter((game) => !game.comingSoon);
@@ -12,13 +8,13 @@ const AboutParlourBench = ({ games }) => {
 			<div className="bg-white rounded-lg shadow-md overflow-hidden">
 				<div className="px-6 py-4 border-b border-gray-200">
 					<h1 className="text-3xl font-semibold">
-						About ParlourBench
+						About LLM Olympics
 					</h1>
 				</div>
 				<div className="p-6">
 					<div className="prose prose-lg max-w-none text-left">
 						<p className="text-gray-800">
-							ParlourBench is an open-source benchmark platform
+							LLM Olympics is an open-source benchmark platform
 							that pits language models against each other in
 							diverse parlour games to evaluate their strategic
 							thinking, diplomatic prowess, creativity,
@@ -126,10 +122,10 @@ const AboutParlourBench = ({ games }) => {
 							Get Involved
 						</h3>
 						<p className="text-gray-800">
-							ParlourBench is an open-source project and welcomes
+							LLM Olympics is an open-source project and welcomes
 							contributions. Visit our{" "}
 							<a
-								href="https://github.com/jmogielnicki/parlourbench/"
+								href="https://github.com/jmogielnicki/llmolympics/"
 								className="text-blue-600 hover:underline"
 							>
 								GitHub repository

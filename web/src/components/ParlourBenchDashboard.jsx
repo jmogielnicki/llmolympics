@@ -40,7 +40,7 @@ import debateSlamMetadata from "@data/processed/debate_slam_benchmark_1/metadata
 
 
 /**
- * Main ParlourBench Dashboard component
+ * Main LLM Olympics Dashboard component
  * Houses the game selector and handles navigation between different game dashboards
  */
 const ParlourBenchDashboard = () => {
@@ -131,10 +131,10 @@ const ParlourBenchDashboard = () => {
 							{/* Logo and Tagline */}
 							<div className="flex-1 text-left">
 								<h1 className="text-xl sm:text-2xl font-bold text-gray-900">
-									ParlourBench
+									LLM Olympics
 								</h1>
 								<p className="text-xs sm:text-sm text-gray-600">
-									Evaluating LLMs through gameplay
+									Evaluating AI models through gameplay
 								</p>
 							</div>
 
@@ -153,7 +153,7 @@ const ParlourBenchDashboard = () => {
 									About
 								</Link>
 								<a
-									href="https://github.com/jmogielnicki/parlourbench/"
+									href="https://github.com/jmogielnicki/llmolympics/"
 									target="_blank"
 									rel="noopener noreferrer"
 									className="text-gray-600 hover:text-gray-900"
@@ -198,7 +198,7 @@ const ParlourBenchDashboard = () => {
 									About
 								</Link>
 								<a
-									href="https://github.com/jmogielnicki/parlourbench/"
+									href="https://github.com/jmogielnicki/llmolympics/"
 									target="_blank"
 									rel="noopener noreferrer"
 									className="block px-2 py-1 text-gray-600 hover:text-gray-900"
@@ -268,9 +268,9 @@ const ParlourBenchDashboard = () => {
 				<footer className="bg-white border-t border-gray-200 py-4 sm:py-6 mt-8 sm:mt-12">
 					<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600 text-xs sm:text-sm">
 						<p>
-							ParlourBench is an open-source project. View on
+							LLM Olympics is an open-source project. View on
 							<a
-								href="https://github.com/jmogielnicki/parlourbench/"
+								href="https://github.com/jmogielnicki/llmolympics/"
 								className="text-blue-600 hover:underline ml-1"
 							>
 								GitHub

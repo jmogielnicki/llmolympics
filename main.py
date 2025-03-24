@@ -20,7 +20,7 @@ logger = logging.getLogger("ParlourBench")
 
 def main():
     """
-    Main entry point for ParlourBench.
+    Main entry point for LLM Olympics.
 
     Parses command line arguments and runs the game engine.
     """

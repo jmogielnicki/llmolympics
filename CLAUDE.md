@@ -1,4 +1,4 @@
-# ParlourBench Agent Guidelines
+# LLM Olympics Agent Guidelines
 
 ## Commands
 - Run game: `python main.py config/games/prisoners_dilemma.yaml`

@@ -25,11 +25,11 @@ logger = logging.getLogger("ParlourBench-Benchmark")
 
 def main():
     """
-    Main entry point for ParlourBench benchmarking.
+    Main entry point for LLM Olympics benchmarking.
 
     Parses command line arguments and runs the benchmark.
     """
-    parser = argparse.ArgumentParser(description="Run ParlourBench benchmarks")
+    parser = argparse.ArgumentParser(description="Run LLM Olympics benchmarks")
     parser.add_argument("config", help="Path to the benchmark configuration file")
     parser.add_argument("--verbose", action="store_true", help="Enable verbose logging")
 

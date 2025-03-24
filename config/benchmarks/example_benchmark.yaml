@@ -1,4 +1,4 @@
-# Benchmark configuration for ParlourBench
+# Benchmark configuration for LLM Olympics
 # This file defines which models to test and how to run the benchmark
 
 # Core benchmark settings

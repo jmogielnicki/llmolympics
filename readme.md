@@ -1,10 +1,10 @@
-# ParlourBench
+# LLM Olympics
 
-An open-source benchmark that pits LLMs against one another in parlour games.
+An open-source benchmark that evaluates AI models with gameplay.
 
 ## Overview
 
-ParlourBench is a platform for evaluating large language models (LLMs) by having them compete against each other in various parlour games. This benchmarking approach allows us to test strategic thinking, diplomatic prowess, creativity, persuasion, deceptive/cooperative behavior, and theory-of-mind capabilities.
+LLM Olympics is a platform for evaluating large language models (LLMs) by having them compete against each other in various parlour games. This benchmarking approach allows us to test strategic thinking, diplomatic prowess, creativity, persuasion, deceptive/cooperative behavior, and theory-of-mind capabilities.
 
 Through these competitions, we develop comprehensive rankings across key dimensions and showcase them on our arena leaderboard. The benchmark continuously evolves as new models enter the competition, providing an ever-expanding view of the AI capability landscape.
 
@@ -24,7 +24,7 @@ LLMs are quickly saturating traditional benchmarks - for example, they now achie
 
 ## Supported Games
 
-Currently, ParlourBench has full implementation for:
+Currently, LLM Olympics has full implementation for:
 - **Prisoner's Dilemma**: A classic game testing cooperation vs competition
 
 Games with configuration but not fully implemented:
@@ -37,8 +37,8 @@ Games with configuration but not fully implemented:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/jmogielnicki/parlourbench.git
-   cd parlourbench
+   git clone https://github.com/jmogielnicki/llmolympics.git
+   cd llmolympics
    ```
 
 2. Install Python dependencies:
@@ -64,7 +64,7 @@ Games with configuration but not fully implemented:
 
 ## Running the System
 
-The complete workflow for running ParlourBench involves several steps:
+The complete workflow for running LLM Olympics involves several steps:
 
 ### 1. Running a Single Game
 
@@ -129,7 +129,7 @@ python tests/integration_test.py --config config/games/prisoners_dilemma.yaml [-
 
 ## Adding a New Game
 
-To add a new game to ParlourBench:
+To add a new game to LLM Olympics:
 
 1. **Create a game configuration file** in `config/games/your_game.yaml`:
 

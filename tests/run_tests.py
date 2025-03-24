@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Run ParlourBench integration tests.
+Run LLM Olympics integration tests.
 
 This script provides a convenient way to run the integration tests
 with various options and filters.
@@ -21,7 +21,7 @@ logger = logging.getLogger("RunTests")
 
 def parse_args():
     """Parse command line arguments."""
-    parser = argparse.ArgumentParser(description="Run ParlourBench integration tests.")
+    parser = argparse.ArgumentParser(description="Run LLM Olympics integration tests.")
 
     parser.add_argument("--all", action="store_true", help="Run all tests")
     parser.add_argument("--benchmarks", action="store_true", help="Run all benchmark tests")

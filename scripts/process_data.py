@@ -1535,7 +1535,7 @@ def process_all_benchmarks(data_dir="data", output_dir="data/processed"):
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Process ParlourBench benchmark data for visualization")
+    parser = argparse.ArgumentParser(description="Process LLM Olympics benchmark data for visualization")
     parser.add_argument("--benchmark", help="Process a specific benchmark directory")
     parser.add_argument("--all", action="store_true", help="Process all benchmarks")
     parser.add_argument("--output", default="data/processed", help="Output directory for processed data")
