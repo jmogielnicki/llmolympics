@@ -44,7 +44,7 @@ const LeaderboardTab = () => {
 					data={leaderboardData}
 					title={"Average score"}
 					subtitle={
-						"The average number of votes received by each model"
+						"The average score from all games played"
 					}
 					dataKey={"model_name"}
 				/>
