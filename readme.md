@@ -248,6 +248,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 Note that integration tests will be required for new benchmark pull-requests (see [testing readme](https://github.com/jmogielnicki/llmolympics/blob/main/tests/readme.md))
 
+Thanks for your interest!
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
