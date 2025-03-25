@@ -199,10 +199,10 @@ const TimelineTab = () => {
 		<div className="w-full max-w-4xl mx-auto">
 			<div className="mb-8 mt-4">
 				<h2 className="text-xl font-bold text-center mb-1">
-					Game Timeline View
+					Individual Matches
 				</h2>
 				<p className="text-sm text-center text-gray-600 mb-6">
-					Detailed progression of individual gameSessions with
+					Detailed progression of individual sessions with
 					decisions and reasoning
 				</p>
 

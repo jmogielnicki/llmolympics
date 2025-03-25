@@ -1,12 +1,12 @@
 import React from "react";
-import { useGameData } from "../../../context/GameDataContext";
+import { useGameData } from "../context/GameDataContext";
 import { ChevronUp, ChevronDown, Minus } from "lucide-react";
 
 
 /**
  * Matchups Tab content showing head-to-head competition results
  */
-const MatchupsTab = () => {
+const MatchupsChart = () => {
 	const { matchupMatrix } = useGameData();
 
 	const renderWinMatrixCell = (value, rowIndex, colIndex) => {
@@ -92,4 +92,4 @@ const MatchupsTab = () => {
 	);
 };
 
-export default MatchupsTab;
+export default MatchupsChart;

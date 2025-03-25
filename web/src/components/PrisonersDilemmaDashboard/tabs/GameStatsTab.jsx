@@ -9,6 +9,7 @@ import {
 	Legend,
 	ResponsiveContainer,
 } from "recharts";
+import MatchupsChart from "../../MatchupsChart";
 
 // Import custom hooks
 import useWindowDimensions from "@/hooks/useWindowDimensions";
@@ -226,6 +227,7 @@ const GameStatsTab = () => {
 					</div>
 				</div>
 			</div>
+			<MatchupsChart />
 		</div>
 	);
 };

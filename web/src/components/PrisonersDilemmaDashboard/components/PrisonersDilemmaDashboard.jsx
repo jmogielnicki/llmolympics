@@ -7,7 +7,6 @@ import { GameDataProvider, useGameData } from "../../../context/GameDataContext"
 // Import tab components
 import LeaderboardTab from "../tabs/LeaderBoardTab";
 import GameStatsTab from "../tabs/GameStatsTab";
-import MatchupsTab from "../tabs/MatchupsTab";
 import TimelineTab from "../tabs/TimelineTab";
 import AboutTab from "../tabs/AboutTab";
 
@@ -68,7 +67,6 @@ const DashboardContent = () => {
 		{ id: "leaderboard", label: "Leaderboard" },
 		{ id: "timeline", label: "Matches" },
 		{ id: "game-stats", label: "Stats" },
-		{ id: "matchups", label: "Matchups" },
 		{ id: "about", label: "About" },
 	];
 
@@ -90,7 +88,6 @@ const DashboardContent = () => {
 				/>
 				<Route path="/leaderboard" element={<LeaderboardTab />} />
 				<Route path="/game-stats" element={<GameStatsTab />} />
-				<Route path="/matchups" element={<MatchupsTab />} />
 				<Route path="/timeline" element={<TimelineTab />} />
 				<Route
 					path="/timeline/:leftModelId/:rightModelId"

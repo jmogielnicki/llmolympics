@@ -149,7 +149,7 @@ const TimelineTab = () => {
 		<div className="w-full mx-auto">
 			<div className="mb-8 mt-4">
 				<h2 className="text-xl font-bold text-center mb-1">
-					Debate Session Details
+					Debate slam matches
 				</h2>
 				<p className="text-sm text-center text-gray-600 mb-6">
 					View debate rounds, arguments, and judge decisions
