@@ -1,5 +1,5 @@
 import React from "react";
-import { Plus, Minus } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { shortenModelName, convertStarsToBold } from "../../../utils/commonUtils";
 
 /**
@@ -66,15 +66,15 @@ const DebateRound = ({
 				onClick={onToggle}
 			>
 				<div className="flex-col w-full">
-					<div className="flex items-center justify-center align-center">
-						<div className="px-4 pt-2 pb-1 text-sm font-medium w-auto text-stone-500">
+					<div className="flex items-end justify-center align-center">
+						<div className="px-2 pt-2 pb-1 text-sm font-medium w-auto text-stone-500">
 							Round {round.round_number}
 						</div>
-						<div className="bg-gray-50 mt-1 p-1 flex items-center text-stone-500">
+						<div className="flex text-stone-500 mb-1">
 							{isExpanded ? (
-								<Minus size={18} />
+								<ChevronUp size={18} />
 							) : (
-								<Plus size={18} />
+								<ChevronDown size={18} />
 							)}
 						</div>
 					</div>

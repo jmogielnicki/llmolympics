@@ -60,7 +60,7 @@ const DashboardContent = () => {
 	// Tab configuration - for now, just Leaderboard
 	const tabs = [
 		{ id: "leaderboard", label: "Leaderboard" },
-		{ id: "timeline", label: "Timeline" },
+		{ id: "timeline", label: "Matches" },
 		{ id: "about", label: "About" },
 	];
 
