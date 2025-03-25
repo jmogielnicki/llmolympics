@@ -129,7 +129,7 @@ const AboutParlourBench = ({ games }) => {
 								GitHub repository
 							</a>{" "}
 							to learn more about how you can contribute or use
-							the benchmark for your own research.
+							the benchmark for your own research. Thank you for your interest!
 						</p>
 					</div>
 				</div>
