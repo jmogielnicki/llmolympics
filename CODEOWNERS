@@ -1,0 +1,14 @@
+# This file defines who owns what in this repository
+# Each line is a file pattern followed by one or more owners
+# Order is important; the last matching pattern takes precedence
+
+# Default owners for everything in the repo
+* @jmogielnicki
+
+# Owners for specific files/directories can be added below if needed
+# Example: /docs/ @jmogielnicki
+# Example: *.js @jmogielnicki
+# Example: /games/prisoners-dilemma/ @jmogielnicki
+
+# Add more specific patterns above this line if you want to delegate
+# certain parts of the codebase to other maintainers in the future
