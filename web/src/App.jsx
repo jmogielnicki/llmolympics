@@ -1,10 +1,10 @@
 import "./App.css";
-import ParlourBenchDashboard from "./components/ParlourBenchDashboard";
+import MainPage from "./components/MainPage";
 
 function App() {
 	return (
 		<div className="min-h-screen">
-			<ParlourBenchDashboard />
+			<MainPage />
 		</div>
 	);
 }

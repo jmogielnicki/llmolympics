@@ -1,4 +1,4 @@
-const AboutParlourBench = ({ games }) => {
+const AboutPage = ({ games }) => {
 	// Split games into available and coming soon
 	const availableGames = games.filter((game) => !game.comingSoon);
 	const comingSoonGames = games.filter((game) => game.comingSoon);
@@ -138,4 +138,4 @@ const AboutParlourBench = ({ games }) => {
 	);
 };
 
-export default AboutParlourBench;
+export default AboutPage;

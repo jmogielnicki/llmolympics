@@ -31,7 +31,7 @@ import { useState } from "react";
 import PrisonersDilemmaDashboard from "./PrisonersDilemmaDashboard/components/PrisonersDilemmaDashboard";
 import PoetrySlamDashboard from "./PoetrySlamDashboard/components/PoetrySlamDashboard";
 import DebateSlamDashboard from "./DebateSlamDashboard/components/DebateSlamDashboard";
-import AboutParlourBench from "./AboutParlourBench";
+import AboutPage from "./AboutPage";
 
 // Import metadata for games
 import prisonersDilemmaMetadata from "@data/processed/prisoners_dilemma_benchmark_1/metadata.json";
@@ -43,7 +43,7 @@ import debateSlamMetadata from "@data/processed/debate_slam_benchmark_1/metadata
  * Main LLM Showdown Dashboard component
  * Houses the game selector and handles navigation between different game dashboards
  */
-const ParlourBenchDashboard = () => {
+const MainPage = () => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
 	// Available games with descriptions
@@ -251,7 +251,7 @@ const ParlourBenchDashboard = () => {
 						/>
 						<Route
 							path="/about"
-							element={<AboutParlourBench games={games} />}
+							element={<AboutPage games={games} />}
 						/>
 						<Route
 							path="/"
@@ -398,4 +398,4 @@ const ComingSoonGame = ({ games }) => {
 	);
 };
 
-export default ParlourBenchDashboard;
+export default MainPage;
