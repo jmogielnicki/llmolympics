@@ -1,6 +1,6 @@
-# LLM Olympics Integration Testing
+# LLM Showdown Integration Testing
 
-This directory contains an integration testing system for LLM Olympics that allows running benchmarks and games with mock LLM responses in a deterministic environment.
+This directory contains an integration testing system for LLM Showdown that allows running benchmarks and games with mock LLM responses in a deterministic environment.
 
 ## Key Features
 

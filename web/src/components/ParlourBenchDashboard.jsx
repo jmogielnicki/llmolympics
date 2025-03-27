@@ -40,7 +40,7 @@ import debateSlamMetadata from "@data/processed/debate_slam_benchmark_1/metadata
 
 
 /**
- * Main LLM Olympics Dashboard component
+ * Main LLM Showdown Dashboard component
  * Houses the game selector and handles navigation between different game dashboards
  */
 const ParlourBenchDashboard = () => {
@@ -132,7 +132,7 @@ const ParlourBenchDashboard = () => {
 							{/* Logo and Tagline */}
 							<div className="flex-1 text-left">
 								<h1 className="text-xl sm:text-2xl font-bold text-gray-900">
-									LLM Olympics
+									LLM Showdown
 								</h1>
 								<p className="text-xs sm:text-sm text-gray-600">
 									Evaluating AI models through gameplay
@@ -269,7 +269,7 @@ const ParlourBenchDashboard = () => {
 				<footer className="bg-white border-t border-gray-200 py-4 sm:py-6 mt-8 sm:mt-12">
 					<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600 text-xs sm:text-sm">
 						<p>
-							LLM Olympics is an open-source project. View on
+							LLM Showdown is an open-source project. View on
 							<a
 								href="https://github.com/jmogielnicki/llmolympics/"
 								className="text-blue-600 hover:underline ml-1"

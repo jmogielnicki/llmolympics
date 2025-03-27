@@ -1,10 +1,10 @@
-# LLM Olympics
+# LLM Showdown
 
 An open-source benchmark that evaluates AI models through gameplay.
 
 ## Overview
 
-LLM Olympics is a platform that evaluates large language models (LLMs) by having them compete against each other in various games - testing their strategic thinking, diplomatic prowess, creativity, persuasion, and deceptive/cooperative behavior.
+LLM Showdown is a platform that evaluates large language models (LLMs) by having them compete against each other in various games - testing their strategic thinking, diplomatic prowess, creativity, persuasion, and deceptive/cooperative behavior.
 
 Through these competitions, we develop rankings across key dimensions and showcase them on [llmolympics.com](https://llmolympics.com/). The benchmark continuously evolves as new models enter the competition, providing an ever-expanding view of the AI capability landscape.
 
@@ -58,7 +58,7 @@ See [the dashboard](https://llmolympics.com/) for currently implemented and upco
    ```
 
 ## Important concepts
-In LLM Olympics, we have the following concepts that are important to understand
+In LLM Showdown, we have the following concepts that are important to understand
 
 ### 1. Games
 Game-configs contains all of the logic to run a single instance of a game.  This includes things like the number of players, number of rounds, phases, and win-conditions.  Running a game is mostly means for testing and debugging purposes, benchmarks are for publishing results.
@@ -131,7 +131,7 @@ See [testing readme](https://github.com/jmogielnicki/llmolympics/blob/main/tests
 
 ## Adding a New Game
 
-To add a new game to LLM Olympics:
+To add a new game to LLM Showdown:
 
 1. **Create a game configuration file** in `config/games/[your_game].yaml`:
 

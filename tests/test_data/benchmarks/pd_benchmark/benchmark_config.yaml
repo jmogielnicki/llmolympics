@@ -1,4 +1,4 @@
-# Benchmark configuration for LLM Olympics (modified for testing)
+# Benchmark configuration for LLM Showdown (modified for testing)
 benchmark:
   id: "prisoners_dilemma_benchmark_test"
   base_config: "tests/test_data/benchmarks/pd_benchmark/game_config.yaml"

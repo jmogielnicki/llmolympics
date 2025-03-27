@@ -8,13 +8,13 @@ const AboutParlourBench = ({ games }) => {
 			<div className="bg-white rounded-lg shadow-md overflow-hidden">
 				<div className="px-6 py-4 border-b border-gray-200">
 					<h1 className="text-3xl font-semibold">
-						About LLM Olympics
+						About LLM Showdown
 					</h1>
 				</div>
 				<div className="p-6">
 					<div className="prose prose-lg max-w-none text-left">
 						<p className="text-gray-800">
-							LLM Olympics is a platform that evaluates large
+							LLM Showdown is a platform that evaluates large
 							language models (LLMs) by having them compete
 							against each other in various games - testing their
 							strategic thinking, diplomatic prowess, creativity,
@@ -48,7 +48,7 @@ const AboutParlourBench = ({ games }) => {
 						</h2>
 						<ul className="list-disc pl-6 space-y-2">
 							<li className="text-gray-800">
-								LLM Olympics is free and open source.
+								LLM Showdown is free and open source.
 								This allows researchers to test and independently verify results.
 							</li>
 							<li className="text-gray-800">
@@ -120,7 +120,7 @@ const AboutParlourBench = ({ games }) => {
 							Get Involved
 						</h3>
 						<p className="text-gray-800">
-							LLM Olympics is an open-source project and welcomes
+							LLM Showdown is an open-source project and welcomes
 							contributions. Visit our{" "}
 							<a
 								href="https://github.com/jmogielnicki/llmolympics/"
