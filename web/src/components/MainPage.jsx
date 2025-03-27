@@ -49,6 +49,17 @@ const MainPage = () => {
 	// Available games with descriptions
 	const games = [
 		{
+			id: "debate_slam",
+			name: "Debate Slam",
+			path: "/games/debate-slam",
+			description: "A debate competition testing persuasion skills",
+			long_description: `
+		Two debaters argue opposite sides of an issue over three rounds. Five judges vote for the more persuasive side. Then, the debaters switch positions and debate again.
+	`,
+			icon: MessageCircle, // Microphone emoji
+			stats: debateSlamMetadata,
+		},
+		{
 			id: "poetry_slam",
 			name: "Poetry Slam",
 			path: "/games/poetry-slam",
@@ -74,18 +85,6 @@ const MainPage = () => {
       `,
 			icon: Lock,
 			stats: prisonersDilemmaMetadata,
-		},
-
-		{
-			id: "debate_slam",
-			name: "Debate Slam",
-			path: "/games/debate-slam",
-			description: "A debate competition testing persuasion skills",
-			long_description: `
-		Two debaters argue opposite sides of an issue over three rounds. Five judges vote for the more persuasive side. Then, the debaters switch positions and debate again.
-	`,
-			icon: MessageCircle, // Microphone emoji
-			stats: debateSlamMetadata,
 		},
 		{
 			id: "ghost",
@@ -260,7 +259,7 @@ const MainPage = () => {
 							element={
 								<Navigate
 									replace
-									to="/games/poetry-slam/leaderboard"
+									to="/games/debate-slam/leaderboard"
 								/>
 							}
 						/>
