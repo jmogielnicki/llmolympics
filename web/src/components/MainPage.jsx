@@ -130,13 +130,15 @@ const MainPage = () => {
 					<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
 						<div className="flex justify-between items-center h-16">
 							{/* Logo and Tagline */}
-							<div className="flex-1 text-left">
-								<h1 className="text-xl sm:text-2xl font-bold text-gray-900">
-									LLM Showdown
-								</h1>
-								<p className="text-xs sm:text-sm text-gray-600">
-									Evaluating AI models through gameplay
-								</p>
+							<div className="flex-shrink-0 text-left">
+								<a href="/" className="inline-block">
+									<h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+										LLM Showdown
+									</h1>
+									<p className="text-xs sm:text-sm text-gray-600">
+										Evaluating AI models through gameplay
+									</p>
+								</a>
 							</div>
 
 							{/* Desktop Navigation */}
