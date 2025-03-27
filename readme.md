@@ -6,7 +6,7 @@ An open-source benchmark that evaluates AI models through gameplay.
 
 LLM Showdown is a platform that evaluates large language models (LLMs) by having them compete against each other in various games - testing their strategic thinking, diplomatic prowess, creativity, persuasion, and deceptive/cooperative behavior.
 
-Through these competitions, we develop rankings across key dimensions and showcase them on [llmolympics.com](https://llmolympics.com/). The benchmark continuously evolves as new models enter the competition, providing an ever-expanding view of the AI capability landscape.
+Through these competitions, we develop rankings across key dimensions and showcase them on [llmshowdown.io](https://llmshowdown.io/). The benchmark continuously evolves as new models enter the competition, providing an ever-expanding view of the AI capability landscape.
 
 ## Why is this needed?
 
@@ -26,14 +26,14 @@ This system - including the game-playing logic, output data, and web front-end -
 
 ## Supported Games
 
-See [the dashboard](https://llmolympics.com/) for currently implemented and upcoming games.
+See [the dashboard](https://llmshowdown.io/) for currently implemented and upcoming games.
 
 ## Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/jmogielnicki/llmolympics.git
-   cd llmolympics
+   git clone https://github.com/jmogielnicki/llmshowdown.git
+   cd llmshowdown
    ```
 
 2. Install Python dependencies:
@@ -70,7 +70,7 @@ When we want to collect data to publish to a leaderboard, we do it via a benchma
 When we run a benchmark (see below for instructions) output files log the events and conversations.  These go to `data/benchmark/[benchmark_id]`.  We then need to further process the data (see instructions below) in order to get it ready to be consumed by the leaderboards.  Processed data goes to `data/processed/[benchmark_id]` to be consumed by the front end.
 
 ### 4. Leaderboards
-The front end is located in the web directory, and is built with Vite, React, and Tailwind.  It consumes data from `data/processed/[benchmark_id]` and displays that data on [llmolympics.com](https://llmolympics.com/).
+The front end is located in the web directory, and is built with Vite, React, and Tailwind.  It consumes data from `data/processed/[benchmark_id]` and displays that data on [llmshowdown.io](https://llmshowdown.io/).
 
 
 ## Running the System - Existing Games and Benchmarks
@@ -127,7 +127,7 @@ Then open your browser to the URL shown in the console (typically http://localho
 
 ### 6. Running Tests
 
-See [testing readme](https://github.com/jmogielnicki/llmolympics/blob/main/tests/readme.md)
+See [testing readme](https://github.com/jmogielnicki/llmshowdown/blob/main/tests/readme.md)
 
 ## Adding a New Game
 
@@ -135,7 +135,7 @@ To add a new game to LLM Showdown:
 
 1. **Create a game configuration file** in `config/games/[your_game].yaml`:
 
-[Example config](https://github.com/jmogielnicki/llmolympics/blob/main/config/games/prisoners_dilemma.yaml)
+[Example config](https://github.com/jmogielnicki/llmshowdown/blob/main/config/games/prisoners_dilemma.yaml)
 
 2. **Create prompt templates** in `templates/[your-prompt-template].txt` for LLM interactions.
 
@@ -166,10 +166,10 @@ To create a new benchmark configuration:
 
 1. **Create a benchmark configuration file** in `config/benchmarks/[your_benchmark].yaml`:
 
-[Example benchmark config](https://github.com/jmogielnicki/llmolympics/blob/main/config/benchmarks/prisoners_dilemma_benchmark.yaml)
+[Example benchmark config](https://github.com/jmogielnicki/llmshowdown/blob/main/config/benchmarks/prisoners_dilemma_benchmark.yaml)
 
 2. **Create integration tests**:
-See the [testing readme](https://github.com/jmogielnicki/llmolympics/blob/main/tests/readme.md) for instructions on how to (relatively painlessly) generate one or more integration tests with deterministic model responses and snapshots.  This will allow you to test the benchmark before you run it with live models on provider APIs.  I promise this will end up saving a lot of time in the long-run.  Also integration tests will be required for new pull-requests.
+See the [testing readme](https://github.com/jmogielnicki/llmshowdown/blob/main/tests/readme.md) for instructions on how to (relatively painlessly) generate one or more integration tests with deterministic model responses and snapshots.  This will allow you to test the benchmark before you run it with live models on provider APIs.  I promise this will end up saving a lot of time in the long-run.  Also integration tests will be required for new pull-requests.
 
 3. **Run the live benchmark**:
 
@@ -246,7 +246,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-Note that integration tests will be required for new benchmark pull-requests (see [testing readme](https://github.com/jmogielnicki/llmolympics/blob/main/tests/readme.md))
+Note that integration tests will be required for new benchmark pull-requests (see [testing readme](https://github.com/jmogielnicki/llmshowdown/blob/main/tests/readme.md))
 
 Thanks for your interest!
 

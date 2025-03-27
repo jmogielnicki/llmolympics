@@ -154,7 +154,7 @@ const ParlourBenchDashboard = () => {
 									About
 								</Link>
 								<a
-									href="https://github.com/jmogielnicki/llmolympics/"
+									href="https://github.com/jmogielnicki/llmshowdown/"
 									target="_blank"
 									rel="noopener noreferrer"
 									className="text-gray-600 hover:text-gray-900"
@@ -199,7 +199,7 @@ const ParlourBenchDashboard = () => {
 									About
 								</Link>
 								<a
-									href="https://github.com/jmogielnicki/llmolympics/"
+									href="https://github.com/jmogielnicki/llmshowdown/"
 									target="_blank"
 									rel="noopener noreferrer"
 									className="block px-2 py-1 text-gray-600 hover:text-gray-900"
@@ -271,7 +271,7 @@ const ParlourBenchDashboard = () => {
 						<p>
 							LLM Showdown is an open-source project. View on
 							<a
-								href="https://github.com/jmogielnicki/llmolympics/"
+								href="https://github.com/jmogielnicki/llmshowdown/"
 								className="text-blue-600 hover:underline ml-1"
 							>
 								GitHub

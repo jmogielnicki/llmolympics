@@ -123,7 +123,7 @@ const AboutParlourBench = ({ games }) => {
 							LLM Showdown is an open-source project and welcomes
 							contributions. Visit our{" "}
 							<a
-								href="https://github.com/jmogielnicki/llmolympics/"
+								href="https://github.com/jmogielnicki/llmshowdown/"
 								className="text-blue-600 hover:underline"
 							>
 								GitHub repository

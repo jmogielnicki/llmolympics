@@ -38,7 +38,7 @@ pytest tests/test_benchmarks.py -v --benchmark=prisoners_dilemma_benchmark --upd
 ```
 
 ## Creating a New Test
-Note: See [this commit](https://github.com/jmogielnicki/llmolympics/commit/ab88ebdcfaa6cb7ce5c0338711f2fa07446ce574) for an example of adding new config files and [this commit](https://github.com/jmogielnicki/llmolympics/commit/6b6c23f164a7b603830331758bcdf692f430b2fa) to see the saved snapshots.
+Note: See [this commit](https://github.com/jmogielnicki/llmshowdown/commit/ab88ebdcfaa6cb7ce5c0338711f2fa07446ce574) for an example of adding new config files and [this commit](https://github.com/jmogielnicki/llmshowdown/commit/6b6c23f164a7b603830331758bcdf692f430b2fa) to see the saved snapshots.
 
 __________________
 
